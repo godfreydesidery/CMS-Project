@@ -328,7 +328,7 @@ Public Class PackingList
         Try
             Dim conn As New MySqlConnection(Database.conString)
             Dim command As New MySqlCommand()
-            Dim codeQuery As String = "UPDATE `packing_list_details` SET `returns`='" + GL_RETURNS.ToString + "', `packed`='" + GL_PACKED.ToString + "', `qty_issued`='" + GL_TOTAL_ISSUED.ToString + "',`qty_returned`='" + GL_QTY_RETURNED.ToString + "',`qty_sold`='" + GL_QTY_SOLD.ToString + "',`qty_damaged`='" + GL_QTY_DAMAGED.ToString + "' WHERE `issue_no`='" + issueNo + "' AND `item_code`='" + itemCode + "'"
+            Dim codeQuery As String = "UPDATE `packing_list_details` SET `price`='" + GL_PRICE.ToString + "', `returns`='" + GL_RETURNS.ToString + "', `packed`='" + GL_PACKED.ToString + "', `qty_issued`='" + GL_TOTAL_ISSUED.ToString + "',`qty_returned`='" + GL_QTY_RETURNED.ToString + "',`qty_sold`='" + GL_QTY_SOLD.ToString + "',`qty_damaged`='" + GL_QTY_DAMAGED.ToString + "' WHERE `issue_no`='" + issueNo + "' AND `item_code`='" + itemCode + "'"
             conn.Open()
             command.CommandText = codeQuery
             command.Connection = conn

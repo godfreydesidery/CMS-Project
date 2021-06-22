@@ -777,7 +777,7 @@ Public Class frmPackingList
     End Sub
 
     Private Sub btnNew_Click(sender As Object, e As EventArgs) Handles btnNew.Click
-
+        oldPrice = 0
 
         txtId.Text = ""
         txtIssueNo.Text = ""
@@ -838,6 +838,7 @@ Public Class frmPackingList
     End Sub
 
     Private Sub btnEdit_Click(sender As Object, e As EventArgs) Handles btnEdit.Click
+        oldPrice = 0
 
         ' If User.authorize("EDIT PACKING LIST") = True Then
 
@@ -1004,7 +1005,7 @@ Public Class frmPackingList
     End Function
 
     Private Sub dtgrdItemList_RowHeaderMouseClick(sender As Object, e As DataGridViewCellMouseEventArgs) Handles dtgrdItemList.RowHeaderMouseClick
-
+        txtPrice.ReadOnly = True
         Dim status As String = (New PackingList).getStatus(txtIssueNo.Text)
         If status = "APPROVED" Then
             MsgBox("Could not edit, document already approved", vbOKOnly + vbExclamation, "Error: Invalid operation")
@@ -1138,7 +1139,7 @@ Public Class frmPackingList
     End Sub
 
     Private Sub dtgrdItemList_RowHeaderMouseDoubleClick(sender As Object, e As DataGridViewCellMouseEventArgs) Handles dtgrdItemList.RowHeaderMouseDoubleClick
-
+        txtPrice.ReadOnly = True
         Dim status As String = (New PackingList).getStatus(txtIssueNo.Text)
 
         If status = "PENDING" Then
@@ -1345,6 +1346,7 @@ Public Class frmPackingList
         Return present
     End Function
     Private Sub btnAdd_Click(sender As Object, e As EventArgs) Handles btnAdd.Click
+        txtPrice.ReadOnly = True
         If txtIssueNo.Text = "" Then
             MsgBox("Select new")
             clearFields()
@@ -1549,6 +1551,7 @@ Public Class frmPackingList
 
 
     Private Sub btnReset_Click(sender As Object, e As EventArgs) Handles btnReset.Click
+        txtPrice.ReadOnly = True
         clearItemdetails()
     End Sub
 
@@ -1622,7 +1625,7 @@ Public Class frmPackingList
     End Sub
 
     Private Sub btnClear_Click(sender As Object, e As EventArgs) Handles btnClear.Click
-
+        oldPrice = 0
 
         txtId.Text = ""
         txtIssueNo.Text = ""
@@ -2345,5 +2348,23 @@ Public Class frmPackingList
 
     Private Sub cmbDescription_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbDescription.SelectedIndexChanged
 
+    End Sub
+    Dim oldPrice As Double = 0
+    Private Sub btnChange_Click(sender As Object, e As EventArgs) Handles btnChange.Click
+        If txtPrice.ReadOnly = True And txtPrice.Text <> "" And Val(LCurrency.getValue(txtPrice.Text)) > 0 Then
+            Dim res As Integer = MsgBox("Change price?", vbYesNo + vbQuestion, "Customize price")
+            If res = DialogResult.Yes Then
+                oldPrice = Val(LCurrency.getValue(txtPrice.Text))
+                txtPrice.ReadOnly = False
+            End If
+        End If
+    End Sub
+
+    Private Sub txtPrice_TextChanged(sender As Object, e As EventArgs) Handles txtPrice.TextChanged
+        If txtPrice.ReadOnly = False And (Not IsNumeric(txtPrice.Text) Or txtPrice.Text.Contains("-")) Then
+            txtPrice.Text = oldPrice.ToString
+            oldPrice = 0
+            txtPrice.ReadOnly = True
+        End If
     End Sub
 End Class

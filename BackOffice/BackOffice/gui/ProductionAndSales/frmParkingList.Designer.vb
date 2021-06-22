@@ -23,7 +23,7 @@ Partial Class frmPackingList
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.txtIssueNo = New System.Windows.Forms.TextBox()
         Me.Label2 = New System.Windows.Forms.Label()
@@ -115,6 +115,7 @@ Partial Class frmPackingList
         Me.Label27 = New System.Windows.Forms.Label()
         Me.cntxtMenu = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.mnRemove = New System.Windows.Forms.ToolStripMenuItem()
+        Me.btnChange = New System.Windows.Forms.Button()
         CType(Me.dtgrdPackingLists, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
         CType(Me.dtgrdItemList, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -546,8 +547,8 @@ Partial Class frmPackingList
         '
         'Column10
         '
-        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.Column10.DefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.Column10.DefaultCellStyle = DataGridViewCellStyle5
         Me.Column10.FillWeight = 89.8288!
         Me.Column10.HeaderText = "Price"
         Me.Column10.Name = "Column10"
@@ -613,6 +614,7 @@ Partial Class frmPackingList
         'Panel2
         '
         Me.Panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+        Me.Panel2.Controls.Add(Me.btnChange)
         Me.Panel2.Controls.Add(Me.Label24)
         Me.Panel2.Controls.Add(Me.txtReturns)
         Me.Panel2.Controls.Add(Me.Label23)
@@ -759,7 +761,7 @@ Partial Class frmPackingList
         'btnAdd
         '
         Me.btnAdd.Enabled = False
-        Me.btnAdd.Location = New System.Drawing.Point(238, 121)
+        Me.btnAdd.Location = New System.Drawing.Point(296, 116)
         Me.btnAdd.Name = "btnAdd"
         Me.btnAdd.Size = New System.Drawing.Size(120, 50)
         Me.btnAdd.TabIndex = 53
@@ -768,7 +770,7 @@ Partial Class frmPackingList
         '
         'btnReset
         '
-        Me.btnReset.Location = New System.Drawing.Point(238, 177)
+        Me.btnReset.Location = New System.Drawing.Point(296, 172)
         Me.btnReset.Name = "btnReset"
         Me.btnReset.Size = New System.Drawing.Size(120, 50)
         Me.btnReset.TabIndex = 54
@@ -843,7 +845,7 @@ Partial Class frmPackingList
         Me.txtPrice.MaxLength = 50
         Me.txtPrice.Name = "txtPrice"
         Me.txtPrice.ReadOnly = True
-        Me.txtPrice.Size = New System.Drawing.Size(115, 22)
+        Me.txtPrice.Size = New System.Drawing.Size(99, 22)
         Me.txtPrice.TabIndex = 47
         '
         'Label15
@@ -978,6 +980,15 @@ Partial Class frmPackingList
         Me.mnRemove.Size = New System.Drawing.Size(166, 24)
         Me.mnRemove.Text = "Remove Item"
         '
+        'btnChange
+        '
+        Me.btnChange.Location = New System.Drawing.Point(222, 120)
+        Me.btnChange.Name = "btnChange"
+        Me.btnChange.Size = New System.Drawing.Size(50, 25)
+        Me.btnChange.TabIndex = 104
+        Me.btnChange.Text = "<c>"
+        Me.btnChange.UseVisualStyleBackColor = True
+        '
         'frmPackingList
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
@@ -1109,4 +1120,5 @@ Partial Class frmPackingList
     Friend WithEvents Label27 As Label
     Friend WithEvents cntxtMenu As ContextMenuStrip
     Friend WithEvents mnRemove As ToolStripMenuItem
+    Friend WithEvents btnChange As Button
 End Class
