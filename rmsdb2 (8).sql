@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 22, 2021 at 03:09 PM
+-- Generation Time: Jun 23, 2021 at 06:04 PM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.1.26
 
@@ -32,7 +32,8 @@ CREATE TABLE `bar_codes` (
   `sn` int(11) NOT NULL,
   `item_scan_code` varchar(50) NOT NULL,
   `item_code` varchar(50) NOT NULL,
-  `descr` varchar(100) DEFAULT NULL
+  `descr` varchar(100) DEFAULT NULL,
+  `touch` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -164,7 +165,8 @@ CREATE TABLE `company` (
   `mobile` varchar(50) DEFAULT NULL,
   `email` varchar(50) DEFAULT NULL,
   `fax` varchar(50) DEFAULT NULL,
-  `policy` varchar(100) DEFAULT NULL
+  `policy` varchar(100) DEFAULT NULL,
+  `logo` mediumblob
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -754,6 +756,7 @@ CREATE TABLE `packing_list_details` (
   `barcode` varchar(50) DEFAULT NULL,
   `item_code` varchar(50) NOT NULL,
   `description` varchar(100) NOT NULL,
+  `cprice` double DEFAULT NULL,
   `price` double NOT NULL,
   `returns` double DEFAULT NULL,
   `packed` double DEFAULT NULL,
