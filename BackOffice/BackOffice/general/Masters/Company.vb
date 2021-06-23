@@ -18,6 +18,7 @@ Public Class Company
     Public Shared MOBILE As String = ""
     Public Shared EMAIL As String = ""
     Public Shared FAX As String = ""
+    Public Shared LOGO As Byte() = New Byte() {}
     Public Shared Function saveCompanyDetails()
         Try
             Dim conn As New MySqlConnection(Database.conString)
@@ -31,7 +32,7 @@ Public Class Company
             command.ExecuteNonQuery()
             conn.Close()
 
-            query = "INSERT INTO `company`( `company_name`, `contact_name`, `tin`, `vrn`, `bank_acc_name`, `bank_acc_address`, `bank_post_code`, `bank_name`, `bank_acc_no`, `address`, `post_code`, `physical_address`, `telephone`, `mobile`, `email`, `fax`) VALUES (@company_name, @contact_name, @tin, @vrn, @bank_acc_name, @bank_acc_address, @bank_post_code, @bank_name, @bank_acc_no, @address, @post_code, @physical_address, @telephone, @mobile, @email, @fax)"
+            query = "INSERT INTO `company`( `company_name`, `contact_name`, `tin`, `vrn`, `bank_acc_name`, `bank_acc_address`, `bank_post_code`, `bank_name`, `bank_acc_no`, `address`, `post_code`, `physical_address`, `telephone`, `mobile`, `email`, `fax`, `logo`) VALUES (@company_name, @contact_name, @tin, @vrn, @bank_acc_name, @bank_acc_address, @bank_post_code, @bank_name, @bank_acc_no, @address, @post_code, @physical_address, @telephone, @mobile, @email, @fax, @logo)"
             conn.Open()
             command.CommandText = query
             command.Connection = conn
@@ -52,6 +53,7 @@ Public Class Company
             command.Parameters.AddWithValue("@mobile", MOBILE)
             command.Parameters.AddWithValue("@email", EMAIL)
             command.Parameters.AddWithValue("@fax", FAX)
+            command.Parameters.AddWithValue("@logo", LOGO)
             command.ExecuteNonQuery()
             conn.Close()
         Catch ex As Exception
@@ -65,7 +67,7 @@ Public Class Company
             Dim conn As New MySqlConnection(Database.conString)
             Dim command As New MySqlCommand()
             'create bar code
-            Dim codeQuery As String = "SELECT `company_name`, `contact_name`, `tin`, `vrn`, `bank_acc_name`, `bank_acc_address`, `bank_post_code`, `bank_name`, `bank_acc_no`, `address`, `post_code`, `physical_address`, `telephone`, `mobile`, `email`, `fax` FROM `company`"
+            Dim codeQuery As String = "SELECT `company_name`, `contact_name`, `tin`, `vrn`, `bank_acc_name`, `bank_acc_address`, `bank_post_code`, `bank_name`, `bank_acc_no`, `address`, `post_code`, `physical_address`, `telephone`, `mobile`, `email`, `fax`, `logo`, LENGTH(`logo`)AS `logo_length`  FROM `company`"
             conn.Open()
             command.CommandText = codeQuery
             command.Connection = conn
@@ -88,6 +90,11 @@ Public Class Company
                 MOBILE = reader.GetString("mobile")
                 EMAIL = reader.GetString("email")
                 FAX = reader.GetString("fax")
+                If reader("logo_length") > 0 Then
+                    LOGO = reader("logo")
+                Else
+                    LOGO = Nothing
+                End If
                 loaded = True
                 Exit While
             End While

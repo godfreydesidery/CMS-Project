@@ -683,7 +683,7 @@ Public Class frmCompany
             Dim conn As New MySqlConnection(Database.conString)
             Dim command As New MySqlCommand()
             'create bar code
-            Dim codeQuery As String = "SELECT`company_name`, `contact_name`, `tin`, `vrn`, `bank_acc_name`, `bank_acc_address`, `bank_post_code`, `bank_name`, `bank_acc_no`, `address`, `post_code`, `physical_address`, `telephone`, `mobile`, `email`, `fax` FROM `company`"
+            Dim codeQuery As String = "SELECT`company_name`, `contact_name`, `tin`, `vrn`, `bank_acc_name`, `bank_acc_address`, `bank_post_code`, `bank_name`, `bank_acc_no`, `address`, `post_code`, `physical_address`, `telephone`, `mobile`, `email`, `fax`, `logo`, LENGTH(`logo`)AS `logo_length` FROM `company`"
             conn.Open()
             command.CommandText = codeQuery
             command.Connection = conn
@@ -707,6 +707,13 @@ Public Class frmCompany
                 txtEmail.Text = reader.GetString("email")
                 txtMobile.Text = reader.GetString("mobile")
                 txtFax.Text = reader.GetString("fax")
+                If reader("logo_length") > 0 Then
+                    Dim byteImage() As Byte = reader("logo")
+                    Dim logo As New System.IO.MemoryStream(byteImage)
+                    pctLogo.Image = Image.FromStream(logo)
+                Else
+                    pctLogo.Image = Nothing
+                End If
                 loaded = True
                 Exit While
             End While
@@ -733,6 +740,12 @@ Public Class frmCompany
     End Sub
 
     Private Sub btnSaveCompanyDetails_Click(sender As Object, e As EventArgs) Handles btnSaveCompanyDetails.Click
+
+        Dim ms As New MemoryStream
+        pctLogo.Image.Save(ms, pctLogo.Image.RawFormat)
+        Dim logo As Byte() = ms.GetBuffer()
+
+
         If validateDetails() = True Then
             Company.NAME = txtName.Text
             Company.CONTACT_NAME = txtContactName.Text
@@ -750,6 +763,7 @@ Public Class frmCompany
             Company.MOBILE = txtMobile.Text
             Company.EMAIL = txtEmail.Text
             Company.FAX = txtFax.Text
+            Company.LOGO = logo
             Company.saveCompanyDetails()
             MsgBox("Company details saved successively", vbOKOnly + vbInformation, "Success: Save company details")
             btnSaveCompanyDetails.Enabled = False
@@ -770,5 +784,55 @@ Public Class frmCompany
 
     Private Sub Panel2_Paint(sender As Object, e As PaintEventArgs) Handles Panel2.Paint
 
+    End Sub
+
+    Private Sub Label4_Click(sender As Object, e As EventArgs) Handles Label4.Click
+
+    End Sub
+
+    Private Sub txtAddress_TextChanged(sender As Object, e As EventArgs) Handles txtAddress.TextChanged
+
+    End Sub
+
+    Private Sub Label5_Click(sender As Object, e As EventArgs) Handles Label5.Click
+
+    End Sub
+
+    Private Sub txtPostCode_TextChanged(sender As Object, e As EventArgs) Handles txtPostCode.TextChanged
+
+    End Sub
+
+    Private Sub Label6_Click(sender As Object, e As EventArgs) Handles Label6.Click
+
+    End Sub
+
+    Private Sub txtPhysicalAddress_TextChanged(sender As Object, e As EventArgs) Handles txtPhysicalAddress.TextChanged
+
+    End Sub
+
+    Private Sub Label11_Click(sender As Object, e As EventArgs) Handles Label11.Click
+
+    End Sub
+
+    Private Sub txtTelephone_TextChanged(sender As Object, e As EventArgs) Handles txtTelephone.TextChanged
+
+    End Sub
+
+    Private Sub Label12_Click(sender As Object, e As EventArgs) Handles Label12.Click
+
+    End Sub
+
+    Private Sub txtMobile_TextChanged(sender As Object, e As EventArgs) Handles txtMobile.TextChanged
+
+    End Sub
+
+    Private Sub Label13_Click(sender As Object, e As EventArgs) Handles Label13.Click
+
+    End Sub
+
+    Private Sub btnChangeLogo_Click(sender As Object, e As EventArgs) Handles btnChangeLogo.Click
+        If fileDialog.ShowDialog = DialogResult.OK Then
+            pctLogo.ImageLocation = fileDialog.FileName
+        End If
     End Sub
 End Class

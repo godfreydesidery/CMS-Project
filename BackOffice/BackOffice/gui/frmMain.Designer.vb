@@ -114,12 +114,13 @@ Partial Class frmMain
         Me.ToolStripMenuItem20 = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripMenuItem21 = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripMenuItem22 = New System.Windows.Forms.ToolStripMenuItem()
-        Me.lblCompany = New System.Windows.Forms.TextBox()
         Me.ToolStripButton1 = New System.Windows.Forms.ToolStripButton()
+        Me.pctLogo = New System.Windows.Forms.PictureBox()
         Me.MenuStrip.SuspendLayout()
         Me.StatusStrip.SuspendLayout()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.ToolStrip1.SuspendLayout()
+        CType(Me.pctLogo, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'MenuStrip
@@ -816,22 +817,6 @@ Partial Class frmMain
         Me.ToolStripMenuItem22.Size = New System.Drawing.Size(258, 28)
         Me.ToolStripMenuItem22.Text = "Access Control"
         '
-        'lblCompany
-        '
-        Me.lblCompany.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.lblCompany.BackColor = System.Drawing.Color.Silver
-        Me.lblCompany.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.lblCompany.Enabled = False
-        Me.lblCompany.Font = New System.Drawing.Font("Microsoft Sans Serif", 16.2!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblCompany.ForeColor = System.Drawing.Color.Navy
-        Me.lblCompany.Location = New System.Drawing.Point(12, 97)
-        Me.lblCompany.Name = "lblCompany"
-        Me.lblCompany.Size = New System.Drawing.Size(1756, 31)
-        Me.lblCompany.TabIndex = 15
-        Me.lblCompany.Text = "Company Name"
-        Me.lblCompany.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
         'ToolStripButton1
         '
         Me.ToolStripButton1.Font = New System.Drawing.Font("Constantia", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -842,13 +827,26 @@ Partial Class frmMain
         Me.ToolStripButton1.Size = New System.Drawing.Size(103, 28)
         Me.ToolStripButton1.Text = "&Masters"
         '
+        'pctLogo
+        '
+        Me.pctLogo.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.pctLogo.BackColor = System.Drawing.Color.Silver
+        Me.pctLogo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
+        Me.pctLogo.Location = New System.Drawing.Point(770, 76)
+        Me.pctLogo.Name = "pctLogo"
+        Me.pctLogo.Size = New System.Drawing.Size(245, 215)
+        Me.pctLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
+        Me.pctLogo.TabIndex = 16
+        Me.pctLogo.TabStop = False
+        '
         'frmMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.DarkGray
         Me.ClientSize = New System.Drawing.Size(1780, 609)
-        Me.Controls.Add(Me.lblCompany)
+        Me.Controls.Add(Me.pctLogo)
         Me.Controls.Add(Me.ToolStrip1)
         Me.Controls.Add(Me.PictureBox2)
         Me.Controls.Add(Me.MenuStrip)
@@ -868,6 +866,7 @@ Partial Class frmMain
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ToolStrip1.ResumeLayout(False)
         Me.ToolStrip1.PerformLayout()
+        CType(Me.pctLogo, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -891,7 +890,6 @@ Partial Class frmMain
     Friend WithEvents tsrpDateTime As System.Windows.Forms.ToolStripStatusLabel
     Friend WithEvents ToolStripDropDownButton1 As ToolStripDropDownButton
     Friend WithEvents PrintPriceLabelsToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents lblCompany As TextBox
     Friend WithEvents ToolStripButton1 As ToolStripButton
     Friend WithEvents ToolStripDropDownButton3 As ToolStripDropDownButton
     Friend WithEvents ToolStripMenuItem1 As ToolStripMenuItem
@@ -963,4 +961,5 @@ Partial Class frmMain
     Friend WithEvents ToolStripMenuItem20 As ToolStripMenuItem
     Friend WithEvents ToolStripMenuItem21 As ToolStripMenuItem
     Friend WithEvents ToolStripMenuItem22 As ToolStripMenuItem
+    Friend WithEvents pctLogo As PictureBox
 End Class

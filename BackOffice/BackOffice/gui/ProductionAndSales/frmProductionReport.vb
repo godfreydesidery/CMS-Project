@@ -1,4 +1,5 @@
 ﻿Imports Devart.Data.MySql
+Imports Microsoft.Office.Interop
 Imports MigraDoc.DocumentObjectModel
 Imports MigraDoc.DocumentObjectModel.Tables
 Imports MigraDoc.Rendering
@@ -17,8 +18,8 @@ Public Class frmProductionReport
         'Create a new style called Table based on style Normal
         style = doc.Styles.AddStyle("Table", "Normal")
         style.Font.Name = "Verdana"
-        style.Font.Name = "Times New Roman"
-        style.Font.Size = 9
+        style.Font.Name = "Calibri"
+        style.Font.Size = 10
         'Create a new style called Reference based on style Normal
         style = doc.Styles.AddStyle("Reference", "Normal")
         style.ParagraphFormat.SpaceBefore = "5mm"
@@ -29,58 +30,114 @@ Public Class frmProductionReport
     Private Sub createDocument(doc As Document)
         'Each MigraDoc document needs at least one section.
         Dim section As Section = doc.AddSection()
+        section.PageSetup.DifferentFirstPageHeaderFooter = True
         Dim paragraph As Paragraph
-        'Put a logo in the header
-        'code missing
         doc.FootnoteStartingNumber() = 1
-        'create headrer
-        ''paragraph = section.Headers.Primary.AddParagraph()
-        ''paragraph.AddFormattedText(Company.NAME, TextFormat.Bold)
-        ''paragraph.Format.Font.Size = 9
-        ''paragraph.Format.Font.Color = Colors.Green
-        ''paragraph.Format.Alignment = ParagraphAlignment.Center
-        'create footer
-        ' 'paragraph = section.Footers.Primary.AddParagraph()
-        '' paragraph.AddText("")
         paragraph = section.Footers.Primary.AddParagraph()
         Dim _datetime As String = DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss")
         paragraph.AddText("Printed :" & _datetime + " By :" & User.CURRENT_ALIAS & " From :" & Company.NAME)
         paragraph.Format.Font.Size = 8
         paragraph.Format.Alignment = ParagraphAlignment.Center
         paragraph.Format.Font.Color = Colors.GreenYellow
-
         paragraph = section.Footers.Primary.AddParagraph()
         paragraph.AddPageField()
         paragraph.AddText(" of ")
         paragraph.AddNumPagesField()
         paragraph.Format.Alignment = ParagraphAlignment.Right
-        'Create the text frame for the address
-
+        section.Footers.FirstPage = section.Footers.Primary.Clone()
+        'Start of header
+        Dim logo As New System.IO.MemoryStream(CType(Company.LOGO, Byte()))
+        Dim logoImage As Image = Image.FromStream(logo)
+        Dim logoPath As String = My.Computer.FileSystem.SpecialDirectories.MyDocuments + "TempDocumentLogo.png"
+        Try
+            My.Computer.FileSystem.DeleteFile(logoPath)
+        Catch ex As Exception
+        End Try
+        logoImage.Save(logoPath)
+        Dim headerTable As Table = section.Headers.FirstPage.AddTable()
+        headerTable.Borders.Width = 0.2
+        headerTable.Borders.Left.Width = 0.2
+        headerTable.Borders.Right.Width = 0.2
+        headerTable.Rows.LeftIndent = 0
+        Dim headerColumn As Column
+        headerColumn = headerTable.AddColumn("2.2cm")
+        headerColumn.Format.Alignment = ParagraphAlignment.Left
+        headerColumn = headerTable.AddColumn("0.3cm")
+        headerColumn.Format.Alignment = ParagraphAlignment.Left
+        headerColumn = headerTable.AddColumn("12cm")
+        headerColumn.Format.Alignment = ParagraphAlignment.Left
+        Dim headerRow As Row
+        headerRow = headerTable.AddRow()
+        headerRow.Format.Font.Bold = False
+        headerRow.HeadingFormat = True
+        headerRow.Format.Font.Size = 9
+        headerRow.Format.Alignment = ParagraphAlignment.Center
+        headerRow.Borders.Color = Colors.White
+        If logo.Length > 0 Then
+            headerRow.Cells(0).AddImage(logoPath).Width = "2.0cm"
+            headerRow.Cells(0).Format.Alignment = ParagraphAlignment.Left
+        End If
+        headerRow.Cells(1).AddParagraph("")
+        Dim companyName As New Paragraph
+        companyName.AddText(Company.NAME + Environment.NewLine)
+        companyName.Format.Font.Bold = True
+        companyName.Format.Font.Size = 9
+        Dim physicalAddress As New Paragraph
+        physicalAddress.AddText(Company.PHYSICAL_ADDRESS + Environment.NewLine)
+        physicalAddress.Format.Font.Size = 8
+        Dim address As New Paragraph
+        address.AddText(Company.ADDRESS + Environment.NewLine)
+        address.Format.Font.Size = 8
+        Dim postCode As New Paragraph
+        postCode.AddText(Company.POST_CODE + Environment.NewLine)
+        postCode.Format.Font.Size = 8
+        Dim telephone As New Paragraph
+        telephone.AddText("Tel: " + Company.TELEPHONE + " Mob:" + Company.MOBILE + Environment.NewLine)
+        telephone.Format.Font.Size = 7
+        Dim email As New Paragraph
+        email.AddText("Email: " + Company.EMAIL + Environment.NewLine)
+        email.Format.Font.Size = 7
+        email.Format.Font.Italic = True
+        headerRow.Cells(2).Add(companyName)
+        headerRow.Cells(2).Add(physicalAddress)
+        headerRow.Cells(2).Add(postCode)
+        headerRow.Cells(2).Add(address)
+        headerRow.Cells(2).Add(telephone)
+        headerRow.Cells(2).Add(email)
+        headerRow.Cells(2).Format.Alignment = ParagraphAlignment.Left
+        headerTable.SetEdge(0, 0, 3, 1, Edge.Box, BorderStyle.Single, 0.75, Color.Empty)
         paragraph = section.AddParagraph()
-        paragraph.AddFormattedText(Company.NAME, TextFormat.Bold)
-        paragraph.Format.Alignment = ParagraphAlignment.Center
-        paragraph = section.AddParagraph()
-        paragraph.AddFormattedText(Company.PHYSICAL_ADDRESS)
-        paragraph.Format.Alignment = ParagraphAlignment.Center
-        paragraph.Format.Font.Size = 8
-        paragraph = section.AddParagraph()
-        paragraph.AddFormattedText(Company.POST_CODE)
-        paragraph.Format.Alignment = ParagraphAlignment.Center
-        paragraph.Format.Font.Size = 8
-        paragraph = section.AddParagraph()
-        paragraph.AddFormattedText("Tel: " + Company.TELEPHONE + " Mob:" + Company.MOBILE)
-        paragraph.Format.Alignment = ParagraphAlignment.Center
-        paragraph.Format.Font.Size = 8
-        paragraph = section.AddParagraph()
-        paragraph.AddFormattedText("Email: " + Company.EMAIL)
-        paragraph.Format.Alignment = ParagraphAlignment.Center
-        paragraph.Format.Font.Size = 8
         paragraph = section.AddParagraph()
         paragraph = section.AddParagraph()
-        paragraph.AddFormattedText("Daily Production Report", TextFormat.Bold)
-        paragraph.Format.Alignment = ParagraphAlignment.Center
-        paragraph.Format.Font.Size = 9
-        paragraph.Format.Font.Color = Colors.Green
+        Dim tittleTable As Tables.Table = section.AddTable()
+        tittleTable.Borders.Width = 0.25
+        tittleTable.Borders.Left.Width = 0.5
+        tittleTable.Borders.Right.Width = 0.5
+        tittleTable.Rows.LeftIndent = 0
+        Dim titleColumn As Tables.Column
+        titleColumn = tittleTable.AddColumn("2.5cm")
+        titleColumn.Format.Alignment = ParagraphAlignment.Left
+        titleColumn = tittleTable.AddColumn("12.0cm")
+        titleColumn.Format.Alignment = ParagraphAlignment.Left
+        Dim titleRow As Tables.Row
+        Dim documentTitle As New Paragraph
+        documentTitle.AddText("Daily Production Report")
+        documentTitle.Format.Alignment = ParagraphAlignment.Left
+        documentTitle.Format.Font.Size = 10
+        documentTitle.Format.Font.Color = Colors.Black
+        titleRow = tittleTable.AddRow()
+        titleRow.Format.Font.Bold = True
+        titleRow.HeadingFormat = True
+        titleRow.Format.Font.Size = 8
+        titleRow.Format.Alignment = ParagraphAlignment.Center
+        titleRow.Format.Font.Bold = True
+        titleRow.Borders.Color = Colors.White
+        titleRow.Cells(0).AddParagraph("")
+        titleRow.Cells(0).Format.Alignment = ParagraphAlignment.Left
+        titleRow.Cells(1).Add(documentTitle)
+        titleRow.Cells(1).Format.Alignment = ParagraphAlignment.Left
+        tittleTable.SetEdge(0, 0, 2, 1, Edge.Box, BorderStyle.Single, 0.75, Color.Empty)
+        'end of header
 
         paragraph = section.AddParagraph()
         paragraph.AddFormattedText("From: " + dateStart.Text + " to :" + dateEnd.Text)
@@ -112,7 +169,7 @@ Public Class frmProductionReport
         'Before you can add a row, you must define the columns
         Dim column As Tables.Column
 
-        column = table.AddColumn("1.5cm")
+        column = table.AddColumn("2.0cm")
         column.Format.Alignment = ParagraphAlignment.Left
 
 
@@ -273,6 +330,8 @@ Public Class frmProductionReport
             Dim dtgrdRow As DataGridViewRow
             Dim dtgrdCell As DataGridViewCell
 
+            Dim c_date As String = ""
+
             While reader.Read
                 Dim itemCode As String = reader.GetString("item_code")
                 Dim _date As String = reader.GetString("date")
@@ -289,7 +348,12 @@ Public Class frmProductionReport
                 dtgrdRow = New DataGridViewRow
 
                 dtgrdCell = New DataGridViewTextBoxCell()
-                dtgrdCell.Value = _date
+                If c_date = _date Then
+                    dtgrdCell.Value = ""
+                Else
+                    dtgrdCell.Value = _date
+                End If
+                c_date = _date
                 dtgrdRow.Cells.Add(dtgrdCell)
 
                 dtgrdCell = New DataGridViewTextBoxCell()
@@ -503,6 +567,92 @@ Public Class frmProductionReport
     End Sub
 
     Private Sub cmbCategory_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbCategory.SelectedIndexChanged
+
+    End Sub
+
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+        If dtgrdList.RowCount = 0 Then
+            MsgBox("Nothing to export")
+            Exit Sub
+        End If
+        Dim appXL As Excel.Application
+        Dim wbXl As Excel.Workbook
+        Dim shXL As Excel.Worksheet
+        Dim raXL As Excel.Range
+        ' Start Excel and get Application object.
+        appXL = CreateObject("Excel.Application")
+        appXL.Visible = True
+        ' Add a new workbook.
+        wbXl = appXL.Workbooks.Add
+        shXL = wbXl.ActiveSheet
+
+        Dim r As Integer = 1
+
+        ' Add table headers going cell by cell.
+        shXL.Cells(r, 1).Value = "From: " + dateStart.Text
+        shXL.Cells(r, 2).Value = "To: " + dateEnd.Text
+
+        ' Format A1:D1 as bold, vertical alignment = center.
+        With shXL.Range("A1", "B1")
+            .Font.Bold = True
+            .VerticalAlignment = Excel.XlVAlign.xlVAlignCenter
+        End With
+        r = r + 1
+        ' Add table headers going cell by cell.
+        shXL.Cells(r, 1).Value = "Category: " + cmbCategory.Text
+
+
+        ' Format A1:D1 as bold, vertical alignment = center.
+        With shXL.Range("A1")
+            .Font.Bold = True
+            .VerticalAlignment = Excel.XlVAlign.xlVAlignCenter
+        End With
+        r = r + 2
+        ' Add table headers going cell by cell.
+        shXL.Cells(r, 1).Value = "Date"
+        shXL.Cells(r, 2).Value = "Code"
+        shXL.Cells(r, 3).Value = "Description"
+        shXL.Cells(r, 4).Value = "Qty"
+        shXL.Cells(r, 5).Value = "Price"
+        shXL.Cells(r, 6).Value = "Amount"
+        ' Format A1:D1 as bold, vertical alignment = center.
+        With shXL.Range("A4", "F4")
+            .Font.Bold = True
+            .VerticalAlignment = Excel.XlVAlign.xlVAlignCenter
+        End With
+        r = r + 1
+        'raXL = shXL.Range("C1", "C7")
+        'raXL.Formula = "=A1 & "" "" & B1"
+        'Dim r As Integer = 3
+        For i As Integer = 0 To dtgrdList.RowCount - 1
+            With shXL
+                .Cells(r, 1).Value = dtgrdList.Item(0, i).Value
+                .Cells(r, 2).Value = dtgrdList.Item(1, i).Value
+                .Cells(r, 3).Value = dtgrdList.Item(2, i).Value
+                .Cells(r, 4).Value = dtgrdList.Item(3, i).Value
+                .Cells(r, 5).Value = dtgrdList.Item(4, i).Value
+                .Cells(r, 6).Value = dtgrdList.Item(5, i).Value
+            End With
+            r = r + 1
+        Next
+
+
+        ' AutoFit columns A:D.
+        raXL = shXL.Range("A1", "F1")
+        raXL.EntireColumn.AutoFit()
+        ' Make sure Excel is visible and give the user control
+        ' of Excel's lifetime.
+        appXL.Visible = True
+        appXL.UserControl = True
+        ' Release object references.
+        raXL = Nothing
+        shXL = Nothing
+        wbXl = Nothing
+        appXL.Quit()
+        appXL = Nothing
+        Exit Sub
+Err_Handler:
+        MsgBox(Err.Description, vbCritical, "Error: " & Err.Number)
 
     End Sub
 End Class

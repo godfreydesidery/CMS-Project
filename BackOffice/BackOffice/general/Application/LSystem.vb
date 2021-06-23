@@ -21,6 +21,8 @@ Public Class LSystem
     Public GL_MOBILE As String = ""
     Public GL_EMAIL As String = ""
     Public GL_FAX As String = ""
+    Public LOGO As Byte() = New Byte() {}
+
     Private Function getRemoteXMLFile(path As String)
         Dim document As New System.Xml.XmlDocument()
         ' Create a WebRequest to the remote site

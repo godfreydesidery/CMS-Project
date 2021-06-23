@@ -22,7 +22,7 @@ Partial Class frmCompany
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.btnBack = New System.Windows.Forms.Button()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.txtBankAccNo = New System.Windows.Forms.TextBox()
@@ -105,6 +105,10 @@ Partial Class frmCompany
         Me.Panel5 = New System.Windows.Forms.Panel()
         Me.Label27 = New System.Windows.Forms.Label()
         Me.Label28 = New System.Windows.Forms.Label()
+        Me.pctLogo = New System.Windows.Forms.PictureBox()
+        Me.Label29 = New System.Windows.Forms.Label()
+        Me.btnChangeLogo = New System.Windows.Forms.Button()
+        Me.fileDialog = New System.Windows.Forms.OpenFileDialog()
         Me.Panel1.SuspendLayout()
         Me.Panel2.SuspendLayout()
         CType(Me.dtgrdDepartment, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -112,6 +116,7 @@ Partial Class frmCompany
         CType(Me.dtgrdClass, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel4.SuspendLayout()
         CType(Me.dtgrdsubClass, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.pctLogo, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'btnBack
@@ -129,6 +134,9 @@ Partial Class frmCompany
         'Panel1
         '
         Me.Panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+        Me.Panel1.Controls.Add(Me.btnChangeLogo)
+        Me.Panel1.Controls.Add(Me.Label29)
+        Me.Panel1.Controls.Add(Me.pctLogo)
         Me.Panel1.Controls.Add(Me.txtBankAccNo)
         Me.Panel1.Controls.Add(Me.Label17)
         Me.Panel1.Controls.Add(Me.txtBankName)
@@ -172,7 +180,7 @@ Partial Class frmCompany
         '
         'txtBankAccNo
         '
-        Me.txtBankAccNo.Location = New System.Drawing.Point(144, 238)
+        Me.txtBankAccNo.Location = New System.Drawing.Point(144, 608)
         Me.txtBankAccNo.MaxLength = 50
         Me.txtBankAccNo.Name = "txtBankAccNo"
         Me.txtBankAccNo.ReadOnly = True
@@ -182,7 +190,7 @@ Partial Class frmCompany
         'Label17
         '
         Me.Label17.AutoSize = True
-        Me.Label17.Location = New System.Drawing.Point(52, 238)
+        Me.Label17.Location = New System.Drawing.Point(52, 608)
         Me.Label17.Name = "Label17"
         Me.Label17.Size = New System.Drawing.Size(89, 17)
         Me.Label17.TabIndex = 75
@@ -190,7 +198,7 @@ Partial Class frmCompany
         '
         'txtBankName
         '
-        Me.txtBankName.Location = New System.Drawing.Point(144, 210)
+        Me.txtBankName.Location = New System.Drawing.Point(144, 580)
         Me.txtBankName.MaxLength = 50
         Me.txtBankName.Name = "txtBankName"
         Me.txtBankName.ReadOnly = True
@@ -199,7 +207,7 @@ Partial Class frmCompany
         '
         'txtBankAccAddress
         '
-        Me.txtBankAccAddress.Location = New System.Drawing.Point(144, 154)
+        Me.txtBankAccAddress.Location = New System.Drawing.Point(144, 524)
         Me.txtBankAccAddress.MaxLength = 100
         Me.txtBankAccAddress.Name = "txtBankAccAddress"
         Me.txtBankAccAddress.ReadOnly = True
@@ -209,7 +217,7 @@ Partial Class frmCompany
         'Label10
         '
         Me.Label10.AutoSize = True
-        Me.Label10.Location = New System.Drawing.Point(30, 126)
+        Me.Label10.Location = New System.Drawing.Point(30, 496)
         Me.Label10.Name = "Label10"
         Me.Label10.Size = New System.Drawing.Size(108, 17)
         Me.Label10.TabIndex = 67
@@ -217,7 +225,7 @@ Partial Class frmCompany
         '
         'txtBankPostCode
         '
-        Me.txtBankPostCode.Location = New System.Drawing.Point(144, 182)
+        Me.txtBankPostCode.Location = New System.Drawing.Point(144, 552)
         Me.txtBankPostCode.MaxLength = 100
         Me.txtBankPostCode.Name = "txtBankPostCode"
         Me.txtBankPostCode.ReadOnly = True
@@ -227,7 +235,7 @@ Partial Class frmCompany
         'Label15
         '
         Me.Label15.AutoSize = True
-        Me.Label15.Location = New System.Drawing.Point(18, 154)
+        Me.Label15.Location = New System.Drawing.Point(18, 524)
         Me.Label15.Name = "Label15"
         Me.Label15.Size = New System.Drawing.Size(123, 17)
         Me.Label15.TabIndex = 68
@@ -236,7 +244,7 @@ Partial Class frmCompany
         'Label16
         '
         Me.Label16.AutoSize = True
-        Me.Label16.Location = New System.Drawing.Point(30, 182)
+        Me.Label16.Location = New System.Drawing.Point(30, 552)
         Me.Label16.Name = "Label16"
         Me.Label16.Size = New System.Drawing.Size(109, 17)
         Me.Label16.TabIndex = 69
@@ -244,7 +252,7 @@ Partial Class frmCompany
         '
         'txtBankAccName
         '
-        Me.txtBankAccName.Location = New System.Drawing.Point(144, 126)
+        Me.txtBankAccName.Location = New System.Drawing.Point(144, 496)
         Me.txtBankAccName.MaxLength = 50
         Me.txtBankAccName.Name = "txtBankAccName"
         Me.txtBankAccName.ReadOnly = True
@@ -254,7 +262,7 @@ Partial Class frmCompany
         'Label18
         '
         Me.Label18.AutoSize = True
-        Me.Label18.Location = New System.Drawing.Point(60, 210)
+        Me.Label18.Location = New System.Drawing.Point(60, 580)
         Me.Label18.Name = "Label18"
         Me.Label18.Size = New System.Drawing.Size(81, 17)
         Me.Label18.TabIndex = 70
@@ -263,7 +271,7 @@ Partial Class frmCompany
         'Label8
         '
         Me.Label8.AutoSize = True
-        Me.Label8.Location = New System.Drawing.Point(141, 106)
+        Me.Label8.Location = New System.Drawing.Point(141, 476)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(114, 17)
         Me.Label8.TabIndex = 64
@@ -335,7 +343,7 @@ Partial Class frmCompany
         'btnSaveCompanyDetails
         '
         Me.btnSaveCompanyDetails.Enabled = False
-        Me.btnSaveCompanyDetails.Location = New System.Drawing.Point(463, 602)
+        Me.btnSaveCompanyDetails.Location = New System.Drawing.Point(463, 655)
         Me.btnSaveCompanyDetails.Name = "btnSaveCompanyDetails"
         Me.btnSaveCompanyDetails.Size = New System.Drawing.Size(115, 35)
         Me.btnSaveCompanyDetails.TabIndex = 56
@@ -345,7 +353,7 @@ Partial Class frmCompany
         'btnCancel
         '
         Me.btnCancel.Enabled = False
-        Me.btnCancel.Location = New System.Drawing.Point(305, 602)
+        Me.btnCancel.Location = New System.Drawing.Point(305, 655)
         Me.btnCancel.Name = "btnCancel"
         Me.btnCancel.Size = New System.Drawing.Size(115, 35)
         Me.btnCancel.TabIndex = 55
@@ -354,7 +362,7 @@ Partial Class frmCompany
         '
         'btnEditCompanyDetails
         '
-        Me.btnEditCompanyDetails.Location = New System.Drawing.Point(144, 602)
+        Me.btnEditCompanyDetails.Location = New System.Drawing.Point(144, 655)
         Me.btnEditCompanyDetails.Name = "btnEditCompanyDetails"
         Me.btnEditCompanyDetails.Size = New System.Drawing.Size(115, 35)
         Me.btnEditCompanyDetails.TabIndex = 54
@@ -372,7 +380,7 @@ Partial Class frmCompany
         '
         'txtAddress
         '
-        Me.txtAddress.Location = New System.Drawing.Point(144, 397)
+        Me.txtAddress.Location = New System.Drawing.Point(144, 105)
         Me.txtAddress.MaxLength = 100
         Me.txtAddress.Name = "txtAddress"
         Me.txtAddress.ReadOnly = True
@@ -382,7 +390,7 @@ Partial Class frmCompany
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(78, 397)
+        Me.Label4.Location = New System.Drawing.Point(78, 105)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(60, 17)
         Me.Label4.TabIndex = 39
@@ -390,7 +398,7 @@ Partial Class frmCompany
         '
         'txtFax
         '
-        Me.txtFax.Location = New System.Drawing.Point(144, 565)
+        Me.txtFax.Location = New System.Drawing.Point(144, 273)
         Me.txtFax.MaxLength = 50
         Me.txtFax.Name = "txtFax"
         Me.txtFax.ReadOnly = True
@@ -400,7 +408,7 @@ Partial Class frmCompany
         'Label5
         '
         Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(65, 425)
+        Me.Label5.Location = New System.Drawing.Point(65, 133)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(73, 17)
         Me.Label5.TabIndex = 40
@@ -408,7 +416,7 @@ Partial Class frmCompany
         '
         'txtEmail
         '
-        Me.txtEmail.Location = New System.Drawing.Point(144, 537)
+        Me.txtEmail.Location = New System.Drawing.Point(144, 245)
         Me.txtEmail.MaxLength = 50
         Me.txtEmail.Name = "txtEmail"
         Me.txtEmail.ReadOnly = True
@@ -418,7 +426,7 @@ Partial Class frmCompany
         'Label6
         '
         Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(25, 458)
+        Me.Label6.Location = New System.Drawing.Point(25, 166)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(116, 17)
         Me.Label6.TabIndex = 41
@@ -426,7 +434,7 @@ Partial Class frmCompany
         '
         'txtMobile
         '
-        Me.txtMobile.Location = New System.Drawing.Point(144, 509)
+        Me.txtMobile.Location = New System.Drawing.Point(144, 217)
         Me.txtMobile.MaxLength = 50
         Me.txtMobile.Name = "txtMobile"
         Me.txtMobile.ReadOnly = True
@@ -436,7 +444,7 @@ Partial Class frmCompany
         'Label11
         '
         Me.Label11.AutoSize = True
-        Me.Label11.Location = New System.Drawing.Point(62, 484)
+        Me.Label11.Location = New System.Drawing.Point(62, 192)
         Me.Label11.Name = "Label11"
         Me.Label11.Size = New System.Drawing.Size(76, 17)
         Me.Label11.TabIndex = 42
@@ -444,7 +452,7 @@ Partial Class frmCompany
         '
         'txtTelephone
         '
-        Me.txtTelephone.Location = New System.Drawing.Point(144, 481)
+        Me.txtTelephone.Location = New System.Drawing.Point(144, 189)
         Me.txtTelephone.MaxLength = 50
         Me.txtTelephone.Name = "txtTelephone"
         Me.txtTelephone.ReadOnly = True
@@ -454,7 +462,7 @@ Partial Class frmCompany
         'Label12
         '
         Me.Label12.AutoSize = True
-        Me.Label12.Location = New System.Drawing.Point(89, 509)
+        Me.Label12.Location = New System.Drawing.Point(89, 217)
         Me.Label12.Name = "Label12"
         Me.Label12.Size = New System.Drawing.Size(49, 17)
         Me.Label12.TabIndex = 43
@@ -462,7 +470,7 @@ Partial Class frmCompany
         '
         'txtPhysicalAddress
         '
-        Me.txtPhysicalAddress.Location = New System.Drawing.Point(144, 453)
+        Me.txtPhysicalAddress.Location = New System.Drawing.Point(144, 161)
         Me.txtPhysicalAddress.MaxLength = 100
         Me.txtPhysicalAddress.Name = "txtPhysicalAddress"
         Me.txtPhysicalAddress.ReadOnly = True
@@ -472,7 +480,7 @@ Partial Class frmCompany
         'Label13
         '
         Me.Label13.AutoSize = True
-        Me.Label13.Location = New System.Drawing.Point(96, 537)
+        Me.Label13.Location = New System.Drawing.Point(96, 245)
         Me.Label13.Name = "Label13"
         Me.Label13.Size = New System.Drawing.Size(42, 17)
         Me.Label13.TabIndex = 44
@@ -480,7 +488,7 @@ Partial Class frmCompany
         '
         'txtPostCode
         '
-        Me.txtPostCode.Location = New System.Drawing.Point(144, 425)
+        Me.txtPostCode.Location = New System.Drawing.Point(144, 133)
         Me.txtPostCode.MaxLength = 100
         Me.txtPostCode.Name = "txtPostCode"
         Me.txtPostCode.ReadOnly = True
@@ -490,7 +498,7 @@ Partial Class frmCompany
         'Label14
         '
         Me.Label14.AutoSize = True
-        Me.Label14.Location = New System.Drawing.Point(101, 565)
+        Me.Label14.Location = New System.Drawing.Point(101, 273)
         Me.Label14.Name = "Label14"
         Me.Label14.Size = New System.Drawing.Size(30, 17)
         Me.Label14.TabIndex = 45
@@ -521,14 +529,14 @@ Partial Class frmCompany
         Me.dtgrdDepartment.BackgroundColor = System.Drawing.SystemColors.Control
         Me.dtgrdDepartment.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dtgrdDepartment.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.colDeptName, Me.Column1})
-        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle3.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.ButtonFace
-        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dtgrdDepartment.DefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle4.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.ButtonFace
+        DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dtgrdDepartment.DefaultCellStyle = DataGridViewCellStyle4
         Me.dtgrdDepartment.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically
         Me.dtgrdDepartment.Location = New System.Drawing.Point(306, 8)
         Me.dtgrdDepartment.MultiSelect = False
@@ -946,6 +954,38 @@ Partial Class frmCompany
         Me.Label28.TabIndex = 17
         Me.Label28.Text = "Units Information (Departments, Classes and Sub-classes)"
         '
+        'pctLogo
+        '
+        Me.pctLogo.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+        Me.pctLogo.Location = New System.Drawing.Point(99, 324)
+        Me.pctLogo.Name = "pctLogo"
+        Me.pctLogo.Size = New System.Drawing.Size(134, 119)
+        Me.pctLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.pctLogo.TabIndex = 77
+        Me.pctLogo.TabStop = False
+        '
+        'Label29
+        '
+        Me.Label29.AutoSize = True
+        Me.Label29.Location = New System.Drawing.Point(96, 304)
+        Me.Label29.Name = "Label29"
+        Me.Label29.Size = New System.Drawing.Size(40, 17)
+        Me.Label29.TabIndex = 78
+        Me.Label29.Text = "Logo"
+        '
+        'btnChangeLogo
+        '
+        Me.btnChangeLogo.Location = New System.Drawing.Point(239, 324)
+        Me.btnChangeLogo.Name = "btnChangeLogo"
+        Me.btnChangeLogo.Size = New System.Drawing.Size(101, 63)
+        Me.btnChangeLogo.TabIndex = 79
+        Me.btnChangeLogo.Text = "Change Logo"
+        Me.btnChangeLogo.UseVisualStyleBackColor = True
+        '
+        'fileDialog
+        '
+        Me.fileDialog.FileName = "OpenFileDialog1"
+        '
         'frmCompany
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
@@ -976,6 +1016,7 @@ Partial Class frmCompany
         Me.Panel4.ResumeLayout(False)
         Me.Panel4.PerformLayout()
         CType(Me.dtgrdsubClass, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.pctLogo, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -1062,4 +1103,8 @@ Partial Class frmCompany
     Friend WithEvents colSubClass As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
     Friend WithEvents Column3 As DataGridViewTextBoxColumn
+    Friend WithEvents Label29 As Label
+    Friend WithEvents pctLogo As PictureBox
+    Friend WithEvents btnChangeLogo As Button
+    Friend WithEvents fileDialog As OpenFileDialog
 End Class
