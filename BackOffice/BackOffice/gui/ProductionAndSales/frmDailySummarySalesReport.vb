@@ -817,9 +817,9 @@ Public Class frmDailySummarySalesReport
             MsgBox("Nothing to export")
             Exit Sub
         End If
-        Dim appXL As Excel.Application
-        Dim wbXl As Excel.Workbook
-        Dim shXL As Excel.Worksheet
+        Dim appXL As New Microsoft.Office.Interop.Excel.Application
+        Dim wbXl As Microsoft.Office.Interop.Excel.Workbook
+        Dim shXL As Microsoft.Office.Interop.Excel.Worksheet
         Dim raXL As Excel.Range
         ' Start Excel and get Application object.
         appXL = CreateObject("Excel.Application")
@@ -901,16 +901,38 @@ Public Class frmDailySummarySalesReport
         ' AutoFit columns A:D.
         raXL = shXL.Range("A1", "G1")
         raXL.EntireColumn.AutoFit()
+
+        Dim strFileName As String = LSystem.saveToDesktop & "\Summarized Daily Sales Report " & dateStart.Text & dateEnd.Text & cmbSalesPersons.Text & ".xls"
+        Dim blnFileOpen As Boolean = False
+        Try
+            Dim fileTemp As System.IO.FileStream = System.IO.File.OpenWrite(strFileName)
+            fileTemp.Close()
+        Catch ex As Exception
+            blnFileOpen = False
+        End Try
+
+        If System.IO.File.Exists(strFileName) Then
+            Try
+                System.IO.File.Delete(strFileName)
+            Catch ex As Exception
+            End Try
+        End If
+        wbXl.SaveAs(strFileName)
+        'appXL.Workbooks.Open(strFileName)
+
+
+
+        ' appXL.Visible = True
         ' Make sure Excel is visible and give the user control
         ' of Excel's lifetime.
-        appXL.Visible = True
-        appXL.UserControl = True
+        '      appXL.Visible = True
+        '       appXL.UserControl = True
         ' Release object references.
-        raXL = Nothing
-        shXL = Nothing
-        wbXl = Nothing
-        appXL.Quit()
-        appXL = Nothing
+        '       raXL = Nothing
+        '        shXL = Nothing
+        '     wbXl = Nothing
+        '      appXL.Quit()
+        '       appXL = Nothing
         Exit Sub
 Err_Handler:
         MsgBox(Err.Description, vbCritical, "Error: " & Err.Number)

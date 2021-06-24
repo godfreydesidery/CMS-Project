@@ -104,6 +104,11 @@ Public Class LSystem
             Directory.CreateDirectory(My.Computer.FileSystem.SpecialDirectories.MyDocuments & ".OrbitDocuments")
         End If
         Return My.Computer.FileSystem.SpecialDirectories.MyDocuments & ".OrbitDocuments".ToString
-
+    End Function
+    Public Shared Function saveToDesktop()
+        If Not Directory.Exists(My.Computer.FileSystem.SpecialDirectories.Desktop & ".OrbitDocuments") Then
+            Directory.CreateDirectory(My.Computer.FileSystem.SpecialDirectories.Desktop & ".OrbitDocuments")
+        End If
+        Return My.Computer.FileSystem.SpecialDirectories.Desktop & ".OrbitDocuments".ToString
     End Function
 End Class

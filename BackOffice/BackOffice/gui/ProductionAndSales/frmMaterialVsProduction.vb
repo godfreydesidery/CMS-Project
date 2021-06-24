@@ -556,16 +556,23 @@ Public Class frmMaterialVsProduction
         ' AutoFit columns A:D.
         raXL = shXL.Range("A1", "I1")
         raXL.EntireColumn.AutoFit()
-        ' Make sure Excel is visible and give the user control
-        ' of Excel's lifetime.
-        appXL.Visible = True
-        appXL.UserControl = True
-        ' Release object references.
-        raXL = Nothing
-        shXL = Nothing
-        wbXl = Nothing
-        appXL.Quit()
-        appXL = Nothing
+        Dim strFileName As String = LSystem.saveToDesktop & "\Material vs Production Report " & dateStart.Text & dateEnd.Text & ".xls"
+        Dim blnFileOpen As Boolean = False
+        Try
+            Dim fileTemp As System.IO.FileStream = System.IO.File.OpenWrite(strFileName)
+            fileTemp.Close()
+        Catch ex As Exception
+            blnFileOpen = False
+        End Try
+
+        If System.IO.File.Exists(strFileName) Then
+            Try
+                System.IO.File.Delete(strFileName)
+            Catch ex As Exception
+            End Try
+        End If
+        wbXl.SaveAs(strFileName)
+        'appXL.Workbooks.Open(strFileName)
         Exit Sub
 Err_Handler:
         MsgBox(Err.Description, vbCritical, "Error: " & Err.Number)

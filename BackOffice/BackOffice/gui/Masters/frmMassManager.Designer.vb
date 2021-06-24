@@ -23,6 +23,8 @@ Partial Class frmMassManager
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.btnDownloadMaster = New System.Windows.Forms.Button()
+        Me.btnGenerateItemMasterTemplate = New System.Windows.Forms.Button()
         Me.btnUpdatePrice = New System.Windows.Forms.Button()
         Me.btnUpdateMaster = New System.Windows.Forms.Button()
         Me.btnUpdateInventory = New System.Windows.Forms.Button()
@@ -40,8 +42,6 @@ Partial Class frmMassManager
         Me.btnUpdateUnits = New System.Windows.Forms.Button()
         Me.btnuploadUnits = New System.Windows.Forms.Button()
         Me.Label3 = New System.Windows.Forms.Label()
-        Me.btnGenerateItemMasterTemplate = New System.Windows.Forms.Button()
-        Me.btnDownloadMaster = New System.Windows.Forms.Button()
         Me.Panel1.SuspendLayout()
         Me.Panel2.SuspendLayout()
         Me.Panel3.SuspendLayout()
@@ -59,43 +59,61 @@ Partial Class frmMassManager
         Me.Panel1.Controls.Add(Me.Label1)
         Me.Panel1.Location = New System.Drawing.Point(12, 79)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(188, 331)
+        Me.Panel1.Size = New System.Drawing.Size(228, 331)
         Me.Panel1.TabIndex = 0
+        '
+        'btnDownloadMaster
+        '
+        Me.btnDownloadMaster.Location = New System.Drawing.Point(6, 224)
+        Me.btnDownloadMaster.Name = "btnDownloadMaster"
+        Me.btnDownloadMaster.Size = New System.Drawing.Size(215, 39)
+        Me.btnDownloadMaster.TabIndex = 50
+        Me.btnDownloadMaster.Text = "Export Master to Excel"
+        Me.btnDownloadMaster.UseVisualStyleBackColor = True
+        '
+        'btnGenerateItemMasterTemplate
+        '
+        Me.btnGenerateItemMasterTemplate.Location = New System.Drawing.Point(6, 271)
+        Me.btnGenerateItemMasterTemplate.Name = "btnGenerateItemMasterTemplate"
+        Me.btnGenerateItemMasterTemplate.Size = New System.Drawing.Size(215, 43)
+        Me.btnGenerateItemMasterTemplate.TabIndex = 49
+        Me.btnGenerateItemMasterTemplate.Text = "Excel Master Template"
+        Me.btnGenerateItemMasterTemplate.UseVisualStyleBackColor = True
         '
         'btnUpdatePrice
         '
         Me.btnUpdatePrice.Location = New System.Drawing.Point(6, 134)
         Me.btnUpdatePrice.Name = "btnUpdatePrice"
-        Me.btnUpdatePrice.Size = New System.Drawing.Size(175, 39)
+        Me.btnUpdatePrice.Size = New System.Drawing.Size(215, 39)
         Me.btnUpdatePrice.TabIndex = 48
-        Me.btnUpdatePrice.Text = "Update Prices"
+        Me.btnUpdatePrice.Text = "Update Prices from Excel"
         Me.btnUpdatePrice.UseVisualStyleBackColor = True
         '
         'btnUpdateMaster
         '
         Me.btnUpdateMaster.Location = New System.Drawing.Point(6, 89)
         Me.btnUpdateMaster.Name = "btnUpdateMaster"
-        Me.btnUpdateMaster.Size = New System.Drawing.Size(175, 39)
+        Me.btnUpdateMaster.Size = New System.Drawing.Size(215, 39)
         Me.btnUpdateMaster.TabIndex = 47
-        Me.btnUpdateMaster.Text = "Update Master"
+        Me.btnUpdateMaster.Text = "Update Master from Excel"
         Me.btnUpdateMaster.UseVisualStyleBackColor = True
         '
         'btnUpdateInventory
         '
         Me.btnUpdateInventory.Location = New System.Drawing.Point(6, 179)
         Me.btnUpdateInventory.Name = "btnUpdateInventory"
-        Me.btnUpdateInventory.Size = New System.Drawing.Size(175, 39)
+        Me.btnUpdateInventory.Size = New System.Drawing.Size(215, 39)
         Me.btnUpdateInventory.TabIndex = 46
-        Me.btnUpdateInventory.Text = "Update Inventory"
+        Me.btnUpdateInventory.Text = "Update Inventory from Excel"
         Me.btnUpdateInventory.UseVisualStyleBackColor = True
         '
         'btnUploadMaster
         '
         Me.btnUploadMaster.Location = New System.Drawing.Point(6, 44)
         Me.btnUploadMaster.Name = "btnUploadMaster"
-        Me.btnUploadMaster.Size = New System.Drawing.Size(175, 39)
+        Me.btnUploadMaster.Size = New System.Drawing.Size(215, 39)
         Me.btnUploadMaster.TabIndex = 46
-        Me.btnUploadMaster.Text = "Upload Master"
+        Me.btnUploadMaster.Text = "Upload Master From Excel"
         Me.btnUploadMaster.UseVisualStyleBackColor = True
         '
         'Label1
@@ -120,16 +138,16 @@ Partial Class frmMassManager
         Me.Panel2.Controls.Add(Me.btnUpdateSupplier)
         Me.Panel2.Controls.Add(Me.btnUploadSupplier)
         Me.Panel2.Controls.Add(Me.Label2)
-        Me.Panel2.Location = New System.Drawing.Point(206, 79)
+        Me.Panel2.Location = New System.Drawing.Point(246, 80)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(188, 331)
+        Me.Panel2.Size = New System.Drawing.Size(231, 331)
         Me.Panel2.TabIndex = 46
         '
         'btnUpdateSupplier
         '
         Me.btnUpdateSupplier.Location = New System.Drawing.Point(6, 89)
         Me.btnUpdateSupplier.Name = "btnUpdateSupplier"
-        Me.btnUpdateSupplier.Size = New System.Drawing.Size(175, 39)
+        Me.btnUpdateSupplier.Size = New System.Drawing.Size(218, 39)
         Me.btnUpdateSupplier.TabIndex = 47
         Me.btnUpdateSupplier.Text = "Update Supplier Master"
         Me.btnUpdateSupplier.UseVisualStyleBackColor = True
@@ -138,7 +156,7 @@ Partial Class frmMassManager
         '
         Me.btnUploadSupplier.Location = New System.Drawing.Point(6, 44)
         Me.btnUploadSupplier.Name = "btnUploadSupplier"
-        Me.btnUploadSupplier.Size = New System.Drawing.Size(175, 39)
+        Me.btnUploadSupplier.Size = New System.Drawing.Size(218, 39)
         Me.btnUploadSupplier.TabIndex = 46
         Me.btnUploadSupplier.Text = "Upload Supplier Master"
         Me.btnUploadSupplier.UseVisualStyleBackColor = True
@@ -177,16 +195,16 @@ Partial Class frmMassManager
         Me.Panel3.Controls.Add(Me.btnUpdateUnits)
         Me.Panel3.Controls.Add(Me.btnuploadUnits)
         Me.Panel3.Controls.Add(Me.Label3)
-        Me.Panel3.Location = New System.Drawing.Point(400, 78)
+        Me.Panel3.Location = New System.Drawing.Point(483, 80)
         Me.Panel3.Name = "Panel3"
-        Me.Panel3.Size = New System.Drawing.Size(191, 332)
+        Me.Panel3.Size = New System.Drawing.Size(230, 332)
         Me.Panel3.TabIndex = 50
         '
         'btnUpdateUnits
         '
         Me.btnUpdateUnits.Location = New System.Drawing.Point(6, 90)
         Me.btnUpdateUnits.Name = "btnUpdateUnits"
-        Me.btnUpdateUnits.Size = New System.Drawing.Size(175, 39)
+        Me.btnUpdateUnits.Size = New System.Drawing.Size(217, 39)
         Me.btnUpdateUnits.TabIndex = 48
         Me.btnUpdateUnits.Text = "Update Units"
         Me.btnUpdateUnits.UseVisualStyleBackColor = True
@@ -195,7 +213,7 @@ Partial Class frmMassManager
         '
         Me.btnuploadUnits.Location = New System.Drawing.Point(6, 44)
         Me.btnuploadUnits.Name = "btnuploadUnits"
-        Me.btnuploadUnits.Size = New System.Drawing.Size(175, 39)
+        Me.btnuploadUnits.Size = New System.Drawing.Size(217, 39)
         Me.btnuploadUnits.TabIndex = 46
         Me.btnuploadUnits.Text = "Upload Units"
         Me.btnuploadUnits.UseVisualStyleBackColor = True
@@ -208,24 +226,6 @@ Partial Class frmMassManager
         Me.Label3.Size = New System.Drawing.Size(119, 17)
         Me.Label3.TabIndex = 46
         Me.Label3.Text = "Unit Management"
-        '
-        'btnGenerateItemMasterTemplate
-        '
-        Me.btnGenerateItemMasterTemplate.Location = New System.Drawing.Point(6, 271)
-        Me.btnGenerateItemMasterTemplate.Name = "btnGenerateItemMasterTemplate"
-        Me.btnGenerateItemMasterTemplate.Size = New System.Drawing.Size(174, 43)
-        Me.btnGenerateItemMasterTemplate.TabIndex = 49
-        Me.btnGenerateItemMasterTemplate.Text = "Excel Master Template"
-        Me.btnGenerateItemMasterTemplate.UseVisualStyleBackColor = True
-        '
-        'btnDownloadMaster
-        '
-        Me.btnDownloadMaster.Location = New System.Drawing.Point(6, 224)
-        Me.btnDownloadMaster.Name = "btnDownloadMaster"
-        Me.btnDownloadMaster.Size = New System.Drawing.Size(175, 39)
-        Me.btnDownloadMaster.TabIndex = 50
-        Me.btnDownloadMaster.Text = "Download Master"
-        Me.btnDownloadMaster.UseVisualStyleBackColor = True
         '
         'frmMassManager
         '

@@ -2433,4 +2433,6 @@ Public Class frmPackingList
             txtPrice.ReadOnly = True
         End If
     End Sub
+    'maintains the visible position of a row after refresh
+    Dim currentRow As Integer = -1
 End Class

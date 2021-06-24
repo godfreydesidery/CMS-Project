@@ -1101,7 +1101,6 @@ Err_Handler:
     End Sub
 
     Private Sub btnDownloadMaster_Click(sender As Object, e As EventArgs) Handles btnDownloadMaster.Click
-
         Dim appXL As Excel.Application
         Dim wbXl As Excel.Workbook
         Dim shXL As Excel.Worksheet
@@ -1161,6 +1160,7 @@ Err_Handler:
                 Dim class_ As New Class_
                 Dim subclass As New SubClass
                 While reader.Read
+                    lblOperation.Text = "Downloading... please wait"
                     If reader.GetString("item_code") <> "" Then
                         r = r + 1
                         shXL.Cells(r, 1).Value = reader.GetString("item_code")
@@ -1189,6 +1189,7 @@ Err_Handler:
                         shXL.Cells(r, 24).Value = reader.GetString("standard_uom")
                     End If
                 End While
+                lblOperation.Text = ""
             End If
             conn.Close()
         Catch ex As Devart.Data.MySql.MySqlException
@@ -1197,16 +1198,38 @@ Err_Handler:
         ' AutoFit columns A:D.
         raXL = shXL.Range("A1", "X1")
         raXL.EntireColumn.AutoFit()
+
+
+
+        Dim strFileName As String = LSystem.saveToDesktop & "\Product Master.xls"
+        Dim blnFileOpen As Boolean = False
+        Try
+            Dim fileTemp As System.IO.FileStream = System.IO.File.OpenWrite(strFileName)
+            fileTemp.Close()
+        Catch ex As Exception
+            blnFileOpen = False
+        End Try
+
+        If System.IO.File.Exists(strFileName) Then
+            Try
+                System.IO.File.Delete(strFileName)
+            Catch ex As Exception
+            End Try
+        End If
+        wbXl.SaveAs(strFileName)
+
+
+
         ' Make sure Excel is visible and give the user control
         ' of Excel's lifetime.
-        appXL.Visible = True
-        appXL.UserControl = True
+        '      appXL.Visible = True
+        '      appXL.UserControl = True
         ' Release object references.
-        raXL = Nothing
-        shXL = Nothing
-        wbXl = Nothing
-        appXL.Quit()
-        appXL = Nothing
+        '      raXL = Nothing
+        '      shXL = Nothing
+        '       wbXl = Nothing
+        '      appXL.Quit()
+        '      appXL = Nothing
         Exit Sub
 Err_Handler:
         MsgBox(Err.Description, vbCritical, "Error: " & Err.Number)
