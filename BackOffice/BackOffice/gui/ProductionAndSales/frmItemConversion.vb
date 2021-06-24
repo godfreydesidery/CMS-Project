@@ -1242,7 +1242,7 @@ Public Class frmItemConversion
             Exit Sub
         End If
         Dim status As String = (New ItemConversion).getStatus(txtConversionNo.Text)
-        If Not status <> "APPROVED" Then
+        If status <> "APPROVED" Then
             MsgBox("Operation failed, Only approved documents can be completed", vbOKOnly + vbExclamation, "Error: Invalid operation")
             Exit Sub
         End If
@@ -1330,7 +1330,6 @@ Public Class frmItemConversion
 
             'print documemnt only
         Else
-
             MsgBox("Could not print, document not approved or has been canceled", vbOKOnly + vbExclamation, "Error: Invalid operation")
             Exit Sub
         End If

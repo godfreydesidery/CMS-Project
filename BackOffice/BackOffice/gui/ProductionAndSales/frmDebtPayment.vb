@@ -320,8 +320,6 @@ Public Class frmDebtPayment
             If cmbSalesPersons.Text <> "" Then
                 Dim salesPersonId As String = (New PackingList).getSalesPersonId(cmbSalesPersons.Text)
 
-
-
                 query = "SELECT
                             `id`,
                             `date`,
@@ -335,7 +333,7 @@ Public Class frmDebtPayment
                         FROM
 	                        `debt_payment`
                         WHERE 
-	                        `date`BETWEEN '2021-06-01' AND '2021-06-12' AND `sales_person_id`='" + salesPersonId + "'
+	                        `date`BETWEEN '" + dateStart.Text + "' AND '" + dateEnd.Text + "' AND `sales_person_id`='" + salesPersonId + "'
                         ORDER BY `date`"
 
             End If
