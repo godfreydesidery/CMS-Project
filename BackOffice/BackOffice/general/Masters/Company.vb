@@ -90,7 +90,8 @@ Public Class Company
                 MOBILE = reader.GetString("mobile")
                 EMAIL = reader.GetString("email")
                 FAX = reader.GetString("fax")
-                If reader("logo_length") > 0 Then
+
+                If Not IsDBNull(reader("logo_length")) Then
                     LOGO = reader("logo")
                 Else
                     LOGO = Nothing
@@ -100,7 +101,7 @@ Public Class Company
             End While
             conn.Close()
         Catch ex As Exception
-            MsgBox(ex.Message)
+            MsgBox(ex.ToString)
         End Try
         Return loaded
     End Function

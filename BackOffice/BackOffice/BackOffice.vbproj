@@ -28,7 +28,7 @@
     <ProductName>Orbit Retail Back Office</ProductName>
     <PublisherName>Orbit Retail</PublisherName>
     <SuiteName>Retail</SuiteName>
-    <ApplicationRevision>164</ApplicationRevision>
+    <ApplicationRevision>173</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -70,10 +70,10 @@
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>BB782F9E0F664D9D5D54CFB44612CE50AA4B9814</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>767E26091728005F735B5AE0F53F61466C4D3F5F</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestKeyFile>BackOffice_1_TemporaryKey.pfx</ManifestKeyFile>
+    <ManifestKeyFile>BackOffice_TemporaryKey.pfx</ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
     <GenerateManifests>true</GenerateManifests>
@@ -88,7 +88,7 @@
     <SignManifests>true</SignManifests>
   </PropertyGroup>
   <PropertyGroup>
-    <SignAssembly>false</SignAssembly>
+    <SignAssembly>true</SignAssembly>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Devart.Data, Version=5.0.2045.0, Culture=neutral, PublicKeyToken=09af7300eec23701, processorArchitecture=MSIL" />
@@ -1072,7 +1072,6 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <None Include="BackOffice_1_TemporaryKey.pfx" />
     <None Include="BackOffice_TemporaryKey.pfx" />
     <None Include="My Project\app.manifest" />
     <None Include="My Project\Application.myapp">

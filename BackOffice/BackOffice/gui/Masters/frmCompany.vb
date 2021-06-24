@@ -707,7 +707,7 @@ Public Class frmCompany
                 txtEmail.Text = reader.GetString("email")
                 txtMobile.Text = reader.GetString("mobile")
                 txtFax.Text = reader.GetString("fax")
-                If reader("logo_length") > 0 Then
+                If Not IsDBNull(reader("logo_length")) Then
                     Dim byteImage() As Byte = reader("logo")
                     Dim logo As New System.IO.MemoryStream(byteImage)
                     pctLogo.Image = Image.FromStream(logo)

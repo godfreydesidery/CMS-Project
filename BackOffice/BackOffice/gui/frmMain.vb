@@ -95,7 +95,12 @@ Public Class frmMain
     Private Sub frmMain_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
         'lblCompany.Text = Company.NAME
-        pctLogo.Image = Image.FromStream(New System.IO.MemoryStream(Company.LOGO))
+        Try
+            pctLogo.Image = Image.FromStream(New System.IO.MemoryStream(Company.LOGO))
+        Catch ex As Exception
+
+        End Try
+
         tstrpAlias.Text = tstrpAlias.Text + " " + User.CURRENT_FIRST_NAME + "  " + User.CURRENT_LAST_NAME
         ' t.Start()
         tsrpDateTime.Text = "System Date: " + Day.DAY
@@ -661,5 +666,9 @@ Public Class frmMain
 
     Private Sub MenuStrip_ItemClicked(sender As Object, e As ToolStripItemClickedEventArgs) Handles MenuStrip.ItemClicked
 
+    End Sub
+
+    Private Sub StockConversionToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles StockConversionToolStripMenuItem.Click
+        frmItemConversion.ShowDialog()
     End Sub
 End Class

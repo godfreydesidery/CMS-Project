@@ -116,6 +116,7 @@ Partial Class frmMain
         Me.ToolStripMenuItem22 = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripButton1 = New System.Windows.Forms.ToolStripButton()
         Me.pctLogo = New System.Windows.Forms.PictureBox()
+        Me.StockConversionToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip.SuspendLayout()
         Me.StatusStrip.SuspendLayout()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -585,7 +586,7 @@ Partial Class frmMain
         '
         'ToolStripDropDownButton6
         '
-        Me.ToolStripDropDownButton6.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripMenuItem11, Me.ToolStripMenuItem12, Me.ToolStripMenuItem13, Me.ToolStripMenuItem14, Me.ToolStripMenuItem15, Me.ToolStripMenuItem16, Me.CustomProductionToolStripMenuItem})
+        Me.ToolStripDropDownButton6.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripMenuItem11, Me.ToolStripMenuItem12, Me.ToolStripMenuItem13, Me.ToolStripMenuItem14, Me.ToolStripMenuItem15, Me.ToolStripMenuItem16, Me.CustomProductionToolStripMenuItem, Me.StockConversionToolStripMenuItem})
         Me.ToolStripDropDownButton6.Font = New System.Drawing.Font("Constantia", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ToolStripDropDownButton6.ForeColor = System.Drawing.Color.MidnightBlue
         Me.ToolStripDropDownButton6.Image = CType(resources.GetObject("ToolStripDropDownButton6.Image"), System.Drawing.Image)
@@ -840,6 +841,13 @@ Partial Class frmMain
         Me.pctLogo.TabIndex = 16
         Me.pctLogo.TabStop = False
         '
+        'StockConversionToolStripMenuItem
+        '
+        Me.StockConversionToolStripMenuItem.Font = New System.Drawing.Font("Candara", 12.0!)
+        Me.StockConversionToolStripMenuItem.Name = "StockConversionToolStripMenuItem"
+        Me.StockConversionToolStripMenuItem.Size = New System.Drawing.Size(302, 28)
+        Me.StockConversionToolStripMenuItem.Text = "Product Stock Conversion"
+        '
         'frmMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
@@ -962,4 +970,5 @@ Partial Class frmMain
     Friend WithEvents ToolStripMenuItem21 As ToolStripMenuItem
     Friend WithEvents ToolStripMenuItem22 As ToolStripMenuItem
     Friend WithEvents pctLogo As PictureBox
+    Friend WithEvents StockConversionToolStripMenuItem As ToolStripMenuItem
 End Class

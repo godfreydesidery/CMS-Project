@@ -49,23 +49,17 @@ Public Class frmConsolidatedDailySalesReport
         paragraph.Format.Alignment = ParagraphAlignment.Right
         section.Footers.FirstPage = section.Footers.Primary.Clone()
         'Start of header
-        Dim logo As New System.IO.MemoryStream(CType(Company.LOGO, Byte()))
-        Dim logoImage As Image = Image.FromStream(logo)
-        Dim logoPath As String = My.Computer.FileSystem.SpecialDirectories.MyDocuments + "TempDocumentLogo.png"
-        Try
-            My.Computer.FileSystem.DeleteFile(logoPath)
-        Catch ex As Exception
-        End Try
-        logoImage.Save(logoPath)
+        Dim logoPath As String = ""
+        Dim logoImage As Image = Nothing
         Dim headerTable As Table = section.Headers.FirstPage.AddTable()
         headerTable.Borders.Width = 0.2
         headerTable.Borders.Left.Width = 0.2
         headerTable.Borders.Right.Width = 0.2
         headerTable.Rows.LeftIndent = 0
         Dim headerColumn As Column
-        headerColumn = headerTable.AddColumn("2.2cm")
+        headerColumn = headerTable.AddColumn("2.4cm")
         headerColumn.Format.Alignment = ParagraphAlignment.Left
-        headerColumn = headerTable.AddColumn("0.3cm")
+        headerColumn = headerTable.AddColumn("0.1cm")
         headerColumn.Format.Alignment = ParagraphAlignment.Left
         headerColumn = headerTable.AddColumn("12cm")
         headerColumn.Format.Alignment = ParagraphAlignment.Left
@@ -75,11 +69,22 @@ Public Class frmConsolidatedDailySalesReport
         headerRow.HeadingFormat = True
         headerRow.Format.Font.Size = 9
         headerRow.Format.Alignment = ParagraphAlignment.Center
-        headerRow.Borders.Color = Colors.White
-        If logo.Length > 0 Then
-            headerRow.Cells(0).AddImage(logoPath).Width = "2.2cm"
-            headerRow.Cells(0).Format.Alignment = ParagraphAlignment.Left
-        End If
+        headerRow.Borders.Color = Colors.Transparent
+        Try
+            Dim logo As New System.IO.MemoryStream(CType(Company.LOGO, Byte()))
+            logoImage = Image.FromStream(logo)
+            logoPath = My.Computer.FileSystem.SpecialDirectories.MyDocuments + "TempDocumentLogo.png"
+            If My.Computer.FileSystem.FileExists(logoPath) Then
+                My.Computer.FileSystem.DeleteFile(logoPath)
+            End If
+            logoImage.Save(logoPath)
+            If logo.Length > 0 Then
+                headerRow.Cells(0).AddImage(logoPath).Width = "2.2cm"
+                headerRow.Cells(0).Format.Alignment = ParagraphAlignment.Left
+            End If
+        Catch ex As Exception
+            MsgBox(ex.ToString)
+        End Try
         headerRow.Cells(1).AddParagraph("")
         Dim companyName As New Paragraph
         companyName.AddText(Company.NAME + Environment.NewLine)

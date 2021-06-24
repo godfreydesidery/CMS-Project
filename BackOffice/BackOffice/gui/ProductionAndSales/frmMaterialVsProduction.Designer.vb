@@ -37,8 +37,6 @@ Partial Class frmMaterialVsProduction
         Me.Label2 = New System.Windows.Forms.Label()
         Me.dateEnd = New System.Windows.Forms.DateTimePicker()
         Me.dtgrdList = New System.Windows.Forms.DataGridView()
-        Me.btnBack = New System.Windows.Forms.Button()
-        Me.btnGenerate = New System.Windows.Forms.Button()
         Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -48,6 +46,8 @@ Partial Class frmMaterialVsProduction
         Me.Column7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column9 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.btnBack = New System.Windows.Forms.Button()
+        Me.btnGenerate = New System.Windows.Forms.Button()
         Me.Panel1.SuspendLayout()
         CType(Me.dtgrdList, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -137,27 +137,6 @@ Partial Class frmMaterialVsProduction
         Me.dtgrdList.RowTemplate.Height = 24
         Me.dtgrdList.Size = New System.Drawing.Size(1717, 661)
         Me.dtgrdList.TabIndex = 90
-        '
-        'btnBack
-        '
-        Me.btnBack.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btnBack.BackColor = System.Drawing.SystemColors.Control
-        Me.btnBack.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.btnBack.Location = New System.Drawing.Point(1609, 741)
-        Me.btnBack.Name = "btnBack"
-        Me.btnBack.Size = New System.Drawing.Size(115, 35)
-        Me.btnBack.TabIndex = 89
-        Me.btnBack.Text = "Back"
-        Me.btnBack.UseVisualStyleBackColor = False
-        '
-        'btnGenerate
-        '
-        Me.btnGenerate.Location = New System.Drawing.Point(354, 34)
-        Me.btnGenerate.Name = "btnGenerate"
-        Me.btnGenerate.Size = New System.Drawing.Size(104, 34)
-        Me.btnGenerate.TabIndex = 87
-        Me.btnGenerate.Text = "Run"
-        Me.btnGenerate.UseVisualStyleBackColor = True
         '
         'Column1
         '
@@ -249,6 +228,27 @@ Partial Class frmMaterialVsProduction
         Me.Column6.Name = "Column6"
         Me.Column6.ReadOnly = True
         Me.Column6.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        '
+        'btnBack
+        '
+        Me.btnBack.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnBack.BackColor = System.Drawing.SystemColors.Control
+        Me.btnBack.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.btnBack.Location = New System.Drawing.Point(1609, 741)
+        Me.btnBack.Name = "btnBack"
+        Me.btnBack.Size = New System.Drawing.Size(115, 35)
+        Me.btnBack.TabIndex = 89
+        Me.btnBack.Text = "Back"
+        Me.btnBack.UseVisualStyleBackColor = False
+        '
+        'btnGenerate
+        '
+        Me.btnGenerate.Location = New System.Drawing.Point(354, 34)
+        Me.btnGenerate.Name = "btnGenerate"
+        Me.btnGenerate.Size = New System.Drawing.Size(104, 34)
+        Me.btnGenerate.TabIndex = 87
+        Me.btnGenerate.Text = "Run"
+        Me.btnGenerate.UseVisualStyleBackColor = True
         '
         'frmMaterialVsProduction
         '
