@@ -508,11 +508,22 @@ Public Class frmMaterialVsProduction
         Dim r As Integer = 1
 
         ' Add table headers going cell by cell.
+        shXL.Cells(r, 1).Value = "Materials vs Production Report"
+
+        ' Format A1:D1 as bold, vertical alignment = center.
+        With shXL.Range("A" + r.ToString, "B" + r.ToString)
+            .Font.Bold = True
+            .VerticalAlignment = Excel.XlVAlign.xlVAlignCenter
+        End With
+
+        r = r + 1
+
+        ' Add table headers going cell by cell.
         shXL.Cells(r, 1).Value = "From: " + dateStart.Text
         shXL.Cells(r, 2).Value = "To: " + dateEnd.Text
 
         ' Format A1:D1 as bold, vertical alignment = center.
-        With shXL.Range("A1", "B1")
+        With shXL.Range("A" + r.ToString, "B" + r.ToString)
             .Font.Bold = True
             .VerticalAlignment = Excel.XlVAlign.xlVAlignCenter
         End With
@@ -530,7 +541,7 @@ Public Class frmMaterialVsProduction
         shXL.Cells(r, 9).Value = "Qty"
 
         ' Format A1:D1 as bold, vertical alignment = center.
-        With shXL.Range("A3", "I3")
+        With shXL.Range("A" + r.ToString, "I" + r.ToString)
             .Font.Bold = True
             .VerticalAlignment = Excel.XlVAlign.xlVAlignCenter
         End With
@@ -567,11 +578,15 @@ Public Class frmMaterialVsProduction
 
         If System.IO.File.Exists(strFileName) Then
             Try
-                System.IO.File.Delete(strFileName)
+                'System.IO.File.Delete(strFileName)
             Catch ex As Exception
             End Try
         End If
-        wbXl.SaveAs(strFileName)
+        Try
+            wbXl.Save()
+        Catch ex As Exception
+
+        End Try
         'appXL.Workbooks.Open(strFileName)
         Exit Sub
 Err_Handler:

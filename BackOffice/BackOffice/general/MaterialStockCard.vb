@@ -2,6 +2,7 @@
 
 Public Class MaterialStockCard
     Public Function qtyIn(date_ As String, materialCode As String, qty As Double, balance As Double, reference As String) As Boolean
+        If qty = 0 Then Return False
         Dim success As Boolean = False
         Try
             Dim conn As New MySqlConnection(Database.conString)
@@ -27,6 +28,7 @@ Public Class MaterialStockCard
         Return success
     End Function
     Public Function qtyOut(date_ As String, materialCode As String, qty As Double, balance As Double, reference As String) As Boolean
+        If qty = 0 Then Return False
         Dim success As Boolean = False
         Try
             Dim conn As New MySqlConnection(Database.conString)

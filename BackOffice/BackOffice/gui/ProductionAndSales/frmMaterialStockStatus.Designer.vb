@@ -49,6 +49,8 @@ Partial Class frmMaterialStockStatus
         Me.Column7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.btnBack = New System.Windows.Forms.Button()
         Me.btnGenerate = New System.Windows.Forms.Button()
+        Me.txtTotalAmount = New System.Windows.Forms.TextBox()
+        Me.Label1 = New System.Windows.Forms.Label()
         Me.Panel3.SuspendLayout()
         Me.Panel1.SuspendLayout()
         CType(Me.dtgrdList, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -279,11 +281,32 @@ Partial Class frmMaterialStockStatus
         Me.btnGenerate.Text = "Run"
         Me.btnGenerate.UseVisualStyleBackColor = True
         '
+        'txtTotalAmount
+        '
+        Me.txtTotalAmount.Location = New System.Drawing.Point(152, 413)
+        Me.txtTotalAmount.MaxLength = 50
+        Me.txtTotalAmount.Name = "txtTotalAmount"
+        Me.txtTotalAmount.ReadOnly = True
+        Me.txtTotalAmount.Size = New System.Drawing.Size(194, 22)
+        Me.txtTotalAmount.TabIndex = 94
+        Me.txtTotalAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Location = New System.Drawing.Point(54, 418)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(92, 17)
+        Me.Label1.TabIndex = 95
+        Me.Label1.Text = "Total Amount"
+        '
         'frmMaterialStockStatus
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1479, 795)
+        Me.Controls.Add(Me.Label1)
+        Me.Controls.Add(Me.txtTotalAmount)
         Me.Controls.Add(Me.btnExportToExcel)
         Me.Controls.Add(Me.btnPrint)
         Me.Controls.Add(Me.Panel3)
@@ -301,6 +324,7 @@ Partial Class frmMaterialStockStatus
         Me.Panel1.PerformLayout()
         CType(Me.dtgrdList, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
+        Me.PerformLayout()
 
     End Sub
 
@@ -328,4 +352,6 @@ Partial Class frmMaterialStockStatus
     Friend WithEvents Column3 As DataGridViewTextBoxColumn
     Friend WithEvents Column4 As DataGridViewTextBoxColumn
     Friend WithEvents Column7 As DataGridViewTextBoxColumn
+    Friend WithEvents txtTotalAmount As TextBox
+    Friend WithEvents Label1 As Label
 End Class

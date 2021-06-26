@@ -52,6 +52,8 @@ Partial Class frmMaterialUsageReport
         Me.btnBack = New System.Windows.Forms.Button()
         Me.btnGenerate = New System.Windows.Forms.Button()
         Me.btnExportToExcel = New System.Windows.Forms.Button()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.txtTotalAmount = New System.Windows.Forms.TextBox()
         Me.Panel3.SuspendLayout()
         Me.Panel1.SuspendLayout()
         CType(Me.dtgrdList, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -316,11 +318,32 @@ Partial Class frmMaterialUsageReport
         Me.btnExportToExcel.Text = "Export to Excel"
         Me.btnExportToExcel.UseVisualStyleBackColor = True
         '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Location = New System.Drawing.Point(50, 416)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(92, 17)
+        Me.Label3.TabIndex = 97
+        Me.Label3.Text = "Total Amount"
+        '
+        'txtTotalAmount
+        '
+        Me.txtTotalAmount.Location = New System.Drawing.Point(148, 411)
+        Me.txtTotalAmount.MaxLength = 50
+        Me.txtTotalAmount.Name = "txtTotalAmount"
+        Me.txtTotalAmount.ReadOnly = True
+        Me.txtTotalAmount.Size = New System.Drawing.Size(194, 22)
+        Me.txtTotalAmount.TabIndex = 96
+        Me.txtTotalAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        '
         'frmMaterialUsageReport
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1479, 795)
+        Me.Controls.Add(Me.Label3)
+        Me.Controls.Add(Me.txtTotalAmount)
         Me.Controls.Add(Me.btnExportToExcel)
         Me.Controls.Add(Me.btnPrint)
         Me.Controls.Add(Me.Panel3)
@@ -338,6 +361,7 @@ Partial Class frmMaterialUsageReport
         Me.Panel1.PerformLayout()
         CType(Me.dtgrdList, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
+        Me.PerformLayout()
 
     End Sub
     Friend WithEvents btnPrint As Button
@@ -367,4 +391,6 @@ Partial Class frmMaterialUsageReport
     Friend WithEvents Column3 As DataGridViewTextBoxColumn
     Friend WithEvents Column4 As DataGridViewTextBoxColumn
     Friend WithEvents Column7 As DataGridViewTextBoxColumn
+    Friend WithEvents Label3 As Label
+    Friend WithEvents txtTotalAmount As TextBox
 End Class

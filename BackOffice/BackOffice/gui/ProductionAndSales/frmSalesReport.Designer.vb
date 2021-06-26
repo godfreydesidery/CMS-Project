@@ -47,6 +47,13 @@ Partial Class frmDetailedDailySalesReport
         Me.btnPrint = New System.Windows.Forms.Button()
         Me.btnGenerate = New System.Windows.Forms.Button()
         Me.dtgrdList = New System.Windows.Forms.DataGridView()
+        Me.Column10 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.btnBack = New System.Windows.Forms.Button()
         Me.txtTotalDiscount = New System.Windows.Forms.TextBox()
         Me.Label3 = New System.Windows.Forms.Label()
@@ -62,13 +69,9 @@ Partial Class frmDetailedDailySalesReport
         Me.Label12 = New System.Windows.Forms.Label()
         Me.txtTotalIssued = New System.Windows.Forms.TextBox()
         Me.btnExportToExcel = New System.Windows.Forms.Button()
-        Me.Column10 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Button2 = New System.Windows.Forms.Button()
+        Me.txtNetProfit = New System.Windows.Forms.TextBox()
+        Me.Label13 = New System.Windows.Forms.Label()
         Me.Panel1.SuspendLayout()
         Me.Panel3.SuspendLayout()
         CType(Me.dtgrdList, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -294,6 +297,66 @@ Partial Class frmDetailedDailySalesReport
         Me.dtgrdList.Size = New System.Drawing.Size(1447, 563)
         Me.dtgrdList.TabIndex = 64
         '
+        'Column10
+        '
+        Me.Column10.HeaderText = "Date"
+        Me.Column10.Name = "Column10"
+        Me.Column10.ReadOnly = True
+        Me.Column10.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        '
+        'Column1
+        '
+        Me.Column1.FillWeight = 84.25756!
+        Me.Column1.HeaderText = "Code"
+        Me.Column1.Name = "Column1"
+        Me.Column1.ReadOnly = True
+        Me.Column1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        '
+        'Column2
+        '
+        Me.Column2.FillWeight = 294.8904!
+        Me.Column2.HeaderText = "Description"
+        Me.Column2.Name = "Column2"
+        Me.Column2.ReadOnly = True
+        Me.Column2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        '
+        'Column3
+        '
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.Column3.DefaultCellStyle = DataGridViewCellStyle1
+        Me.Column3.FillWeight = 53.87895!
+        Me.Column3.HeaderText = "Qty"
+        Me.Column3.Name = "Column3"
+        Me.Column3.ReadOnly = True
+        Me.Column3.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        '
+        'Column4
+        '
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.Column4.DefaultCellStyle = DataGridViewCellStyle2
+        Me.Column4.FillWeight = 84.25756!
+        Me.Column4.HeaderText = "Price"
+        Me.Column4.Name = "Column4"
+        Me.Column4.ReadOnly = True
+        Me.Column4.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        '
+        'Column7
+        '
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.Column7.DefaultCellStyle = DataGridViewCellStyle3
+        Me.Column7.FillWeight = 84.25756!
+        Me.Column7.HeaderText = "Amount"
+        Me.Column7.Name = "Column7"
+        Me.Column7.ReadOnly = True
+        Me.Column7.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        '
+        'Column5
+        '
+        Me.Column5.HeaderText = "Reference"
+        Me.Column5.Name = "Column5"
+        Me.Column5.ReadOnly = True
+        Me.Column5.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        '
         'btnBack
         '
         Me.btnBack.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
@@ -366,7 +429,7 @@ Partial Class frmDetailedDailySalesReport
         'Label6
         '
         Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(12, 591)
+        Me.Label6.Location = New System.Drawing.Point(19, 591)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(126, 17)
         Me.Label6.TabIndex = 71
@@ -404,7 +467,7 @@ Partial Class frmDetailedDailySalesReport
         'Label9
         '
         Me.Label9.AutoSize = True
-        Me.Label9.Location = New System.Drawing.Point(84, 664)
+        Me.Label9.Location = New System.Drawing.Point(98, 659)
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(47, 17)
         Me.Label9.TabIndex = 75
@@ -438,71 +501,42 @@ Partial Class frmDetailedDailySalesReport
         Me.btnExportToExcel.Text = "Export To Excel"
         Me.btnExportToExcel.UseVisualStyleBackColor = True
         '
-        'Column10
+        'Button2
         '
-        Me.Column10.HeaderText = "Date"
-        Me.Column10.Name = "Column10"
-        Me.Column10.ReadOnly = True
-        Me.Column10.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        Me.Button2.Location = New System.Drawing.Point(1564, 12)
+        Me.Button2.Name = "Button2"
+        Me.Button2.Size = New System.Drawing.Size(63, 36)
+        Me.Button2.TabIndex = 80
+        Me.Button2.Text = "Update"
+        Me.Button2.UseVisualStyleBackColor = True
         '
-        'Column1
+        'txtNetProfit
         '
-        Me.Column1.FillWeight = 84.25756!
-        Me.Column1.HeaderText = "Code"
-        Me.Column1.Name = "Column1"
-        Me.Column1.ReadOnly = True
-        Me.Column1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        Me.txtNetProfit.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtNetProfit.Location = New System.Drawing.Point(159, 693)
+        Me.txtNetProfit.Name = "txtNetProfit"
+        Me.txtNetProfit.ReadOnly = True
+        Me.txtNetProfit.Size = New System.Drawing.Size(186, 28)
+        Me.txtNetProfit.TabIndex = 82
+        Me.txtNetProfit.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
-        'Column2
+        'Label13
         '
-        Me.Column2.FillWeight = 294.8904!
-        Me.Column2.HeaderText = "Description"
-        Me.Column2.Name = "Column2"
-        Me.Column2.ReadOnly = True
-        Me.Column2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        '
-        'Column3
-        '
-        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.Column3.DefaultCellStyle = DataGridViewCellStyle1
-        Me.Column3.FillWeight = 53.87895!
-        Me.Column3.HeaderText = "Qty"
-        Me.Column3.Name = "Column3"
-        Me.Column3.ReadOnly = True
-        Me.Column3.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        '
-        'Column4
-        '
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.Column4.DefaultCellStyle = DataGridViewCellStyle2
-        Me.Column4.FillWeight = 84.25756!
-        Me.Column4.HeaderText = "Price"
-        Me.Column4.Name = "Column4"
-        Me.Column4.ReadOnly = True
-        Me.Column4.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        '
-        'Column7
-        '
-        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.Column7.DefaultCellStyle = DataGridViewCellStyle3
-        Me.Column7.FillWeight = 84.25756!
-        Me.Column7.HeaderText = "Amount"
-        Me.Column7.Name = "Column7"
-        Me.Column7.ReadOnly = True
-        Me.Column7.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        '
-        'Column5
-        '
-        Me.Column5.HeaderText = "Reference"
-        Me.Column5.Name = "Column5"
-        Me.Column5.ReadOnly = True
-        Me.Column5.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        Me.Label13.AutoSize = True
+        Me.Label13.Location = New System.Drawing.Point(78, 693)
+        Me.Label13.Name = "Label13"
+        Me.Label13.Size = New System.Drawing.Size(67, 17)
+        Me.Label13.TabIndex = 81
+        Me.Label13.Text = "Net Profit"
         '
         'frmDetailedDailySalesReport
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1818, 767)
+        Me.Controls.Add(Me.txtNetProfit)
+        Me.Controls.Add(Me.Label13)
+        Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.btnExportToExcel)
         Me.Controls.Add(Me.Label12)
         Me.Controls.Add(Me.txtTotalIssued)
@@ -580,4 +614,7 @@ Partial Class frmDetailedDailySalesReport
     Friend WithEvents Column4 As DataGridViewTextBoxColumn
     Friend WithEvents Column7 As DataGridViewTextBoxColumn
     Friend WithEvents Column5 As DataGridViewTextBoxColumn
+    Friend WithEvents Button2 As Button
+    Friend WithEvents txtNetProfit As TextBox
+    Friend WithEvents Label13 As Label
 End Class

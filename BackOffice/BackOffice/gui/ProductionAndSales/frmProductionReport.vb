@@ -233,6 +233,7 @@ Public Class frmProductionReport
             Dim price As String = dtgrdList.Item(4, i).Value.ToString
             Dim amount As String = dtgrdList.Item(5, i).Value.ToString
 
+
             row = table.AddRow()
             row.Format.Font.Bold = False
             row.HeadingFormat = False
@@ -253,10 +254,27 @@ Public Class frmProductionReport
             row.Cells(5).AddParagraph(amount)
             row.Cells(5).Format.Alignment = ParagraphAlignment.Right
 
-
-
             table.SetEdge(0, 0, 6, 1, Edge.Box, BorderStyle.Single, 0.75, Color.Empty)
         Next
+        row = table.AddRow()
+        row.Format.Font.Bold = True
+        row.HeadingFormat = False
+        row.Format.Font.Size = 8
+        row.Height = "5mm"
+        row.Format.Alignment = ParagraphAlignment.Center
+        row.Borders.Color = Colors.LightGray
+        row.Cells(0).AddParagraph("")
+        row.Cells(0).Format.Alignment = ParagraphAlignment.Left
+        row.Cells(1).AddParagraph("")
+        row.Cells(1).Format.Alignment = ParagraphAlignment.Left
+        row.Cells(2).AddParagraph("")
+        row.Cells(2).Format.Alignment = ParagraphAlignment.Left
+        row.Cells(3).AddParagraph("")
+        row.Cells(3).Format.Alignment = ParagraphAlignment.Left
+        row.Cells(4).AddParagraph("Total")
+        row.Cells(4).Format.Alignment = ParagraphAlignment.Left
+        row.Cells(5).AddParagraph(txtTotalAmount.Text)
+        row.Cells(5).Format.Alignment = ParagraphAlignment.Right
         table.SetEdge(0, 0, 6, 1, Edge.Box, BorderStyle.Single, 0.75, Color.Empty)
 
         paragraph = section.AddParagraph()
@@ -383,33 +401,7 @@ Public Class frmProductionReport
                 dtgrdList.Rows.Add(dtgrdRow)
             End While
 
-            dtgrdRow = New DataGridViewRow
-
-            dtgrdCell = New DataGridViewTextBoxCell()
-            dtgrdCell.Value = ""
-            dtgrdRow.Cells.Add(dtgrdCell)
-
-            dtgrdCell = New DataGridViewTextBoxCell()
-            dtgrdCell.Value = ""
-            dtgrdRow.Cells.Add(dtgrdCell)
-
-            dtgrdCell = New DataGridViewTextBoxCell()
-            dtgrdCell.Value = ""
-            dtgrdRow.Cells.Add(dtgrdCell)
-
-            dtgrdCell = New DataGridViewTextBoxCell()
-            dtgrdCell.Value = ""
-            dtgrdRow.Cells.Add(dtgrdCell)
-
-            dtgrdCell = New DataGridViewTextBoxCell()
-            dtgrdCell.Value = "Total"
-            dtgrdRow.Cells.Add(dtgrdCell)
-
-            dtgrdCell = New DataGridViewTextBoxCell()
-            dtgrdCell.Value = LCurrency.displayValue(totalAmount.ToString)
-            dtgrdRow.Cells.Add(dtgrdCell)
-
-            dtgrdList.Rows.Add(dtgrdRow)
+            txtTotalAmount.Text = LCurrency.displayValue(totalAmount.ToString)
 
             conn.Close()
         Catch ex As Exception
@@ -455,6 +447,8 @@ Public Class frmProductionReport
     Private Sub frmSalesReport_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Dim item As New Item
         longList = item.getItems()
+        clearFields()
+        dtgrdList.Rows.Clear()
         '   loadCategories()
     End Sub
     Dim longList As New List(Of String)
@@ -532,6 +526,7 @@ Public Class frmProductionReport
     Private Sub clearFields()
         txtMaterialCode.Text = ""
         cmbMaterialName.Text = ""
+        txtTotalAmount.Text = ""
 
     End Sub
 
@@ -593,11 +588,20 @@ Public Class frmProductionReport
         Dim r As Integer = 1
 
         ' Add table headers going cell by cell.
+        shXL.Cells(r, 1).Value = "Daily Production Report"
+
+        ' Format A1:D1 as bold, vertical alignment = center.
+        With shXL.Range("A" + r.ToString, "B" + r.ToString)
+            .Font.Bold = True
+            .VerticalAlignment = Excel.XlVAlign.xlVAlignCenter
+        End With
+        r = r + 1
+        ' Add table headers going cell by cell.
         shXL.Cells(r, 1).Value = "From: " + dateStart.Text
         shXL.Cells(r, 2).Value = "To: " + dateEnd.Text
 
         ' Format A1:D1 as bold, vertical alignment = center.
-        With shXL.Range("A1", "B1")
+        With shXL.Range("A" + r.ToString, "B" + r.ToString)
             .Font.Bold = True
             .VerticalAlignment = Excel.XlVAlign.xlVAlignCenter
         End With
@@ -607,7 +611,7 @@ Public Class frmProductionReport
 
 
         ' Format A1:D1 as bold, vertical alignment = center.
-        With shXL.Range("A1")
+        With shXL.Range("A" + r.ToString)
             .Font.Bold = True
             .VerticalAlignment = Excel.XlVAlign.xlVAlignCenter
         End With
@@ -620,7 +624,7 @@ Public Class frmProductionReport
         shXL.Cells(r, 5).Value = "Price"
         shXL.Cells(r, 6).Value = "Amount"
         ' Format A1:D1 as bold, vertical alignment = center.
-        With shXL.Range("A4", "F4")
+        With shXL.Range("A" + r.ToString, "F" + r.ToString)
             .Font.Bold = True
             .VerticalAlignment = Excel.XlVAlign.xlVAlignCenter
         End With
@@ -639,6 +643,15 @@ Public Class frmProductionReport
             End With
             r = r + 1
         Next
+        ' Add table headers going cell by cell.
+        shXL.Cells(r, 5).Value = "Total"
+        shXL.Cells(r, 6).Value = txtTotalAmount.Text
+
+        ' Format A1:D1 as bold, vertical alignment = center.
+        With shXL.Range("A" + r.ToString, "F" + r.ToString)
+            .Font.Bold = True
+            .VerticalAlignment = Excel.XlVAlign.xlVAlignCenter
+        End With
 
 
         ' AutoFit columns A:D.
@@ -655,11 +668,16 @@ Public Class frmProductionReport
 
         If System.IO.File.Exists(strFileName) Then
             Try
-                System.IO.File.Delete(strFileName)
+                'System.IO.File.Delete(strFileName)
             Catch ex As Exception
             End Try
         End If
-        wbXl.SaveAs(strFileName)
+        Try
+            wbXl.Save()
+        Catch ex As Exception
+
+        End Try
+
         'appXL.Workbooks.Open(strFileName)
         Exit Sub
 Err_Handler:

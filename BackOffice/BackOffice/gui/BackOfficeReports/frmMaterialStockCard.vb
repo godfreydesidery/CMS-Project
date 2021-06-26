@@ -258,29 +258,29 @@ Public Class frmMaterialStockCard
         'Before you can add a row, you must define the columns
         Dim column As Column
 
-        column = table.AddColumn("1.5cm")
+        column = table.AddColumn("2.0cm")
         column.Format.Alignment = ParagraphAlignment.Left
 
-        column = table.AddColumn("1.5cm")
+        column = table.AddColumn("1.0cm")
         column.Format.Alignment = ParagraphAlignment.Left
-
-        column = table.AddColumn("4.0cm")
-        column.Format.Alignment = ParagraphAlignment.Left
-
-        column = table.AddColumn("1.7cm")
-        column.Format.Alignment = ParagraphAlignment.Left
-
-        column = table.AddColumn("1.3cm")
-        column.Format.Alignment = ParagraphAlignment.Left
-
-        column = table.AddColumn("1.3cm")
-        column.Format.Alignment = ParagraphAlignment.Left
-
-        column = table.AddColumn("1.5cm")
-        column.Format.Alignment = ParagraphAlignment.Left
-
 
         column = table.AddColumn("5.0cm")
+        column.Format.Alignment = ParagraphAlignment.Left
+
+        column = table.AddColumn("3.0cm")
+        column.Format.Alignment = ParagraphAlignment.Left
+
+        column = table.AddColumn("1.0cm")
+        column.Format.Alignment = ParagraphAlignment.Left
+
+        column = table.AddColumn("1.0cm")
+        column.Format.Alignment = ParagraphAlignment.Left
+
+        column = table.AddColumn("1.3cm")
+        column.Format.Alignment = ParagraphAlignment.Left
+
+
+        column = table.AddColumn("4.0cm")
         column.Format.Alignment = ParagraphAlignment.Left
 
 
@@ -294,19 +294,19 @@ Public Class frmMaterialStockCard
         row.HeadingFormat = True
         row.Format.Alignment = ParagraphAlignment.Center
         row.Format.Font.Bold = True
-        row.Format.Font.Size = 6
+        row.Format.Font.Size = 8
         row.Borders.Color = Colors.White
         row.Cells(0).AddParagraph("Date")
         row.Cells(0).Format.Alignment = ParagraphAlignment.Left
-        row.Cells(1).AddParagraph("Material Code")
+        row.Cells(1).AddParagraph("Code")
         row.Cells(1).Format.Alignment = ParagraphAlignment.Left
         row.Cells(2).AddParagraph("Description")
         row.Cells(2).Format.Alignment = ParagraphAlignment.Left
         row.Cells(3).AddParagraph("Category")
         row.Cells(3).Format.Alignment = ParagraphAlignment.Left
-        row.Cells(4).AddParagraph("Qty In")
+        row.Cells(4).AddParagraph("In")
         row.Cells(4).Format.Alignment = ParagraphAlignment.Left
-        row.Cells(5).AddParagraph("Qty Out")
+        row.Cells(5).AddParagraph("Out")
         row.Cells(5).Format.Alignment = ParagraphAlignment.Left
         row.Cells(6).AddParagraph("Balance")
         row.Cells(6).Format.Alignment = ParagraphAlignment.Left
@@ -331,7 +331,7 @@ Public Class frmMaterialStockCard
 
 
             row = table.AddRow()
-            row.Format.Font.Size = 6
+            row.Format.Font.Size = 8
             row.Format.Alignment = ParagraphAlignment.Center
             row.Borders.Color = Colors.White
             row.Cells(0).AddParagraph(date_)

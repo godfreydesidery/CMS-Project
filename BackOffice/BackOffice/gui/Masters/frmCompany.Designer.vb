@@ -25,6 +25,9 @@ Partial Class frmCompany
         Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.btnBack = New System.Windows.Forms.Button()
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.btnChangeLogo = New System.Windows.Forms.Button()
+        Me.Label29 = New System.Windows.Forms.Label()
+        Me.pctLogo = New System.Windows.Forms.PictureBox()
         Me.txtBankAccNo = New System.Windows.Forms.TextBox()
         Me.Label17 = New System.Windows.Forms.Label()
         Me.txtBankName = New System.Windows.Forms.TextBox()
@@ -105,18 +108,15 @@ Partial Class frmCompany
         Me.Panel5 = New System.Windows.Forms.Panel()
         Me.Label27 = New System.Windows.Forms.Label()
         Me.Label28 = New System.Windows.Forms.Label()
-        Me.pctLogo = New System.Windows.Forms.PictureBox()
-        Me.Label29 = New System.Windows.Forms.Label()
-        Me.btnChangeLogo = New System.Windows.Forms.Button()
         Me.fileDialog = New System.Windows.Forms.OpenFileDialog()
         Me.Panel1.SuspendLayout()
+        CType(Me.pctLogo, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel2.SuspendLayout()
         CType(Me.dtgrdDepartment, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel3.SuspendLayout()
         CType(Me.dtgrdClass, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel4.SuspendLayout()
         CType(Me.dtgrdsubClass, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.pctLogo, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'btnBack
@@ -177,6 +177,35 @@ Partial Class frmCompany
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(597, 706)
         Me.Panel1.TabIndex = 11
+        '
+        'btnChangeLogo
+        '
+        Me.btnChangeLogo.Enabled = False
+        Me.btnChangeLogo.Location = New System.Drawing.Point(239, 324)
+        Me.btnChangeLogo.Name = "btnChangeLogo"
+        Me.btnChangeLogo.Size = New System.Drawing.Size(101, 63)
+        Me.btnChangeLogo.TabIndex = 79
+        Me.btnChangeLogo.Text = "Change Logo"
+        Me.btnChangeLogo.UseVisualStyleBackColor = True
+        '
+        'Label29
+        '
+        Me.Label29.AutoSize = True
+        Me.Label29.Location = New System.Drawing.Point(96, 304)
+        Me.Label29.Name = "Label29"
+        Me.Label29.Size = New System.Drawing.Size(40, 17)
+        Me.Label29.TabIndex = 78
+        Me.Label29.Text = "Logo"
+        '
+        'pctLogo
+        '
+        Me.pctLogo.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+        Me.pctLogo.Location = New System.Drawing.Point(99, 324)
+        Me.pctLogo.Name = "pctLogo"
+        Me.pctLogo.Size = New System.Drawing.Size(134, 119)
+        Me.pctLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.pctLogo.TabIndex = 77
+        Me.pctLogo.TabStop = False
         '
         'txtBankAccNo
         '
@@ -380,7 +409,7 @@ Partial Class frmCompany
         '
         'txtAddress
         '
-        Me.txtAddress.Location = New System.Drawing.Point(144, 105)
+        Me.txtAddress.Location = New System.Drawing.Point(144, 161)
         Me.txtAddress.MaxLength = 100
         Me.txtAddress.Name = "txtAddress"
         Me.txtAddress.ReadOnly = True
@@ -390,11 +419,11 @@ Partial Class frmCompany
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(78, 105)
+        Me.Label4.Location = New System.Drawing.Point(38, 161)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(60, 17)
+        Me.Label4.Size = New System.Drawing.Size(103, 17)
         Me.Label4.TabIndex = 39
-        Me.Label4.Text = "Address"
+        Me.Label4.Text = "Postal Address"
         '
         'txtFax
         '
@@ -426,7 +455,7 @@ Partial Class frmCompany
         'Label6
         '
         Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(25, 166)
+        Me.Label6.Location = New System.Drawing.Point(25, 105)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(116, 17)
         Me.Label6.TabIndex = 41
@@ -444,7 +473,7 @@ Partial Class frmCompany
         'Label11
         '
         Me.Label11.AutoSize = True
-        Me.Label11.Location = New System.Drawing.Point(62, 192)
+        Me.Label11.Location = New System.Drawing.Point(62, 189)
         Me.Label11.Name = "Label11"
         Me.Label11.Size = New System.Drawing.Size(76, 17)
         Me.Label11.TabIndex = 42
@@ -470,7 +499,7 @@ Partial Class frmCompany
         '
         'txtPhysicalAddress
         '
-        Me.txtPhysicalAddress.Location = New System.Drawing.Point(144, 161)
+        Me.txtPhysicalAddress.Location = New System.Drawing.Point(144, 105)
         Me.txtPhysicalAddress.MaxLength = 100
         Me.txtPhysicalAddress.Name = "txtPhysicalAddress"
         Me.txtPhysicalAddress.ReadOnly = True
@@ -954,34 +983,6 @@ Partial Class frmCompany
         Me.Label28.TabIndex = 17
         Me.Label28.Text = "Units Information (Departments, Classes and Sub-classes)"
         '
-        'pctLogo
-        '
-        Me.pctLogo.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-        Me.pctLogo.Location = New System.Drawing.Point(99, 324)
-        Me.pctLogo.Name = "pctLogo"
-        Me.pctLogo.Size = New System.Drawing.Size(134, 119)
-        Me.pctLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.pctLogo.TabIndex = 77
-        Me.pctLogo.TabStop = False
-        '
-        'Label29
-        '
-        Me.Label29.AutoSize = True
-        Me.Label29.Location = New System.Drawing.Point(96, 304)
-        Me.Label29.Name = "Label29"
-        Me.Label29.Size = New System.Drawing.Size(40, 17)
-        Me.Label29.TabIndex = 78
-        Me.Label29.Text = "Logo"
-        '
-        'btnChangeLogo
-        '
-        Me.btnChangeLogo.Location = New System.Drawing.Point(239, 324)
-        Me.btnChangeLogo.Name = "btnChangeLogo"
-        Me.btnChangeLogo.Size = New System.Drawing.Size(101, 63)
-        Me.btnChangeLogo.TabIndex = 79
-        Me.btnChangeLogo.Text = "Change Logo"
-        Me.btnChangeLogo.UseVisualStyleBackColor = True
-        '
         'fileDialog
         '
         Me.fileDialog.FileName = "OpenFileDialog1"
@@ -1007,6 +1008,7 @@ Partial Class frmCompany
         Me.Text = "Company"
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
+        CType(Me.pctLogo, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel2.ResumeLayout(False)
         Me.Panel2.PerformLayout()
         CType(Me.dtgrdDepartment, System.ComponentModel.ISupportInitialize).EndInit()
@@ -1016,7 +1018,6 @@ Partial Class frmCompany
         Me.Panel4.ResumeLayout(False)
         Me.Panel4.PerformLayout()
         CType(Me.dtgrdsubClass, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.pctLogo, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 

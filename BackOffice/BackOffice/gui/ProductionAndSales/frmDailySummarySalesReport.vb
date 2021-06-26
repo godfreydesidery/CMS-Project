@@ -436,7 +436,8 @@ Public Class frmDailySummarySalesReport
                         `packing_list_details`.`item_code` AS `item_code`,
                         `packing_list_details`.`description` AS `description`,
                         SUM(`packing_list_details`.`qty_sold`) AS `qty_sold`,
-                        SUM(`packing_list_details`.`price`*`packing_list_details`.`qty_sold`) AS `amount`
+                        SUM(`packing_list_details`.`price`*`packing_list_details`.`qty_sold`) AS `amount`,
+                        SUM(`packing_list_details`.`cprice`*`packing_list_details`.`qty_sold`) AS `camount`
                     FROM 
                         `packing_list`, `packing_list_details` 
                     WHERE 
@@ -455,7 +456,8 @@ Public Class frmDailySummarySalesReport
                         `packing_list_details`.`item_code` AS `item_code`,
                         `packing_list_details`.`description` AS `description`,
                         SUM(`packing_list_details`.`qty_sold`) AS `qty_sold`,
-                        SUM(`packing_list_details`.`price`*`packing_list_details`.`qty_sold`) AS `amount`
+                        SUM(`packing_list_details`.`price`*`packing_list_details`.`qty_sold`) AS `amount`,
+                        SUM(`packing_list_details`.`cprice`*`packing_list_details`.`qty_sold`) AS `camount`
                     FROM 
                         `packing_list`, `packing_list_details` 
                     WHERE 
@@ -474,7 +476,8 @@ Public Class frmDailySummarySalesReport
                         `packing_list_details`.`item_code` AS `item_code`,
                         `packing_list_details`.`description` AS `description`,
                         SUM(`packing_list_details`.`qty_sold`) AS `qty_sold`,
-                        SUM(`packing_list_details`.`price`*`packing_list_details`.`qty_sold`) AS `amount`
+                        SUM(`packing_list_details`.`price`*`packing_list_details`.`qty_sold`) AS `amount`,
+                        SUM(`packing_list_details`.`cprice`*`packing_list_details`.`qty_sold`) AS `camount`
                     FROM 
                         `packing_list`, `packing_list_details` 
                     WHERE 
@@ -493,7 +496,8 @@ Public Class frmDailySummarySalesReport
                         `packing_list_details`.`item_code` AS `item_code`,
                         `packing_list_details`.`description` AS `description`,
                         SUM(`packing_list_details`.`qty_sold`) AS `qty_sold`,
-                        SUM(`packing_list_details`.`price`*`packing_list_details`.`qty_sold`) AS `amount`
+                        SUM(`packing_list_details`.`price`*`packing_list_details`.`qty_sold`) AS `amount`,
+                        SUM(`packing_list_details`.`cprice`*`packing_list_details`.`qty_sold`) AS `camount`
                     FROM 
                         `packing_list`, `packing_list_details` 
                     WHERE 
@@ -516,6 +520,10 @@ Public Class frmDailySummarySalesReport
                 Dim qty As String = reader.GetString("qty_sold")
                 Dim _date As String = reader.GetString("issue_date")
                 Dim amount As String = reader.GetString("amount")
+                Dim cAmount As String = reader.GetString("camount")
+
+                totalProfit = totalProfit + (Val(amount) - Val(cAmount))
+
                 Dim item As New Item
                 item.searchItem(itemCode)
 
@@ -623,6 +631,7 @@ Public Class frmDailySummarySalesReport
                 txtTotalExpenditures.Text = LCurrency.displayValue(totalExpenditures.ToString)
                 txtTotalBankcash.Text = LCurrency.displayValue(totalBankCash.ToString)
                 txtDebt.Text = LCurrency.displayValue(debt.ToString)
+                txtNetProfit.Text = LCurrency.displayValue((totalProfit - totalExpenditures - totalDiscount).ToString)
 
             Catch ex As Exception
                 ex.ToString()
@@ -831,11 +840,22 @@ Public Class frmDailySummarySalesReport
         Dim r As Integer = 1
 
         ' Add table headers going cell by cell.
+        shXL.Cells(r, 1).Value = "Summarized Daily Sales Report"
+
+        ' Format A1:D1 as bold, vertical alignment = center.
+        With shXL.Range("A" + r.ToString, "B" + r.ToString)
+            .Font.Bold = True
+            .VerticalAlignment = Excel.XlVAlign.xlVAlignCenter
+        End With
+
+        r = r + 1
+
+        ' Add table headers going cell by cell.
         shXL.Cells(r, 1).Value = "From: " + dateStart.Text
         shXL.Cells(r, 2).Value = "To: " + dateEnd.Text
 
         ' Format A1:D1 as bold, vertical alignment = center.
-        With shXL.Range("A1", "B1")
+        With shXL.Range("A" + r.ToString, "B" + r.ToString)
             .Font.Bold = True
             .VerticalAlignment = Excel.XlVAlign.xlVAlignCenter
         End With
@@ -845,7 +865,7 @@ Public Class frmDailySummarySalesReport
 
 
         ' Format A1:D1 as bold, vertical alignment = center.
-        With shXL.Range("A1")
+        With shXL.Range("A" + r.ToString)
             .Font.Bold = True
             .VerticalAlignment = Excel.XlVAlign.xlVAlignCenter
         End With
@@ -856,7 +876,7 @@ Public Class frmDailySummarySalesReport
         shXL.Cells(r, 3).Value = "Qty"
         shXL.Cells(r, 4).Value = "Amount"
         ' Format A1:D1 as bold, vertical alignment = center.
-        With shXL.Range("A4", "G4")
+        With shXL.Range("A" + r.ToString, "G" + r.ToString)
             .Font.Bold = True
             .VerticalAlignment = Excel.XlVAlign.xlVAlignCenter
         End With
@@ -913,11 +933,15 @@ Public Class frmDailySummarySalesReport
 
         If System.IO.File.Exists(strFileName) Then
             Try
-                System.IO.File.Delete(strFileName)
+                'System.IO.File.Delete(strFileName)
             Catch ex As Exception
             End Try
         End If
-        wbXl.SaveAs(strFileName)
+        Try
+            wbXl.Save()
+        Catch ex As Exception
+
+        End Try
         'appXL.Workbooks.Open(strFileName)
 
 

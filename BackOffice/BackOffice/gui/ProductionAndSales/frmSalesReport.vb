@@ -425,9 +425,11 @@ Public Class frmDetailedDailySalesReport
 
 
     Private Sub btnGenerate_Click(sender As Object, e As EventArgs) Handles btnGenerate.Click
+
         generate()
     End Sub
     Private Sub generate()
+
         list = ""
         For i As Integer = 0 To lstCode.Items.Count - 1
             list = list + "'" + lstCode.Items.Item(i) + "'"
@@ -437,6 +439,95 @@ Public Class frmDetailedDailySalesReport
         Next
         refreshList()
     End Sub
+
+    Private Sub updateCostPrices()
+        Try
+            Dim itemCode As String = ""
+            Dim actualCPrice As String = ""
+            Dim price As String = ""
+            Dim conn As New MySqlConnection(Database.conString)
+            Dim suppcommand As New MySqlCommand()
+            Dim supplierQuery As String = "SELECT
+                                                `id`,
+                                                `item_code`,
+                                                `cprice`
+                                            FROM
+                                                `packing_list_details`"
+            conn.Open()
+            suppcommand.CommandText = supplierQuery
+            suppcommand.Connection = conn
+            suppcommand.CommandType = CommandType.Text
+            Dim reader As MySqlDataReader = suppcommand.ExecuteReader
+            While reader.Read
+                itemCode = reader.GetString("item_code")
+                actualCPrice = (New Item).getItemCostPrice(itemCode)
+                price = reader.GetString("cprice")
+                If (Val(price) <= 0 And Val(actualCPrice) > 0) Then
+                    updateCostPrice(reader.GetString("id"), actualCPrice)
+                    'MsgBox("Updating " + reader.GetString("id") + "  " + actualCPrice)
+                End If
+            End While
+            conn.Close()
+        Catch ex As MySqlException
+            MsgBox(ex.ToString)
+            Exit Sub
+        End Try
+
+        Try
+            Dim conn As New MySqlConnection(Database.conString)
+            Dim suppcommand As New MySqlCommand()
+            Dim supplierQuery As String = "SELECT
+                                                `issue_no`,
+                                                SUM(`cprice`*`qty_sold`) AS `cost_of_goods`                                               
+                                            FROM
+                                                `packing_list_details`
+                                            GROUP BY
+                                            `issue_no`"
+            conn.Open()
+            suppcommand.CommandText = supplierQuery
+            suppcommand.Connection = conn
+            suppcommand.CommandType = CommandType.Text
+            Dim reader As MySqlDataReader = suppcommand.ExecuteReader
+            While reader.Read
+                updateCostOfGoods(reader.GetString("issue_no"), reader.GetString("cost_of_goods"))
+            End While
+            conn.Close()
+        Catch ex As MySqlException
+            MsgBox(ex.ToString)
+            Exit Sub
+        End Try
+    End Sub
+    Private Sub updateCostPrice(id As String, cPrice As String)
+        Try
+            Dim conn As New MySqlConnection(Database.conString)
+            Dim command As New MySqlCommand()
+            Dim codeQuery As String = "UPDATE `packing_list_details` SET `cprice`='" + cPrice.ToString + "' WHERE `id`='" + id + "'"
+            conn.Open()
+            command.CommandText = codeQuery
+            command.Connection = conn
+            command.CommandType = CommandType.Text
+            command.ExecuteNonQuery()
+            conn.Close()
+        Catch ex As Exception
+            MsgBox(ex.ToString)
+        End Try
+    End Sub
+    Private Sub updateCostOfGoods(issueNo As String, value As String)
+        Try
+            Dim conn As New MySqlConnection(Database.conString)
+            Dim command As New MySqlCommand()
+            Dim codeQuery As String = "UPDATE `packing_list` SET `cost_of_goods`='" + value.ToString + "' WHERE `issue_no`='" + issueNo + "'"
+            conn.Open()
+            command.CommandText = codeQuery
+            command.Connection = conn
+            command.CommandType = CommandType.Text
+            command.ExecuteNonQuery()
+            conn.Close()
+        Catch ex As Exception
+            MsgBox(ex.ToString)
+        End Try
+    End Sub
+
     Private Function refreshList()
         dtgrdList.Rows.Clear()
 
@@ -456,6 +547,7 @@ Public Class frmDetailedDailySalesReport
                         `packing_list_details`.`item_code` AS `item_code`,
                         `packing_list_details`.`description` AS `description`,
                         `packing_list_details`.`price` AS `price`,
+                        `packing_list_details`.`cprice` AS `cprice`,
                         `packing_list_details`.`qty_sold` AS `qty_sold`,
                         `packing_list_details`.`price`*`packing_list_details`.`qty_sold` AS `amount`
                     FROM 
@@ -478,6 +570,7 @@ Public Class frmDetailedDailySalesReport
                         `packing_list_details`.`item_code` AS `item_code`,
                         `packing_list_details`.`description` AS `description`,
                         `packing_list_details`.`price` AS `price`,
+                        `packing_list_details`.`cprice` AS `cprice`,
                         `packing_list_details`.`qty_sold` AS `qty_sold`,
                         `packing_list_details`.`price`*`packing_list_details`.`qty_sold` AS `amount`
                     FROM 
@@ -500,6 +593,7 @@ Public Class frmDetailedDailySalesReport
                         `packing_list_details`.`item_code` AS `item_code`,
                         `packing_list_details`.`description` AS `description`,
                         `packing_list_details`.`price` AS `price`,
+                        `packing_list_details`.`cprice` AS `cprice`,
                         `packing_list_details`.`qty_sold` AS `qty_sold`,
                         `packing_list_details`.`price`*`packing_list_details`.`qty_sold` AS `amount`
                     FROM 
@@ -522,6 +616,7 @@ Public Class frmDetailedDailySalesReport
                         `packing_list_details`.`item_code` AS `item_code`,
                         `packing_list_details`.`description` AS `description`,
                         `packing_list_details`.`price` AS `price`,
+                        `packing_list_details`.`cprice` AS `cprice`,
                         `packing_list_details`.`qty_sold` AS `qty_sold`,
                         `packing_list_details`.`price`*`packing_list_details`.`qty_sold` AS `amount`
                     FROM 
@@ -541,6 +636,7 @@ Public Class frmDetailedDailySalesReport
 
             Dim c_date As String = ""
 
+
             While reader.Read
                 Dim issueNo As String = reader.GetString("issue_no")
                 Dim itemCode As String = reader.GetString("item_code")
@@ -548,8 +644,12 @@ Public Class frmDetailedDailySalesReport
                 Dim stock As String = (New Item).getStock(itemCode)
                 Dim qty As String = reader.GetString("qty_sold")
                 Dim price As String = reader.GetString("price")
+                Dim cPrice As String = reader.GetString("cprice")
                 Dim _date As String = reader.GetString("issue_date")
                 Dim amount As String = reader.GetString("amount")
+
+                totalProfit = totalProfit + ((Val(price) - Val(cPrice)) * Val(qty))
+
                 Dim item As New Item
                 item.searchItem(itemCode)
 
@@ -674,6 +774,7 @@ Public Class frmDetailedDailySalesReport
                 txtTotalExpenditures.Text = LCurrency.displayValue(totalExpenditures.ToString)
                 txtTotalBankcash.Text = LCurrency.displayValue(totalBankCash.ToString)
                 txtDebt.Text = LCurrency.displayValue(debt.ToString)
+                txtNetProfit.Text = LCurrency.displayValue((totalProfit - totalExpenditures - totalDiscount).ToString)
 
             Catch ex As Exception
                 ex.ToString()
@@ -882,11 +983,21 @@ Public Class frmDetailedDailySalesReport
         Dim r As Integer = 1
 
         ' Add table headers going cell by cell.
+        shXL.Cells(r, 1).Value = "Detailed Daily Sales Report"
+
+        ' Format A1:D1 as bold, vertical alignment = center.
+        With shXL.Range("A" + r.ToString, "B" + r.ToString)
+            .Font.Bold = True
+            .VerticalAlignment = Excel.XlVAlign.xlVAlignCenter
+        End With
+        r = r + 1
+
+        ' Add table headers going cell by cell.
         shXL.Cells(r, 1).Value = "From: " + dateStart.Text
         shXL.Cells(r, 2).Value = "To: " + dateEnd.Text
 
         ' Format A1:D1 as bold, vertical alignment = center.
-        With shXL.Range("A1", "B1")
+        With shXL.Range("A" + r.ToString, "B" + r.ToString)
             .Font.Bold = True
             .VerticalAlignment = Excel.XlVAlign.xlVAlignCenter
         End With
@@ -896,7 +1007,7 @@ Public Class frmDetailedDailySalesReport
 
 
         ' Format A1:D1 as bold, vertical alignment = center.
-        With shXL.Range("A1")
+        With shXL.Range("A" + r.ToString)
             .Font.Bold = True
             .VerticalAlignment = Excel.XlVAlign.xlVAlignCenter
         End With
@@ -910,7 +1021,7 @@ Public Class frmDetailedDailySalesReport
         shXL.Cells(r, 6).Value = "Amount"
         shXL.Cells(r, 7).Value = "Reference"
         ' Format A1:D1 as bold, vertical alignment = center.
-        With shXL.Range("A4", "G4")
+        With shXL.Range("A" + r.ToString, "G" + r.ToString)
             .Font.Bold = True
             .VerticalAlignment = Excel.XlVAlign.xlVAlignCenter
         End With
@@ -969,11 +1080,15 @@ Public Class frmDetailedDailySalesReport
 
         If System.IO.File.Exists(strFileName) Then
             Try
-                System.IO.File.Delete(strFileName)
+                'System.IO.File.Delete(strFileName)
             Catch ex As Exception
             End Try
         End If
-        wbXl.SaveAs(strFileName)
+        Try
+            wbXl.Save()
+        Catch ex As Exception
+
+        End Try
         'appXL.Workbooks.Open(strFileName)
         Exit Sub
 Err_Handler:
@@ -983,5 +1098,10 @@ Err_Handler:
 
     Private Sub cmbDescription_KeyUp(sender As Object, e As KeyEventArgs) Handles cmbDescription.KeyUp
 
+    End Sub
+
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+
+        updateCostPrices()  'remove this function later, this function / subroutine is for updating the costprices in every packing list
     End Sub
 End Class

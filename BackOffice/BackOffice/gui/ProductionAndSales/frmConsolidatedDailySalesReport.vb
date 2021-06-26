@@ -418,6 +418,7 @@ Public Class frmConsolidatedDailySalesReport
         Dim totalExpenditures As Double = 0
         Dim totalCashDeposit As Double = 0
         Dim totalDebt As Double = 0
+        Dim costOfGoods As Double = 0
 
         Try
             Dim conn As New MySqlConnection(Database.conString)
@@ -432,7 +433,8 @@ Public Class frmConsolidatedDailySalesReport
                         SUM(`amount_issued`-(`total_returns`+`total_damages`+`total_discounts`)) AS `net_sales`,
                         SUM(`total_expenditures`) AS `expenditures`,
                         SUM(`total_bank_cash`) AS `bank_cash`,
-                        SUM(`debt`) AS `debt`
+                        SUM(`debt`) AS `debt`,
+                        SUM(`cost_of_goods`) AS `cost_of_goods`
                     FROM
                         `packing_list`
                     WHERE
@@ -453,7 +455,8 @@ Public Class frmConsolidatedDailySalesReport
                         SUM(`amount_issued`-(`total_returns`+`total_damages`+`total_discounts`)) AS `net_sales`,
                         SUM(`total_expenditures`) AS `expenditures`,
                         SUM(`total_bank_cash`) AS `bank_cash`,
-                        SUM(`debt`) AS `debt`
+                        SUM(`debt`) AS `debt`,
+                        SUM(`cost_of_goods`) AS `cost_of_goods`
                     FROM
                         `packing_list`
                     WHERE
@@ -483,6 +486,7 @@ Public Class frmConsolidatedDailySalesReport
                 totalExpenditures = totalExpenditures + Val(reader.GetString("expenditures"))
                 totalCashDeposit = totalCashDeposit + Val(reader.GetString("bank_cash"))
                 totalDebt = totalDebt + Val(reader.GetString("debt"))
+                costOfGoods = costOfGoods + Val(reader.GetString("cost_of_goods"))
 
                 Dim dtgrdRow As New DataGridViewRow
                 Dim dtgrdCell As DataGridViewCell
@@ -513,6 +517,7 @@ Public Class frmConsolidatedDailySalesReport
             txtTotalExpenditures.Text = LCurrency.displayValue(totalExpenditures.ToString)
             txtTotalBankcash.Text = LCurrency.displayValue(totalCashDeposit.ToString)
             txtDebt.Text = LCurrency.displayValue(totalDebt.ToString)
+            txtNetProfit.Text = LCurrency.displayValue((totalSales - costOfGoods - totalDiscounts - totalExpenditures).ToString)
         Catch ex As Exception
             MsgBox(ex.Message)
         End Try
@@ -627,12 +632,21 @@ Public Class frmConsolidatedDailySalesReport
 
         Dim r As Integer = 1
 
+        shXL.Cells(r, 1).Value = "Consolidated Daily Sales Report"
+
+        ' Format A1:D1 as bold, vertical alignment = center.
+        With shXL.Range("A" + r.ToString, "B" + r.ToString)
+            .Font.Bold = True
+            .VerticalAlignment = Excel.XlVAlign.xlVAlignCenter
+        End With
+        r = r + 1
+
         ' Add table headers going cell by cell.
         shXL.Cells(r, 1).Value = "From: " + dateStart.Text
         shXL.Cells(r, 2).Value = "To: " + dateEnd.Text
 
         ' Format A1:D1 as bold, vertical alignment = center.
-        With shXL.Range("A1", "B1")
+        With shXL.Range("A" + r.ToString, "B" + r.ToString)
             .Font.Bold = True
             .VerticalAlignment = Excel.XlVAlign.xlVAlignCenter
         End With
@@ -647,7 +661,7 @@ Public Class frmConsolidatedDailySalesReport
 
 
         ' Format A1:D1 as bold, vertical alignment = center.
-        With shXL.Range("A1")
+        With shXL.Range("A" + r.ToString)
             .Font.Bold = True
             .VerticalAlignment = Excel.XlVAlign.xlVAlignCenter
         End With
@@ -659,7 +673,7 @@ Public Class frmConsolidatedDailySalesReport
         shXL.Cells(r, 4).Value = "Net Sales"
 
         ' Format A1:D1 as bold, vertical alignment = center.
-        With shXL.Range("A4", "D4")
+        With shXL.Range("A" + r.ToString, "D" + r.ToString)
             .Font.Bold = True
             .VerticalAlignment = Excel.XlVAlign.xlVAlignCenter
         End With
@@ -713,14 +727,18 @@ Public Class frmConsolidatedDailySalesReport
         Catch ex As Exception
             blnFileOpen = False
         End Try
-
         If System.IO.File.Exists(strFileName) Then
             Try
-                System.IO.File.Delete(strFileName)
+                'System.IO.File.Delete(strFileName)
             Catch ex As Exception
             End Try
         End If
-        wbXl.SaveAs(strFileName)
+        Try
+            wbXl.Save()
+        Catch ex As Exception
+
+        End Try
+
         'appXL.Workbooks.Open(strFileName)
 
         ' Make sure Excel is visible and give the user control

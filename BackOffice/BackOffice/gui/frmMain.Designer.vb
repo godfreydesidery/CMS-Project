@@ -104,7 +104,10 @@ Partial Class frmMain
         Me.ToolStripMenuItem15 = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripMenuItem16 = New System.Windows.Forms.ToolStripMenuItem()
         Me.CustomProductionToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ToolStripButton5 = New System.Windows.Forms.ToolStripButton()
+        Me.StockConversionToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripDropDownButton8 = New System.Windows.Forms.ToolStripDropDownButton()
+        Me.ToolStripMenuItem23 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripMenuItem24 = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripDropDownButton1 = New System.Windows.Forms.ToolStripDropDownButton()
         Me.PrintPriceLabelsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripDropDownButton7 = New System.Windows.Forms.ToolStripDropDownButton()
@@ -116,7 +119,10 @@ Partial Class frmMain
         Me.ToolStripMenuItem22 = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripButton1 = New System.Windows.Forms.ToolStripButton()
         Me.pctLogo = New System.Windows.Forms.PictureBox()
-        Me.StockConversionToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.dtCustomDate = New System.Windows.Forms.DateTimePicker()
+        Me.btnUpdate = New System.Windows.Forms.Button()
+        Me.lblCustomDate = New System.Windows.Forms.Label()
+        Me.lblCustDate = New System.Windows.Forms.Label()
         Me.MenuStrip.SuspendLayout()
         Me.StatusStrip.SuspendLayout()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -212,7 +218,7 @@ Partial Class frmMain
         '
         Me.ToolStrip1.BackColor = System.Drawing.Color.Silver
         Me.ToolStrip1.ImageScalingSize = New System.Drawing.Size(20, 20)
-        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripDropDownButton3, Me.ToolStripDropDownButton4, Me.ToolStripDropDownButton2, Me.ToolStripDropDownButton5, Me.ToolStripDropDownButton6, Me.ToolStripButton5, Me.ToolStripDropDownButton1, Me.ToolStripDropDownButton7})
+        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripDropDownButton3, Me.ToolStripDropDownButton4, Me.ToolStripDropDownButton2, Me.ToolStripDropDownButton5, Me.ToolStripDropDownButton6, Me.ToolStripDropDownButton8, Me.ToolStripDropDownButton1, Me.ToolStripDropDownButton7})
         Me.ToolStrip1.Location = New System.Drawing.Point(0, 28)
         Me.ToolStrip1.Name = "ToolStrip1"
         Me.ToolStrip1.Size = New System.Drawing.Size(1780, 31)
@@ -600,7 +606,7 @@ Partial Class frmMain
         Me.ToolStripMenuItem11.Font = New System.Drawing.Font("Candara", 12.0!)
         Me.ToolStripMenuItem11.ForeColor = System.Drawing.SystemColors.InfoText
         Me.ToolStripMenuItem11.Name = "ToolStripMenuItem11"
-        Me.ToolStripMenuItem11.Size = New System.Drawing.Size(249, 28)
+        Me.ToolStripMenuItem11.Size = New System.Drawing.Size(302, 28)
         Me.ToolStripMenuItem11.Text = "Sales Persons"
         '
         'ToolStripMenuItem12
@@ -608,7 +614,7 @@ Partial Class frmMain
         Me.ToolStripMenuItem12.Font = New System.Drawing.Font("Candara", 12.0!)
         Me.ToolStripMenuItem12.ForeColor = System.Drawing.SystemColors.InfoText
         Me.ToolStripMenuItem12.Name = "ToolStripMenuItem12"
-        Me.ToolStripMenuItem12.Size = New System.Drawing.Size(249, 28)
+        Me.ToolStripMenuItem12.Size = New System.Drawing.Size(302, 28)
         Me.ToolStripMenuItem12.Text = "Packing List"
         '
         'ToolStripMenuItem13
@@ -617,7 +623,7 @@ Partial Class frmMain
         Me.ToolStripMenuItem13.Font = New System.Drawing.Font("Candara", 12.0!)
         Me.ToolStripMenuItem13.ForeColor = System.Drawing.Color.Maroon
         Me.ToolStripMenuItem13.Name = "ToolStripMenuItem13"
-        Me.ToolStripMenuItem13.Size = New System.Drawing.Size(249, 28)
+        Me.ToolStripMenuItem13.Size = New System.Drawing.Size(302, 28)
         Me.ToolStripMenuItem13.Text = "Report Center"
         '
         'DetailedDailySalesReportToolStripMenuItem
@@ -702,7 +708,7 @@ Partial Class frmMain
         Me.ToolStripMenuItem14.Font = New System.Drawing.Font("Candara", 12.0!)
         Me.ToolStripMenuItem14.ForeColor = System.Drawing.SystemColors.InfoText
         Me.ToolStripMenuItem14.Name = "ToolStripMenuItem14"
-        Me.ToolStripMenuItem14.Size = New System.Drawing.Size(249, 28)
+        Me.ToolStripMenuItem14.Size = New System.Drawing.Size(302, 28)
         Me.ToolStripMenuItem14.Text = "Customer Claims"
         '
         'ToolStripMenuItem15
@@ -710,7 +716,7 @@ Partial Class frmMain
         Me.ToolStripMenuItem15.Font = New System.Drawing.Font("Candara", 12.0!)
         Me.ToolStripMenuItem15.ForeColor = System.Drawing.SystemColors.InfoText
         Me.ToolStripMenuItem15.Name = "ToolStripMenuItem15"
-        Me.ToolStripMenuItem15.Size = New System.Drawing.Size(249, 28)
+        Me.ToolStripMenuItem15.Size = New System.Drawing.Size(302, 28)
         Me.ToolStripMenuItem15.Text = "Material Categories"
         '
         'ToolStripMenuItem16
@@ -718,7 +724,7 @@ Partial Class frmMain
         Me.ToolStripMenuItem16.Font = New System.Drawing.Font("Candara", 12.0!)
         Me.ToolStripMenuItem16.ForeColor = System.Drawing.SystemColors.InfoText
         Me.ToolStripMenuItem16.Name = "ToolStripMenuItem16"
-        Me.ToolStripMenuItem16.Size = New System.Drawing.Size(249, 28)
+        Me.ToolStripMenuItem16.Size = New System.Drawing.Size(302, 28)
         Me.ToolStripMenuItem16.Text = "Materials"
         '
         'CustomProductionToolStripMenuItem
@@ -726,18 +732,43 @@ Partial Class frmMain
         Me.CustomProductionToolStripMenuItem.Font = New System.Drawing.Font("Candara", 12.0!)
         Me.CustomProductionToolStripMenuItem.ForeColor = System.Drawing.SystemColors.InfoText
         Me.CustomProductionToolStripMenuItem.Name = "CustomProductionToolStripMenuItem"
-        Me.CustomProductionToolStripMenuItem.Size = New System.Drawing.Size(249, 28)
+        Me.CustomProductionToolStripMenuItem.Size = New System.Drawing.Size(302, 28)
         Me.CustomProductionToolStripMenuItem.Text = "Custom Production"
         '
-        'ToolStripButton5
+        'StockConversionToolStripMenuItem
         '
-        Me.ToolStripButton5.Font = New System.Drawing.Font("Constantia", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ToolStripButton5.ForeColor = System.Drawing.Color.MidnightBlue
-        Me.ToolStripButton5.Image = CType(resources.GetObject("ToolStripButton5.Image"), System.Drawing.Image)
-        Me.ToolStripButton5.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.ToolStripButton5.Name = "ToolStripButton5"
-        Me.ToolStripButton5.Size = New System.Drawing.Size(131, 28)
-        Me.ToolStripButton5.Text = "&End of Day"
+        Me.StockConversionToolStripMenuItem.Font = New System.Drawing.Font("Candara", 12.0!)
+        Me.StockConversionToolStripMenuItem.Name = "StockConversionToolStripMenuItem"
+        Me.StockConversionToolStripMenuItem.Size = New System.Drawing.Size(302, 28)
+        Me.StockConversionToolStripMenuItem.Text = "Product Stock Conversion"
+        '
+        'ToolStripDropDownButton8
+        '
+        Me.ToolStripDropDownButton8.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripMenuItem23, Me.ToolStripMenuItem24})
+        Me.ToolStripDropDownButton8.Font = New System.Drawing.Font("Constantia", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ToolStripDropDownButton8.ForeColor = System.Drawing.Color.MidnightBlue
+        Me.ToolStripDropDownButton8.Image = CType(resources.GetObject("ToolStripDropDownButton8.Image"), System.Drawing.Image)
+        Me.ToolStripDropDownButton8.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.ToolStripDropDownButton8.Name = "ToolStripDropDownButton8"
+        Me.ToolStripDropDownButton8.Size = New System.Drawing.Size(183, 28)
+        Me.ToolStripDropDownButton8.Text = "&Day Operations"
+        '
+        'ToolStripMenuItem23
+        '
+        Me.ToolStripMenuItem23.Font = New System.Drawing.Font("Candara", 12.0!)
+        Me.ToolStripMenuItem23.ForeColor = System.Drawing.SystemColors.InfoText
+        Me.ToolStripMenuItem23.Name = "ToolStripMenuItem23"
+        Me.ToolStripMenuItem23.Size = New System.Drawing.Size(194, 28)
+        Me.ToolStripMenuItem23.Text = "End Day"
+        '
+        'ToolStripMenuItem24
+        '
+        Me.ToolStripMenuItem24.Font = New System.Drawing.Font("Candara", 12.0!)
+        Me.ToolStripMenuItem24.ForeColor = System.Drawing.SystemColors.InfoText
+        Me.ToolStripMenuItem24.Name = "ToolStripMenuItem24"
+        Me.ToolStripMenuItem24.Size = New System.Drawing.Size(194, 28)
+        Me.ToolStripMenuItem24.Text = "Custom Date"
+        Me.ToolStripMenuItem24.ToolTipText = resources.GetString("ToolStripMenuItem24.ToolTipText")
         '
         'ToolStripDropDownButton1
         '
@@ -834,19 +865,59 @@ Partial Class frmMain
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.pctLogo.BackColor = System.Drawing.Color.Silver
         Me.pctLogo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
-        Me.pctLogo.Location = New System.Drawing.Point(770, 76)
+        Me.pctLogo.Location = New System.Drawing.Point(809, 174)
         Me.pctLogo.Name = "pctLogo"
-        Me.pctLogo.Size = New System.Drawing.Size(245, 215)
+        Me.pctLogo.Size = New System.Drawing.Size(175, 161)
         Me.pctLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
         Me.pctLogo.TabIndex = 16
         Me.pctLogo.TabStop = False
         '
-        'StockConversionToolStripMenuItem
+        'dtCustomDate
         '
-        Me.StockConversionToolStripMenuItem.Font = New System.Drawing.Font("Candara", 12.0!)
-        Me.StockConversionToolStripMenuItem.Name = "StockConversionToolStripMenuItem"
-        Me.StockConversionToolStripMenuItem.Size = New System.Drawing.Size(302, 28)
-        Me.StockConversionToolStripMenuItem.Text = "Product Stock Conversion"
+        Me.dtCustomDate.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.dtCustomDate.Location = New System.Drawing.Point(752, 89)
+        Me.dtCustomDate.Name = "dtCustomDate"
+        Me.dtCustomDate.Size = New System.Drawing.Size(278, 22)
+        Me.dtCustomDate.TabIndex = 18
+        Me.dtCustomDate.Visible = False
+        '
+        'btnUpdate
+        '
+        Me.btnUpdate.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnUpdate.FlatStyle = System.Windows.Forms.FlatStyle.System
+        Me.btnUpdate.Location = New System.Drawing.Point(752, 117)
+        Me.btnUpdate.Name = "btnUpdate"
+        Me.btnUpdate.Size = New System.Drawing.Size(278, 51)
+        Me.btnUpdate.TabIndex = 19
+        Me.btnUpdate.Text = "Update"
+        Me.btnUpdate.UseVisualStyleBackColor = True
+        Me.btnUpdate.Visible = False
+        '
+        'lblCustomDate
+        '
+        Me.lblCustomDate.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.lblCustomDate.AutoSize = True
+        Me.lblCustomDate.Font = New System.Drawing.Font("Microsoft Sans Serif", 13.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblCustomDate.Location = New System.Drawing.Point(12, 174)
+        Me.lblCustomDate.Name = "lblCustomDate"
+        Me.lblCustomDate.Size = New System.Drawing.Size(92, 29)
+        Me.lblCustomDate.TabIndex = 20
+        Me.lblCustomDate.Text = "Label1"
+        Me.lblCustomDate.Visible = False
+        '
+        'lblCustDate
+        '
+        Me.lblCustDate.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.lblCustDate.AutoSize = True
+        Me.lblCustDate.Location = New System.Drawing.Point(749, 69)
+        Me.lblCustDate.Name = "lblCustDate"
+        Me.lblCustDate.Size = New System.Drawing.Size(89, 17)
+        Me.lblCustDate.TabIndex = 21
+        Me.lblCustDate.Text = "Custom Date"
+        Me.lblCustDate.Visible = False
         '
         'frmMain
         '
@@ -854,6 +925,10 @@ Partial Class frmMain
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.DarkGray
         Me.ClientSize = New System.Drawing.Size(1780, 609)
+        Me.Controls.Add(Me.lblCustDate)
+        Me.Controls.Add(Me.lblCustomDate)
+        Me.Controls.Add(Me.btnUpdate)
+        Me.Controls.Add(Me.dtCustomDate)
         Me.Controls.Add(Me.pctLogo)
         Me.Controls.Add(Me.ToolStrip1)
         Me.Controls.Add(Me.PictureBox2)
@@ -892,7 +967,6 @@ Partial Class frmMain
     Friend WithEvents ToolStripDropDownButton2 As System.Windows.Forms.ToolStripDropDownButton
     Friend WithEvents BackOfficeReportsToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents FrontOfficeReportsToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents ToolStripButton5 As System.Windows.Forms.ToolStripButton
     Friend WithEvents ToolStripStatusLabel1 As System.Windows.Forms.ToolStripStatusLabel
     Friend WithEvents tstrpAlias As System.Windows.Forms.ToolStripStatusLabel
     Friend WithEvents tsrpDateTime As System.Windows.Forms.ToolStripStatusLabel
@@ -971,4 +1045,11 @@ Partial Class frmMain
     Friend WithEvents ToolStripMenuItem22 As ToolStripMenuItem
     Friend WithEvents pctLogo As PictureBox
     Friend WithEvents StockConversionToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents dtCustomDate As DateTimePicker
+    Friend WithEvents btnUpdate As Button
+    Friend WithEvents lblCustomDate As Label
+    Friend WithEvents ToolStripDropDownButton8 As ToolStripDropDownButton
+    Friend WithEvents ToolStripMenuItem23 As ToolStripMenuItem
+    Friend WithEvents ToolStripMenuItem24 As ToolStripMenuItem
+    Friend WithEvents lblCustDate As Label
 End Class

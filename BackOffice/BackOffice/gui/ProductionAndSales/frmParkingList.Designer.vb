@@ -23,7 +23,7 @@ Partial Class frmPackingList
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.txtIssueNo = New System.Windows.Forms.TextBox()
         Me.Label2 = New System.Windows.Forms.Label()
@@ -66,18 +66,9 @@ Partial Class frmPackingList
         Me.btnArchive = New System.Windows.Forms.Button()
         Me.btnPrint = New System.Windows.Forms.Button()
         Me.dtgrdItemList = New System.Windows.Forms.DataGridView()
-        Me.Column8 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column9 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column10 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column11 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column13 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column12 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column14 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.btnBack = New System.Windows.Forms.Button()
         Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.btnChange = New System.Windows.Forms.Button()
         Me.Label24 = New System.Windows.Forms.Label()
         Me.txtReturns = New System.Windows.Forms.TextBox()
         Me.Label23 = New System.Windows.Forms.Label()
@@ -115,7 +106,21 @@ Partial Class frmPackingList
         Me.Label27 = New System.Windows.Forms.Label()
         Me.cntxtMenu = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.mnRemove = New System.Windows.Forms.ToolStripMenuItem()
-        Me.btnChange = New System.Windows.Forms.Button()
+        Me.Label28 = New System.Windows.Forms.Label()
+        Me.txtCPrice = New System.Windows.Forms.TextBox()
+        Me.Column8 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column9 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column10 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column11 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column13 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column12 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column14 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Label29 = New System.Windows.Forms.Label()
+        Me.txtCostOfGoodsSold = New System.Windows.Forms.TextBox()
         CType(Me.dtgrdPackingLists, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
         CType(Me.dtgrdItemList, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -349,6 +354,8 @@ Partial Class frmPackingList
         '
         Me.Panel1.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.Panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+        Me.Panel1.Controls.Add(Me.txtCostOfGoodsSold)
+        Me.Panel1.Controls.Add(Me.Label29)
         Me.Panel1.Controls.Add(Me.Label26)
         Me.Panel1.Controls.Add(Me.txtTotalPreviousReturns)
         Me.Panel1.Controls.Add(Me.Label25)
@@ -374,7 +381,7 @@ Partial Class frmPackingList
         Me.Panel1.Controls.Add(Me.Label8)
         Me.Panel1.Location = New System.Drawing.Point(12, 476)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(423, 306)
+        Me.Panel1.Size = New System.Drawing.Size(423, 331)
         Me.Panel1.TabIndex = 84
         '
         'Label26
@@ -522,89 +529,19 @@ Partial Class frmPackingList
         Me.dtgrdItemList.BackgroundColor = System.Drawing.SystemColors.ButtonFace
         Me.dtgrdItemList.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.dtgrdItemList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dtgrdItemList.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column8, Me.Column9, Me.Column10, Me.Column2, Me.Column3, Me.Column11, Me.Column13, Me.Column12, Me.Column14, Me.Column1})
+        Me.dtgrdItemList.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column8, Me.Column9, Me.Column10, Me.Column2, Me.Column3, Me.Column11, Me.Column13, Me.Column12, Me.Column14, Me.Column1, Me.Column4})
         Me.dtgrdItemList.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically
         Me.dtgrdItemList.Location = New System.Drawing.Point(444, 330)
         Me.dtgrdItemList.Name = "dtgrdItemList"
         Me.dtgrdItemList.ReadOnly = True
         Me.dtgrdItemList.RowTemplate.Height = 24
-        Me.dtgrdItemList.Size = New System.Drawing.Size(1054, 414)
+        Me.dtgrdItemList.Size = New System.Drawing.Size(1054, 439)
         Me.dtgrdItemList.TabIndex = 90
-        '
-        'Column8
-        '
-        Me.Column8.FillWeight = 61.77913!
-        Me.Column8.HeaderText = "Item Code"
-        Me.Column8.Name = "Column8"
-        Me.Column8.ReadOnly = True
-        '
-        'Column9
-        '
-        Me.Column9.FillWeight = 233.4812!
-        Me.Column9.HeaderText = "Description"
-        Me.Column9.Name = "Column9"
-        Me.Column9.ReadOnly = True
-        '
-        'Column10
-        '
-        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.Column10.DefaultCellStyle = DataGridViewCellStyle5
-        Me.Column10.FillWeight = 89.8288!
-        Me.Column10.HeaderText = "Price"
-        Me.Column10.Name = "Column10"
-        Me.Column10.ReadOnly = True
-        '
-        'Column2
-        '
-        Me.Column2.HeaderText = "Returns"
-        Me.Column2.Name = "Column2"
-        Me.Column2.ReadOnly = True
-        '
-        'Column3
-        '
-        Me.Column3.HeaderText = "Packed"
-        Me.Column3.Name = "Column3"
-        Me.Column3.ReadOnly = True
-        '
-        'Column11
-        '
-        Me.Column11.FillWeight = 85.86243!
-        Me.Column11.HeaderText = "Total Issued"
-        Me.Column11.Name = "Column11"
-        Me.Column11.ReadOnly = True
-        '
-        'Column13
-        '
-        Me.Column13.FillWeight = 76.53453!
-        Me.Column13.HeaderText = "Qty Sold"
-        Me.Column13.Name = "Column13"
-        Me.Column13.ReadOnly = True
-        '
-        'Column12
-        '
-        Me.Column12.FillWeight = 81.44789!
-        Me.Column12.HeaderText = "Qty Returned"
-        Me.Column12.Name = "Column12"
-        Me.Column12.ReadOnly = True
-        '
-        'Column14
-        '
-        Me.Column14.FillWeight = 71.06599!
-        Me.Column14.HeaderText = "Qty Damaged"
-        Me.Column14.Name = "Column14"
-        Me.Column14.ReadOnly = True
-        '
-        'Column1
-        '
-        Me.Column1.HeaderText = "id"
-        Me.Column1.Name = "Column1"
-        Me.Column1.ReadOnly = True
-        Me.Column1.Visible = False
         '
         'btnBack
         '
         Me.btnBack.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btnBack.Location = New System.Drawing.Point(1388, 750)
+        Me.btnBack.Location = New System.Drawing.Point(1388, 775)
         Me.btnBack.Name = "btnBack"
         Me.btnBack.Size = New System.Drawing.Size(110, 41)
         Me.btnBack.TabIndex = 92
@@ -614,6 +551,8 @@ Partial Class frmPackingList
         'Panel2
         '
         Me.Panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+        Me.Panel2.Controls.Add(Me.Label28)
+        Me.Panel2.Controls.Add(Me.txtCPrice)
         Me.Panel2.Controls.Add(Me.btnChange)
         Me.Panel2.Controls.Add(Me.Label24)
         Me.Panel2.Controls.Add(Me.txtReturns)
@@ -646,6 +585,15 @@ Partial Class frmPackingList
         Me.Panel2.Name = "Panel2"
         Me.Panel2.Size = New System.Drawing.Size(423, 319)
         Me.Panel2.TabIndex = 93
+        '
+        'btnChange
+        '
+        Me.btnChange.Location = New System.Drawing.Point(222, 120)
+        Me.btnChange.Name = "btnChange"
+        Me.btnChange.Size = New System.Drawing.Size(50, 25)
+        Me.btnChange.TabIndex = 104
+        Me.btnChange.Text = "<c>"
+        Me.btnChange.UseVisualStyleBackColor = True
         '
         'Label24
         '
@@ -684,7 +632,7 @@ Partial Class frmPackingList
         'cmbDescription
         '
         Me.cmbDescription.FormattingEnabled = True
-        Me.cmbDescription.Location = New System.Drawing.Point(7, 91)
+        Me.cmbDescription.Location = New System.Drawing.Point(3, 86)
         Me.cmbDescription.Name = "cmbDescription"
         Me.cmbDescription.Size = New System.Drawing.Size(409, 24)
         Me.cmbDescription.TabIndex = 99
@@ -806,7 +754,7 @@ Partial Class frmPackingList
         'Label13
         '
         Me.Label13.AutoSize = True
-        Me.Label13.Location = New System.Drawing.Point(4, 71)
+        Me.Label13.Location = New System.Drawing.Point(4, 66)
         Me.Label13.Name = "Label13"
         Me.Label13.Size = New System.Drawing.Size(79, 17)
         Me.Label13.TabIndex = 38
@@ -980,20 +928,124 @@ Partial Class frmPackingList
         Me.mnRemove.Size = New System.Drawing.Size(166, 24)
         Me.mnRemove.Text = "Remove Item"
         '
-        'btnChange
+        'Label28
         '
-        Me.btnChange.Location = New System.Drawing.Point(222, 120)
-        Me.btnChange.Name = "btnChange"
-        Me.btnChange.Size = New System.Drawing.Size(50, 25)
-        Me.btnChange.TabIndex = 104
-        Me.btnChange.Text = "<c>"
-        Me.btnChange.UseVisualStyleBackColor = True
+        Me.Label28.AutoSize = True
+        Me.Label28.Location = New System.Drawing.Point(263, 233)
+        Me.Label28.Name = "Label28"
+        Me.Label28.Size = New System.Drawing.Size(53, 17)
+        Me.Label28.TabIndex = 105
+        Me.Label28.Text = "C Price"
+        '
+        'txtCPrice
+        '
+        Me.txtCPrice.Location = New System.Drawing.Point(322, 233)
+        Me.txtCPrice.MaxLength = 50
+        Me.txtCPrice.Name = "txtCPrice"
+        Me.txtCPrice.ReadOnly = True
+        Me.txtCPrice.Size = New System.Drawing.Size(94, 22)
+        Me.txtCPrice.TabIndex = 106
+        '
+        'Column8
+        '
+        Me.Column8.FillWeight = 61.77913!
+        Me.Column8.HeaderText = "Item Code"
+        Me.Column8.Name = "Column8"
+        Me.Column8.ReadOnly = True
+        '
+        'Column9
+        '
+        Me.Column9.FillWeight = 233.4812!
+        Me.Column9.HeaderText = "Description"
+        Me.Column9.Name = "Column9"
+        Me.Column9.ReadOnly = True
+        '
+        'Column10
+        '
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.Column10.DefaultCellStyle = DataGridViewCellStyle3
+        Me.Column10.FillWeight = 89.8288!
+        Me.Column10.HeaderText = "Price"
+        Me.Column10.Name = "Column10"
+        Me.Column10.ReadOnly = True
+        '
+        'Column2
+        '
+        Me.Column2.HeaderText = "Returns"
+        Me.Column2.Name = "Column2"
+        Me.Column2.ReadOnly = True
+        '
+        'Column3
+        '
+        Me.Column3.HeaderText = "Packed"
+        Me.Column3.Name = "Column3"
+        Me.Column3.ReadOnly = True
+        '
+        'Column11
+        '
+        Me.Column11.FillWeight = 85.86243!
+        Me.Column11.HeaderText = "Total Issued"
+        Me.Column11.Name = "Column11"
+        Me.Column11.ReadOnly = True
+        '
+        'Column13
+        '
+        Me.Column13.FillWeight = 76.53453!
+        Me.Column13.HeaderText = "Qty Sold"
+        Me.Column13.Name = "Column13"
+        Me.Column13.ReadOnly = True
+        '
+        'Column12
+        '
+        Me.Column12.FillWeight = 81.44789!
+        Me.Column12.HeaderText = "Qty Returned"
+        Me.Column12.Name = "Column12"
+        Me.Column12.ReadOnly = True
+        '
+        'Column14
+        '
+        Me.Column14.FillWeight = 71.06599!
+        Me.Column14.HeaderText = "Qty Damaged"
+        Me.Column14.Name = "Column14"
+        Me.Column14.ReadOnly = True
+        '
+        'Column1
+        '
+        Me.Column1.HeaderText = "id"
+        Me.Column1.Name = "Column1"
+        Me.Column1.ReadOnly = True
+        Me.Column1.Visible = False
+        '
+        'Column4
+        '
+        Me.Column4.HeaderText = "CPrice"
+        Me.Column4.Name = "Column4"
+        Me.Column4.ReadOnly = True
+        Me.Column4.Visible = False
+        '
+        'Label29
+        '
+        Me.Label29.AutoSize = True
+        Me.Label29.Location = New System.Drawing.Point(4, 297)
+        Me.Label29.Name = "Label29"
+        Me.Label29.Size = New System.Drawing.Size(165, 17)
+        Me.Label29.TabIndex = 101
+        Me.Label29.Text = "Cost Value of goods sold"
+        '
+        'txtCostOfGoodsSold
+        '
+        Me.txtCostOfGoodsSold.Location = New System.Drawing.Point(175, 294)
+        Me.txtCostOfGoodsSold.Name = "txtCostOfGoodsSold"
+        Me.txtCostOfGoodsSold.ReadOnly = True
+        Me.txtCostOfGoodsSold.Size = New System.Drawing.Size(127, 22)
+        Me.txtCostOfGoodsSold.TabIndex = 102
+        Me.txtCostOfGoodsSold.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
         'frmPackingList
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1501, 794)
+        Me.ClientSize = New System.Drawing.Size(1501, 819)
         Me.Controls.Add(Me.Label27)
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.btnClear)
@@ -1103,6 +1155,16 @@ Partial Class frmPackingList
     Friend WithEvents txtReturns As TextBox
     Friend WithEvents Label23 As Label
     Friend WithEvents txtPacked As TextBox
+    Friend WithEvents Label26 As Label
+    Friend WithEvents txtTotalPreviousReturns As TextBox
+    Friend WithEvents Label25 As Label
+    Friend WithEvents txtTotalPacked As TextBox
+    Friend WithEvents Label27 As Label
+    Friend WithEvents cntxtMenu As ContextMenuStrip
+    Friend WithEvents mnRemove As ToolStripMenuItem
+    Friend WithEvents btnChange As Button
+    Friend WithEvents Label28 As Label
+    Friend WithEvents txtCPrice As TextBox
     Friend WithEvents Column8 As DataGridViewTextBoxColumn
     Friend WithEvents Column9 As DataGridViewTextBoxColumn
     Friend WithEvents Column10 As DataGridViewTextBoxColumn
@@ -1113,12 +1175,7 @@ Partial Class frmPackingList
     Friend WithEvents Column12 As DataGridViewTextBoxColumn
     Friend WithEvents Column14 As DataGridViewTextBoxColumn
     Friend WithEvents Column1 As DataGridViewTextBoxColumn
-    Friend WithEvents Label26 As Label
-    Friend WithEvents txtTotalPreviousReturns As TextBox
-    Friend WithEvents Label25 As Label
-    Friend WithEvents txtTotalPacked As TextBox
-    Friend WithEvents Label27 As Label
-    Friend WithEvents cntxtMenu As ContextMenuStrip
-    Friend WithEvents mnRemove As ToolStripMenuItem
-    Friend WithEvents btnChange As Button
+    Friend WithEvents Column4 As DataGridViewTextBoxColumn
+    Friend WithEvents txtCostOfGoodsSold As TextBox
+    Friend WithEvents Label29 As Label
 End Class

@@ -164,7 +164,7 @@ Public Class frmMain
 
     End Sub
 
-    Private Sub ToolStripButton5_Click(sender As Object, e As EventArgs) Handles ToolStripButton5.Click
+    Private Sub ToolStripButton5_Click(sender As Object, e As EventArgs)
         If User.authorize("END DAY") Then
             frmEndDay.ShowDialog()
         Else
@@ -670,5 +670,48 @@ Public Class frmMain
 
     Private Sub StockConversionToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles StockConversionToolStripMenuItem.Click
         frmItemConversion.ShowDialog()
+    End Sub
+
+    Private Sub btnUpdate_Click(sender As Object, e As EventArgs) Handles btnUpdate.Click
+        Dim _date As Date = CDate(dtCustomDate.Text)
+        Dim res As Integer = MsgBox("Set custom date to " + dtCustomDate.Text + "?", vbYesNo + vbQuestion, "Set System date to custom date")
+        If res = DialogResult.Yes Then
+            Day.DAY = _date.ToString("yyyy-MM-dd")
+            tsrpDateTime.Text = "System Date: " + Day.DAY
+            lblCustomDate.Text = "Custom date set to " + _date.ToString("yyyy-MM-dd") + " yyyy-MM-dd. Please log out after completing operations that require a custom date in order to resume to the normal system date"
+            lblCustomDate.Visible = True
+            lblCustDate.Visible = True
+            customDate = True
+        End If
+    End Sub
+
+    Private Sub ToolStripMenuItem26_Click(sender As Object, e As EventArgs)
+
+    End Sub
+
+    Private Sub ToolStripMenuItem23_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem23.Click
+        If User.authorize("END DAY") Then
+            If customDate = True Then
+                MsgBox("Could not end day, custom date enabled. Please log in afresh to be able to end day", vbOKOnly + vbExclamation, "Invalid operation")
+                Exit Sub
+            End If
+            frmEndDay.ShowDialog()
+        Else
+            MsgBox("Access denied!", vbOKOnly + vbExclamation)
+        End If
+    End Sub
+    Dim customDate As Boolean = False
+
+    Private Sub ToolStripMenuItem24_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem24.Click
+        If User.authorize("CUSTOM DATING") = False Then
+            MsgBox("You currently have no permission to change date to custom date!", vbOKOnly + vbExclamation, "Access denied")
+            Exit Sub
+        End If
+        Dim res As Integer = MsgBox("Are you sure you want to enter a custom date? Custom sets the current system date to a specified date, and all operations will be dated on custom date. Make sure you log out and log in afresh to resume the normal system date", vbYesNo + vbQuestion, "Enter custom date")
+        If res = DialogResult.Yes Then
+            dtCustomDate.Visible = True
+            btnUpdate.Visible = True
+            lblCustDate.Visible = True
+        End If
     End Sub
 End Class

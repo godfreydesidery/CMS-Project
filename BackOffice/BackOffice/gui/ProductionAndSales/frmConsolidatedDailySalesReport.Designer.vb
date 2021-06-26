@@ -22,9 +22,9 @@ Partial Class frmConsolidatedDailySalesReport
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.btnExportToExcel = New System.Windows.Forms.Button()
         Me.Label12 = New System.Windows.Forms.Label()
         Me.txtTotalIssued = New System.Windows.Forms.TextBox()
@@ -48,13 +48,15 @@ Partial Class frmConsolidatedDailySalesReport
         Me.Label2 = New System.Windows.Forms.Label()
         Me.dateEnd = New System.Windows.Forms.DateTimePicker()
         Me.dtgrdList = New System.Windows.Forms.DataGridView()
-        Me.btnGenerate = New System.Windows.Forms.Button()
-        Me.txtTotal = New System.Windows.Forms.TextBox()
-        Me.btnBack = New System.Windows.Forms.Button()
         Me.Column10 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.btnGenerate = New System.Windows.Forms.Button()
+        Me.txtTotal = New System.Windows.Forms.TextBox()
+        Me.btnBack = New System.Windows.Forms.Button()
+        Me.txtNetProfit = New System.Windows.Forms.TextBox()
+        Me.Label13 = New System.Windows.Forms.Label()
         Me.Panel1.SuspendLayout()
         CType(Me.dtgrdList, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -283,6 +285,40 @@ Partial Class frmConsolidatedDailySalesReport
         Me.dtgrdList.Size = New System.Drawing.Size(796, 563)
         Me.dtgrdList.TabIndex = 83
         '
+        'Column10
+        '
+        Me.Column10.FillWeight = 162.7851!
+        Me.Column10.HeaderText = "Date"
+        Me.Column10.Name = "Column10"
+        Me.Column10.ReadOnly = True
+        '
+        'Column1
+        '
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.Column1.DefaultCellStyle = DataGridViewCellStyle1
+        Me.Column1.FillWeight = 176.3209!
+        Me.Column1.HeaderText = "Total Sales"
+        Me.Column1.Name = "Column1"
+        Me.Column1.ReadOnly = True
+        '
+        'Column2
+        '
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.Column2.DefaultCellStyle = DataGridViewCellStyle2
+        Me.Column2.FillWeight = 81.17162!
+        Me.Column2.HeaderText = "Discount"
+        Me.Column2.Name = "Column2"
+        Me.Column2.ReadOnly = True
+        '
+        'Column3
+        '
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.Column3.DefaultCellStyle = DataGridViewCellStyle3
+        Me.Column3.FillWeight = 112.7493!
+        Me.Column3.HeaderText = "Net Sales"
+        Me.Column3.Name = "Column3"
+        Me.Column3.ReadOnly = True
+        '
         'btnGenerate
         '
         Me.btnGenerate.Location = New System.Drawing.Point(359, 83)
@@ -313,45 +349,32 @@ Partial Class frmConsolidatedDailySalesReport
         Me.btnBack.Text = "Back"
         Me.btnBack.UseVisualStyleBackColor = False
         '
-        'Column10
+        'txtNetProfit
         '
-        Me.Column10.FillWeight = 162.7851!
-        Me.Column10.HeaderText = "Date"
-        Me.Column10.Name = "Column10"
-        Me.Column10.ReadOnly = True
+        Me.txtNetProfit.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtNetProfit.Location = New System.Drawing.Point(167, 393)
+        Me.txtNetProfit.Name = "txtNetProfit"
+        Me.txtNetProfit.ReadOnly = True
+        Me.txtNetProfit.Size = New System.Drawing.Size(186, 28)
+        Me.txtNetProfit.TabIndex = 104
+        Me.txtNetProfit.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
-        'Column1
+        'Label13
         '
-        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.Column1.DefaultCellStyle = DataGridViewCellStyle4
-        Me.Column1.FillWeight = 176.3209!
-        Me.Column1.HeaderText = "Total Sales"
-        Me.Column1.Name = "Column1"
-        Me.Column1.ReadOnly = True
-        '
-        'Column2
-        '
-        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.Column2.DefaultCellStyle = DataGridViewCellStyle5
-        Me.Column2.FillWeight = 81.17162!
-        Me.Column2.HeaderText = "Discount"
-        Me.Column2.Name = "Column2"
-        Me.Column2.ReadOnly = True
-        '
-        'Column3
-        '
-        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.Column3.DefaultCellStyle = DataGridViewCellStyle6
-        Me.Column3.FillWeight = 112.7493!
-        Me.Column3.HeaderText = "Net Sales"
-        Me.Column3.Name = "Column3"
-        Me.Column3.ReadOnly = True
+        Me.Label13.AutoSize = True
+        Me.Label13.Location = New System.Drawing.Point(86, 393)
+        Me.Label13.Name = "Label13"
+        Me.Label13.Size = New System.Drawing.Size(67, 17)
+        Me.Label13.TabIndex = 103
+        Me.Label13.Text = "Net Profit"
         '
         'frmConsolidatedDailySalesReport
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1173, 741)
+        Me.Controls.Add(Me.txtNetProfit)
+        Me.Controls.Add(Me.Label13)
         Me.Controls.Add(Me.btnBack)
         Me.Controls.Add(Me.btnExportToExcel)
         Me.Controls.Add(Me.Label12)
@@ -417,4 +440,6 @@ Partial Class frmConsolidatedDailySalesReport
     Friend WithEvents Column1 As DataGridViewTextBoxColumn
     Friend WithEvents Column2 As DataGridViewTextBoxColumn
     Friend WithEvents Column3 As DataGridViewTextBoxColumn
+    Friend WithEvents txtNetProfit As TextBox
+    Friend WithEvents Label13 As Label
 End Class

@@ -433,11 +433,20 @@ Public Class frmDebtReport
         Dim r As Integer = 1
 
         ' Add table headers going cell by cell.
+        shXL.Cells(r, 1).Value = "Debt Report"
+
+        ' Format A1:D1 as bold, vertical alignment = center.
+        With shXL.Range("A" + r.ToString, "B" + r.ToString)
+            .Font.Bold = True
+            .VerticalAlignment = Excel.XlVAlign.xlVAlignCenter
+        End With
+        r = r + 1
+        ' Add table headers going cell by cell.
         shXL.Cells(r, 1).Value = "From: " + dateStart.Text
         shXL.Cells(r, 2).Value = "To: " + dateEnd.Text
 
         ' Format A1:D1 as bold, vertical alignment = center.
-        With shXL.Range("A1", "B1")
+        With shXL.Range("A" + r.ToString, "B" + r.ToString)
             .Font.Bold = True
             .VerticalAlignment = Excel.XlVAlign.xlVAlignCenter
         End With
@@ -447,7 +456,7 @@ Public Class frmDebtReport
 
 
         ' Format A1:D1 as bold, vertical alignment = center.
-        With shXL.Range("A1")
+        With shXL.Range("A" + r.ToString)
             .Font.Bold = True
             .VerticalAlignment = Excel.XlVAlign.xlVAlignCenter
         End With
@@ -457,7 +466,7 @@ Public Class frmDebtReport
         shXL.Cells(r, 2).Value = "Amount"
         shXL.Cells(r, 3).Value = "Reference"
         ' Format A1:D1 as bold, vertical alignment = center.
-        With shXL.Range("A4", "C4")
+        With shXL.Range("A" + r.ToString, "C" + r.ToString)
             .Font.Bold = True
             .VerticalAlignment = Excel.XlVAlign.xlVAlignCenter
         End With
@@ -473,11 +482,14 @@ Public Class frmDebtReport
             End With
             r = r + 1
         Next
-
-        r = r + 1
         ' Add table headers going cell by cell.
         shXL.Cells(r, 1).Value = "Total Amount"
         shXL.Cells(r, 2).Value = txtTotal.Text
+
+        With shXL.Range("A" + r.ToString, "C" + r.ToString)
+            .Font.Bold = True
+            .VerticalAlignment = Excel.XlVAlign.xlVAlignCenter
+        End With
 
         ' AutoFit columns A:D.
         raXL = shXL.Range("A1", "C1")
@@ -493,11 +505,15 @@ Public Class frmDebtReport
 
         If System.IO.File.Exists(strFileName) Then
             Try
-                System.IO.File.Delete(strFileName)
+                'System.IO.File.Delete(strFileName)
             Catch ex As Exception
             End Try
         End If
-        wbXl.SaveAs(strFileName)
+        Try
+            wbXl.Save()
+        Catch ex As Exception
+
+        End Try
         ' appXL.Workbooks.Open(strFileName)
         Exit Sub
 Err_Handler:

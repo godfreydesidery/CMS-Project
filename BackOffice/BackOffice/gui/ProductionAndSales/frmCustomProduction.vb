@@ -1355,8 +1355,8 @@ Public Class frmCustomProduction
                     Dim materialStock As Material = New Material
                     Dim materialUsage As Material = New Material
 
-                    materialStockCard.qtyOut(Day.DAY, materialsUsed.Item(i).materialCode.ToString, materialsUsed.Item(i).qty.ToString, materialStock.getStock(materialsUsed.Item(i).materialCode.ToString), "Used in production, custom production no: " + txtProductionNo.Text)
-                    materialUsage.registerUsage(Day.DAY, materialsUsed.Item(i).materialCode.ToString, materialsUsed.Item(i).price.ToString, materialsUsed.Item(i).qty.ToString, materialStock.getStock(materialsUsed.Item(i).materialCode.ToString), "Used in production, custom production no: " + txtProductionNo.Text)
+                    materialStockCard.qtyOut(Day.DAY, materialsUsed.Item(i).materialCode.ToString, materialsUsed.Item(i).qty.ToString, materialStock.getStock(materialsUsed.Item(i).materialCode.ToString), "CustPRD#: " + txtProductionNo.Text)
+                    materialUsage.registerUsage(Day.DAY, materialsUsed.Item(i).materialCode.ToString, materialsUsed.Item(i).price.ToString, materialsUsed.Item(i).qty.ToString, materialStock.getStock(materialsUsed.Item(i).materialCode.ToString), "CustPRD#: " + txtProductionNo.Text)
 
                     btnEdit.Enabled = True
                     btnSave.Enabled = False

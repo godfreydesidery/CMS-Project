@@ -178,13 +178,13 @@ Public Class frmMaterialStockStatus
         'Before you can add a row, you must define the columns
         Dim column As Tables.Column
 
-        column = table.AddColumn("1.5cm")
+        column = table.AddColumn("1.2cm")
         column.Format.Alignment = ParagraphAlignment.Left
 
         column = table.AddColumn("6cm")
         column.Format.Alignment = ParagraphAlignment.Right
 
-        column = table.AddColumn("2.0cm")
+        column = table.AddColumn("2.5cm")
         column.Format.Alignment = ParagraphAlignment.Right
 
         column = table.AddColumn("1.0cm")
@@ -196,7 +196,7 @@ Public Class frmMaterialStockStatus
         column = table.AddColumn("2cm")
         column.Format.Alignment = ParagraphAlignment.Right
 
-        column = table.AddColumn("2cm")
+        column = table.AddColumn("2.5cm")
         column.Format.Alignment = ParagraphAlignment.Right
 
 
@@ -265,6 +265,28 @@ Public Class frmMaterialStockStatus
 
             table.SetEdge(0, 0, 7, 1, Edge.Box, BorderStyle.Single, 0.75, Color.Empty)
         Next
+        row = table.AddRow()
+        row.Format.Font.Bold = True
+        row.HeadingFormat = False
+        row.Format.Font.Size = 8
+        row.Height = "5mm"
+        row.Format.Alignment = ParagraphAlignment.Center
+        row.Borders.Color = Colors.LightGray
+
+        row.Cells(0).AddParagraph("")
+        row.Cells(0).Format.Alignment = ParagraphAlignment.Left
+        row.Cells(1).AddParagraph("")
+        row.Cells(1).Format.Alignment = ParagraphAlignment.Left
+        row.Cells(2).AddParagraph("")
+        row.Cells(2).Format.Alignment = ParagraphAlignment.Left
+        row.Cells(3).AddParagraph("")
+        row.Cells(3).Format.Alignment = ParagraphAlignment.Left
+        row.Cells(4).AddParagraph("")
+        row.Cells(4).Format.Alignment = ParagraphAlignment.Left
+        row.Cells(5).AddParagraph("Total")
+        row.Cells(5).Format.Alignment = ParagraphAlignment.Left
+        row.Cells(6).AddParagraph(txtTotalAmount.Text)
+        row.Cells(6).Format.Alignment = ParagraphAlignment.Right
         table.SetEdge(0, 0, 7, 1, Edge.Box, BorderStyle.Single, 0.75, Color.Empty)
 
         paragraph = section.AddParagraph()
@@ -290,6 +312,7 @@ Public Class frmMaterialStockStatus
     End Sub
     Private Function refreshList()
         dtgrdList.Rows.Clear()
+        txtTotalAmount.Text = ""
 
         Dim totalSales As Double = 0
         Dim totalVat As Double = 0
@@ -369,41 +392,7 @@ Public Class frmMaterialStockStatus
 
                 dtgrdList.Rows.Add(dtgrdRow)
             End While
-
-            dtgrdRow = New DataGridViewRow
-
-            dtgrdCell = New DataGridViewTextBoxCell()
-            dtgrdCell.Value = ""
-            dtgrdRow.Cells.Add(dtgrdCell)
-
-            dtgrdCell = New DataGridViewTextBoxCell()
-            dtgrdCell.Value = ""
-            dtgrdRow.Cells.Add(dtgrdCell)
-
-            dtgrdCell = New DataGridViewTextBoxCell()
-            dtgrdCell.Value = ""
-            dtgrdRow.Cells.Add(dtgrdCell)
-
-            dtgrdCell = New DataGridViewTextBoxCell()
-            dtgrdCell.Value = ""
-            dtgrdRow.Cells.Add(dtgrdCell)
-
-            dtgrdCell = New DataGridViewTextBoxCell()
-            dtgrdCell.Value = ""
-            dtgrdRow.Cells.Add(dtgrdCell)
-
-            dtgrdCell = New DataGridViewTextBoxCell()
-            dtgrdCell.Value = "Total"
-            dtgrdRow.Cells.Add(dtgrdCell)
-
-            dtgrdCell = New DataGridViewTextBoxCell()
-            dtgrdCell.Value = LCurrency.displayValue(totalAmount.ToString)
-            dtgrdRow.Cells.Add(dtgrdCell)
-
-
-
-            dtgrdList.Rows.Add(dtgrdRow)
-
+            txtTotalAmount.Text = LCurrency.displayValue(totalAmount.ToString)
             conn.Close()
         Catch ex As Exception
             MsgBox(ex.Message)
@@ -447,6 +436,7 @@ Public Class frmMaterialStockStatus
 
     Private Sub frmSalesReport_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Dim material As New Material
+        txtTotalAmount.Text = ""
         longList = material.getMaterialNames()
         loadCategories()
     End Sub
@@ -527,6 +517,7 @@ Public Class frmMaterialStockStatus
     Private Sub clearFields()
         txtMaterialCode.Text = ""
         cmbMaterialName.Text = ""
+        txtTotalAmount.Text = ""
 
     End Sub
 
@@ -582,21 +573,18 @@ Public Class frmMaterialStockStatus
         shXL = wbXl.ActiveSheet
 
         Dim r As Integer = 1
-
-
+        shXL.Cells(r, 1).Value = "Material Stock Status Report"
         ' Format A1:D1 as bold, vertical alignment = center.
-        With shXL.Range("A1", "B1")
+        With shXL.Range("A" + r.ToString, "B" + r.ToString)
             .Font.Bold = True
             .VerticalAlignment = Excel.XlVAlign.xlVAlignCenter
         End With
         r = r + 1
-        ' Add table headers going cell by cell.
 
         shXL.Cells(r, 1).Value = "Category: " + cmbCategory.Text
 
-
         ' Format A1:D1 as bold, vertical alignment = center.
-        With shXL.Range("A1")
+        With shXL.Range("A" + r.ToString)
             .Font.Bold = True
             .VerticalAlignment = Excel.XlVAlign.xlVAlignCenter
         End With
@@ -611,7 +599,7 @@ Public Class frmMaterialStockStatus
         shXL.Cells(r, 7).Value = "Amount"
 
         ' Format A1:D1 as bold, vertical alignment = center.
-        With shXL.Range("A3", "G3")
+        With shXL.Range("A" + r.ToString, "G" + r.ToString)
             .Font.Bold = True
             .VerticalAlignment = Excel.XlVAlign.xlVAlignCenter
         End With
@@ -631,9 +619,26 @@ Public Class frmMaterialStockStatus
             End With
             r = r + 1
         Next
+
+        shXL.Cells(r, 6).Value = "Total"
+        shXL.Cells(r, 7).Value = txtTotalAmount.Text
+        ' Format A1:D1 as bold, vertical alignment = center.
+        With shXL.Range("A" + r.ToString, "G" + r.ToString)
+            .Font.Bold = True
+            .VerticalAlignment = Excel.XlVAlign.xlVAlignCenter
+        End With
+        r = r + 1
         shXL.Cells(r, 2).Value = "Prices listed according to current prices"
+        With shXL.Range("A" + r.ToString, "G" + r.ToString)
+            .Font.Italic = True
+            .VerticalAlignment = Excel.XlVAlign.xlVAlignCenter
+        End With
         r = r + 1
         shXL.Cells(r, 2).Value = "Negative stocks are excluded"
+        With shXL.Range("A" + r.ToString, "G" + r.ToString)
+            .Font.Italic = True
+            .VerticalAlignment = Excel.XlVAlign.xlVAlignCenter
+        End With
 
         ' AutoFit columns A:D.
         raXL = shXL.Range("A1", "G1")
@@ -649,11 +654,15 @@ Public Class frmMaterialStockStatus
 
         If System.IO.File.Exists(strFileName) Then
             Try
-                System.IO.File.Delete(strFileName)
+                'System.IO.File.Delete(strFileName)
             Catch ex As Exception
             End Try
         End If
-        wbXl.SaveAs(strFileName)
+        Try
+            wbXl.Save()
+        Catch ex As Exception
+
+        End Try
         'appXL.Workbooks.Open(strFileName)
         Exit Sub
 Err_Handler:

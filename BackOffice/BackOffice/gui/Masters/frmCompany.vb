@@ -40,6 +40,7 @@ Public Class frmCompany
         txtMobile.ReadOnly = True
         txtEmail.ReadOnly = True
         txtFax.ReadOnly = True
+        btnChangeLogo.Enabled = False
         Return vbNull
     End Function
     Private Function unlock()
@@ -59,6 +60,7 @@ Public Class frmCompany
         txtMobile.ReadOnly = False
         txtEmail.ReadOnly = False
         txtFax.ReadOnly = False
+        btnChangeLogo.Enabled = True
         Return vbNull
     End Function
     Private Function getDepartments()
@@ -768,6 +770,7 @@ Public Class frmCompany
             MsgBox("Company details saved successively", vbOKOnly + vbInformation, "Success: Save company details")
             btnSaveCompanyDetails.Enabled = False
             lock()
+            Company.loadCompanyDetails()
         Else
             MsgBox("Could not save company information. Important fields missing. Make sure the fields marked with * are filled", vbOKOnly + vbCritical, "Error: Missing information")
         End If

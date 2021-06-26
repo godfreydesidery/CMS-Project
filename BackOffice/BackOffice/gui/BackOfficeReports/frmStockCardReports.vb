@@ -251,7 +251,7 @@ Public Class frmStockCardReports
         'Before you can add a row, you must define the columns
         Dim column As Column
 
-        column = table.AddColumn("1.5cm")
+        column = table.AddColumn("2.0cm")
         column.Format.Alignment = ParagraphAlignment.Left
 
         column = table.AddColumn("1.5cm")
@@ -260,17 +260,17 @@ Public Class frmStockCardReports
         column = table.AddColumn("5.0cm")
         column.Format.Alignment = ParagraphAlignment.Left
 
-        column = table.AddColumn("1.2cm")
+        column = table.AddColumn("1.0cm")
         column.Format.Alignment = ParagraphAlignment.Left
 
-        column = table.AddColumn("1.3cm")
+        column = table.AddColumn("1.0cm")
         column.Format.Alignment = ParagraphAlignment.Left
 
         column = table.AddColumn("1.5cm")
         column.Format.Alignment = ParagraphAlignment.Left
 
 
-        column = table.AddColumn("5.0cm")
+        column = table.AddColumn("6.0cm")
         column.Format.Alignment = ParagraphAlignment.Left
 
 
@@ -284,7 +284,7 @@ Public Class frmStockCardReports
         row.HeadingFormat = True
         row.Format.Alignment = ParagraphAlignment.Center
         row.Format.Font.Bold = True
-        row.Format.Font.Size = 6
+        row.Format.Font.Size = 8
         row.Borders.Color = Colors.White
         row.Cells(0).AddParagraph("Date")
         row.Cells(0).Format.Alignment = ParagraphAlignment.Left
@@ -292,9 +292,9 @@ Public Class frmStockCardReports
         row.Cells(1).Format.Alignment = ParagraphAlignment.Left
         row.Cells(2).AddParagraph("Description")
         row.Cells(2).Format.Alignment = ParagraphAlignment.Left
-        row.Cells(3).AddParagraph("Qty In")
+        row.Cells(3).AddParagraph("In")
         row.Cells(3).Format.Alignment = ParagraphAlignment.Left
-        row.Cells(4).AddParagraph("Qty Out")
+        row.Cells(4).AddParagraph("Out")
         row.Cells(4).Format.Alignment = ParagraphAlignment.Left
         row.Cells(5).AddParagraph("Balance")
         row.Cells(5).Format.Alignment = ParagraphAlignment.Left
@@ -318,7 +318,7 @@ Public Class frmStockCardReports
 
 
             row = table.AddRow()
-            row.Format.Font.Size = 6
+            row.Format.Font.Size = 8
             row.Format.Alignment = ParagraphAlignment.Center
             row.Borders.Color = Colors.White
             row.Cells(0).AddParagraph(date_)

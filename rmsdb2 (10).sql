@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 23, 2021 at 06:04 PM
+-- Generation Time: Jun 26, 2021 at 04:35 PM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.1.26
 
@@ -741,7 +741,8 @@ CREATE TABLE `packing_list` (
   `total_bank_cash` double DEFAULT NULL,
   `debt` double DEFAULT NULL,
   `user_id` varchar(50) DEFAULT NULL,
-  `float_amount` double DEFAULT NULL
+  `float_amount` double DEFAULT NULL,
+  `cost_of_goods` double NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -941,6 +942,17 @@ CREATE TABLE `roles` (
   `role` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `roles`
+--
+
+INSERT INTO `roles` (`id`, `role`) VALUES
+(5, 'ADMIN'),
+(4, 'CASHIER'),
+(6, 'CHIEF CASHIER'),
+(3, 'MANAGER'),
+(2, 'PROCUREMENT');
+
 -- --------------------------------------------------------
 
 --
@@ -952,6 +964,41 @@ CREATE TABLE `role_priveledge` (
   `role_id` varchar(50) NOT NULL,
   `priveledge` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `role_priveledge`
+--
+
+INSERT INTO `role_priveledge` (`id`, `role_id`, `priveledge`) VALUES
+(29, '3', 'VIEW REPORTS'),
+(30, '3', 'END DAY'),
+(31, '3', 'ADMIN'),
+(32, '5', 'ADMIN'),
+(37, '3', 'DISCOUNT'),
+(38, '3', 'PETTY CASH MANAGEMENT'),
+(39, '3', 'CASH PICK UP'),
+(40, '3', 'FLOAT MANAGEMENT'),
+(41, '3', 'SPECIAL'),
+(43, '4', 'SELLING'),
+(44, '3', 'PRODUCT MANAGEMENT'),
+(46, '5', 'VOID'),
+(47, '3', 'VOID'),
+(48, '4', 'VOID'),
+(49, '6', 'VOID'),
+(50, '2', 'VOID'),
+(51, '3', 'SELLING'),
+(53, '3', 'TILL MANAGEMENT'),
+(54, '3', 'USER MANAGEMENT'),
+(55, '3', 'ACCOUNTS'),
+(56, '3', 'SUPPLIER MANAGEMENT'),
+(57, '3', 'COMPANY MANAGEMENT'),
+(58, '3', 'PRODUCT INQUIRY'),
+(60, '3', 'PROCUREMENT'),
+(61, '3', 'EDIT LPO'),
+(62, '3', 'APPROVE LPO'),
+(63, '3', 'SALE INVOICE'),
+(66, '3', 'EDIT INVENTORY'),
+(67, '3', 'CUSTOM DATING');
 
 -- --------------------------------------------------------
 
@@ -1979,13 +2026,13 @@ ALTER TABLE `return_to_supplier`
 -- AUTO_INCREMENT for table `roles`
 --
 ALTER TABLE `roles`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `role_priveledge`
 --
 ALTER TABLE `role_priveledge`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=68;
 
 --
 -- AUTO_INCREMENT for table `sale`

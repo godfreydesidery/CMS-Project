@@ -42,16 +42,18 @@ Partial Class frmProductionReport
         Me.Label2 = New System.Windows.Forms.Label()
         Me.dateEnd = New System.Windows.Forms.DateTimePicker()
         Me.dtgrdList = New System.Windows.Forms.DataGridView()
-        Me.btnBack = New System.Windows.Forms.Button()
-        Me.btnGenerate = New System.Windows.Forms.Button()
-        Me.btnPrint = New System.Windows.Forms.Button()
-        Me.Button2 = New System.Windows.Forms.Button()
         Me.Column10 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.btnBack = New System.Windows.Forms.Button()
+        Me.btnGenerate = New System.Windows.Forms.Button()
+        Me.btnPrint = New System.Windows.Forms.Button()
+        Me.Button2 = New System.Windows.Forms.Button()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.txtTotalAmount = New System.Windows.Forms.TextBox()
         Me.Panel3.SuspendLayout()
         Me.Panel1.SuspendLayout()
         CType(Me.dtgrdList, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -232,45 +234,6 @@ Partial Class frmProductionReport
         Me.dtgrdList.Size = New System.Drawing.Size(1085, 632)
         Me.dtgrdList.TabIndex = 101
         '
-        'btnBack
-        '
-        Me.btnBack.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btnBack.BackColor = System.Drawing.SystemColors.Control
-        Me.btnBack.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.btnBack.Location = New System.Drawing.Point(1326, 756)
-        Me.btnBack.Name = "btnBack"
-        Me.btnBack.Size = New System.Drawing.Size(115, 35)
-        Me.btnBack.TabIndex = 100
-        Me.btnBack.Text = "Back"
-        Me.btnBack.UseVisualStyleBackColor = False
-        '
-        'btnGenerate
-        '
-        Me.btnGenerate.Location = New System.Drawing.Point(356, 78)
-        Me.btnGenerate.Name = "btnGenerate"
-        Me.btnGenerate.Size = New System.Drawing.Size(104, 34)
-        Me.btnGenerate.TabIndex = 99
-        Me.btnGenerate.Text = "Run"
-        Me.btnGenerate.UseVisualStyleBackColor = True
-        '
-        'btnPrint
-        '
-        Me.btnPrint.Location = New System.Drawing.Point(466, 78)
-        Me.btnPrint.Name = "btnPrint"
-        Me.btnPrint.Size = New System.Drawing.Size(139, 34)
-        Me.btnPrint.TabIndex = 106
-        Me.btnPrint.Text = "Export to PDF"
-        Me.btnPrint.UseVisualStyleBackColor = True
-        '
-        'Button2
-        '
-        Me.Button2.Location = New System.Drawing.Point(611, 78)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(139, 34)
-        Me.Button2.TabIndex = 107
-        Me.Button2.Text = "Export to Excel"
-        Me.Button2.UseVisualStyleBackColor = True
-        '
         'Column10
         '
         Me.Column10.HeaderText = "Date"
@@ -324,11 +287,71 @@ Partial Class frmProductionReport
         Me.Column7.ReadOnly = True
         Me.Column7.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
         '
+        'btnBack
+        '
+        Me.btnBack.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnBack.BackColor = System.Drawing.SystemColors.Control
+        Me.btnBack.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.btnBack.Location = New System.Drawing.Point(1326, 756)
+        Me.btnBack.Name = "btnBack"
+        Me.btnBack.Size = New System.Drawing.Size(115, 35)
+        Me.btnBack.TabIndex = 100
+        Me.btnBack.Text = "Back"
+        Me.btnBack.UseVisualStyleBackColor = False
+        '
+        'btnGenerate
+        '
+        Me.btnGenerate.Location = New System.Drawing.Point(356, 78)
+        Me.btnGenerate.Name = "btnGenerate"
+        Me.btnGenerate.Size = New System.Drawing.Size(104, 34)
+        Me.btnGenerate.TabIndex = 99
+        Me.btnGenerate.Text = "Run"
+        Me.btnGenerate.UseVisualStyleBackColor = True
+        '
+        'btnPrint
+        '
+        Me.btnPrint.Location = New System.Drawing.Point(466, 78)
+        Me.btnPrint.Name = "btnPrint"
+        Me.btnPrint.Size = New System.Drawing.Size(139, 34)
+        Me.btnPrint.TabIndex = 106
+        Me.btnPrint.Text = "Export to PDF"
+        Me.btnPrint.UseVisualStyleBackColor = True
+        '
+        'Button2
+        '
+        Me.Button2.Location = New System.Drawing.Point(611, 78)
+        Me.Button2.Name = "Button2"
+        Me.Button2.Size = New System.Drawing.Size(139, 34)
+        Me.Button2.TabIndex = 107
+        Me.Button2.Text = "Export to Excel"
+        Me.Button2.UseVisualStyleBackColor = True
+        '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Location = New System.Drawing.Point(58, 405)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(92, 17)
+        Me.Label3.TabIndex = 109
+        Me.Label3.Text = "Total Amount"
+        '
+        'txtTotalAmount
+        '
+        Me.txtTotalAmount.Location = New System.Drawing.Point(156, 400)
+        Me.txtTotalAmount.MaxLength = 50
+        Me.txtTotalAmount.Name = "txtTotalAmount"
+        Me.txtTotalAmount.ReadOnly = True
+        Me.txtTotalAmount.Size = New System.Drawing.Size(194, 22)
+        Me.txtTotalAmount.TabIndex = 108
+        Me.txtTotalAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        '
         'frmProductionReport
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1453, 804)
+        Me.Controls.Add(Me.Label3)
+        Me.Controls.Add(Me.txtTotalAmount)
         Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.btnPrint)
         Me.Controls.Add(Me.Panel3)
@@ -346,6 +369,7 @@ Partial Class frmProductionReport
         Me.Panel1.PerformLayout()
         CType(Me.dtgrdList, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
+        Me.PerformLayout()
 
     End Sub
     Friend WithEvents Panel3 As Panel
@@ -375,4 +399,6 @@ Partial Class frmProductionReport
     Friend WithEvents Column3 As DataGridViewTextBoxColumn
     Friend WithEvents Column4 As DataGridViewTextBoxColumn
     Friend WithEvents Column7 As DataGridViewTextBoxColumn
+    Friend WithEvents Label3 As Label
+    Friend WithEvents txtTotalAmount As TextBox
 End Class

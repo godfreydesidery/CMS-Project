@@ -501,11 +501,21 @@ Public Class frmDebtPayment
         Dim r As Integer = 1
 
         ' Add table headers going cell by cell.
+        shXL.Cells(r, 1).Value = "Debt Payment History Report"
+
+        ' Format A1:D1 as bold, vertical alignment = center.
+        With shXL.Range("A" + r.ToString, "B" + r.ToString)
+            .Font.Bold = True
+            .VerticalAlignment = Excel.XlVAlign.xlVAlignCenter
+        End With
+        r = r + 1
+
+        ' Add table headers going cell by cell.
         shXL.Cells(r, 1).Value = "From: " + dateStart.Text
         shXL.Cells(r, 2).Value = "To: " + dateEnd.Text
 
         ' Format A1:D1 as bold, vertical alignment = center.
-        With shXL.Range("A1", "B1")
+        With shXL.Range("A" + r.ToString, "B" + r.ToString)
             .Font.Bold = True
             .VerticalAlignment = Excel.XlVAlign.xlVAlignCenter
         End With
@@ -533,7 +543,7 @@ Public Class frmDebtPayment
         shXL.Cells(r, 5).Value = "Amount Paid"
         shXL.Cells(r, 6).Value = "Balance"
         ' Format A1:D1 as bold, vertical alignment = center.
-        With shXL.Range("A4", "F4")
+        With shXL.Range("A" + r.ToString, "F" + r.ToString)
             .Font.Bold = True
             .VerticalAlignment = Excel.XlVAlign.xlVAlignCenter
         End With
@@ -552,15 +562,16 @@ Public Class frmDebtPayment
             End With
             r = r + 1
         Next
-
-        r = r + 1
         ' Add table headers going cell by cell.
-        shXL.Cells(r, 1).Value = "Total Paid"
-        shXL.Cells(r, 2).Value = txtTotalPaid.Text
+        shXL.Cells(r, 4).Value = "Total Paid"
+        shXL.Cells(r, 5).Value = txtTotalPaid.Text
 
+        With shXL.Range("A" + r.ToString, "F" + r.ToString)
+            .Font.Bold = True
+        End With
 
         ' AutoFit columns A:D.
-        raXL = shXL.Range("A1", "E1")
+        raXL = shXL.Range("A1", "F1")
         raXL.EntireColumn.AutoFit()
         Dim strFileName As String = LSystem.saveToDesktop & "\Debt Payment History Report " & dateStart.Text & dateEnd.Text & cmbSalesPersons.Text & ".xls"
         Dim blnFileOpen As Boolean = False
@@ -573,11 +584,15 @@ Public Class frmDebtPayment
 
         If System.IO.File.Exists(strFileName) Then
             Try
-                System.IO.File.Delete(strFileName)
+                'System.IO.File.Delete(strFileName)
             Catch ex As Exception
             End Try
         End If
-        wbXl.SaveAs(strFileName)
+        Try
+            wbXl.Save()
+        Catch ex As Exception
+
+        End Try
         'appXL.Workbooks.Open(strFileName)
         Exit Sub
 Err_Handler:

@@ -264,6 +264,7 @@ Public Class frmPackingList
                 Dim qtysold As String = dtgrdItemList.Item(6, i).Value.ToString
                 Dim qtyReturned As String = dtgrdItemList.Item(7, i).Value.ToString
                 Dim qtyDamaged As String = dtgrdItemList.Item(8, i).Value.ToString
+                Dim cPrice As String = LCurrency.displayValue(dtgrdItemList.Item(10, i).Value.ToString)
 
                 skip = skip + 1
 
@@ -662,6 +663,7 @@ Public Class frmPackingList
             txtTotalExpenditures.Text = LCurrency.displayValue(list.GL_TOTAL_EXPENDITURES.ToString)
             txtTotalBankCash.Text = LCurrency.displayValue(list.GL_TOTAL_BANK_CASH.ToString)
             txtDebt.Text = LCurrency.displayValue(list.GL_DEBT.ToString)
+            txtCostOfGoodsSold.Text = LCurrency.displayValue(list.GL_COST_OF_GOODS_SOLD.ToString)
 
             'txtTotalSales.Text = LCurrency.displayValue((LCurrency.getValue(txtTotalAmountIssued.Text)).ToString)
 
@@ -690,6 +692,7 @@ Public Class frmPackingList
                 txtTotalExpenditures.Text = LCurrency.displayValue(list.GL_TOTAL_EXPENDITURES.ToString)
                 txtTotalBankCash.Text = LCurrency.displayValue(list.GL_TOTAL_BANK_CASH.ToString)
                 txtDebt.Text = LCurrency.displayValue(list.GL_DEBT.ToString)
+                txtCostOfGoodsSold.Text = LCurrency.displayValue(list.GL_COST_OF_GOODS_SOLD.ToString)
 
                 'txtTotalSales.Text = LCurrency.displayValue((LCurrency.getValue(txtTotalAmountIssued.Text)).ToString)
 
@@ -861,6 +864,7 @@ Public Class frmPackingList
         txtQtyReturned.Text = ""
         txtQtyDamaged.Text = ""
         txtQtySold.Text = ""
+        txtCPrice.Text = ""
 
         txtTotalAmountIssued.Text = ""
         txtTotalSales.Text = ""
@@ -870,6 +874,7 @@ Public Class frmPackingList
         txtTotalDamages.Text = ""
         txtTotalBankCash.Text = ""
         txtDebt.Text = ""
+        txtCostOfGoodsSold.Text = ""
 
 
 
@@ -929,7 +934,7 @@ Public Class frmPackingList
     End Sub
 
 
-    Private Function savePackingListDetail(issueNo As String, itemCode As String, price As Double, returns As Double, packed As Double, qtyIssued As Double, qtyReturned As Double, qtySold As Double, qtyDamaged As Double) As Boolean
+    Private Function savePackingListDetail(issueNo As String, itemCode As String, price As Double, returns As Double, packed As Double, qtyIssued As Double, qtyReturned As Double, qtySold As Double, qtyDamaged As Double, cPrice As Double) As Boolean
         Dim success As Boolean = False
         Try
             Dim list As New PackingList
@@ -942,6 +947,7 @@ Public Class frmPackingList
             list.GL_QTY_RETURNED = qtyReturned
             list.GL_QTY_SOLD = qtySold
             list.GL_QTY_DAMAGED = qtyDamaged
+            list.GL_C_PRICE = cPrice
 
 
             list.addPackingListDetails()
@@ -959,7 +965,7 @@ Public Class frmPackingList
             Dim conn As New MySqlConnection(Database.conString)
             Dim command As New MySqlCommand()
             'create bar code
-            Dim codeQuery As String = "SELECT `id`, `packing_list_id`,`issue_no`, `item_code`,`description`,`price`,`returns`, `packed`, `qty_issued`,`qty_returned`,`qty_sold`,`qty_damaged` FROM `packing_list_details` WHERE `issue_no`='" + txtIssueNo.Text + "' "
+            Dim codeQuery As String = "SELECT `id`, `packing_list_id`,`issue_no`, `item_code`,`description`,`price`,`returns`, `packed`, `qty_issued`,`qty_returned`,`qty_sold`,`qty_damaged`,`cprice` FROM `packing_list_details` WHERE `issue_no`='" + txtIssueNo.Text + "' "
             conn.Open()
             command.CommandText = codeQuery
             command.Connection = conn
@@ -976,7 +982,7 @@ Public Class frmPackingList
             Dim qtyReturned As Double = vbNull
             Dim qtySold As Double = vbNull
             Dim qtyDamaged As Double = vbNull
-            Dim totalCost As Double = 0
+            Dim cPrice As Double = 0
 
             Dim totalPreviousReturns As Double = 0
             Dim totalPacked As Double = 0
@@ -985,6 +991,7 @@ Public Class frmPackingList
             Dim totalreturned As Double = 0
             Dim totalsold As Double = 0
             Dim totalDamaged As Double = 0
+            Dim totalCost As Double = 0
 
 
             While reader.Read
@@ -999,7 +1006,7 @@ Public Class frmPackingList
                 qtyReturned = Val(reader.GetString("qty_returned"))
                 qtySold = Val(reader.GetString("qty_sold"))
                 qtyDamaged = Val(reader.GetString("qty_damaged"))
-
+                cPrice = Val(reader.GetString("cprice"))
 
                 totalPreviousReturns = totalPreviousReturns + (returns * price)
                 totalPacked = totalPacked + (packed * price)
@@ -1008,6 +1015,7 @@ Public Class frmPackingList
                 totalreturned = totalreturned + Val(qtyReturned) * Val(price)
                 totalsold = totalsold + Val(qtySold) * Val(price)
                 totalDamaged = totalDamaged + Val(qtyDamaged) * Val(price)
+                totalCost = totalCost + Val(qtySold) * Val(cPrice)
 
                 Dim dtgrdRow As New DataGridViewRow
                 Dim dtgrdCell As DataGridViewCell
@@ -1052,6 +1060,10 @@ Public Class frmPackingList
                 dtgrdCell.Value = id
                 dtgrdRow.Cells.Add(dtgrdCell)
 
+                dtgrdCell = New DataGridViewTextBoxCell()
+                dtgrdCell.Value = cPrice
+                dtgrdRow.Cells.Add(dtgrdCell)
+
                 dtgrdItemList.Rows.Add(dtgrdRow)
             End While
 
@@ -1062,6 +1074,7 @@ Public Class frmPackingList
             txtTotalSales.Text = LCurrency.displayValue(totalSales.ToString)
             txtTotalReturns.Text = LCurrency.displayValue(totalreturned.ToString)
             txtTotalDamages.Text = LCurrency.displayValue(totalDamaged.ToString)
+            txtCostOfGoodsSold.text = LCurrency.displayValue(totalCost.ToString)
 
         Catch ex As Exception
             MsgBox(ex.ToString)
@@ -1109,6 +1122,7 @@ Public Class frmPackingList
         Dim qtyReturned As String = dtgrdItemList.Item(7, row).Value
         Dim qtyDamaged As String = dtgrdItemList.Item(8, row).Value
         Dim sn As String = dtgrdItemList.Item(9, row).Value
+        Dim cPrice As String = dtgrdItemList.Item(10, row).Value
 
         Dim dtgrdRow As New DataGridViewRow
 
@@ -1121,6 +1135,7 @@ Public Class frmPackingList
         txtQtyReturned.Text = qtyReturned
         txtQtySold.Text = qtySold
         txtQtyDamaged.Text = qtyDamaged
+        txtCPrice.Text = cPrice
 
         If txtStatus.Text = "PENDING" Then
             'lock
@@ -1340,6 +1355,7 @@ Public Class frmPackingList
                 cmbDescription.Text = reader.GetString("item_long_description")
                 txtPackSize.Text = reader.GetString("pck")
                 txtPrice.Text = reader.GetString("retail_price")
+                txtCPrice.Text = reader.GetString("unit_cost_price")
                 txtStockSize.Text = (New Inventory).getInventory(reader.GetString("item_code"))
                 found = True
                 valid = True
@@ -1369,6 +1385,7 @@ Public Class frmPackingList
         txtQtyReturned.Text = ""
         txtQtySold.Text = ""
         txtQtyDamaged.Text = ""
+        txtCPrice.Text = ""
     End Sub
     Private Sub lockFields()
         txtBarCode.ReadOnly = True
@@ -1449,6 +1466,7 @@ Public Class frmPackingList
         Dim qtySold As String = txtQtySold.Text
         Dim qtyDamaged As String = txtQtyDamaged.Text
         Dim price As String = txtPrice.Text
+        Dim cPrice As String = txtCPrice.Text
         Dim stockSize As String = txtStockSize.Text
         If itemCode = "" Then
             MsgBox("Item required", vbOKOnly + vbCritical, "Error: Missing information")
@@ -1486,6 +1504,7 @@ Public Class frmPackingList
         list.GL_ITEM_CODE = itemCode
         list.GL_DESCRIPTION = description
         list.GL_PRICE = price
+        list.GL_C_PRICE = cPrice
         list.GL_RETURNS = Math.Round((Val(returns)), 2, MidpointRounding.AwayFromZero)
         list.GL_PACKED = Math.Round((Val(packed)), 2, MidpointRounding.AwayFromZero)
         list.GL_TOTAL_ISSUED = Math.Round((Val(qtyIssued)), 2, MidpointRounding.AwayFromZero)
@@ -1610,6 +1629,7 @@ Public Class frmPackingList
         txtQtyReturned.Text = ""
         txtQtyDamaged.Text = ""
         txtQtySold.Text = ""
+        txtCPrice.Text = ""
 
         cmbDescription.Enabled = True
     End Sub
@@ -1668,6 +1688,7 @@ Public Class frmPackingList
         list.GL_TOTAL_EXPENDITURES = Val(LCurrency.getValue(txtTotalExpenditures.Text))
         list.GL_TOTAL_BANK_CASH = Val(LCurrency.getValue(txtTotalBankCash.Text))
         list.GL_DEBT = Val(LCurrency.getValue(txtDebt.Text))
+        list.GL_COST_OF_GOODS_SOLD = Val(LCurrency.getValue(txtCostOfGoodsSold.Text))
         'check if new or existing 
 
         If txtId.Text = "" Then
@@ -1709,6 +1730,7 @@ Public Class frmPackingList
         txtQtyReturned.Text = ""
         txtQtyDamaged.Text = ""
         txtQtySold.Text = ""
+        txtCPrice.Text = ""
 
         txtTotalAmountIssued.Text = ""
         txtTotalSales.Text = ""
@@ -1718,6 +1740,7 @@ Public Class frmPackingList
         txtTotalDamages.Text = ""
         txtTotalBankCash.Text = ""
         txtDebt.Text = ""
+        txtCostOfGoodsSold.Text = ""
 
 
         'lock
@@ -1923,8 +1946,8 @@ Public Class frmPackingList
         txtTotalExpenditures.Text = LCurrency.displayValue(Math.Round((Val(LCurrency.getValue(txtTotalExpenditures.Text))), 2, MidpointRounding.AwayFromZero).ToString)
         txtTotalBankCash.Text = LCurrency.displayValue(Math.Round((Val(LCurrency.getValue(txtTotalBankCash.Text))), 2, MidpointRounding.AwayFromZero).ToString)
         txtDebt.Text = LCurrency.displayValue(Math.Round((Val(LCurrency.getValue(txtDebt.Text))), 2, MidpointRounding.AwayFromZero).ToString)
-
         txtTotalSales.Text = LCurrency.displayValue(Math.Round((Val(LCurrency.getValue(txtTotalSales.Text))), 2, MidpointRounding.AwayFromZero).ToString)
+        txtCostOfGoodsSold.Text = LCurrency.displayValue(Math.Round((Val(LCurrency.getValue(txtCostOfGoodsSold.Text))), 2, MidpointRounding.AwayFromZero).ToString)
 
         Dim amountIssued As Double = Val(LCurrency.getValue(txtTotalAmountIssued.Text))
         Dim sales As Double = Val(LCurrency.getValue(txtTotalSales.Text))
@@ -1934,6 +1957,8 @@ Public Class frmPackingList
         Dim expenditures As Double = Val(LCurrency.getValue(txtTotalExpenditures.Text))
         Dim bankCash As Double = Val(LCurrency.getValue(txtTotalBankCash.Text))
         Dim debt As Double = Val(LCurrency.getValue(txtDebt.Text))
+        Dim costOfGoods As Double = Val(LCurrency.getValue(txtCostOfGoodsSold.Text))
+
 
         'validate entries
         If discounts < 0 Or expenditures < 0 Or bankCash < 0 Or debt < 0 Then
@@ -2011,6 +2036,7 @@ Public Class frmPackingList
         list.GL_TOTAL_EXPENDITURES = Val(LCurrency.getValue(txtTotalExpenditures.Text))
         list.GL_TOTAL_BANK_CASH = Val(LCurrency.getValue(txtTotalBankCash.Text))
         list.GL_DEBT = Val(LCurrency.getValue(txtDebt.Text))
+        list.GL_COST_OF_GOODS_SOLD = Val(LCurrency.getValue(txtCostOfGoodsSold.Text))
 
         If list.completePackingList(txtIssueNo.Text) = True Then
             list.editPackingList(txtIssueNo.Text)
@@ -2104,6 +2130,7 @@ Public Class frmPackingList
             Dim actualVat As Double = 0 'Val(qty) * discountedPrice * Val(vat) / 100
             Dim taxReturn As Double = 0 'Val(qty) * (discountedPrice - Item.getCostPrice(itemCode)) * Val(vat) / 100
             'totalTaxReturns = totalTaxReturns + taxReturn
+            '  Dim cPrice As String = dtgrdItemList.Item(10, i).Value
 
             'sql for recording sales
             Dim conn As New MySqlConnection(Database.conString)

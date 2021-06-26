@@ -31,6 +31,8 @@ Partial Class frmMaterialStockCard
         Me.dateEnd = New System.Windows.Forms.DateTimePicker()
         Me.btnPrintWithProfit = New System.Windows.Forms.Button()
         Me.dtgrdList = New System.Windows.Forms.DataGridView()
+        Me.btnBack = New System.Windows.Forms.Button()
+        Me.btnGenerate = New System.Windows.Forms.Button()
         Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -39,8 +41,6 @@ Partial Class frmMaterialStockCard
         Me.Column5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.btnBack = New System.Windows.Forms.Button()
-        Me.btnGenerate = New System.Windows.Forms.Button()
         Me.Panel1.SuspendLayout()
         CType(Me.dtgrdList, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -140,6 +140,27 @@ Partial Class frmMaterialStockCard
         Me.dtgrdList.Size = New System.Drawing.Size(1458, 605)
         Me.dtgrdList.TabIndex = 69
         '
+        'btnBack
+        '
+        Me.btnBack.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnBack.BackColor = System.Drawing.SystemColors.Control
+        Me.btnBack.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.btnBack.Location = New System.Drawing.Point(1349, 714)
+        Me.btnBack.Name = "btnBack"
+        Me.btnBack.Size = New System.Drawing.Size(115, 47)
+        Me.btnBack.TabIndex = 68
+        Me.btnBack.Text = "Back"
+        Me.btnBack.UseVisualStyleBackColor = False
+        '
+        'btnGenerate
+        '
+        Me.btnGenerate.Location = New System.Drawing.Point(402, 10)
+        Me.btnGenerate.Name = "btnGenerate"
+        Me.btnGenerate.Size = New System.Drawing.Size(104, 44)
+        Me.btnGenerate.TabIndex = 66
+        Me.btnGenerate.Text = "Run"
+        Me.btnGenerate.UseVisualStyleBackColor = True
+        '
         'Column1
         '
         Me.Column1.HeaderText = "Date"
@@ -148,7 +169,7 @@ Partial Class frmMaterialStockCard
         '
         'Column2
         '
-        Me.Column2.HeaderText = "Item Code"
+        Me.Column2.HeaderText = "Code"
         Me.Column2.Name = "Column2"
         Me.Column2.ReadOnly = True
         '
@@ -187,27 +208,6 @@ Partial Class frmMaterialStockCard
         Me.Column7.HeaderText = "Reference"
         Me.Column7.Name = "Column7"
         Me.Column7.ReadOnly = True
-        '
-        'btnBack
-        '
-        Me.btnBack.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btnBack.BackColor = System.Drawing.SystemColors.Control
-        Me.btnBack.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.btnBack.Location = New System.Drawing.Point(1349, 714)
-        Me.btnBack.Name = "btnBack"
-        Me.btnBack.Size = New System.Drawing.Size(115, 47)
-        Me.btnBack.TabIndex = 68
-        Me.btnBack.Text = "Back"
-        Me.btnBack.UseVisualStyleBackColor = False
-        '
-        'btnGenerate
-        '
-        Me.btnGenerate.Location = New System.Drawing.Point(402, 10)
-        Me.btnGenerate.Name = "btnGenerate"
-        Me.btnGenerate.Size = New System.Drawing.Size(104, 44)
-        Me.btnGenerate.TabIndex = 66
-        Me.btnGenerate.Text = "Run"
-        Me.btnGenerate.UseVisualStyleBackColor = True
         '
         'frmMaterialStockCard
         '

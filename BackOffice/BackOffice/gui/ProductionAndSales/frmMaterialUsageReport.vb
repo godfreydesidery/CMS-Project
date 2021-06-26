@@ -144,7 +144,7 @@ Public Class frmMaterialUsageReport
         titleRow.Cells(1).Format.Alignment = ParagraphAlignment.Left
         tittleTable.SetEdge(0, 0, 2, 1, Edge.Box, BorderStyle.Single, 0.75, Color.Empty)
         'end of header
-
+        paragraph = section.AddParagraph()
         paragraph = section.AddParagraph()
         paragraph.AddFormattedText("From: " + dateStart.Text + " to :" + dateEnd.Text)
         paragraph.Format.Font.Size = 8
@@ -186,7 +186,7 @@ Public Class frmMaterialUsageReport
         column = table.AddColumn("1.5cm")
         column.Format.Alignment = ParagraphAlignment.Left
 
-        column = table.AddColumn("6cm")
+        column = table.AddColumn("6.5cm")
         column.Format.Alignment = ParagraphAlignment.Right
 
         column = table.AddColumn("1.5cm")
@@ -195,10 +195,10 @@ Public Class frmMaterialUsageReport
         column = table.AddColumn("1.5cm")
         column.Format.Alignment = ParagraphAlignment.Right
 
-        column = table.AddColumn("2cm")
+        column = table.AddColumn("2.2cm")
         column.Format.Alignment = ParagraphAlignment.Right
 
-        column = table.AddColumn("2cm")
+        column = table.AddColumn("3cm")
         column.Format.Alignment = ParagraphAlignment.Right
 
 
@@ -263,11 +263,28 @@ Public Class frmMaterialUsageReport
             table.SetEdge(0, 0, 6, 1, Edge.Box, BorderStyle.Single, 0.75, Color.Empty)
         Next
 
+        row = table.AddRow()
+        row.Format.Font.Bold = True
+        row.HeadingFormat = False
+        row.Format.Font.Size = 8
+        row.Height = "5mm"
+        row.Format.Alignment = ParagraphAlignment.Center
+        row.Borders.Color = Colors.LightGray
+
+        row.Cells(0).AddParagraph("")
+        row.Cells(0).Format.Alignment = ParagraphAlignment.Left
+        row.Cells(1).AddParagraph("")
+        row.Cells(1).Format.Alignment = ParagraphAlignment.Left
+        row.Cells(2).AddParagraph("")
+        row.Cells(2).Format.Alignment = ParagraphAlignment.Left
+        row.Cells(3).AddParagraph("")
+        row.Cells(3).Format.Alignment = ParagraphAlignment.Left
+        row.Cells(4).AddParagraph("Total")
+        row.Cells(4).Format.Alignment = ParagraphAlignment.Left
+        row.Cells(5).AddParagraph(txtTotalAmount.Text)
+        row.Cells(5).Format.Alignment = ParagraphAlignment.Right
+
         table.SetEdge(0, 0, 6, 1, Edge.Box, BorderStyle.Single, 0.75, Color.Empty)
-
-        paragraph = section.AddParagraph()
-        paragraph = section.AddParagraph()
-
     End Sub
 
 
@@ -373,41 +390,12 @@ Public Class frmMaterialUsageReport
                 dtgrdList.Rows.Add(dtgrdRow)
             End While
 
-            dtgrdRow = New DataGridViewRow
-
-            dtgrdCell = New DataGridViewTextBoxCell()
-            dtgrdCell.Value = ""
-            dtgrdRow.Cells.Add(dtgrdCell)
-
-            dtgrdCell = New DataGridViewTextBoxCell()
-            dtgrdCell.Value = ""
-            dtgrdRow.Cells.Add(dtgrdCell)
-
-            dtgrdCell = New DataGridViewTextBoxCell()
-            dtgrdCell.Value = ""
-            dtgrdRow.Cells.Add(dtgrdCell)
-
-            dtgrdCell = New DataGridViewTextBoxCell()
-            dtgrdCell.Value = ""
-            dtgrdRow.Cells.Add(dtgrdCell)
-
-            dtgrdCell = New DataGridViewTextBoxCell()
-            dtgrdCell.Value = "Total"
-            dtgrdRow.Cells.Add(dtgrdCell)
-
-            dtgrdCell = New DataGridViewTextBoxCell()
-            dtgrdCell.Value = LCurrency.displayValue(totalAmount.ToString)
-            dtgrdRow.Cells.Add(dtgrdCell)
-
-
-
-            dtgrdList.Rows.Add(dtgrdRow)
+            txtTotalAmount.Text = LCurrency.displayValue(totalAmount.ToString)
 
             conn.Close()
         Catch ex As Exception
             MsgBox(ex.Message)
         End Try
-
 
         Return vbNull
     End Function
@@ -445,6 +433,7 @@ Public Class frmMaterialUsageReport
     End Sub
 
     Private Sub frmSalesReport_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        clearFields()
         Dim material As New Material
         longList = material.getMaterialNames()
         loadCategories()
@@ -526,6 +515,7 @@ Public Class frmMaterialUsageReport
     Private Sub clearFields()
         txtMaterialCode.Text = ""
         cmbMaterialName.Text = ""
+        txtTotalAmount.Text = ""
 
     End Sub
 
@@ -581,13 +571,21 @@ Public Class frmMaterialUsageReport
         shXL = wbXl.ActiveSheet
 
         Dim r As Integer = 1
+        ' Add table headers going cell by cell.
+        shXL.Cells(r, 1).Value = "Material Usage Report"
 
+        ' Format A1:D1 as bold, vertical alignment = center.
+        With shXL.Range("A" + r.ToString, "B" + r.ToString)
+            .Font.Bold = True
+            .VerticalAlignment = Excel.XlVAlign.xlVAlignCenter
+        End With
+        r = r + 1
         ' Add table headers going cell by cell.
         shXL.Cells(r, 1).Value = "From: " + dateStart.Text
         shXL.Cells(r, 2).Value = "To: " + dateEnd.Text
 
         ' Format A1:D1 as bold, vertical alignment = center.
-        With shXL.Range("A1", "B1")
+        With shXL.Range("A" + r.ToString, "B" + r.ToString)
             .Font.Bold = True
             .VerticalAlignment = Excel.XlVAlign.xlVAlignCenter
         End With
@@ -598,7 +596,7 @@ Public Class frmMaterialUsageReport
 
 
         ' Format A1:D1 as bold, vertical alignment = center.
-        With shXL.Range("A1")
+        With shXL.Range("A" + r.ToString)
             .Font.Bold = True
             .VerticalAlignment = Excel.XlVAlign.xlVAlignCenter
         End With
@@ -612,7 +610,7 @@ Public Class frmMaterialUsageReport
         shXL.Cells(r, 6).Value = "Amount"
 
         ' Format A1:D1 as bold, vertical alignment = center.
-        With shXL.Range("A4", "F4")
+        With shXL.Range("A" + r.ToString, "F" + r.ToString)
             .Font.Bold = True
             .VerticalAlignment = Excel.XlVAlign.xlVAlignCenter
         End With
@@ -631,6 +629,14 @@ Public Class frmMaterialUsageReport
             End With
             r = r + 1
         Next
+        shXL.Cells(r, 5).Value = "Total"
+        shXL.Cells(r, 6).Value = txtTotalAmount.Text
+
+        ' Format A1:D1 as bold, vertical alignment = center.
+        With shXL.Range("A" + r.ToString, "F" + r.ToString)
+            .Font.Bold = True
+            .VerticalAlignment = Excel.XlVAlign.xlVAlignCenter
+        End With
 
         ' AutoFit columns A:D.
         raXL = shXL.Range("A1", "F1")
@@ -646,11 +652,15 @@ Public Class frmMaterialUsageReport
 
         If System.IO.File.Exists(strFileName) Then
             Try
-                System.IO.File.Delete(strFileName)
+                'System.IO.File.Delete(strFileName)
             Catch ex As Exception
             End Try
         End If
-        wbXl.SaveAs(strFileName)
+        Try
+            wbXl.Save()
+        Catch ex As Exception
+
+        End Try
         'appXL.Workbooks.Open(strFileName)
         Exit Sub
 Err_Handler:
