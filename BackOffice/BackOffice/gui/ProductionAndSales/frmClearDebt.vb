@@ -55,6 +55,9 @@ Public Class frmClearDebt
         If txtAmount.Text.Contains("-") Then
             txtAmount.Text = ""
         End If
+        If txtAmount.Text.Contains(",") Then
+            txtAmount.Text = ""
+        End If
         If Not IsNumeric(txtAmount.Text) Then
             txtAmount.Text = ""
         End If

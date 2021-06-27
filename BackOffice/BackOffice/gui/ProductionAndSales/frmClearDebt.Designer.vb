@@ -108,9 +108,10 @@ Partial Class frmClearDebt
         '
         'txtAmount
         '
+        Me.txtAmount.Font = New System.Drawing.Font("Arial Rounded MT Bold", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtAmount.Location = New System.Drawing.Point(144, 170)
         Me.txtAmount.Name = "txtAmount"
-        Me.txtAmount.Size = New System.Drawing.Size(200, 22)
+        Me.txtAmount.Size = New System.Drawing.Size(200, 27)
         Me.txtAmount.TabIndex = 8
         Me.txtAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
@@ -145,6 +146,7 @@ Partial Class frmClearDebt
         Me.AcceptButton = Me.btnPay
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.BackColor = System.Drawing.SystemColors.ActiveCaption
         Me.ClientSize = New System.Drawing.Size(445, 330)
         Me.Controls.Add(Me.Label5)
         Me.Controls.Add(Me.txtRemarks)

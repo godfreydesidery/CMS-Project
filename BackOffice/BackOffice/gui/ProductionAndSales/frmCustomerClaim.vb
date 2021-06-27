@@ -1586,6 +1586,12 @@ Public Class frmCustomerClaim
         paragraph.AddFormattedText("Settlement Date: " + txtSettlementDate.Text)
         paragraph.Format.Font.Size = 8
         paragraph = section.AddParagraph()
+        paragraph.AddFormattedText("Client Name: " + txtClientName.Text)
+        paragraph.Format.Font.Size = 8
+        paragraph = section.AddParagraph()
+        paragraph.AddFormattedText("Contacts: " + txtClientAddress.Text + "  " + txtClientPhone.Text)
+        paragraph.Format.Font.Size = 8
+        paragraph = section.AddParagraph()
         paragraph.AddFormattedText("Status: " + txtStatus.Text)
         paragraph.Format.Font.Size = 8
 
