@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class frmProductionReport
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,11 +20,11 @@ Partial Class frmProductionReport
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle25 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle26 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle27 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.Panel3 = New System.Windows.Forms.Panel()
         Me.cmbMaterialName = New System.Windows.Forms.ComboBox()
         Me.Button1 = New System.Windows.Forms.Button()
@@ -70,7 +70,7 @@ Partial Class frmProductionReport
         Me.Panel3.Controls.Add(Me.Label11)
         Me.Panel3.Controls.Add(Me.txtMaterialCode)
         Me.Panel3.Controls.Add(Me.Label10)
-        Me.Panel3.Location = New System.Drawing.Point(9, 118)
+        Me.Panel3.Location = New System.Drawing.Point(9, 133)
         Me.Panel3.Name = "Panel3"
         Me.Panel3.Size = New System.Drawing.Size(341, 266)
         Me.Panel3.TabIndex = 102
@@ -155,7 +155,7 @@ Partial Class frmProductionReport
         Me.Panel1.Controls.Add(Me.dateStart)
         Me.Panel1.Controls.Add(Me.Label2)
         Me.Panel1.Controls.Add(Me.dateEnd)
-        Me.Panel1.Location = New System.Drawing.Point(9, 7)
+        Me.Panel1.Location = New System.Drawing.Point(9, 22)
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(341, 105)
         Me.Panel1.TabIndex = 103
@@ -227,11 +227,11 @@ Partial Class frmProductionReport
         Me.dtgrdList.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.dtgrdList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dtgrdList.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column10, Me.Column1, Me.Column2, Me.Column3, Me.Column4, Me.Column7})
-        Me.dtgrdList.Location = New System.Drawing.Point(356, 118)
+        Me.dtgrdList.Location = New System.Drawing.Point(356, 72)
         Me.dtgrdList.Name = "dtgrdList"
         Me.dtgrdList.ReadOnly = True
         Me.dtgrdList.RowTemplate.Height = 24
-        Me.dtgrdList.Size = New System.Drawing.Size(1085, 632)
+        Me.dtgrdList.Size = New System.Drawing.Size(1085, 678)
         Me.dtgrdList.TabIndex = 101
         '
         'Column10
@@ -259,8 +259,8 @@ Partial Class frmProductionReport
         '
         'Column3
         '
-        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        Me.Column3.DefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle25.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        Me.Column3.DefaultCellStyle = DataGridViewCellStyle25
         Me.Column3.FillWeight = 53.87895!
         Me.Column3.HeaderText = "Qty"
         Me.Column3.Name = "Column3"
@@ -269,8 +269,8 @@ Partial Class frmProductionReport
         '
         'Column4
         '
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.Column4.DefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle26.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.Column4.DefaultCellStyle = DataGridViewCellStyle26
         Me.Column4.FillWeight = 84.25756!
         Me.Column4.HeaderText = "Price"
         Me.Column4.Name = "Column4"
@@ -279,8 +279,8 @@ Partial Class frmProductionReport
         '
         'Column7
         '
-        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.Column7.DefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCellStyle27.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.Column7.DefaultCellStyle = DataGridViewCellStyle27
         Me.Column7.FillWeight = 84.25756!
         Me.Column7.HeaderText = "Amount"
         Me.Column7.Name = "Column7"
@@ -301,7 +301,7 @@ Partial Class frmProductionReport
         '
         'btnGenerate
         '
-        Me.btnGenerate.Location = New System.Drawing.Point(356, 78)
+        Me.btnGenerate.Location = New System.Drawing.Point(356, 23)
         Me.btnGenerate.Name = "btnGenerate"
         Me.btnGenerate.Size = New System.Drawing.Size(104, 34)
         Me.btnGenerate.TabIndex = 99
@@ -310,7 +310,7 @@ Partial Class frmProductionReport
         '
         'btnPrint
         '
-        Me.btnPrint.Location = New System.Drawing.Point(466, 78)
+        Me.btnPrint.Location = New System.Drawing.Point(466, 23)
         Me.btnPrint.Name = "btnPrint"
         Me.btnPrint.Size = New System.Drawing.Size(139, 34)
         Me.btnPrint.TabIndex = 106
@@ -319,7 +319,7 @@ Partial Class frmProductionReport
         '
         'Button2
         '
-        Me.Button2.Location = New System.Drawing.Point(611, 78)
+        Me.Button2.Location = New System.Drawing.Point(611, 23)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(139, 34)
         Me.Button2.TabIndex = 107
@@ -329,7 +329,7 @@ Partial Class frmProductionReport
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(58, 405)
+        Me.Label3.Location = New System.Drawing.Point(58, 417)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(92, 17)
         Me.Label3.TabIndex = 109
@@ -337,7 +337,7 @@ Partial Class frmProductionReport
         '
         'txtTotalAmount
         '
-        Me.txtTotalAmount.Location = New System.Drawing.Point(156, 400)
+        Me.txtTotalAmount.Location = New System.Drawing.Point(156, 417)
         Me.txtTotalAmount.MaxLength = 50
         Me.txtTotalAmount.Name = "txtTotalAmount"
         Me.txtTotalAmount.ReadOnly = True

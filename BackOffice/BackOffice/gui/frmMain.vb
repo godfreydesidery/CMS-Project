@@ -105,6 +105,14 @@ Public Class frmMain
         ' t.Start()
         tsrpDateTime.Text = "System Date: " + Day.DAY
 
+
+        If User.authorize("VIEW REPORTS") Then
+            tlstripReports.Enabled = True
+        Else
+            tlstripReports.Enabled = False
+        End If
+
+
     End Sub
 
     Private Sub WindowsMenu_Click(sender As Object, e As EventArgs)
@@ -713,5 +721,9 @@ Public Class frmMain
             btnUpdate.Visible = True
             lblCustDate.Visible = True
         End If
+    End Sub
+
+    Private Sub ToolStripMenuItem25_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem25.Click
+        frmStockCardReports.ShowDialog()
     End Sub
 End Class

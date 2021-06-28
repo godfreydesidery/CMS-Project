@@ -23,7 +23,7 @@ Partial Class frmPackingList
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.txtIssueNo = New System.Windows.Forms.TextBox()
         Me.Label2 = New System.Windows.Forms.Label()
@@ -98,19 +98,19 @@ Partial Class frmPackingList
         Me.Label19 = New System.Windows.Forms.Label()
         Me.txtIssued = New System.Windows.Forms.TextBox()
         Me.btnAdd = New System.Windows.Forms.Button()
+        Me.Label15 = New System.Windows.Forms.Label()
         Me.btnReset = New System.Windows.Forms.Button()
+        Me.txtPackSize = New System.Windows.Forms.TextBox()
+        Me.Label17 = New System.Windows.Forms.Label()
         Me.btnSearchItem = New System.Windows.Forms.Button()
+        Me.txtStockSize = New System.Windows.Forms.TextBox()
         Me.Label12 = New System.Windows.Forms.Label()
         Me.txtBarCode = New System.Windows.Forms.TextBox()
         Me.Label13 = New System.Windows.Forms.Label()
         Me.Label16 = New System.Windows.Forms.Label()
         Me.txtItemCode = New System.Windows.Forms.TextBox()
-        Me.txtStockSize = New System.Windows.Forms.TextBox()
         Me.txtPrice = New System.Windows.Forms.TextBox()
-        Me.Label15 = New System.Windows.Forms.Label()
-        Me.Label17 = New System.Windows.Forms.Label()
         Me.Label18 = New System.Windows.Forms.Label()
-        Me.txtPackSize = New System.Windows.Forms.TextBox()
         Me.cmbSalesPersons = New System.Windows.Forms.ComboBox()
         Me.txtId = New System.Windows.Forms.TextBox()
         Me.txtIssueDate = New System.Windows.Forms.TextBox()
@@ -572,8 +572,8 @@ Partial Class frmPackingList
         '
         'Column10
         '
-        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.Column10.DefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.Column10.DefaultCellStyle = DataGridViewCellStyle5
         Me.Column10.FillWeight = 89.8288!
         Me.Column10.HeaderText = "Price"
         Me.Column10.Name = "Column10"
@@ -829,6 +829,16 @@ Partial Class frmPackingList
         Me.btnAdd.Text = "Add/Update"
         Me.btnAdd.UseVisualStyleBackColor = True
         '
+        'Label15
+        '
+        Me.Label15.AutoSize = True
+        Me.Label15.Location = New System.Drawing.Point(242, 225)
+        Me.Label15.Name = "Label15"
+        Me.Label15.Size = New System.Drawing.Size(70, 17)
+        Me.Label15.TabIndex = 42
+        Me.Label15.Text = "Pack Size"
+        Me.Label15.Visible = False
+        '
         'btnReset
         '
         Me.btnReset.Location = New System.Drawing.Point(296, 172)
@@ -838,6 +848,26 @@ Partial Class frmPackingList
         Me.btnReset.Text = "Reset"
         Me.btnReset.UseVisualStyleBackColor = True
         '
+        'txtPackSize
+        '
+        Me.txtPackSize.Location = New System.Drawing.Point(322, 228)
+        Me.txtPackSize.MaxLength = 50
+        Me.txtPackSize.Name = "txtPackSize"
+        Me.txtPackSize.ReadOnly = True
+        Me.txtPackSize.Size = New System.Drawing.Size(94, 22)
+        Me.txtPackSize.TabIndex = 44
+        Me.txtPackSize.Visible = False
+        '
+        'Label17
+        '
+        Me.Label17.AutoSize = True
+        Me.Label17.Location = New System.Drawing.Point(242, 246)
+        Me.Label17.Name = "Label17"
+        Me.Label17.Size = New System.Drawing.Size(74, 17)
+        Me.Label17.TabIndex = 46
+        Me.Label17.Text = "Stock Size"
+        Me.Label17.Visible = False
+        '
         'btnSearchItem
         '
         Me.btnSearchItem.Location = New System.Drawing.Point(238, 4)
@@ -846,6 +876,16 @@ Partial Class frmPackingList
         Me.btnSearchItem.TabIndex = 51
         Me.btnSearchItem.Text = "Search"
         Me.btnSearchItem.UseVisualStyleBackColor = True
+        '
+        'txtStockSize
+        '
+        Me.txtStockSize.Location = New System.Drawing.Point(322, 246)
+        Me.txtStockSize.MaxLength = 50
+        Me.txtStockSize.Name = "txtStockSize"
+        Me.txtStockSize.ReadOnly = True
+        Me.txtStockSize.Size = New System.Drawing.Size(94, 22)
+        Me.txtStockSize.TabIndex = 48
+        Me.txtStockSize.Visible = False
         '
         'Label12
         '
@@ -890,16 +930,6 @@ Partial Class frmPackingList
         Me.txtItemCode.Size = New System.Drawing.Size(115, 22)
         Me.txtItemCode.TabIndex = 39
         '
-        'txtStockSize
-        '
-        Me.txtStockSize.Location = New System.Drawing.Point(322, 246)
-        Me.txtStockSize.MaxLength = 50
-        Me.txtStockSize.Name = "txtStockSize"
-        Me.txtStockSize.ReadOnly = True
-        Me.txtStockSize.Size = New System.Drawing.Size(94, 22)
-        Me.txtStockSize.TabIndex = 48
-        Me.txtStockSize.Visible = False
-        '
         'txtPrice
         '
         Me.txtPrice.Location = New System.Drawing.Point(117, 121)
@@ -909,26 +939,6 @@ Partial Class frmPackingList
         Me.txtPrice.Size = New System.Drawing.Size(99, 22)
         Me.txtPrice.TabIndex = 47
         '
-        'Label15
-        '
-        Me.Label15.AutoSize = True
-        Me.Label15.Location = New System.Drawing.Point(242, 225)
-        Me.Label15.Name = "Label15"
-        Me.Label15.Size = New System.Drawing.Size(70, 17)
-        Me.Label15.TabIndex = 42
-        Me.Label15.Text = "Pack Size"
-        Me.Label15.Visible = False
-        '
-        'Label17
-        '
-        Me.Label17.AutoSize = True
-        Me.Label17.Location = New System.Drawing.Point(242, 246)
-        Me.Label17.Name = "Label17"
-        Me.Label17.Size = New System.Drawing.Size(74, 17)
-        Me.Label17.TabIndex = 46
-        Me.Label17.Text = "Stock Size"
-        Me.Label17.Visible = False
-        '
         'Label18
         '
         Me.Label18.AutoSize = True
@@ -937,16 +947,6 @@ Partial Class frmPackingList
         Me.Label18.Size = New System.Drawing.Size(40, 17)
         Me.Label18.TabIndex = 45
         Me.Label18.Text = "Price"
-        '
-        'txtPackSize
-        '
-        Me.txtPackSize.Location = New System.Drawing.Point(322, 228)
-        Me.txtPackSize.MaxLength = 50
-        Me.txtPackSize.Name = "txtPackSize"
-        Me.txtPackSize.ReadOnly = True
-        Me.txtPackSize.Size = New System.Drawing.Size(94, 22)
-        Me.txtPackSize.TabIndex = 44
-        Me.txtPackSize.Visible = False
         '
         'cmbSalesPersons
         '

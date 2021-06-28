@@ -631,7 +631,7 @@ Public Class frmMassManager
         Return count
     End Function
     Private Function validateMasterRecords(path As String)
-        Dim valid As Boolean = False
+        Dim valid As Boolean = True
         Dim count As Integer = getRecordCount(path)
         '  MsgBox("Total number of records:  " + (count - 1).ToString)
         Dim k As Integer = 0
@@ -659,14 +659,41 @@ Public Class frmMassManager
                 showProgress(i, count)
                 Dim itemcode As String = objXLWs.Range("A" & i).Value.ToString
 
+                '              Dim scancode As String = objXLWs.Range("B" & i).Value.ToString
+                '           Dim descr As String = objXLWs.Range("C" & i).Value.ToString
+                '           Dim short_descr As String = objXLWs.Range("D" & i).Value.ToString
+                '           Dim pck As String = objXLWs.Range("E" & i).Value.ToString
+                '           Dim dept_name As String = objXLWs.Range("G" & i).Value.ToString
+                '           Dim _class_name As String = objXLWs.Range("I" & i).Value.ToString
+                '            Dim sub_class_name As String = objXLWs.Range("K" & i).Value.ToString
+                '            Dim supplier As String = objXLWs.Range("L" & i).Value.ToString
+                '           Dim cprice_vat_excl As String = objXLWs.Range("N" & i).Value.ToString
+                '          Dim vat As String = objXLWs.Range("O" & i).Value.ToString
+                '          Dim cprice_vat_incl As String = objXLWs.Range("P" & i).Value.ToString
+                '          Dim margin As String = objXLWs.Range("Q" & i).Value.ToString
+                '          Dim discount As String = objXLWs.Range("R" & i).Value.ToString
+                '         Dim sprice As String = objXLWs.Range("S" & i).Value.ToString
+                '          Dim stock As String = objXLWs.Range("T" & i).Value.ToString
+                '         Dim min_stock As String = objXLWs.Range("U" & i).Value.ToString
+                '         Dim max_stock As String = objXLWs.Range("V" & i).Value.ToString
+                '         Dim reorder_level As String = objXLWs.Range("W" & i).Value.ToString
+                '         Dim uom As String = objXLWs.Range("X" & i).Value.ToString
+
                 'For j As Integer = i + 1 To count
                 If itemcode = "" Or itemcode = vbNull Then
                     valid = False
-                    MsgBox("Empty field in item code")
+                    MsgBox("Empty field in item code in record no " + i.ToString)
                     'Exit For
                 Else
-                    valid = True
+                    'valid = True
                 End If
+
+                '           If itemcode.Contains("'") Or scancode.Contains("'") Or descr.Contains("'") Or short_descr.Contains("'") Or pck.Contains("'") Or dept_name.Contains("'") Or _class_name.Contains("'") Or sub_class_name.Contains("'") Or supplier.Contains("'") Or cprice_vat_excl.Contains("'") Or vat.Contains("'") Or cprice_vat_incl.Contains("'") Or margin.Contains("'") Or discount.Contains("'") Or sprice.Contains("'") Or stock.Contains("'") Or min_stock.Contains("'") Or max_stock.Contains("'") Or reorder_level.Contains("'") Or uom.Contains("'") Then
+                '           MsgBox("Invalid character ' at record no" + i.ToString)
+                '           valid = False
+                'Exit For
+                '            End If
+
                 'If valid = False Then
                 'Exit For
                 'End If
@@ -744,21 +771,21 @@ Public Class frmMassManager
                             command.Connection = conn
                             command.CommandText = "INSERT IGNORE INTO `items`(`item_code`, `item_scan_code`,`item_long_description`, `item_description`, `pck`, `department_id`, `class_id`, `sub_class_id`, `supplier_id`, `unit_cost_price`, `retail_price`, `discount`, `vat`, `margin`, `standard_uom`) VALUES (@item_code,@item_scan_code,@item_long_description,@item_description,@pck,@department_id,@class_id,@sub_class_id,@supplier_id,@unit_cost_price,@retail_price,@discount,@vat,@margin,@standard_uom)"
                             command.Prepare()
-                            command.Parameters.AddWithValue("@item_code", itemcode)
-                            command.Parameters.AddWithValue("@item_scan_code", scancode)
-                            command.Parameters.AddWithValue("@item_long_description", descr)
-                            command.Parameters.AddWithValue("@item_description", short_descr)
-                            command.Parameters.AddWithValue("@pck", pck)
-                            command.Parameters.AddWithValue("@department_id", (New Department).getDepartmentID(dept_name))
-                            command.Parameters.AddWithValue("@class_id", (New Class_).getClassID(_class_name))
-                            command.Parameters.AddWithValue("@sub_class_id", (New SubClass).getSubClassID(sub_class_name))
-                            command.Parameters.AddWithValue("@supplier_id", (New Supplier).getSupplierID(supplier, ""))
-                            command.Parameters.AddWithValue("@unit_cost_price", cprice_vat_incl)
-                            command.Parameters.AddWithValue("@retail_price", sprice)
-                            command.Parameters.AddWithValue("@discount", discount)
-                            command.Parameters.AddWithValue("@vat", vat)
-                            command.Parameters.AddWithValue("@margin", margin)
-                            command.Parameters.AddWithValue("@standard_uom", uom)
+                            command.Parameters.AddWithValue("@item_code", removeInvalidCharacters(itemcode))
+                            command.Parameters.AddWithValue("@item_scan_code", removeInvalidCharacters(scancode))
+                            command.Parameters.AddWithValue("@item_long_description", removeInvalidCharacters(descr))
+                            command.Parameters.AddWithValue("@item_description", removeInvalidCharacters(short_descr))
+                            command.Parameters.AddWithValue("@pck", removeInvalidCharacters(pck))
+                            command.Parameters.AddWithValue("@department_id", (New Department).getDepartmentID(removeInvalidCharacters(dept_name)))
+                            command.Parameters.AddWithValue("@class_id", (New Class_).getClassID(removeInvalidCharacters(_class_name)))
+                            command.Parameters.AddWithValue("@sub_class_id", (New SubClass).getSubClassID(removeInvalidCharacters(sub_class_name)))
+                            command.Parameters.AddWithValue("@supplier_id", (New Supplier).getSupplierID(removeInvalidCharacters(supplier), ""))
+                            command.Parameters.AddWithValue("@unit_cost_price", removeInvalidCharacters(cprice_vat_incl))
+                            command.Parameters.AddWithValue("@retail_price", removeInvalidCharacters(sprice))
+                            command.Parameters.AddWithValue("@discount", removeInvalidCharacters(discount))
+                            command.Parameters.AddWithValue("@vat", removeInvalidCharacters(vat))
+                            command.Parameters.AddWithValue("@margin", removeInvalidCharacters(margin))
+                            command.Parameters.AddWithValue("@standard_uom", removeInvalidCharacters(uom))
                             command.ExecuteNonQuery()
                             conn.Close()
                             If scancode <> "" Then
@@ -766,8 +793,8 @@ Public Class frmMassManager
                                 command.Connection = conn
                                 command.CommandText = "INSERT IGNORE INTO `bar_codes`(`item_scan_code`, `item_code`) VALUES (@item_scan_code,@item_code)"
                                 command.Prepare()
-                                command.Parameters.AddWithValue("@item_code", itemcode)
-                                command.Parameters.AddWithValue("@item_scan_code", scancode)
+                                command.Parameters.AddWithValue("@item_code", itemcode.Replace("'", ""))
+                                command.Parameters.AddWithValue("@item_scan_code", scancode.Replace("'", ""))
                                 command.ExecuteNonQuery()
                                 conn.Close()
                             End If
@@ -775,7 +802,7 @@ Public Class frmMassManager
                             command.Connection = conn
                             command.CommandText = "INSERT IGNORE INTO `inventorys`(`item_code`) VALUES (@item_code)"
                             command.Prepare()
-                            command.Parameters.AddWithValue("@item_code", itemcode)
+                            command.Parameters.AddWithValue("@item_code", itemcode.Replace("'", ""))
                             command.ExecuteNonQuery()
                             conn.Close()
 
@@ -1002,11 +1029,30 @@ Public Class frmMassManager
                             Dim reorder_level As String = objXLWs.Range("W" & i).Value
                             Dim uom As String = objXLWs.Range("X" & i).Value
 
+
+
                             Dim conn As New MySqlConnection(Database.conString)
                             conn.Open()
                             Dim command As New MySqlCommand()
                             command.Connection = conn
-                            command.CommandText = "UPDATE `items` SET `item_long_description`='" + descr + "',`item_description`='" + short_descr + "',`pck`='" + pck + "',`department_id`='" + (New Department).getDepartmentID(dept_name) + "',`class_id`='" + (New Class_).getClassID(_class_name) + "',`sub_class_id`='" + (New SubClass).getSubClassID(sub_class_name) + "',`supplier_id`='" + (New Supplier).getSupplierID(supplier, "") + "',`unit_cost_price`='" + cprice_vat_incl + "',`retail_price`='" + sprice + "',`discount`='" + discount + "',`vat`='" + vat + "',`margin`='" + margin + "',`standard_uom`='" + uom + "' WHERE `item_code`='" + itemcode + "'"
+                            command.CommandText = "UPDATE `items`
+                                                        SET
+                                                            `item_long_description`='" + removeInvalidCharacters(descr) + "',
+                                                            `item_description`='" + removeInvalidCharacters(short_descr) + "',
+                                                            `pck`='" + removeInvalidCharacters(pck) + "',
+                                                            `department_id`='" + (New Department).getDepartmentID(removeInvalidCharacters(dept_name)) + "',
+                                                            `class_id`='" + (New Class_).getClassID(removeInvalidCharacters(_class_name)) + "',
+                                                            `sub_class_id`='" + (New SubClass).getSubClassID(removeInvalidCharacters(sub_class_name)) + "',
+                                                            `supplier_id`='" + (New Supplier).getSupplierID(removeInvalidCharacters(supplier), "") + "',
+                                                            `unit_cost_price`='" + removeInvalidCharacters(cprice_vat_incl) + "',
+                                                            `retail_price`='" + removeInvalidCharacters(sprice) + "',
+                                                            `discount`='" + removeInvalidCharacters(discount) + "',
+                                                            `vat`='" + removeInvalidCharacters(vat) + "',
+                                                            `margin`='" + removeInvalidCharacters(margin) + "',
+                                                            `standard_uom`='" + removeInvalidCharacters(uom) + "' 
+                                                        WHERE 
+                                                            `item_code`='" + removeInvalidCharacters(itemcode) + "'"
+
                             command.Prepare()
                             command.ExecuteNonQuery()
                             conn.Close()
@@ -1019,7 +1065,7 @@ Public Class frmMassManager
                         MsgBox("Operation completed")
                         prgBar.Value = 0
                     Catch ex As Exception
-                        MsgBox(ex.Message)
+                        MsgBox(ex.ToString)
                     End Try
                     objXLApp.Quit()
                 Else
@@ -1035,6 +1081,14 @@ Public Class frmMassManager
             MsgBox("Invalid File Format. The input file should be in Exel(xlsl or xls) format")
         End If
     End Sub
+    Private Function removeInvalidCharacters(value As String) As String
+        Try
+            value = value.Replace("'", "")
+        Catch ex As Exception
+            Return value
+        End Try
+        Return value
+    End Function
 
     Private Sub btnGenerateItemMasterTemplate_Click(sender As Object, e As EventArgs) Handles btnGenerateItemMasterTemplate.Click
         Dim appXL As Excel.Application

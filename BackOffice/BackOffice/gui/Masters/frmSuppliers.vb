@@ -303,7 +303,9 @@ Public Class frmSuppliers
     End Sub
 
     Private Sub txtSupplierCode_TextChanged(sender As Object, e As EventArgs) Handles txtSupplierCode.TextChanged
-
+        If txtSupplierCode.Text.Contains("'") Then
+            txtSupplierCode.Text = ""
+        End If
     End Sub
     Private Sub txtSupplierCode_preview(sender As Object, e As PreviewKeyDownEventArgs) Handles txtSupplierCode.PreviewKeyDown
         If e.KeyCode = Keys.Tab Then
@@ -329,7 +331,9 @@ Public Class frmSuppliers
     End Sub
 
     Private Sub txtContactName_TextChanged(sender As Object, e As EventArgs) Handles txtContactName.TextChanged
-
+        If txtContactName.Text.Contains("'") Then
+            txtContactName.Text = ""
+        End If
     End Sub
 
     Private Sub txtContactName_KeyDown(sender As Object, e As KeyEventArgs) Handles txtContactName.KeyDown
@@ -340,7 +344,9 @@ Public Class frmSuppliers
     End Sub
 
     Private Sub txtTIN_TextChanged(sender As Object, e As EventArgs) Handles txtTIN.TextChanged
-
+        If txtTIN.Text.Contains("'") Then
+            txtTIN.Text = ""
+        End If
     End Sub
 
     Private Sub txtTIN_KeyDown(sender As Object, e As KeyEventArgs) Handles txtTIN.KeyDown
@@ -452,4 +458,33 @@ Public Class frmSuppliers
         Cursor.Current = Cursors.Default
     End Sub
 
+    Private Sub cmbSupplierName_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbSupplierName.SelectedIndexChanged
+        If cmbSupplierName.Text.Contains("'") Then
+            cmbSupplierName.Text = ""
+        End If
+    End Sub
+
+    Private Sub txtVRN_TextChanged(sender As Object, e As EventArgs) Handles txtVRN.TextChanged
+        If txtVRN.Text.Contains("'") Then
+            txtVRN.Text = ""
+        End If
+    End Sub
+
+    Private Sub txtAddress_TextChanged(sender As Object, e As EventArgs) Handles txtAddress.TextChanged
+        If txtAddress.Text.Contains("'") Then
+            txtAddress.Text = ""
+        End If
+    End Sub
+
+    Private Sub txtPostCode_TextChanged(sender As Object, e As EventArgs) Handles txtPostCode.TextChanged
+        If txtPostCode.Text.Contains("'") Then
+            txtPostCode.Text = ""
+        End If
+    End Sub
+
+    Private Sub txtPhysicalAdrress_TextChanged(sender As Object, e As EventArgs) Handles txtPhysicalAdrress.TextChanged
+        If txtPhysicalAdrress.Text.Contains("'") Then
+            txtPhysicalAdrress.Text = ""
+        End If
+    End Sub
 End Class

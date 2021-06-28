@@ -469,6 +469,48 @@ Public Class frmSalesPerson
         End If
     End Sub
 
+    Private Sub txtFirstName_TextChanged(sender As Object, e As EventArgs) Handles txtFirstName.TextChanged
+        If txtFirstName.Text.Contains("'") Then
+            txtFirstName.Text = ""
+        End If
+    End Sub
+
+    Private Sub txtSecondName_TextChanged(sender As Object, e As EventArgs) Handles txtSecondName.TextChanged
+        If txtSecondName.Text.Contains("'") Then
+            txtSecondName.Text = ""
+        End If
+    End Sub
+
+    Private Sub txtLastName_TextChanged(sender As Object, e As EventArgs) Handles txtLastName.TextChanged
+        If txtLastName.Text.Contains("'") Then
+            txtLastName.Text = ""
+        End If
+    End Sub
+
+    Private Sub txtAddress_TextChanged(sender As Object, e As EventArgs) Handles txtAddress.TextChanged
+        If txtAddress.Text.Contains("'") Then
+            txtAddress.Text = ""
+        End If
+    End Sub
+
+    Private Sub txtTelephone_TextChanged(sender As Object, e As EventArgs) Handles txtTelephone.TextChanged
+        If txtTelephone.Text.Contains("'") Then
+            txtTelephone.Text = ""
+        End If
+    End Sub
+
+    Private Sub txtEmail_TextChanged(sender As Object, e As EventArgs) Handles txtEmail.TextChanged
+        If txtEmail.Text.Contains("'") Then
+            txtEmail.Text = ""
+        End If
+    End Sub
+
+    Private Sub txtRollNo_TextChanged(sender As Object, e As EventArgs) Handles txtRollNo.TextChanged
+        If txtRollNo.Text.Contains("'") Then
+            txtRollNo.Text = ""
+        End If
+    End Sub
+
     'Private Sub cmbStatus_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbStatus.SelectionChangeCommitted
     'If txtID.Text <> "" And txtUsername.Text <> "" Then
     '  Try

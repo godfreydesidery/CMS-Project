@@ -806,7 +806,9 @@ Public Class frmProductMaster
     End Sub
 
     Private Sub txtItemCode_TextChanged(sender As Object, e As EventArgs) Handles txtItemCode.TextChanged
-
+        If txtItemCode.Text.Contains("'") Then
+            txtItemCode.Text = ""
+        End If
     End Sub
 
     Private Sub txtLongDescription_TextChanged_1(sender As Object, e As EventArgs)
@@ -814,7 +816,9 @@ Public Class frmProductMaster
     End Sub
 
     Private Sub txtBarCode_TextChanged(sender As Object, e As EventArgs) Handles txtBarCode.TextChanged
-
+        If txtBarCode.Text.Contains("'") Then
+            txtBarCode.Text = ""
+        End If
     End Sub
     Private Sub txtBarCode_KeyDown(sender As Object, e As KeyEventArgs) Handles txtBarCode.KeyDown
         If e.KeyCode = Keys.Enter Then
@@ -930,5 +934,37 @@ Public Class frmProductMaster
         Cursor.Current = Cursors.Default
     End Sub
 
+    Private Sub cmbDescription_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbDescription.SelectedIndexChanged
+        If cmbDescription.Text.Contains("'") Then
+            cmbDescription.Text = ""
+        End If
+    End Sub
+    Private Sub cmbDescription_TextChanged(sender As Object, e As EventArgs) Handles cmbDescription.TextChanged
 
+        If cmbDescription.Text.Contains("'") Then
+            Try
+                cmbDescription.Text = cmbDescription.Text.Replace("'", "")
+            Catch ex As Exception
+                cmbDescription.Text = ""
+            End Try
+        End If
+    End Sub
+
+    Private Sub txtDescription_TextChanged(sender As Object, e As EventArgs) Handles txtDescription.TextChanged
+        If txtDescription.Text.Contains("'") Then
+            txtDescription.Text = ""
+        End If
+    End Sub
+
+    Private Sub cmbPck_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbPck.SelectedIndexChanged
+        If cmbPck.Text.Contains("'") Then
+            cmbPck.Text = ""
+        End If
+    End Sub
+
+    Private Sub txtStandardUOM_TextChanged(sender As Object, e As EventArgs) Handles txtStandardUOM.TextChanged
+        If txtStandardUOM.Text.Contains("'") Then
+            txtStandardUOM.Text = ""
+        End If
+    End Sub
 End Class

@@ -31,6 +31,7 @@ Partial Class frmSalesPerson
         Me.Label7 = New System.Windows.Forms.Label()
         Me.Label8 = New System.Windows.Forms.Label()
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.btnUnblock = New System.Windows.Forms.Button()
         Me.btnBlock = New System.Windows.Forms.Button()
         Me.txtId = New System.Windows.Forms.TextBox()
         Me.txtInvoiceLimit = New System.Windows.Forms.TextBox()
@@ -54,7 +55,6 @@ Partial Class frmSalesPerson
         Me.Column7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.btnBack = New System.Windows.Forms.Button()
-        Me.btnUnblock = New System.Windows.Forms.Button()
         Me.Panel1.SuspendLayout()
         CType(Me.dtgrdList, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -164,6 +164,16 @@ Partial Class frmSalesPerson
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(548, 437)
         Me.Panel1.TabIndex = 8
+        '
+        'btnUnblock
+        '
+        Me.btnUnblock.Enabled = False
+        Me.btnUnblock.Location = New System.Drawing.Point(211, 301)
+        Me.btnUnblock.Name = "btnUnblock"
+        Me.btnUnblock.Size = New System.Drawing.Size(79, 54)
+        Me.btnUnblock.TabIndex = 21
+        Me.btnUnblock.Text = "Unblock"
+        Me.btnUnblock.UseVisualStyleBackColor = True
         '
         'btnBlock
         '
@@ -361,16 +371,6 @@ Partial Class frmSalesPerson
         Me.btnBack.TabIndex = 66
         Me.btnBack.Text = "Back"
         Me.btnBack.UseVisualStyleBackColor = False
-        '
-        'btnUnblock
-        '
-        Me.btnUnblock.Enabled = False
-        Me.btnUnblock.Location = New System.Drawing.Point(211, 301)
-        Me.btnUnblock.Name = "btnUnblock"
-        Me.btnUnblock.Size = New System.Drawing.Size(79, 54)
-        Me.btnUnblock.TabIndex = 21
-        Me.btnUnblock.Text = "Unblock"
-        Me.btnUnblock.UseVisualStyleBackColor = True
         '
         'frmSalesPerson
         '

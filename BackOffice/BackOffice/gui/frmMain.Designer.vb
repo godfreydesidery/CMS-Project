@@ -88,7 +88,7 @@ Partial Class frmMain
         Me.ToolStripDropDownButton6 = New System.Windows.Forms.ToolStripDropDownButton()
         Me.ToolStripMenuItem11 = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripMenuItem12 = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ToolStripMenuItem13 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.tlstripReports = New System.Windows.Forms.ToolStripMenuItem()
         Me.DetailedDailySalesReportToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.SummarizedDailySalesReportToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ConsolidatedDailySalesReportToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -123,6 +123,13 @@ Partial Class frmMain
         Me.btnUpdate = New System.Windows.Forms.Button()
         Me.lblCustomDate = New System.Windows.Forms.Label()
         Me.lblCustDate = New System.Windows.Forms.Label()
+        Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
+        Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
+        Me.ToolStripSeparator6 = New System.Windows.Forms.ToolStripSeparator()
+        Me.ToolStripSeparator7 = New System.Windows.Forms.ToolStripSeparator()
+        Me.ToolStripSeparator8 = New System.Windows.Forms.ToolStripSeparator()
+        Me.ToolStripSeparator9 = New System.Windows.Forms.ToolStripSeparator()
+        Me.ToolStripMenuItem25 = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip.SuspendLayout()
         Me.StatusStrip.SuspendLayout()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -592,7 +599,7 @@ Partial Class frmMain
         '
         'ToolStripDropDownButton6
         '
-        Me.ToolStripDropDownButton6.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripMenuItem11, Me.ToolStripMenuItem12, Me.ToolStripMenuItem13, Me.ToolStripMenuItem14, Me.ToolStripMenuItem15, Me.ToolStripMenuItem16, Me.CustomProductionToolStripMenuItem, Me.StockConversionToolStripMenuItem})
+        Me.ToolStripDropDownButton6.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripMenuItem11, Me.ToolStripMenuItem12, Me.StockConversionToolStripMenuItem, Me.ToolStripSeparator1, Me.ToolStripMenuItem15, Me.ToolStripMenuItem16, Me.CustomProductionToolStripMenuItem, Me.ToolStripSeparator2, Me.ToolStripMenuItem14, Me.ToolStripSeparator6, Me.tlstripReports})
         Me.ToolStripDropDownButton6.Font = New System.Drawing.Font("Constantia", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ToolStripDropDownButton6.ForeColor = System.Drawing.Color.MidnightBlue
         Me.ToolStripDropDownButton6.Image = CType(resources.GetObject("ToolStripDropDownButton6.Image"), System.Drawing.Image)
@@ -617,14 +624,14 @@ Partial Class frmMain
         Me.ToolStripMenuItem12.Size = New System.Drawing.Size(302, 28)
         Me.ToolStripMenuItem12.Text = "Packing List"
         '
-        'ToolStripMenuItem13
+        'tlstripReports
         '
-        Me.ToolStripMenuItem13.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.DetailedDailySalesReportToolStripMenuItem, Me.SummarizedDailySalesReportToolStripMenuItem, Me.ConsolidatedDailySalesReportToolStripMenuItem, Me.DebtReportToolStripMenuItem, Me.DebtPaymentHistoryReportToolStripMenuItem, Me.DamagesReportToolStripMenuItem, Me.MaterialStockStatusReportToolStripMenuItem, Me.MaterialStockCardReportToolStripMenuItem, Me.MaterialUsageReportToolStripMenuItem, Me.DailyProductionReportToolStripMenuItem, Me.MaterialVsProductionReportToolStripMenuItem})
-        Me.ToolStripMenuItem13.Font = New System.Drawing.Font("Candara", 12.0!)
-        Me.ToolStripMenuItem13.ForeColor = System.Drawing.Color.Maroon
-        Me.ToolStripMenuItem13.Name = "ToolStripMenuItem13"
-        Me.ToolStripMenuItem13.Size = New System.Drawing.Size(302, 28)
-        Me.ToolStripMenuItem13.Text = "Report Center"
+        Me.tlstripReports.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.DetailedDailySalesReportToolStripMenuItem, Me.SummarizedDailySalesReportToolStripMenuItem, Me.ConsolidatedDailySalesReportToolStripMenuItem, Me.ToolStripSeparator9, Me.DebtReportToolStripMenuItem, Me.DebtPaymentHistoryReportToolStripMenuItem, Me.DamagesReportToolStripMenuItem, Me.ToolStripSeparator7, Me.DailyProductionReportToolStripMenuItem, Me.ToolStripMenuItem25, Me.ToolStripSeparator8, Me.MaterialVsProductionReportToolStripMenuItem, Me.MaterialUsageReportToolStripMenuItem, Me.MaterialStockStatusReportToolStripMenuItem, Me.MaterialStockCardReportToolStripMenuItem})
+        Me.tlstripReports.Font = New System.Drawing.Font("Candara", 12.0!)
+        Me.tlstripReports.ForeColor = System.Drawing.Color.Maroon
+        Me.tlstripReports.Name = "tlstripReports"
+        Me.tlstripReports.Size = New System.Drawing.Size(302, 28)
+        Me.tlstripReports.Text = "Report Center"
         '
         'DetailedDailySalesReportToolStripMenuItem
         '
@@ -919,6 +926,43 @@ Partial Class frmMain
         Me.lblCustDate.Text = "Custom Date"
         Me.lblCustDate.Visible = False
         '
+        'ToolStripSeparator1
+        '
+        Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
+        Me.ToolStripSeparator1.Size = New System.Drawing.Size(299, 6)
+        '
+        'ToolStripSeparator2
+        '
+        Me.ToolStripSeparator2.Name = "ToolStripSeparator2"
+        Me.ToolStripSeparator2.Size = New System.Drawing.Size(299, 6)
+        '
+        'ToolStripSeparator6
+        '
+        Me.ToolStripSeparator6.Name = "ToolStripSeparator6"
+        Me.ToolStripSeparator6.Size = New System.Drawing.Size(299, 6)
+        '
+        'ToolStripSeparator7
+        '
+        Me.ToolStripSeparator7.Name = "ToolStripSeparator7"
+        Me.ToolStripSeparator7.Size = New System.Drawing.Size(347, 6)
+        '
+        'ToolStripSeparator8
+        '
+        Me.ToolStripSeparator8.Name = "ToolStripSeparator8"
+        Me.ToolStripSeparator8.Size = New System.Drawing.Size(347, 6)
+        '
+        'ToolStripSeparator9
+        '
+        Me.ToolStripSeparator9.Name = "ToolStripSeparator9"
+        Me.ToolStripSeparator9.Size = New System.Drawing.Size(347, 6)
+        '
+        'ToolStripMenuItem25
+        '
+        Me.ToolStripMenuItem25.ForeColor = System.Drawing.SystemColors.InfoText
+        Me.ToolStripMenuItem25.Name = "ToolStripMenuItem25"
+        Me.ToolStripMenuItem25.Size = New System.Drawing.Size(350, 28)
+        Me.ToolStripMenuItem25.Text = "Stock Cards Report"
+        '
         'frmMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
@@ -1001,7 +1045,7 @@ Partial Class frmMain
     Friend WithEvents ToolStripDropDownButton6 As ToolStripDropDownButton
     Friend WithEvents ToolStripMenuItem11 As ToolStripMenuItem
     Friend WithEvents ToolStripMenuItem12 As ToolStripMenuItem
-    Friend WithEvents ToolStripMenuItem13 As ToolStripMenuItem
+    Friend WithEvents tlstripReports As ToolStripMenuItem
     Friend WithEvents ToolStripMenuItem14 As ToolStripMenuItem
     Friend WithEvents ToolStripMenuItem15 As ToolStripMenuItem
     Friend WithEvents ToolStripMenuItem16 As ToolStripMenuItem
@@ -1052,4 +1096,11 @@ Partial Class frmMain
     Friend WithEvents ToolStripMenuItem23 As ToolStripMenuItem
     Friend WithEvents ToolStripMenuItem24 As ToolStripMenuItem
     Friend WithEvents lblCustDate As Label
+    Friend WithEvents ToolStripSeparator1 As ToolStripSeparator
+    Friend WithEvents ToolStripSeparator2 As ToolStripSeparator
+    Friend WithEvents ToolStripSeparator6 As ToolStripSeparator
+    Friend WithEvents ToolStripSeparator7 As ToolStripSeparator
+    Friend WithEvents ToolStripSeparator8 As ToolStripSeparator
+    Friend WithEvents ToolStripSeparator9 As ToolStripSeparator
+    Friend WithEvents ToolStripMenuItem25 As ToolStripMenuItem
 End Class
