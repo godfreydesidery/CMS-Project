@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 26, 2021 at 04:35 PM
+-- Generation Time: Jul 01, 2021 at 01:17 PM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.1.26
 
@@ -32,8 +32,7 @@ CREATE TABLE `bar_codes` (
   `sn` int(11) NOT NULL,
   `item_scan_code` varchar(50) NOT NULL,
   `item_code` varchar(50) NOT NULL,
-  `descr` varchar(100) DEFAULT NULL,
-  `touch` varchar(50) DEFAULT NULL
+  `descr` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -997,8 +996,7 @@ INSERT INTO `role_priveledge` (`id`, `role_id`, `priveledge`) VALUES
 (61, '3', 'EDIT LPO'),
 (62, '3', 'APPROVE LPO'),
 (63, '3', 'SALE INVOICE'),
-(66, '3', 'EDIT INVENTORY'),
-(67, '3', 'CUSTOM DATING');
+(66, '3', 'EDIT INVENTORY');
 
 -- --------------------------------------------------------
 
@@ -2026,13 +2024,13 @@ ALTER TABLE `return_to_supplier`
 -- AUTO_INCREMENT for table `roles`
 --
 ALTER TABLE `roles`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `role_priveledge`
 --
 ALTER TABLE `role_priveledge`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=68;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=67;
 
 --
 -- AUTO_INCREMENT for table `sale`

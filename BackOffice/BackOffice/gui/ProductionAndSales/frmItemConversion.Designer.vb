@@ -24,6 +24,7 @@ Partial Class frmItemConversion
     Private Sub InitializeComponent()
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmItemConversion))
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.txtId = New System.Windows.Forms.TextBox()
         Me.btnSearch = New System.Windows.Forms.Button()
@@ -77,26 +78,32 @@ Partial Class frmItemConversion
         Me.DataGridViewTextBoxColumn4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Label15 = New System.Windows.Forms.Label()
         Me.Label20 = New System.Windows.Forms.Label()
-        Me.btnApprove = New System.Windows.Forms.Button()
-        Me.btnCancel = New System.Windows.Forms.Button()
-        Me.btnComplete = New System.Windows.Forms.Button()
-        Me.btnArchive = New System.Windows.Forms.Button()
         Me.dtgrdConversionList = New System.Windows.Forms.DataGridView()
         Me.DataGridViewTextBoxColumn5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.btnNew = New System.Windows.Forms.Button()
-        Me.btnEdit = New System.Windows.Forms.Button()
-        Me.btnSave = New System.Windows.Forms.Button()
         Me.btnBack = New System.Windows.Forms.Button()
-        Me.btnClear = New System.Windows.Forms.Button()
-        Me.btnPrint = New System.Windows.Forms.Button()
+        Me.ToolStrip1 = New System.Windows.Forms.ToolStrip()
+        Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
+        Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
+        Me.ToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator()
+        Me.ToolStripSeparator4 = New System.Windows.Forms.ToolStripSeparator()
+        Me.btnNew = New System.Windows.Forms.ToolStripButton()
+        Me.btnEdit = New System.Windows.Forms.ToolStripButton()
+        Me.btnClear = New System.Windows.Forms.ToolStripButton()
+        Me.btnSave = New System.Windows.Forms.ToolStripButton()
+        Me.btnCancel = New System.Windows.Forms.ToolStripButton()
+        Me.btnApprove = New System.Windows.Forms.ToolStripButton()
+        Me.btnPrint = New System.Windows.Forms.ToolStripButton()
+        Me.btnComplete = New System.Windows.Forms.ToolStripButton()
+        Me.btnArchive = New System.Windows.Forms.ToolStripButton()
         Me.Panel1.SuspendLayout()
         Me.Panel2.SuspendLayout()
         Me.Panel3.SuspendLayout()
         CType(Me.dtgrdItemsToConvert, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dtgrdEndItems, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dtgrdConversionList, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.ToolStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
         'Panel1
@@ -112,7 +119,7 @@ Partial Class frmItemConversion
         Me.Panel1.Controls.Add(Me.Label3)
         Me.Panel1.Controls.Add(Me.Label2)
         Me.Panel1.Controls.Add(Me.Label1)
-        Me.Panel1.Location = New System.Drawing.Point(10, 12)
+        Me.Panel1.Location = New System.Drawing.Point(10, 50)
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(575, 164)
         Me.Panel1.TabIndex = 0
@@ -217,7 +224,7 @@ Partial Class frmItemConversion
         Me.Panel2.Controls.Add(Me.txtRawItemCode)
         Me.Panel2.Controls.Add(Me.txtRawPrice)
         Me.Panel2.Controls.Add(Me.Label18)
-        Me.Panel2.Location = New System.Drawing.Point(10, 201)
+        Me.Panel2.Location = New System.Drawing.Point(10, 262)
         Me.Panel2.Name = "Panel2"
         Me.Panel2.Size = New System.Drawing.Size(495, 164)
         Me.Panel2.TabIndex = 94
@@ -354,7 +361,7 @@ Partial Class frmItemConversion
         Me.Panel3.Controls.Add(Me.txtEndItemCode)
         Me.Panel3.Controls.Add(Me.txtEndPrice)
         Me.Panel3.Controls.Add(Me.Label10)
-        Me.Panel3.Location = New System.Drawing.Point(900, 201)
+        Me.Panel3.Location = New System.Drawing.Point(898, 201)
         Me.Panel3.Name = "Panel3"
         Me.Panel3.Size = New System.Drawing.Size(494, 164)
         Me.Panel3.TabIndex = 95
@@ -477,7 +484,7 @@ Partial Class frmItemConversion
         'Label11
         '
         Me.Label11.AutoSize = True
-        Me.Label11.Location = New System.Drawing.Point(11, 181)
+        Me.Label11.Location = New System.Drawing.Point(11, 238)
         Me.Label11.Name = "Label11"
         Me.Label11.Size = New System.Drawing.Size(173, 17)
         Me.Label11.TabIndex = 96
@@ -487,7 +494,7 @@ Partial Class frmItemConversion
         '
         Me.Label14.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label14.AutoSize = True
-        Me.Label14.Location = New System.Drawing.Point(897, 181)
+        Me.Label14.Location = New System.Drawing.Point(895, 181)
         Me.Label14.Name = "Label14"
         Me.Label14.Size = New System.Drawing.Size(134, 17)
         Me.Label14.TabIndex = 97
@@ -501,11 +508,11 @@ Partial Class frmItemConversion
         Me.dtgrdItemsToConvert.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.dtgrdItemsToConvert.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dtgrdItemsToConvert.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column1, Me.Column2, Me.Column3, Me.Column4})
-        Me.dtgrdItemsToConvert.Location = New System.Drawing.Point(10, 397)
+        Me.dtgrdItemsToConvert.Location = New System.Drawing.Point(10, 449)
         Me.dtgrdItemsToConvert.Name = "dtgrdItemsToConvert"
         Me.dtgrdItemsToConvert.ReadOnly = True
         Me.dtgrdItemsToConvert.RowTemplate.Height = 24
-        Me.dtgrdItemsToConvert.Size = New System.Drawing.Size(884, 288)
+        Me.dtgrdItemsToConvert.Size = New System.Drawing.Size(884, 196)
         Me.dtgrdItemsToConvert.TabIndex = 98
         '
         'Column1
@@ -542,11 +549,11 @@ Partial Class frmItemConversion
         Me.dtgrdEndItems.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.dtgrdEndItems.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dtgrdEndItems.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn1, Me.DataGridViewTextBoxColumn2, Me.DataGridViewTextBoxColumn3, Me.DataGridViewTextBoxColumn4})
-        Me.dtgrdEndItems.Location = New System.Drawing.Point(900, 397)
+        Me.dtgrdEndItems.Location = New System.Drawing.Point(898, 397)
         Me.dtgrdEndItems.Name = "dtgrdEndItems"
         Me.dtgrdEndItems.ReadOnly = True
         Me.dtgrdEndItems.RowTemplate.Height = 24
-        Me.dtgrdEndItems.Size = New System.Drawing.Size(883, 288)
+        Me.dtgrdEndItems.Size = New System.Drawing.Size(883, 248)
         Me.dtgrdEndItems.TabIndex = 99
         '
         'DataGridViewTextBoxColumn1
@@ -578,7 +585,7 @@ Partial Class frmItemConversion
         'Label15
         '
         Me.Label15.AutoSize = True
-        Me.Label15.Location = New System.Drawing.Point(12, 377)
+        Me.Label15.Location = New System.Drawing.Point(11, 429)
         Me.Label15.Name = "Label15"
         Me.Label15.Size = New System.Drawing.Size(131, 17)
         Me.Label15.TabIndex = 100
@@ -588,47 +595,11 @@ Partial Class frmItemConversion
         '
         Me.Label20.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label20.AutoSize = True
-        Me.Label20.Location = New System.Drawing.Point(900, 377)
+        Me.Label20.Location = New System.Drawing.Point(898, 377)
         Me.Label20.Name = "Label20"
         Me.Label20.Size = New System.Drawing.Size(208, 17)
         Me.Label20.TabIndex = 101
         Me.Label20.Text = "End products (after conversion)"
-        '
-        'btnApprove
-        '
-        Me.btnApprove.Location = New System.Drawing.Point(571, 201)
-        Me.btnApprove.Name = "btnApprove"
-        Me.btnApprove.Size = New System.Drawing.Size(138, 42)
-        Me.btnApprove.TabIndex = 102
-        Me.btnApprove.Text = "Approve"
-        Me.btnApprove.UseVisualStyleBackColor = True
-        '
-        'btnCancel
-        '
-        Me.btnCancel.Location = New System.Drawing.Point(715, 201)
-        Me.btnCancel.Name = "btnCancel"
-        Me.btnCancel.Size = New System.Drawing.Size(138, 42)
-        Me.btnCancel.TabIndex = 103
-        Me.btnCancel.Text = "Cancel"
-        Me.btnCancel.UseVisualStyleBackColor = True
-        '
-        'btnComplete
-        '
-        Me.btnComplete.Location = New System.Drawing.Point(571, 249)
-        Me.btnComplete.Name = "btnComplete"
-        Me.btnComplete.Size = New System.Drawing.Size(138, 43)
-        Me.btnComplete.TabIndex = 104
-        Me.btnComplete.Text = "Complete"
-        Me.btnComplete.UseVisualStyleBackColor = True
-        '
-        'btnArchive
-        '
-        Me.btnArchive.Location = New System.Drawing.Point(715, 249)
-        Me.btnArchive.Name = "btnArchive"
-        Me.btnArchive.Size = New System.Drawing.Size(138, 43)
-        Me.btnArchive.TabIndex = 105
-        Me.btnArchive.Text = "Archive"
-        Me.btnArchive.UseVisualStyleBackColor = True
         '
         'dtgrdConversionList
         '
@@ -637,7 +608,7 @@ Partial Class frmItemConversion
         Me.dtgrdConversionList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.dtgrdConversionList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dtgrdConversionList.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn5, Me.DataGridViewTextBoxColumn6, Me.DataGridViewTextBoxColumn7})
-        Me.dtgrdConversionList.Location = New System.Drawing.Point(1170, 12)
+        Me.dtgrdConversionList.Location = New System.Drawing.Point(1168, 50)
         Me.dtgrdConversionList.Name = "dtgrdConversionList"
         Me.dtgrdConversionList.ReadOnly = True
         Me.dtgrdConversionList.RowTemplate.Height = 24
@@ -662,77 +633,135 @@ Partial Class frmItemConversion
         Me.DataGridViewTextBoxColumn7.Name = "DataGridViewTextBoxColumn7"
         Me.DataGridViewTextBoxColumn7.ReadOnly = True
         '
-        'btnNew
-        '
-        Me.btnNew.Location = New System.Drawing.Point(591, 12)
-        Me.btnNew.Name = "btnNew"
-        Me.btnNew.Size = New System.Drawing.Size(98, 37)
-        Me.btnNew.TabIndex = 107
-        Me.btnNew.Text = "New"
-        Me.btnNew.UseVisualStyleBackColor = True
-        '
-        'btnEdit
-        '
-        Me.btnEdit.Location = New System.Drawing.Point(591, 51)
-        Me.btnEdit.Name = "btnEdit"
-        Me.btnEdit.Size = New System.Drawing.Size(98, 37)
-        Me.btnEdit.TabIndex = 108
-        Me.btnEdit.Text = "Edit"
-        Me.btnEdit.UseVisualStyleBackColor = True
-        '
-        'btnSave
-        '
-        Me.btnSave.Location = New System.Drawing.Point(591, 139)
-        Me.btnSave.Name = "btnSave"
-        Me.btnSave.Size = New System.Drawing.Size(98, 37)
-        Me.btnSave.TabIndex = 109
-        Me.btnSave.Text = "Save"
-        Me.btnSave.UseVisualStyleBackColor = True
-        '
         'btnBack
         '
         Me.btnBack.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btnBack.Location = New System.Drawing.Point(1671, 697)
+        Me.btnBack.BackgroundImage = Global.BackOffice.My.Resources.Resources.red_back_arrow
+        Me.btnBack.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.btnBack.Location = New System.Drawing.Point(1681, 651)
         Me.btnBack.Name = "btnBack"
-        Me.btnBack.Size = New System.Drawing.Size(112, 53)
+        Me.btnBack.Size = New System.Drawing.Size(100, 40)
         Me.btnBack.TabIndex = 110
-        Me.btnBack.Text = "Back"
         Me.btnBack.UseVisualStyleBackColor = True
+        '
+        'ToolStrip1
+        '
+        Me.ToolStrip1.ImageScalingSize = New System.Drawing.Size(20, 20)
+        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.btnNew, Me.btnEdit, Me.btnClear, Me.btnSave, Me.ToolStripSeparator1, Me.ToolStripSeparator2, Me.ToolStripSeparator3, Me.ToolStripSeparator4, Me.btnCancel, Me.btnApprove, Me.btnPrint, Me.btnComplete, Me.btnArchive})
+        Me.ToolStrip1.Location = New System.Drawing.Point(0, 0)
+        Me.ToolStrip1.Name = "ToolStrip1"
+        Me.ToolStrip1.Size = New System.Drawing.Size(1789, 27)
+        Me.ToolStrip1.TabIndex = 113
+        Me.ToolStrip1.Text = "ToolStrip1"
+        '
+        'ToolStripSeparator1
+        '
+        Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
+        Me.ToolStripSeparator1.Size = New System.Drawing.Size(6, 27)
+        '
+        'ToolStripSeparator2
+        '
+        Me.ToolStripSeparator2.Name = "ToolStripSeparator2"
+        Me.ToolStripSeparator2.Size = New System.Drawing.Size(6, 27)
+        '
+        'ToolStripSeparator3
+        '
+        Me.ToolStripSeparator3.Name = "ToolStripSeparator3"
+        Me.ToolStripSeparator3.Size = New System.Drawing.Size(6, 27)
+        '
+        'ToolStripSeparator4
+        '
+        Me.ToolStripSeparator4.Name = "ToolStripSeparator4"
+        Me.ToolStripSeparator4.Size = New System.Drawing.Size(6, 27)
+        '
+        'btnNew
+        '
+        Me.btnNew.Image = Global.BackOffice.My.Resources.Resources.new_file
+        Me.btnNew.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.btnNew.Name = "btnNew"
+        Me.btnNew.Size = New System.Drawing.Size(63, 24)
+        Me.btnNew.Text = "New"
+        Me.btnNew.ToolTipText = "Creates a new Conversion document"
+        '
+        'btnEdit
+        '
+        Me.btnEdit.Image = Global.BackOffice.My.Resources.Resources.pencil
+        Me.btnEdit.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.btnEdit.Name = "btnEdit"
+        Me.btnEdit.Size = New System.Drawing.Size(59, 24)
+        Me.btnEdit.Text = "Edit"
+        Me.btnEdit.ToolTipText = "Promts user to edit an existing conversion document"
         '
         'btnClear
         '
-        Me.btnClear.Location = New System.Drawing.Point(591, 94)
+        Me.btnClear.Image = Global.BackOffice.My.Resources.Resources.brush
+        Me.btnClear.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.btnClear.Name = "btnClear"
-        Me.btnClear.Size = New System.Drawing.Size(98, 39)
-        Me.btnClear.TabIndex = 111
+        Me.btnClear.Size = New System.Drawing.Size(67, 24)
         Me.btnClear.Text = "Clear"
-        Me.btnClear.UseVisualStyleBackColor = True
+        Me.btnClear.ToolTipText = "Clear all the fields"
+        '
+        'btnSave
+        '
+        Me.btnSave.Image = Global.BackOffice.My.Resources.Resources.floppy_disk
+        Me.btnSave.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.btnSave.Name = "btnSave"
+        Me.btnSave.Size = New System.Drawing.Size(64, 24)
+        Me.btnSave.Text = "Save"
+        Me.btnSave.ToolTipText = "Save details of a new or existing document"
+        '
+        'btnCancel
+        '
+        Me.btnCancel.Image = Global.BackOffice.My.Resources.Resources.cancel
+        Me.btnCancel.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.btnCancel.Name = "btnCancel"
+        Me.btnCancel.Size = New System.Drawing.Size(77, 24)
+        Me.btnCancel.Text = "Cancel"
+        Me.btnCancel.ToolTipText = "Cancels the conversion document"
+        '
+        'btnApprove
+        '
+        Me.btnApprove.Image = Global.BackOffice.My.Resources.Resources.tick
+        Me.btnApprove.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.btnApprove.Name = "btnApprove"
+        Me.btnApprove.Size = New System.Drawing.Size(90, 24)
+        Me.btnApprove.Text = "Approve"
+        Me.btnApprove.ToolTipText = "Approve a pending conversion document for further actions"
         '
         'btnPrint
         '
-        Me.btnPrint.Location = New System.Drawing.Point(715, 298)
+        Me.btnPrint.Image = Global.BackOffice.My.Resources.Resources.printer
+        Me.btnPrint.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.btnPrint.Name = "btnPrint"
-        Me.btnPrint.Size = New System.Drawing.Size(138, 39)
-        Me.btnPrint.TabIndex = 112
-        Me.btnPrint.Text = "&Print"
-        Me.btnPrint.UseVisualStyleBackColor = True
+        Me.btnPrint.Size = New System.Drawing.Size(180, 24)
+        Me.btnPrint.Text = "Print Production Sheet"
+        Me.btnPrint.ToolTipText = "Print an already approved conversion document"
+        '
+        'btnComplete
+        '
+        Me.btnComplete.Image = Global.BackOffice.My.Resources.Resources.foward_arrow
+        Me.btnComplete.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.btnComplete.Name = "btnComplete"
+        Me.btnComplete.Size = New System.Drawing.Size(98, 24)
+        Me.btnComplete.Text = "Complete"
+        '
+        'btnArchive
+        '
+        Me.btnArchive.Image = CType(resources.GetObject("btnArchive.Image"), System.Drawing.Image)
+        Me.btnArchive.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.btnArchive.Name = "btnArchive"
+        Me.btnArchive.Size = New System.Drawing.Size(82, 24)
+        Me.btnArchive.Text = "Archive"
+        Me.btnArchive.ToolTipText = "Sends a completed document to archives for future references"
         '
         'frmItemConversion
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1791, 762)
-        Me.Controls.Add(Me.btnPrint)
-        Me.Controls.Add(Me.btnClear)
+        Me.ClientSize = New System.Drawing.Size(1789, 703)
+        Me.Controls.Add(Me.ToolStrip1)
         Me.Controls.Add(Me.btnBack)
-        Me.Controls.Add(Me.btnSave)
-        Me.Controls.Add(Me.btnEdit)
-        Me.Controls.Add(Me.btnNew)
         Me.Controls.Add(Me.dtgrdConversionList)
-        Me.Controls.Add(Me.btnArchive)
-        Me.Controls.Add(Me.btnComplete)
-        Me.Controls.Add(Me.btnCancel)
-        Me.Controls.Add(Me.btnApprove)
         Me.Controls.Add(Me.Label20)
         Me.Controls.Add(Me.Label15)
         Me.Controls.Add(Me.dtgrdEndItems)
@@ -756,6 +785,8 @@ Partial Class frmItemConversion
         CType(Me.dtgrdItemsToConvert, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.dtgrdEndItems, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.dtgrdConversionList, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.ToolStrip1.ResumeLayout(False)
+        Me.ToolStrip1.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -804,22 +835,13 @@ Partial Class frmItemConversion
     Friend WithEvents dtgrdEndItems As DataGridView
     Friend WithEvents Label15 As Label
     Friend WithEvents Label20 As Label
-    Friend WithEvents btnApprove As Button
-    Friend WithEvents btnCancel As Button
-    Friend WithEvents btnComplete As Button
-    Friend WithEvents btnArchive As Button
     Friend WithEvents dtgrdConversionList As DataGridView
     Friend WithEvents DataGridViewTextBoxColumn5 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn6 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn7 As DataGridViewTextBoxColumn
-    Friend WithEvents btnNew As Button
-    Friend WithEvents btnEdit As Button
-    Friend WithEvents btnSave As Button
     Friend WithEvents btnSearch As Button
     Friend WithEvents btnBack As Button
     Friend WithEvents txtId As TextBox
-    Friend WithEvents btnClear As Button
-    Friend WithEvents btnPrint As Button
     Friend WithEvents Column1 As DataGridViewTextBoxColumn
     Friend WithEvents Column2 As DataGridViewTextBoxColumn
     Friend WithEvents Column3 As DataGridViewTextBoxColumn
@@ -828,4 +850,18 @@ Partial Class frmItemConversion
     Friend WithEvents DataGridViewTextBoxColumn2 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn3 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn4 As DataGridViewTextBoxColumn
+    Friend WithEvents ToolStrip1 As ToolStrip
+    Friend WithEvents btnNew As ToolStripButton
+    Friend WithEvents btnEdit As ToolStripButton
+    Friend WithEvents btnClear As ToolStripButton
+    Friend WithEvents btnSave As ToolStripButton
+    Friend WithEvents ToolStripSeparator1 As ToolStripSeparator
+    Friend WithEvents ToolStripSeparator2 As ToolStripSeparator
+    Friend WithEvents ToolStripSeparator3 As ToolStripSeparator
+    Friend WithEvents ToolStripSeparator4 As ToolStripSeparator
+    Friend WithEvents btnCancel As ToolStripButton
+    Friend WithEvents btnApprove As ToolStripButton
+    Friend WithEvents btnPrint As ToolStripButton
+    Friend WithEvents btnArchive As ToolStripButton
+    Friend WithEvents btnComplete As ToolStripButton
 End Class

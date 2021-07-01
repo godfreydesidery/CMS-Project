@@ -409,6 +409,7 @@ Public Class frmConsolidatedDailySalesReport
         refreshList()
     End Sub
     Private Function refreshList()
+        Cursor = Cursors.WaitCursor
         dtgrdList.Rows.Clear()
 
         Dim totalIssued As Double = 0
@@ -521,7 +522,7 @@ Public Class frmConsolidatedDailySalesReport
         Catch ex As Exception
             MsgBox(ex.Message)
         End Try
-
+        Cursor = Cursors.Arrow
         Return vbNull
     End Function
     Dim list As String = ""
@@ -583,7 +584,7 @@ Public Class frmConsolidatedDailySalesReport
         clearFields()
     End Sub
 
-    Private Sub btnPrint_Click(sender As Object, e As EventArgs) Handles btnPrint.Click
+    Private Sub btnPrint_Click(sender As Object, e As EventArgs) Handles btnExportToPDF.Click
         generate()
         If dtgrdList.RowCount = 0 Then
             MsgBox("Nothing to print")

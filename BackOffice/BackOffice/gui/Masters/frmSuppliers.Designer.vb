@@ -22,8 +22,8 @@ Partial Class frmSuppliers
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle10 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.btnBack = New System.Windows.Forms.Button()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
@@ -64,27 +64,32 @@ Partial Class frmSuppliers
         Me.colCompanyName = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.colContactName = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.btnSearch = New System.Windows.Forms.Button()
-        Me.btnAddNew = New System.Windows.Forms.Button()
-        Me.btnEdit = New System.Windows.Forms.Button()
-        Me.btnDelete = New System.Windows.Forms.Button()
-        Me.btnSave = New System.Windows.Forms.Button()
         Me.Label18 = New System.Windows.Forms.Label()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.cmbSupplierName = New System.Windows.Forms.ComboBox()
+        Me.ToolStrip1 = New System.Windows.Forms.ToolStrip()
+        Me.btnNew = New System.Windows.Forms.ToolStripButton()
+        Me.btnEdit = New System.Windows.Forms.ToolStripButton()
+        Me.btnClear = New System.Windows.Forms.ToolStripButton()
+        Me.btnDelete = New System.Windows.Forms.ToolStripButton()
+        Me.btnSave = New System.Windows.Forms.ToolStripButton()
+        Me.btnBlock = New System.Windows.Forms.ToolStripButton()
+        Me.btnUnblock = New System.Windows.Forms.ToolStripButton()
         CType(Me.dtgrdSuppliers, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
+        Me.ToolStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
         'btnBack
         '
         Me.btnBack.BackColor = System.Drawing.SystemColors.Control
-        Me.btnBack.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.btnBack.BackgroundImage = Global.BackOffice.My.Resources.Resources.red_back_arrow
+        Me.btnBack.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btnBack.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnBack.Location = New System.Drawing.Point(1292, 629)
+        Me.btnBack.Location = New System.Drawing.Point(1176, 667)
         Me.btnBack.Name = "btnBack"
-        Me.btnBack.Size = New System.Drawing.Size(115, 35)
+        Me.btnBack.Size = New System.Drawing.Size(100, 40)
         Me.btnBack.TabIndex = 10
-        Me.btnBack.Text = "Back"
         Me.btnBack.UseVisualStyleBackColor = False
         '
         'Label1
@@ -325,9 +330,9 @@ Partial Class frmSuppliers
         Me.btnProductAndService.Enabled = False
         Me.btnProductAndService.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnProductAndService.ForeColor = System.Drawing.Color.Black
-        Me.btnProductAndService.Location = New System.Drawing.Point(423, 538)
+        Me.btnProductAndService.Location = New System.Drawing.Point(259, 162)
         Me.btnProductAndService.Name = "btnProductAndService"
-        Me.btnProductAndService.Size = New System.Drawing.Size(127, 66)
+        Me.btnProductAndService.Size = New System.Drawing.Size(115, 43)
         Me.btnProductAndService.TabIndex = 53
         Me.btnProductAndService.Text = "Add/ Edit Products"
         Me.btnProductAndService.UseVisualStyleBackColor = False
@@ -392,23 +397,23 @@ Partial Class frmSuppliers
         Me.dtgrdSuppliers.BackgroundColor = System.Drawing.SystemColors.Control
         Me.dtgrdSuppliers.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.dtgrdSuppliers.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.colSupCode, Me.colCompanyName, Me.colContactName})
-        DataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle9.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.ControlLight
-        DataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.Desktop
-        DataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dtgrdSuppliers.DefaultCellStyle = DataGridViewCellStyle9
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle3.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.ControlLight
+        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.Desktop
+        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dtgrdSuppliers.DefaultCellStyle = DataGridViewCellStyle3
         Me.dtgrdSuppliers.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically
-        Me.dtgrdSuppliers.Location = New System.Drawing.Point(598, 29)
+        Me.dtgrdSuppliers.Location = New System.Drawing.Point(467, 70)
         Me.dtgrdSuppliers.Name = "dtgrdSuppliers"
         Me.dtgrdSuppliers.ReadOnly = True
-        DataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.Gainsboro
-        DataGridViewCellStyle10.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(64, Byte), Integer))
-        Me.dtgrdSuppliers.RowsDefaultCellStyle = DataGridViewCellStyle10
+        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.Gainsboro
+        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(64, Byte), Integer))
+        Me.dtgrdSuppliers.RowsDefaultCellStyle = DataGridViewCellStyle4
         Me.dtgrdSuppliers.RowTemplate.Height = 24
-        Me.dtgrdSuppliers.Size = New System.Drawing.Size(809, 594)
+        Me.dtgrdSuppliers.Size = New System.Drawing.Size(809, 591)
         Me.dtgrdSuppliers.TabIndex = 0
         '
         'colSupCode
@@ -438,48 +443,10 @@ Partial Class frmSuppliers
         Me.btnSearch.Text = "Search"
         Me.btnSearch.UseVisualStyleBackColor = True
         '
-        'btnAddNew
-        '
-        Me.btnAddNew.Location = New System.Drawing.Point(448, 10)
-        Me.btnAddNew.Name = "btnAddNew"
-        Me.btnAddNew.Size = New System.Drawing.Size(115, 60)
-        Me.btnAddNew.TabIndex = 49
-        Me.btnAddNew.Text = "Add New"
-        Me.btnAddNew.UseVisualStyleBackColor = True
-        '
-        'btnEdit
-        '
-        Me.btnEdit.Location = New System.Drawing.Point(448, 76)
-        Me.btnEdit.Name = "btnEdit"
-        Me.btnEdit.Size = New System.Drawing.Size(115, 60)
-        Me.btnEdit.TabIndex = 50
-        Me.btnEdit.Text = "Edit"
-        Me.btnEdit.UseVisualStyleBackColor = True
-        '
-        'btnDelete
-        '
-        Me.btnDelete.Enabled = False
-        Me.btnDelete.Location = New System.Drawing.Point(448, 145)
-        Me.btnDelete.Name = "btnDelete"
-        Me.btnDelete.Size = New System.Drawing.Size(115, 60)
-        Me.btnDelete.TabIndex = 51
-        Me.btnDelete.Text = "Delete"
-        Me.btnDelete.UseVisualStyleBackColor = True
-        '
-        'btnSave
-        '
-        Me.btnSave.Enabled = False
-        Me.btnSave.Location = New System.Drawing.Point(448, 212)
-        Me.btnSave.Name = "btnSave"
-        Me.btnSave.Size = New System.Drawing.Size(115, 60)
-        Me.btnSave.TabIndex = 52
-        Me.btnSave.Text = "Save"
-        Me.btnSave.UseVisualStyleBackColor = True
-        '
         'Label18
         '
         Me.Label18.AutoSize = True
-        Me.Label18.Location = New System.Drawing.Point(595, 9)
+        Me.Label18.Location = New System.Drawing.Point(467, 50)
         Me.Label18.Name = "Label18"
         Me.Label18.Size = New System.Drawing.Size(197, 17)
         Me.Label18.TabIndex = 54
@@ -493,12 +460,8 @@ Partial Class frmSuppliers
         Me.Panel1.Controls.Add(Me.txtAddress)
         Me.Panel1.Controls.Add(Me.txtContactName)
         Me.Panel1.Controls.Add(Me.Label4)
-        Me.Panel1.Controls.Add(Me.btnSave)
-        Me.Panel1.Controls.Add(Me.btnDelete)
         Me.Panel1.Controls.Add(Me.txtFax)
-        Me.Panel1.Controls.Add(Me.btnEdit)
         Me.Panel1.Controls.Add(Me.txtBankAccNo)
-        Me.Panel1.Controls.Add(Me.btnAddNew)
         Me.Panel1.Controls.Add(Me.Label5)
         Me.Panel1.Controls.Add(Me.txtSupplierCode)
         Me.Panel1.Controls.Add(Me.txtEmail)
@@ -528,9 +491,9 @@ Partial Class frmSuppliers
         Me.Panel1.Controls.Add(Me.Label8)
         Me.Panel1.Controls.Add(Me.txtBankPostCode)
         Me.Panel1.Controls.Add(Me.Label7)
-        Me.Panel1.Location = New System.Drawing.Point(12, 12)
+        Me.Panel1.Location = New System.Drawing.Point(10, 50)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(577, 611)
+        Me.Panel1.Size = New System.Drawing.Size(451, 611)
         Me.Panel1.TabIndex = 57
         '
         'cmbSupplierName
@@ -541,12 +504,90 @@ Partial Class frmSuppliers
         Me.cmbSupplierName.Size = New System.Drawing.Size(319, 24)
         Me.cmbSupplierName.TabIndex = 108
         '
+        'ToolStrip1
+        '
+        Me.ToolStrip1.BackColor = System.Drawing.SystemColors.ButtonFace
+        Me.ToolStrip1.ImageScalingSize = New System.Drawing.Size(20, 20)
+        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.btnNew, Me.btnEdit, Me.btnClear, Me.btnDelete, Me.btnSave, Me.btnBlock, Me.btnUnblock})
+        Me.ToolStrip1.Location = New System.Drawing.Point(0, 0)
+        Me.ToolStrip1.Name = "ToolStrip1"
+        Me.ToolStrip1.Size = New System.Drawing.Size(1286, 27)
+        Me.ToolStrip1.TabIndex = 76
+        Me.ToolStrip1.Text = "ToolStrip1"
+        '
+        'btnNew
+        '
+        Me.btnNew.Image = Global.BackOffice.My.Resources.Resources.new_file
+        Me.btnNew.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.btnNew.Name = "btnNew"
+        Me.btnNew.Size = New System.Drawing.Size(63, 24)
+        Me.btnNew.Text = "New"
+        Me.btnNew.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.btnNew.ToolTipText = "Creates a new record"
+        '
+        'btnEdit
+        '
+        Me.btnEdit.Image = Global.BackOffice.My.Resources.Resources.pencil
+        Me.btnEdit.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.btnEdit.Name = "btnEdit"
+        Me.btnEdit.Size = New System.Drawing.Size(59, 24)
+        Me.btnEdit.Text = "Edit"
+        Me.btnEdit.ToolTipText = "Unlock fields for editing"
+        '
+        'btnClear
+        '
+        Me.btnClear.Image = Global.BackOffice.My.Resources.Resources.cancel
+        Me.btnClear.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.btnClear.Name = "btnClear"
+        Me.btnClear.Size = New System.Drawing.Size(67, 24)
+        Me.btnClear.Text = "Clear"
+        Me.btnClear.ToolTipText = "Clear all the fields"
+        '
+        'btnDelete
+        '
+        Me.btnDelete.Image = Global.BackOffice.My.Resources.Resources.trash
+        Me.btnDelete.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.btnDelete.Name = "btnDelete"
+        Me.btnDelete.Size = New System.Drawing.Size(77, 24)
+        Me.btnDelete.Text = "Delete"
+        Me.btnDelete.ToolTipText = "Deletes an existing record"
+        '
+        'btnSave
+        '
+        Me.btnSave.Image = Global.BackOffice.My.Resources.Resources.floppy_disk
+        Me.btnSave.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.btnSave.Name = "btnSave"
+        Me.btnSave.Size = New System.Drawing.Size(64, 24)
+        Me.btnSave.Text = "Save"
+        Me.btnSave.ToolTipText = "Save a new or existing record"
+        '
+        'btnBlock
+        '
+        Me.btnBlock.Enabled = False
+        Me.btnBlock.Image = Global.BackOffice.My.Resources.Resources.closed_padlock
+        Me.btnBlock.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.btnBlock.Name = "btnBlock"
+        Me.btnBlock.Size = New System.Drawing.Size(69, 24)
+        Me.btnBlock.Text = "Block"
+        Me.btnBlock.ToolTipText = "Blocks a category, a blocked category can not be used"
+        '
+        'btnUnblock
+        '
+        Me.btnUnblock.Enabled = False
+        Me.btnUnblock.Image = Global.BackOffice.My.Resources.Resources.open_padlock
+        Me.btnUnblock.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.btnUnblock.Name = "btnUnblock"
+        Me.btnUnblock.Size = New System.Drawing.Size(87, 24)
+        Me.btnUnblock.Text = "Unblock"
+        Me.btnUnblock.ToolTipText = "Unblocks a blocked category"
+        '
         'frmSuppliers
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.AutoSize = True
-        Me.ClientSize = New System.Drawing.Size(1414, 672)
+        Me.ClientSize = New System.Drawing.Size(1286, 717)
+        Me.Controls.Add(Me.ToolStrip1)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.Label18)
         Me.Controls.Add(Me.dtgrdSuppliers)
@@ -560,6 +601,8 @@ Partial Class frmSuppliers
         CType(Me.dtgrdSuppliers, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
+        Me.ToolStrip1.ResumeLayout(False)
+        Me.ToolStrip1.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -598,10 +641,6 @@ Partial Class frmSuppliers
     Friend WithEvents txtBankAccAddress As TextBox
     Friend WithEvents dtgrdSuppliers As DataGridView
     Friend WithEvents btnSearch As Button
-    Friend WithEvents btnAddNew As Button
-    Friend WithEvents btnEdit As Button
-    Friend WithEvents btnDelete As Button
-    Friend WithEvents btnSave As Button
     Friend WithEvents txtBankAccNo As TextBox
     Friend WithEvents Label17 As Label
     Friend WithEvents btnProductAndService As Button
@@ -611,4 +650,12 @@ Partial Class frmSuppliers
     Friend WithEvents colCompanyName As DataGridViewTextBoxColumn
     Friend WithEvents colContactName As DataGridViewTextBoxColumn
     Friend WithEvents cmbSupplierName As ComboBox
+    Friend WithEvents ToolStrip1 As ToolStrip
+    Friend WithEvents btnNew As ToolStripButton
+    Friend WithEvents btnEdit As ToolStripButton
+    Friend WithEvents btnClear As ToolStripButton
+    Friend WithEvents btnDelete As ToolStripButton
+    Friend WithEvents btnSave As ToolStripButton
+    Friend WithEvents btnBlock As ToolStripButton
+    Friend WithEvents btnUnblock As ToolStripButton
 End Class

@@ -718,6 +718,7 @@ Public Class frmMassManager
     End Sub
 
     Private Sub btnUploadMaster_Click(sender As Object, e As EventArgs) Handles btnUploadMaster.Click
+        Cursor = Cursors.WaitCursor
         path = ""
         count = 0
 
@@ -829,9 +830,11 @@ Public Class frmMassManager
         Else
             MsgBox("Invalid File Format. The input file should be in Exel(xlsl or xls) format")
         End If
+        Cursor = Cursors.Default
     End Sub
 
     Private Sub btnUpdatePrice_Click(sender As Object, e As EventArgs) Handles btnUpdatePrice.Click
+        Cursor = Cursors.WaitCursor
         path = ""
         count = 0
         dlgOpenFile.ShowDialog()
@@ -916,11 +919,13 @@ Public Class frmMassManager
         Else
             MsgBox("Invalid File Format. The input file should be in Exel(xlsl or xls) format")
         End If
+        Cursor = Cursors.Default
     End Sub
 
 
 
     Private Sub btnUpdateInventory_Click(sender As Object, e As EventArgs) Handles btnUpdateInventory.Click
+        Cursor = Cursors.WaitCursor
         path = ""
         count = 0
 
@@ -979,9 +984,11 @@ Public Class frmMassManager
         Else
             MsgBox("Invalid File Format. The input file should be in Exel(xlsl or xls) format")
         End If
+        Cursor = Cursors.Default
     End Sub
 
     Private Sub btnUpdateMaster_Click(sender As Object, e As EventArgs) Handles btnUpdateMaster.Click
+        Cursor = Cursors.WaitCursor
         path = ""
         count = 0
 
@@ -1080,6 +1087,7 @@ Public Class frmMassManager
         Else
             MsgBox("Invalid File Format. The input file should be in Exel(xlsl or xls) format")
         End If
+        Cursor = Cursors.Default
     End Sub
     Private Function removeInvalidCharacters(value As String) As String
         Try
@@ -1091,6 +1099,7 @@ Public Class frmMassManager
     End Function
 
     Private Sub btnGenerateItemMasterTemplate_Click(sender As Object, e As EventArgs) Handles btnGenerateItemMasterTemplate.Click
+        Cursor = Cursors.WaitCursor
         Dim appXL As Excel.Application
         Dim wbXl As Excel.Workbook
         Dim shXL As Excel.Worksheet
@@ -1158,7 +1167,7 @@ Public Class frmMassManager
         Catch ex As Exception
 
         End Try
-
+        Cursor = Cursors.Default
         Exit Sub
 Err_Handler:
         MsgBox(Err.Description, vbCritical, "Error: " & Err.Number)
@@ -1166,6 +1175,7 @@ Err_Handler:
     End Sub
 
     Private Sub btnDownloadMaster_Click(sender As Object, e As EventArgs) Handles btnDownloadMaster.Click
+        Cursor = Cursors.WaitCursor
         Dim appXL As Excel.Application
         Dim wbXl As Excel.Workbook
         Dim shXL As Excel.Worksheet
@@ -1300,8 +1310,10 @@ Err_Handler:
         '       wbXl = Nothing
         '      appXL.Quit()
         '      appXL = Nothing
+        Cursor = Cursors.Default
         Exit Sub
 Err_Handler:
         MsgBox(Err.Description, vbCritical, "Error: " & Err.Number)
+
     End Sub
 End Class

@@ -1,10 +1,283 @@
 ﻿Imports Devart.Data.MySql
+Imports MigraDoc.DocumentObjectModel
+Imports MigraDoc.DocumentObjectModel.Tables
+Imports MigraDoc.Rendering
 
 Public Class frmPurchaseOrder
     Dim EDIT_MODE As String = ""
     Dim ORDER_STAT As String = ""
     Private Sub btnBack_Click(sender As Object, e As EventArgs) Handles btnBack.Click
         Me.Dispose()
+    End Sub
+    Private Sub defineStyles(doc As Document)
+        'Get the predefined style Normal.
+        Dim style As Style = doc.Styles("Normal")
+        'Because all styles are derived from Normal, the next line changes the
+        'font of the whole document. Or, more exactly, it changes the font of
+        'all styles And paragraphs that do Not redefine the font.
+        style.Font.Name = "Verdana"
+        'style = doc.Document.Styles(StyleNames.Header)
+        style.ParagraphFormat.AddTabStop("16cm", TabAlignment.Right)
+        style = doc.Styles(StyleNames.Footer)
+        style.ParagraphFormat.AddTabStop("8cm", TabAlignment.Center)
+        'Create a new style called Table based on style Normal
+        style = doc.Styles.AddStyle("Table", "Normal")
+        style.Font.Name = "Verdana"
+        style.Font.Name = "Calibri"
+        style.Font.Size = 10
+        'Create a new style called Reference based on style Normal
+        style = doc.Styles.AddStyle("Reference", "Normal")
+        style.ParagraphFormat.SpaceBefore = "5mm"
+        style.ParagraphFormat.SpaceAfter = "5mm"
+        style.ParagraphFormat.TabStops.AddTabStop("16cm", TabAlignment.Right)
+
+    End Sub
+    Private Sub createDocument(doc As Document)
+        'Each MigraDoc document needs at least one section.
+        Dim section As Section = doc.AddSection()
+        section.PageSetup.DifferentFirstPageHeaderFooter = True
+        Dim paragraph As Paragraph
+        doc.FootnoteStartingNumber() = 1
+        paragraph = section.Footers.Primary.AddParagraph()
+        Dim _datetime As String = DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss")
+        paragraph.AddText("Printed :" & _datetime + " By :" & User.CURRENT_ALIAS & " From :" & Company.NAME)
+        paragraph.Format.Font.Size = 8
+        paragraph.Format.Alignment = ParagraphAlignment.Center
+        paragraph.Format.Font.Color = Colors.GreenYellow
+        paragraph = section.Footers.Primary.AddParagraph()
+        paragraph.AddPageField()
+        paragraph.AddText(" of ")
+        paragraph.AddNumPagesField()
+        paragraph.Format.Alignment = ParagraphAlignment.Right
+        section.Footers.FirstPage = section.Footers.Primary.Clone()
+        'Start of header
+        Dim logoPath As String = ""
+        Dim logoImage As Image = Nothing
+        Dim headerTable As Table = section.Headers.FirstPage.AddTable()
+        headerTable.Borders.Width = 0.2
+        headerTable.Borders.Left.Width = 0.2
+        headerTable.Borders.Right.Width = 0.2
+        headerTable.Rows.LeftIndent = 0
+        Dim headerColumn As Column
+        headerColumn = headerTable.AddColumn("2.2cm")
+        headerColumn.Format.Alignment = ParagraphAlignment.Left
+        headerColumn = headerTable.AddColumn("0.3cm")
+        headerColumn.Format.Alignment = ParagraphAlignment.Left
+        headerColumn = headerTable.AddColumn("12cm")
+        headerColumn.Format.Alignment = ParagraphAlignment.Left
+        Dim headerRow As Row
+        headerRow = headerTable.AddRow()
+        headerRow.Format.Font.Bold = False
+        headerRow.HeadingFormat = True
+        headerRow.Format.Font.Size = 9
+        headerRow.Format.Alignment = ParagraphAlignment.Center
+        headerRow.Borders.Color = Colors.White
+        Try
+            Dim logo As New System.IO.MemoryStream(CType(Company.LOGO, Byte()))
+            logoImage = Image.FromStream(logo)
+            logoPath = My.Computer.FileSystem.SpecialDirectories.MyDocuments + "TempDocumentLogo.png"
+            If My.Computer.FileSystem.FileExists(logoPath) Then
+                My.Computer.FileSystem.DeleteFile(logoPath)
+            End If
+            logoImage.Save(logoPath)
+            If logo.Length > 0 Then
+                headerRow.Cells(0).AddImage(logoPath).Width = "2.2cm"
+                headerRow.Cells(0).Format.Alignment = ParagraphAlignment.Left
+            End If
+        Catch ex As Exception
+        End Try
+        headerRow.Cells(1).AddParagraph("")
+        Dim companyName As New Paragraph
+        companyName.AddText(Company.NAME + Environment.NewLine)
+        companyName.Format.Font.Bold = True
+        companyName.Format.Font.Size = 9
+        Dim physicalAddress As New Paragraph
+        physicalAddress.AddText(Company.PHYSICAL_ADDRESS + Environment.NewLine)
+        physicalAddress.Format.Font.Size = 8
+        Dim address As New Paragraph
+        address.AddText(Company.ADDRESS + Environment.NewLine)
+        address.Format.Font.Size = 8
+        Dim postCode As New Paragraph
+        postCode.AddText(Company.POST_CODE + Environment.NewLine)
+        postCode.Format.Font.Size = 8
+        Dim telephone As New Paragraph
+        telephone.AddText("Tel: " + Company.TELEPHONE + " Mob:" + Company.MOBILE + Environment.NewLine)
+        telephone.Format.Font.Size = 7
+        Dim email As New Paragraph
+        email.AddText("Email: " + Company.EMAIL + Environment.NewLine)
+        email.Format.Font.Size = 7
+        email.Format.Font.Italic = True
+        headerRow.Cells(2).Add(companyName)
+        headerRow.Cells(2).Add(physicalAddress)
+        headerRow.Cells(2).Add(postCode)
+        headerRow.Cells(2).Add(address)
+        headerRow.Cells(2).Add(telephone)
+        headerRow.Cells(2).Add(email)
+        headerRow.Cells(2).Format.Alignment = ParagraphAlignment.Left
+        headerTable.SetEdge(0, 0, 3, 1, Edge.Box, BorderStyle.Single, 0.75, Color.Empty)
+        paragraph = section.AddParagraph()
+        paragraph = section.AddParagraph()
+        paragraph = section.AddParagraph()
+        Dim tittleTable As Tables.Table = section.AddTable()
+        tittleTable.Borders.Width = 0.25
+        tittleTable.Borders.Left.Width = 0.5
+        tittleTable.Borders.Right.Width = 0.5
+        tittleTable.Rows.LeftIndent = 0
+        Dim titleColumn As Tables.Column
+        titleColumn = tittleTable.AddColumn("2.5cm")
+        titleColumn.Format.Alignment = ParagraphAlignment.Left
+        titleColumn = tittleTable.AddColumn("12.0cm")
+        titleColumn.Format.Alignment = ParagraphAlignment.Left
+        Dim titleRow As Tables.Row
+        Dim documentTitle As New Paragraph
+        documentTitle.AddText("Local Purchase Order")
+        documentTitle.Format.Alignment = ParagraphAlignment.Left
+        documentTitle.Format.Font.Size = 10
+        documentTitle.Format.Font.Color = Colors.Black
+        titleRow = tittleTable.AddRow()
+        titleRow.Format.Font.Bold = True
+        titleRow.HeadingFormat = True
+        titleRow.Format.Font.Size = 8
+        titleRow.Format.Alignment = ParagraphAlignment.Center
+        titleRow.Format.Font.Bold = True
+        titleRow.Borders.Color = Colors.White
+        titleRow.Cells(0).AddParagraph("")
+        titleRow.Cells(0).Format.Alignment = ParagraphAlignment.Left
+        titleRow.Cells(1).Add(documentTitle)
+        titleRow.Cells(1).Format.Alignment = ParagraphAlignment.Left
+        tittleTable.SetEdge(0, 0, 2, 1, Edge.Box, BorderStyle.Single, 0.75, Color.Empty)
+        'end of header
+
+
+        paragraph = section.AddParagraph()
+        paragraph = section.AddParagraph()
+        paragraph.AddFormattedText("To:          " + cmbSupplier.Text, TextFormat.Bold)
+        paragraph.Format.Font.Size = 9
+        Dim supplier As New Supplier
+        supplier.search((New Supplier).getSupplierCode("", cmbSupplier.Text))
+        paragraph = section.AddParagraph()
+        paragraph.AddFormattedText(supplier.GL_ADDRESS)
+        paragraph.Format.Font.Size = 8
+        paragraph = section.AddParagraph()
+        paragraph.AddFormattedText("Phone: " + supplier.GL_TELEPHONE)
+        paragraph.Format.Font.Size = 8
+        If supplier.GL_FAX <> "" Then
+            paragraph = section.AddParagraph()
+            paragraph.AddFormattedText("Fax: " + supplier.GL_FAX)
+            paragraph.Format.Font.Size = 8
+        End If
+        paragraph = section.AddParagraph()
+        paragraph.AddFormattedText("Email: " + supplier.GL_EMAIL)
+        paragraph.Format.Font.Size = 8
+        paragraph.Format.Font.Italic = True
+        paragraph = section.AddParagraph()
+        paragraph = section.AddParagraph()
+        paragraph.AddFormattedText("Order#:      " + txtOrderNo.Text)
+        paragraph.Format.Font.Size = 8
+        paragraph = section.AddParagraph()
+        paragraph.AddFormattedText("Order Date:  " + txtOrderDate.Text)
+        paragraph.Format.Font.Size = 8
+        paragraph = section.AddParagraph()
+        paragraph.AddFormattedText("Valid Up To: " + txtVaildUntil.Text)
+        paragraph.Format.Font.Size = 8
+        paragraph = section.AddParagraph()
+        paragraph.AddFormattedText("Supplier#:   " + ((New Supplier).getSupplierCode("", cmbSupplier.Text)) + " " + cmbSupplier.Text)
+        paragraph.Format.Font.Size = 8
+
+
+        'Add the print date field
+        paragraph = section.AddParagraph()
+        paragraph.Format.SpaceBefore = "1cm"
+        paragraph.Style = "Reference"
+        paragraph.AddTab()
+        paragraph.AddText("Created: ")
+        paragraph.AddDateField("dd.MM.yyyy")
+
+        'Create the item table
+        Dim table As Table = section.AddTable()
+        table.Style = "Table"
+        ' table.Borders.Color = TableBorder
+        table.Borders.Width = 0.25
+        table.Borders.Left.Width = 0.5
+        table.Borders.Right.Width = 0.5
+        table.Rows.LeftIndent = 0
+
+        'Before you can add a row, you must define the columns
+        Dim column As Column
+
+        column = table.AddColumn("3cm")
+        column.Format.Alignment = ParagraphAlignment.Center
+
+
+        column = table.AddColumn("9cm")
+        column.Format.Alignment = ParagraphAlignment.Right
+
+        column = table.AddColumn("2cm")
+        column.Format.Alignment = ParagraphAlignment.Right
+
+        column = table.AddColumn("2cm")
+        column.Format.Alignment = ParagraphAlignment.Right
+
+        'Create the header of the table
+        Dim row As Row
+
+        row = table.AddRow()
+        row.Format.Font.Bold = True
+        row.HeadingFormat = True
+        row.Format.Alignment = ParagraphAlignment.Center
+        row.Format.Font.Bold = True
+        row.Borders.Color = Colors.White
+        'row.Shading.Color = TableBlue
+        row.Cells(0).AddParagraph("Code")
+        row.Cells(0).Format.Alignment = ParagraphAlignment.Left
+        row.Cells(1).AddParagraph("Description")
+        row.Cells(1).Format.Alignment = ParagraphAlignment.Left
+        row.Cells(2).AddParagraph("Pack Size")
+        row.Cells(2).Format.Alignment = ParagraphAlignment.Left
+        row.Cells(3).AddParagraph("Qty")
+        row.Cells(3).Format.Alignment = ParagraphAlignment.Left
+
+        table.SetEdge(0, 0, 4, 1, Edge.Box, BorderStyle.Single, 0.75, Color.Empty)
+
+        Dim totalQty As Double = 0
+
+        For i As Integer = 0 To dtgrdItemList.RowCount - 1
+            Dim code As String = dtgrdItemList.Item(1, i).Value.ToString
+            Dim descr As String = dtgrdItemList.Item(2, i).Value.ToString
+            Dim packing As String = dtgrdItemList.Item(3, i).Value.ToString
+            Dim qty As String = dtgrdItemList.Item(4, i).Value.ToString
+            totalQty = totalQty + Val(qty)
+            row = table.AddRow()
+            row.Format.Font.Bold = False
+            row.HeadingFormat = False
+            row.Format.Alignment = ParagraphAlignment.Center
+            row.Borders.Color = Colors.White
+            row.Cells(0).AddParagraph(code)
+            row.Cells(0).Format.Alignment = ParagraphAlignment.Left
+            row.Cells(1).AddParagraph(descr)
+            row.Cells(1).Format.Alignment = ParagraphAlignment.Left
+            row.Cells(2).AddParagraph(packing)
+            row.Cells(2).Format.Alignment = ParagraphAlignment.Left
+            row.Cells(3).AddParagraph(qty)
+            row.Cells(3).Format.Alignment = ParagraphAlignment.Left
+
+            table.SetEdge(0, 0, 4, 1, Edge.Box, BorderStyle.Single, 0.75, Color.Empty)
+        Next
+        row = table.AddRow()
+        row.Format.Font.Bold = True
+        row.HeadingFormat = False
+        row.Format.Alignment = ParagraphAlignment.Center
+        row.Borders.Color = Colors.White
+        row.Cells(0).AddParagraph("")
+        row.Cells(0).Format.Alignment = ParagraphAlignment.Left
+        row.Cells(1).AddParagraph("")
+        row.Cells(1).Format.Alignment = ParagraphAlignment.Left
+        row.Cells(2).AddParagraph("Total Qty")
+        row.Cells(2).Format.Alignment = ParagraphAlignment.Left
+        row.Cells(3).AddParagraph(totalQty.ToString)
+        row.Cells(3).Format.Alignment = ParagraphAlignment.Left
+
+        table.SetEdge(0, 0, 4, 1, Edge.Box, BorderStyle.Single, 0.75, Color.Empty)
     End Sub
 
     Private Sub TextBox4_TextChanged(sender As Object, e As EventArgs)
@@ -25,6 +298,13 @@ Public Class frmPurchaseOrder
         txtSupplierCode.Text = ""
         cmbSupplier.SelectedItem = Nothing
         cmbSupplier.Text = ""
+        txtOrderDate.Text = ""
+        txtVaildUntil.Text = ""
+        txtOrderStatus.Text = ""
+        cmbValidityPeriod.SelectedItem = Nothing
+        cmbValidityPeriod.Text = ""
+        txtTotal.Text = ""
+        dtgrdItemList.Rows.Clear()
 
         Return vbNull
     End Function
@@ -140,6 +420,7 @@ Public Class frmPurchaseOrder
     End Sub
 
     Private Sub btnNew_Click(sender As Object, e As EventArgs) Handles btnNew.Click
+        clear()
         cmbValidityPeriod.Text = "30"
         txtVaildUntil.Text = ((New Day).getCurrentDay.AddDays(Val(cmbValidityPeriod.Text))).ToString("yyyy-MM-dd")
         EDIT_MODE = "NEW"
@@ -151,8 +432,6 @@ Public Class frmPurchaseOrder
         txtOrderDate.Text = Day.DAY
         unlock()
         btnSave.Enabled = False
-        btnDelete.Enabled = False
-        clear()
         txtOrderNo.Text = (New Order).generateOrderNo
         If txtOrderNo.Text = "" Then
             txtOrderNo.Text = "0"
@@ -175,7 +454,6 @@ Public Class frmPurchaseOrder
         ORDER_STAT = ""
         txtOrderNo.ReadOnly = False
         lock()
-        btnDelete.Enabled = True
         clear()
     End Sub
 
@@ -434,6 +712,9 @@ Public Class frmPurchaseOrder
     Dim longSupplier As New List(Of String)
     Dim shortSupplier As New List(Of String)
     Private Sub frmPurchaseOrder_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        clear()
+        clearFields()
+
         txtOrderNo.Text = ""
         txtSupplierCode.Text = ""
         cmbSupplier.SelectedItem = Nothing
@@ -447,7 +728,53 @@ Public Class frmPurchaseOrder
 
         Dim supplier As New Supplier
         longSupplier = supplier.getSuppliers("")
+        refreshLPOList()
 
+    End Sub
+    Private Sub refreshLPOList()
+        dtgrdLPOList.Rows.Clear()
+        Try
+            Dim conn As New MySqlConnection(Database.conString)
+            Dim command As New MySqlCommand()
+            Dim codeQuery As String = "SELECT `order_id`, `order_no`, `order_date`, `validity_period`, `valid_until`, `supplier_id`, `status`, `user_id` FROM `orders` WHERE `status`='BLANK' OR `status`='PENDING' OR `status`='APPROVED' OR `status`='PRINTED' OR `status`='REPRINTED' OR `status`='COMPLETED'"
+            conn.Open()
+            command.CommandText = codeQuery
+            command.Connection = conn
+            command.CommandType = CommandType.Text
+            Dim reader As MySqlDataReader = command.ExecuteReader()
+            Dim issueNo As String = ""
+            Dim issueDate As String = ""
+            Dim status As String = ""
+            Dim salesPerson As String = ""
+
+            While reader.Read
+                Dim item As New Item
+                issueNo = reader.GetString("order_no")
+                issueDate = reader.GetString("order_date")
+                status = reader.GetString("status")
+
+                Dim dtgrdRow As New DataGridViewRow
+                Dim dtgrdCell As DataGridViewCell
+
+                dtgrdCell = New DataGridViewTextBoxCell()
+                dtgrdCell.Value = issueNo
+                dtgrdRow.Cells.Add(dtgrdCell)
+
+                dtgrdCell = New DataGridViewTextBoxCell()
+                dtgrdCell.Value = issueDate
+                dtgrdRow.Cells.Add(dtgrdCell)
+
+                dtgrdCell = New DataGridViewTextBoxCell()
+                dtgrdCell.Value = status
+                dtgrdRow.Cells.Add(dtgrdCell)
+
+                dtgrdLPOList.Rows.Add(dtgrdRow)
+
+            End While
+            conn.Close()
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
     End Sub
 
     Private Sub frmPurchaseOrder_Shown(sender As Object, e As EventArgs) Handles Me.Shown
@@ -477,7 +804,7 @@ Public Class frmPurchaseOrder
         End If
     End Sub
 
-    Private Sub btnDelete_Click(sender As Object, e As EventArgs) Handles btnDelete.Click
+    Private Sub btnDelete_Click(sender As Object, e As EventArgs)
         If txtOrderNo.Text = "" Then
             MsgBox("Please select an order to delete.", vbOKOnly + vbExclamation, "Error: No selection")
             Exit Sub
@@ -550,8 +877,8 @@ Public Class frmPurchaseOrder
                 'clearFields()
                 'Else
                 valid = True
-                    lockFields()
-                    txtQuantity.ReadOnly = False
+                lockFields()
+                txtQuantity.ReadOnly = False
                 'End If
                 Exit While
             End While
@@ -672,7 +999,7 @@ Public Class frmPurchaseOrder
         Exit Sub
     End Sub
 
-    Private Sub btnCancel_Click(sender As Object, e As EventArgs) Handles btnCancel.Click
+    Private Sub btnCancel_Click(sender As Object, e As EventArgs) Handles btnReset.Click
         clearFields()
         unLockFields()
     End Sub
@@ -704,6 +1031,11 @@ Public Class frmPurchaseOrder
             clearFields()
             Exit Sub
         End If
+        If status = "BLANK" Then
+            MsgBox("Could not approve a blank LPO", vbOKOnly + vbExclamation, "Error: Invalid operation")
+            clearFields()
+            Exit Sub
+        End If
         If User.authorize("APPROVE LPO") = True Then
             If txtOrderNo.Text = "" Then
                 MsgBox("Please select order to approve", vbOKOnly + vbInformation, "")
@@ -720,14 +1052,12 @@ Public Class frmPurchaseOrder
                 Dim order As Order = New Order
                 If order.approveOrder(txtOrderNo.Text) = True Then
                     MsgBox("Order Successively approved", vbOKOnly + vbInformation, "")
+                    txtOrderNo.ReadOnly = False
+                    search()
                 Else
                     MsgBox("Could not approve order", vbOKOnly + vbInformation, "")
                 End If
-
-
-
             End If
-
         Else
             MsgBox("Access denied!", vbOKOnly + vbExclamation)
         End If
@@ -775,5 +1105,140 @@ Public Class frmPurchaseOrder
         cmbSupplier.Items.AddRange(shortSupplier.ToArray())
         cmbSupplier.SelectionStart = cmbSupplier.Text.Length
         Cursor.Current = Cursors.Default
+    End Sub
+
+    Private Sub dtgrdLPOList_CellContentClick(sender As Object, e As DataGridViewCellMouseEventArgs) Handles dtgrdLPOList.RowHeaderMouseClick
+        Dim r As Integer = dtgrdLPOList.CurrentRow.Index
+        Dim lpoNo As String = dtgrdLPOList.Item(0, r).Value.ToString
+        txtOrderNo.Text = lpoNo
+        txtOrderNo.ReadOnly = False
+        search()
+    End Sub
+
+    Private Sub btnArchive_Click(sender As Object, e As EventArgs) Handles btnArchive.Click
+        Dim status As String = (New Order).getStatus(txtOrderNo.Text)
+        If Not status = "COMPLETED" Then
+            MsgBox("Only COMPLETED LPO can be archived", vbOKOnly + vbExclamation, "Error: Invalid operation")
+            clearFields()
+            Exit Sub
+        End If
+        '     If User.authorize("APPROVE LPO") = True Then
+        If txtOrderNo.Text = "" Then
+            MsgBox("Please select order to archive", vbOKOnly + vbInformation, "")
+            Exit Sub
+        End If
+
+        'approve order
+
+
+        Dim order As Order = New Order
+        If order.archiveOrder(txtOrderNo.Text) = True Then
+            txtOrderNo.ReadOnly = False
+            search()
+            refreshLPOList()
+        Else
+            MsgBox("Could not approve order", vbOKOnly + vbInformation, "")
+        End If
+
+
+        '   Else
+        'MsgBox("Access denied!", vbOKOnly + vbExclamation)
+        ' End If
+    End Sub
+
+    Private Sub btnCancel_Click_1(sender As Object, e As EventArgs) Handles btnCancel.Click
+        Dim status As String = (New Order).getStatus(txtOrderNo.Text)
+        If Not (status = "PENDING" Or status = "BLANK") Then
+            MsgBox("Only a PENDING or BLANK LPO can be canceled", vbOKOnly + vbExclamation, "Error: Invalid operation")
+            clearFields()
+            Exit Sub
+        End If
+        '     If User.authorize("APPROVE LPO") = True Then
+        If txtOrderNo.Text = "" Then
+            MsgBox("Please select order to cancel", vbOKOnly + vbInformation, "")
+            Exit Sub
+        End If
+
+        'approve order
+        Dim res As Integer = MsgBox("Are you sure you want to cancel the selected order : " + txtOrderNo.Text + " ? After canceling, the order will be rendered invalid", vbYesNo + vbQuestion, "Approve order?")
+
+        status = (New Order).getStatus(txtOrderNo.Text)
+        If res = DialogResult.Yes And (status = "PENDING" Or status = "BLANK") Then
+            Dim order As Order = New Order
+            If order.cancelOrder(txtOrderNo.Text) = True Then
+                txtOrderNo.ReadOnly = False
+                search()
+                refreshLPOList()
+            Else
+                MsgBox("Could not cancel order", vbOKOnly + vbInformation, "")
+            End If
+        End If
+
+
+
+        '   Else
+        'MsgBox("Access denied!", vbOKOnly + vbExclamation)
+        ' End If
+    End Sub
+
+    Private Sub btnPrint_Click(sender As Object, e As EventArgs) Handles btnPrint.Click
+        If txtOrderNo.Text = "" Then
+            MsgBox("Select order to print.", vbOKOnly + vbCritical, "Error:No selection")
+            Exit Sub
+        End If
+        Dim status As String = (New Order).getStatus(txtOrderNo.Text)
+        If status = "PRINTED" Or status = "REPRINTED" Then
+            Dim res As Integer = MsgBox("This order has already been printed. Would you like to re-print it?", vbYesNo + vbQuestion, "Reprint order?")
+            If res = DialogResult.Yes Then
+                'continue
+            Else
+                Exit Sub
+            End If
+        End If
+        If status = "PENDING" Or status = "NEW" Or status = "CANCELLED" Or status = "CANCELED" Or status = "BLANK" Then
+            MsgBox("Could not print order. Order has not been approved", vbOKOnly, "Invalid operation")
+            Exit Sub
+        End If
+        If status = "" Then
+            MsgBox("Could not print order. Order status unknown", vbOKOnly, "Invalid operation")
+            Exit Sub
+        End If
+        If status = "COMPLETED" Then
+            MsgBox("Could not print order. Order already completed", vbOKOnly, "Invalid operation")
+            Exit Sub
+        End If
+
+        Dim document As Document = New Document
+
+        document.Info.Title = "Local Purchase Order"
+        document.Info.Subject = "Local Purchase Order"
+        document.Info.Author = "Orbit"
+
+        defineStyles(document)
+        createDocument(document)
+
+        Dim myRenderer As PdfDocumentRenderer = New PdfDocumentRenderer(True)
+        myRenderer.Document = document
+        myRenderer.RenderDocument()
+
+        Dim filename As String = LSystem.getRoot & "\" & txtOrderNo.Text & ".pdf"
+
+        myRenderer.PdfDocument.Save(filename)
+
+        Process.Start(filename)
+        Dim order As New Order
+        If status = "PRINTED" Or status = "REPRINTED" Then
+            order.changeStatus(txtOrderNo.Text, "REPRINTED")
+        Else
+            order.changeStatus(txtOrderNo.Text, "PRINTED")
+        End If
+        refreshLPOList()
+
+    End Sub
+
+    Private Sub btnClear_Click(sender As Object, e As EventArgs) Handles btnClear.Click
+        clear()
+        clearFields()
+
     End Sub
 End Class

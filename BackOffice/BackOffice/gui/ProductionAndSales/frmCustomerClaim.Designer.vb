@@ -22,10 +22,11 @@ Partial Class frmCustomerClaim
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmCustomerClaim))
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.txtSettlementDate = New System.Windows.Forms.TextBox()
         Me.Label30 = New System.Windows.Forms.Label()
@@ -79,11 +80,22 @@ Partial Class frmCustomerClaim
         Me.txtClaimPrice = New System.Windows.Forms.TextBox()
         Me.Label18 = New System.Windows.Forms.Label()
         Me.dtgrdClaimDetails = New System.Windows.Forms.DataGridView()
-        Me.btnSave = New System.Windows.Forms.Button()
-        Me.btnClear = New System.Windows.Forms.Button()
-        Me.btnEdit = New System.Windows.Forms.Button()
-        Me.btnNew = New System.Windows.Forms.Button()
+        Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column9 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column8 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.dtgrdClaimReplacements = New System.Windows.Forms.DataGridView()
+        Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column10 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn8 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Panel5 = New System.Windows.Forms.Panel()
         Me.txtReplacementId = New System.Windows.Forms.TextBox()
         Me.cmbReplacementDescription = New System.Windows.Forms.ComboBox()
@@ -107,27 +119,22 @@ Partial Class frmCustomerClaim
         Me.Label20 = New System.Windows.Forms.Label()
         Me.Label21 = New System.Windows.Forms.Label()
         Me.Label27 = New System.Windows.Forms.Label()
-        Me.btnApproveClaim = New System.Windows.Forms.Button()
-        Me.btnPrintClaim = New System.Windows.Forms.Button()
-        Me.btnCancelClaim = New System.Windows.Forms.Button()
-        Me.btnCompleteClaim = New System.Windows.Forms.Button()
+        Me.ToolStrip1 = New System.Windows.Forms.ToolStrip()
+        Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
+        Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
+        Me.ToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator()
+        Me.ToolStripSeparator4 = New System.Windows.Forms.ToolStripSeparator()
+        Me.ToolStripSeparator5 = New System.Windows.Forms.ToolStripSeparator()
+        Me.btnNew = New System.Windows.Forms.ToolStripButton()
+        Me.btnEdit = New System.Windows.Forms.ToolStripButton()
+        Me.btnClear = New System.Windows.Forms.ToolStripButton()
+        Me.btnSave = New System.Windows.Forms.ToolStripButton()
+        Me.btnCancel = New System.Windows.Forms.ToolStripButton()
+        Me.btnApprove = New System.Windows.Forms.ToolStripButton()
+        Me.btnPrint = New System.Windows.Forms.ToolStripButton()
+        Me.btnComplete = New System.Windows.Forms.ToolStripButton()
+        Me.btnArchive = New System.Windows.Forms.ToolStripButton()
         Me.btnBack = New System.Windows.Forms.Button()
-        Me.btnArchiveClaim = New System.Windows.Forms.Button()
-        Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column9 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column8 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column10 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn8 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Panel1.SuspendLayout()
         Me.Panel3.SuspendLayout()
         Me.Panel2.SuspendLayout()
@@ -136,6 +143,7 @@ Partial Class frmCustomerClaim
         CType(Me.dtgrdClaimReplacements, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel5.SuspendLayout()
         CType(Me.dtgrdClaimList, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.ToolStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
         'Panel1
@@ -153,7 +161,7 @@ Partial Class frmCustomerClaim
         Me.Panel1.Controls.Add(Me.Panel2)
         Me.Panel1.Controls.Add(Me.Label6)
         Me.Panel1.Controls.Add(Me.Label1)
-        Me.Panel1.Location = New System.Drawing.Point(6, 6)
+        Me.Panel1.Location = New System.Drawing.Point(10, 50)
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(698, 247)
         Me.Panel1.TabIndex = 0
@@ -446,7 +454,7 @@ Partial Class frmCustomerClaim
         Me.Panel4.Controls.Add(Me.txtClaimItemCode)
         Me.Panel4.Controls.Add(Me.txtClaimPrice)
         Me.Panel4.Controls.Add(Me.Label18)
-        Me.Panel4.Location = New System.Drawing.Point(6, 280)
+        Me.Panel4.Location = New System.Drawing.Point(6, 328)
         Me.Panel4.Name = "Panel4"
         Me.Panel4.Size = New System.Drawing.Size(460, 234)
         Me.Panel4.TabIndex = 95
@@ -638,48 +646,71 @@ Partial Class frmCustomerClaim
         Me.dtgrdClaimDetails.BackgroundColor = System.Drawing.SystemColors.ButtonFace
         Me.dtgrdClaimDetails.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dtgrdClaimDetails.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column1, Me.Column2, Me.Column3, Me.Column4, Me.Column9, Me.Column5, Me.Column8, Me.Column6, Me.Column7})
-        Me.dtgrdClaimDetails.Location = New System.Drawing.Point(6, 537)
+        Me.dtgrdClaimDetails.Location = New System.Drawing.Point(6, 585)
         Me.dtgrdClaimDetails.Name = "dtgrdClaimDetails"
         Me.dtgrdClaimDetails.ReadOnly = True
         Me.dtgrdClaimDetails.RowTemplate.Height = 24
-        Me.dtgrdClaimDetails.Size = New System.Drawing.Size(780, 202)
+        Me.dtgrdClaimDetails.Size = New System.Drawing.Size(780, 154)
         Me.dtgrdClaimDetails.TabIndex = 96
         '
-        'btnSave
+        'Column1
         '
-        Me.btnSave.Location = New System.Drawing.Point(710, 128)
-        Me.btnSave.Name = "btnSave"
-        Me.btnSave.Size = New System.Drawing.Size(76, 35)
-        Me.btnSave.TabIndex = 97
-        Me.btnSave.Text = "Save"
-        Me.btnSave.UseVisualStyleBackColor = True
+        Me.Column1.HeaderText = "Item Code"
+        Me.Column1.Name = "Column1"
+        Me.Column1.ReadOnly = True
         '
-        'btnClear
+        'Column2
         '
-        Me.btnClear.Location = New System.Drawing.Point(710, 87)
-        Me.btnClear.Name = "btnClear"
-        Me.btnClear.Size = New System.Drawing.Size(76, 35)
-        Me.btnClear.TabIndex = 98
-        Me.btnClear.Text = "Clear"
-        Me.btnClear.UseVisualStyleBackColor = True
+        Me.Column2.HeaderText = "Description"
+        Me.Column2.Name = "Column2"
+        Me.Column2.ReadOnly = True
         '
-        'btnEdit
+        'Column3
         '
-        Me.btnEdit.Location = New System.Drawing.Point(710, 46)
-        Me.btnEdit.Name = "btnEdit"
-        Me.btnEdit.Size = New System.Drawing.Size(76, 35)
-        Me.btnEdit.TabIndex = 99
-        Me.btnEdit.Text = "Edit"
-        Me.btnEdit.UseVisualStyleBackColor = True
+        Me.Column3.HeaderText = "Qty"
+        Me.Column3.Name = "Column3"
+        Me.Column3.ReadOnly = True
         '
-        'btnNew
+        'Column4
         '
-        Me.btnNew.Location = New System.Drawing.Point(710, 6)
-        Me.btnNew.Name = "btnNew"
-        Me.btnNew.Size = New System.Drawing.Size(76, 35)
-        Me.btnNew.TabIndex = 100
-        Me.btnNew.Text = "New"
-        Me.btnNew.UseVisualStyleBackColor = True
+        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.Column4.DefaultCellStyle = DataGridViewCellStyle5
+        Me.Column4.HeaderText = "Price"
+        Me.Column4.Name = "Column4"
+        Me.Column4.ReadOnly = True
+        '
+        'Column9
+        '
+        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.Column9.DefaultCellStyle = DataGridViewCellStyle6
+        Me.Column9.HeaderText = "Amount"
+        Me.Column9.Name = "Column9"
+        Me.Column9.ReadOnly = True
+        '
+        'Column5
+        '
+        Me.Column5.HeaderText = "Claim Type"
+        Me.Column5.Name = "Column5"
+        Me.Column5.ReadOnly = True
+        '
+        'Column8
+        '
+        Me.Column8.HeaderText = "Reason"
+        Me.Column8.Name = "Column8"
+        Me.Column8.ReadOnly = True
+        '
+        'Column6
+        '
+        Me.Column6.HeaderText = "Remarks"
+        Me.Column6.Name = "Column6"
+        Me.Column6.ReadOnly = True
+        '
+        'Column7
+        '
+        Me.Column7.HeaderText = "Sn"
+        Me.Column7.Name = "Column7"
+        Me.Column7.ReadOnly = True
+        Me.Column7.Visible = False
         '
         'dtgrdClaimReplacements
         '
@@ -690,12 +721,53 @@ Partial Class frmCustomerClaim
         Me.dtgrdClaimReplacements.BackgroundColor = System.Drawing.SystemColors.ButtonFace
         Me.dtgrdClaimReplacements.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dtgrdClaimReplacements.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn1, Me.DataGridViewTextBoxColumn2, Me.DataGridViewTextBoxColumn3, Me.Column10, Me.DataGridViewTextBoxColumn7, Me.DataGridViewTextBoxColumn8})
-        Me.dtgrdClaimReplacements.Location = New System.Drawing.Point(792, 454)
+        Me.dtgrdClaimReplacements.Location = New System.Drawing.Point(792, 491)
         Me.dtgrdClaimReplacements.Name = "dtgrdClaimReplacements"
         Me.dtgrdClaimReplacements.ReadOnly = True
         Me.dtgrdClaimReplacements.RowTemplate.Height = 24
-        Me.dtgrdClaimReplacements.Size = New System.Drawing.Size(572, 285)
+        Me.dtgrdClaimReplacements.Size = New System.Drawing.Size(572, 248)
         Me.dtgrdClaimReplacements.TabIndex = 101
+        '
+        'DataGridViewTextBoxColumn1
+        '
+        Me.DataGridViewTextBoxColumn1.HeaderText = "Item Code"
+        Me.DataGridViewTextBoxColumn1.Name = "DataGridViewTextBoxColumn1"
+        Me.DataGridViewTextBoxColumn1.ReadOnly = True
+        '
+        'DataGridViewTextBoxColumn2
+        '
+        Me.DataGridViewTextBoxColumn2.HeaderText = "Description"
+        Me.DataGridViewTextBoxColumn2.Name = "DataGridViewTextBoxColumn2"
+        Me.DataGridViewTextBoxColumn2.ReadOnly = True
+        '
+        'DataGridViewTextBoxColumn3
+        '
+        Me.DataGridViewTextBoxColumn3.HeaderText = "Qty"
+        Me.DataGridViewTextBoxColumn3.Name = "DataGridViewTextBoxColumn3"
+        Me.DataGridViewTextBoxColumn3.ReadOnly = True
+        '
+        'Column10
+        '
+        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.Column10.DefaultCellStyle = DataGridViewCellStyle7
+        Me.Column10.HeaderText = "Price"
+        Me.Column10.Name = "Column10"
+        Me.Column10.ReadOnly = True
+        '
+        'DataGridViewTextBoxColumn7
+        '
+        DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.DataGridViewTextBoxColumn7.DefaultCellStyle = DataGridViewCellStyle8
+        Me.DataGridViewTextBoxColumn7.HeaderText = "Amount"
+        Me.DataGridViewTextBoxColumn7.Name = "DataGridViewTextBoxColumn7"
+        Me.DataGridViewTextBoxColumn7.ReadOnly = True
+        '
+        'DataGridViewTextBoxColumn8
+        '
+        Me.DataGridViewTextBoxColumn8.HeaderText = "Sn"
+        Me.DataGridViewTextBoxColumn8.Name = "DataGridViewTextBoxColumn8"
+        Me.DataGridViewTextBoxColumn8.ReadOnly = True
+        Me.DataGridViewTextBoxColumn8.Visible = False
         '
         'Panel5
         '
@@ -715,7 +787,7 @@ Partial Class frmCustomerClaim
         Me.Panel5.Controls.Add(Me.txtReplacementItemCode)
         Me.Panel5.Controls.Add(Me.txtreplacementPrice)
         Me.Panel5.Controls.Add(Me.Label26)
-        Me.Panel5.Location = New System.Drawing.Point(792, 256)
+        Me.Panel5.Location = New System.Drawing.Point(792, 308)
         Me.Panel5.Name = "Panel5"
         Me.Panel5.Size = New System.Drawing.Size(456, 165)
         Me.Panel5.TabIndex = 102
@@ -852,7 +924,7 @@ Partial Class frmCustomerClaim
         Me.dtgrdClaimList.BackgroundColor = System.Drawing.SystemColors.ButtonFace
         Me.dtgrdClaimList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dtgrdClaimList.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn4, Me.DataGridViewTextBoxColumn5, Me.DataGridViewTextBoxColumn6})
-        Me.dtgrdClaimList.Location = New System.Drawing.Point(792, 6)
+        Me.dtgrdClaimList.Location = New System.Drawing.Point(792, 50)
         Me.dtgrdClaimList.Name = "dtgrdClaimList"
         Me.dtgrdClaimList.RowTemplate.Height = 24
         Me.dtgrdClaimList.Size = New System.Drawing.Size(572, 223)
@@ -876,7 +948,7 @@ Partial Class frmCustomerClaim
         'Label11
         '
         Me.Label11.AutoSize = True
-        Me.Label11.Location = New System.Drawing.Point(3, 260)
+        Me.Label11.Location = New System.Drawing.Point(3, 308)
         Me.Label11.Name = "Label11"
         Me.Label11.Size = New System.Drawing.Size(152, 17)
         Me.Label11.TabIndex = 104
@@ -885,7 +957,7 @@ Partial Class frmCustomerClaim
         'Label20
         '
         Me.Label20.AutoSize = True
-        Me.Label20.Location = New System.Drawing.Point(3, 517)
+        Me.Label20.Location = New System.Drawing.Point(9, 565)
         Me.Label20.Name = "Label20"
         Me.Label20.Size = New System.Drawing.Size(116, 17)
         Me.Label20.TabIndex = 105
@@ -895,7 +967,7 @@ Partial Class frmCustomerClaim
         '
         Me.Label21.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label21.AutoSize = True
-        Me.Label21.Location = New System.Drawing.Point(789, 236)
+        Me.Label21.Location = New System.Drawing.Point(789, 280)
         Me.Label21.Name = "Label21"
         Me.Label21.Size = New System.Drawing.Size(260, 17)
         Me.Label21.TabIndex = 106
@@ -905,178 +977,145 @@ Partial Class frmCustomerClaim
         '
         Me.Label27.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label27.AutoSize = True
-        Me.Label27.Location = New System.Drawing.Point(789, 434)
+        Me.Label27.Location = New System.Drawing.Point(789, 471)
         Me.Label27.Name = "Label27"
         Me.Label27.Size = New System.Drawing.Size(146, 17)
         Me.Label27.TabIndex = 107
         Me.Label27.Text = "Replacements (if any)"
         '
-        'btnApproveClaim
+        'ToolStrip1
         '
-        Me.btnApproveClaim.Location = New System.Drawing.Point(472, 280)
-        Me.btnApproveClaim.Name = "btnApproveClaim"
-        Me.btnApproveClaim.Size = New System.Drawing.Size(85, 35)
-        Me.btnApproveClaim.TabIndex = 111
-        Me.btnApproveClaim.Text = "Approve"
-        Me.btnApproveClaim.UseVisualStyleBackColor = True
+        Me.ToolStrip1.ImageScalingSize = New System.Drawing.Size(20, 20)
+        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.btnNew, Me.btnEdit, Me.btnClear, Me.btnSave, Me.ToolStripSeparator1, Me.ToolStripSeparator2, Me.ToolStripSeparator3, Me.ToolStripSeparator4, Me.btnCancel, Me.btnApprove, Me.btnPrint, Me.btnComplete, Me.ToolStripSeparator5, Me.btnArchive})
+        Me.ToolStrip1.Location = New System.Drawing.Point(0, 0)
+        Me.ToolStrip1.Name = "ToolStrip1"
+        Me.ToolStrip1.Size = New System.Drawing.Size(1376, 27)
+        Me.ToolStrip1.TabIndex = 114
+        Me.ToolStrip1.Text = "ToolStrip1"
         '
-        'btnPrintClaim
+        'ToolStripSeparator1
         '
-        Me.btnPrintClaim.Location = New System.Drawing.Point(472, 362)
-        Me.btnPrintClaim.Name = "btnPrintClaim"
-        Me.btnPrintClaim.Size = New System.Drawing.Size(85, 35)
-        Me.btnPrintClaim.TabIndex = 110
-        Me.btnPrintClaim.Text = "Print"
-        Me.btnPrintClaim.UseVisualStyleBackColor = True
+        Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
+        Me.ToolStripSeparator1.Size = New System.Drawing.Size(6, 27)
         '
-        'btnCancelClaim
+        'ToolStripSeparator2
         '
-        Me.btnCancelClaim.Location = New System.Drawing.Point(472, 321)
-        Me.btnCancelClaim.Name = "btnCancelClaim"
-        Me.btnCancelClaim.Size = New System.Drawing.Size(85, 35)
-        Me.btnCancelClaim.TabIndex = 109
-        Me.btnCancelClaim.Text = "Cancel"
-        Me.btnCancelClaim.UseVisualStyleBackColor = True
+        Me.ToolStripSeparator2.Name = "ToolStripSeparator2"
+        Me.ToolStripSeparator2.Size = New System.Drawing.Size(6, 27)
         '
-        'btnCompleteClaim
+        'ToolStripSeparator3
         '
-        Me.btnCompleteClaim.Location = New System.Drawing.Point(472, 405)
-        Me.btnCompleteClaim.Name = "btnCompleteClaim"
-        Me.btnCompleteClaim.Size = New System.Drawing.Size(85, 35)
-        Me.btnCompleteClaim.TabIndex = 108
-        Me.btnCompleteClaim.Text = "Complete"
-        Me.btnCompleteClaim.UseVisualStyleBackColor = True
+        Me.ToolStripSeparator3.Name = "ToolStripSeparator3"
+        Me.ToolStripSeparator3.Size = New System.Drawing.Size(6, 27)
+        '
+        'ToolStripSeparator4
+        '
+        Me.ToolStripSeparator4.Name = "ToolStripSeparator4"
+        Me.ToolStripSeparator4.Size = New System.Drawing.Size(6, 27)
+        '
+        'ToolStripSeparator5
+        '
+        Me.ToolStripSeparator5.Name = "ToolStripSeparator5"
+        Me.ToolStripSeparator5.Size = New System.Drawing.Size(6, 27)
+        '
+        'btnNew
+        '
+        Me.btnNew.Image = Global.BackOffice.My.Resources.Resources.new_file
+        Me.btnNew.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.btnNew.Name = "btnNew"
+        Me.btnNew.Size = New System.Drawing.Size(63, 24)
+        Me.btnNew.Text = "New"
+        Me.btnNew.ToolTipText = "Creates a new Conversion document"
+        '
+        'btnEdit
+        '
+        Me.btnEdit.Image = Global.BackOffice.My.Resources.Resources.pencil
+        Me.btnEdit.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.btnEdit.Name = "btnEdit"
+        Me.btnEdit.Size = New System.Drawing.Size(59, 24)
+        Me.btnEdit.Text = "Edit"
+        Me.btnEdit.ToolTipText = "Promts user to edit an existing conversion document"
+        '
+        'btnClear
+        '
+        Me.btnClear.Image = Global.BackOffice.My.Resources.Resources.brush
+        Me.btnClear.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.btnClear.Name = "btnClear"
+        Me.btnClear.Size = New System.Drawing.Size(67, 24)
+        Me.btnClear.Text = "Clear"
+        Me.btnClear.ToolTipText = "Clear all the fields"
+        '
+        'btnSave
+        '
+        Me.btnSave.Image = Global.BackOffice.My.Resources.Resources.floppy_disk
+        Me.btnSave.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.btnSave.Name = "btnSave"
+        Me.btnSave.Size = New System.Drawing.Size(64, 24)
+        Me.btnSave.Text = "Save"
+        Me.btnSave.ToolTipText = "Save details of a new or existing document"
+        '
+        'btnCancel
+        '
+        Me.btnCancel.Image = Global.BackOffice.My.Resources.Resources.cancel
+        Me.btnCancel.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.btnCancel.Name = "btnCancel"
+        Me.btnCancel.Size = New System.Drawing.Size(77, 24)
+        Me.btnCancel.Text = "Cancel"
+        Me.btnCancel.ToolTipText = "Cancels the conversion document"
+        '
+        'btnApprove
+        '
+        Me.btnApprove.Image = Global.BackOffice.My.Resources.Resources.tick
+        Me.btnApprove.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.btnApprove.Name = "btnApprove"
+        Me.btnApprove.Size = New System.Drawing.Size(90, 24)
+        Me.btnApprove.Text = "Approve"
+        Me.btnApprove.ToolTipText = "Approve a pending conversion document for further actions"
+        '
+        'btnPrint
+        '
+        Me.btnPrint.Image = Global.BackOffice.My.Resources.Resources.printer
+        Me.btnPrint.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.btnPrint.Name = "btnPrint"
+        Me.btnPrint.Size = New System.Drawing.Size(63, 24)
+        Me.btnPrint.Text = "Print"
+        Me.btnPrint.ToolTipText = "Print an already approved conversion document"
+        '
+        'btnComplete
+        '
+        Me.btnComplete.Image = Global.BackOffice.My.Resources.Resources.foward_arrow
+        Me.btnComplete.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.btnComplete.Name = "btnComplete"
+        Me.btnComplete.Size = New System.Drawing.Size(98, 24)
+        Me.btnComplete.Text = "Complete"
+        '
+        'btnArchive
+        '
+        Me.btnArchive.Image = CType(resources.GetObject("btnArchive.Image"), System.Drawing.Image)
+        Me.btnArchive.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.btnArchive.Name = "btnArchive"
+        Me.btnArchive.Size = New System.Drawing.Size(82, 24)
+        Me.btnArchive.Text = "Archive"
+        Me.btnArchive.ToolTipText = "Sends a completed document to archives for future references"
         '
         'btnBack
         '
         Me.btnBack.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btnBack.Location = New System.Drawing.Point(1288, 749)
+        Me.btnBack.BackgroundImage = Global.BackOffice.My.Resources.Resources.red_back_arrow
+        Me.btnBack.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.btnBack.Location = New System.Drawing.Point(1264, 745)
         Me.btnBack.Name = "btnBack"
-        Me.btnBack.Size = New System.Drawing.Size(76, 35)
+        Me.btnBack.Size = New System.Drawing.Size(100, 40)
         Me.btnBack.TabIndex = 112
-        Me.btnBack.Text = "Back"
         Me.btnBack.UseVisualStyleBackColor = True
-        '
-        'btnArchiveClaim
-        '
-        Me.btnArchiveClaim.Location = New System.Drawing.Point(472, 446)
-        Me.btnArchiveClaim.Name = "btnArchiveClaim"
-        Me.btnArchiveClaim.Size = New System.Drawing.Size(85, 35)
-        Me.btnArchiveClaim.TabIndex = 113
-        Me.btnArchiveClaim.Text = "Archive"
-        Me.btnArchiveClaim.UseVisualStyleBackColor = True
-        '
-        'Column1
-        '
-        Me.Column1.HeaderText = "Item Code"
-        Me.Column1.Name = "Column1"
-        Me.Column1.ReadOnly = True
-        '
-        'Column2
-        '
-        Me.Column2.HeaderText = "Description"
-        Me.Column2.Name = "Column2"
-        Me.Column2.ReadOnly = True
-        '
-        'Column3
-        '
-        Me.Column3.HeaderText = "Qty"
-        Me.Column3.Name = "Column3"
-        Me.Column3.ReadOnly = True
-        '
-        'Column4
-        '
-        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.Column4.DefaultCellStyle = DataGridViewCellStyle1
-        Me.Column4.HeaderText = "Price"
-        Me.Column4.Name = "Column4"
-        Me.Column4.ReadOnly = True
-        '
-        'Column9
-        '
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.Column9.DefaultCellStyle = DataGridViewCellStyle2
-        Me.Column9.HeaderText = "Amount"
-        Me.Column9.Name = "Column9"
-        Me.Column9.ReadOnly = True
-        '
-        'Column5
-        '
-        Me.Column5.HeaderText = "Claim Type"
-        Me.Column5.Name = "Column5"
-        Me.Column5.ReadOnly = True
-        '
-        'Column8
-        '
-        Me.Column8.HeaderText = "Reason"
-        Me.Column8.Name = "Column8"
-        Me.Column8.ReadOnly = True
-        '
-        'Column6
-        '
-        Me.Column6.HeaderText = "Remarks"
-        Me.Column6.Name = "Column6"
-        Me.Column6.ReadOnly = True
-        '
-        'Column7
-        '
-        Me.Column7.HeaderText = "Sn"
-        Me.Column7.Name = "Column7"
-        Me.Column7.ReadOnly = True
-        Me.Column7.Visible = False
-        '
-        'DataGridViewTextBoxColumn1
-        '
-        Me.DataGridViewTextBoxColumn1.HeaderText = "Item Code"
-        Me.DataGridViewTextBoxColumn1.Name = "DataGridViewTextBoxColumn1"
-        Me.DataGridViewTextBoxColumn1.ReadOnly = True
-        '
-        'DataGridViewTextBoxColumn2
-        '
-        Me.DataGridViewTextBoxColumn2.HeaderText = "Description"
-        Me.DataGridViewTextBoxColumn2.Name = "DataGridViewTextBoxColumn2"
-        Me.DataGridViewTextBoxColumn2.ReadOnly = True
-        '
-        'DataGridViewTextBoxColumn3
-        '
-        Me.DataGridViewTextBoxColumn3.HeaderText = "Qty"
-        Me.DataGridViewTextBoxColumn3.Name = "DataGridViewTextBoxColumn3"
-        Me.DataGridViewTextBoxColumn3.ReadOnly = True
-        '
-        'Column10
-        '
-        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.Column10.DefaultCellStyle = DataGridViewCellStyle3
-        Me.Column10.HeaderText = "Price"
-        Me.Column10.Name = "Column10"
-        Me.Column10.ReadOnly = True
-        '
-        'DataGridViewTextBoxColumn7
-        '
-        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.DataGridViewTextBoxColumn7.DefaultCellStyle = DataGridViewCellStyle4
-        Me.DataGridViewTextBoxColumn7.HeaderText = "Amount"
-        Me.DataGridViewTextBoxColumn7.Name = "DataGridViewTextBoxColumn7"
-        Me.DataGridViewTextBoxColumn7.ReadOnly = True
-        '
-        'DataGridViewTextBoxColumn8
-        '
-        Me.DataGridViewTextBoxColumn8.HeaderText = "Sn"
-        Me.DataGridViewTextBoxColumn8.Name = "DataGridViewTextBoxColumn8"
-        Me.DataGridViewTextBoxColumn8.ReadOnly = True
-        Me.DataGridViewTextBoxColumn8.Visible = False
         '
         'frmCustomerClaim
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1376, 796)
-        Me.Controls.Add(Me.btnArchiveClaim)
+        Me.Controls.Add(Me.ToolStrip1)
         Me.Controls.Add(Me.btnBack)
-        Me.Controls.Add(Me.btnApproveClaim)
-        Me.Controls.Add(Me.btnPrintClaim)
-        Me.Controls.Add(Me.btnCancelClaim)
-        Me.Controls.Add(Me.btnCompleteClaim)
         Me.Controls.Add(Me.Label27)
         Me.Controls.Add(Me.Label21)
         Me.Controls.Add(Me.Label20)
@@ -1084,10 +1123,6 @@ Partial Class frmCustomerClaim
         Me.Controls.Add(Me.dtgrdClaimList)
         Me.Controls.Add(Me.Panel5)
         Me.Controls.Add(Me.dtgrdClaimReplacements)
-        Me.Controls.Add(Me.btnNew)
-        Me.Controls.Add(Me.btnEdit)
-        Me.Controls.Add(Me.btnClear)
-        Me.Controls.Add(Me.btnSave)
         Me.Controls.Add(Me.dtgrdClaimDetails)
         Me.Controls.Add(Me.Panel4)
         Me.Controls.Add(Me.Panel1)
@@ -1109,6 +1144,8 @@ Partial Class frmCustomerClaim
         Me.Panel5.ResumeLayout(False)
         Me.Panel5.PerformLayout()
         CType(Me.dtgrdClaimList, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.ToolStrip1.ResumeLayout(False)
+        Me.ToolStrip1.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -1157,10 +1194,6 @@ Partial Class frmCustomerClaim
     Friend WithEvents txtClaimReason As TextBox
     Friend WithEvents cmbClaimType As ComboBox
     Friend WithEvents dtgrdClaimDetails As DataGridView
-    Friend WithEvents btnSave As Button
-    Friend WithEvents btnClear As Button
-    Friend WithEvents btnEdit As Button
-    Friend WithEvents btnNew As Button
     Friend WithEvents dtgrdClaimReplacements As DataGridView
     Friend WithEvents Panel5 As Panel
     Friend WithEvents cmbReplacementDescription As ComboBox
@@ -1188,10 +1221,6 @@ Partial Class frmCustomerClaim
     Friend WithEvents txtReturnedBy As TextBox
     Friend WithEvents Label28 As Label
     Friend WithEvents Label29 As Label
-    Friend WithEvents btnApproveClaim As Button
-    Friend WithEvents btnPrintClaim As Button
-    Friend WithEvents btnCancelClaim As Button
-    Friend WithEvents btnCompleteClaim As Button
     Friend WithEvents btnBack As Button
     Friend WithEvents txtId As TextBox
     Friend WithEvents txtSettlementDate As TextBox
@@ -1200,7 +1229,6 @@ Partial Class frmCustomerClaim
     Friend WithEvents Label31 As Label
     Friend WithEvents txtClaimId As TextBox
     Friend WithEvents txtReplacementId As TextBox
-    Friend WithEvents btnArchiveClaim As Button
     Friend WithEvents Column1 As DataGridViewTextBoxColumn
     Friend WithEvents Column2 As DataGridViewTextBoxColumn
     Friend WithEvents Column3 As DataGridViewTextBoxColumn
@@ -1216,4 +1244,19 @@ Partial Class frmCustomerClaim
     Friend WithEvents Column10 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn7 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn8 As DataGridViewTextBoxColumn
+    Friend WithEvents ToolStrip1 As ToolStrip
+    Friend WithEvents btnNew As ToolStripButton
+    Friend WithEvents btnEdit As ToolStripButton
+    Friend WithEvents btnClear As ToolStripButton
+    Friend WithEvents btnSave As ToolStripButton
+    Friend WithEvents ToolStripSeparator1 As ToolStripSeparator
+    Friend WithEvents ToolStripSeparator2 As ToolStripSeparator
+    Friend WithEvents ToolStripSeparator3 As ToolStripSeparator
+    Friend WithEvents ToolStripSeparator4 As ToolStripSeparator
+    Friend WithEvents btnCancel As ToolStripButton
+    Friend WithEvents btnApprove As ToolStripButton
+    Friend WithEvents btnPrint As ToolStripButton
+    Friend WithEvents btnArchive As ToolStripButton
+    Friend WithEvents btnComplete As ToolStripButton
+    Friend WithEvents ToolStripSeparator5 As ToolStripSeparator
 End Class

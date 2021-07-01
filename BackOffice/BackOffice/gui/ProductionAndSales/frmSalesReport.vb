@@ -529,6 +529,7 @@ Public Class frmDetailedDailySalesReport
     End Sub
 
     Private Function refreshList()
+        Cursor = Cursors.WaitCursor
         dtgrdList.Rows.Clear()
 
         Dim totalSales As Double = 0
@@ -788,6 +789,7 @@ Public Class frmDetailedDailySalesReport
             txtTotalBankcash.Text = "NA"
             txtDebt.Text = "NA"
         End If
+        Cursor = Cursors.Arrow
         Return vbNull
     End Function
     Dim list As String = ""
@@ -933,7 +935,7 @@ Public Class frmDetailedDailySalesReport
 
     End Sub
 
-    Private Sub btnPrint_Click(sender As Object, e As EventArgs) Handles btnPrint.Click
+    Private Sub btnPrint_Click(sender As Object, e As EventArgs) Handles btnExportToPDF.Click
         generate()
         If dtgrdList.RowCount = 0 Then
             MsgBox("Nothing to print")
@@ -1101,7 +1103,9 @@ Err_Handler:
     End Sub
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
-
+        Cursor = Cursors.WaitCursor
         updateCostPrices()  'remove this function later, this function / subroutine is for updating the costprices in every packing list
+        Cursor = Cursors.Arrow
+        MsgBox("Completed")
     End Sub
 End Class

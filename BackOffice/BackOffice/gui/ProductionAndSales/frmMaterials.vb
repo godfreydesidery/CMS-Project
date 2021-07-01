@@ -592,7 +592,7 @@ Public Class frmMaterials
 
     End Sub
 
-    Private Sub MaterialStockStatusToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles MaterialStockStatusToolStripMenuItem.Click
+    Private Sub MaterialStockStatusToolStripMenuItem_Click(sender As Object, e As EventArgs)
         ' generate()
         If dtgrdList.RowCount = 0 Then
             MsgBox("Nothing to print")
@@ -864,7 +864,7 @@ Public Class frmMaterials
         End Try
     End Sub
 
-    Private Sub MenuStrip1_ItemClicked(sender As Object, e As ToolStripItemClickedEventArgs) Handles MenuStrip1.ItemClicked
+    Private Sub MenuStrip1_ItemClicked(sender As Object, e As ToolStripItemClickedEventArgs)
 
     End Sub
 End Class

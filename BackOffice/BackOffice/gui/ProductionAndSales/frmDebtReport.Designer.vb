@@ -22,7 +22,7 @@ Partial Class frmDebtReport
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.Label12 = New System.Windows.Forms.Label()
         Me.txtTotal = New System.Windows.Forms.TextBox()
         Me.Panel1 = New System.Windows.Forms.Panel()
@@ -38,10 +38,12 @@ Partial Class frmDebtReport
         Me.Column5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.btnBack = New System.Windows.Forms.Button()
         Me.btnGenerate = New System.Windows.Forms.Button()
-        Me.btnExportToExcel = New System.Windows.Forms.Button()
-        Me.btnPrint = New System.Windows.Forms.Button()
+        Me.ToolStrip1 = New System.Windows.Forms.ToolStrip()
+        Me.btnExportToPDF = New System.Windows.Forms.ToolStripButton()
+        Me.btnExportToExcel = New System.Windows.Forms.ToolStripButton()
         Me.Panel1.SuspendLayout()
         CType(Me.dtgrdList, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.ToolStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
         'Label12
@@ -72,7 +74,7 @@ Partial Class frmDebtReport
         Me.Panel1.Controls.Add(Me.dateStart)
         Me.Panel1.Controls.Add(Me.Label2)
         Me.Panel1.Controls.Add(Me.dateEnd)
-        Me.Panel1.Location = New System.Drawing.Point(4, 12)
+        Me.Panel1.Location = New System.Drawing.Point(10, 50)
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(341, 90)
         Me.Panel1.TabIndex = 82
@@ -139,11 +141,11 @@ Partial Class frmDebtReport
         Me.dtgrdList.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.dtgrdList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dtgrdList.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column10, Me.Column1, Me.Column5})
-        Me.dtgrdList.Location = New System.Drawing.Point(4, 108)
+        Me.dtgrdList.Location = New System.Drawing.Point(10, 146)
         Me.dtgrdList.Name = "dtgrdList"
         Me.dtgrdList.ReadOnly = True
         Me.dtgrdList.RowTemplate.Height = 24
-        Me.dtgrdList.Size = New System.Drawing.Size(778, 484)
+        Me.dtgrdList.Size = New System.Drawing.Size(772, 446)
         Me.dtgrdList.TabIndex = 81
         '
         'Column10
@@ -155,8 +157,8 @@ Partial Class frmDebtReport
         '
         'Column1
         '
-        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.Column1.DefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.Column1.DefaultCellStyle = DataGridViewCellStyle2
         Me.Column1.FillWeight = 72.14659!
         Me.Column1.HeaderText = "Amount"
         Me.Column1.Name = "Column1"
@@ -173,48 +175,55 @@ Partial Class frmDebtReport
         '
         Me.btnBack.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btnBack.BackColor = System.Drawing.SystemColors.Control
-        Me.btnBack.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.btnBack.Location = New System.Drawing.Point(667, 598)
+        Me.btnBack.BackgroundImage = Global.BackOffice.My.Resources.Resources.red_back_arrow
+        Me.btnBack.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.btnBack.Location = New System.Drawing.Point(682, 598)
         Me.btnBack.Name = "btnBack"
-        Me.btnBack.Size = New System.Drawing.Size(115, 35)
+        Me.btnBack.Size = New System.Drawing.Size(100, 40)
         Me.btnBack.TabIndex = 80
-        Me.btnBack.Text = "Back"
         Me.btnBack.UseVisualStyleBackColor = False
         '
         'btnGenerate
         '
-        Me.btnGenerate.Location = New System.Drawing.Point(351, 68)
+        Me.btnGenerate.Location = New System.Drawing.Point(357, 106)
         Me.btnGenerate.Name = "btnGenerate"
         Me.btnGenerate.Size = New System.Drawing.Size(104, 34)
         Me.btnGenerate.TabIndex = 79
         Me.btnGenerate.Text = "Run"
         Me.btnGenerate.UseVisualStyleBackColor = True
         '
+        'ToolStrip1
+        '
+        Me.ToolStrip1.ImageScalingSize = New System.Drawing.Size(20, 20)
+        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.btnExportToPDF, Me.btnExportToExcel})
+        Me.ToolStrip1.Location = New System.Drawing.Point(0, 0)
+        Me.ToolStrip1.Name = "ToolStrip1"
+        Me.ToolStrip1.Size = New System.Drawing.Size(792, 27)
+        Me.ToolStrip1.TabIndex = 108
+        Me.ToolStrip1.Text = "ToolStrip1"
+        '
+        'btnExportToPDF
+        '
+        Me.btnExportToPDF.Image = Global.BackOffice.My.Resources.Resources.pdfred
+        Me.btnExportToPDF.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.btnExportToPDF.Name = "btnExportToPDF"
+        Me.btnExportToPDF.Size = New System.Drawing.Size(124, 24)
+        Me.btnExportToPDF.Text = "Export to PDF"
+        '
         'btnExportToExcel
         '
-        Me.btnExportToExcel.Location = New System.Drawing.Point(634, 68)
+        Me.btnExportToExcel.Image = Global.BackOffice.My.Resources.Resources.spreadsheet
+        Me.btnExportToExcel.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.btnExportToExcel.Name = "btnExportToExcel"
-        Me.btnExportToExcel.Size = New System.Drawing.Size(148, 34)
-        Me.btnExportToExcel.TabIndex = 86
-        Me.btnExportToExcel.Text = "Export To Excel"
-        Me.btnExportToExcel.UseVisualStyleBackColor = True
-        '
-        'btnPrint
-        '
-        Me.btnPrint.Location = New System.Drawing.Point(461, 68)
-        Me.btnPrint.Name = "btnPrint"
-        Me.btnPrint.Size = New System.Drawing.Size(167, 34)
-        Me.btnPrint.TabIndex = 85
-        Me.btnPrint.Text = "Export to PDF"
-        Me.btnPrint.UseVisualStyleBackColor = True
+        Me.btnExportToExcel.Size = New System.Drawing.Size(180, 24)
+        Me.btnExportToExcel.Text = "Export to Spreadsheet"
         '
         'frmDebtReport
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(792, 644)
-        Me.Controls.Add(Me.btnExportToExcel)
-        Me.Controls.Add(Me.btnPrint)
+        Me.Controls.Add(Me.ToolStrip1)
         Me.Controls.Add(Me.Label12)
         Me.Controls.Add(Me.txtTotal)
         Me.Controls.Add(Me.Panel1)
@@ -230,6 +239,8 @@ Partial Class frmDebtReport
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
         CType(Me.dtgrdList, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.ToolStrip1.ResumeLayout(False)
+        Me.ToolStrip1.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -247,9 +258,10 @@ Partial Class frmDebtReport
     Friend WithEvents dtgrdList As DataGridView
     Friend WithEvents btnBack As Button
     Friend WithEvents btnGenerate As Button
-    Friend WithEvents btnExportToExcel As Button
-    Friend WithEvents btnPrint As Button
     Friend WithEvents Column10 As DataGridViewTextBoxColumn
     Friend WithEvents Column1 As DataGridViewTextBoxColumn
     Friend WithEvents Column5 As DataGridViewTextBoxColumn
+    Friend WithEvents ToolStrip1 As ToolStrip
+    Friend WithEvents btnExportToPDF As ToolStripButton
+    Friend WithEvents btnExportToExcel As ToolStripButton
 End Class

@@ -471,7 +471,7 @@ Public Class frmStockCardReports
     End Function
     Dim list As String = ""
 
-    Private Sub btnGenerate_Click(sender As Object, e As EventArgs) Handles btnGenerate.Click
+    Private Sub btnGenerate_Click(sender As Object, e As EventArgs) Handles btnRun.Click
         list = ""
         For i As Integer = 0 To lstCode.Items.Count - 1
             list = list + "'" + lstCode.Items.Item(i) + "'"
@@ -516,7 +516,7 @@ Public Class frmStockCardReports
         lstCode.Items.Clear()
     End Sub
 
-    Private Sub btnPrintWithProfit_Click(sender As Object, e As EventArgs) Handles btnPrintWithProfit.Click
+    Private Sub btnPrintWithProfit_Click(sender As Object, e As EventArgs) Handles btnExportToPDF.Click
         printWithoutProfit()
     End Sub
 

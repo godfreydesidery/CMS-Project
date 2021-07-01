@@ -22,11 +22,9 @@ Partial Class frmMaterialStockStatus
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Me.btnExportToExcel = New System.Windows.Forms.Button()
-        Me.btnPrint = New System.Windows.Forms.Button()
+        Dim DataGridViewCellStyle22 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle23 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle24 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.Panel3 = New System.Windows.Forms.Panel()
         Me.cmbMaterialName = New System.Windows.Forms.ComboBox()
         Me.Button1 = New System.Windows.Forms.Button()
@@ -51,28 +49,14 @@ Partial Class frmMaterialStockStatus
         Me.btnGenerate = New System.Windows.Forms.Button()
         Me.txtTotalAmount = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
+        Me.ToolStrip1 = New System.Windows.Forms.ToolStrip()
+        Me.btnExportToPDF = New System.Windows.Forms.ToolStripButton()
+        Me.btnExportToExcel = New System.Windows.Forms.ToolStripButton()
         Me.Panel3.SuspendLayout()
         Me.Panel1.SuspendLayout()
         CType(Me.dtgrdList, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.ToolStrip1.SuspendLayout()
         Me.SuspendLayout()
-        '
-        'btnExportToExcel
-        '
-        Me.btnExportToExcel.Location = New System.Drawing.Point(637, 76)
-        Me.btnExportToExcel.Name = "btnExportToExcel"
-        Me.btnExportToExcel.Size = New System.Drawing.Size(169, 34)
-        Me.btnExportToExcel.TabIndex = 93
-        Me.btnExportToExcel.Text = "Export to Excel"
-        Me.btnExportToExcel.UseVisualStyleBackColor = True
-        '
-        'btnPrint
-        '
-        Me.btnPrint.Location = New System.Drawing.Point(462, 76)
-        Me.btnPrint.Name = "btnPrint"
-        Me.btnPrint.Size = New System.Drawing.Size(169, 34)
-        Me.btnPrint.TabIndex = 88
-        Me.btnPrint.Text = "Export to PDF"
-        Me.btnPrint.UseVisualStyleBackColor = True
         '
         'Panel3
         '
@@ -85,9 +69,9 @@ Partial Class frmMaterialStockStatus
         Me.Panel3.Controls.Add(Me.Label11)
         Me.Panel3.Controls.Add(Me.txtMaterialCode)
         Me.Panel3.Controls.Add(Me.Label10)
-        Me.Panel3.Location = New System.Drawing.Point(5, 116)
+        Me.Panel3.Location = New System.Drawing.Point(10, 99)
         Me.Panel3.Name = "Panel3"
-        Me.Panel3.Size = New System.Drawing.Size(341, 266)
+        Me.Panel3.Size = New System.Drawing.Size(341, 262)
         Me.Panel3.TabIndex = 91
         '
         'cmbMaterialName
@@ -166,9 +150,9 @@ Partial Class frmMaterialStockStatus
         Me.Panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.Panel1.Controls.Add(Me.cmbCategory)
         Me.Panel1.Controls.Add(Me.Label7)
-        Me.Panel1.Location = New System.Drawing.Point(5, 5)
+        Me.Panel1.Location = New System.Drawing.Point(10, 50)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(341, 105)
+        Me.Panel1.Size = New System.Drawing.Size(341, 43)
         Me.Panel1.TabIndex = 92
         '
         'cmbCategory
@@ -200,11 +184,11 @@ Partial Class frmMaterialStockStatus
         Me.dtgrdList.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.dtgrdList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dtgrdList.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column1, Me.Column2, Me.Column6, Me.Column5, Me.Column3, Me.Column4, Me.Column7})
-        Me.dtgrdList.Location = New System.Drawing.Point(352, 116)
+        Me.dtgrdList.Location = New System.Drawing.Point(357, 99)
         Me.dtgrdList.Name = "dtgrdList"
         Me.dtgrdList.ReadOnly = True
         Me.dtgrdList.RowTemplate.Height = 24
-        Me.dtgrdList.Size = New System.Drawing.Size(1112, 632)
+        Me.dtgrdList.Size = New System.Drawing.Size(1107, 638)
         Me.dtgrdList.TabIndex = 90
         '
         'Column1
@@ -235,8 +219,8 @@ Partial Class frmMaterialStockStatus
         '
         'Column3
         '
-        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        Me.Column3.DefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        Me.Column3.DefaultCellStyle = DataGridViewCellStyle22
         Me.Column3.FillWeight = 53.87895!
         Me.Column3.HeaderText = "Qty"
         Me.Column3.Name = "Column3"
@@ -244,8 +228,8 @@ Partial Class frmMaterialStockStatus
         '
         'Column4
         '
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.Column4.DefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.Column4.DefaultCellStyle = DataGridViewCellStyle23
         Me.Column4.FillWeight = 84.25756!
         Me.Column4.HeaderText = "Price"
         Me.Column4.Name = "Column4"
@@ -253,8 +237,8 @@ Partial Class frmMaterialStockStatus
         '
         'Column7
         '
-        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.Column7.DefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCellStyle24.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.Column7.DefaultCellStyle = DataGridViewCellStyle24
         Me.Column7.FillWeight = 84.25756!
         Me.Column7.HeaderText = "Amount"
         Me.Column7.Name = "Column7"
@@ -264,17 +248,17 @@ Partial Class frmMaterialStockStatus
         '
         Me.btnBack.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btnBack.BackColor = System.Drawing.SystemColors.Control
-        Me.btnBack.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.btnBack.Location = New System.Drawing.Point(1358, 754)
+        Me.btnBack.BackgroundImage = Global.BackOffice.My.Resources.Resources.red_back_arrow
+        Me.btnBack.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.btnBack.Location = New System.Drawing.Point(1367, 743)
         Me.btnBack.Name = "btnBack"
-        Me.btnBack.Size = New System.Drawing.Size(115, 35)
+        Me.btnBack.Size = New System.Drawing.Size(100, 40)
         Me.btnBack.TabIndex = 89
-        Me.btnBack.Text = "Back"
         Me.btnBack.UseVisualStyleBackColor = False
         '
         'btnGenerate
         '
-        Me.btnGenerate.Location = New System.Drawing.Point(352, 76)
+        Me.btnGenerate.Location = New System.Drawing.Point(357, 51)
         Me.btnGenerate.Name = "btnGenerate"
         Me.btnGenerate.Size = New System.Drawing.Size(104, 34)
         Me.btnGenerate.TabIndex = 87
@@ -283,7 +267,7 @@ Partial Class frmMaterialStockStatus
         '
         'txtTotalAmount
         '
-        Me.txtTotalAmount.Location = New System.Drawing.Point(152, 413)
+        Me.txtTotalAmount.Location = New System.Drawing.Point(157, 377)
         Me.txtTotalAmount.MaxLength = 50
         Me.txtTotalAmount.Name = "txtTotalAmount"
         Me.txtTotalAmount.ReadOnly = True
@@ -294,26 +278,51 @@ Partial Class frmMaterialStockStatus
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(54, 418)
+        Me.Label1.Location = New System.Drawing.Point(59, 382)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(92, 17)
         Me.Label1.TabIndex = 95
         Me.Label1.Text = "Total Amount"
+        '
+        'ToolStrip1
+        '
+        Me.ToolStrip1.ImageScalingSize = New System.Drawing.Size(20, 20)
+        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.btnExportToPDF, Me.btnExportToExcel})
+        Me.ToolStrip1.Location = New System.Drawing.Point(0, 0)
+        Me.ToolStrip1.Name = "ToolStrip1"
+        Me.ToolStrip1.Size = New System.Drawing.Size(1479, 27)
+        Me.ToolStrip1.TabIndex = 109
+        Me.ToolStrip1.Text = "ToolStrip1"
+        '
+        'btnExportToPDF
+        '
+        Me.btnExportToPDF.Image = Global.BackOffice.My.Resources.Resources.pdfred
+        Me.btnExportToPDF.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.btnExportToPDF.Name = "btnExportToPDF"
+        Me.btnExportToPDF.Size = New System.Drawing.Size(124, 24)
+        Me.btnExportToPDF.Text = "Export to PDF"
+        '
+        'btnExportToExcel
+        '
+        Me.btnExportToExcel.Image = Global.BackOffice.My.Resources.Resources.spreadsheet
+        Me.btnExportToExcel.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.btnExportToExcel.Name = "btnExportToExcel"
+        Me.btnExportToExcel.Size = New System.Drawing.Size(180, 24)
+        Me.btnExportToExcel.Text = "Export to Spreadsheet"
         '
         'frmMaterialStockStatus
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1479, 795)
+        Me.Controls.Add(Me.ToolStrip1)
         Me.Controls.Add(Me.Label1)
+        Me.Controls.Add(Me.btnGenerate)
         Me.Controls.Add(Me.txtTotalAmount)
-        Me.Controls.Add(Me.btnExportToExcel)
-        Me.Controls.Add(Me.btnPrint)
         Me.Controls.Add(Me.Panel3)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.dtgrdList)
         Me.Controls.Add(Me.btnBack)
-        Me.Controls.Add(Me.btnGenerate)
         Me.Name = "frmMaterialStockStatus"
         Me.ShowIcon = False
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
@@ -323,13 +332,12 @@ Partial Class frmMaterialStockStatus
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
         CType(Me.dtgrdList, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.ToolStrip1.ResumeLayout(False)
+        Me.ToolStrip1.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
-
-    Friend WithEvents btnExportToExcel As Button
-    Friend WithEvents btnPrint As Button
     Friend WithEvents Panel3 As Panel
     Friend WithEvents cmbMaterialName As ComboBox
     Friend WithEvents Button1 As Button
@@ -354,4 +362,7 @@ Partial Class frmMaterialStockStatus
     Friend WithEvents Column7 As DataGridViewTextBoxColumn
     Friend WithEvents txtTotalAmount As TextBox
     Friend WithEvents Label1 As Label
+    Friend WithEvents ToolStrip1 As ToolStrip
+    Friend WithEvents btnExportToPDF As ToolStripButton
+    Friend WithEvents btnExportToExcel As ToolStripButton
 End Class

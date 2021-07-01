@@ -28,7 +28,7 @@
     <ProductName>Orbit Retail Back Office</ProductName>
     <PublisherName>Orbit Retail</PublisherName>
     <SuiteName>Retail</SuiteName>
-    <ApplicationRevision>182</ApplicationRevision>
+    <ApplicationRevision>186</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -1066,9 +1066,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
@@ -1141,6 +1141,57 @@
   <ItemGroup>
     <Folder Include="lib\migradoc\" />
     <Folder Include="lib\pdfSharp\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cancel.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\closed padlock.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\floppy disk.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\new file.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\open padlock.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pencil.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\trash.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\arrow back.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\printer.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tick.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\brush.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\foward arrow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\money.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\red back arrow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pdf.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pdfred.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\spreadsheet.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

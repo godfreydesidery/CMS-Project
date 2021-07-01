@@ -959,6 +959,7 @@ Public Class frmPackingList
     End Function
 
     Private Function refreshList()
+        Cursor = Cursors.WaitCursor
         dtgrdItemList.Rows.Clear()
         Try
 
@@ -1074,12 +1075,19 @@ Public Class frmPackingList
             txtTotalSales.Text = LCurrency.displayValue(totalSales.ToString)
             txtTotalReturns.Text = LCurrency.displayValue(totalreturned.ToString)
             txtTotalDamages.Text = LCurrency.displayValue(totalDamaged.ToString)
-            txtCostOfGoodsSold.text = LCurrency.displayValue(totalCost.ToString)
+            txtCostOfGoodsSold.Text = LCurrency.displayValue(totalCost.ToString)
 
         Catch ex As Exception
             MsgBox(ex.ToString)
         End Try
+        Try
+            dtgrdItemList.CurrentCell = dtgrdItemList.Rows(currentRow).Cells(0)
+            dtgrdItemList.Rows(currentRow).Selected = True
+        Catch ex As Exception
 
+        End Try
+
+        Cursor = Cursors.Arrow
         Return vbNull
     End Function
 
@@ -1104,6 +1112,7 @@ Public Class frmPackingList
 
         Dim row As Integer = -1
         row = dtgrdItemList.CurrentRow.Index
+        currentRow = row 'sets a row index ti be used in autoscroll
 
         'If dtgrdItemList.SelectedRows.Count = 1 Then
         'oldRow = row
@@ -1283,12 +1292,14 @@ Public Class frmPackingList
     End Sub
 
     Private Sub frmPackingList_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Cursor = Cursors.AppStarting
+        resetAll()
         loadSalesPersons()
         refreshPackingLists()
 
         Dim item As New Item
         longList = item.getItems()
-
+        Cursor = Cursors.Default
     End Sub
 
     Private Sub frmPurchaseOrder_Shown(sender As Object, e As EventArgs) Handles Me.Shown
@@ -1429,6 +1440,10 @@ Public Class frmPackingList
         Return present
     End Function
     Private Sub btnAdd_Click(sender As Object, e As EventArgs) Handles btnAdd.Click
+        Cursor = Cursors.WaitCursor
+        If currentRow = -1 Then
+            currentRow = dtgrdItemList.RowCount
+        End If
         txtPrice.ReadOnly = True
         If txtIssueNo.Text = "" Then
             MsgBox("Select new")
@@ -1523,7 +1538,8 @@ Public Class frmPackingList
 
         clearFields()
         unLockFields()
-        Exit Sub
+        currentRow = -1
+        Cursor = Cursors.Arrow
     End Sub
 
     Private Sub btnCancel_Click(sender As Object, e As EventArgs) Handles btnCancel.Click
@@ -1630,7 +1646,6 @@ Public Class frmPackingList
         txtQtyDamaged.Text = ""
         txtQtySold.Text = ""
         txtCPrice.Text = ""
-
         cmbDescription.Enabled = True
     End Sub
 
@@ -1639,6 +1654,7 @@ Public Class frmPackingList
     Private Sub btnReset_Click(sender As Object, e As EventArgs) Handles btnReset.Click
         txtPrice.ReadOnly = True
         clearItemdetails()
+        currentRow = -1
     End Sub
 
     Private Function validateInputs() As Boolean
@@ -1712,6 +1728,10 @@ Public Class frmPackingList
     End Sub
 
     Private Sub btnClear_Click(sender As Object, e As EventArgs) Handles btnClear.Click
+        resetAll()
+    End Sub
+
+    Private Sub resetAll()
         oldPrice = 0
 
         txtId.Text = ""
@@ -1722,6 +1742,7 @@ Public Class frmPackingList
 
         txtBarCode.Text = ""
         txtItemCode.Text = ""
+        cmbDescription.SelectedItem = Nothing
         cmbDescription.Text = ""
         txtPrice.Text = ""
         txtReturns.Text = ""
@@ -2329,7 +2350,6 @@ Public Class frmPackingList
             MsgBox("Invalid deficit amount, deficit less than zero")
         End If
         txtDebt.Text = LCurrency.displayValue(debt.ToString)
-
     End Sub
 
     Private Sub txtTotalDiscounts_TextChanged(sender As Object, e As EventArgs) Handles txtTotalDiscounts.TextChanged
@@ -2355,7 +2375,7 @@ Public Class frmPackingList
     End Sub
 
     Dim report As String = False
-    Private Sub Button1_Click_1(sender As Object, e As EventArgs) Handles Button1.Click
+    Private Sub Button1_Click_1(sender As Object, e As EventArgs) Handles btnPrintReport.Click
         Dim status As String = (New PackingList).getStatus(txtIssueNo.Text)
         report = True
 
@@ -2368,42 +2388,42 @@ Public Class frmPackingList
 
 
             If dtgrdItemList.RowCount = 0 Then
-                    MsgBox("Could not print an empty packing list", vbOKOnly + vbExclamation, "Error: No selection")
-                    Exit Sub
-                End If
-                Dim list As PackingList = New PackingList
+                MsgBox("Could not print an empty packing list", vbOKOnly + vbExclamation, "Error: No selection")
+                Exit Sub
+            End If
+            Dim list As PackingList = New PackingList
 
 
-                'now do the actual printing in pdf
+            'now do the actual printing in pdf
 
-                Dim issueNo As String = txtIssueNo.Text
-                    If issueNo = "" Then
-                        MsgBox("Select a packing list to print.", vbOKOnly + vbCritical, "Error:No selection")
-                        Exit Sub
-                    End If
-                    If dtgrdItemList.RowCount = 0 Then
+            Dim issueNo As String = txtIssueNo.Text
+            If issueNo = "" Then
+                MsgBox("Select a packing list to print.", vbOKOnly + vbCritical, "Error:No selection")
+                Exit Sub
+            End If
+            If dtgrdItemList.RowCount = 0 Then
                 MsgBox("Can not print an empty packing list. Please select the packing list to print", vbOKOnly + vbCritical, "Error: No selection")
                 Exit Sub
-                    End If
+            End If
 
-                    Dim document As Document = New Document
+            Dim document As Document = New Document
 
-                    document.Info.Title = "Packing List"
-                    document.Info.Subject = "Packing List"
-                    document.Info.Author = "Orbit"
+            document.Info.Title = "Packing List"
+            document.Info.Subject = "Packing List"
+            document.Info.Author = "Orbit"
 
-                    defineStyles(document)
-                    createDocument(document)
+            defineStyles(document)
+            createDocument(document)
 
-                    Dim myRenderer As PdfDocumentRenderer = New PdfDocumentRenderer(True)
-                    myRenderer.Document = document
-                    myRenderer.RenderDocument()
+            Dim myRenderer As PdfDocumentRenderer = New PdfDocumentRenderer(True)
+            myRenderer.Document = document
+            myRenderer.RenderDocument()
 
-                    Dim filename As String = LSystem.getRoot & "\Packing List " & issueNo & ".pdf"
+            Dim filename As String = LSystem.getRoot & "\Packing List " & issueNo & ".pdf"
 
-                    myRenderer.PdfDocument.Save(filename)
+            myRenderer.PdfDocument.Save(filename)
 
-                    Process.Start(filename)
+            Process.Start(filename)
 
 
             txtStatus.Text = (New PackingList).getStatus(txtIssueNo.Text)

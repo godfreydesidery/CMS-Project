@@ -486,7 +486,7 @@ Public Class frmMaterialStockCard
         print()
     End Sub
 
-    Private Sub btnPrintWithProfit_Click(sender As Object, e As EventArgs) Handles btnPrintWithProfit.Click
+    Private Sub btnPrintWithProfit_Click(sender As Object, e As EventArgs) Handles btnExportToPDF.Click
         printWithoutProfit()
     End Sub
 

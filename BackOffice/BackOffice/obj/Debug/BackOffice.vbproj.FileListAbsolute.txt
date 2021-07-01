@@ -26,7 +26,6 @@ D:\CMS Project\BackOffice\BackOffice\bin\Debug\de\MigraDoc.Rendering.resources.d
 D:\CMS Project\BackOffice\BackOffice\bin\Debug\de\MigraDoc.RtfRendering.resources.dll
 D:\CMS Project\BackOffice\BackOffice\bin\Debug\de\PdfSharp.resources.dll
 D:\CMS Project\BackOffice\BackOffice\bin\Debug\de\PdfSharp.Charting.resources.dll
-D:\CMS Project\BackOffice\BackOffice\obj\Debug\BackOffice.vbprojResolveAssemblyReference.cache
 D:\CMS Project\BackOffice\BackOffice\obj\Debug\BackOffice.frmAccessControl.resources
 D:\CMS Project\BackOffice\BackOffice\obj\Debug\BackOffice.frmBiometricEnrolment.resources
 D:\CMS Project\BackOffice\BackOffice\obj\Debug\BackOffice.frmPersonaEnrolment.resources
@@ -128,3 +127,4 @@ D:\CMS Project\BackOffice\BackOffice\obj\Debug\BackOffice.vbproj.GenerateResourc
 D:\CMS Project\BackOffice\BackOffice\obj\Debug\BackOffice.TrustInfo.xml
 D:\CMS Project\BackOffice\BackOffice\obj\Debug\BackOffice.exe.manifest
 D:\CMS Project\BackOffice\BackOffice\obj\Debug\BackOffice.application
+D:\CMS Project\BackOffice\BackOffice\obj\Debug\BackOffice.vbprojResolveAssemblyReference.cache

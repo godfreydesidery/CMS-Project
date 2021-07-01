@@ -679,7 +679,7 @@ Public Class frmGoodsReceivedNote
         End If
         Return valid
     End Function
-    Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
+    Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnReceive.Click
         If orderNo <> "" Then
             If txtInvoiceNo.Text <> "" Then
                 txtInvoiceNo.ReadOnly = True
@@ -801,12 +801,14 @@ Public Class frmGoodsReceivedNote
         dtgrdItemList.Rows.Clear()
     End Sub
 
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles btnCancel.Click
         dtgrdItemList.Rows.Clear()
         txtOrderNo.Text = ""
         orderNo = ""
         txtOrderNo.ReadOnly = False
         txtInvoiceNo.ReadOnly = False
+        clearFields()
+        dtgrdItemList.Rows.Clear()
     End Sub
 
     Private Sub txtOrderNo_TextChanged(sender As Object, e As EventArgs) Handles txtOrderNo.TextChanged
@@ -822,6 +824,7 @@ Public Class frmGoodsReceivedNote
     End Sub
 
     Private Sub btnClear_Click(sender As Object, e As EventArgs) Handles btnClear.Click
+
         clearFields()
         dtgrdItemList.Rows.Clear()
     End Sub

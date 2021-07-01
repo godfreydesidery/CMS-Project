@@ -23,7 +23,6 @@ Partial Class frmProductInquiry
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.btnBack = New System.Windows.Forms.Button()
-        Me.btnReset = New System.Windows.Forms.Button()
         Me.txtPck = New System.Windows.Forms.TextBox()
         Me.txtSupplier = New System.Windows.Forms.TextBox()
         Me.Label16 = New System.Windows.Forms.Label()
@@ -70,33 +69,27 @@ Partial Class frmProductInquiry
         Me.Label23 = New System.Windows.Forms.Label()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.cmbDescription = New System.Windows.Forms.ComboBox()
+        Me.ToolStrip1 = New System.Windows.Forms.ToolStrip()
+        Me.btnReset = New System.Windows.Forms.ToolStripButton()
         Me.Panel1.SuspendLayout()
+        Me.ToolStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
         'btnBack
         '
         Me.btnBack.BackColor = System.Drawing.SystemColors.ButtonFace
-        Me.btnBack.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.btnBack.BackgroundImage = Global.BackOffice.My.Resources.Resources.red_back_arrow
+        Me.btnBack.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btnBack.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnBack.Location = New System.Drawing.Point(811, 426)
+        Me.btnBack.Location = New System.Drawing.Point(773, 494)
         Me.btnBack.Name = "btnBack"
-        Me.btnBack.Size = New System.Drawing.Size(115, 35)
+        Me.btnBack.Size = New System.Drawing.Size(100, 40)
         Me.btnBack.TabIndex = 10
-        Me.btnBack.Text = "Back"
         Me.btnBack.UseVisualStyleBackColor = False
-        '
-        'btnReset
-        '
-        Me.btnReset.Location = New System.Drawing.Point(416, 126)
-        Me.btnReset.Name = "btnReset"
-        Me.btnReset.Size = New System.Drawing.Size(115, 35)
-        Me.btnReset.TabIndex = 50
-        Me.btnReset.Text = "Reset"
-        Me.btnReset.UseVisualStyleBackColor = True
         '
         'txtPck
         '
-        Me.txtPck.Location = New System.Drawing.Point(129, 153)
+        Me.txtPck.Location = New System.Drawing.Point(122, 201)
         Me.txtPck.MaxLength = 20
         Me.txtPck.Name = "txtPck"
         Me.txtPck.ReadOnly = True
@@ -105,7 +98,7 @@ Partial Class frmProductInquiry
         '
         'txtSupplier
         '
-        Me.txtSupplier.Location = New System.Drawing.Point(130, 190)
+        Me.txtSupplier.Location = New System.Drawing.Point(122, 229)
         Me.txtSupplier.MaxLength = 100
         Me.txtSupplier.Name = "txtSupplier"
         Me.txtSupplier.ReadOnly = True
@@ -115,7 +108,7 @@ Partial Class frmProductInquiry
         'Label16
         '
         Me.Label16.AutoSize = True
-        Me.Label16.Location = New System.Drawing.Point(6, 96)
+        Me.Label16.Location = New System.Drawing.Point(-1, 126)
         Me.Label16.Name = "Label16"
         Me.Label16.Size = New System.Drawing.Size(117, 17)
         Me.Label16.TabIndex = 47
@@ -123,7 +116,7 @@ Partial Class frmProductInquiry
         '
         'txtDescription
         '
-        Me.txtDescription.Location = New System.Drawing.Point(129, 96)
+        Me.txtDescription.Location = New System.Drawing.Point(122, 126)
         Me.txtDescription.MaxLength = 100
         Me.txtDescription.Name = "txtDescription"
         Me.txtDescription.ReadOnly = True
@@ -134,7 +127,7 @@ Partial Class frmProductInquiry
         '
         Me.chkDiscontinued.AutoSize = True
         Me.chkDiscontinued.Enabled = False
-        Me.chkDiscontinued.Location = New System.Drawing.Point(129, 124)
+        Me.chkDiscontinued.Location = New System.Drawing.Point(305, 203)
         Me.chkDiscontinued.Name = "chkDiscontinued"
         Me.chkDiscontinued.Size = New System.Drawing.Size(112, 21)
         Me.chkDiscontinued.TabIndex = 45
@@ -143,7 +136,7 @@ Partial Class frmProductInquiry
         '
         'txtStandardUOM
         '
-        Me.txtStandardUOM.Location = New System.Drawing.Point(203, 158)
+        Me.txtStandardUOM.Location = New System.Drawing.Point(122, 496)
         Me.txtStandardUOM.MaxLength = 100
         Me.txtStandardUOM.Name = "txtStandardUOM"
         Me.txtStandardUOM.ReadOnly = True
@@ -153,15 +146,15 @@ Partial Class frmProductInquiry
         'Label14
         '
         Me.Label14.AutoSize = True
-        Me.Label14.Location = New System.Drawing.Point(95, 157)
+        Me.Label14.Location = New System.Drawing.Point(76, 499)
         Me.Label14.Name = "Label14"
-        Me.Label14.Size = New System.Drawing.Size(102, 17)
+        Me.Label14.Size = New System.Drawing.Size(40, 17)
         Me.Label14.TabIndex = 33
-        Me.Label14.Text = "Standard UOM"
+        Me.Label14.Text = "UOM"
         '
         'txtMargin
         '
-        Me.txtMargin.Location = New System.Drawing.Point(203, 130)
+        Me.txtMargin.Location = New System.Drawing.Point(122, 468)
         Me.txtMargin.MaxLength = 6
         Me.txtMargin.Name = "txtMargin"
         Me.txtMargin.ReadOnly = True
@@ -171,7 +164,7 @@ Partial Class frmProductInquiry
         'Label12
         '
         Me.Label12.AutoSize = True
-        Me.Label12.Location = New System.Drawing.Point(63, 190)
+        Me.Label12.Location = New System.Drawing.Point(56, 232)
         Me.Label12.Name = "Label12"
         Me.Label12.Size = New System.Drawing.Size(60, 17)
         Me.Label12.TabIndex = 29
@@ -179,7 +172,7 @@ Partial Class frmProductInquiry
         '
         'btnSearch
         '
-        Me.btnSearch.Location = New System.Drawing.Point(416, 12)
+        Me.btnSearch.Location = New System.Drawing.Point(410, 40)
         Me.btnSearch.Name = "btnSearch"
         Me.btnSearch.Size = New System.Drawing.Size(115, 50)
         Me.btnSearch.TabIndex = 15
@@ -189,7 +182,7 @@ Partial Class frmProductInquiry
         'Label13
         '
         Me.Label13.AutoSize = True
-        Me.Label13.Location = New System.Drawing.Point(146, 130)
+        Me.Label13.Location = New System.Drawing.Point(65, 471)
         Me.Label13.Name = "Label13"
         Me.Label13.Size = New System.Drawing.Size(51, 17)
         Me.Label13.TabIndex = 31
@@ -198,7 +191,7 @@ Partial Class frmProductInquiry
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(52, 45)
+        Me.Label1.Location = New System.Drawing.Point(44, 71)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(71, 17)
         Me.Label1.TabIndex = 11
@@ -206,7 +199,7 @@ Partial Class frmProductInquiry
         '
         'txtItemCode
         '
-        Me.txtItemCode.Location = New System.Drawing.Point(129, 40)
+        Me.txtItemCode.Location = New System.Drawing.Point(123, 68)
         Me.txtItemCode.MaxLength = 20
         Me.txtItemCode.Name = "txtItemCode"
         Me.txtItemCode.Size = New System.Drawing.Size(281, 22)
@@ -214,7 +207,7 @@ Partial Class frmProductInquiry
         '
         'txtBarCode
         '
-        Me.txtBarCode.Location = New System.Drawing.Point(129, 12)
+        Me.txtBarCode.Location = New System.Drawing.Point(123, 40)
         Me.txtBarCode.MaxLength = 20
         Me.txtBarCode.Name = "txtBarCode"
         Me.txtBarCode.Size = New System.Drawing.Size(281, 22)
@@ -223,7 +216,7 @@ Partial Class frmProductInquiry
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(56, 15)
+        Me.Label2.Location = New System.Drawing.Point(47, 40)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(67, 17)
         Me.Label2.TabIndex = 13
@@ -231,7 +224,7 @@ Partial Class frmProductInquiry
         '
         'txtRetailPrice
         '
-        Me.txtRetailPrice.Location = New System.Drawing.Point(203, 42)
+        Me.txtRetailPrice.Location = New System.Drawing.Point(122, 387)
         Me.txtRetailPrice.MaxLength = 20
         Me.txtRetailPrice.Name = "txtRetailPrice"
         Me.txtRetailPrice.ReadOnly = True
@@ -242,15 +235,15 @@ Partial Class frmProductInquiry
         'Label10
         '
         Me.Label10.AutoSize = True
-        Me.Label10.Location = New System.Drawing.Point(117, 39)
+        Me.Label10.Location = New System.Drawing.Point(36, 387)
         Me.Label10.Name = "Label10"
-        Me.Label10.Size = New System.Drawing.Size(80, 17)
+        Me.Label10.Size = New System.Drawing.Size(86, 17)
         Me.Label10.TabIndex = 27
-        Me.Label10.Text = "Retail Price"
+        Me.Label10.Text = "Selling Price"
         '
         'txtDiscount
         '
-        Me.txtDiscount.Location = New System.Drawing.Point(203, 102)
+        Me.txtDiscount.Location = New System.Drawing.Point(122, 440)
         Me.txtDiscount.MaxLength = 6
         Me.txtDiscount.Name = "txtDiscount"
         Me.txtDiscount.ReadOnly = True
@@ -260,7 +253,7 @@ Partial Class frmProductInquiry
         'Label7
         '
         Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(108, 100)
+        Me.Label7.Location = New System.Drawing.Point(31, 443)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(89, 17)
         Me.Label7.TabIndex = 25
@@ -268,7 +261,7 @@ Partial Class frmProductInquiry
         '
         'txtCostPrice
         '
-        Me.txtCostPrice.Location = New System.Drawing.Point(203, 14)
+        Me.txtCostPrice.Location = New System.Drawing.Point(122, 359)
         Me.txtCostPrice.MaxLength = 20
         Me.txtCostPrice.Name = "txtCostPrice"
         Me.txtCostPrice.ReadOnly = True
@@ -279,15 +272,15 @@ Partial Class frmProductInquiry
         'Label5
         '
         Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(100, 14)
+        Me.Label5.Location = New System.Drawing.Point(44, 359)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(101, 17)
+        Me.Label5.Size = New System.Drawing.Size(72, 17)
         Me.Label5.TabIndex = 21
-        Me.Label5.Text = "Unit Cost Price"
+        Me.Label5.Text = "Cost Price"
         '
         'txtVAT
         '
-        Me.txtVAT.Location = New System.Drawing.Point(203, 74)
+        Me.txtVAT.Location = New System.Drawing.Point(122, 412)
         Me.txtVAT.MaxLength = 6
         Me.txtVAT.Name = "txtVAT"
         Me.txtVAT.ReadOnly = True
@@ -297,7 +290,7 @@ Partial Class frmProductInquiry
         'Label6
         '
         Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(140, 74)
+        Me.Label6.Location = New System.Drawing.Point(63, 415)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(57, 17)
         Me.Label6.TabIndex = 19
@@ -306,7 +299,7 @@ Partial Class frmProductInquiry
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(8, 68)
+        Me.Label3.Location = New System.Drawing.Point(2, 96)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(115, 17)
         Me.Label3.TabIndex = 17
@@ -315,7 +308,7 @@ Partial Class frmProductInquiry
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(54, 153)
+        Me.Label4.Location = New System.Drawing.Point(47, 201)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(70, 17)
         Me.Label4.TabIndex = 15
@@ -323,7 +316,7 @@ Partial Class frmProductInquiry
         '
         'txtQty
         '
-        Me.txtQty.Location = New System.Drawing.Point(200, 249)
+        Me.txtQty.Location = New System.Drawing.Point(152, 28)
         Me.txtQty.MaxLength = 20
         Me.txtQty.Name = "txtQty"
         Me.txtQty.ReadOnly = True
@@ -333,15 +326,15 @@ Partial Class frmProductInquiry
         'Label21
         '
         Me.Label21.AutoSize = True
-        Me.Label21.Location = New System.Drawing.Point(130, 249)
+        Me.Label21.Location = New System.Drawing.Point(113, 28)
         Me.Label21.Name = "Label21"
-        Me.Label21.Size = New System.Drawing.Size(61, 17)
+        Me.Label21.Size = New System.Drawing.Size(30, 17)
         Me.Label21.TabIndex = 43
-        Me.Label21.Text = "Quantity"
+        Me.Label21.Text = "Qty"
         '
         'txtDepartment
         '
-        Me.txtDepartment.Location = New System.Drawing.Point(130, 218)
+        Me.txtDepartment.Location = New System.Drawing.Point(123, 257)
         Me.txtDepartment.MaxLength = 50
         Me.txtDepartment.Name = "txtDepartment"
         Me.txtDepartment.ReadOnly = True
@@ -351,7 +344,7 @@ Partial Class frmProductInquiry
         'Label20
         '
         Me.Label20.AutoSize = True
-        Me.Label20.Location = New System.Drawing.Point(42, 221)
+        Me.Label20.Location = New System.Drawing.Point(33, 257)
         Me.Label20.Name = "Label20"
         Me.Label20.Size = New System.Drawing.Size(82, 17)
         Me.Label20.TabIndex = 41
@@ -359,7 +352,7 @@ Partial Class frmProductInquiry
         '
         'txtSubClass
         '
-        Me.txtSubClass.Location = New System.Drawing.Point(129, 283)
+        Me.txtSubClass.Location = New System.Drawing.Point(122, 313)
         Me.txtSubClass.MaxLength = 50
         Me.txtSubClass.Name = "txtSubClass"
         Me.txtSubClass.ReadOnly = True
@@ -369,7 +362,7 @@ Partial Class frmProductInquiry
         'Label19
         '
         Me.Label19.AutoSize = True
-        Me.Label19.Location = New System.Drawing.Point(56, 283)
+        Me.Label19.Location = New System.Drawing.Point(49, 313)
         Me.Label19.Name = "Label19"
         Me.Label19.Size = New System.Drawing.Size(71, 17)
         Me.Label19.TabIndex = 39
@@ -377,7 +370,7 @@ Partial Class frmProductInquiry
         '
         'txtClass
         '
-        Me.txtClass.Location = New System.Drawing.Point(129, 255)
+        Me.txtClass.Location = New System.Drawing.Point(123, 285)
         Me.txtClass.MaxLength = 50
         Me.txtClass.Name = "txtClass"
         Me.txtClass.ReadOnly = True
@@ -387,7 +380,7 @@ Partial Class frmProductInquiry
         'Label18
         '
         Me.Label18.AutoSize = True
-        Me.Label18.Location = New System.Drawing.Point(81, 254)
+        Me.Label18.Location = New System.Drawing.Point(76, 285)
         Me.Label18.Name = "Label18"
         Me.Label18.Size = New System.Drawing.Size(42, 17)
         Me.Label18.TabIndex = 37
@@ -395,7 +388,7 @@ Partial Class frmProductInquiry
         '
         'txtReorderQty
         '
-        Me.txtReorderQty.Location = New System.Drawing.Point(200, 373)
+        Me.txtReorderQty.Location = New System.Drawing.Point(152, 152)
         Me.txtReorderQty.MaxLength = 20
         Me.txtReorderQty.Name = "txtReorderQty"
         Me.txtReorderQty.ReadOnly = True
@@ -405,15 +398,15 @@ Partial Class frmProductInquiry
         'Label15
         '
         Me.Label15.AutoSize = True
-        Me.Label15.Location = New System.Drawing.Point(25, 376)
+        Me.Label15.Location = New System.Drawing.Point(2, 155)
         Me.Label15.Name = "Label15"
-        Me.Label15.Size = New System.Drawing.Size(166, 17)
+        Me.Label15.Size = New System.Drawing.Size(143, 17)
         Me.Label15.TabIndex = 35
-        Me.Label15.Text = "Default Reorder Quantity"
+        Me.Label15.Text = "Def Reorder Quantity"
         '
         'txtReorderLevel
         '
-        Me.txtReorderLevel.Location = New System.Drawing.Point(200, 342)
+        Me.txtReorderLevel.Location = New System.Drawing.Point(152, 121)
         Me.txtReorderLevel.MaxLength = 20
         Me.txtReorderLevel.Name = "txtReorderLevel"
         Me.txtReorderLevel.ReadOnly = True
@@ -423,7 +416,7 @@ Partial Class frmProductInquiry
         'Label17
         '
         Me.Label17.AutoSize = True
-        Me.Label17.Location = New System.Drawing.Point(93, 345)
+        Me.Label17.Location = New System.Drawing.Point(45, 124)
         Me.Label17.Name = "Label17"
         Me.Label17.Size = New System.Drawing.Size(98, 17)
         Me.Label17.TabIndex = 33
@@ -431,7 +424,7 @@ Partial Class frmProductInquiry
         '
         'txtMaxInventory
         '
-        Me.txtMaxInventory.Location = New System.Drawing.Point(200, 314)
+        Me.txtMaxInventory.Location = New System.Drawing.Point(152, 93)
         Me.txtMaxInventory.MaxLength = 20
         Me.txtMaxInventory.Name = "txtMaxInventory"
         Me.txtMaxInventory.ReadOnly = True
@@ -441,15 +434,15 @@ Partial Class frmProductInquiry
         'Label9
         '
         Me.Label9.AutoSize = True
-        Me.Label9.Location = New System.Drawing.Point(63, 314)
+        Me.Label9.Location = New System.Drawing.Point(45, 93)
         Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(128, 17)
+        Me.Label9.Size = New System.Drawing.Size(95, 17)
         Me.Label9.TabIndex = 31
-        Me.Label9.Text = "Maximum Inventory"
+        Me.Label9.Text = "Max Inventory"
         '
         'txtMinInventory
         '
-        Me.txtMinInventory.Location = New System.Drawing.Point(200, 282)
+        Me.txtMinInventory.Location = New System.Drawing.Point(152, 61)
         Me.txtMinInventory.MaxLength = 20
         Me.txtMinInventory.Name = "txtMinInventory"
         Me.txtMinInventory.ReadOnly = True
@@ -459,16 +452,16 @@ Partial Class frmProductInquiry
         'Label11
         '
         Me.Label11.AutoSize = True
-        Me.Label11.Location = New System.Drawing.Point(66, 282)
+        Me.Label11.Location = New System.Drawing.Point(51, 61)
         Me.Label11.Name = "Label11"
-        Me.Label11.Size = New System.Drawing.Size(125, 17)
+        Me.Label11.Size = New System.Drawing.Size(92, 17)
         Me.Label11.TabIndex = 29
-        Me.Label11.Text = "Minimum Inventory"
+        Me.Label11.Text = "Min Inventory"
         '
         'Label8
         '
         Me.Label8.AutoSize = True
-        Me.Label8.Location = New System.Drawing.Point(197, 220)
+        Me.Label8.Location = New System.Drawing.Point(3, 3)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(113, 17)
         Me.Label8.TabIndex = 0
@@ -479,15 +472,15 @@ Partial Class frmProductInquiry
         Me.lstBarCodes.Enabled = False
         Me.lstBarCodes.FormattingEnabled = True
         Me.lstBarCodes.ItemHeight = 16
-        Me.lstBarCodes.Location = New System.Drawing.Point(130, 311)
+        Me.lstBarCodes.Location = New System.Drawing.Point(302, 387)
         Me.lstBarCodes.Name = "lstBarCodes"
-        Me.lstBarCodes.Size = New System.Drawing.Size(202, 100)
+        Me.lstBarCodes.Size = New System.Drawing.Size(222, 132)
         Me.lstBarCodes.TabIndex = 52
         '
         'Label23
         '
         Me.Label23.AutoSize = True
-        Me.Label23.Location = New System.Drawing.Point(49, 311)
+        Me.Label23.Location = New System.Drawing.Point(302, 357)
         Me.Label23.Name = "Label23"
         Me.Label23.Size = New System.Drawing.Size(74, 17)
         Me.Label23.TabIndex = 53
@@ -496,64 +489,82 @@ Partial Class frmProductInquiry
         'Panel1
         '
         Me.Panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-        Me.Panel1.Controls.Add(Me.txtCostPrice)
-        Me.Panel1.Controls.Add(Me.Label5)
-        Me.Panel1.Controls.Add(Me.Label10)
         Me.Panel1.Controls.Add(Me.Label8)
-        Me.Panel1.Controls.Add(Me.Label6)
         Me.Panel1.Controls.Add(Me.txtReorderQty)
-        Me.Panel1.Controls.Add(Me.txtVAT)
         Me.Panel1.Controls.Add(Me.txtQty)
-        Me.Panel1.Controls.Add(Me.txtRetailPrice)
         Me.Panel1.Controls.Add(Me.Label15)
-        Me.Panel1.Controls.Add(Me.Label7)
-        Me.Panel1.Controls.Add(Me.txtDiscount)
         Me.Panel1.Controls.Add(Me.txtReorderLevel)
-        Me.Panel1.Controls.Add(Me.Label13)
         Me.Panel1.Controls.Add(Me.Label21)
-        Me.Panel1.Controls.Add(Me.txtMargin)
         Me.Panel1.Controls.Add(Me.Label17)
-        Me.Panel1.Controls.Add(Me.Label14)
-        Me.Panel1.Controls.Add(Me.txtStandardUOM)
         Me.Panel1.Controls.Add(Me.txtMaxInventory)
         Me.Panel1.Controls.Add(Me.Label11)
         Me.Panel1.Controls.Add(Me.txtMinInventory)
         Me.Panel1.Controls.Add(Me.Label9)
-        Me.Panel1.Location = New System.Drawing.Point(537, 12)
+        Me.Panel1.Location = New System.Drawing.Point(531, 201)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(389, 408)
+        Me.Panel1.Size = New System.Drawing.Size(343, 190)
         Me.Panel1.TabIndex = 54
         '
         'cmbDescription
         '
         Me.cmbDescription.FormattingEnabled = True
-        Me.cmbDescription.Location = New System.Drawing.Point(130, 68)
+        Me.cmbDescription.Location = New System.Drawing.Point(123, 96)
         Me.cmbDescription.Name = "cmbDescription"
         Me.cmbDescription.Size = New System.Drawing.Size(402, 24)
         Me.cmbDescription.TabIndex = 108
+        '
+        'ToolStrip1
+        '
+        Me.ToolStrip1.ImageScalingSize = New System.Drawing.Size(20, 20)
+        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.btnReset})
+        Me.ToolStrip1.Location = New System.Drawing.Point(0, 0)
+        Me.ToolStrip1.Name = "ToolStrip1"
+        Me.ToolStrip1.Size = New System.Drawing.Size(886, 27)
+        Me.ToolStrip1.TabIndex = 109
+        Me.ToolStrip1.Text = "ToolStrip1"
+        '
+        'btnReset
+        '
+        Me.btnReset.Image = Global.BackOffice.My.Resources.Resources.cancel
+        Me.btnReset.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.btnReset.Name = "btnReset"
+        Me.btnReset.Size = New System.Drawing.Size(69, 24)
+        Me.btnReset.Text = "Reset"
         '
         'frmProductInquiry
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(937, 466)
+        Me.ClientSize = New System.Drawing.Size(886, 539)
+        Me.Controls.Add(Me.ToolStrip1)
+        Me.Controls.Add(Me.txtCostPrice)
+        Me.Controls.Add(Me.Label5)
         Me.Controls.Add(Me.cmbDescription)
+        Me.Controls.Add(Me.Label10)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.Label23)
+        Me.Controls.Add(Me.Label6)
         Me.Controls.Add(Me.lstBarCodes)
-        Me.Controls.Add(Me.btnReset)
+        Me.Controls.Add(Me.txtVAT)
         Me.Controls.Add(Me.txtSupplier)
         Me.Controls.Add(Me.txtSubClass)
+        Me.Controls.Add(Me.txtRetailPrice)
         Me.Controls.Add(Me.txtDepartment)
         Me.Controls.Add(Me.Label19)
+        Me.Controls.Add(Me.Label7)
         Me.Controls.Add(Me.txtPck)
+        Me.Controls.Add(Me.txtDiscount)
         Me.Controls.Add(Me.txtClass)
         Me.Controls.Add(Me.Label20)
+        Me.Controls.Add(Me.Label13)
         Me.Controls.Add(Me.Label18)
         Me.Controls.Add(Me.chkDiscontinued)
+        Me.Controls.Add(Me.txtMargin)
         Me.Controls.Add(Me.Label12)
         Me.Controls.Add(Me.Label16)
+        Me.Controls.Add(Me.Label14)
         Me.Controls.Add(Me.btnBack)
+        Me.Controls.Add(Me.txtStandardUOM)
         Me.Controls.Add(Me.txtDescription)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.txtBarCode)
@@ -570,6 +581,8 @@ Partial Class frmProductInquiry
         Me.Text = "Product Inquiry"
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
+        Me.ToolStrip1.ResumeLayout(False)
+        Me.ToolStrip1.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -615,11 +628,12 @@ Partial Class frmProductInquiry
     Friend WithEvents Label19 As Label
     Friend WithEvents txtClass As TextBox
     Friend WithEvents Label18 As Label
-    Friend WithEvents btnReset As Button
     Friend WithEvents txtQty As TextBox
     Friend WithEvents Label21 As Label
     Friend WithEvents lstBarCodes As ListBox
     Friend WithEvents Label23 As Label
     Friend WithEvents Panel1 As Panel
     Friend WithEvents cmbDescription As ComboBox
+    Friend WithEvents ToolStrip1 As ToolStrip
+    Friend WithEvents btnReset As ToolStripButton
 End Class

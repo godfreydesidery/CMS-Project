@@ -286,6 +286,7 @@ Public Class frmDamagesReport
         refreshList()
     End Sub
     Private Function refreshList()
+        Cursor = Cursors.WaitCursor
         dtgrdList.Rows.Clear()
 
         Dim totalSales As Double = 0
@@ -368,7 +369,7 @@ Public Class frmDamagesReport
         Catch ex As Exception
             MsgBox(ex.Message)
         End Try
-
+        Cursor = Cursors.Arrow
         Return vbNull
     End Function
     Private Sub btnBack_Click(sender As Object, e As EventArgs) Handles btnBack.Click
@@ -381,7 +382,7 @@ Public Class frmDamagesReport
     Dim longList As New List(Of String)
     Dim shortList As New List(Of String)
 
-    Private Sub btnPrint_Click(sender As Object, e As EventArgs) Handles btnPrint.Click
+    Private Sub btnPrint_Click(sender As Object, e As EventArgs) Handles btnExportToPDF.Click
         generate()
         If dtgrdList.RowCount = 0 Then
             MsgBox("Nothing to print")

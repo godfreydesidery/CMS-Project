@@ -595,7 +595,7 @@ Public Class frmProductMaster
             msg = "Invalid Cost price. Cost price should be numeric"
             valid = False
             txtVAT.Focus()
-        ElseIf txtretailPrice.Text = "" Or Not IsNumeric(txtretailPrice.Text) Or Val(txtretailPrice.Text) < 0 Then
+        ElseIf txtRetailPrice.Text = "" Or Not IsNumeric(txtRetailPrice.Text) Or Val(txtRetailPrice.Text) < 0 Then
             msg = "Invalid Retail price. Retail price should be numeric"
             valid = False
             txtVAT.Focus()
@@ -746,6 +746,8 @@ Public Class frmProductMaster
             Return vbNull
             Exit Function
         End If
+        MsgBox("Could not delete")
+        Return False
         Try
             Dim conn As New MySqlConnection(Database.conString)
             Dim command As New MySqlCommand()
@@ -905,11 +907,7 @@ Public Class frmProductMaster
         End If
     End Sub
 
-    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
-        frmInjector.ShowDialog()
-    End Sub
-
-    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
+    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles btnEditSupplier.Click
         cmbSupplier.Enabled = True
     End Sub
 
@@ -966,5 +964,9 @@ Public Class frmProductMaster
         If txtStandardUOM.Text.Contains("'") Then
             txtStandardUOM.Text = ""
         End If
+    End Sub
+
+    Private Sub btnViewSuppliers1_Click(sender As Object, e As EventArgs)
+
     End Sub
 End Class

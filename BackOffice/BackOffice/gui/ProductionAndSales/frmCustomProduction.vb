@@ -477,6 +477,7 @@ Public Class frmCustomProduction
     End Sub
 
     Private Sub frmCustomProduction_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        clear()
         refreshProductionList()
         loadMaterials()
 
@@ -1438,6 +1439,7 @@ Public Class frmCustomProduction
             status = (New Production).getStatus(txtId.Text)
             txtStatus.Text = status
             refreshFinishedProductsList()
+            refreshProductionList()
             MsgBox("Production process " + txtProductionNo.Text + " completed successifully", vbOKOnly + vbInformation, "Success")
         End If
 
@@ -1562,7 +1564,7 @@ Public Class frmCustomProduction
         Return success
     End Function
 
-    Private Sub btnProduction_Click(sender As Object, e As EventArgs) Handles btnProduction.Click
+    Private Sub btnProduction_Click(sender As Object, e As EventArgs) Handles btnApprove.Click
         Dim status As String = (New Production).getStatus(txtId.Text)
         If status = "PENDING" Then
             Dim res As Integer = MsgBox("Approve production " + txtProductionNo.Text + " ?", vbYesNo + vbQuestion, "Approve production?")
@@ -1572,6 +1574,7 @@ Public Class frmCustomProduction
                 status = (New Production).getStatus(txtId.Text)
                 txtStatus.Text = status
                 refreshFinishedProductsList()
+                refreshProductionList()
 
                 MsgBox("Approve success", vbOKOnly + vbInformation, "Success")
             End If
@@ -1597,7 +1600,10 @@ Public Class frmCustomProduction
 
         txtProductionNo.ReadOnly = False
         search()
+        status = (New Production).getStatus(txtId.Text)
+        txtStatus.Text = status
         refreshFinishedProductsList()
+        refreshProductionList()
 
 
         Dim document As Document = New Document
@@ -1632,6 +1638,7 @@ Public Class frmCustomProduction
                 status = (New Production).getStatus(txtId.Text)
                 txtStatus.Text = status
                 refreshFinishedProductsList()
+                refreshProductionList()
 
                 MsgBox("Cancel success", vbOKOnly + vbInformation, "Success")
             End If
@@ -1694,9 +1701,11 @@ Public Class frmCustomProduction
     Private Sub btnArchive_Click(sender As Object, e As EventArgs) Handles btnArchive.Click
         Dim status As String = (New Production).getStatus(txtId.Text)
         If status = "COMPLETED" Then
-            Dim res As Integer = MsgBox("Archive document? The document will be archived for fkuture references", vbYesNo + vbQuestion, "Archive document")
+            Dim res As Integer = MsgBox("Archive document? The document will be archived for future references", vbYesNo + vbQuestion, "Archive document")
             If res = DialogResult.Yes Then
                 archiveProduction(txtProductionNo.Text)
+                status = (New Production).getStatus(txtId.Text)
+                txtStatus.Text = status
                 refreshProductionList()
                 clear()
                 MsgBox("Document archived")
@@ -1704,5 +1713,13 @@ Public Class frmCustomProduction
         Else
             MsgBox("Could not archive", vbOKOnly + vbExclamation, "Error: Invalid operation")
         End If
+    End Sub
+
+    Private Sub btnClear_Click_1(sender As Object, e As EventArgs) Handles btnClear.Click
+
+    End Sub
+
+    Private Sub btnClose_Click(sender As Object, e As EventArgs) Handles btnClose.Click
+        Me.Dispose()
     End Sub
 End Class

@@ -149,7 +149,7 @@ Public Class frmSalesPerson
 
     Private Sub btnNew_Click(sender As Object, e As EventArgs) Handles btnNew.Click
         EDIT_MODE = "NEW"
-        txtID.Text = ""
+        txtId.Text = ""
         btnEdit.Enabled = True
         btnDelete.Enabled = False
         btnSave.Enabled = True
@@ -510,6 +510,8 @@ Public Class frmSalesPerson
             txtRollNo.Text = ""
         End If
     End Sub
+
+
 
     'Private Sub cmbStatus_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbStatus.SelectionChangeCommitted
     'If txtID.Text <> "" And txtUsername.Text <> "" Then

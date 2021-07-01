@@ -486,8 +486,11 @@ Public Class frmMaterialCategory
 
     End Sub
 
+    Private Sub ToolStrip1_ItemClicked(sender As Object, e As ToolStripItemClickedEventArgs) Handles ToolStrip1.ItemClicked
 
+    End Sub
 
+    Private Sub btnNew_Click_1(sender As Object, e As EventArgs) Handles btnNew.Click
 
-
+    End Sub
 End Class

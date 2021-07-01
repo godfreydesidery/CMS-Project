@@ -34,22 +34,16 @@ Partial Class frmMaterials
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.cmbCategory = New System.Windows.Forms.ComboBox()
         Me.Label3 = New System.Windows.Forms.Label()
-        Me.btnClear = New System.Windows.Forms.Button()
         Me.cmbDescription = New System.Windows.Forms.ComboBox()
-        Me.btnUnblock = New System.Windows.Forms.Button()
         Me.btnDeduct = New System.Windows.Forms.Button()
         Me.btnAdd = New System.Windows.Forms.Button()
         Me.txtDeduct = New System.Windows.Forms.TextBox()
         Me.txtAdd = New System.Windows.Forms.TextBox()
-        Me.btnBlock = New System.Windows.Forms.Button()
         Me.txtId = New System.Windows.Forms.TextBox()
         Me.txtUom = New System.Windows.Forms.TextBox()
-        Me.btnSave = New System.Windows.Forms.Button()
         Me.Label9 = New System.Windows.Forms.Label()
         Me.btnSearch = New System.Windows.Forms.Button()
-        Me.btnEdit = New System.Windows.Forms.Button()
         Me.txtStatus = New System.Windows.Forms.TextBox()
-        Me.btnNew = New System.Windows.Forms.Button()
         Me.txtPrice = New System.Windows.Forms.TextBox()
         Me.txtQty = New System.Windows.Forms.TextBox()
         Me.txtMaterialCode = New System.Windows.Forms.TextBox()
@@ -59,13 +53,17 @@ Partial Class frmMaterials
         Me.Label6 = New System.Windows.Forms.Label()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.Button1 = New System.Windows.Forms.Button()
-        Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
-        Me.PrintToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.MaterialStockStatusToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.MaterialStockCardsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStrip1 = New System.Windows.Forms.ToolStrip()
+        Me.btnNew = New System.Windows.Forms.ToolStripButton()
+        Me.btnEdit = New System.Windows.Forms.ToolStripButton()
+        Me.btnClear = New System.Windows.Forms.ToolStripButton()
+        Me.btnDelete = New System.Windows.Forms.ToolStripButton()
+        Me.btnSave = New System.Windows.Forms.ToolStripButton()
+        Me.btnBlock = New System.Windows.Forms.ToolStripButton()
+        Me.btnUnblock = New System.Windows.Forms.ToolStripButton()
         CType(Me.dtgrdList, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
-        Me.MenuStrip1.SuspendLayout()
+        Me.ToolStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
         'btnBack
@@ -91,11 +89,11 @@ Partial Class frmMaterials
         Me.dtgrdList.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.dtgrdList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dtgrdList.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column1, Me.Column2, Me.Column3, Me.Column4, Me.Column5, Me.Column6})
-        Me.dtgrdList.Location = New System.Drawing.Point(517, 31)
+        Me.dtgrdList.Location = New System.Drawing.Point(517, 50)
         Me.dtgrdList.Name = "dtgrdList"
         Me.dtgrdList.ReadOnly = True
         Me.dtgrdList.RowTemplate.Height = 24
-        Me.dtgrdList.Size = New System.Drawing.Size(895, 640)
+        Me.dtgrdList.Size = New System.Drawing.Size(895, 602)
         Me.dtgrdList.TabIndex = 68
         '
         'Column1
@@ -144,22 +142,16 @@ Partial Class frmMaterials
         Me.Panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.Panel1.Controls.Add(Me.cmbCategory)
         Me.Panel1.Controls.Add(Me.Label3)
-        Me.Panel1.Controls.Add(Me.btnClear)
         Me.Panel1.Controls.Add(Me.cmbDescription)
-        Me.Panel1.Controls.Add(Me.btnUnblock)
         Me.Panel1.Controls.Add(Me.btnDeduct)
         Me.Panel1.Controls.Add(Me.btnAdd)
         Me.Panel1.Controls.Add(Me.txtDeduct)
         Me.Panel1.Controls.Add(Me.txtAdd)
-        Me.Panel1.Controls.Add(Me.btnBlock)
         Me.Panel1.Controls.Add(Me.txtId)
         Me.Panel1.Controls.Add(Me.txtUom)
-        Me.Panel1.Controls.Add(Me.btnSave)
         Me.Panel1.Controls.Add(Me.Label9)
         Me.Panel1.Controls.Add(Me.btnSearch)
-        Me.Panel1.Controls.Add(Me.btnEdit)
         Me.Panel1.Controls.Add(Me.txtStatus)
-        Me.Panel1.Controls.Add(Me.btnNew)
         Me.Panel1.Controls.Add(Me.txtPrice)
         Me.Panel1.Controls.Add(Me.txtQty)
         Me.Panel1.Controls.Add(Me.txtMaterialCode)
@@ -168,7 +160,7 @@ Partial Class frmMaterials
         Me.Panel1.Controls.Add(Me.Label2)
         Me.Panel1.Controls.Add(Me.Label6)
         Me.Panel1.Controls.Add(Me.Label5)
-        Me.Panel1.Location = New System.Drawing.Point(12, 31)
+        Me.Panel1.Location = New System.Drawing.Point(10, 50)
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(499, 329)
         Me.Panel1.TabIndex = 67
@@ -192,15 +184,6 @@ Partial Class frmMaterials
         Me.Label3.TabIndex = 109
         Me.Label3.Text = "Category"
         '
-        'btnClear
-        '
-        Me.btnClear.Location = New System.Drawing.Point(403, 114)
-        Me.btnClear.Name = "btnClear"
-        Me.btnClear.Size = New System.Drawing.Size(89, 46)
-        Me.btnClear.TabIndex = 108
-        Me.btnClear.Text = "Clear"
-        Me.btnClear.UseVisualStyleBackColor = True
-        '
         'cmbDescription
         '
         Me.cmbDescription.AllowDrop = True
@@ -209,16 +192,6 @@ Partial Class frmMaterials
         Me.cmbDescription.Name = "cmbDescription"
         Me.cmbDescription.Size = New System.Drawing.Size(312, 24)
         Me.cmbDescription.TabIndex = 107
-        '
-        'btnUnblock
-        '
-        Me.btnUnblock.Enabled = False
-        Me.btnUnblock.Location = New System.Drawing.Point(403, 268)
-        Me.btnUnblock.Name = "btnUnblock"
-        Me.btnUnblock.Size = New System.Drawing.Size(89, 48)
-        Me.btnUnblock.TabIndex = 71
-        Me.btnUnblock.Text = "Unblock"
-        Me.btnUnblock.UseVisualStyleBackColor = True
         '
         'btnDeduct
         '
@@ -254,16 +227,6 @@ Partial Class frmMaterials
         Me.txtAdd.Size = New System.Drawing.Size(88, 22)
         Me.txtAdd.TabIndex = 21
         '
-        'btnBlock
-        '
-        Me.btnBlock.Enabled = False
-        Me.btnBlock.Location = New System.Drawing.Point(403, 214)
-        Me.btnBlock.Name = "btnBlock"
-        Me.btnBlock.Size = New System.Drawing.Size(89, 48)
-        Me.btnBlock.TabIndex = 20
-        Me.btnBlock.Text = "Block"
-        Me.btnBlock.UseVisualStyleBackColor = True
-        '
         'txtId
         '
         Me.txtId.Location = New System.Drawing.Point(-2, -2)
@@ -278,15 +241,6 @@ Partial Class frmMaterials
         Me.txtUom.Name = "txtUom"
         Me.txtUom.Size = New System.Drawing.Size(88, 22)
         Me.txtUom.TabIndex = 18
-        '
-        'btnSave
-        '
-        Me.btnSave.Location = New System.Drawing.Point(403, 166)
-        Me.btnSave.Name = "btnSave"
-        Me.btnSave.Size = New System.Drawing.Size(89, 42)
-        Me.btnSave.TabIndex = 12
-        Me.btnSave.Text = "Save"
-        Me.btnSave.UseVisualStyleBackColor = True
         '
         'Label9
         '
@@ -306,15 +260,6 @@ Partial Class frmMaterials
         Me.btnSearch.Text = "&Search"
         Me.btnSearch.UseVisualStyleBackColor = True
         '
-        'btnEdit
-        '
-        Me.btnEdit.Location = New System.Drawing.Point(403, 63)
-        Me.btnEdit.Name = "btnEdit"
-        Me.btnEdit.Size = New System.Drawing.Size(89, 45)
-        Me.btnEdit.TabIndex = 10
-        Me.btnEdit.Text = "Edit"
-        Me.btnEdit.UseVisualStyleBackColor = True
-        '
         'txtStatus
         '
         Me.txtStatus.Location = New System.Drawing.Point(85, 281)
@@ -322,15 +267,6 @@ Partial Class frmMaterials
         Me.txtStatus.ReadOnly = True
         Me.txtStatus.Size = New System.Drawing.Size(171, 22)
         Me.txtStatus.TabIndex = 15
-        '
-        'btnNew
-        '
-        Me.btnNew.Location = New System.Drawing.Point(403, 13)
-        Me.btnNew.Name = "btnNew"
-        Me.btnNew.Size = New System.Drawing.Size(89, 44)
-        Me.btnNew.TabIndex = 9
-        Me.btnNew.Text = "New"
-        Me.btnNew.UseVisualStyleBackColor = True
         '
         'txtPrice
         '
@@ -402,54 +338,101 @@ Partial Class frmMaterials
         'Button1
         '
         Me.Button1.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Button1.BackgroundImage = Global.BackOffice.My.Resources.Resources.red_back_arrow
+        Me.Button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.Button1.Location = New System.Drawing.Point(1312, 677)
         Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(100, 38)
+        Me.Button1.Size = New System.Drawing.Size(100, 40)
         Me.Button1.TabIndex = 70
-        Me.Button1.Text = "Back"
         Me.Button1.UseVisualStyleBackColor = True
         '
-        'MenuStrip1
+        'ToolStrip1
         '
-        Me.MenuStrip1.ImageScalingSize = New System.Drawing.Size(20, 20)
-        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.PrintToolStripMenuItem})
-        Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
-        Me.MenuStrip1.Name = "MenuStrip1"
-        Me.MenuStrip1.Size = New System.Drawing.Size(1424, 24)
-        Me.MenuStrip1.TabIndex = 71
-        Me.MenuStrip1.Text = "MenuStrip1"
+        Me.ToolStrip1.BackColor = System.Drawing.SystemColors.ButtonFace
+        Me.ToolStrip1.ImageScalingSize = New System.Drawing.Size(20, 20)
+        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.btnNew, Me.btnEdit, Me.btnClear, Me.btnDelete, Me.btnSave, Me.btnBlock, Me.btnUnblock})
+        Me.ToolStrip1.Location = New System.Drawing.Point(0, 0)
+        Me.ToolStrip1.Name = "ToolStrip1"
+        Me.ToolStrip1.Size = New System.Drawing.Size(1424, 27)
+        Me.ToolStrip1.TabIndex = 75
+        Me.ToolStrip1.Text = "ToolStrip1"
         '
-        'PrintToolStripMenuItem
+        'btnNew
         '
-        Me.PrintToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MaterialStockStatusToolStripMenuItem, Me.MaterialStockCardsToolStripMenuItem})
-        Me.PrintToolStripMenuItem.Name = "PrintToolStripMenuItem"
-        Me.PrintToolStripMenuItem.Size = New System.Drawing.Size(51, 24)
-        Me.PrintToolStripMenuItem.Text = "Print"
-        Me.PrintToolStripMenuItem.Visible = False
+        Me.btnNew.Image = Global.BackOffice.My.Resources.Resources.new_file
+        Me.btnNew.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.btnNew.Name = "btnNew"
+        Me.btnNew.Size = New System.Drawing.Size(63, 24)
+        Me.btnNew.Text = "New"
+        Me.btnNew.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.btnNew.ToolTipText = "Creates a new record"
         '
-        'MaterialStockStatusToolStripMenuItem
+        'btnEdit
         '
-        Me.MaterialStockStatusToolStripMenuItem.Name = "MaterialStockStatusToolStripMenuItem"
-        Me.MaterialStockStatusToolStripMenuItem.Size = New System.Drawing.Size(223, 26)
-        Me.MaterialStockStatusToolStripMenuItem.Text = "Material Stock Status"
+        Me.btnEdit.Image = Global.BackOffice.My.Resources.Resources.pencil
+        Me.btnEdit.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.btnEdit.Name = "btnEdit"
+        Me.btnEdit.Size = New System.Drawing.Size(59, 24)
+        Me.btnEdit.Text = "Edit"
+        Me.btnEdit.ToolTipText = "Unlock fields for editing"
         '
-        'MaterialStockCardsToolStripMenuItem
+        'btnClear
         '
-        Me.MaterialStockCardsToolStripMenuItem.Name = "MaterialStockCardsToolStripMenuItem"
-        Me.MaterialStockCardsToolStripMenuItem.Size = New System.Drawing.Size(223, 26)
-        Me.MaterialStockCardsToolStripMenuItem.Text = "Material"
+        Me.btnClear.Image = Global.BackOffice.My.Resources.Resources.cancel
+        Me.btnClear.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.btnClear.Name = "btnClear"
+        Me.btnClear.Size = New System.Drawing.Size(67, 24)
+        Me.btnClear.Text = "Clear"
+        Me.btnClear.ToolTipText = "Clear all the fields"
+        '
+        'btnDelete
+        '
+        Me.btnDelete.Image = Global.BackOffice.My.Resources.Resources.trash
+        Me.btnDelete.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.btnDelete.Name = "btnDelete"
+        Me.btnDelete.Size = New System.Drawing.Size(77, 24)
+        Me.btnDelete.Text = "Delete"
+        Me.btnDelete.ToolTipText = "Deletes an existing record"
+        '
+        'btnSave
+        '
+        Me.btnSave.Image = Global.BackOffice.My.Resources.Resources.floppy_disk
+        Me.btnSave.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.btnSave.Name = "btnSave"
+        Me.btnSave.Size = New System.Drawing.Size(64, 24)
+        Me.btnSave.Text = "Save"
+        Me.btnSave.ToolTipText = "Save a new or existing record"
+        '
+        'btnBlock
+        '
+        Me.btnBlock.Enabled = False
+        Me.btnBlock.Image = Global.BackOffice.My.Resources.Resources.closed_padlock
+        Me.btnBlock.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.btnBlock.Name = "btnBlock"
+        Me.btnBlock.Size = New System.Drawing.Size(69, 24)
+        Me.btnBlock.Text = "Block"
+        Me.btnBlock.ToolTipText = "Blocks a category, a blocked category can not be used"
+        '
+        'btnUnblock
+        '
+        Me.btnUnblock.Enabled = False
+        Me.btnUnblock.Image = Global.BackOffice.My.Resources.Resources.open_padlock
+        Me.btnUnblock.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.btnUnblock.Name = "btnUnblock"
+        Me.btnUnblock.Size = New System.Drawing.Size(87, 24)
+        Me.btnUnblock.Text = "Unblock"
+        Me.btnUnblock.ToolTipText = "Unblocks a blocked category"
         '
         'frmMaterials
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1424, 718)
+        Me.Controls.Add(Me.ToolStrip1)
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.btnBack)
         Me.Controls.Add(Me.dtgrdList)
         Me.Controls.Add(Me.Panel1)
-        Me.Controls.Add(Me.MenuStrip1)
-        Me.MainMenuStrip = Me.MenuStrip1
         Me.Name = "frmMaterials"
         Me.ShowIcon = False
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
@@ -457,8 +440,8 @@ Partial Class frmMaterials
         CType(Me.dtgrdList, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
-        Me.MenuStrip1.ResumeLayout(False)
-        Me.MenuStrip1.PerformLayout()
+        Me.ToolStrip1.ResumeLayout(False)
+        Me.ToolStrip1.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -467,15 +450,11 @@ Partial Class frmMaterials
     Friend WithEvents btnBack As Button
     Friend WithEvents dtgrdList As DataGridView
     Friend WithEvents Panel1 As Panel
-    Friend WithEvents btnBlock As Button
     Friend WithEvents txtId As TextBox
     Friend WithEvents txtUom As TextBox
-    Friend WithEvents btnSave As Button
     Friend WithEvents Label9 As Label
     Friend WithEvents btnSearch As Button
-    Friend WithEvents btnEdit As Button
     Friend WithEvents txtStatus As TextBox
-    Friend WithEvents btnNew As Button
     Friend WithEvents txtPrice As TextBox
     Friend WithEvents txtQty As TextBox
     Friend WithEvents txtMaterialCode As TextBox
@@ -489,13 +468,7 @@ Partial Class frmMaterials
     Friend WithEvents txtDeduct As TextBox
     Friend WithEvents txtAdd As TextBox
     Friend WithEvents Button1 As Button
-    Friend WithEvents btnUnblock As Button
     Friend WithEvents cmbDescription As ComboBox
-    Friend WithEvents btnClear As Button
-    Friend WithEvents MenuStrip1 As MenuStrip
-    Friend WithEvents PrintToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents MaterialStockStatusToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents MaterialStockCardsToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents cmbCategory As ComboBox
     Friend WithEvents Label3 As Label
     Friend WithEvents Column1 As DataGridViewTextBoxColumn
@@ -504,4 +477,12 @@ Partial Class frmMaterials
     Friend WithEvents Column4 As DataGridViewTextBoxColumn
     Friend WithEvents Column5 As DataGridViewTextBoxColumn
     Friend WithEvents Column6 As DataGridViewTextBoxColumn
+    Friend WithEvents ToolStrip1 As ToolStrip
+    Friend WithEvents btnNew As ToolStripButton
+    Friend WithEvents btnEdit As ToolStripButton
+    Friend WithEvents btnClear As ToolStripButton
+    Friend WithEvents btnDelete As ToolStripButton
+    Friend WithEvents btnSave As ToolStripButton
+    Friend WithEvents btnBlock As ToolStripButton
+    Friend WithEvents btnUnblock As ToolStripButton
 End Class

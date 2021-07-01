@@ -31,17 +31,11 @@ Partial Class frmSalesPerson
         Me.Label7 = New System.Windows.Forms.Label()
         Me.Label8 = New System.Windows.Forms.Label()
         Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.btnUnblock = New System.Windows.Forms.Button()
-        Me.btnBlock = New System.Windows.Forms.Button()
         Me.txtId = New System.Windows.Forms.TextBox()
         Me.txtInvoiceLimit = New System.Windows.Forms.TextBox()
-        Me.btnSave = New System.Windows.Forms.Button()
         Me.Label9 = New System.Windows.Forms.Label()
-        Me.btnDelete = New System.Windows.Forms.Button()
         Me.btnSearch = New System.Windows.Forms.Button()
-        Me.btnEdit = New System.Windows.Forms.Button()
         Me.txtStatus = New System.Windows.Forms.TextBox()
-        Me.btnNew = New System.Windows.Forms.Button()
         Me.txtEmail = New System.Windows.Forms.TextBox()
         Me.txtTelephone = New System.Windows.Forms.TextBox()
         Me.txtAddress = New System.Windows.Forms.TextBox()
@@ -55,8 +49,17 @@ Partial Class frmSalesPerson
         Me.Column7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.btnBack = New System.Windows.Forms.Button()
+        Me.ToolStrip1 = New System.Windows.Forms.ToolStrip()
+        Me.btnNew = New System.Windows.Forms.ToolStripButton()
+        Me.btnEdit = New System.Windows.Forms.ToolStripButton()
+        Me.btnClear = New System.Windows.Forms.ToolStripButton()
+        Me.btnDelete = New System.Windows.Forms.ToolStripButton()
+        Me.btnSave = New System.Windows.Forms.ToolStripButton()
+        Me.btnBlock = New System.Windows.Forms.ToolStripButton()
+        Me.btnUnblock = New System.Windows.Forms.ToolStripButton()
         Me.Panel1.SuspendLayout()
         CType(Me.dtgrdList, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.ToolStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
         'Label1
@@ -134,17 +137,11 @@ Partial Class frmSalesPerson
         'Panel1
         '
         Me.Panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-        Me.Panel1.Controls.Add(Me.btnUnblock)
-        Me.Panel1.Controls.Add(Me.btnBlock)
         Me.Panel1.Controls.Add(Me.txtId)
         Me.Panel1.Controls.Add(Me.txtInvoiceLimit)
-        Me.Panel1.Controls.Add(Me.btnSave)
         Me.Panel1.Controls.Add(Me.Label9)
-        Me.Panel1.Controls.Add(Me.btnDelete)
         Me.Panel1.Controls.Add(Me.btnSearch)
-        Me.Panel1.Controls.Add(Me.btnEdit)
         Me.Panel1.Controls.Add(Me.txtStatus)
-        Me.Panel1.Controls.Add(Me.btnNew)
         Me.Panel1.Controls.Add(Me.txtEmail)
         Me.Panel1.Controls.Add(Me.txtTelephone)
         Me.Panel1.Controls.Add(Me.txtAddress)
@@ -160,30 +157,10 @@ Partial Class frmSalesPerson
         Me.Panel1.Controls.Add(Me.Label3)
         Me.Panel1.Controls.Add(Me.Label5)
         Me.Panel1.Controls.Add(Me.Label4)
-        Me.Panel1.Location = New System.Drawing.Point(12, 11)
+        Me.Panel1.Location = New System.Drawing.Point(10, 50)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(548, 437)
+        Me.Panel1.Size = New System.Drawing.Size(417, 437)
         Me.Panel1.TabIndex = 8
-        '
-        'btnUnblock
-        '
-        Me.btnUnblock.Enabled = False
-        Me.btnUnblock.Location = New System.Drawing.Point(211, 301)
-        Me.btnUnblock.Name = "btnUnblock"
-        Me.btnUnblock.Size = New System.Drawing.Size(79, 54)
-        Me.btnUnblock.TabIndex = 21
-        Me.btnUnblock.Text = "Unblock"
-        Me.btnUnblock.UseVisualStyleBackColor = True
-        '
-        'btnBlock
-        '
-        Me.btnBlock.Enabled = False
-        Me.btnBlock.Location = New System.Drawing.Point(125, 301)
-        Me.btnBlock.Name = "btnBlock"
-        Me.btnBlock.Size = New System.Drawing.Size(80, 54)
-        Me.btnBlock.TabIndex = 20
-        Me.btnBlock.Text = "Block"
-        Me.btnBlock.UseVisualStyleBackColor = True
         '
         'txtId
         '
@@ -201,15 +178,6 @@ Partial Class frmSalesPerson
         Me.txtInvoiceLimit.TabIndex = 18
         Me.txtInvoiceLimit.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
-        'btnSave
-        '
-        Me.btnSave.Location = New System.Drawing.Point(426, 186)
-        Me.btnSave.Name = "btnSave"
-        Me.btnSave.Size = New System.Drawing.Size(115, 50)
-        Me.btnSave.TabIndex = 12
-        Me.btnSave.Text = "Save"
-        Me.btnSave.UseVisualStyleBackColor = True
-        '
         'Label9
         '
         Me.Label9.AutoSize = True
@@ -218,17 +186,6 @@ Partial Class frmSalesPerson
         Me.Label9.Size = New System.Drawing.Size(85, 17)
         Me.Label9.TabIndex = 17
         Me.Label9.Text = "Invoice Limit"
-        '
-        'btnDelete
-        '
-        Me.btnDelete.Enabled = False
-        Me.btnDelete.Location = New System.Drawing.Point(426, 126)
-        Me.btnDelete.Name = "btnDelete"
-        Me.btnDelete.Size = New System.Drawing.Size(115, 54)
-        Me.btnDelete.TabIndex = 11
-        Me.btnDelete.Text = "Delete"
-        Me.btnDelete.UseVisualStyleBackColor = True
-        Me.btnDelete.Visible = False
         '
         'btnSearch
         '
@@ -239,15 +196,6 @@ Partial Class frmSalesPerson
         Me.btnSearch.Text = "&Search"
         Me.btnSearch.UseVisualStyleBackColor = True
         '
-        'btnEdit
-        '
-        Me.btnEdit.Location = New System.Drawing.Point(426, 72)
-        Me.btnEdit.Name = "btnEdit"
-        Me.btnEdit.Size = New System.Drawing.Size(115, 49)
-        Me.btnEdit.TabIndex = 10
-        Me.btnEdit.Text = "Edit"
-        Me.btnEdit.UseVisualStyleBackColor = True
-        '
         'txtStatus
         '
         Me.txtStatus.Location = New System.Drawing.Point(125, 273)
@@ -255,15 +203,6 @@ Partial Class frmSalesPerson
         Me.txtStatus.ReadOnly = True
         Me.txtStatus.Size = New System.Drawing.Size(156, 22)
         Me.txtStatus.TabIndex = 15
-        '
-        'btnNew
-        '
-        Me.btnNew.Location = New System.Drawing.Point(426, 14)
-        Me.btnNew.Name = "btnNew"
-        Me.btnNew.Size = New System.Drawing.Size(115, 52)
-        Me.btnNew.TabIndex = 9
-        Me.btnNew.Text = "New"
-        Me.btnNew.UseVisualStyleBackColor = True
         '
         'txtEmail
         '
@@ -325,11 +264,11 @@ Partial Class frmSalesPerson
         Me.dtgrdList.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.dtgrdList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dtgrdList.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column1, Me.Column2, Me.Column7, Me.Column6})
-        Me.dtgrdList.Location = New System.Drawing.Point(566, 11)
+        Me.dtgrdList.Location = New System.Drawing.Point(433, 50)
         Me.dtgrdList.Name = "dtgrdList"
         Me.dtgrdList.ReadOnly = True
         Me.dtgrdList.RowTemplate.Height = 24
-        Me.dtgrdList.Size = New System.Drawing.Size(917, 578)
+        Me.dtgrdList.Size = New System.Drawing.Size(920, 539)
         Me.dtgrdList.TabIndex = 65
         '
         'Column1
@@ -364,19 +303,98 @@ Partial Class frmSalesPerson
         '
         Me.btnBack.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btnBack.BackColor = System.Drawing.SystemColors.Control
-        Me.btnBack.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.btnBack.Location = New System.Drawing.Point(1368, 595)
+        Me.btnBack.BackgroundImage = Global.BackOffice.My.Resources.Resources.red_back_arrow
+        Me.btnBack.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.btnBack.Location = New System.Drawing.Point(1253, 595)
         Me.btnBack.Name = "btnBack"
-        Me.btnBack.Size = New System.Drawing.Size(115, 35)
+        Me.btnBack.Size = New System.Drawing.Size(100, 40)
         Me.btnBack.TabIndex = 66
-        Me.btnBack.Text = "Back"
         Me.btnBack.UseVisualStyleBackColor = False
+        '
+        'ToolStrip1
+        '
+        Me.ToolStrip1.BackColor = System.Drawing.SystemColors.ButtonFace
+        Me.ToolStrip1.ImageScalingSize = New System.Drawing.Size(20, 20)
+        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.btnNew, Me.btnEdit, Me.btnClear, Me.btnDelete, Me.btnSave, Me.btnBlock, Me.btnUnblock})
+        Me.ToolStrip1.Location = New System.Drawing.Point(0, 0)
+        Me.ToolStrip1.Name = "ToolStrip1"
+        Me.ToolStrip1.Size = New System.Drawing.Size(1365, 27)
+        Me.ToolStrip1.TabIndex = 76
+        Me.ToolStrip1.Text = "ToolStrip1"
+        '
+        'btnNew
+        '
+        Me.btnNew.Image = Global.BackOffice.My.Resources.Resources.new_file
+        Me.btnNew.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.btnNew.Name = "btnNew"
+        Me.btnNew.Size = New System.Drawing.Size(63, 24)
+        Me.btnNew.Text = "New"
+        Me.btnNew.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.btnNew.ToolTipText = "Creates a new record"
+        '
+        'btnEdit
+        '
+        Me.btnEdit.Image = Global.BackOffice.My.Resources.Resources.pencil
+        Me.btnEdit.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.btnEdit.Name = "btnEdit"
+        Me.btnEdit.Size = New System.Drawing.Size(59, 24)
+        Me.btnEdit.Text = "Edit"
+        Me.btnEdit.ToolTipText = "Unlock fields for editing"
+        '
+        'btnClear
+        '
+        Me.btnClear.Image = Global.BackOffice.My.Resources.Resources.cancel
+        Me.btnClear.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.btnClear.Name = "btnClear"
+        Me.btnClear.Size = New System.Drawing.Size(67, 24)
+        Me.btnClear.Text = "Clear"
+        Me.btnClear.ToolTipText = "Clear all the fields"
+        '
+        'btnDelete
+        '
+        Me.btnDelete.Enabled = False
+        Me.btnDelete.Image = Global.BackOffice.My.Resources.Resources.trash
+        Me.btnDelete.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.btnDelete.Name = "btnDelete"
+        Me.btnDelete.Size = New System.Drawing.Size(77, 24)
+        Me.btnDelete.Text = "Delete"
+        Me.btnDelete.ToolTipText = "Deletes an existing record"
+        '
+        'btnSave
+        '
+        Me.btnSave.Image = Global.BackOffice.My.Resources.Resources.floppy_disk
+        Me.btnSave.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.btnSave.Name = "btnSave"
+        Me.btnSave.Size = New System.Drawing.Size(64, 24)
+        Me.btnSave.Text = "Save"
+        Me.btnSave.ToolTipText = "Save a new or existing record"
+        '
+        'btnBlock
+        '
+        Me.btnBlock.Enabled = False
+        Me.btnBlock.Image = Global.BackOffice.My.Resources.Resources.closed_padlock
+        Me.btnBlock.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.btnBlock.Name = "btnBlock"
+        Me.btnBlock.Size = New System.Drawing.Size(69, 24)
+        Me.btnBlock.Text = "Block"
+        Me.btnBlock.ToolTipText = "Blocks a category, a blocked category can not be used"
+        '
+        'btnUnblock
+        '
+        Me.btnUnblock.Enabled = False
+        Me.btnUnblock.Image = Global.BackOffice.My.Resources.Resources.open_padlock
+        Me.btnUnblock.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.btnUnblock.Name = "btnUnblock"
+        Me.btnUnblock.Size = New System.Drawing.Size(87, 24)
+        Me.btnUnblock.Text = "Unblock"
+        Me.btnUnblock.ToolTipText = "Unblocks a blocked category"
         '
         'frmSalesPerson
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1495, 642)
+        Me.ClientSize = New System.Drawing.Size(1365, 642)
+        Me.Controls.Add(Me.ToolStrip1)
         Me.Controls.Add(Me.btnBack)
         Me.Controls.Add(Me.dtgrdList)
         Me.Controls.Add(Me.Panel1)
@@ -388,7 +406,10 @@ Partial Class frmSalesPerson
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
         CType(Me.dtgrdList, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.ToolStrip1.ResumeLayout(False)
+        Me.ToolStrip1.PerformLayout()
         Me.ResumeLayout(False)
+        Me.PerformLayout()
 
     End Sub
 
@@ -410,10 +431,6 @@ Partial Class frmSalesPerson
     Friend WithEvents txtSecondName As TextBox
     Friend WithEvents txtFirstName As TextBox
     Friend WithEvents txtRollNo As TextBox
-    Friend WithEvents btnNew As Button
-    Friend WithEvents btnEdit As Button
-    Friend WithEvents btnDelete As Button
-    Friend WithEvents btnSave As Button
     Friend WithEvents dtgrdList As DataGridView
     Friend WithEvents btnBack As Button
     Friend WithEvents txtInvoiceLimit As TextBox
@@ -423,6 +440,12 @@ Partial Class frmSalesPerson
     Friend WithEvents Column2 As DataGridViewTextBoxColumn
     Friend WithEvents Column7 As DataGridViewTextBoxColumn
     Friend WithEvents Column6 As DataGridViewTextBoxColumn
-    Friend WithEvents btnBlock As Button
-    Friend WithEvents btnUnblock As Button
+    Friend WithEvents ToolStrip1 As ToolStrip
+    Friend WithEvents btnNew As ToolStripButton
+    Friend WithEvents btnEdit As ToolStripButton
+    Friend WithEvents btnClear As ToolStripButton
+    Friend WithEvents btnDelete As ToolStripButton
+    Friend WithEvents btnSave As ToolStripButton
+    Friend WithEvents btnBlock As ToolStripButton
+    Friend WithEvents btnUnblock As ToolStripButton
 End Class

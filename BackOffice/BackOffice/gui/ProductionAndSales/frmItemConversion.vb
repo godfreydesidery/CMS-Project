@@ -175,6 +175,7 @@ Public Class frmItemConversion
         txtEndBarcode.Text = ""
         txtEndItemCode.Text = ""
         cmbEndDescription.SelectedItem = Nothing
+        cmbEndDescription.Text = ""
         txtEndQty.Text = ""
         txtEndPrice.Text = ""
     End Sub
@@ -483,7 +484,7 @@ Public Class frmItemConversion
     End Function
 
     Private Sub frmItemConversion_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
+        resetAll()
         refreshConversionList()
 
         Dim item As New Item
@@ -559,6 +560,9 @@ Public Class frmItemConversion
     End Sub
 
     Private Sub btnClear_Click(sender As Object, e As EventArgs) Handles btnClear.Click
+        resetAll()
+    End Sub
+    Private Sub resetAll()
 
         txtId.Text = ""
         txtConversionNo.Text = ""
@@ -583,6 +587,7 @@ Public Class frmItemConversion
 
 
         dtgrdItemsToConvert.Rows.Clear()
+        dtgrdEndItems.Rows.Clear()
     End Sub
 
     Private Sub btnEdit_Click(sender As Object, e As EventArgs) Handles btnEdit.Click
@@ -1777,4 +1782,6 @@ Public Class frmItemConversion
     Private Sub btnBack_Click(sender As Object, e As EventArgs) Handles btnBack.Click
         Me.Dispose()
     End Sub
+
+
 End Class

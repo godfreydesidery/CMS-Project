@@ -297,6 +297,7 @@ Public Class frmProductionReport
         refreshList()
     End Sub
     Private Function refreshList()
+        Cursor = Cursors.WaitCursor
         dtgrdList.Rows.Clear()
 
         Dim totalSales As Double = 0
@@ -408,6 +409,7 @@ Public Class frmProductionReport
             MsgBox(ex.Message)
         End Try
 
+        Cursor = Cursors.Arrow
 
         Return vbNull
     End Function
@@ -538,7 +540,7 @@ Public Class frmProductionReport
 
     End Sub
 
-    Private Sub btnPrint_Click(sender As Object, e As EventArgs) Handles btnPrint.Click
+    Private Sub btnPrint_Click(sender As Object, e As EventArgs) Handles btnExportToPDF.Click
         generate()
         If dtgrdList.RowCount = 0 Then
             MsgBox("Nothing to print")
@@ -569,7 +571,7 @@ Public Class frmProductionReport
 
     End Sub
 
-    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles btnExportToExcel.Click
         If dtgrdList.RowCount = 0 Then
             MsgBox("Nothing to export")
             Exit Sub

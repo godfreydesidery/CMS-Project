@@ -35,7 +35,7 @@ Public Class frmCustomerClaim
 
 
         btnSave.Enabled = False
-        btnApproveClaim.Enabled = False
+        btnApprove.Enabled = False
 
         txtClaimNo.Text = (New CustomerClaim).generateClaimNo()
 
@@ -117,11 +117,11 @@ Public Class frmCustomerClaim
                 Dim status As String = claim.GL_STATUS
 
                 If status = "APPROVED" Or status = "PRINTED" Or status = "ARCHIVED" Or status = "COMPLETED" Or status = "CANCELED" Then
-                    btnApproveClaim.Enabled = False
+                    btnApprove.Enabled = False
                 ElseIf status = "PENDING" Then
-                    btnApproveClaim.Enabled = True
+                    btnApprove.Enabled = True
                 Else
-                    btnApproveClaim.Enabled = False
+                    btnApprove.Enabled = False
                 End If
 
                 If status = "PENDING" Then
@@ -314,7 +314,7 @@ Public Class frmCustomerClaim
 
         Dim claim As CustomerClaim
         If txtId.Text = "" Then
-            claim = New customerClaim
+            claim = New CustomerClaim
             claim.GL_CLAIM_NO = txtClaimNo.Text
             claim.GL_CLAIM_DATE = (New Day).getCurrentDay.ToString("yyyy-MM-dd")
             claim.GL_SETTLEMENT_DATE = ""
@@ -353,7 +353,7 @@ Public Class frmCustomerClaim
         End If
 
 
-        btnApproveClaim.Enabled = True
+        btnApprove.Enabled = True
 
         refreshClaimList()
         refreshClaimDetailsList()
@@ -1111,23 +1111,23 @@ Public Class frmCustomerClaim
 
         If txtClaimNo.Text = "" Then
             MsgBox("Select new")
-            clearreplacementFields()
+            clearReplacementFields()
             Exit Sub
         End If
         Dim status As String = (New CustomerClaim).getStatus(txtClaimNo.Text)
         If status = "APPROVED" Then
             MsgBox("Could not edit, document already approved", vbOKOnly + vbCritical, "Error: Invalid operation")
-            clearreplacementFields()
+            clearReplacementFields()
             Exit Sub
         End If
         If status = "COMPLETED" Then
             MsgBox("Could not edit, document already completed", vbOKOnly + vbCritical, "Error: Invalid operation")
-            clearreplacementFields()
+            clearReplacementFields()
             Exit Sub
         End If
         If status = "CANCELED" Then
             MsgBox("Could not edit, document has been canceled", vbOKOnly + vbCritical, "Error: Invalid operation")
-            clearreplacementFields()
+            clearReplacementFields()
             Exit Sub
         End If
         'If cmbSalesPersons.Text = "" Then
@@ -1168,12 +1168,12 @@ Public Class frmCustomerClaim
         Else
             claim.editReplacement(txtReplacementId.Text)
         End If
-        btnApproveClaim.Enabled = True
+        btnApprove.Enabled = True
         refreshClaimList()
         refreshReplacementList()
 
         clearReplacementFields()
-        unlockreplacementFields()
+        unlockReplacementFields()
         Exit Sub
     End Sub
 
@@ -1203,7 +1203,7 @@ Public Class frmCustomerClaim
 
     End Sub
 
-    Private Sub btnApprove_Click(sender As Object, e As EventArgs) Handles btnApproveClaim.Click
+    Private Sub btnApprove_Click(sender As Object, e As EventArgs) Handles btnApprove.Click
         Dim status As String = (New CustomerClaim).getStatus(txtClaimNo.Text)
         If status = "APPROVED" Then
             MsgBox("Could not approve, already approved", vbOKOnly + vbExclamation, "Error: Invalid operation")
@@ -1258,7 +1258,7 @@ Public Class frmCustomerClaim
         refreshClaimList()
     End Sub
 
-    Private Sub btnCancel_Click(sender As Object, e As EventArgs) Handles btnCancelClaim.Click
+    Private Sub btnCancel_Click(sender As Object, e As EventArgs) Handles btnCancel.Click
         Dim status As String = (New CustomerClaim).getStatus(txtClaimNo.Text)
         If status = "PENDING" Or status = "APPROVED" Then
             'continue
@@ -1292,43 +1292,8 @@ Public Class frmCustomerClaim
         refreshClaimList()
     End Sub
 
-    Private Sub btnArchive_Click(sender As Object, e As EventArgs) Handles btnArchiveclaim.Click
 
-        Dim status As String = (New CustomerClaim).getStatus(txtClaimNo.Text)
-        If status = "COMPLETED" Then
-            'continue
-        Else
-            If txtClaimNo.Text = "" Then
-                MsgBox("Select a claim document to archive", vbOKOnly + vbExclamation, "Error: No selection")
-                Exit Sub
-            End If
-            MsgBox("Can not archive, only completed documents can be archived", vbOKOnly + vbExclamation, "Error: No selection")
-            Exit Sub
-        End If
-
-        If 1 = 1 Then ' User.authorize("APPROVE LPO") = True Then
-            If txtClaimNo.Text = "" Then
-                MsgBox("Select a document to archive", vbOKOnly + vbExclamation, "Error: No selection")
-                Exit Sub
-            End If
-            Dim res As Integer = MsgBox("Archive claim document: " + txtClaimNo.Text + " ? Document will be sent to archives for future references", vbYesNo + vbQuestion, "Archive document?")
-            If res = DialogResult.Yes Then
-
-                Dim claim As CustomerClaim = New CustomerClaim
-                If claim.archiveClaim(txtClaimNo.Text) = True Then
-                    MsgBox("Archive Success", vbOKOnly + vbInformation, "Success")
-                Else
-                    MsgBox("Archive failed", vbOKOnly + vbExclamation, "Failure")
-                End If
-            End If
-            txtStatus.Text = (New CustomerClaim).getStatus(txtClaimNo.Text)
-        Else
-            MsgBox("Access denied!", vbOKOnly + vbExclamation)
-        End If
-        refreshClaimList()
-    End Sub
-
-    Private Sub btnComplete_Click(sender As Object, e As EventArgs) Handles btnCompleteClaim.Click
+    Private Sub btnComplete_Click(sender As Object, e As EventArgs) Handles btnComplete.Click
         If txtClaimNo.Text = "" Then
             MsgBox("Select a claim document to complete", vbOKOnly + vbExclamation, "Error: No selection")
             Exit Sub
@@ -1383,7 +1348,7 @@ Public Class frmCustomerClaim
 
     End Sub
 
-    Private Sub btnPrint_Click(sender As Object, e As EventArgs) Handles btnPrintClaim.Click
+    Private Sub btnPrint_Click(sender As Object, e As EventArgs) Handles btnPrint.Click
 
         Dim status As String = (New CustomerClaim).getStatus(txtId.Text)
         If status = "APPROVED" Or status = "COMPLETED" Or status = "PRINTED" Or status = "ARCHIVED" Then
@@ -1890,9 +1855,5 @@ Public Class frmCustomerClaim
 
     Private Sub btnBack_Click(sender As Object, e As EventArgs) Handles btnBack.Click
         Me.Dispose()
-    End Sub
-
-    Private Sub txtClaimItemCode_TextChanged(sender As Object, e As EventArgs) Handles txtClaimItemCode.TextChanged
-
     End Sub
 End Class

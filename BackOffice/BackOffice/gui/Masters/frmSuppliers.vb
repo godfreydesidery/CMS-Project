@@ -166,7 +166,7 @@ Public Class frmSuppliers
 
     End Sub
 
-    Private Sub btnAddNew_Click(sender As Object, e As EventArgs) Handles btnAddNew.Click
+    Private Sub btnAddNew_Click(sender As Object, e As EventArgs) Handles btnNew.Click
         RECORD_MODE = "NEW"
         btnProductAndService.Enabled = False
         dtgrdSuppliers.Enabled = False

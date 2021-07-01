@@ -22,6 +22,7 @@ Partial Class frmCustomProduction
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmCustomProduction))
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
@@ -38,13 +39,9 @@ Partial Class frmCustomProduction
         Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Label6 = New System.Windows.Forms.Label()
-        Me.btnAddUpdate = New System.Windows.Forms.Button()
         Me.chklstMaterials = New System.Windows.Forms.CheckedListBox()
         Me.lstbxMaterials = New System.Windows.Forms.ListBox()
         Me.Label7 = New System.Windows.Forms.Label()
-        Me.btnNew = New System.Windows.Forms.Button()
-        Me.btnEdit = New System.Windows.Forms.Button()
-        Me.btnSave = New System.Windows.Forms.Button()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.btnAdd = New System.Windows.Forms.Button()
         Me.btnReset = New System.Windows.Forms.Button()
@@ -65,25 +62,37 @@ Partial Class frmCustomProduction
         Me.Label16 = New System.Windows.Forms.Label()
         Me.txtItemCode = New System.Windows.Forms.TextBox()
         Me.Label8 = New System.Windows.Forms.Label()
-        Me.btnProduction = New System.Windows.Forms.Button()
-        Me.btnCancel = New System.Windows.Forms.Button()
-        Me.btnPrint = New System.Windows.Forms.Button()
-        Me.btnComplete = New System.Windows.Forms.Button()
         Me.txtId = New System.Windows.Forms.TextBox()
         Me.txtDate = New System.Windows.Forms.TextBox()
         Me.Label10 = New System.Windows.Forms.Label()
-        Me.btnClear = New System.Windows.Forms.Button()
-        Me.btnArchive = New System.Windows.Forms.Button()
         Me.btnClose = New System.Windows.Forms.Button()
+        Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.ToolStrip1 = New System.Windows.Forms.ToolStrip()
+        Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
+        Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
+        Me.ToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator()
+        Me.ToolStripSeparator4 = New System.Windows.Forms.ToolStripSeparator()
+        Me.btnAddUpdate = New System.Windows.Forms.Button()
+        Me.btnNew = New System.Windows.Forms.ToolStripButton()
+        Me.btnEdit = New System.Windows.Forms.ToolStripButton()
+        Me.btnClear = New System.Windows.Forms.ToolStripButton()
+        Me.btnSave = New System.Windows.Forms.ToolStripButton()
+        Me.btnCancel = New System.Windows.Forms.ToolStripButton()
+        Me.btnApprove = New System.Windows.Forms.ToolStripButton()
+        Me.btnPrint = New System.Windows.Forms.ToolStripButton()
+        Me.btnComplete = New System.Windows.Forms.ToolStripButton()
+        Me.btnArchive = New System.Windows.Forms.ToolStripButton()
         CType(Me.dtgrdProductionList, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
         CType(Me.dtgrdItemList, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.Panel2.SuspendLayout()
+        Me.ToolStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(9, 15)
+        Me.Label1.Location = New System.Drawing.Point(4, 28)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(98, 17)
         Me.Label1.TabIndex = 0
@@ -92,7 +101,7 @@ Partial Class frmCustomProduction
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(12, 60)
+        Me.Label2.Location = New System.Drawing.Point(7, 73)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(98, 17)
         Me.Label2.TabIndex = 1
@@ -101,7 +110,7 @@ Partial Class frmCustomProduction
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(35, 90)
+        Me.Label3.Location = New System.Drawing.Point(30, 103)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(75, 17)
         Me.Label3.TabIndex = 2
@@ -110,7 +119,7 @@ Partial Class frmCustomProduction
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(62, 144)
+        Me.Label4.Location = New System.Drawing.Point(57, 157)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(48, 17)
         Me.Label4.TabIndex = 3
@@ -118,14 +127,14 @@ Partial Class frmCustomProduction
         '
         'txtProductionNo
         '
-        Me.txtProductionNo.Location = New System.Drawing.Point(115, 12)
+        Me.txtProductionNo.Location = New System.Drawing.Point(110, 25)
         Me.txtProductionNo.Name = "txtProductionNo"
         Me.txtProductionNo.Size = New System.Drawing.Size(138, 22)
         Me.txtProductionNo.TabIndex = 4
         '
         'txtBatchSize
         '
-        Me.txtBatchSize.Location = New System.Drawing.Point(115, 85)
+        Me.txtBatchSize.Location = New System.Drawing.Point(110, 98)
         Me.txtBatchSize.Name = "txtBatchSize"
         Me.txtBatchSize.ReadOnly = True
         Me.txtBatchSize.Size = New System.Drawing.Size(138, 22)
@@ -133,15 +142,15 @@ Partial Class frmCustomProduction
         '
         'txtProductName
         '
-        Me.txtProductName.Location = New System.Drawing.Point(115, 57)
+        Me.txtProductName.Location = New System.Drawing.Point(110, 70)
         Me.txtProductName.Name = "txtProductName"
         Me.txtProductName.ReadOnly = True
-        Me.txtProductName.Size = New System.Drawing.Size(242, 22)
+        Me.txtProductName.Size = New System.Drawing.Size(241, 22)
         Me.txtProductName.TabIndex = 6
         '
         'txtStatus
         '
-        Me.txtStatus.Location = New System.Drawing.Point(115, 144)
+        Me.txtStatus.Location = New System.Drawing.Point(110, 157)
         Me.txtStatus.Name = "txtStatus"
         Me.txtStatus.ReadOnly = True
         Me.txtStatus.Size = New System.Drawing.Size(138, 22)
@@ -150,7 +159,7 @@ Partial Class frmCustomProduction
         'Label5
         '
         Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(69, 117)
+        Me.Label5.Location = New System.Drawing.Point(64, 130)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(40, 17)
         Me.Label5.TabIndex = 8
@@ -161,14 +170,14 @@ Partial Class frmCustomProduction
         Me.cmbUom.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cmbUom.FormattingEnabled = True
         Me.cmbUom.Items.AddRange(New Object() {"", "KG", "LTR", "PCS"})
-        Me.cmbUom.Location = New System.Drawing.Point(115, 114)
+        Me.cmbUom.Location = New System.Drawing.Point(110, 127)
         Me.cmbUom.Name = "cmbUom"
         Me.cmbUom.Size = New System.Drawing.Size(138, 24)
         Me.cmbUom.TabIndex = 9
         '
         'btnSearch
         '
-        Me.btnSearch.Location = New System.Drawing.Point(255, 11)
+        Me.btnSearch.Location = New System.Drawing.Point(250, 24)
         Me.btnSearch.Name = "btnSearch"
         Me.btnSearch.Size = New System.Drawing.Size(101, 40)
         Me.btnSearch.TabIndex = 10
@@ -182,11 +191,11 @@ Partial Class frmCustomProduction
         Me.dtgrdProductionList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.dtgrdProductionList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dtgrdProductionList.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column1, Me.Column2, Me.Column3})
-        Me.dtgrdProductionList.Location = New System.Drawing.Point(938, 12)
+        Me.dtgrdProductionList.Location = New System.Drawing.Point(999, 55)
         Me.dtgrdProductionList.Name = "dtgrdProductionList"
         Me.dtgrdProductionList.ReadOnly = True
         Me.dtgrdProductionList.RowTemplate.Height = 24
-        Me.dtgrdProductionList.Size = New System.Drawing.Size(560, 182)
+        Me.dtgrdProductionList.Size = New System.Drawing.Size(505, 204)
         Me.dtgrdProductionList.TabIndex = 11
         '
         'Column1
@@ -210,30 +219,20 @@ Partial Class frmCustomProduction
         'Label6
         '
         Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(9, 217)
+        Me.Label6.Location = New System.Drawing.Point(7, 289)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(144, 17)
         Me.Label6.TabIndex = 13
         Me.Label6.Text = "Select Material to use"
-        '
-        'btnAddUpdate
-        '
-        Me.btnAddUpdate.Enabled = False
-        Me.btnAddUpdate.Location = New System.Drawing.Point(331, 237)
-        Me.btnAddUpdate.Name = "btnAddUpdate"
-        Me.btnAddUpdate.Size = New System.Drawing.Size(168, 47)
-        Me.btnAddUpdate.TabIndex = 14
-        Me.btnAddUpdate.Text = "Add Selected Materials"
-        Me.btnAddUpdate.UseVisualStyleBackColor = True
         '
         'chklstMaterials
         '
         Me.chklstMaterials.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.chklstMaterials.FormattingEnabled = True
-        Me.chklstMaterials.Location = New System.Drawing.Point(12, 237)
+        Me.chklstMaterials.Location = New System.Drawing.Point(10, 309)
         Me.chklstMaterials.Name = "chklstMaterials"
-        Me.chklstMaterials.Size = New System.Drawing.Size(313, 531)
+        Me.chklstMaterials.Size = New System.Drawing.Size(490, 463)
         Me.chklstMaterials.TabIndex = 15
         '
         'lstbxMaterials
@@ -242,46 +241,19 @@ Partial Class frmCustomProduction
             Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.lstbxMaterials.FormattingEnabled = True
         Me.lstbxMaterials.ItemHeight = 16
-        Me.lstbxMaterials.Location = New System.Drawing.Point(505, 237)
+        Me.lstbxMaterials.Location = New System.Drawing.Point(506, 309)
         Me.lstbxMaterials.Name = "lstbxMaterials"
-        Me.lstbxMaterials.Size = New System.Drawing.Size(412, 532)
+        Me.lstbxMaterials.Size = New System.Drawing.Size(487, 468)
         Me.lstbxMaterials.TabIndex = 16
         '
         'Label7
         '
         Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(480, 217)
+        Me.Label7.Location = New System.Drawing.Point(560, 286)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(250, 17)
         Me.Label7.TabIndex = 17
         Me.Label7.Text = "Materials used(Click to edit or remove)"
-        '
-        'btnNew
-        '
-        Me.btnNew.Location = New System.Drawing.Point(362, 10)
-        Me.btnNew.Name = "btnNew"
-        Me.btnNew.Size = New System.Drawing.Size(97, 41)
-        Me.btnNew.TabIndex = 18
-        Me.btnNew.Text = "New"
-        Me.btnNew.UseVisualStyleBackColor = True
-        '
-        'btnEdit
-        '
-        Me.btnEdit.Location = New System.Drawing.Point(465, 10)
-        Me.btnEdit.Name = "btnEdit"
-        Me.btnEdit.Size = New System.Drawing.Size(97, 41)
-        Me.btnEdit.TabIndex = 19
-        Me.btnEdit.Text = "Edit"
-        Me.btnEdit.UseVisualStyleBackColor = True
-        '
-        'btnSave
-        '
-        Me.btnSave.Location = New System.Drawing.Point(568, 10)
-        Me.btnSave.Name = "btnSave"
-        Me.btnSave.Size = New System.Drawing.Size(97, 41)
-        Me.btnSave.TabIndex = 21
-        Me.btnSave.Text = "Save"
-        Me.btnSave.UseVisualStyleBackColor = True
         '
         'Panel1
         '
@@ -302,9 +274,9 @@ Partial Class frmCustomProduction
         Me.Panel1.Controls.Add(Me.Label13)
         Me.Panel1.Controls.Add(Me.Label16)
         Me.Panel1.Controls.Add(Me.txtItemCode)
-        Me.Panel1.Location = New System.Drawing.Point(923, 237)
+        Me.Panel1.Location = New System.Drawing.Point(999, 309)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(575, 491)
+        Me.Panel1.Size = New System.Drawing.Size(505, 419)
         Me.Panel1.TabIndex = 22
         '
         'btnAdd
@@ -361,11 +333,11 @@ Partial Class frmCustomProduction
         Me.dtgrdItemList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.dtgrdItemList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dtgrdItemList.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn1, Me.DataGridViewTextBoxColumn2, Me.DataGridViewTextBoxColumn3, Me.Column4, Me.Column5})
-        Me.dtgrdItemList.Location = New System.Drawing.Point(3, 160)
+        Me.dtgrdItemList.Location = New System.Drawing.Point(5, 176)
         Me.dtgrdItemList.Name = "dtgrdItemList"
         Me.dtgrdItemList.ReadOnly = True
         Me.dtgrdItemList.RowTemplate.Height = 24
-        Me.dtgrdItemList.Size = New System.Drawing.Size(565, 322)
+        Me.dtgrdItemList.Size = New System.Drawing.Size(492, 236)
         Me.dtgrdItemList.TabIndex = 107
         '
         'DataGridViewTextBoxColumn1
@@ -462,51 +434,15 @@ Partial Class frmCustomProduction
         'Label8
         '
         Me.Label8.AutoSize = True
-        Me.Label8.Location = New System.Drawing.Point(920, 217)
+        Me.Label8.Location = New System.Drawing.Point(996, 289)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(121, 17)
         Me.Label8.TabIndex = 23
         Me.Label8.Text = "Finished Products"
         '
-        'btnProduction
-        '
-        Me.btnProduction.Location = New System.Drawing.Point(331, 287)
-        Me.btnProduction.Name = "btnProduction"
-        Me.btnProduction.Size = New System.Drawing.Size(168, 41)
-        Me.btnProduction.TabIndex = 24
-        Me.btnProduction.Text = "Approve"
-        Me.btnProduction.UseVisualStyleBackColor = True
-        '
-        'btnCancel
-        '
-        Me.btnCancel.Location = New System.Drawing.Point(331, 338)
-        Me.btnCancel.Name = "btnCancel"
-        Me.btnCancel.Size = New System.Drawing.Size(168, 41)
-        Me.btnCancel.TabIndex = 25
-        Me.btnCancel.Text = "Cancel"
-        Me.btnCancel.UseVisualStyleBackColor = True
-        '
-        'btnPrint
-        '
-        Me.btnPrint.Location = New System.Drawing.Point(331, 384)
-        Me.btnPrint.Name = "btnPrint"
-        Me.btnPrint.Size = New System.Drawing.Size(168, 41)
-        Me.btnPrint.TabIndex = 26
-        Me.btnPrint.Text = "Print Production sheet"
-        Me.btnPrint.UseVisualStyleBackColor = True
-        '
-        'btnComplete
-        '
-        Me.btnComplete.Location = New System.Drawing.Point(331, 431)
-        Me.btnComplete.Name = "btnComplete"
-        Me.btnComplete.Size = New System.Drawing.Size(168, 65)
-        Me.btnComplete.TabIndex = 27
-        Me.btnComplete.Text = "Complete Process"
-        Me.btnComplete.UseVisualStyleBackColor = True
-        '
         'txtId
         '
-        Me.txtId.Location = New System.Drawing.Point(14, 35)
+        Me.txtId.Location = New System.Drawing.Point(9, 48)
         Me.txtId.Name = "txtId"
         Me.txtId.Size = New System.Drawing.Size(40, 22)
         Me.txtId.TabIndex = 28
@@ -514,7 +450,7 @@ Partial Class frmCustomProduction
         '
         'txtDate
         '
-        Me.txtDate.Location = New System.Drawing.Point(115, 172)
+        Me.txtDate.Location = New System.Drawing.Point(110, 185)
         Me.txtDate.Name = "txtDate"
         Me.txtDate.ReadOnly = True
         Me.txtDate.Size = New System.Drawing.Size(138, 22)
@@ -523,77 +459,181 @@ Partial Class frmCustomProduction
         'Label10
         '
         Me.Label10.AutoSize = True
-        Me.Label10.Location = New System.Drawing.Point(72, 172)
+        Me.Label10.Location = New System.Drawing.Point(67, 185)
         Me.Label10.Name = "Label10"
         Me.Label10.Size = New System.Drawing.Size(38, 17)
         Me.Label10.TabIndex = 30
         Me.Label10.Text = "Date"
         '
-        'btnClear
-        '
-        Me.btnClear.Location = New System.Drawing.Point(671, 10)
-        Me.btnClear.Name = "btnClear"
-        Me.btnClear.Size = New System.Drawing.Size(97, 41)
-        Me.btnClear.TabIndex = 31
-        Me.btnClear.Text = "Clear"
-        Me.btnClear.UseVisualStyleBackColor = True
-        '
-        'btnArchive
-        '
-        Me.btnArchive.Location = New System.Drawing.Point(331, 502)
-        Me.btnArchive.Name = "btnArchive"
-        Me.btnArchive.Size = New System.Drawing.Size(168, 53)
-        Me.btnArchive.TabIndex = 32
-        Me.btnArchive.Text = "Archive"
-        Me.btnArchive.UseVisualStyleBackColor = True
-        '
         'btnClose
         '
         Me.btnClose.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btnClose.Location = New System.Drawing.Point(1396, 734)
+        Me.btnClose.BackgroundImage = Global.BackOffice.My.Resources.Resources.red_back_arrow
+        Me.btnClose.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.btnClose.Location = New System.Drawing.Point(1401, 734)
         Me.btnClose.Name = "btnClose"
-        Me.btnClose.Size = New System.Drawing.Size(97, 41)
+        Me.btnClose.Size = New System.Drawing.Size(100, 40)
         Me.btnClose.TabIndex = 33
-        Me.btnClose.Text = "Close"
         Me.btnClose.UseVisualStyleBackColor = True
+        '
+        'Panel2
+        '
+        Me.Panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+        Me.Panel2.Controls.Add(Me.txtProductionNo)
+        Me.Panel2.Controls.Add(Me.Label1)
+        Me.Panel2.Controls.Add(Me.Label2)
+        Me.Panel2.Controls.Add(Me.Label3)
+        Me.Panel2.Controls.Add(Me.Label10)
+        Me.Panel2.Controls.Add(Me.Label4)
+        Me.Panel2.Controls.Add(Me.txtDate)
+        Me.Panel2.Controls.Add(Me.txtBatchSize)
+        Me.Panel2.Controls.Add(Me.txtId)
+        Me.Panel2.Controls.Add(Me.txtProductName)
+        Me.Panel2.Controls.Add(Me.txtStatus)
+        Me.Panel2.Controls.Add(Me.Label5)
+        Me.Panel2.Controls.Add(Me.cmbUom)
+        Me.Panel2.Controls.Add(Me.btnSearch)
+        Me.Panel2.Location = New System.Drawing.Point(10, 50)
+        Me.Panel2.Name = "Panel2"
+        Me.Panel2.Size = New System.Drawing.Size(363, 226)
+        Me.Panel2.TabIndex = 34
+        '
+        'ToolStrip1
+        '
+        Me.ToolStrip1.ImageScalingSize = New System.Drawing.Size(20, 20)
+        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.btnNew, Me.btnEdit, Me.btnClear, Me.btnSave, Me.ToolStripSeparator1, Me.ToolStripSeparator2, Me.ToolStripSeparator3, Me.ToolStripSeparator4, Me.btnCancel, Me.btnApprove, Me.btnPrint, Me.btnComplete, Me.btnArchive})
+        Me.ToolStrip1.Location = New System.Drawing.Point(0, 0)
+        Me.ToolStrip1.Name = "ToolStrip1"
+        Me.ToolStrip1.Size = New System.Drawing.Size(1510, 27)
+        Me.ToolStrip1.TabIndex = 102
+        Me.ToolStrip1.Text = "ToolStrip1"
+        '
+        'ToolStripSeparator1
+        '
+        Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
+        Me.ToolStripSeparator1.Size = New System.Drawing.Size(6, 27)
+        '
+        'ToolStripSeparator2
+        '
+        Me.ToolStripSeparator2.Name = "ToolStripSeparator2"
+        Me.ToolStripSeparator2.Size = New System.Drawing.Size(6, 27)
+        '
+        'ToolStripSeparator3
+        '
+        Me.ToolStripSeparator3.Name = "ToolStripSeparator3"
+        Me.ToolStripSeparator3.Size = New System.Drawing.Size(6, 27)
+        '
+        'ToolStripSeparator4
+        '
+        Me.ToolStripSeparator4.Name = "ToolStripSeparator4"
+        Me.ToolStripSeparator4.Size = New System.Drawing.Size(6, 27)
+        '
+        'btnAddUpdate
+        '
+        Me.btnAddUpdate.Enabled = False
+        Me.btnAddUpdate.Location = New System.Drawing.Point(379, 237)
+        Me.btnAddUpdate.Name = "btnAddUpdate"
+        Me.btnAddUpdate.Size = New System.Drawing.Size(121, 66)
+        Me.btnAddUpdate.TabIndex = 14
+        Me.btnAddUpdate.Text = "Add Selected Materials"
+        Me.btnAddUpdate.UseVisualStyleBackColor = True
+        '
+        'btnNew
+        '
+        Me.btnNew.Image = Global.BackOffice.My.Resources.Resources.new_file
+        Me.btnNew.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.btnNew.Name = "btnNew"
+        Me.btnNew.Size = New System.Drawing.Size(63, 24)
+        Me.btnNew.Text = "New"
+        Me.btnNew.ToolTipText = "Creates a new Production document"
+        '
+        'btnEdit
+        '
+        Me.btnEdit.Image = Global.BackOffice.My.Resources.Resources.pencil
+        Me.btnEdit.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.btnEdit.Name = "btnEdit"
+        Me.btnEdit.Size = New System.Drawing.Size(59, 24)
+        Me.btnEdit.Text = "Edit"
+        Me.btnEdit.ToolTipText = "Promts user to edit an existing production document"
+        '
+        'btnClear
+        '
+        Me.btnClear.Image = Global.BackOffice.My.Resources.Resources.brush
+        Me.btnClear.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.btnClear.Name = "btnClear"
+        Me.btnClear.Size = New System.Drawing.Size(67, 24)
+        Me.btnClear.Text = "Clear"
+        Me.btnClear.ToolTipText = "Clear all the fields"
+        '
+        'btnSave
+        '
+        Me.btnSave.Image = Global.BackOffice.My.Resources.Resources.floppy_disk
+        Me.btnSave.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.btnSave.Name = "btnSave"
+        Me.btnSave.Size = New System.Drawing.Size(64, 24)
+        Me.btnSave.Text = "Save"
+        Me.btnSave.ToolTipText = "Save details of a new or existing document"
+        '
+        'btnCancel
+        '
+        Me.btnCancel.Image = Global.BackOffice.My.Resources.Resources.cancel
+        Me.btnCancel.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.btnCancel.Name = "btnCancel"
+        Me.btnCancel.Size = New System.Drawing.Size(77, 24)
+        Me.btnCancel.Text = "Cancel"
+        Me.btnCancel.ToolTipText = "Cancels the production document"
+        '
+        'btnApprove
+        '
+        Me.btnApprove.Image = Global.BackOffice.My.Resources.Resources.tick
+        Me.btnApprove.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.btnApprove.Name = "btnApprove"
+        Me.btnApprove.Size = New System.Drawing.Size(90, 24)
+        Me.btnApprove.Text = "Approve"
+        Me.btnApprove.ToolTipText = "Approve a pending production document for further actions"
+        '
+        'btnPrint
+        '
+        Me.btnPrint.Image = Global.BackOffice.My.Resources.Resources.printer
+        Me.btnPrint.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.btnPrint.Name = "btnPrint"
+        Me.btnPrint.Size = New System.Drawing.Size(180, 24)
+        Me.btnPrint.Text = "Print Production Sheet"
+        Me.btnPrint.ToolTipText = "Print an already approved production document"
+        '
+        'btnComplete
+        '
+        Me.btnComplete.Image = Global.BackOffice.My.Resources.Resources.foward_arrow
+        Me.btnComplete.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.btnComplete.Name = "btnComplete"
+        Me.btnComplete.Size = New System.Drawing.Size(98, 24)
+        Me.btnComplete.Text = "Complete"
+        '
+        'btnArchive
+        '
+        Me.btnArchive.Image = CType(resources.GetObject("btnArchive.Image"), System.Drawing.Image)
+        Me.btnArchive.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.btnArchive.Name = "btnArchive"
+        Me.btnArchive.Size = New System.Drawing.Size(82, 24)
+        Me.btnArchive.Text = "Archive"
+        Me.btnArchive.ToolTipText = "Sends a completed document to archives for future references"
         '
         'frmCustomProduction
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1510, 787)
+        Me.Controls.Add(Me.ToolStrip1)
+        Me.Controls.Add(Me.Panel2)
         Me.Controls.Add(Me.btnClose)
-        Me.Controls.Add(Me.btnArchive)
-        Me.Controls.Add(Me.btnClear)
-        Me.Controls.Add(Me.Label10)
-        Me.Controls.Add(Me.txtDate)
-        Me.Controls.Add(Me.txtId)
-        Me.Controls.Add(Me.btnComplete)
-        Me.Controls.Add(Me.btnPrint)
-        Me.Controls.Add(Me.btnCancel)
-        Me.Controls.Add(Me.btnProduction)
         Me.Controls.Add(Me.Label8)
         Me.Controls.Add(Me.Panel1)
-        Me.Controls.Add(Me.btnSave)
-        Me.Controls.Add(Me.btnEdit)
-        Me.Controls.Add(Me.btnNew)
         Me.Controls.Add(Me.Label7)
         Me.Controls.Add(Me.lstbxMaterials)
         Me.Controls.Add(Me.chklstMaterials)
         Me.Controls.Add(Me.btnAddUpdate)
         Me.Controls.Add(Me.Label6)
         Me.Controls.Add(Me.dtgrdProductionList)
-        Me.Controls.Add(Me.btnSearch)
-        Me.Controls.Add(Me.cmbUom)
-        Me.Controls.Add(Me.Label5)
-        Me.Controls.Add(Me.txtStatus)
-        Me.Controls.Add(Me.txtProductName)
-        Me.Controls.Add(Me.txtBatchSize)
-        Me.Controls.Add(Me.txtProductionNo)
-        Me.Controls.Add(Me.Label4)
-        Me.Controls.Add(Me.Label3)
-        Me.Controls.Add(Me.Label2)
-        Me.Controls.Add(Me.Label1)
         Me.Name = "frmCustomProduction"
         Me.ShowIcon = False
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
@@ -603,6 +643,10 @@ Partial Class frmCustomProduction
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
         CType(Me.dtgrdItemList, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.Panel2.ResumeLayout(False)
+        Me.Panel2.PerformLayout()
+        Me.ToolStrip1.ResumeLayout(False)
+        Me.ToolStrip1.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -624,13 +668,9 @@ Partial Class frmCustomProduction
     Friend WithEvents Column2 As DataGridViewTextBoxColumn
     Friend WithEvents Column3 As DataGridViewTextBoxColumn
     Friend WithEvents Label6 As Label
-    Friend WithEvents btnAddUpdate As Button
     Friend WithEvents chklstMaterials As CheckedListBox
     Friend WithEvents lstbxMaterials As ListBox
     Friend WithEvents Label7 As Label
-    Friend WithEvents btnNew As Button
-    Friend WithEvents btnEdit As Button
-    Friend WithEvents btnSave As Button
     Friend WithEvents Panel1 As Panel
     Friend WithEvents Label8 As Label
     Friend WithEvents cmbDescription As ComboBox
@@ -644,14 +684,9 @@ Partial Class frmCustomProduction
     Friend WithEvents txtQty As TextBox
     Friend WithEvents Label9 As Label
     Friend WithEvents lblUom As Label
-    Friend WithEvents btnProduction As Button
-    Friend WithEvents btnCancel As Button
-    Friend WithEvents btnPrint As Button
-    Friend WithEvents btnComplete As Button
     Friend WithEvents txtId As TextBox
     Friend WithEvents txtDate As TextBox
     Friend WithEvents Label10 As Label
-    Friend WithEvents btnClear As Button
     Friend WithEvents btnAdd As Button
     Friend WithEvents btnReset As Button
     Friend WithEvents DataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
@@ -659,6 +694,21 @@ Partial Class frmCustomProduction
     Friend WithEvents DataGridViewTextBoxColumn3 As DataGridViewTextBoxColumn
     Friend WithEvents Column4 As DataGridViewTextBoxColumn
     Friend WithEvents Column5 As DataGridViewTextBoxColumn
-    Friend WithEvents btnArchive As Button
     Friend WithEvents btnClose As Button
+    Friend WithEvents Panel2 As Panel
+    Friend WithEvents ToolStrip1 As ToolStrip
+    Friend WithEvents btnNew As ToolStripButton
+    Friend WithEvents btnEdit As ToolStripButton
+    Friend WithEvents btnClear As ToolStripButton
+    Friend WithEvents btnSave As ToolStripButton
+    Friend WithEvents ToolStripSeparator1 As ToolStripSeparator
+    Friend WithEvents ToolStripSeparator2 As ToolStripSeparator
+    Friend WithEvents ToolStripSeparator3 As ToolStripSeparator
+    Friend WithEvents ToolStripSeparator4 As ToolStripSeparator
+    Friend WithEvents btnCancel As ToolStripButton
+    Friend WithEvents btnApprove As ToolStripButton
+    Friend WithEvents btnPrint As ToolStripButton
+    Friend WithEvents btnArchive As ToolStripButton
+    Friend WithEvents btnAddUpdate As Button
+    Friend WithEvents btnComplete As ToolStripButton
 End Class

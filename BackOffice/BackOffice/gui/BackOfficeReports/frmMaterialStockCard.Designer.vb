@@ -29,10 +29,7 @@ Partial Class frmMaterialStockCard
         Me.dateStart = New System.Windows.Forms.DateTimePicker()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.dateEnd = New System.Windows.Forms.DateTimePicker()
-        Me.btnPrintWithProfit = New System.Windows.Forms.Button()
         Me.dtgrdList = New System.Windows.Forms.DataGridView()
-        Me.btnBack = New System.Windows.Forms.Button()
-        Me.btnGenerate = New System.Windows.Forms.Button()
         Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -41,8 +38,14 @@ Partial Class frmMaterialStockCard
         Me.Column5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.btnBack = New System.Windows.Forms.Button()
+        Me.btnGenerate = New System.Windows.Forms.Button()
+        Me.ToolStrip1 = New System.Windows.Forms.ToolStrip()
+        Me.btnExportToPDF = New System.Windows.Forms.ToolStripButton()
+        Me.btnExportToExcel = New System.Windows.Forms.ToolStripButton()
         Me.Panel1.SuspendLayout()
         CType(Me.dtgrdList, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.ToolStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
         'Panel1
@@ -54,7 +57,7 @@ Partial Class frmMaterialStockCard
         Me.Panel1.Controls.Add(Me.dateStart)
         Me.Panel1.Controls.Add(Me.Label2)
         Me.Panel1.Controls.Add(Me.dateEnd)
-        Me.Panel1.Location = New System.Drawing.Point(6, 10)
+        Me.Panel1.Location = New System.Drawing.Point(10, 50)
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(378, 87)
         Me.Panel1.TabIndex = 70
@@ -113,15 +116,6 @@ Partial Class frmMaterialStockCard
         Me.dateEnd.Size = New System.Drawing.Size(120, 22)
         Me.dateEnd.TabIndex = 48
         '
-        'btnPrintWithProfit
-        '
-        Me.btnPrintWithProfit.Location = New System.Drawing.Point(512, 10)
-        Me.btnPrintWithProfit.Name = "btnPrintWithProfit"
-        Me.btnPrintWithProfit.Size = New System.Drawing.Size(119, 44)
-        Me.btnPrintWithProfit.TabIndex = 67
-        Me.btnPrintWithProfit.Text = "Export to PDF"
-        Me.btnPrintWithProfit.UseVisualStyleBackColor = True
-        '
         'dtgrdList
         '
         Me.dtgrdList.AllowUserToAddRows = False
@@ -133,33 +127,12 @@ Partial Class frmMaterialStockCard
         Me.dtgrdList.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.dtgrdList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dtgrdList.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column1, Me.Column2, Me.Column3, Me.Column8, Me.Column4, Me.Column5, Me.Column6, Me.Column7})
-        Me.dtgrdList.Location = New System.Drawing.Point(6, 103)
+        Me.dtgrdList.Location = New System.Drawing.Point(10, 143)
         Me.dtgrdList.Name = "dtgrdList"
         Me.dtgrdList.ReadOnly = True
         Me.dtgrdList.RowTemplate.Height = 24
-        Me.dtgrdList.Size = New System.Drawing.Size(1458, 605)
+        Me.dtgrdList.Size = New System.Drawing.Size(1454, 565)
         Me.dtgrdList.TabIndex = 69
-        '
-        'btnBack
-        '
-        Me.btnBack.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btnBack.BackColor = System.Drawing.SystemColors.Control
-        Me.btnBack.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.btnBack.Location = New System.Drawing.Point(1349, 714)
-        Me.btnBack.Name = "btnBack"
-        Me.btnBack.Size = New System.Drawing.Size(115, 47)
-        Me.btnBack.TabIndex = 68
-        Me.btnBack.Text = "Back"
-        Me.btnBack.UseVisualStyleBackColor = False
-        '
-        'btnGenerate
-        '
-        Me.btnGenerate.Location = New System.Drawing.Point(402, 10)
-        Me.btnGenerate.Name = "btnGenerate"
-        Me.btnGenerate.Size = New System.Drawing.Size(104, 44)
-        Me.btnGenerate.TabIndex = 66
-        Me.btnGenerate.Text = "Run"
-        Me.btnGenerate.UseVisualStyleBackColor = True
         '
         'Column1
         '
@@ -209,13 +182,61 @@ Partial Class frmMaterialStockCard
         Me.Column7.Name = "Column7"
         Me.Column7.ReadOnly = True
         '
+        'btnBack
+        '
+        Me.btnBack.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnBack.BackColor = System.Drawing.SystemColors.Control
+        Me.btnBack.BackgroundImage = Global.BackOffice.My.Resources.Resources.red_back_arrow
+        Me.btnBack.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.btnBack.Location = New System.Drawing.Point(1364, 721)
+        Me.btnBack.Name = "btnBack"
+        Me.btnBack.Size = New System.Drawing.Size(100, 40)
+        Me.btnBack.TabIndex = 68
+        Me.btnBack.UseVisualStyleBackColor = False
+        '
+        'btnGenerate
+        '
+        Me.btnGenerate.Location = New System.Drawing.Point(394, 93)
+        Me.btnGenerate.Name = "btnGenerate"
+        Me.btnGenerate.Size = New System.Drawing.Size(104, 44)
+        Me.btnGenerate.TabIndex = 66
+        Me.btnGenerate.Text = "Run"
+        Me.btnGenerate.UseVisualStyleBackColor = True
+        '
+        'ToolStrip1
+        '
+        Me.ToolStrip1.ImageScalingSize = New System.Drawing.Size(20, 20)
+        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.btnExportToPDF, Me.btnExportToExcel})
+        Me.ToolStrip1.Location = New System.Drawing.Point(0, 0)
+        Me.ToolStrip1.Name = "ToolStrip1"
+        Me.ToolStrip1.Size = New System.Drawing.Size(1476, 27)
+        Me.ToolStrip1.TabIndex = 110
+        Me.ToolStrip1.Text = "ToolStrip1"
+        '
+        'btnExportToPDF
+        '
+        Me.btnExportToPDF.Image = Global.BackOffice.My.Resources.Resources.pdfred
+        Me.btnExportToPDF.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.btnExportToPDF.Name = "btnExportToPDF"
+        Me.btnExportToPDF.Size = New System.Drawing.Size(124, 24)
+        Me.btnExportToPDF.Text = "Export to PDF"
+        '
+        'btnExportToExcel
+        '
+        Me.btnExportToExcel.Enabled = False
+        Me.btnExportToExcel.Image = Global.BackOffice.My.Resources.Resources.spreadsheet
+        Me.btnExportToExcel.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.btnExportToExcel.Name = "btnExportToExcel"
+        Me.btnExportToExcel.Size = New System.Drawing.Size(180, 24)
+        Me.btnExportToExcel.Text = "Export to Spreadsheet"
+        '
         'frmMaterialStockCard
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1476, 773)
+        Me.Controls.Add(Me.ToolStrip1)
         Me.Controls.Add(Me.Panel1)
-        Me.Controls.Add(Me.btnPrintWithProfit)
         Me.Controls.Add(Me.dtgrdList)
         Me.Controls.Add(Me.btnBack)
         Me.Controls.Add(Me.btnGenerate)
@@ -226,7 +247,10 @@ Partial Class frmMaterialStockCard
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
         CType(Me.dtgrdList, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.ToolStrip1.ResumeLayout(False)
+        Me.ToolStrip1.PerformLayout()
         Me.ResumeLayout(False)
+        Me.PerformLayout()
 
     End Sub
 
@@ -235,7 +259,6 @@ Partial Class frmMaterialStockCard
     Friend WithEvents dateStart As DateTimePicker
     Friend WithEvents Label2 As Label
     Friend WithEvents dateEnd As DateTimePicker
-    Friend WithEvents btnPrintWithProfit As Button
     Friend WithEvents dtgrdList As DataGridView
     Friend WithEvents btnBack As Button
     Friend WithEvents btnGenerate As Button
@@ -249,4 +272,7 @@ Partial Class frmMaterialStockCard
     Friend WithEvents Column5 As DataGridViewTextBoxColumn
     Friend WithEvents Column6 As DataGridViewTextBoxColumn
     Friend WithEvents Column7 As DataGridViewTextBoxColumn
+    Friend WithEvents ToolStrip1 As ToolStrip
+    Friend WithEvents btnExportToPDF As ToolStripButton
+    Friend WithEvents btnExportToExcel As ToolStripButton
 End Class

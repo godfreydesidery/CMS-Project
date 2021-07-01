@@ -22,7 +22,10 @@ Partial Class frmPurchaseOrder
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.btnBack = New System.Windows.Forms.Button()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
@@ -39,10 +42,6 @@ Partial Class frmPurchaseOrder
         Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.txtOrderNo = New System.Windows.Forms.TextBox()
         Me.Label3 = New System.Windows.Forms.Label()
-        Me.btnSave = New System.Windows.Forms.Button()
-        Me.btnNew = New System.Windows.Forms.Button()
-        Me.btnEdit = New System.Windows.Forms.Button()
-        Me.btnDelete = New System.Windows.Forms.Button()
         Me.txtOrderDate = New System.Windows.Forms.TextBox()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.Label5 = New System.Windows.Forms.Label()
@@ -71,26 +70,45 @@ Partial Class frmPurchaseOrder
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.cmbDescription = New System.Windows.Forms.ComboBox()
         Me.btnAdd = New System.Windows.Forms.Button()
-        Me.btnCancel = New System.Windows.Forms.Button()
+        Me.btnReset = New System.Windows.Forms.Button()
         Me.Panel3 = New System.Windows.Forms.Panel()
-        Me.btnApprove = New System.Windows.Forms.Button()
         Me.cmbSupplier = New System.Windows.Forms.ComboBox()
+        Me.ToolStrip1 = New System.Windows.Forms.ToolStrip()
+        Me.btnNew = New System.Windows.Forms.ToolStripButton()
+        Me.btnEdit = New System.Windows.Forms.ToolStripButton()
+        Me.btnClear = New System.Windows.Forms.ToolStripButton()
+        Me.btnSave = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
+        Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
+        Me.ToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator()
+        Me.ToolStripSeparator4 = New System.Windows.Forms.ToolStripSeparator()
+        Me.btnCancel = New System.Windows.Forms.ToolStripButton()
+        Me.btnApprove = New System.Windows.Forms.ToolStripButton()
+        Me.btnPrint = New System.Windows.Forms.ToolStripButton()
+        Me.btnArchive = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripSeparator5 = New System.Windows.Forms.ToolStripSeparator()
+        Me.dtgrdLPOList = New System.Windows.Forms.DataGridView()
+        Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         CType(Me.dtgrdItemList, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel2.SuspendLayout()
         Me.Panel3.SuspendLayout()
+        Me.ToolStrip1.SuspendLayout()
+        CType(Me.dtgrdLPOList, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'btnBack
         '
         Me.btnBack.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btnBack.BackColor = System.Drawing.SystemColors.Control
-        Me.btnBack.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.btnBack.BackgroundImage = Global.BackOffice.My.Resources.Resources.red_back_arrow
+        Me.btnBack.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btnBack.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnBack.Location = New System.Drawing.Point(1400, 704)
+        Me.btnBack.Location = New System.Drawing.Point(1415, 704)
         Me.btnBack.Name = "btnBack"
-        Me.btnBack.Size = New System.Drawing.Size(115, 35)
+        Me.btnBack.Size = New System.Drawing.Size(100, 40)
         Me.btnBack.TabIndex = 10
-        Me.btnBack.Text = "Back"
         Me.btnBack.UseVisualStyleBackColor = False
         '
         'Label1
@@ -131,23 +149,23 @@ Partial Class frmPurchaseOrder
         Me.dtgrdItemList.BackgroundColor = System.Drawing.SystemColors.ButtonFace
         Me.dtgrdItemList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dtgrdItemList.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column13, Me.Column7, Me.Column8, Me.Column10, Me.Column9, Me.Column11, Me.Column2, Me.Column12, Me.Column1})
-        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.ActiveCaption
-        DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.ActiveCaption
-        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.Desktop
-        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dtgrdItemList.DefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle3.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dtgrdItemList.DefaultCellStyle = DataGridViewCellStyle3
         Me.dtgrdItemList.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically
         Me.dtgrdItemList.GridColor = System.Drawing.SystemColors.ActiveBorder
         Me.dtgrdItemList.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.dtgrdItemList.Location = New System.Drawing.Point(443, 293)
+        Me.dtgrdItemList.Location = New System.Drawing.Point(443, 276)
         Me.dtgrdItemList.Name = "dtgrdItemList"
         Me.dtgrdItemList.ReadOnly = True
         Me.dtgrdItemList.RowTemplate.Height = 24
         Me.dtgrdItemList.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
-        Me.dtgrdItemList.Size = New System.Drawing.Size(1072, 405)
+        Me.dtgrdItemList.Size = New System.Drawing.Size(1072, 422)
         Me.dtgrdItemList.TabIndex = 16
         '
         'Column13
@@ -188,6 +206,8 @@ Partial Class frmPurchaseOrder
         '
         'Column11
         '
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.Column11.DefaultCellStyle = DataGridViewCellStyle1
         Me.Column11.FillWeight = 83.45177!
         Me.Column11.HeaderText = "Cost Price@"
         Me.Column11.Name = "Column11"
@@ -195,6 +215,8 @@ Partial Class frmPurchaseOrder
         '
         'Column2
         '
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.Column2.DefaultCellStyle = DataGridViewCellStyle2
         Me.Column2.HeaderText = "Total Cost"
         Me.Column2.Name = "Column2"
         Me.Column2.ReadOnly = True
@@ -230,43 +252,6 @@ Partial Class frmPurchaseOrder
         Me.Label3.Size = New System.Drawing.Size(67, 17)
         Me.Label3.TabIndex = 17
         Me.Label3.Text = "Order No"
-        '
-        'btnSave
-        '
-        Me.btnSave.Enabled = False
-        Me.btnSave.Location = New System.Drawing.Point(443, 181)
-        Me.btnSave.Name = "btnSave"
-        Me.btnSave.Size = New System.Drawing.Size(101, 49)
-        Me.btnSave.TabIndex = 20
-        Me.btnSave.Text = "Save"
-        Me.btnSave.UseVisualStyleBackColor = True
-        '
-        'btnNew
-        '
-        Me.btnNew.Location = New System.Drawing.Point(443, 12)
-        Me.btnNew.Name = "btnNew"
-        Me.btnNew.Size = New System.Drawing.Size(101, 50)
-        Me.btnNew.TabIndex = 21
-        Me.btnNew.Text = "New"
-        Me.btnNew.UseVisualStyleBackColor = True
-        '
-        'btnEdit
-        '
-        Me.btnEdit.Location = New System.Drawing.Point(443, 68)
-        Me.btnEdit.Name = "btnEdit"
-        Me.btnEdit.Size = New System.Drawing.Size(101, 48)
-        Me.btnEdit.TabIndex = 22
-        Me.btnEdit.Text = "Edit"
-        Me.btnEdit.UseVisualStyleBackColor = True
-        '
-        'btnDelete
-        '
-        Me.btnDelete.Location = New System.Drawing.Point(443, 124)
-        Me.btnDelete.Name = "btnDelete"
-        Me.btnDelete.Size = New System.Drawing.Size(101, 51)
-        Me.btnDelete.TabIndex = 23
-        Me.btnDelete.Text = "Delete"
-        Me.btnDelete.UseVisualStyleBackColor = True
         '
         'txtOrderDate
         '
@@ -342,7 +327,7 @@ Partial Class frmPurchaseOrder
         '
         Me.Label9.AutoSize = True
         Me.Label9.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label9.Location = New System.Drawing.Point(98, 587)
+        Me.Label9.Location = New System.Drawing.Point(171, 509)
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(56, 25)
         Me.Label9.TabIndex = 35
@@ -351,10 +336,10 @@ Partial Class frmPurchaseOrder
         'txtTotal
         '
         Me.txtTotal.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtTotal.Location = New System.Drawing.Point(160, 587)
+        Me.txtTotal.Location = New System.Drawing.Point(233, 504)
         Me.txtTotal.Name = "txtTotal"
         Me.txtTotal.ReadOnly = True
-        Me.txtTotal.Size = New System.Drawing.Size(280, 30)
+        Me.txtTotal.Size = New System.Drawing.Size(202, 30)
         Me.txtTotal.TabIndex = 36
         Me.txtTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
@@ -495,7 +480,7 @@ Partial Class frmPurchaseOrder
         Me.Panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.Panel2.Controls.Add(Me.cmbDescription)
         Me.Panel2.Controls.Add(Me.btnAdd)
-        Me.Panel2.Controls.Add(Me.btnCancel)
+        Me.Panel2.Controls.Add(Me.btnReset)
         Me.Panel2.Controls.Add(Me.btnSearchItem)
         Me.Panel2.Controls.Add(Me.Label11)
         Me.Panel2.Controls.Add(Me.txtBarCode)
@@ -510,9 +495,9 @@ Partial Class frmPurchaseOrder
         Me.Panel2.Controls.Add(Me.txtQuantity)
         Me.Panel2.Controls.Add(Me.Label15)
         Me.Panel2.Controls.Add(Me.txtPackSize)
-        Me.Panel2.Location = New System.Drawing.Point(12, 293)
+        Me.Panel2.Location = New System.Drawing.Point(10, 276)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(425, 288)
+        Me.Panel2.Size = New System.Drawing.Size(425, 222)
         Me.Panel2.TabIndex = 52
         '
         'cmbDescription
@@ -533,14 +518,14 @@ Partial Class frmPurchaseOrder
         Me.btnAdd.Text = "Add"
         Me.btnAdd.UseVisualStyleBackColor = True
         '
-        'btnCancel
+        'btnReset
         '
-        Me.btnCancel.Location = New System.Drawing.Point(324, 99)
-        Me.btnCancel.Name = "btnCancel"
-        Me.btnCancel.Size = New System.Drawing.Size(90, 50)
-        Me.btnCancel.TabIndex = 54
-        Me.btnCancel.Text = "Reset"
-        Me.btnCancel.UseVisualStyleBackColor = True
+        Me.btnReset.Location = New System.Drawing.Point(324, 99)
+        Me.btnReset.Name = "btnReset"
+        Me.btnReset.Size = New System.Drawing.Size(90, 50)
+        Me.btnReset.TabIndex = 54
+        Me.btnReset.Text = "Reset"
+        Me.btnReset.UseVisualStyleBackColor = True
         '
         'Panel3
         '
@@ -560,20 +545,10 @@ Partial Class frmPurchaseOrder
         Me.Panel3.Controls.Add(Me.Label5)
         Me.Panel3.Controls.Add(Me.Label4)
         Me.Panel3.Controls.Add(Me.txtOrderDate)
-        Me.Panel3.Location = New System.Drawing.Point(12, 12)
+        Me.Panel3.Location = New System.Drawing.Point(10, 50)
         Me.Panel3.Name = "Panel3"
-        Me.Panel3.Size = New System.Drawing.Size(425, 275)
+        Me.Panel3.Size = New System.Drawing.Size(425, 220)
         Me.Panel3.TabIndex = 53
-        '
-        'btnApprove
-        '
-        Me.btnApprove.Enabled = False
-        Me.btnApprove.Location = New System.Drawing.Point(443, 236)
-        Me.btnApprove.Name = "btnApprove"
-        Me.btnApprove.Size = New System.Drawing.Size(101, 51)
-        Me.btnApprove.TabIndex = 33
-        Me.btnApprove.Text = "Approve"
-        Me.btnApprove.UseVisualStyleBackColor = True
         '
         'cmbSupplier
         '
@@ -583,22 +558,168 @@ Partial Class frmPurchaseOrder
         Me.cmbSupplier.Size = New System.Drawing.Size(289, 24)
         Me.cmbSupplier.TabIndex = 100
         '
+        'ToolStrip1
+        '
+        Me.ToolStrip1.ImageScalingSize = New System.Drawing.Size(20, 20)
+        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.btnNew, Me.btnEdit, Me.btnClear, Me.btnSave, Me.ToolStripSeparator1, Me.ToolStripSeparator2, Me.ToolStripSeparator3, Me.ToolStripSeparator4, Me.btnCancel, Me.btnApprove, Me.btnPrint, Me.btnArchive, Me.ToolStripSeparator5})
+        Me.ToolStrip1.Location = New System.Drawing.Point(0, 0)
+        Me.ToolStrip1.Name = "ToolStrip1"
+        Me.ToolStrip1.Size = New System.Drawing.Size(1527, 27)
+        Me.ToolStrip1.TabIndex = 102
+        Me.ToolStrip1.Text = "ToolStrip1"
+        '
+        'btnNew
+        '
+        Me.btnNew.Image = Global.BackOffice.My.Resources.Resources.new_file
+        Me.btnNew.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.btnNew.Name = "btnNew"
+        Me.btnNew.Size = New System.Drawing.Size(63, 24)
+        Me.btnNew.Text = "New"
+        Me.btnNew.ToolTipText = "Creates a new Packing List"
+        '
+        'btnEdit
+        '
+        Me.btnEdit.Image = Global.BackOffice.My.Resources.Resources.pencil
+        Me.btnEdit.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.btnEdit.Name = "btnEdit"
+        Me.btnEdit.Size = New System.Drawing.Size(59, 24)
+        Me.btnEdit.Text = "Edit"
+        Me.btnEdit.ToolTipText = "Promts user to edit an existing Packing List"
+        '
+        'btnClear
+        '
+        Me.btnClear.Image = Global.BackOffice.My.Resources.Resources.brush
+        Me.btnClear.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.btnClear.Name = "btnClear"
+        Me.btnClear.Size = New System.Drawing.Size(67, 24)
+        Me.btnClear.Text = "Clear"
+        Me.btnClear.ToolTipText = "Cancels the LPO"
+        '
+        'btnSave
+        '
+        Me.btnSave.Enabled = False
+        Me.btnSave.Image = Global.BackOffice.My.Resources.Resources.floppy_disk
+        Me.btnSave.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.btnSave.Name = "btnSave"
+        Me.btnSave.Size = New System.Drawing.Size(64, 24)
+        Me.btnSave.Text = "Save"
+        Me.btnSave.ToolTipText = "Save details of a new or existing Packing List"
+        '
+        'ToolStripSeparator1
+        '
+        Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
+        Me.ToolStripSeparator1.Size = New System.Drawing.Size(6, 27)
+        '
+        'ToolStripSeparator2
+        '
+        Me.ToolStripSeparator2.Name = "ToolStripSeparator2"
+        Me.ToolStripSeparator2.Size = New System.Drawing.Size(6, 27)
+        '
+        'ToolStripSeparator3
+        '
+        Me.ToolStripSeparator3.Name = "ToolStripSeparator3"
+        Me.ToolStripSeparator3.Size = New System.Drawing.Size(6, 27)
+        '
+        'ToolStripSeparator4
+        '
+        Me.ToolStripSeparator4.Name = "ToolStripSeparator4"
+        Me.ToolStripSeparator4.Size = New System.Drawing.Size(6, 27)
+        '
+        'btnCancel
+        '
+        Me.btnCancel.Image = Global.BackOffice.My.Resources.Resources.cancel
+        Me.btnCancel.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.btnCancel.Name = "btnCancel"
+        Me.btnCancel.Size = New System.Drawing.Size(77, 24)
+        Me.btnCancel.Text = "Cancel"
+        Me.btnCancel.ToolTipText = "Cancels the LPO"
+        '
+        'btnApprove
+        '
+        Me.btnApprove.Enabled = False
+        Me.btnApprove.Image = Global.BackOffice.My.Resources.Resources.tick
+        Me.btnApprove.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.btnApprove.Name = "btnApprove"
+        Me.btnApprove.Size = New System.Drawing.Size(90, 24)
+        Me.btnApprove.Text = "Approve"
+        Me.btnApprove.ToolTipText = "Approve the Packing List"
+        '
+        'btnPrint
+        '
+        Me.btnPrint.Image = Global.BackOffice.My.Resources.Resources.printer
+        Me.btnPrint.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.btnPrint.Name = "btnPrint"
+        Me.btnPrint.Size = New System.Drawing.Size(63, 24)
+        Me.btnPrint.Text = "Print"
+        Me.btnPrint.ToolTipText = "Print LPO"
+        '
+        'btnArchive
+        '
+        Me.btnArchive.Image = Global.BackOffice.My.Resources.Resources.tick
+        Me.btnArchive.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.btnArchive.Name = "btnArchive"
+        Me.btnArchive.Size = New System.Drawing.Size(82, 24)
+        Me.btnArchive.Text = "Archive"
+        Me.btnArchive.ToolTipText = "Archive LPO"
+        '
+        'ToolStripSeparator5
+        '
+        Me.ToolStripSeparator5.Name = "ToolStripSeparator5"
+        Me.ToolStripSeparator5.Size = New System.Drawing.Size(6, 27)
+        '
+        'dtgrdLPOList
+        '
+        Me.dtgrdLPOList.AllowUserToAddRows = False
+        Me.dtgrdLPOList.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.dtgrdLPOList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
+        Me.dtgrdLPOList.BackgroundColor = System.Drawing.SystemColors.ButtonFace
+        Me.dtgrdLPOList.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.dtgrdLPOList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dtgrdLPOList.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn1, Me.DataGridViewTextBoxColumn2, Me.DataGridViewTextBoxColumn3})
+        Me.dtgrdLPOList.Location = New System.Drawing.Point(903, 50)
+        Me.dtgrdLPOList.Name = "dtgrdLPOList"
+        Me.dtgrdLPOList.ReadOnly = True
+        Me.dtgrdLPOList.RowTemplate.Height = 24
+        Me.dtgrdLPOList.Size = New System.Drawing.Size(612, 213)
+        Me.dtgrdLPOList.TabIndex = 103
+        '
+        'DataGridViewTextBoxColumn1
+        '
+        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.White
+        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black
+        Me.DataGridViewTextBoxColumn1.DefaultCellStyle = DataGridViewCellStyle4
+        Me.DataGridViewTextBoxColumn1.FillWeight = 42.63959!
+        Me.DataGridViewTextBoxColumn1.HeaderText = "LPO #"
+        Me.DataGridViewTextBoxColumn1.Name = "DataGridViewTextBoxColumn1"
+        Me.DataGridViewTextBoxColumn1.ReadOnly = True
+        '
+        'DataGridViewTextBoxColumn2
+        '
+        Me.DataGridViewTextBoxColumn2.FillWeight = 59.71546!
+        Me.DataGridViewTextBoxColumn2.HeaderText = "LPO Date"
+        Me.DataGridViewTextBoxColumn2.Name = "DataGridViewTextBoxColumn2"
+        Me.DataGridViewTextBoxColumn2.ReadOnly = True
+        '
+        'DataGridViewTextBoxColumn3
+        '
+        Me.DataGridViewTextBoxColumn3.FillWeight = 197.6449!
+        Me.DataGridViewTextBoxColumn3.HeaderText = "Summary"
+        Me.DataGridViewTextBoxColumn3.Name = "DataGridViewTextBoxColumn3"
+        Me.DataGridViewTextBoxColumn3.ReadOnly = True
+        '
         'frmPurchaseOrder
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1527, 751)
-        Me.Controls.Add(Me.btnApprove)
+        Me.Controls.Add(Me.dtgrdLPOList)
+        Me.Controls.Add(Me.ToolStrip1)
         Me.Controls.Add(Me.Panel3)
         Me.Controls.Add(Me.Panel2)
         Me.Controls.Add(Me.txtTotal)
         Me.Controls.Add(Me.Label9)
         Me.Controls.Add(Me.dtgrdItemList)
         Me.Controls.Add(Me.btnBack)
-        Me.Controls.Add(Me.btnNew)
-        Me.Controls.Add(Me.btnEdit)
-        Me.Controls.Add(Me.btnDelete)
-        Me.Controls.Add(Me.btnSave)
         Me.MinimizeBox = False
         Me.Name = "frmPurchaseOrder"
         Me.ShowIcon = False
@@ -611,6 +732,9 @@ Partial Class frmPurchaseOrder
         Me.Panel2.PerformLayout()
         Me.Panel3.ResumeLayout(False)
         Me.Panel3.PerformLayout()
+        Me.ToolStrip1.ResumeLayout(False)
+        Me.ToolStrip1.PerformLayout()
+        CType(Me.dtgrdLPOList, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -622,10 +746,6 @@ Partial Class frmPurchaseOrder
     Friend WithEvents dtgrdItemList As DataGridView
     Friend WithEvents txtOrderNo As TextBox
     Friend WithEvents Label3 As Label
-    Friend WithEvents btnSave As Button
-    Friend WithEvents btnNew As Button
-    Friend WithEvents btnEdit As Button
-    Friend WithEvents btnDelete As Button
     Friend WithEvents txtOrderDate As TextBox
     Friend WithEvents Label4 As Label
     Friend WithEvents Label5 As Label
@@ -653,8 +773,21 @@ Partial Class frmPurchaseOrder
     Friend WithEvents btnSearchItem As Button
     Friend WithEvents Panel2 As Panel
     Friend WithEvents btnAdd As Button
-    Friend WithEvents btnCancel As Button
+    Friend WithEvents btnReset As Button
     Friend WithEvents Panel3 As Panel
+    Friend WithEvents cmbDescription As ComboBox
+    Friend WithEvents cmbSupplier As ComboBox
+    Friend WithEvents ToolStrip1 As ToolStrip
+    Friend WithEvents btnNew As ToolStripButton
+    Friend WithEvents btnEdit As ToolStripButton
+    Friend WithEvents btnSave As ToolStripButton
+    Friend WithEvents ToolStripSeparator1 As ToolStripSeparator
+    Friend WithEvents ToolStripSeparator2 As ToolStripSeparator
+    Friend WithEvents ToolStripSeparator3 As ToolStripSeparator
+    Friend WithEvents ToolStripSeparator4 As ToolStripSeparator
+    Friend WithEvents btnCancel As ToolStripButton
+    Friend WithEvents btnApprove As ToolStripButton
+    Friend WithEvents ToolStripSeparator5 As ToolStripSeparator
     Friend WithEvents Column13 As DataGridViewTextBoxColumn
     Friend WithEvents Column7 As DataGridViewTextBoxColumn
     Friend WithEvents Column8 As DataGridViewTextBoxColumn
@@ -664,7 +797,11 @@ Partial Class frmPurchaseOrder
     Friend WithEvents Column2 As DataGridViewTextBoxColumn
     Friend WithEvents Column12 As DataGridViewTextBoxColumn
     Friend WithEvents Column1 As DataGridViewTextBoxColumn
-    Friend WithEvents btnApprove As Button
-    Friend WithEvents cmbDescription As ComboBox
-    Friend WithEvents cmbSupplier As ComboBox
+    Friend WithEvents dtgrdLPOList As DataGridView
+    Friend WithEvents DataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn2 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn3 As DataGridViewTextBoxColumn
+    Friend WithEvents btnArchive As ToolStripButton
+    Friend WithEvents btnPrint As ToolStripButton
+    Friend WithEvents btnClear As ToolStripButton
 End Class

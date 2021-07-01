@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class frmGoodsReceivedNote
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,7 +20,7 @@ Partial Class frmGoodsReceivedNote
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
@@ -30,8 +30,14 @@ Partial Class frmGoodsReceivedNote
         Me.txtSupplier = New System.Windows.Forms.TextBox()
         Me.btnSearch = New System.Windows.Forms.Button()
         Me.dtgrdItemList = New System.Windows.Forms.DataGridView()
-        Me.btnSave = New System.Windows.Forms.Button()
-        Me.Button1 = New System.Windows.Forms.Button()
+        Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column8 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.txtInvoiceNo = New System.Windows.Forms.TextBox()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.txtSupplierCode = New System.Windows.Forms.TextBox()
@@ -43,29 +49,25 @@ Partial Class frmGoodsReceivedNote
         Me.Label8 = New System.Windows.Forms.Label()
         Me.txtAmount = New System.Windows.Forms.TextBox()
         Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.btnClear = New System.Windows.Forms.Button()
-        Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column8 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ToolStrip1 = New System.Windows.Forms.ToolStrip()
+        Me.btnReceive = New System.Windows.Forms.ToolStripButton()
+        Me.btnClear = New System.Windows.Forms.ToolStripButton()
+        Me.btnCancel = New System.Windows.Forms.ToolStripButton()
         CType(Me.dtgrdItemList, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
+        Me.ToolStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
         'btnBack
         '
         Me.btnBack.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btnBack.BackColor = System.Drawing.SystemColors.Control
-        Me.btnBack.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.btnBack.Location = New System.Drawing.Point(1225, 663)
+        Me.btnBack.BackgroundImage = Global.BackOffice.My.Resources.Resources.red_back_arrow
+        Me.btnBack.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.btnBack.Location = New System.Drawing.Point(1245, 668)
         Me.btnBack.Name = "btnBack"
-        Me.btnBack.Size = New System.Drawing.Size(115, 35)
+        Me.btnBack.Size = New System.Drawing.Size(100, 40)
         Me.btnBack.TabIndex = 5
-        Me.btnBack.Text = "Back"
         Me.btnBack.UseVisualStyleBackColor = False
         '
         'Label2
@@ -112,29 +114,67 @@ Partial Class frmGoodsReceivedNote
         Me.dtgrdItemList.BackgroundColor = System.Drawing.SystemColors.ButtonFace
         Me.dtgrdItemList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dtgrdItemList.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column1, Me.Column2, Me.Column3, Me.Column4, Me.Column5, Me.Column6, Me.Column7, Me.Column8})
-        Me.dtgrdItemList.Location = New System.Drawing.Point(5, 209)
+        Me.dtgrdItemList.Location = New System.Drawing.Point(10, 270)
         Me.dtgrdItemList.Name = "dtgrdItemList"
         Me.dtgrdItemList.RowTemplate.Height = 24
-        Me.dtgrdItemList.Size = New System.Drawing.Size(1335, 450)
+        Me.dtgrdItemList.Size = New System.Drawing.Size(1335, 389)
         Me.dtgrdItemList.TabIndex = 12
         '
-        'btnSave
+        'Column1
         '
-        Me.btnSave.Location = New System.Drawing.Point(413, 64)
-        Me.btnSave.Name = "btnSave"
-        Me.btnSave.Size = New System.Drawing.Size(115, 51)
-        Me.btnSave.TabIndex = 13
-        Me.btnSave.Text = "Receive"
-        Me.btnSave.UseVisualStyleBackColor = True
+        Me.Column1.FillWeight = 76.15626!
+        Me.Column1.HeaderText = "Code"
+        Me.Column1.Name = "Column1"
+        Me.Column1.ReadOnly = True
         '
-        'Button1
+        'Column2
         '
-        Me.Button1.Location = New System.Drawing.Point(413, 121)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(115, 50)
-        Me.Button1.TabIndex = 14
-        Me.Button1.Text = "Cancel"
-        Me.Button1.UseVisualStyleBackColor = True
+        Me.Column2.FillWeight = 159.8985!
+        Me.Column2.HeaderText = "Description"
+        Me.Column2.Name = "Column2"
+        Me.Column2.ReadOnly = True
+        '
+        'Column3
+        '
+        Me.Column3.FillWeight = 92.78905!
+        Me.Column3.HeaderText = "Quantity Ordered"
+        Me.Column3.Name = "Column3"
+        Me.Column3.ReadOnly = True
+        '
+        'Column4
+        '
+        Me.Column4.FillWeight = 92.78905!
+        Me.Column4.HeaderText = "Quantity Received"
+        Me.Column4.Name = "Column4"
+        '
+        'Column5
+        '
+        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.Column5.DefaultCellStyle = DataGridViewCellStyle5
+        Me.Column5.FillWeight = 92.78905!
+        Me.Column5.HeaderText = "Supplier Unit Cost"
+        Me.Column5.Name = "Column5"
+        '
+        'Column6
+        '
+        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.Column6.DefaultCellStyle = DataGridViewCellStyle6
+        Me.Column6.FillWeight = 92.78905!
+        Me.Column6.HeaderText = "Client Cost"
+        Me.Column6.Name = "Column6"
+        '
+        'Column7
+        '
+        Me.Column7.FillWeight = 92.78905!
+        Me.Column7.HeaderText = "Received"
+        Me.Column7.Name = "Column7"
+        Me.Column7.ReadOnly = True
+        '
+        'Column8
+        '
+        Me.Column8.HeaderText = "Sn"
+        Me.Column8.Name = "Column8"
+        Me.Column8.Visible = False
         '
         'txtInvoiceNo
         '
@@ -211,7 +251,7 @@ Partial Class frmGoodsReceivedNote
         Me.Label8.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label8.AutoSize = True
         Me.Label8.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label8.Location = New System.Drawing.Point(887, 668)
+        Me.Label8.Location = New System.Drawing.Point(907, 668)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(62, 17)
         Me.Label8.TabIndex = 25
@@ -221,7 +261,7 @@ Partial Class frmGoodsReceivedNote
         '
         Me.txtAmount.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.txtAmount.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtAmount.Location = New System.Drawing.Point(955, 668)
+        Me.txtAmount.Location = New System.Drawing.Point(975, 670)
         Me.txtAmount.Name = "txtAmount"
         Me.txtAmount.ReadOnly = True
         Me.txtAmount.Size = New System.Drawing.Size(264, 30)
@@ -231,12 +271,9 @@ Partial Class frmGoodsReceivedNote
         'Panel1
         '
         Me.Panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-        Me.Panel1.Controls.Add(Me.btnClear)
         Me.Panel1.Controls.Add(Me.txtGRNNo)
         Me.Panel1.Controls.Add(Me.Label2)
         Me.Panel1.Controls.Add(Me.txtOrderNo)
-        Me.Panel1.Controls.Add(Me.Button1)
-        Me.Panel1.Controls.Add(Me.btnSave)
         Me.Panel1.Controls.Add(Me.Label7)
         Me.Panel1.Controls.Add(Me.txtSupplier)
         Me.Panel1.Controls.Add(Me.btnSearch)
@@ -246,81 +283,54 @@ Partial Class frmGoodsReceivedNote
         Me.Panel1.Controls.Add(Me.Label4)
         Me.Panel1.Controls.Add(Me.txtSupplierCode)
         Me.Panel1.Controls.Add(Me.Label5)
-        Me.Panel1.Location = New System.Drawing.Point(5, 12)
+        Me.Panel1.Location = New System.Drawing.Point(10, 50)
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(540, 191)
         Me.Panel1.TabIndex = 27
         '
+        'ToolStrip1
+        '
+        Me.ToolStrip1.ImageScalingSize = New System.Drawing.Size(20, 20)
+        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.btnReceive, Me.btnClear, Me.btnCancel})
+        Me.ToolStrip1.Location = New System.Drawing.Point(0, 0)
+        Me.ToolStrip1.Name = "ToolStrip1"
+        Me.ToolStrip1.Size = New System.Drawing.Size(1348, 27)
+        Me.ToolStrip1.TabIndex = 102
+        Me.ToolStrip1.Text = "ToolStrip1"
+        '
+        'btnReceive
+        '
+        Me.btnReceive.Image = Global.BackOffice.My.Resources.Resources.tick
+        Me.btnReceive.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.btnReceive.Name = "btnReceive"
+        Me.btnReceive.Size = New System.Drawing.Size(84, 24)
+        Me.btnReceive.Text = "Receive"
+        Me.btnReceive.ToolTipText = "Creates a new Packing List"
+        '
         'btnClear
         '
-        Me.btnClear.Location = New System.Drawing.Point(413, 7)
+        Me.btnClear.Image = Global.BackOffice.My.Resources.Resources.brush
+        Me.btnClear.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.btnClear.Name = "btnClear"
-        Me.btnClear.Size = New System.Drawing.Size(115, 51)
-        Me.btnClear.TabIndex = 24
-        Me.btnClear.Text = "Clear"
-        Me.btnClear.UseVisualStyleBackColor = True
+        Me.btnClear.Size = New System.Drawing.Size(77, 24)
+        Me.btnClear.Text = "Cancel"
+        Me.btnClear.ToolTipText = "Promts user to edit an existing Packing List"
         '
-        'Column1
+        'btnCancel
         '
-        Me.Column1.FillWeight = 76.15626!
-        Me.Column1.HeaderText = "Code"
-        Me.Column1.Name = "Column1"
-        Me.Column1.ReadOnly = True
-        '
-        'Column2
-        '
-        Me.Column2.FillWeight = 159.8985!
-        Me.Column2.HeaderText = "Description"
-        Me.Column2.Name = "Column2"
-        Me.Column2.ReadOnly = True
-        '
-        'Column3
-        '
-        Me.Column3.FillWeight = 92.78905!
-        Me.Column3.HeaderText = "Quantity Ordered"
-        Me.Column3.Name = "Column3"
-        Me.Column3.ReadOnly = True
-        '
-        'Column4
-        '
-        Me.Column4.FillWeight = 92.78905!
-        Me.Column4.HeaderText = "Quantity Received"
-        Me.Column4.Name = "Column4"
-        '
-        'Column5
-        '
-        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.Column5.DefaultCellStyle = DataGridViewCellStyle5
-        Me.Column5.FillWeight = 92.78905!
-        Me.Column5.HeaderText = "Supplier Unit Cost"
-        Me.Column5.Name = "Column5"
-        '
-        'Column6
-        '
-        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.Column6.DefaultCellStyle = DataGridViewCellStyle6
-        Me.Column6.FillWeight = 92.78905!
-        Me.Column6.HeaderText = "Client Cost"
-        Me.Column6.Name = "Column6"
-        '
-        'Column7
-        '
-        Me.Column7.FillWeight = 92.78905!
-        Me.Column7.HeaderText = "Received"
-        Me.Column7.Name = "Column7"
-        Me.Column7.ReadOnly = True
-        '
-        'Column8
-        '
-        Me.Column8.HeaderText = "Sn"
-        Me.Column8.Name = "Column8"
-        Me.Column8.Visible = False
+        Me.btnCancel.Image = Global.BackOffice.My.Resources.Resources.cancel
+        Me.btnCancel.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.btnCancel.Name = "btnCancel"
+        Me.btnCancel.Size = New System.Drawing.Size(67, 24)
+        Me.btnCancel.Text = "Clear"
+        Me.btnCancel.ToolTipText = "Clear all the fields"
         '
         'frmGoodsReceivedNote
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1348, 717)
+        Me.Controls.Add(Me.ToolStrip1)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.txtAmount)
         Me.Controls.Add(Me.Label8)
@@ -336,6 +346,8 @@ Partial Class frmGoodsReceivedNote
         CType(Me.dtgrdItemList, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
+        Me.ToolStrip1.ResumeLayout(False)
+        Me.ToolStrip1.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -346,8 +358,6 @@ Partial Class frmGoodsReceivedNote
     Friend WithEvents txtSupplier As TextBox
     Friend WithEvents btnSearch As Button
     Friend WithEvents dtgrdItemList As DataGridView
-    Friend WithEvents btnSave As Button
-    Friend WithEvents Button1 As Button
     Friend WithEvents txtInvoiceNo As TextBox
     Friend WithEvents Label4 As Label
     Friend WithEvents txtSupplierCode As TextBox
@@ -359,7 +369,6 @@ Partial Class frmGoodsReceivedNote
     Friend WithEvents Label8 As Label
     Friend WithEvents txtAmount As TextBox
     Friend WithEvents Panel1 As Panel
-    Friend WithEvents btnClear As Button
     Friend WithEvents Column1 As DataGridViewTextBoxColumn
     Friend WithEvents Column2 As DataGridViewTextBoxColumn
     Friend WithEvents Column3 As DataGridViewTextBoxColumn
@@ -368,4 +377,8 @@ Partial Class frmGoodsReceivedNote
     Friend WithEvents Column6 As DataGridViewTextBoxColumn
     Friend WithEvents Column7 As DataGridViewTextBoxColumn
     Friend WithEvents Column8 As DataGridViewTextBoxColumn
+    Friend WithEvents ToolStrip1 As ToolStrip
+    Friend WithEvents btnReceive As ToolStripButton
+    Friend WithEvents btnClear As ToolStripButton
+    Friend WithEvents btnCancel As ToolStripButton
 End Class
