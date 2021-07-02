@@ -1,4 +1,5 @@
 ﻿Imports Devart.Data.MySql
+Imports Microsoft.Office.Interop
 Imports MigraDoc.DocumentObjectModel
 Imports MigraDoc.DocumentObjectModel.Tables
 Imports MigraDoc.Rendering
@@ -8,6 +9,7 @@ Public Class frmPettyCash
         Me.Dispose()
     End Sub
     Private Function refreshList()
+        Cursor = Cursors.WaitCursor
         dtgrdList.Rows.Clear()
         Try
             Dim conn As New MySqlConnection(Database.conString)
@@ -68,6 +70,7 @@ Public Class frmPettyCash
         Catch ex As Exception
             MsgBox(ex.Message)
         End Try
+        Cursor = Cursors.Default
         Return vbNull
     End Function
     Private Sub btnView_Click(sender As Object, e As EventArgs) Handles btnView.Click
@@ -102,29 +105,7 @@ Public Class frmPettyCash
 
     End Sub
 
-    Private Sub btnPrint_Click(sender As Object, e As EventArgs) Handles btnPrint.Click
-        refreshList()
-        Dim startDate As String = dateStart.Text
-        Dim endDate As String = dateEnd.Text
-
-        Dim document As Document = New Document
-
-        document.Info.Title = "Petty Cash Report"
-        document.Info.Subject = "Petty Cash Report"
-        document.Info.Author = "Orbit"
-
-        defineStyles(document)
-        createDocument(document)
-
-        Dim myRenderer As PdfDocumentRenderer = New PdfDocumentRenderer(True)
-        myRenderer.Document = document
-        myRenderer.RenderDocument()
-
-        Dim filename As String = LSystem.getRoot & "\Petty Cash Report " & dateStart.Text & " to " & dateEnd.Text & ".pdf"
-
-        myRenderer.PdfDocument.Save(filename)
-
-        Process.Start(filename)
+    Private Sub btnPrint_Click(sender As Object, e As EventArgs)
 
     End Sub
     Private Sub createDocument(doc As Document)
@@ -371,5 +352,140 @@ Public Class frmPettyCash
 
     Private Sub dtgrdList_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles dtgrdList.CellContentClick
 
+    End Sub
+
+    Private Sub btnExportToPDF_Click(sender As Object, e As EventArgs) Handles btnExportToPDF.Click
+        refreshList()
+        Dim startDate As String = dateStart.Text
+        Dim endDate As String = dateEnd.Text
+
+        Dim document As Document = New Document
+
+        document.Info.Title = "Petty Cash Report"
+        document.Info.Subject = "Petty Cash Report"
+        document.Info.Author = "Orbit"
+
+        defineStyles(document)
+        createDocument(document)
+
+        Dim myRenderer As PdfDocumentRenderer = New PdfDocumentRenderer(True)
+        myRenderer.Document = document
+        myRenderer.RenderDocument()
+
+        Dim filename As String = LSystem.getRoot & "\Petty Cash Report " & dateStart.Text & " to " & dateEnd.Text & ".pdf"
+
+        myRenderer.PdfDocument.Save(filename)
+
+        Process.Start(filename)
+
+    End Sub
+
+    Private Sub btnExportToExcel_Click(sender As Object, e As EventArgs) Handles btnExportToExcel.Click
+        Cursor = Cursors.WaitCursor
+        If dtgrdList.RowCount = 0 Then
+            MsgBox("Nothing to export")
+            Cursor = Cursors.Default
+            Exit Sub
+        End If
+        Dim appXL As Excel.Application
+        Dim wbXl As Excel.Workbook
+        Dim shXL As Excel.Worksheet
+        Dim raXL As Excel.Range
+        ' Start Excel and get Application object.
+        appXL = CreateObject("Excel.Application")
+        appXL.Visible = True
+        ' Add a new workbook.
+        wbXl = appXL.Workbooks.Add
+        shXL = wbXl.ActiveSheet
+
+        Dim r As Integer = 1
+
+        shXL.Cells(r, 1).Value = "Petty Cash Report"
+
+        ' Format A1:D1 as bold, vertical alignment = center.
+        With shXL.Range("A" + r.ToString, "D" + r.ToString)
+            .Font.Bold = True
+            .VerticalAlignment = Excel.XlVAlign.xlVAlignCenter
+        End With
+        r = r + 1
+
+        ' Add table headers going cell by cell.
+        shXL.Cells(r, 1).Value = "From: " + dateStart.Text
+        shXL.Cells(r, 2).Value = "To: " + dateEnd.Text
+
+        ' Format A1:D1 as bold, vertical alignment = center.
+        With shXL.Range("A" + r.ToString, "B" + r.ToString)
+            .Font.Bold = True
+            .VerticalAlignment = Excel.XlVAlign.xlVAlignCenter
+        End With
+
+
+        ' Format A1:D1 as bold, vertical alignment = center.
+        With shXL.Range("A" + r.ToString)
+            .Font.Bold = True
+            .VerticalAlignment = Excel.XlVAlign.xlVAlignCenter
+        End With
+        r = r + 2
+        ' Add table headers going cell by cell.
+        shXL.Cells(r, 1).Value = "Date"
+        shXL.Cells(r, 2).Value = "Till"
+        shXL.Cells(r, 3).Value = "Amount"
+        shXL.Cells(r, 4).Value = "Details"
+
+        ' Format A1:D1 as bold, vertical alignment = center.
+        With shXL.Range("A" + r.ToString, "D" + r.ToString)
+            .Font.Bold = True
+            .VerticalAlignment = Excel.XlVAlign.xlVAlignCenter
+        End With
+        r = r + 1
+        'raXL = shXL.Range("C1", "C7")
+        'raXL.Formula = "=A1 & "" "" & B1"
+        'Dim r As Integer = 3
+        For i As Integer = 0 To dtgrdList.RowCount - 1
+            With shXL
+                .Cells(r, 1).Value = dtgrdList.Item(0, i).Value
+                .Cells(r, 2).Value = dtgrdList.Item(1, i).Value
+                .Cells(r, 3).Value = dtgrdList.Item(2, i).Value
+                .Cells(r, 4).Value = dtgrdList.Item(3, i).Value
+            End With
+            r = r + 1
+        Next
+        ' Add table headers going cell by cell.
+        shXL.Cells(r, 2).Value = "Total Amount"
+        shXL.Cells(r, 3).Value = txtTotalSales.Text
+        ' Format A1:D1 as bold, vertical alignment = center.
+        With shXL.Range("A" + r.ToString, "D" + r.ToString)
+            .Font.Bold = True
+            .VerticalAlignment = Excel.XlVAlign.xlVAlignCenter
+        End With
+
+        ' AutoFit columns A:D.
+        raXL = shXL.Range("A1", "D1")
+        raXL.EntireColumn.AutoFit()
+
+        Dim strFileName As String = LSystem.saveToDesktop & "\Petty Cash Report " & dateStart.Text & dateEnd.Text & ".xls"
+        Dim blnFileOpen As Boolean = False
+        Try
+            Dim fileTemp As System.IO.FileStream = System.IO.File.OpenWrite(strFileName)
+            fileTemp.Close()
+        Catch ex As Exception
+            blnFileOpen = False
+        End Try
+        If System.IO.File.Exists(strFileName) Then
+            Try
+                'System.IO.File.Delete(strFileName)
+            Catch ex As Exception
+            End Try
+        End If
+        Try
+            wbXl.Save()
+        Catch ex As Exception
+
+        End Try
+        Cursor = Cursors.Default
+        Exit Sub
+Err_Handler:
+        MsgBox(Err.Description, vbCritical, "Error: " & Err.Number)
+        Cursor = Cursors.Default
     End Sub
 End Class

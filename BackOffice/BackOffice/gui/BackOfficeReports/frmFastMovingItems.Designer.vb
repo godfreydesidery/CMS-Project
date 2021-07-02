@@ -22,13 +22,12 @@ Partial Class frmFastMovingItems
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle10 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle11 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle12 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Me.btnBack = New System.Windows.Forms.Button()
+        Dim DataGridViewCellStyle43 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle44 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle45 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle46 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle47 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle48 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.cmbSupplier = New System.Windows.Forms.ComboBox()
         Me.Label7 = New System.Windows.Forms.Label()
@@ -36,7 +35,6 @@ Partial Class frmFastMovingItems
         Me.dateStart = New System.Windows.Forms.DateTimePicker()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.dateEnd = New System.Windows.Forms.DateTimePicker()
-        Me.btnPrintWithProfit = New System.Windows.Forms.Button()
         Me.btnGenerate = New System.Windows.Forms.Button()
         Me.btnPrint = New System.Windows.Forms.Button()
         Me.dtgrdList = New System.Windows.Forms.DataGridView()
@@ -49,20 +47,14 @@ Partial Class frmFastMovingItems
         Me.Column6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column8 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ToolStrip1 = New System.Windows.Forms.ToolStrip()
+        Me.btnExportToPDF = New System.Windows.Forms.ToolStripButton()
+        Me.btnExportToExcel = New System.Windows.Forms.ToolStripButton()
+        Me.btnBack = New System.Windows.Forms.Button()
         Me.Panel1.SuspendLayout()
         CType(Me.dtgrdList, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.ToolStrip1.SuspendLayout()
         Me.SuspendLayout()
-        '
-        'btnBack
-        '
-        Me.btnBack.BackColor = System.Drawing.SystemColors.Control
-        Me.btnBack.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.btnBack.Location = New System.Drawing.Point(1319, 623)
-        Me.btnBack.Name = "btnBack"
-        Me.btnBack.Size = New System.Drawing.Size(115, 35)
-        Me.btnBack.TabIndex = 5
-        Me.btnBack.Text = "Back"
-        Me.btnBack.UseVisualStyleBackColor = False
         '
         'Panel1
         '
@@ -73,9 +65,9 @@ Partial Class frmFastMovingItems
         Me.Panel1.Controls.Add(Me.dateStart)
         Me.Panel1.Controls.Add(Me.Label2)
         Me.Panel1.Controls.Add(Me.dateEnd)
-        Me.Panel1.Location = New System.Drawing.Point(12, 12)
+        Me.Panel1.Location = New System.Drawing.Point(10, 50)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(765, 40)
+        Me.Panel1.Size = New System.Drawing.Size(340, 40)
         Me.Panel1.TabIndex = 64
         '
         'cmbSupplier
@@ -85,6 +77,7 @@ Partial Class frmFastMovingItems
         Me.cmbSupplier.Name = "cmbSupplier"
         Me.cmbSupplier.Size = New System.Drawing.Size(350, 24)
         Me.cmbSupplier.TabIndex = 52
+        Me.cmbSupplier.Visible = False
         '
         'Label7
         '
@@ -94,6 +87,7 @@ Partial Class frmFastMovingItems
         Me.Label7.Size = New System.Drawing.Size(60, 17)
         Me.Label7.TabIndex = 51
         Me.Label7.Text = "Supplier"
+        Me.Label7.Visible = False
         '
         'Label1
         '
@@ -131,32 +125,24 @@ Partial Class frmFastMovingItems
         Me.dateEnd.Size = New System.Drawing.Size(120, 22)
         Me.dateEnd.TabIndex = 48
         '
-        'btnPrintWithProfit
-        '
-        Me.btnPrintWithProfit.Location = New System.Drawing.Point(894, 10)
-        Me.btnPrintWithProfit.Name = "btnPrintWithProfit"
-        Me.btnPrintWithProfit.Size = New System.Drawing.Size(105, 35)
-        Me.btnPrintWithProfit.TabIndex = 55
-        Me.btnPrintWithProfit.Text = "Print"
-        Me.btnPrintWithProfit.UseVisualStyleBackColor = True
-        '
         'btnGenerate
         '
-        Me.btnGenerate.Location = New System.Drawing.Point(783, 10)
+        Me.btnGenerate.Location = New System.Drawing.Point(355, 50)
         Me.btnGenerate.Name = "btnGenerate"
         Me.btnGenerate.Size = New System.Drawing.Size(105, 35)
         Me.btnGenerate.TabIndex = 49
-        Me.btnGenerate.Text = "Generate"
+        Me.btnGenerate.Text = "Run"
         Me.btnGenerate.UseVisualStyleBackColor = True
         '
         'btnPrint
         '
-        Me.btnPrint.Location = New System.Drawing.Point(1005, 10)
+        Me.btnPrint.Location = New System.Drawing.Point(578, 56)
         Me.btnPrint.Name = "btnPrint"
         Me.btnPrint.Size = New System.Drawing.Size(105, 35)
         Me.btnPrint.TabIndex = 50
         Me.btnPrint.Text = "Print@Profit"
         Me.btnPrint.UseVisualStyleBackColor = True
+        Me.btnPrint.Visible = False
         '
         'dtgrdList
         '
@@ -165,11 +151,11 @@ Partial Class frmFastMovingItems
         Me.dtgrdList.BackgroundColor = System.Drawing.SystemColors.ButtonFace
         Me.dtgrdList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dtgrdList.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column1, Me.Column2, Me.Column9, Me.Column3, Me.Column4, Me.Column5, Me.Column6, Me.Column7, Me.Column8})
-        Me.dtgrdList.Location = New System.Drawing.Point(12, 58)
+        Me.dtgrdList.Location = New System.Drawing.Point(10, 95)
         Me.dtgrdList.Name = "dtgrdList"
         Me.dtgrdList.ReadOnly = True
         Me.dtgrdList.RowTemplate.Height = 24
-        Me.dtgrdList.Size = New System.Drawing.Size(1422, 559)
+        Me.dtgrdList.Size = New System.Drawing.Size(1430, 520)
         Me.dtgrdList.TabIndex = 63
         '
         'Column1
@@ -195,8 +181,8 @@ Partial Class frmFastMovingItems
         '
         'Column3
         '
-        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.Column3.DefaultCellStyle = DataGridViewCellStyle7
+        DataGridViewCellStyle43.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.Column3.DefaultCellStyle = DataGridViewCellStyle43
         Me.Column3.FillWeight = 53.87895!
         Me.Column3.HeaderText = "Qty"
         Me.Column3.Name = "Column3"
@@ -204,17 +190,18 @@ Partial Class frmFastMovingItems
         '
         'Column4
         '
-        DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.Column4.DefaultCellStyle = DataGridViewCellStyle8
+        DataGridViewCellStyle44.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.Column4.DefaultCellStyle = DataGridViewCellStyle44
         Me.Column4.FillWeight = 84.25756!
         Me.Column4.HeaderText = "Price @"
         Me.Column4.Name = "Column4"
         Me.Column4.ReadOnly = True
+        Me.Column4.Visible = False
         '
         'Column5
         '
-        DataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.Column5.DefaultCellStyle = DataGridViewCellStyle9
+        DataGridViewCellStyle45.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.Column5.DefaultCellStyle = DataGridViewCellStyle45
         Me.Column5.FillWeight = 84.25756!
         Me.Column5.HeaderText = "Discount"
         Me.Column5.Name = "Column5"
@@ -223,17 +210,18 @@ Partial Class frmFastMovingItems
         '
         'Column6
         '
-        DataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.Column6.DefaultCellStyle = DataGridViewCellStyle10
+        DataGridViewCellStyle46.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.Column6.DefaultCellStyle = DataGridViewCellStyle46
         Me.Column6.FillWeight = 84.25756!
         Me.Column6.HeaderText = "TAX"
         Me.Column6.Name = "Column6"
         Me.Column6.ReadOnly = True
+        Me.Column6.Visible = False
         '
         'Column7
         '
-        DataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.Column7.DefaultCellStyle = DataGridViewCellStyle11
+        DataGridViewCellStyle47.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.Column7.DefaultCellStyle = DataGridViewCellStyle47
         Me.Column7.FillWeight = 84.25756!
         Me.Column7.HeaderText = "Amount"
         Me.Column7.Name = "Column7"
@@ -241,22 +229,60 @@ Partial Class frmFastMovingItems
         '
         'Column8
         '
-        DataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.Column8.DefaultCellStyle = DataGridViewCellStyle12
+        DataGridViewCellStyle48.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.Column8.DefaultCellStyle = DataGridViewCellStyle48
         Me.Column8.FillWeight = 84.25756!
         Me.Column8.HeaderText = "Profit"
         Me.Column8.Name = "Column8"
         Me.Column8.ReadOnly = True
+        Me.Column8.Visible = False
+        '
+        'ToolStrip1
+        '
+        Me.ToolStrip1.ImageScalingSize = New System.Drawing.Size(20, 20)
+        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.btnExportToPDF, Me.btnExportToExcel})
+        Me.ToolStrip1.Location = New System.Drawing.Point(0, 0)
+        Me.ToolStrip1.Name = "ToolStrip1"
+        Me.ToolStrip1.Size = New System.Drawing.Size(1442, 27)
+        Me.ToolStrip1.TabIndex = 107
+        Me.ToolStrip1.Text = "ToolStrip1"
+        '
+        'btnExportToPDF
+        '
+        Me.btnExportToPDF.Image = Global.BackOffice.My.Resources.Resources.pdfred
+        Me.btnExportToPDF.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.btnExportToPDF.Name = "btnExportToPDF"
+        Me.btnExportToPDF.Size = New System.Drawing.Size(124, 24)
+        Me.btnExportToPDF.Text = "Export to PDF"
+        '
+        'btnExportToExcel
+        '
+        Me.btnExportToExcel.Image = Global.BackOffice.My.Resources.Resources.spreadsheet
+        Me.btnExportToExcel.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.btnExportToExcel.Name = "btnExportToExcel"
+        Me.btnExportToExcel.Size = New System.Drawing.Size(180, 24)
+        Me.btnExportToExcel.Text = "Export to Spreadsheet"
+        '
+        'btnBack
+        '
+        Me.btnBack.BackColor = System.Drawing.SystemColors.Control
+        Me.btnBack.BackgroundImage = Global.BackOffice.My.Resources.Resources.red_back_arrow
+        Me.btnBack.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.btnBack.Location = New System.Drawing.Point(1340, 621)
+        Me.btnBack.Name = "btnBack"
+        Me.btnBack.Size = New System.Drawing.Size(100, 40)
+        Me.btnBack.TabIndex = 108
+        Me.btnBack.UseVisualStyleBackColor = False
         '
         'frmFastMovingItems
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1440, 666)
-        Me.Controls.Add(Me.btnPrintWithProfit)
+        Me.ClientSize = New System.Drawing.Size(1442, 673)
+        Me.Controls.Add(Me.btnBack)
+        Me.Controls.Add(Me.ToolStrip1)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.dtgrdList)
-        Me.Controls.Add(Me.btnBack)
         Me.Controls.Add(Me.btnPrint)
         Me.Controls.Add(Me.btnGenerate)
         Me.MaximizeBox = False
@@ -269,12 +295,13 @@ Partial Class frmFastMovingItems
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
         CType(Me.dtgrdList, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.ToolStrip1.ResumeLayout(False)
+        Me.ToolStrip1.PerformLayout()
         Me.ResumeLayout(False)
+        Me.PerformLayout()
 
     End Sub
-    Friend WithEvents btnBack As System.Windows.Forms.Button
     Friend WithEvents Panel1 As Panel
-    Friend WithEvents btnPrintWithProfit As Button
     Friend WithEvents cmbSupplier As ComboBox
     Friend WithEvents Label7 As Label
     Friend WithEvents Label1 As Label
@@ -293,4 +320,8 @@ Partial Class frmFastMovingItems
     Friend WithEvents Column6 As DataGridViewTextBoxColumn
     Friend WithEvents Column7 As DataGridViewTextBoxColumn
     Friend WithEvents Column8 As DataGridViewTextBoxColumn
+    Friend WithEvents ToolStrip1 As ToolStrip
+    Friend WithEvents btnExportToPDF As ToolStripButton
+    Friend WithEvents btnExportToExcel As ToolStripButton
+    Friend WithEvents btnBack As Button
 End Class

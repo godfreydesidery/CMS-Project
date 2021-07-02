@@ -530,6 +530,7 @@ Partial Class frmProductInquiry
         Me.btnReset.Name = "btnReset"
         Me.btnReset.Size = New System.Drawing.Size(69, 24)
         Me.btnReset.Text = "Reset"
+        Me.btnReset.ToolTipText = "Clear all the fields"
         '
         'frmProductInquiry
         '

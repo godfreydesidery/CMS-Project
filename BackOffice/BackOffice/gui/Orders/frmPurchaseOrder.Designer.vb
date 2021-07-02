@@ -22,10 +22,10 @@ Partial Class frmPurchaseOrder
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle11 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle10 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle12 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.btnBack = New System.Windows.Forms.Button()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
@@ -149,14 +149,14 @@ Partial Class frmPurchaseOrder
         Me.dtgrdItemList.BackgroundColor = System.Drawing.SystemColors.ButtonFace
         Me.dtgrdItemList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dtgrdItemList.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column13, Me.Column7, Me.Column8, Me.Column10, Me.Column9, Me.Column11, Me.Column2, Me.Column12, Me.Column1})
-        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle3.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dtgrdItemList.DefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle11.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dtgrdItemList.DefaultCellStyle = DataGridViewCellStyle11
         Me.dtgrdItemList.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically
         Me.dtgrdItemList.GridColor = System.Drawing.SystemColors.ActiveBorder
         Me.dtgrdItemList.ImeMode = System.Windows.Forms.ImeMode.NoControl
@@ -206,8 +206,8 @@ Partial Class frmPurchaseOrder
         '
         'Column11
         '
-        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.Column11.DefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.Column11.DefaultCellStyle = DataGridViewCellStyle9
         Me.Column11.FillWeight = 83.45177!
         Me.Column11.HeaderText = "Cost Price@"
         Me.Column11.Name = "Column11"
@@ -215,8 +215,8 @@ Partial Class frmPurchaseOrder
         '
         'Column2
         '
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.Column2.DefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.Column2.DefaultCellStyle = DataGridViewCellStyle10
         Me.Column2.HeaderText = "Total Cost"
         Me.Column2.Name = "Column2"
         Me.Column2.ReadOnly = True
@@ -575,7 +575,7 @@ Partial Class frmPurchaseOrder
         Me.btnNew.Name = "btnNew"
         Me.btnNew.Size = New System.Drawing.Size(63, 24)
         Me.btnNew.Text = "New"
-        Me.btnNew.ToolTipText = "Creates a new Packing List"
+        Me.btnNew.ToolTipText = "Creates a new LPO"
         '
         'btnEdit
         '
@@ -584,7 +584,7 @@ Partial Class frmPurchaseOrder
         Me.btnEdit.Name = "btnEdit"
         Me.btnEdit.Size = New System.Drawing.Size(59, 24)
         Me.btnEdit.Text = "Edit"
-        Me.btnEdit.ToolTipText = "Promts user to edit an existing Packing List"
+        Me.btnEdit.ToolTipText = "Promts user to edit an existing LPO"
         '
         'btnClear
         '
@@ -593,7 +593,7 @@ Partial Class frmPurchaseOrder
         Me.btnClear.Name = "btnClear"
         Me.btnClear.Size = New System.Drawing.Size(67, 24)
         Me.btnClear.Text = "Clear"
-        Me.btnClear.ToolTipText = "Cancels the LPO"
+        Me.btnClear.ToolTipText = "Clear all the fields"
         '
         'btnSave
         '
@@ -603,7 +603,7 @@ Partial Class frmPurchaseOrder
         Me.btnSave.Name = "btnSave"
         Me.btnSave.Size = New System.Drawing.Size(64, 24)
         Me.btnSave.Text = "Save"
-        Me.btnSave.ToolTipText = "Save details of a new or existing Packing List"
+        Me.btnSave.ToolTipText = "Save details of a new or existing LPO"
         '
         'ToolStripSeparator1
         '
@@ -642,7 +642,7 @@ Partial Class frmPurchaseOrder
         Me.btnApprove.Name = "btnApprove"
         Me.btnApprove.Size = New System.Drawing.Size(90, 24)
         Me.btnApprove.Text = "Approve"
-        Me.btnApprove.ToolTipText = "Approve the Packing List"
+        Me.btnApprove.ToolTipText = "Approve LPO"
         '
         'btnPrint
         '
@@ -651,7 +651,7 @@ Partial Class frmPurchaseOrder
         Me.btnPrint.Name = "btnPrint"
         Me.btnPrint.Size = New System.Drawing.Size(63, 24)
         Me.btnPrint.Text = "Print"
-        Me.btnPrint.ToolTipText = "Print LPO"
+        Me.btnPrint.ToolTipText = "Print LPO, a printed LPO can be sent to its respective supplier"
         '
         'btnArchive
         '
@@ -660,7 +660,7 @@ Partial Class frmPurchaseOrder
         Me.btnArchive.Name = "btnArchive"
         Me.btnArchive.Size = New System.Drawing.Size(82, 24)
         Me.btnArchive.Text = "Archive"
-        Me.btnArchive.ToolTipText = "Archive LPO"
+        Me.btnArchive.ToolTipText = "Sends completed LPO to archives for future references"
         '
         'ToolStripSeparator5
         '
@@ -685,9 +685,9 @@ Partial Class frmPurchaseOrder
         '
         'DataGridViewTextBoxColumn1
         '
-        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.White
-        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black
-        Me.DataGridViewTextBoxColumn1.DefaultCellStyle = DataGridViewCellStyle4
+        DataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.White
+        DataGridViewCellStyle12.SelectionForeColor = System.Drawing.Color.Black
+        Me.DataGridViewTextBoxColumn1.DefaultCellStyle = DataGridViewCellStyle12
         Me.DataGridViewTextBoxColumn1.FillWeight = 42.63959!
         Me.DataGridViewTextBoxColumn1.HeaderText = "LPO #"
         Me.DataGridViewTextBoxColumn1.Name = "DataGridViewTextBoxColumn1"

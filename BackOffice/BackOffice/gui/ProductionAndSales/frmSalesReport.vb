@@ -923,6 +923,7 @@ Public Class frmDetailedDailySalesReport
         txtTotalBankcash.Text = ""
         txtTotalExpenditures.Text = ""
         txtTotalIssued.Text = ""
+        txtNetProfit.Text = ""
         dtgrdList.Rows.Clear()
 
     End Sub

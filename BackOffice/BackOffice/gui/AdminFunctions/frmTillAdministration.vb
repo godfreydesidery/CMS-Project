@@ -379,4 +379,8 @@ Public Class frmTillAdministration
         EDIT_MODE = ""
         unlock()
     End Sub
+
+    Private Sub btnDelete_Click(sender As Object, e As EventArgs) Handles btnDelete.Click
+
+    End Sub
 End Class

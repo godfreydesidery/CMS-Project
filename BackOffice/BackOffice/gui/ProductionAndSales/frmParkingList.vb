@@ -259,12 +259,14 @@ Public Class frmPackingList
             For i As Integer = 0 To dtgrdItemList.RowCount - 1
                 Dim code As String = dtgrdItemList.Item(0, i).Value.ToString
                 Dim description As String = dtgrdItemList.Item(1, i).Value.ToString
-                Dim price As String = LCurrency.displayValue(dtgrdItemList.Item(2, i).Value.ToString)
+                '  Dim price As String = LCurrency.displayValue(dtgrdItemList.Item(2, i).Value.ToString)
+                Dim price As String = dtgrdItemList.Item(2, i).Value.ToString
                 Dim qtyIssued As String = dtgrdItemList.Item(5, i).Value.ToString
                 Dim qtysold As String = dtgrdItemList.Item(6, i).Value.ToString
                 Dim qtyReturned As String = dtgrdItemList.Item(7, i).Value.ToString
                 Dim qtyDamaged As String = dtgrdItemList.Item(8, i).Value.ToString
-                Dim cPrice As String = LCurrency.displayValue(dtgrdItemList.Item(10, i).Value.ToString)
+                ' Dim cPrice As String = LCurrency.displayValue(dtgrdItemList.Item(10, i).Value.ToString)
+                Dim cPrice As String = dtgrdItemList.Item(10, i).Value.ToString
 
                 skip = skip + 1
 
@@ -375,7 +377,8 @@ Public Class frmPackingList
             For i As Integer = 0 To dtgrdItemList.RowCount - 1
                 Dim code As String = dtgrdItemList.Item(0, i).Value.ToString
                 Dim description As String = dtgrdItemList.Item(1, i).Value.ToString
-                Dim price As String = LCurrency.displayValue(dtgrdItemList.Item(2, i).Value.ToString)
+                ' Dim price As String = LCurrency.displayValue(dtgrdItemList.Item(2, i).Value.ToString)
+                Dim price As String = dtgrdItemList.Item(2, i).Value.ToString
                 Dim returns As String = dtgrdItemList.Item(3, i).Value.ToString
                 Dim packed As String = dtgrdItemList.Item(4, i).Value.ToString
                 Dim totalIssued As String = dtgrdItemList.Item(5, i).Value.ToString
@@ -671,6 +674,7 @@ Public Class frmPackingList
         Return found
     End Function
     Private Function search()
+        clearItemFields()
         If txtIssueNo.Text = "" Then
             MsgBox("Can not process packing list. Please specify whether the packing list is new or existing by selecting New or Edit", vbOKOnly + vbCritical, "Invalid operation")
             Return vbNull
@@ -844,6 +848,19 @@ Public Class frmPackingList
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles btnSearch.Click
         search()
     End Sub
+    Private Sub clearItemFields()
+        txtBarCode.Text = ""
+        txtItemCode.Text = ""
+        cmbDescription.Text = ""
+        txtPrice.Text = ""
+        txtReturns.Text = ""
+        txtPacked.Text = ""
+        txtIssued.Text = ""
+        txtQtyReturned.Text = ""
+        txtQtyDamaged.Text = ""
+        txtQtySold.Text = ""
+        txtCPrice.Text = ""
+    End Sub
 
     Private Sub btnNew_Click(sender As Object, e As EventArgs) Handles btnNew.Click
         oldPrice = 0
@@ -866,6 +883,8 @@ Public Class frmPackingList
         txtQtySold.Text = ""
         txtCPrice.Text = ""
 
+        txtTotalPreviousReturns.Text = ""
+        txtTotalPacked.Text = ""
         txtTotalAmountIssued.Text = ""
         txtTotalSales.Text = ""
         txtTotalReturns.Text = ""
@@ -1030,7 +1049,8 @@ Public Class frmPackingList
                 dtgrdRow.Cells.Add(dtgrdCell)
 
                 dtgrdCell = New DataGridViewTextBoxCell()
-                dtgrdCell.Value = price
+                ' dtgrdCell.Value = price
+                dtgrdCell.Value = LCurrency.displayValue(price.ToString)
                 dtgrdRow.Cells.Add(dtgrdCell)
 
                 dtgrdCell = New DataGridViewTextBoxCell()
@@ -1062,7 +1082,8 @@ Public Class frmPackingList
                 dtgrdRow.Cells.Add(dtgrdCell)
 
                 dtgrdCell = New DataGridViewTextBoxCell()
-                dtgrdCell.Value = cPrice
+                'dtgrdCell.Value = cPrice
+                dtgrdCell.Value = LCurrency.displayValue(cPrice.ToString)
                 dtgrdRow.Cells.Add(dtgrdCell)
 
                 dtgrdItemList.Rows.Add(dtgrdRow)
@@ -1365,8 +1386,8 @@ Public Class frmPackingList
                 txtItemCode.Text = reader.GetString("item_code")
                 cmbDescription.Text = reader.GetString("item_long_description")
                 txtPackSize.Text = reader.GetString("pck")
-                txtPrice.Text = reader.GetString("retail_price")
-                txtCPrice.Text = reader.GetString("unit_cost_price")
+                txtPrice.Text = LCurrency.displayValue(reader.GetString("retail_price"))
+                txtCPrice.Text = LCurrency.displayValue(reader.GetString("unit_cost_price"))
                 txtStockSize.Text = (New Inventory).getInventory(reader.GetString("item_code"))
                 found = True
                 valid = True
@@ -1448,26 +1469,31 @@ Public Class frmPackingList
         If txtIssueNo.Text = "" Then
             MsgBox("Select new")
             clearFields()
+            Cursor = Cursors.Default
             Exit Sub
         End If
         Dim status As String = (New PackingList).getStatus(txtIssueNo.Text)
         If status = "APPROVED" Then
             MsgBox("Could not edit, document already approved", vbOKOnly + vbCritical, "Error: Invalid operation")
             clearFields()
+            Cursor = Cursors.Default
             Exit Sub
         End If
         If status = "COMPLETED" Then
             MsgBox("Could not edit, document already completed", vbOKOnly + vbCritical, "Error: Invalid operation")
             clearFields()
+            Cursor = Cursors.Default
             Exit Sub
         End If
         If status = "CANCELED" Then
             MsgBox("Could not edit, document has been canceled", vbOKOnly + vbCritical, "Error: Invalid operation")
             clearFields()
+            Cursor = Cursors.Default
             Exit Sub
         End If
         If cmbSalesPersons.Text = "" Then
             MsgBox("Could not add item, sales person required", vbOKOnly + vbCritical, "Error: Missing Information")
+            Cursor = Cursors.Default
             Exit Sub
         End If
         Dim barCode As String = txtBarCode.Text
@@ -1480,24 +1506,30 @@ Public Class frmPackingList
         Dim qtyReturned As String = txtQtyReturned.Text
         Dim qtySold As String = txtQtySold.Text
         Dim qtyDamaged As String = txtQtyDamaged.Text
-        Dim price As String = txtPrice.Text
-        Dim cPrice As String = txtCPrice.Text
+        'Dim price As String = txtPrice.Text
+        Dim price As String = LCurrency.getValue(txtPrice.Text)
+        Dim cPrice As String = LCurrency.getValue(txtCPrice.Text)
         Dim stockSize As String = txtStockSize.Text
         If itemCode = "" Then
             MsgBox("Item required", vbOKOnly + vbCritical, "Error: Missing information")
+            Cursor = Cursors.Default
             Exit Sub
         End If
         If Val(qtyIssued) <= 0 Then
             MsgBox("Could not add item. Invalid issue qty, qty should be non-negative", vbOKOnly + vbCritical, "Error: Invalid entry")
+            Cursor = Cursors.Default
             Exit Sub
         End If
         If ((Val(qtyIssued) - (Val(qtyReturned) + Val(qtySold) + Val(qtyDamaged)) <> 0) And status = "PRINTED") Then
             MsgBox("Could not update, quantity values do not tally", vbOKOnly + vbCritical, "Error: Invalid entry")
+            Cursor = Cursors.Default
             Exit Sub
         End If
 
+        Dim _new As Boolean = False
         Dim list As PackingList
         If txtId.Text = "" Then
+            _new = True
             list = New PackingList
             list.GL_ISSUE_NO = txtIssueNo.Text
             Dim issueDate As String = (New Day).getCurrentDay.ToString("yyyy-MM-dd")
@@ -1513,6 +1545,11 @@ Public Class frmPackingList
             Else
 
             End If
+        End If
+        If txtId.Text = "" Then
+            MsgBox("Could not add, please restart application")
+            Cursor = Cursors.Default
+            Exit Sub
         End If
         list = New PackingList
         list.GL_ISSUE_NO = txtIssueNo.Text
@@ -1532,14 +1569,14 @@ Public Class frmPackingList
             list.editPackingListDetails(txtIssueNo.Text, itemCode)
         End If
         btnApprove.Enabled = True
-
-        refreshPackingLists()
+        If _new = True Then
+            refreshPackingLists()
+        End If
         refreshList()
-
         clearFields()
         unLockFields()
         currentRow = -1
-        Cursor = Cursors.Arrow
+        Cursor = Cursors.Default
     End Sub
 
     Private Sub btnCancel_Click(sender As Object, e As EventArgs) Handles btnCancel.Click
@@ -1575,9 +1612,6 @@ Public Class frmPackingList
         End If
         refreshPackingLists()
     End Sub
-
-
-
 
     Private Sub btnApprove_Click(sender As Object, e As EventArgs) Handles btnApprove.Click
         Dim status As String = (New PackingList).getStatus(txtIssueNo.Text)
@@ -1753,6 +1787,8 @@ Public Class frmPackingList
         txtQtySold.Text = ""
         txtCPrice.Text = ""
 
+        txtTotalPreviousReturns.Text = ""
+        txtTotalPacked.Text = ""
         txtTotalAmountIssued.Text = ""
         txtTotalSales.Text = ""
         txtTotalReturns.Text = ""
@@ -2073,7 +2109,7 @@ Public Class frmPackingList
 
     Private Function recordSale(receiptNo As String)
         Dim recorded As Boolean = False
-        Dim tillNO As String = "PACKING LIST" 'Till.TILLNO
+        Dim tillNO As String = "PCKLIST" 'Till.TILLNO
         Dim dayDate As String = txtIssueDate.Text
         Dim dateTime As DateTime = Date.Now.ToString("yyyy/MM/dd HH:mm:ss")
         'Dim total As Double = LCurrency.getValue(txtTotal.Text)
@@ -2142,7 +2178,7 @@ Public Class frmPackingList
 
             Dim itemCode As String = dtgrdItemList.Item(0, i).Value
             Dim description As String = dtgrdItemList.Item(1, i).Value
-            Dim price As String = dtgrdItemList.Item(2, i).Value
+            Dim price As String = LCurrency.getValue(dtgrdItemList.Item(2, i).Value)
             Dim vat As String = 0 'dtgrdItemList.Item(5, i).Value
             Dim discount As String = 0 'dtgrdItemList.Item(6, i).Value
             Dim qty As String = dtgrdItemList.Item(6, i).Value
@@ -2166,7 +2202,7 @@ Public Class frmPackingList
                 command.Prepare()
                 command.Parameters.AddWithValue("@sale_id", salesId)
                 command.Parameters.AddWithValue("@item_code", itemCode)
-                command.Parameters.AddWithValue("@selling_price", LCurrency.getValue(price))
+                command.Parameters.AddWithValue("@selling_price", price)
                 command.Parameters.AddWithValue("@discounted_price", discountedPrice)
                 command.Parameters.AddWithValue("@qty", Val(qty))
                 command.Parameters.AddWithValue("@amount", LCurrency.getValue(amount))
@@ -2482,4 +2518,58 @@ Public Class frmPackingList
     End Sub
     'maintains the visible position of a row after refresh
     Dim currentRow As Integer = -1
+
+    Private Sub btnArchiveAll_Click(sender As Object, e As EventArgs) Handles btnArchiveAll.Click
+        resetAll()
+        Dim res As Integer = MsgBox("Are you sure you want to archive all cleared packing list documents? All the cleared documents will be sent to archives for future reference.", vbQuestion + vbYesNo, "Archive all cleared packing lists")
+        If res = DialogResult.Yes Then
+            Dim noOfdocuments As Integer = 0
+            Try
+                Cursor = Cursors.WaitCursor
+                For i As Integer = 0 To dtgrdPackingLists.RowCount - 1
+                    Dim no As String = dtgrdPackingLists.Item(0, i).Value.ToString
+                    Dim list As PackingList = New PackingList
+                    Dim debt As Double = Val(list.getDebt(no))
+                    Dim status As String = list.getStatus(no)
+                    If debt = 0 And status = "COMPLETED" Then
+                        noOfdocuments = noOfdocuments + 1
+                    End If
+                Next
+                If noOfdocuments = 0 Then
+                    MsgBox("No documents to archive, only completed and debt free documents can be arcived", vbOKOnly + vbExclamation, "No documents to archive")
+                    Cursor = Cursors.Default
+                    Exit Sub
+                Else
+                    Dim confirm As Integer = MsgBox(noOfdocuments.ToString + "  documents will be archived, continue?", vbYesNo + vbQuestion, "Concirm archive")
+                    If Not confirm = DialogResult.Yes Then
+                        Cursor = Cursors.Default
+                        Exit Sub
+                    End If
+                End If
+            Catch ex As Exception
+                MsgBox("Could not archive")
+                Cursor = Cursors.Default
+                Exit Sub
+            End Try
+
+            Try
+                Cursor = Cursors.WaitCursor
+                For i As Integer = 0 To dtgrdPackingLists.RowCount - 1
+                    Dim no As String = dtgrdPackingLists.Item(0, i).Value.ToString
+                    Dim list As PackingList = New PackingList
+                    Dim debt As Double = Val(list.getDebt(no))
+                    Dim status As String = list.getStatus(no)
+                    If debt = 0 And status = "COMPLETED" Then
+                        'archive
+                        list.archivePackingList(no)
+                    End If
+                Next
+                MsgBox(noOfdocuments.ToString + " document(s) archived successifuly")
+            Catch ex As Exception
+                '  MsgBox(ex.ToString)
+            End Try
+            refreshPackingLists()
+            Cursor = Cursors.Default
+        End If
+    End Sub
 End Class

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 01, 2021 at 01:17 PM
+-- Generation Time: Jul 02, 2021 at 01:55 PM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.1.26
 
@@ -1530,7 +1530,8 @@ ALTER TABLE `order_item`
 -- Indexes for table `packing_list`
 --
 ALTER TABLE `packing_list`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `issue_no` (`issue_no`);
 
 --
 -- Indexes for table `packing_list_details`
@@ -2024,7 +2025,7 @@ ALTER TABLE `return_to_supplier`
 -- AUTO_INCREMENT for table `roles`
 --
 ALTER TABLE `roles`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `role_priveledge`

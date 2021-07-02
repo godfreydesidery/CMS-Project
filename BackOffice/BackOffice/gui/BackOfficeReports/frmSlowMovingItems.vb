@@ -3,6 +3,7 @@ Imports System.IO
 Imports MigraDoc.DocumentObjectModel
 Imports MigraDoc.DocumentObjectModel.Tables
 Imports MigraDoc.Rendering
+Imports Microsoft.Office.Interop
 
 Public Class frmSlowMovingItems
 
@@ -581,15 +582,15 @@ Public Class frmSlowMovingItems
         column = table.AddColumn("0.7cm")
         column.Format.Alignment = ParagraphAlignment.Right
 
-        column = table.AddColumn("1.4cm")
-        column.Format.Alignment = ParagraphAlignment.Right
+        ' column = table.AddColumn("1.4cm")
+        ' column.Format.Alignment = ParagraphAlignment.Right
 
         'column = table.AddColumn("1.3cm")
         'column.Format.Alignment = ParagraphAlignment.Center
 
 
-        column = table.AddColumn("2.1cm")
-        column.Format.Alignment = ParagraphAlignment.Right
+        ' column = table.AddColumn("2.1cm")
+        ' column.Format.Alignment = ParagraphAlignment.Right
 
         column = table.AddColumn("2.2cm")
         column.Format.Alignment = ParagraphAlignment.Right
@@ -616,18 +617,15 @@ Public Class frmSlowMovingItems
         row.Cells(2).Format.Alignment = ParagraphAlignment.Left
         row.Cells(3).AddParagraph("Qty")
         row.Cells(3).Format.Alignment = ParagraphAlignment.Left
-        row.Cells(4).AddParagraph("Price@")
-        row.Cells(4).Format.Alignment = ParagraphAlignment.Left
-        'row.Cells(5).AddParagraph("Disc")
+        'row.Cells(4).AddParagraph("Price@")
+        'row.Cells(4).Format.Alignment = ParagraphAlignment.Left
+        ' row.Cells(5).AddParagraph("VAT")
         'row.Cells(5).Format.Alignment = ParagraphAlignment.Left
-        row.Cells(5).AddParagraph("VAT")
-        row.Cells(5).Format.Alignment = ParagraphAlignment.Left
-        row.Cells(6).AddParagraph("Amount")
-        row.Cells(6).Format.Alignment = ParagraphAlignment.Left
-        '  row.Cells(7).AddParagraph("Profit")
-        ' row.Cells(7).Format.Alignment = ParagraphAlignment.Left
+        row.Cells(4).AddParagraph("Amount")
+        row.Cells(4).Format.Alignment = ParagraphAlignment.Left
 
-        table.SetEdge(0, 0, 7, 1, Edge.Box, BorderStyle.Single, 0.75, Color.Empty)
+
+        table.SetEdge(0, 0, 5, 1, Edge.Box, BorderStyle.Single, 0.75, Color.Empty)
 
         Dim totalQty As Double = 0
 
@@ -639,7 +637,7 @@ Public Class frmSlowMovingItems
             Dim qty As String = dtgrdList.Item(3, i).Value
             Dim price As String = LCurrency.displayValue(dtgrdList.Item(4, i).Value)
             'Dim discount As String = LCurrency.displayValue(dtgrdList.Item(5, i).Value)
-            Dim vat As String = LCurrency.displayValue(dtgrdList.Item(6, i).Value)
+            Dim vat As String = LCurrency.displayValue(dtgrdList.Item(5, i).Value)
             Dim amount As String = LCurrency.displayValue(dtgrdList.Item(7, i).Value)
             '  Dim profit As String = LCurrency.displayValue(dtgrdList.Item(7, i).Value)
 
@@ -655,22 +653,22 @@ Public Class frmSlowMovingItems
             row.Cells(2).Format.Alignment = ParagraphAlignment.Left
             row.Cells(3).AddParagraph(qty)
             row.Cells(3).Format.Alignment = ParagraphAlignment.Left
-            row.Cells(4).AddParagraph(price)
-            row.Cells(4).Format.Alignment = ParagraphAlignment.Right
+            'row.Cells(4).AddParagraph(price)
+            'row.Cells(4).Format.Alignment = ParagraphAlignment.Right
             'row.Cells(5).AddParagraph(discount)
             'row.Cells(5).Format.Alignment = ParagraphAlignment.Right
-            row.Cells(5).AddParagraph(vat)
-            row.Cells(5).Format.Alignment = ParagraphAlignment.Right
-            row.Cells(6).AddParagraph(amount)
-            row.Cells(6).Format.Alignment = ParagraphAlignment.Right
+            'row.Cells(5).AddParagraph(vat)
+            'row.Cells(5).Format.Alignment = ParagraphAlignment.Right
+            row.Cells(4).AddParagraph(amount)
+            row.Cells(4).Format.Alignment = ParagraphAlignment.Right
             '   row.Cells(7).AddParagraph(profit)
             '  row.Cells(7).Format.Alignment = ParagraphAlignment.Right
 
-            table.SetEdge(0, 0, 7, 1, Edge.Box, BorderStyle.Single, 0.75, Color.Empty)
+            table.SetEdge(0, 0, 5, 1, Edge.Box, BorderStyle.Single, 0.75, Color.Empty)
 
         Next
 
-        table.SetEdge(0, 0, 7, 1, Edge.Box, BorderStyle.Single, 0.75, Color.Empty)
+        table.SetEdge(0, 0, 5, 1, Edge.Box, BorderStyle.Single, 0.75, Color.Empty)
 
         paragraph = section.AddParagraph()
 
@@ -684,15 +682,17 @@ Public Class frmSlowMovingItems
 
     End Sub
     Private Function refreshList()
+        Cursor = Cursors.WaitCursor
         dtgrdList.Rows.Clear()
         Try
             Dim conn As New MySqlConnection(Database.conString)
             Dim command As New MySqlCommand()
             Dim query As String = ""
-            query = "SELECT `sale`.`date` as `date`,`sale_details`.`item_code` AS `item_code`,SUM(`sale_details`.`selling_price`-`sale_details`.`discounted_price`) AS `discount`,`sale_details`.`selling_price`AS `price`,SUM(`sale_details`.`qty`) AS `qty`,SUM(`sale_details`.`tax_return`) AS `tax`,SUM(`sale_details`.`amount`) AS `amount` FROM `sale`,`sale_details` WHERE `sale`.`id`=`sale_details`.`sale_id` AND `sale`.`date` BETWEEN '" + dateStart.Text + "' AND '" + dateEnd.Text + "' GROUP BY `item_code`,`date`,`price` ORDER BY `qty` ASC"
+            'query = "SELECT `sale`.`date` as `date`,`sale_details`.`item_code` AS `item_code`,SUM(`sale_details`.`selling_price`-`sale_details`.`discounted_price`) AS `discount`,`sale_details`.`selling_price`AS `price`,SUM(`sale_details`.`qty`) AS `qty`,SUM(`sale_details`.`tax_return`) AS `tax`,SUM(`sale_details`.`amount`) AS `amount` FROM `sale`,`sale_details` WHERE `sale`.`id`=`sale_details`.`sale_id` AND `sale`.`date` BETWEEN '" + dateStart.Text + "' AND '" + dateEnd.Text + "' GROUP BY `item_code`,`date`,`price` ORDER BY `qty` DESC"
+            query = "SELECT `sale`.`date` as `date`,`sale_details`.`item_code` AS `item_code`,SUM(`sale_details`.`selling_price`-`sale_details`.`discounted_price`) AS `discount`,`sale_details`.`selling_price`AS `price`,SUM(`sale_details`.`qty`) AS `qty`,SUM(`sale_details`.`tax_return`) AS `tax`,SUM(`sale_details`.`selling_price`*`sale_details`.`qty`) AS `amount` FROM `sale`,`sale_details` WHERE `sale`.`id`=`sale_details`.`sale_id` AND `sale`.`date` BETWEEN '" + dateStart.Text + "' AND '" + dateEnd.Text + "' GROUP BY `item_code` ORDER BY `qty` ASC"
 
             If list <> "" Then
-                query = "SELECT `sale`.`date` as `date`,`sale_details`.`item_code` AS `item_code`,SUM(`sale_details`.`selling_price`-`sale_details`.`discounted_price`) AS `discount`,`sale_details`.`selling_price`AS `price`,SUM(`sale_details`.`qty`) AS `qty`,SUM(`sale_details`.`tax_return`) AS `tax`,SUM(`sale_details`.`amount`) AS `amount` FROM `sale`,`sale_details` WHERE `sale`.`id`=`sale_details`.`sale_id` AND `sale`.`date` BETWEEN '" + dateStart.Text + "' AND '" + dateEnd.Text + "' AND `item_code` IN (" + list + ") GROUP BY `item_code`,`date`,`price` ORDER BY `qty` ASC"
+                query = "SELECT `sale`.`date` as `date`,`sale_details`.`item_code` AS `item_code`,SUM(`sale_details`.`selling_price`-`sale_details`.`discounted_price`) AS `discount`,`sale_details`.`selling_price`AS `price`,SUM(`sale_details`.`qty`) AS `qty`,SUM(`sale_details`.`tax_return`) AS `tax`,SUM(`sale_details`.`amount`) AS `amount` FROM `sale`,`sale_details` WHERE `sale`.`id`=`sale_details`.`sale_id` AND `sale`.`date` BETWEEN '" + dateStart.Text + "' AND '" + dateEnd.Text + "' AND `item_code` IN (" + list + ") GROUP BY `item_code`,`date`,`price` ORDER BY `qty` DESC"
             End If
             If cmbSupplier.Text <> "" Then
                 ' query = "SELECT `items`.`supplier_id` AS `supplier_id`,`sale`.`date` as `date`,`sale_details`.`item_code` AS `item_code`,SUM(`sale_details`.`selling_price`-`sale_details`.`discounted_price`) AS `discount`,`sale_details`.`selling_price`AS `price`,SUM(`sale_details`.`qty`) AS `qty`,SUM(`sale_details`.`vat`) AS `vat`,SUM(`sale_details`.`amount`) AS `amount` FROM `sale`,`sale_details`,`items` WHERE `sale`.`id`=`sale_details`.`sale_id` AND `sale`.`date` BETWEEN '" + dateStart.Text + "' AND '" + dateEnd.Text + "' GROUP BY `item_code`,`date`,`price` ORDER BY `amount` DESC"
@@ -728,7 +728,7 @@ Public Class frmSlowMovingItems
                     End If
                 End If
 
-                Dim profit As String = (Val(amount) - (Val(qty) * Val(item.GL_COST_PRICE)) - Val(tax)).ToString
+                Dim profit As String = "" '(Val(amount) - (Val(qty) * Val(item.GL_COST_PRICE)) - Val(tax)).ToString
                 totalProfit = totalProfit + Val(profit)
 
                 total = total + Val(amount)
@@ -755,15 +755,15 @@ Public Class frmSlowMovingItems
                 dtgrdRow.Cells.Add(dtgrdCell)
 
                 dtgrdCell = New DataGridViewTextBoxCell()
-                dtgrdCell.Value = LCurrency.displayValue(price)
+                dtgrdCell.Value = "" ' LCurrency.displayValue(price)
                 dtgrdRow.Cells.Add(dtgrdCell)
 
                 dtgrdCell = New DataGridViewTextBoxCell()
-                dtgrdCell.Value = LCurrency.displayValue(discount)
+                dtgrdCell.Value = "" ' LCurrency.displayValue(discount)
                 dtgrdRow.Cells.Add(dtgrdCell)
 
                 dtgrdCell = New DataGridViewTextBoxCell()
-                dtgrdCell.Value = LCurrency.displayValue(tax)
+                dtgrdCell.Value = "" ' LCurrency.displayValue(tax)
                 dtgrdRow.Cells.Add(dtgrdCell)
 
                 dtgrdCell = New DataGridViewTextBoxCell()
@@ -771,7 +771,7 @@ Public Class frmSlowMovingItems
                 dtgrdRow.Cells.Add(dtgrdCell)
 
                 dtgrdCell = New DataGridViewTextBoxCell()
-                dtgrdCell.Value = LCurrency.displayValue(profit)
+                dtgrdCell.Value = "" ' LCurrency.displayValue(profit)
                 dtgrdRow.Cells.Add(dtgrdCell)
 
                 dtgrdList.Rows.Add(dtgrdRow)
@@ -782,6 +782,7 @@ Public Class frmSlowMovingItems
         Catch ex As Exception
             MsgBox(ex.Message)
         End Try
+        Cursor = Cursors.Default
         Return vbNull
     End Function
     Dim list As String = ""
@@ -812,7 +813,7 @@ Public Class frmSlowMovingItems
     Private Sub cmbSupplier_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbSupplier.SelectedIndexChanged
     End Sub
 
-    Private Sub btnPrintWithProfit_Click(sender As Object, e As EventArgs) Handles btnPrintWithProfit.Click
+    Private Sub btnPrintWithProfit_Click(sender As Object, e As EventArgs)
         printWithoutProfit()
     End Sub
 
@@ -834,5 +835,111 @@ Public Class frmSlowMovingItems
 
     Private Sub dtgrdList_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles dtgrdList.CellContentClick
 
+    End Sub
+
+    Private Sub btnExportToPDF_Click(sender As Object, e As EventArgs) Handles btnExportToPDF.Click
+        printWithoutProfit()
+    End Sub
+
+    Private Sub btnExportToExcel_Click(sender As Object, e As EventArgs) Handles btnExportToExcel.Click
+        Cursor = Cursors.WaitCursor
+        If dtgrdList.RowCount = 0 Then
+            MsgBox("Nothing to export")
+            Exit Sub
+        End If
+        Dim appXL As Excel.Application
+        Dim wbXl As Excel.Workbook
+        Dim shXL As Excel.Worksheet
+        Dim raXL As Excel.Range
+        ' Start Excel and get Application object.
+        appXL = CreateObject("Excel.Application")
+        appXL.Visible = True
+        ' Add a new workbook.
+        wbXl = appXL.Workbooks.Add
+        shXL = wbXl.ActiveSheet
+
+        Dim r As Integer = 1
+
+        shXL.Cells(r, 1).Value = "Slow Moving Items Report"
+
+        ' Format A1:D1 as bold, vertical alignment = center.
+        With shXL.Range("A" + r.ToString, "B" + r.ToString)
+            .Font.Bold = True
+            .VerticalAlignment = Excel.XlVAlign.xlVAlignCenter
+        End With
+        r = r + 1
+
+        ' Add table headers going cell by cell.
+        shXL.Cells(r, 1).Value = "From: " + dateStart.Text
+        shXL.Cells(r, 2).Value = "To: " + dateEnd.Text
+
+        ' Format A1:D1 as bold, vertical alignment = center.
+        With shXL.Range("A" + r.ToString, "B" + r.ToString)
+            .Font.Bold = True
+            .VerticalAlignment = Excel.XlVAlign.xlVAlignCenter
+        End With
+
+
+        ' Format A1:D1 as bold, vertical alignment = center.
+        With shXL.Range("A" + r.ToString)
+            .Font.Bold = True
+            .VerticalAlignment = Excel.XlVAlign.xlVAlignCenter
+        End With
+        r = r + 2
+        ' Add table headers going cell by cell.
+        shXL.Cells(r, 1).Value = "Code"
+        shXL.Cells(r, 2).Value = "Description"
+        shXL.Cells(r, 3).Value = "Stock"
+        shXL.Cells(r, 4).Value = "Qty"
+        shXL.Cells(r, 5).Value = "Amount"
+
+        ' Format A1:D1 as bold, vertical alignment = center.
+        With shXL.Range("A" + r.ToString, "E" + r.ToString)
+            .Font.Bold = True
+            .VerticalAlignment = Excel.XlVAlign.xlVAlignCenter
+        End With
+        r = r + 1
+        'raXL = shXL.Range("C1", "C7")
+        'raXL.Formula = "=A1 & "" "" & B1"
+        'Dim r As Integer = 3
+        For i As Integer = 0 To dtgrdList.RowCount - 1
+            With shXL
+                .Cells(r, 1).Value = dtgrdList.Item(0, i).Value
+                .Cells(r, 2).Value = dtgrdList.Item(1, i).Value
+                .Cells(r, 3).Value = dtgrdList.Item(2, i).Value
+                .Cells(r, 4).Value = dtgrdList.Item(3, i).Value
+                .Cells(r, 5).Value = dtgrdList.Item(7, i).Value
+            End With
+            r = r + 1
+        Next
+
+        ' AutoFit columns A:D.
+        raXL = shXL.Range("A1", "E1")
+        raXL.EntireColumn.AutoFit()
+
+        Dim strFileName As String = LSystem.saveToDesktop & "\Slow moving items Report " & dateStart.Text & dateEnd.Text & ".xls"
+        Dim blnFileOpen As Boolean = False
+        Try
+            Dim fileTemp As System.IO.FileStream = System.IO.File.OpenWrite(strFileName)
+            fileTemp.Close()
+        Catch ex As Exception
+            blnFileOpen = False
+        End Try
+        If System.IO.File.Exists(strFileName) Then
+            Try
+                'System.IO.File.Delete(strFileName)
+            Catch ex As Exception
+            End Try
+        End If
+        Try
+            wbXl.Save()
+        Catch ex As Exception
+
+        End Try
+        Cursor = Cursors.Default
+        Exit Sub
+Err_Handler:
+        MsgBox(Err.Description, vbCritical, "Error: " & Err.Number)
+        Cursor = Cursors.Default
     End Sub
 End Class

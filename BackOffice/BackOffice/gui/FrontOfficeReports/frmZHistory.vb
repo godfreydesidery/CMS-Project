@@ -879,7 +879,7 @@ Public Class frmZHistory
 
     End Sub
 
-    Private Sub btnPrint_Click(sender As Object, e As EventArgs) Handles btnPrint.Click
+    Private Sub btnPrint_Click(sender As Object, e As EventArgs)
         If txtFrom.Text = "" Or txtTo.Text = "" Then
             MsgBox("Select Range", vbOKOnly + vbExclamation, "")
             Exit Sub
@@ -893,5 +893,13 @@ Public Class frmZHistory
 
     Private Sub dateStart_ValueChanged(sender As Object, e As EventArgs) Handles dateStart.ValueChanged
 
+    End Sub
+
+    Private Sub btnExportToPDF_Click(sender As Object, e As EventArgs) Handles btnExportToPDF.Click
+        If txtFrom.Text = "" Or txtTo.Text = "" Then
+            MsgBox("Select Range", vbOKOnly + vbExclamation, "")
+            Exit Sub
+        End If
+        print()
     End Sub
 End Class

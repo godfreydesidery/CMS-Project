@@ -551,6 +551,7 @@ Partial Class frmSuppliers
         Me.btnDelete.Size = New System.Drawing.Size(77, 24)
         Me.btnDelete.Text = "Delete"
         Me.btnDelete.ToolTipText = "Deletes an existing record"
+        Me.btnDelete.Visible = False
         '
         'btnSave
         '
@@ -569,7 +570,7 @@ Partial Class frmSuppliers
         Me.btnBlock.Name = "btnBlock"
         Me.btnBlock.Size = New System.Drawing.Size(69, 24)
         Me.btnBlock.Text = "Block"
-        Me.btnBlock.ToolTipText = "Blocks a category, a blocked category can not be used"
+        Me.btnBlock.ToolTipText = "Blocks a supplier, a blocked supplier can not be used"
         '
         'btnUnblock
         '
@@ -579,7 +580,7 @@ Partial Class frmSuppliers
         Me.btnUnblock.Name = "btnUnblock"
         Me.btnUnblock.Size = New System.Drawing.Size(87, 24)
         Me.btnUnblock.Text = "Unblock"
-        Me.btnUnblock.ToolTipText = "Unblocks a blocked category"
+        Me.btnUnblock.ToolTipText = "Unblocks a blocked supplier"
         '
         'frmSuppliers
         '

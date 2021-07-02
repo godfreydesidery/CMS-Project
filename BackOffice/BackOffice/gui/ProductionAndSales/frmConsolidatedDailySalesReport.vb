@@ -574,6 +574,7 @@ Public Class frmConsolidatedDailySalesReport
         txtTotalBankcash.Text = ""
         txtTotalExpenditures.Text = ""
         txtTotalIssued.Text = ""
+        txtNetProfit.Text = ""
         dtgrdList.Rows.Clear()
 
     End Sub
@@ -755,6 +756,10 @@ Public Class frmConsolidatedDailySalesReport
         Exit Sub
 Err_Handler:
         MsgBox(Err.Description, vbCritical, "Error: " & Err.Number)
+
+    End Sub
+
+    Private Sub dtgrdList_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles dtgrdList.CellContentClick
 
     End Sub
 End Class
