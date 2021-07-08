@@ -124,7 +124,7 @@ Partial Class frmMaterialCategory
         Me.btnSearch.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btnSearch.Location = New System.Drawing.Point(262, 10)
         Me.btnSearch.Name = "btnSearch"
-        Me.btnSearch.Size = New System.Drawing.Size(100, 43)
+        Me.btnSearch.Size = New System.Drawing.Size(100, 40)
         Me.btnSearch.TabIndex = 16
         Me.btnSearch.Text = "Search"
         Me.btnSearch.UseVisualStyleBackColor = True

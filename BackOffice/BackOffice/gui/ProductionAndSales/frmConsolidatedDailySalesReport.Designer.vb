@@ -305,9 +305,9 @@ Partial Class frmConsolidatedDailySalesReport
         '
         'btnGenerate
         '
-        Me.btnGenerate.Location = New System.Drawing.Point(359, 118)
+        Me.btnGenerate.Location = New System.Drawing.Point(357, 112)
         Me.btnGenerate.Name = "btnGenerate"
-        Me.btnGenerate.Size = New System.Drawing.Size(104, 34)
+        Me.btnGenerate.Size = New System.Drawing.Size(100, 40)
         Me.btnGenerate.TabIndex = 80
         Me.btnGenerate.Text = "Run"
         Me.btnGenerate.UseVisualStyleBackColor = True

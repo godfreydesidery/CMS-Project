@@ -686,7 +686,6 @@ Public Class frmCustomProduction
         Dim loaded As Boolean = False
         materialsUsed.Clear()
         lstbxMaterials.Items.Clear()
-
         Dim conn As New MySqlConnection(Database.conString)
         Try
             Dim suppcommand As New MySqlCommand()
@@ -697,11 +696,9 @@ Public Class frmCustomProduction
             suppcommand.CommandType = CommandType.Text
             Dim reader As MySqlDataReader = suppcommand.ExecuteReader
 
-
             If reader.HasRows Then
                 While reader.Read
                     Dim materialUsed As New MaterialUsed
-
                     materialUsed.sn = reader.GetString("id")
                     materialUsed.id = reader.GetString("material_id")
                     materialUsed.materialCode = (New Material_).getMaterialCode(reader.GetString("material_id"))
@@ -709,15 +706,12 @@ Public Class frmCustomProduction
                     materialUsed.qty = reader.GetString("qty")
                     materialUsed.price = reader.GetString("price")
                     materialUsed.uom = (New Material_).getMaterialUom(reader.GetString("material_id"))
-                    materialUsed.summary = materialUsed.description.ToString() + " (" + materialUsed.qty.ToString + ") " + materialUsed.uom.ToString
-
+                    materialUsed.summary = materialUsed.description.ToString() + " [   " + materialUsed.qty.ToString + "   ] " + materialUsed.uom.ToString
                     materialsUsed.Add(materialUsed)
                     lstbxMaterials.Items.Add(materialUsed.summary)
-
                 End While
             End If
             conn.Close()
-
         Catch ex As Devart.Data.MySql.MySqlException
             materialsUsed.Clear()
             lstbxMaterials.Items.Clear()
@@ -1564,13 +1558,43 @@ Public Class frmCustomProduction
         Return success
     End Function
 
+    Private Function checkUnusedMaterials() As Boolean
+        'returns false if there are materials with zero qty
+        Dim conn As New MySqlConnection(Database.conString)
+        Try
+            Dim suppcommand As New MySqlCommand()
+            Dim query As String = "SELECT `qty` FROM `production_material` WHERE `production_id`='" + txtId.Text + "'"
+            conn.Open()
+            suppcommand.CommandText = query
+            suppcommand.Connection = conn
+            suppcommand.CommandType = CommandType.Text
+            Dim reader As MySqlDataReader = suppcommand.ExecuteReader
+            If reader.HasRows Then
+                While reader.Read
+                    If Val(reader.GetString("qty")) <= 0 Then
+                        Return False
+                    End If
+                End While
+            End If
+            conn.Close()
+        Catch ex As Devart.Data.MySql.MySqlException
+            MsgBox(ex.ToString)
+            Return False
+            Exit Function
+        End Try
+        Return True
+    End Function
+
     Private Sub btnProduction_Click(sender As Object, e As EventArgs) Handles btnApprove.Click
         Dim status As String = (New Production).getStatus(txtId.Text)
         If status = "PENDING" Then
+            If checkUnusedMaterials() = False Then
+                MsgBox("Could not approve, materials with zero quantity should be removed from the list of materials used", vbOKOnly + vbExclamation, "Invalid operation")
+                Exit Sub
+            End If
             Dim res As Integer = MsgBox("Approve production " + txtProductionNo.Text + " ?", vbYesNo + vbQuestion, "Approve production?")
             If res = DialogResult.Yes Then
                 approveProduction(txtProductionNo.Text)
-
                 status = (New Production).getStatus(txtId.Text)
                 txtStatus.Text = status
                 refreshFinishedProductsList()

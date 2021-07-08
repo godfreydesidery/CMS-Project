@@ -22,9 +22,9 @@ Partial Class frmDetailedDailySalesReport
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.txtTotal = New System.Windows.Forms.TextBox()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.cmbSalesPersons = New System.Windows.Forms.ComboBox()
@@ -187,7 +187,7 @@ Partial Class frmDetailedDailySalesReport
         '
         Me.Button1.Location = New System.Drawing.Point(228, 126)
         Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(104, 34)
+        Me.Button1.Size = New System.Drawing.Size(100, 40)
         Me.Button1.TabIndex = 65
         Me.Button1.Text = "Clear"
         Me.Button1.UseVisualStyleBackColor = True
@@ -196,9 +196,9 @@ Partial Class frmDetailedDailySalesReport
         '
         Me.lstCode.FormattingEnabled = True
         Me.lstCode.ItemHeight = 16
-        Me.lstCode.Location = New System.Drawing.Point(90, 166)
+        Me.lstCode.Location = New System.Drawing.Point(90, 182)
         Me.lstCode.Name = "lstCode"
-        Me.lstCode.Size = New System.Drawing.Size(242, 84)
+        Me.lstCode.Size = New System.Drawing.Size(242, 68)
         Me.lstCode.TabIndex = 64
         '
         'Label16
@@ -215,7 +215,7 @@ Partial Class frmDetailedDailySalesReport
         Me.btnAdd.Enabled = False
         Me.btnAdd.Location = New System.Drawing.Point(88, 126)
         Me.btnAdd.Name = "btnAdd"
-        Me.btnAdd.Size = New System.Drawing.Size(104, 34)
+        Me.btnAdd.Size = New System.Drawing.Size(100, 40)
         Me.btnAdd.TabIndex = 63
         Me.btnAdd.Text = "Add>>"
         Me.btnAdd.UseVisualStyleBackColor = True
@@ -232,7 +232,7 @@ Partial Class frmDetailedDailySalesReport
         '
         Me.btnSearchItem.Location = New System.Drawing.Point(235, 19)
         Me.btnSearchItem.Name = "btnSearchItem"
-        Me.btnSearchItem.Size = New System.Drawing.Size(97, 50)
+        Me.btnSearchItem.Size = New System.Drawing.Size(100, 40)
         Me.btnSearchItem.TabIndex = 62
         Me.btnSearchItem.Text = "Search"
         Me.btnSearchItem.UseVisualStyleBackColor = True
@@ -265,9 +265,9 @@ Partial Class frmDetailedDailySalesReport
         '
         'btnGenerate
         '
-        Me.btnGenerate.Location = New System.Drawing.Point(359, 99)
+        Me.btnGenerate.Location = New System.Drawing.Point(357, 93)
         Me.btnGenerate.Name = "btnGenerate"
-        Me.btnGenerate.Size = New System.Drawing.Size(104, 34)
+        Me.btnGenerate.Size = New System.Drawing.Size(100, 40)
         Me.btnGenerate.TabIndex = 49
         Me.btnGenerate.Text = "Run"
         Me.btnGenerate.UseVisualStyleBackColor = True
@@ -315,8 +315,8 @@ Partial Class frmDetailedDailySalesReport
         '
         'Column3
         '
-        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.Column3.DefaultCellStyle = DataGridViewCellStyle7
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.Column3.DefaultCellStyle = DataGridViewCellStyle1
         Me.Column3.FillWeight = 53.87895!
         Me.Column3.HeaderText = "Qty"
         Me.Column3.Name = "Column3"
@@ -325,8 +325,8 @@ Partial Class frmDetailedDailySalesReport
         '
         'Column4
         '
-        DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.Column4.DefaultCellStyle = DataGridViewCellStyle8
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.Column4.DefaultCellStyle = DataGridViewCellStyle2
         Me.Column4.FillWeight = 84.25756!
         Me.Column4.HeaderText = "Price"
         Me.Column4.Name = "Column4"
@@ -335,8 +335,8 @@ Partial Class frmDetailedDailySalesReport
         '
         'Column7
         '
-        DataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.Column7.DefaultCellStyle = DataGridViewCellStyle9
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.Column7.DefaultCellStyle = DataGridViewCellStyle3
         Me.Column7.FillWeight = 84.25756!
         Me.Column7.HeaderText = "Amount"
         Me.Column7.Name = "Column7"

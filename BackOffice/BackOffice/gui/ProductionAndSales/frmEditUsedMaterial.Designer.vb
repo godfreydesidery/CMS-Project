@@ -93,14 +93,14 @@ Partial Class frmEditUsedMaterial
         '
         Me.txtAdd.Location = New System.Drawing.Point(82, 123)
         Me.txtAdd.Name = "txtAdd"
-        Me.txtAdd.Size = New System.Drawing.Size(111, 22)
+        Me.txtAdd.Size = New System.Drawing.Size(99, 22)
         Me.txtAdd.TabIndex = 6
         '
         'txtDeduct
         '
         Me.txtDeduct.Location = New System.Drawing.Point(199, 123)
         Me.txtDeduct.Name = "txtDeduct"
-        Me.txtDeduct.Size = New System.Drawing.Size(113, 22)
+        Me.txtDeduct.Size = New System.Drawing.Size(102, 22)
         Me.txtDeduct.TabIndex = 7
         '
         'btnAdd
@@ -108,7 +108,7 @@ Partial Class frmEditUsedMaterial
         Me.btnAdd.Enabled = False
         Me.btnAdd.Location = New System.Drawing.Point(81, 156)
         Me.btnAdd.Name = "btnAdd"
-        Me.btnAdd.Size = New System.Drawing.Size(111, 44)
+        Me.btnAdd.Size = New System.Drawing.Size(100, 40)
         Me.btnAdd.TabIndex = 8
         Me.btnAdd.Text = "Add"
         Me.btnAdd.UseVisualStyleBackColor = True
@@ -118,7 +118,7 @@ Partial Class frmEditUsedMaterial
         Me.btnDeduct.Enabled = False
         Me.btnDeduct.Location = New System.Drawing.Point(201, 156)
         Me.btnDeduct.Name = "btnDeduct"
-        Me.btnDeduct.Size = New System.Drawing.Size(111, 44)
+        Me.btnDeduct.Size = New System.Drawing.Size(100, 40)
         Me.btnDeduct.TabIndex = 9
         Me.btnDeduct.Text = "Deduct"
         Me.btnDeduct.UseVisualStyleBackColor = True
@@ -128,7 +128,7 @@ Partial Class frmEditUsedMaterial
         Me.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel
         Me.btnCancel.Location = New System.Drawing.Point(318, 156)
         Me.btnCancel.Name = "btnCancel"
-        Me.btnCancel.Size = New System.Drawing.Size(111, 44)
+        Me.btnCancel.Size = New System.Drawing.Size(100, 40)
         Me.btnCancel.TabIndex = 10
         Me.btnCancel.Text = "Cancel"
         Me.btnCancel.UseVisualStyleBackColor = True
@@ -146,7 +146,7 @@ Partial Class frmEditUsedMaterial
         Me.frmRemove.DialogResult = System.Windows.Forms.DialogResult.Cancel
         Me.frmRemove.Location = New System.Drawing.Point(315, 58)
         Me.frmRemove.Name = "frmRemove"
-        Me.frmRemove.Size = New System.Drawing.Size(111, 44)
+        Me.frmRemove.Size = New System.Drawing.Size(100, 40)
         Me.frmRemove.TabIndex = 12
         Me.frmRemove.Text = "Remove"
         Me.frmRemove.UseVisualStyleBackColor = True

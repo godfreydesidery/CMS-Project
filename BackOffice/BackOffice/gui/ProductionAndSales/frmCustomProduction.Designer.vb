@@ -68,20 +68,20 @@ Partial Class frmCustomProduction
         Me.btnClose = New System.Windows.Forms.Button()
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.ToolStrip1 = New System.Windows.Forms.ToolStrip()
-        Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
-        Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
-        Me.ToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator()
-        Me.ToolStripSeparator4 = New System.Windows.Forms.ToolStripSeparator()
-        Me.btnAddUpdate = New System.Windows.Forms.Button()
         Me.btnNew = New System.Windows.Forms.ToolStripButton()
         Me.btnEdit = New System.Windows.Forms.ToolStripButton()
         Me.btnClear = New System.Windows.Forms.ToolStripButton()
         Me.btnSave = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
+        Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
+        Me.ToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator()
+        Me.ToolStripSeparator4 = New System.Windows.Forms.ToolStripSeparator()
         Me.btnCancel = New System.Windows.Forms.ToolStripButton()
         Me.btnApprove = New System.Windows.Forms.ToolStripButton()
         Me.btnPrint = New System.Windows.Forms.ToolStripButton()
         Me.btnComplete = New System.Windows.Forms.ToolStripButton()
         Me.btnArchive = New System.Windows.Forms.ToolStripButton()
+        Me.btnAddUpdate = New System.Windows.Forms.Button()
         CType(Me.dtgrdProductionList, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
         CType(Me.dtgrdItemList, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -127,33 +127,37 @@ Partial Class frmCustomProduction
         '
         'txtProductionNo
         '
+        Me.txtProductionNo.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtProductionNo.Location = New System.Drawing.Point(110, 25)
         Me.txtProductionNo.Name = "txtProductionNo"
-        Me.txtProductionNo.Size = New System.Drawing.Size(138, 22)
+        Me.txtProductionNo.Size = New System.Drawing.Size(138, 24)
         Me.txtProductionNo.TabIndex = 4
         '
         'txtBatchSize
         '
+        Me.txtBatchSize.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtBatchSize.Location = New System.Drawing.Point(110, 98)
         Me.txtBatchSize.Name = "txtBatchSize"
         Me.txtBatchSize.ReadOnly = True
-        Me.txtBatchSize.Size = New System.Drawing.Size(138, 22)
+        Me.txtBatchSize.Size = New System.Drawing.Size(138, 24)
         Me.txtBatchSize.TabIndex = 5
         '
         'txtProductName
         '
+        Me.txtProductName.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtProductName.Location = New System.Drawing.Point(110, 70)
         Me.txtProductName.Name = "txtProductName"
         Me.txtProductName.ReadOnly = True
-        Me.txtProductName.Size = New System.Drawing.Size(241, 22)
+        Me.txtProductName.Size = New System.Drawing.Size(241, 24)
         Me.txtProductName.TabIndex = 6
         '
         'txtStatus
         '
+        Me.txtStatus.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtStatus.Location = New System.Drawing.Point(110, 157)
         Me.txtStatus.Name = "txtStatus"
         Me.txtStatus.ReadOnly = True
-        Me.txtStatus.Size = New System.Drawing.Size(138, 22)
+        Me.txtStatus.Size = New System.Drawing.Size(138, 24)
         Me.txtStatus.TabIndex = 7
         '
         'Label5
@@ -168,18 +172,19 @@ Partial Class frmCustomProduction
         'cmbUom
         '
         Me.cmbUom.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cmbUom.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmbUom.FormattingEnabled = True
         Me.cmbUom.Items.AddRange(New Object() {"", "KG", "LTR", "PCS"})
         Me.cmbUom.Location = New System.Drawing.Point(110, 127)
         Me.cmbUom.Name = "cmbUom"
-        Me.cmbUom.Size = New System.Drawing.Size(138, 24)
+        Me.cmbUom.Size = New System.Drawing.Size(138, 26)
         Me.cmbUom.TabIndex = 9
         '
         'btnSearch
         '
         Me.btnSearch.Location = New System.Drawing.Point(250, 24)
         Me.btnSearch.Name = "btnSearch"
-        Me.btnSearch.Size = New System.Drawing.Size(101, 40)
+        Me.btnSearch.Size = New System.Drawing.Size(100, 40)
         Me.btnSearch.TabIndex = 10
         Me.btnSearch.Text = "Search"
         Me.btnSearch.UseVisualStyleBackColor = True
@@ -229,6 +234,7 @@ Partial Class frmCustomProduction
         '
         Me.chklstMaterials.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.chklstMaterials.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.chklstMaterials.FormattingEnabled = True
         Me.chklstMaterials.Location = New System.Drawing.Point(10, 309)
         Me.chklstMaterials.Name = "chklstMaterials"
@@ -239,17 +245,18 @@ Partial Class frmCustomProduction
         '
         Me.lstbxMaterials.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.lstbxMaterials.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lstbxMaterials.FormattingEnabled = True
-        Me.lstbxMaterials.ItemHeight = 16
+        Me.lstbxMaterials.ItemHeight = 18
         Me.lstbxMaterials.Location = New System.Drawing.Point(506, 309)
         Me.lstbxMaterials.Name = "lstbxMaterials"
-        Me.lstbxMaterials.Size = New System.Drawing.Size(487, 468)
+        Me.lstbxMaterials.Size = New System.Drawing.Size(487, 454)
         Me.lstbxMaterials.TabIndex = 16
         '
         'Label7
         '
         Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(560, 286)
+        Me.Label7.Location = New System.Drawing.Point(506, 289)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(250, 17)
         Me.Label7.TabIndex = 17
@@ -282,18 +289,18 @@ Partial Class frmCustomProduction
         'btnAdd
         '
         Me.btnAdd.Enabled = False
-        Me.btnAdd.Location = New System.Drawing.Point(251, 99)
+        Me.btnAdd.Location = New System.Drawing.Point(251, 100)
         Me.btnAdd.Name = "btnAdd"
-        Me.btnAdd.Size = New System.Drawing.Size(120, 55)
+        Me.btnAdd.Size = New System.Drawing.Size(120, 40)
         Me.btnAdd.TabIndex = 111
         Me.btnAdd.Text = "Add/Update"
         Me.btnAdd.UseVisualStyleBackColor = True
         '
         'btnReset
         '
-        Me.btnReset.Location = New System.Drawing.Point(377, 99)
+        Me.btnReset.Location = New System.Drawing.Point(386, 100)
         Me.btnReset.Name = "btnReset"
-        Me.btnReset.Size = New System.Drawing.Size(120, 55)
+        Me.btnReset.Size = New System.Drawing.Size(100, 40)
         Me.btnReset.TabIndex = 112
         Me.btnReset.Text = "Reset"
         Me.btnReset.UseVisualStyleBackColor = True
@@ -309,10 +316,11 @@ Partial Class frmCustomProduction
         '
         'txtQty
         '
+        Me.txtQty.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtQty.Location = New System.Drawing.Point(89, 99)
         Me.txtQty.MaxLength = 50
         Me.txtQty.Name = "txtQty"
-        Me.txtQty.Size = New System.Drawing.Size(115, 22)
+        Me.txtQty.Size = New System.Drawing.Size(115, 24)
         Me.txtQty.TabIndex = 109
         '
         'Label9
@@ -333,11 +341,11 @@ Partial Class frmCustomProduction
         Me.dtgrdItemList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.dtgrdItemList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dtgrdItemList.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn1, Me.DataGridViewTextBoxColumn2, Me.DataGridViewTextBoxColumn3, Me.Column4, Me.Column5})
-        Me.dtgrdItemList.Location = New System.Drawing.Point(5, 176)
+        Me.dtgrdItemList.Location = New System.Drawing.Point(5, 146)
         Me.dtgrdItemList.Name = "dtgrdItemList"
         Me.dtgrdItemList.ReadOnly = True
         Me.dtgrdItemList.RowTemplate.Height = 24
-        Me.dtgrdItemList.Size = New System.Drawing.Size(492, 236)
+        Me.dtgrdItemList.Size = New System.Drawing.Size(492, 266)
         Me.dtgrdItemList.TabIndex = 107
         '
         'DataGridViewTextBoxColumn1
@@ -373,17 +381,18 @@ Partial Class frmCustomProduction
         '
         'cmbDescription
         '
+        Me.cmbDescription.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmbDescription.FormattingEnabled = True
         Me.cmbDescription.Location = New System.Drawing.Point(89, 69)
         Me.cmbDescription.Name = "cmbDescription"
-        Me.cmbDescription.Size = New System.Drawing.Size(408, 24)
+        Me.cmbDescription.Size = New System.Drawing.Size(408, 26)
         Me.cmbDescription.TabIndex = 106
         '
         'btnSearchItem
         '
         Me.btnSearchItem.Location = New System.Drawing.Point(210, 5)
         Me.btnSearchItem.Name = "btnSearchItem"
-        Me.btnSearchItem.Size = New System.Drawing.Size(120, 53)
+        Me.btnSearchItem.Size = New System.Drawing.Size(100, 40)
         Me.btnSearchItem.TabIndex = 105
         Me.btnSearchItem.Text = "Search"
         Me.btnSearchItem.UseVisualStyleBackColor = True
@@ -399,10 +408,11 @@ Partial Class frmCustomProduction
         '
         'txtBarCode
         '
+        Me.txtBarCode.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtBarCode.Location = New System.Drawing.Point(89, 5)
         Me.txtBarCode.MaxLength = 50
         Me.txtBarCode.Name = "txtBarCode"
-        Me.txtBarCode.Size = New System.Drawing.Size(115, 22)
+        Me.txtBarCode.Size = New System.Drawing.Size(115, 24)
         Me.txtBarCode.TabIndex = 104
         '
         'Label13
@@ -425,10 +435,11 @@ Partial Class frmCustomProduction
         '
         'txtItemCode
         '
+        Me.txtItemCode.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtItemCode.Location = New System.Drawing.Point(89, 36)
         Me.txtItemCode.MaxLength = 50
         Me.txtItemCode.Name = "txtItemCode"
-        Me.txtItemCode.Size = New System.Drawing.Size(115, 22)
+        Me.txtItemCode.Size = New System.Drawing.Size(115, 24)
         Me.txtItemCode.TabIndex = 102
         '
         'Label8
@@ -450,10 +461,11 @@ Partial Class frmCustomProduction
         '
         'txtDate
         '
+        Me.txtDate.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtDate.Location = New System.Drawing.Point(110, 185)
         Me.txtDate.Name = "txtDate"
         Me.txtDate.ReadOnly = True
-        Me.txtDate.Size = New System.Drawing.Size(138, 22)
+        Me.txtDate.Size = New System.Drawing.Size(138, 24)
         Me.txtDate.TabIndex = 29
         '
         'Label10
@@ -508,36 +520,6 @@ Partial Class frmCustomProduction
         Me.ToolStrip1.TabIndex = 102
         Me.ToolStrip1.Text = "ToolStrip1"
         '
-        'ToolStripSeparator1
-        '
-        Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
-        Me.ToolStripSeparator1.Size = New System.Drawing.Size(6, 27)
-        '
-        'ToolStripSeparator2
-        '
-        Me.ToolStripSeparator2.Name = "ToolStripSeparator2"
-        Me.ToolStripSeparator2.Size = New System.Drawing.Size(6, 27)
-        '
-        'ToolStripSeparator3
-        '
-        Me.ToolStripSeparator3.Name = "ToolStripSeparator3"
-        Me.ToolStripSeparator3.Size = New System.Drawing.Size(6, 27)
-        '
-        'ToolStripSeparator4
-        '
-        Me.ToolStripSeparator4.Name = "ToolStripSeparator4"
-        Me.ToolStripSeparator4.Size = New System.Drawing.Size(6, 27)
-        '
-        'btnAddUpdate
-        '
-        Me.btnAddUpdate.Enabled = False
-        Me.btnAddUpdate.Location = New System.Drawing.Point(379, 237)
-        Me.btnAddUpdate.Name = "btnAddUpdate"
-        Me.btnAddUpdate.Size = New System.Drawing.Size(121, 66)
-        Me.btnAddUpdate.TabIndex = 14
-        Me.btnAddUpdate.Text = "Add Selected Materials"
-        Me.btnAddUpdate.UseVisualStyleBackColor = True
-        '
         'btnNew
         '
         Me.btnNew.Image = Global.BackOffice.My.Resources.Resources.new_file
@@ -573,6 +555,26 @@ Partial Class frmCustomProduction
         Me.btnSave.Size = New System.Drawing.Size(64, 24)
         Me.btnSave.Text = "Save"
         Me.btnSave.ToolTipText = "Save details of a new or existing document"
+        '
+        'ToolStripSeparator1
+        '
+        Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
+        Me.ToolStripSeparator1.Size = New System.Drawing.Size(6, 27)
+        '
+        'ToolStripSeparator2
+        '
+        Me.ToolStripSeparator2.Name = "ToolStripSeparator2"
+        Me.ToolStripSeparator2.Size = New System.Drawing.Size(6, 27)
+        '
+        'ToolStripSeparator3
+        '
+        Me.ToolStripSeparator3.Name = "ToolStripSeparator3"
+        Me.ToolStripSeparator3.Size = New System.Drawing.Size(6, 27)
+        '
+        'ToolStripSeparator4
+        '
+        Me.ToolStripSeparator4.Name = "ToolStripSeparator4"
+        Me.ToolStripSeparator4.Size = New System.Drawing.Size(6, 27)
         '
         'btnCancel
         '
@@ -617,6 +619,16 @@ Partial Class frmCustomProduction
         Me.btnArchive.Size = New System.Drawing.Size(82, 24)
         Me.btnArchive.Text = "Archive"
         Me.btnArchive.ToolTipText = "Sends a completed document to archives for future references"
+        '
+        'btnAddUpdate
+        '
+        Me.btnAddUpdate.Enabled = False
+        Me.btnAddUpdate.Location = New System.Drawing.Point(379, 237)
+        Me.btnAddUpdate.Name = "btnAddUpdate"
+        Me.btnAddUpdate.Size = New System.Drawing.Size(121, 66)
+        Me.btnAddUpdate.TabIndex = 14
+        Me.btnAddUpdate.Text = "Add Selected Materials"
+        Me.btnAddUpdate.UseVisualStyleBackColor = True
         '
         'frmCustomProduction
         '

@@ -23,8 +23,8 @@ Partial Class frmPackingList
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle10 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmPackingList))
         Me.Label1 = New System.Windows.Forms.Label()
         Me.txtIssueNo = New System.Windows.Forms.TextBox()
@@ -124,12 +124,13 @@ Partial Class frmPackingList
         Me.btnApprove = New System.Windows.Forms.ToolStripButton()
         Me.btnPrint = New System.Windows.Forms.ToolStripButton()
         Me.btnComplete = New System.Windows.Forms.ToolStripButton()
+        Me.btnClearDebt = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripSeparator6 = New System.Windows.Forms.ToolStripSeparator()
         Me.btnArchive = New System.Windows.Forms.ToolStripButton()
+        Me.btnArchiveAll = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripSeparator5 = New System.Windows.Forms.ToolStripSeparator()
         Me.btnPrintReport = New System.Windows.Forms.ToolStripButton()
-        Me.btnClearDebt = New System.Windows.Forms.ToolStripButton()
         Me.btnBack = New System.Windows.Forms.Button()
-        Me.btnArchiveAll = New System.Windows.Forms.ToolStripButton()
         CType(Me.dtgrdPackingLists, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
         CType(Me.dtgrdItemList, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -195,7 +196,7 @@ Partial Class frmPackingList
         '
         Me.btnSearch.Location = New System.Drawing.Point(212, 13)
         Me.btnSearch.Name = "btnSearch"
-        Me.btnSearch.Size = New System.Drawing.Size(81, 50)
+        Me.btnSearch.Size = New System.Drawing.Size(100, 40)
         Me.btnSearch.TabIndex = 9
         Me.btnSearch.Text = "&Search"
         Me.btnSearch.UseVisualStyleBackColor = True
@@ -218,9 +219,9 @@ Partial Class frmPackingList
         '
         'DataGridViewTextBoxColumn1
         '
-        DataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.White
-        DataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.Black
-        Me.DataGridViewTextBoxColumn1.DefaultCellStyle = DataGridViewCellStyle9
+        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.White
+        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black
+        Me.DataGridViewTextBoxColumn1.DefaultCellStyle = DataGridViewCellStyle1
         Me.DataGridViewTextBoxColumn1.FillWeight = 42.63959!
         Me.DataGridViewTextBoxColumn1.HeaderText = "Issue No"
         Me.DataGridViewTextBoxColumn1.Name = "DataGridViewTextBoxColumn1"
@@ -510,8 +511,8 @@ Partial Class frmPackingList
         '
         'Column10
         '
-        DataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.Column10.DefaultCellStyle = DataGridViewCellStyle10
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.Column10.DefaultCellStyle = DataGridViewCellStyle2
         Me.Column10.FillWeight = 89.8288!
         Me.Column10.HeaderText = "Price"
         Me.Column10.Name = "Column10"
@@ -754,7 +755,7 @@ Partial Class frmPackingList
         Me.btnAdd.Enabled = False
         Me.btnAdd.Location = New System.Drawing.Point(292, 138)
         Me.btnAdd.Name = "btnAdd"
-        Me.btnAdd.Size = New System.Drawing.Size(120, 46)
+        Me.btnAdd.Size = New System.Drawing.Size(120, 40)
         Me.btnAdd.TabIndex = 53
         Me.btnAdd.Text = "Add/Update"
         Me.btnAdd.UseVisualStyleBackColor = True
@@ -773,7 +774,7 @@ Partial Class frmPackingList
         '
         Me.btnReset.Location = New System.Drawing.Point(292, 194)
         Me.btnReset.Name = "btnReset"
-        Me.btnReset.Size = New System.Drawing.Size(120, 45)
+        Me.btnReset.Size = New System.Drawing.Size(100, 40)
         Me.btnReset.TabIndex = 54
         Me.btnReset.Text = "Reset"
         Me.btnReset.UseVisualStyleBackColor = True
@@ -802,7 +803,7 @@ Partial Class frmPackingList
         '
         Me.btnSearchItem.Location = New System.Drawing.Point(238, 4)
         Me.btnSearchItem.Name = "btnSearchItem"
-        Me.btnSearchItem.Size = New System.Drawing.Size(120, 54)
+        Me.btnSearchItem.Size = New System.Drawing.Size(100, 40)
         Me.btnSearchItem.TabIndex = 51
         Me.btnSearchItem.Text = "Search"
         Me.btnSearchItem.UseVisualStyleBackColor = True
@@ -950,7 +951,7 @@ Partial Class frmPackingList
         'ToolStrip1
         '
         Me.ToolStrip1.ImageScalingSize = New System.Drawing.Size(20, 20)
-        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.btnNew, Me.btnEdit, Me.btnClear, Me.btnSave, Me.ToolStripSeparator1, Me.ToolStripSeparator2, Me.ToolStripSeparator3, Me.ToolStripSeparator4, Me.btnCancel, Me.btnApprove, Me.btnPrint, Me.btnComplete, Me.btnArchive, Me.ToolStripSeparator5, Me.btnArchiveAll, Me.btnPrintReport, Me.btnClearDebt})
+        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.btnNew, Me.btnEdit, Me.btnClear, Me.btnSave, Me.ToolStripSeparator1, Me.ToolStripSeparator2, Me.ToolStripSeparator3, Me.ToolStripSeparator4, Me.btnCancel, Me.btnApprove, Me.btnPrint, Me.btnComplete, Me.btnClearDebt, Me.ToolStripSeparator6, Me.btnArchive, Me.btnArchiveAll, Me.ToolStripSeparator5, Me.btnPrintReport})
         Me.ToolStrip1.Location = New System.Drawing.Point(0, 0)
         Me.ToolStrip1.Name = "ToolStrip1"
         Me.ToolStrip1.Size = New System.Drawing.Size(1501, 27)
@@ -1049,6 +1050,21 @@ Partial Class frmPackingList
         Me.btnComplete.Text = "Complete and post"
         Me.btnComplete.ToolTipText = "Complete sales made from the packing list"
         '
+        'btnClearDebt
+        '
+        Me.btnClearDebt.Enabled = False
+        Me.btnClearDebt.Image = Global.BackOffice.My.Resources.Resources.money
+        Me.btnClearDebt.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.btnClearDebt.Name = "btnClearDebt"
+        Me.btnClearDebt.Size = New System.Drawing.Size(92, 24)
+        Me.btnClearDebt.Text = "Pay Debt"
+        Me.btnClearDebt.ToolTipText = "Receive debts from sales persons"
+        '
+        'ToolStripSeparator6
+        '
+        Me.ToolStripSeparator6.Name = "ToolStripSeparator6"
+        Me.ToolStripSeparator6.Size = New System.Drawing.Size(6, 27)
+        '
         'btnArchive
         '
         Me.btnArchive.Image = CType(resources.GetObject("btnArchive.Image"), System.Drawing.Image)
@@ -1057,6 +1073,15 @@ Partial Class frmPackingList
         Me.btnArchive.Size = New System.Drawing.Size(82, 24)
         Me.btnArchive.Text = "Archive"
         Me.btnArchive.ToolTipText = "Sends a completed packing list to archives for future references"
+        '
+        'btnArchiveAll
+        '
+        Me.btnArchiveAll.Image = CType(resources.GetObject("btnArchiveAll.Image"), System.Drawing.Image)
+        Me.btnArchiveAll.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.btnArchiveAll.Name = "btnArchiveAll"
+        Me.btnArchiveAll.Size = New System.Drawing.Size(102, 24)
+        Me.btnArchiveAll.Text = "Archive all"
+        Me.btnArchiveAll.ToolTipText = "Sends all completed and cleared packing list to archives for future references"
         '
         'ToolStripSeparator5
         '
@@ -1072,16 +1097,6 @@ Partial Class frmPackingList
         Me.btnPrintReport.Text = "Print Report"
         Me.btnPrintReport.ToolTipText = "Print packing list as report to pdf"
         '
-        'btnClearDebt
-        '
-        Me.btnClearDebt.Enabled = False
-        Me.btnClearDebt.Image = Global.BackOffice.My.Resources.Resources.money
-        Me.btnClearDebt.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.btnClearDebt.Name = "btnClearDebt"
-        Me.btnClearDebt.Size = New System.Drawing.Size(92, 24)
-        Me.btnClearDebt.Text = "Pay Debt"
-        Me.btnClearDebt.ToolTipText = "Receive debts from sales persons"
-        '
         'btnBack
         '
         Me.btnBack.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
@@ -1092,15 +1107,6 @@ Partial Class frmPackingList
         Me.btnBack.Size = New System.Drawing.Size(100, 40)
         Me.btnBack.TabIndex = 92
         Me.btnBack.UseVisualStyleBackColor = True
-        '
-        'btnArchiveAll
-        '
-        Me.btnArchiveAll.Image = CType(resources.GetObject("btnArchiveAll.Image"), System.Drawing.Image)
-        Me.btnArchiveAll.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.btnArchiveAll.Name = "btnArchiveAll"
-        Me.btnArchiveAll.Size = New System.Drawing.Size(102, 24)
-        Me.btnArchiveAll.Text = "Archive all"
-        Me.btnArchiveAll.ToolTipText = "Sends all completed and cleared packing list to archives for future references"
         '
         'frmPackingList
         '
@@ -1240,4 +1246,5 @@ Partial Class frmPackingList
     Friend WithEvents DataGridViewTextBoxColumn2 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn3 As DataGridViewTextBoxColumn
     Friend WithEvents btnArchiveAll As ToolStripButton
+    Friend WithEvents ToolStripSeparator6 As ToolStripSeparator
 End Class

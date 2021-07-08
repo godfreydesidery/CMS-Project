@@ -56,7 +56,7 @@ Partial Class frmDebtPaymentHistory
         '
         Me.btnPrint.Location = New System.Drawing.Point(469, 68)
         Me.btnPrint.Name = "btnPrint"
-        Me.btnPrint.Size = New System.Drawing.Size(154, 34)
+        Me.btnPrint.Size = New System.Drawing.Size(154, 40)
         Me.btnPrint.TabIndex = 91
         Me.btnPrint.Text = "Export to PDF"
         Me.btnPrint.UseVisualStyleBackColor = True
@@ -188,7 +188,7 @@ Partial Class frmDebtPaymentHistory
         '
         Me.btnGenerate.Location = New System.Drawing.Point(359, 68)
         Me.btnGenerate.Name = "btnGenerate"
-        Me.btnGenerate.Size = New System.Drawing.Size(104, 34)
+        Me.btnGenerate.Size = New System.Drawing.Size(100, 40)
         Me.btnGenerate.TabIndex = 87
         Me.btnGenerate.Text = "Run"
         Me.btnGenerate.UseVisualStyleBackColor = True

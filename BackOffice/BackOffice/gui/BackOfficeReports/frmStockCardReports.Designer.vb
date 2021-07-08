@@ -23,6 +23,12 @@ Partial Class frmStockCardReports
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.cmbSupplier = New System.Windows.Forms.ComboBox()
+        Me.Label7 = New System.Windows.Forms.Label()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.dateStart = New System.Windows.Forms.DateTimePicker()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.dateEnd = New System.Windows.Forms.DateTimePicker()
         Me.Panel3 = New System.Windows.Forms.Panel()
         Me.cmbDescription = New System.Windows.Forms.ComboBox()
         Me.Button1 = New System.Windows.Forms.Button()
@@ -34,12 +40,6 @@ Partial Class frmStockCardReports
         Me.Label11 = New System.Windows.Forms.Label()
         Me.txtItemCodeS = New System.Windows.Forms.TextBox()
         Me.Label10 = New System.Windows.Forms.Label()
-        Me.cmbSupplier = New System.Windows.Forms.ComboBox()
-        Me.Label7 = New System.Windows.Forms.Label()
-        Me.Label1 = New System.Windows.Forms.Label()
-        Me.dateStart = New System.Windows.Forms.DateTimePicker()
-        Me.Label2 = New System.Windows.Forms.Label()
-        Me.dateEnd = New System.Windows.Forms.DateTimePicker()
         Me.btnRun = New System.Windows.Forms.Button()
         Me.dtgrdList = New System.Windows.Forms.DataGridView()
         Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -72,112 +72,6 @@ Partial Class frmStockCardReports
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(377, 91)
         Me.Panel1.TabIndex = 65
-        '
-        'Panel3
-        '
-        Me.Panel3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-        Me.Panel3.Controls.Add(Me.cmbDescription)
-        Me.Panel3.Controls.Add(Me.Button1)
-        Me.Panel3.Controls.Add(Me.lstCode)
-        Me.Panel3.Controls.Add(Me.Label16)
-        Me.Panel3.Controls.Add(Me.btnAdd)
-        Me.Panel3.Controls.Add(Me.txtBarCode)
-        Me.Panel3.Controls.Add(Me.btnSearchItem)
-        Me.Panel3.Controls.Add(Me.Label11)
-        Me.Panel3.Controls.Add(Me.txtItemCodeS)
-        Me.Panel3.Controls.Add(Me.Label10)
-        Me.Panel3.Location = New System.Drawing.Point(10, 147)
-        Me.Panel3.Name = "Panel3"
-        Me.Panel3.Size = New System.Drawing.Size(377, 315)
-        Me.Panel3.TabIndex = 64
-        '
-        'cmbDescription
-        '
-        Me.cmbDescription.FormattingEnabled = True
-        Me.cmbDescription.Location = New System.Drawing.Point(3, 104)
-        Me.cmbDescription.Name = "cmbDescription"
-        Me.cmbDescription.Size = New System.Drawing.Size(326, 24)
-        Me.cmbDescription.TabIndex = 101
-        '
-        'Button1
-        '
-        Me.Button1.Location = New System.Drawing.Point(113, 134)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(104, 51)
-        Me.Button1.TabIndex = 65
-        Me.Button1.Text = "Clear"
-        Me.Button1.UseVisualStyleBackColor = True
-        '
-        'lstCode
-        '
-        Me.lstCode.FormattingEnabled = True
-        Me.lstCode.ItemHeight = 16
-        Me.lstCode.Location = New System.Drawing.Point(3, 191)
-        Me.lstCode.Name = "lstCode"
-        Me.lstCode.Size = New System.Drawing.Size(214, 84)
-        Me.lstCode.TabIndex = 64
-        '
-        'Label16
-        '
-        Me.Label16.AutoSize = True
-        Me.Label16.Location = New System.Drawing.Point(3, 2)
-        Me.Label16.Name = "Label16"
-        Me.Label16.Size = New System.Drawing.Size(67, 17)
-        Me.Label16.TabIndex = 60
-        Me.Label16.Text = "Bar Code"
-        '
-        'btnAdd
-        '
-        Me.btnAdd.Enabled = False
-        Me.btnAdd.Location = New System.Drawing.Point(3, 134)
-        Me.btnAdd.Name = "btnAdd"
-        Me.btnAdd.Size = New System.Drawing.Size(104, 51)
-        Me.btnAdd.TabIndex = 63
-        Me.btnAdd.Text = "Add>>"
-        Me.btnAdd.UseVisualStyleBackColor = True
-        '
-        'txtBarCode
-        '
-        Me.txtBarCode.Location = New System.Drawing.Point(84, 4)
-        Me.txtBarCode.MaxLength = 50
-        Me.txtBarCode.Name = "txtBarCode"
-        Me.txtBarCode.Size = New System.Drawing.Size(135, 22)
-        Me.txtBarCode.TabIndex = 61
-        '
-        'btnSearchItem
-        '
-        Me.btnSearchItem.Location = New System.Drawing.Point(225, 4)
-        Me.btnSearchItem.Name = "btnSearchItem"
-        Me.btnSearchItem.Size = New System.Drawing.Size(104, 50)
-        Me.btnSearchItem.TabIndex = 62
-        Me.btnSearchItem.Text = "Search"
-        Me.btnSearchItem.UseVisualStyleBackColor = True
-        '
-        'Label11
-        '
-        Me.Label11.AutoSize = True
-        Me.Label11.Location = New System.Drawing.Point(3, 53)
-        Me.Label11.Name = "Label11"
-        Me.Label11.Size = New System.Drawing.Size(71, 17)
-        Me.Label11.TabIndex = 56
-        Me.Label11.Text = "Item Code"
-        '
-        'txtItemCodeS
-        '
-        Me.txtItemCodeS.Location = New System.Drawing.Point(84, 32)
-        Me.txtItemCodeS.MaxLength = 50
-        Me.txtItemCodeS.Name = "txtItemCodeS"
-        Me.txtItemCodeS.Size = New System.Drawing.Size(135, 22)
-        Me.txtItemCodeS.TabIndex = 58
-        '
-        'Label10
-        '
-        Me.Label10.AutoSize = True
-        Me.Label10.Location = New System.Drawing.Point(3, 84)
-        Me.Label10.Name = "Label10"
-        Me.Label10.Size = New System.Drawing.Size(109, 17)
-        Me.Label10.TabIndex = 57
-        Me.Label10.Text = "Item Description"
         '
         'cmbSupplier
         '
@@ -234,11 +128,117 @@ Partial Class frmStockCardReports
         Me.dateEnd.Size = New System.Drawing.Size(120, 22)
         Me.dateEnd.TabIndex = 48
         '
+        'Panel3
+        '
+        Me.Panel3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+        Me.Panel3.Controls.Add(Me.cmbDescription)
+        Me.Panel3.Controls.Add(Me.Button1)
+        Me.Panel3.Controls.Add(Me.lstCode)
+        Me.Panel3.Controls.Add(Me.Label16)
+        Me.Panel3.Controls.Add(Me.btnAdd)
+        Me.Panel3.Controls.Add(Me.txtBarCode)
+        Me.Panel3.Controls.Add(Me.btnSearchItem)
+        Me.Panel3.Controls.Add(Me.Label11)
+        Me.Panel3.Controls.Add(Me.txtItemCodeS)
+        Me.Panel3.Controls.Add(Me.Label10)
+        Me.Panel3.Location = New System.Drawing.Point(10, 147)
+        Me.Panel3.Name = "Panel3"
+        Me.Panel3.Size = New System.Drawing.Size(377, 327)
+        Me.Panel3.TabIndex = 64
+        '
+        'cmbDescription
+        '
+        Me.cmbDescription.FormattingEnabled = True
+        Me.cmbDescription.Location = New System.Drawing.Point(3, 104)
+        Me.cmbDescription.Name = "cmbDescription"
+        Me.cmbDescription.Size = New System.Drawing.Size(326, 24)
+        Me.cmbDescription.TabIndex = 101
+        '
+        'Button1
+        '
+        Me.Button1.Location = New System.Drawing.Point(113, 134)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(100, 40)
+        Me.Button1.TabIndex = 65
+        Me.Button1.Text = "Clear"
+        Me.Button1.UseVisualStyleBackColor = True
+        '
+        'lstCode
+        '
+        Me.lstCode.FormattingEnabled = True
+        Me.lstCode.ItemHeight = 16
+        Me.lstCode.Location = New System.Drawing.Point(3, 180)
+        Me.lstCode.Name = "lstCode"
+        Me.lstCode.Size = New System.Drawing.Size(214, 132)
+        Me.lstCode.TabIndex = 64
+        '
+        'Label16
+        '
+        Me.Label16.AutoSize = True
+        Me.Label16.Location = New System.Drawing.Point(3, 2)
+        Me.Label16.Name = "Label16"
+        Me.Label16.Size = New System.Drawing.Size(67, 17)
+        Me.Label16.TabIndex = 60
+        Me.Label16.Text = "Bar Code"
+        '
+        'btnAdd
+        '
+        Me.btnAdd.Enabled = False
+        Me.btnAdd.Location = New System.Drawing.Point(3, 134)
+        Me.btnAdd.Name = "btnAdd"
+        Me.btnAdd.Size = New System.Drawing.Size(100, 40)
+        Me.btnAdd.TabIndex = 63
+        Me.btnAdd.Text = "Add>>"
+        Me.btnAdd.UseVisualStyleBackColor = True
+        '
+        'txtBarCode
+        '
+        Me.txtBarCode.Location = New System.Drawing.Point(84, 4)
+        Me.txtBarCode.MaxLength = 50
+        Me.txtBarCode.Name = "txtBarCode"
+        Me.txtBarCode.Size = New System.Drawing.Size(135, 22)
+        Me.txtBarCode.TabIndex = 61
+        '
+        'btnSearchItem
+        '
+        Me.btnSearchItem.Location = New System.Drawing.Point(225, 4)
+        Me.btnSearchItem.Name = "btnSearchItem"
+        Me.btnSearchItem.Size = New System.Drawing.Size(100, 40)
+        Me.btnSearchItem.TabIndex = 62
+        Me.btnSearchItem.Text = "Search"
+        Me.btnSearchItem.UseVisualStyleBackColor = True
+        '
+        'Label11
+        '
+        Me.Label11.AutoSize = True
+        Me.Label11.Location = New System.Drawing.Point(3, 53)
+        Me.Label11.Name = "Label11"
+        Me.Label11.Size = New System.Drawing.Size(71, 17)
+        Me.Label11.TabIndex = 56
+        Me.Label11.Text = "Item Code"
+        '
+        'txtItemCodeS
+        '
+        Me.txtItemCodeS.Location = New System.Drawing.Point(84, 32)
+        Me.txtItemCodeS.MaxLength = 50
+        Me.txtItemCodeS.Name = "txtItemCodeS"
+        Me.txtItemCodeS.Size = New System.Drawing.Size(135, 22)
+        Me.txtItemCodeS.TabIndex = 58
+        '
+        'Label10
+        '
+        Me.Label10.AutoSize = True
+        Me.Label10.Location = New System.Drawing.Point(3, 84)
+        Me.Label10.Name = "Label10"
+        Me.Label10.Size = New System.Drawing.Size(109, 17)
+        Me.Label10.TabIndex = 57
+        Me.Label10.Text = "Item Description"
+        '
         'btnRun
         '
         Me.btnRun.Location = New System.Drawing.Point(393, 97)
         Me.btnRun.Name = "btnRun"
-        Me.btnRun.Size = New System.Drawing.Size(104, 44)
+        Me.btnRun.Size = New System.Drawing.Size(100, 40)
         Me.btnRun.TabIndex = 49
         Me.btnRun.Text = "Run"
         Me.btnRun.UseVisualStyleBackColor = True

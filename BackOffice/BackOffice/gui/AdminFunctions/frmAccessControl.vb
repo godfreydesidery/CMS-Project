@@ -144,10 +144,14 @@ Public Class frmAccessControl
                 For Each dat As Dictionary(Of String, Object) In result
                     If dat("priveledge") = _priveledge And dat("role_id") = role.getRoleID(cmbRole.SelectedItem.ToString) Then
                         dtgrdPriveledges.Item(1, ctr).Value = True
+                        dtgrdPriveledges.Rows(ctr).DefaultCellStyle.BackColor = SystemColors.ControlDark
+                        If dat("priveledge").ToString.Contains("@") Then
+                            dtgrdPriveledges.Rows(ctr).DefaultCellStyle.BackColor = SystemColors.ActiveCaption
+                            dtgrdPriveledges.Rows(ctr).ReadOnly = True
+                        End If
                         Exit For
                     End If
                 Next
-
             Next
         Catch ex As Exception
             MsgBox(ex.ToString)
@@ -393,5 +397,9 @@ Public Class frmAccessControl
         Catch ex As Exception
             MsgBox(ex.ToString)
         End Try
+    End Sub
+
+    Private Sub Panel2_Paint(sender As Object, e As PaintEventArgs) Handles Panel2.Paint
+
     End Sub
 End Class

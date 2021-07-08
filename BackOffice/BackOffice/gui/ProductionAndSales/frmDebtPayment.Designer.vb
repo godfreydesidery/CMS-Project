@@ -213,9 +213,9 @@ Partial Class frmDebtPayment
         '
         'btnGenerate
         '
-        Me.btnGenerate.Location = New System.Drawing.Point(357, 121)
+        Me.btnGenerate.Location = New System.Drawing.Point(357, 115)
         Me.btnGenerate.Name = "btnGenerate"
-        Me.btnGenerate.Size = New System.Drawing.Size(104, 34)
+        Me.btnGenerate.Size = New System.Drawing.Size(100, 40)
         Me.btnGenerate.TabIndex = 79
         Me.btnGenerate.Text = "Run"
         Me.btnGenerate.UseVisualStyleBackColor = True

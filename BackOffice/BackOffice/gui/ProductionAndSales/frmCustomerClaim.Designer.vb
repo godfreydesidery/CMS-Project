@@ -22,10 +22,10 @@ Partial Class frmCustomerClaim
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmCustomerClaim))
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.txtSettlementDate = New System.Windows.Forms.TextBox()
@@ -120,19 +120,19 @@ Partial Class frmCustomerClaim
         Me.Label21 = New System.Windows.Forms.Label()
         Me.Label27 = New System.Windows.Forms.Label()
         Me.ToolStrip1 = New System.Windows.Forms.ToolStrip()
-        Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
-        Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
-        Me.ToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator()
-        Me.ToolStripSeparator4 = New System.Windows.Forms.ToolStripSeparator()
-        Me.ToolStripSeparator5 = New System.Windows.Forms.ToolStripSeparator()
         Me.btnNew = New System.Windows.Forms.ToolStripButton()
         Me.btnEdit = New System.Windows.Forms.ToolStripButton()
         Me.btnClear = New System.Windows.Forms.ToolStripButton()
         Me.btnSave = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
+        Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
+        Me.ToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator()
+        Me.ToolStripSeparator4 = New System.Windows.Forms.ToolStripSeparator()
         Me.btnCancel = New System.Windows.Forms.ToolStripButton()
         Me.btnApprove = New System.Windows.Forms.ToolStripButton()
         Me.btnPrint = New System.Windows.Forms.ToolStripButton()
         Me.btnComplete = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripSeparator5 = New System.Windows.Forms.ToolStripSeparator()
         Me.btnArchive = New System.Windows.Forms.ToolStripButton()
         Me.btnBack = New System.Windows.Forms.Button()
         Me.Panel1.SuspendLayout()
@@ -196,7 +196,7 @@ Partial Class frmCustomerClaim
         '
         Me.btnSearch.Location = New System.Drawing.Point(209, 4)
         Me.btnSearch.Name = "btnSearch"
-        Me.btnSearch.Size = New System.Drawing.Size(110, 50)
+        Me.btnSearch.Size = New System.Drawing.Size(100, 40)
         Me.btnSearch.TabIndex = 13
         Me.btnSearch.Text = "Search"
         Me.btnSearch.UseVisualStyleBackColor = True
@@ -551,16 +551,16 @@ Partial Class frmCustomerClaim
         Me.btnClaimAdd.Enabled = False
         Me.btnClaimAdd.Location = New System.Drawing.Point(208, 90)
         Me.btnClaimAdd.Name = "btnClaimAdd"
-        Me.btnClaimAdd.Size = New System.Drawing.Size(111, 50)
+        Me.btnClaimAdd.Size = New System.Drawing.Size(111, 40)
         Me.btnClaimAdd.TabIndex = 53
         Me.btnClaimAdd.Text = "Add/Update"
         Me.btnClaimAdd.UseVisualStyleBackColor = True
         '
         'btnClaimReset
         '
-        Me.btnClaimReset.Location = New System.Drawing.Point(325, 90)
+        Me.btnClaimReset.Location = New System.Drawing.Point(336, 90)
         Me.btnClaimReset.Name = "btnClaimReset"
-        Me.btnClaimReset.Size = New System.Drawing.Size(110, 50)
+        Me.btnClaimReset.Size = New System.Drawing.Size(100, 40)
         Me.btnClaimReset.TabIndex = 54
         Me.btnClaimReset.Text = "Reset"
         Me.btnClaimReset.UseVisualStyleBackColor = True
@@ -569,7 +569,7 @@ Partial Class frmCustomerClaim
         '
         Me.btnClaimSearchItem.Location = New System.Drawing.Point(208, 4)
         Me.btnClaimSearchItem.Name = "btnClaimSearchItem"
-        Me.btnClaimSearchItem.Size = New System.Drawing.Size(111, 50)
+        Me.btnClaimSearchItem.Size = New System.Drawing.Size(100, 40)
         Me.btnClaimSearchItem.TabIndex = 51
         Me.btnClaimSearchItem.Text = "Search"
         Me.btnClaimSearchItem.UseVisualStyleBackColor = True
@@ -673,16 +673,16 @@ Partial Class frmCustomerClaim
         '
         'Column4
         '
-        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.Column4.DefaultCellStyle = DataGridViewCellStyle5
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.Column4.DefaultCellStyle = DataGridViewCellStyle1
         Me.Column4.HeaderText = "Price"
         Me.Column4.Name = "Column4"
         Me.Column4.ReadOnly = True
         '
         'Column9
         '
-        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.Column9.DefaultCellStyle = DataGridViewCellStyle6
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.Column9.DefaultCellStyle = DataGridViewCellStyle2
         Me.Column9.HeaderText = "Amount"
         Me.Column9.Name = "Column9"
         Me.Column9.ReadOnly = True
@@ -748,16 +748,16 @@ Partial Class frmCustomerClaim
         '
         'Column10
         '
-        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.Column10.DefaultCellStyle = DataGridViewCellStyle7
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.Column10.DefaultCellStyle = DataGridViewCellStyle3
         Me.Column10.HeaderText = "Price"
         Me.Column10.Name = "Column10"
         Me.Column10.ReadOnly = True
         '
         'DataGridViewTextBoxColumn7
         '
-        DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.DataGridViewTextBoxColumn7.DefaultCellStyle = DataGridViewCellStyle8
+        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.DataGridViewTextBoxColumn7.DefaultCellStyle = DataGridViewCellStyle4
         Me.DataGridViewTextBoxColumn7.HeaderText = "Amount"
         Me.DataGridViewTextBoxColumn7.Name = "DataGridViewTextBoxColumn7"
         Me.DataGridViewTextBoxColumn7.ReadOnly = True
@@ -993,31 +993,6 @@ Partial Class frmCustomerClaim
         Me.ToolStrip1.TabIndex = 114
         Me.ToolStrip1.Text = "ToolStrip1"
         '
-        'ToolStripSeparator1
-        '
-        Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
-        Me.ToolStripSeparator1.Size = New System.Drawing.Size(6, 27)
-        '
-        'ToolStripSeparator2
-        '
-        Me.ToolStripSeparator2.Name = "ToolStripSeparator2"
-        Me.ToolStripSeparator2.Size = New System.Drawing.Size(6, 27)
-        '
-        'ToolStripSeparator3
-        '
-        Me.ToolStripSeparator3.Name = "ToolStripSeparator3"
-        Me.ToolStripSeparator3.Size = New System.Drawing.Size(6, 27)
-        '
-        'ToolStripSeparator4
-        '
-        Me.ToolStripSeparator4.Name = "ToolStripSeparator4"
-        Me.ToolStripSeparator4.Size = New System.Drawing.Size(6, 27)
-        '
-        'ToolStripSeparator5
-        '
-        Me.ToolStripSeparator5.Name = "ToolStripSeparator5"
-        Me.ToolStripSeparator5.Size = New System.Drawing.Size(6, 27)
-        '
         'btnNew
         '
         Me.btnNew.Image = Global.BackOffice.My.Resources.Resources.new_file
@@ -1054,6 +1029,26 @@ Partial Class frmCustomerClaim
         Me.btnSave.Text = "Save"
         Me.btnSave.ToolTipText = "Save details of a new or existing document"
         '
+        'ToolStripSeparator1
+        '
+        Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
+        Me.ToolStripSeparator1.Size = New System.Drawing.Size(6, 27)
+        '
+        'ToolStripSeparator2
+        '
+        Me.ToolStripSeparator2.Name = "ToolStripSeparator2"
+        Me.ToolStripSeparator2.Size = New System.Drawing.Size(6, 27)
+        '
+        'ToolStripSeparator3
+        '
+        Me.ToolStripSeparator3.Name = "ToolStripSeparator3"
+        Me.ToolStripSeparator3.Size = New System.Drawing.Size(6, 27)
+        '
+        'ToolStripSeparator4
+        '
+        Me.ToolStripSeparator4.Name = "ToolStripSeparator4"
+        Me.ToolStripSeparator4.Size = New System.Drawing.Size(6, 27)
+        '
         'btnCancel
         '
         Me.btnCancel.Image = Global.BackOffice.My.Resources.Resources.cancel
@@ -1088,6 +1083,11 @@ Partial Class frmCustomerClaim
         Me.btnComplete.Name = "btnComplete"
         Me.btnComplete.Size = New System.Drawing.Size(98, 24)
         Me.btnComplete.Text = "Complete"
+        '
+        'ToolStripSeparator5
+        '
+        Me.ToolStripSeparator5.Name = "ToolStripSeparator5"
+        Me.ToolStripSeparator5.Size = New System.Drawing.Size(6, 27)
         '
         'btnArchive
         '

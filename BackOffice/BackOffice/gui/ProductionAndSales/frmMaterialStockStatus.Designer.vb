@@ -22,9 +22,9 @@ Partial Class frmMaterialStockStatus
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle22 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle23 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle24 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.Panel3 = New System.Windows.Forms.Panel()
         Me.cmbMaterialName = New System.Windows.Forms.ComboBox()
         Me.Button1 = New System.Windows.Forms.Button()
@@ -71,7 +71,7 @@ Partial Class frmMaterialStockStatus
         Me.Panel3.Controls.Add(Me.Label10)
         Me.Panel3.Location = New System.Drawing.Point(10, 99)
         Me.Panel3.Name = "Panel3"
-        Me.Panel3.Size = New System.Drawing.Size(341, 262)
+        Me.Panel3.Size = New System.Drawing.Size(341, 272)
         Me.Panel3.TabIndex = 91
         '
         'cmbMaterialName
@@ -86,7 +86,7 @@ Partial Class frmMaterialStockStatus
         '
         Me.Button1.Location = New System.Drawing.Point(228, 126)
         Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(104, 34)
+        Me.Button1.Size = New System.Drawing.Size(100, 40)
         Me.Button1.TabIndex = 65
         Me.Button1.Text = "Clear"
         Me.Button1.UseVisualStyleBackColor = True
@@ -95,7 +95,7 @@ Partial Class frmMaterialStockStatus
         '
         Me.lstCode.FormattingEnabled = True
         Me.lstCode.ItemHeight = 16
-        Me.lstCode.Location = New System.Drawing.Point(90, 166)
+        Me.lstCode.Location = New System.Drawing.Point(90, 172)
         Me.lstCode.Name = "lstCode"
         Me.lstCode.Size = New System.Drawing.Size(242, 84)
         Me.lstCode.TabIndex = 64
@@ -105,7 +105,7 @@ Partial Class frmMaterialStockStatus
         Me.btnAdd.Enabled = False
         Me.btnAdd.Location = New System.Drawing.Point(88, 126)
         Me.btnAdd.Name = "btnAdd"
-        Me.btnAdd.Size = New System.Drawing.Size(104, 34)
+        Me.btnAdd.Size = New System.Drawing.Size(100, 40)
         Me.btnAdd.TabIndex = 63
         Me.btnAdd.Text = "Add>>"
         Me.btnAdd.UseVisualStyleBackColor = True
@@ -114,7 +114,7 @@ Partial Class frmMaterialStockStatus
         '
         Me.btnSearchItem.Location = New System.Drawing.Point(235, 19)
         Me.btnSearchItem.Name = "btnSearchItem"
-        Me.btnSearchItem.Size = New System.Drawing.Size(97, 50)
+        Me.btnSearchItem.Size = New System.Drawing.Size(100, 40)
         Me.btnSearchItem.TabIndex = 62
         Me.btnSearchItem.Text = "Search"
         Me.btnSearchItem.UseVisualStyleBackColor = True
@@ -219,8 +219,8 @@ Partial Class frmMaterialStockStatus
         '
         'Column3
         '
-        DataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        Me.Column3.DefaultCellStyle = DataGridViewCellStyle22
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        Me.Column3.DefaultCellStyle = DataGridViewCellStyle1
         Me.Column3.FillWeight = 53.87895!
         Me.Column3.HeaderText = "Qty"
         Me.Column3.Name = "Column3"
@@ -228,8 +228,8 @@ Partial Class frmMaterialStockStatus
         '
         'Column4
         '
-        DataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.Column4.DefaultCellStyle = DataGridViewCellStyle23
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.Column4.DefaultCellStyle = DataGridViewCellStyle2
         Me.Column4.FillWeight = 84.25756!
         Me.Column4.HeaderText = "Price"
         Me.Column4.Name = "Column4"
@@ -237,8 +237,8 @@ Partial Class frmMaterialStockStatus
         '
         'Column7
         '
-        DataGridViewCellStyle24.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.Column7.DefaultCellStyle = DataGridViewCellStyle24
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.Column7.DefaultCellStyle = DataGridViewCellStyle3
         Me.Column7.FillWeight = 84.25756!
         Me.Column7.HeaderText = "Amount"
         Me.Column7.Name = "Column7"
@@ -260,14 +260,14 @@ Partial Class frmMaterialStockStatus
         '
         Me.btnGenerate.Location = New System.Drawing.Point(357, 51)
         Me.btnGenerate.Name = "btnGenerate"
-        Me.btnGenerate.Size = New System.Drawing.Size(104, 34)
+        Me.btnGenerate.Size = New System.Drawing.Size(100, 40)
         Me.btnGenerate.TabIndex = 87
         Me.btnGenerate.Text = "Run"
         Me.btnGenerate.UseVisualStyleBackColor = True
         '
         'txtTotalAmount
         '
-        Me.txtTotalAmount.Location = New System.Drawing.Point(157, 377)
+        Me.txtTotalAmount.Location = New System.Drawing.Point(153, 382)
         Me.txtTotalAmount.MaxLength = 50
         Me.txtTotalAmount.Name = "txtTotalAmount"
         Me.txtTotalAmount.ReadOnly = True
@@ -278,7 +278,7 @@ Partial Class frmMaterialStockStatus
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(59, 382)
+        Me.Label1.Location = New System.Drawing.Point(55, 382)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(92, 17)
         Me.Label1.TabIndex = 95

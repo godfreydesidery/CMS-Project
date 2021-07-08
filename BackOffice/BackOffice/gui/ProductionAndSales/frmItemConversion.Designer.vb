@@ -84,14 +84,14 @@ Partial Class frmItemConversion
         Me.DataGridViewTextBoxColumn7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.btnBack = New System.Windows.Forms.Button()
         Me.ToolStrip1 = New System.Windows.Forms.ToolStrip()
-        Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
-        Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
-        Me.ToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator()
-        Me.ToolStripSeparator4 = New System.Windows.Forms.ToolStripSeparator()
         Me.btnNew = New System.Windows.Forms.ToolStripButton()
         Me.btnEdit = New System.Windows.Forms.ToolStripButton()
         Me.btnClear = New System.Windows.Forms.ToolStripButton()
         Me.btnSave = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
+        Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
+        Me.ToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator()
+        Me.ToolStripSeparator4 = New System.Windows.Forms.ToolStripSeparator()
         Me.btnCancel = New System.Windows.Forms.ToolStripButton()
         Me.btnApprove = New System.Windows.Forms.ToolStripButton()
         Me.btnPrint = New System.Windows.Forms.ToolStripButton()
@@ -137,39 +137,43 @@ Partial Class frmItemConversion
         '
         Me.btnSearch.Location = New System.Drawing.Point(356, 4)
         Me.btnSearch.Name = "btnSearch"
-        Me.btnSearch.Size = New System.Drawing.Size(120, 54)
+        Me.btnSearch.Size = New System.Drawing.Size(100, 40)
         Me.btnSearch.TabIndex = 52
         Me.btnSearch.Text = "Search"
         Me.btnSearch.UseVisualStyleBackColor = True
         '
         'txtStatus
         '
+        Me.txtStatus.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtStatus.Location = New System.Drawing.Point(164, 102)
         Me.txtStatus.Name = "txtStatus"
         Me.txtStatus.ReadOnly = True
-        Me.txtStatus.Size = New System.Drawing.Size(186, 22)
+        Me.txtStatus.Size = New System.Drawing.Size(186, 24)
         Me.txtStatus.TabIndex = 7
         '
         'txtReason
         '
+        Me.txtReason.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtReason.Location = New System.Drawing.Point(164, 68)
         Me.txtReason.Name = "txtReason"
-        Me.txtReason.Size = New System.Drawing.Size(404, 22)
+        Me.txtReason.Size = New System.Drawing.Size(404, 24)
         Me.txtReason.TabIndex = 6
         '
         'txtConversionDate
         '
+        Me.txtConversionDate.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtConversionDate.Location = New System.Drawing.Point(164, 34)
         Me.txtConversionDate.Name = "txtConversionDate"
         Me.txtConversionDate.ReadOnly = True
-        Me.txtConversionDate.Size = New System.Drawing.Size(186, 22)
+        Me.txtConversionDate.Size = New System.Drawing.Size(186, 24)
         Me.txtConversionDate.TabIndex = 5
         '
         'txtConversionNo
         '
+        Me.txtConversionNo.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtConversionNo.Location = New System.Drawing.Point(164, 4)
         Me.txtConversionNo.Name = "txtConversionNo"
-        Me.txtConversionNo.Size = New System.Drawing.Size(186, 22)
+        Me.txtConversionNo.Size = New System.Drawing.Size(186, 24)
         Me.txtConversionNo.TabIndex = 4
         '
         'Label4
@@ -231,10 +235,11 @@ Partial Class frmItemConversion
         '
         'cmbRawDescription
         '
+        Me.cmbRawDescription.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmbRawDescription.FormattingEnabled = True
         Me.cmbRawDescription.Location = New System.Drawing.Point(118, 68)
         Me.cmbRawDescription.Name = "cmbRawDescription"
-        Me.cmbRawDescription.Size = New System.Drawing.Size(366, 24)
+        Me.cmbRawDescription.Size = New System.Drawing.Size(366, 26)
         Me.cmbRawDescription.TabIndex = 99
         '
         'Label19
@@ -248,10 +253,11 @@ Partial Class frmItemConversion
         '
         'txtRawQty
         '
+        Me.txtRawQty.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtRawQty.Location = New System.Drawing.Point(117, 126)
         Me.txtRawQty.MaxLength = 50
         Me.txtRawQty.Name = "txtRawQty"
-        Me.txtRawQty.Size = New System.Drawing.Size(115, 22)
+        Me.txtRawQty.Size = New System.Drawing.Size(115, 24)
         Me.txtRawQty.TabIndex = 56
         '
         'btnRawAdd
@@ -259,7 +265,7 @@ Partial Class frmItemConversion
         Me.btnRawAdd.Enabled = False
         Me.btnRawAdd.Location = New System.Drawing.Point(238, 98)
         Me.btnRawAdd.Name = "btnRawAdd"
-        Me.btnRawAdd.Size = New System.Drawing.Size(120, 50)
+        Me.btnRawAdd.Size = New System.Drawing.Size(120, 40)
         Me.btnRawAdd.TabIndex = 53
         Me.btnRawAdd.Text = "Add/Update"
         Me.btnRawAdd.UseVisualStyleBackColor = True
@@ -268,7 +274,7 @@ Partial Class frmItemConversion
         '
         Me.btnRawReset.Location = New System.Drawing.Point(364, 98)
         Me.btnRawReset.Name = "btnRawReset"
-        Me.btnRawReset.Size = New System.Drawing.Size(120, 47)
+        Me.btnRawReset.Size = New System.Drawing.Size(100, 40)
         Me.btnRawReset.TabIndex = 54
         Me.btnRawReset.Text = "Reset"
         Me.btnRawReset.UseVisualStyleBackColor = True
@@ -277,7 +283,7 @@ Partial Class frmItemConversion
         '
         Me.btnRawSearchItem.Location = New System.Drawing.Point(238, 4)
         Me.btnRawSearchItem.Name = "btnRawSearchItem"
-        Me.btnRawSearchItem.Size = New System.Drawing.Size(120, 54)
+        Me.btnRawSearchItem.Size = New System.Drawing.Size(100, 40)
         Me.btnRawSearchItem.TabIndex = 51
         Me.btnRawSearchItem.Text = "Search"
         Me.btnRawSearchItem.UseVisualStyleBackColor = True
@@ -293,10 +299,11 @@ Partial Class frmItemConversion
         '
         'txtRawBarCode
         '
+        Me.txtRawBarCode.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtRawBarCode.Location = New System.Drawing.Point(117, 4)
         Me.txtRawBarCode.MaxLength = 50
         Me.txtRawBarCode.Name = "txtRawBarCode"
-        Me.txtRawBarCode.Size = New System.Drawing.Size(115, 22)
+        Me.txtRawBarCode.Size = New System.Drawing.Size(115, 24)
         Me.txtRawBarCode.TabIndex = 50
         '
         'Label13
@@ -319,19 +326,21 @@ Partial Class frmItemConversion
         '
         'txtRawItemCode
         '
+        Me.txtRawItemCode.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtRawItemCode.Location = New System.Drawing.Point(117, 35)
         Me.txtRawItemCode.MaxLength = 50
         Me.txtRawItemCode.Name = "txtRawItemCode"
-        Me.txtRawItemCode.Size = New System.Drawing.Size(115, 22)
+        Me.txtRawItemCode.Size = New System.Drawing.Size(115, 24)
         Me.txtRawItemCode.TabIndex = 39
         '
         'txtRawPrice
         '
+        Me.txtRawPrice.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtRawPrice.Location = New System.Drawing.Point(118, 98)
         Me.txtRawPrice.MaxLength = 50
         Me.txtRawPrice.Name = "txtRawPrice"
         Me.txtRawPrice.ReadOnly = True
-        Me.txtRawPrice.Size = New System.Drawing.Size(115, 22)
+        Me.txtRawPrice.Size = New System.Drawing.Size(115, 24)
         Me.txtRawPrice.TabIndex = 47
         Me.txtRawPrice.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
@@ -368,10 +377,11 @@ Partial Class frmItemConversion
         '
         'cmbEndDescription
         '
+        Me.cmbEndDescription.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmbEndDescription.FormattingEnabled = True
         Me.cmbEndDescription.Location = New System.Drawing.Point(117, 65)
         Me.cmbEndDescription.Name = "cmbEndDescription"
-        Me.cmbEndDescription.Size = New System.Drawing.Size(367, 24)
+        Me.cmbEndDescription.Size = New System.Drawing.Size(367, 26)
         Me.cmbEndDescription.TabIndex = 99
         '
         'Label5
@@ -385,10 +395,11 @@ Partial Class frmItemConversion
         '
         'txtEndQty
         '
+        Me.txtEndQty.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtEndQty.Location = New System.Drawing.Point(118, 123)
         Me.txtEndQty.MaxLength = 50
         Me.txtEndQty.Name = "txtEndQty"
-        Me.txtEndQty.Size = New System.Drawing.Size(115, 22)
+        Me.txtEndQty.Size = New System.Drawing.Size(115, 24)
         Me.txtEndQty.TabIndex = 56
         '
         'btnEndAdd
@@ -396,7 +407,7 @@ Partial Class frmItemConversion
         Me.btnEndAdd.Enabled = False
         Me.btnEndAdd.Location = New System.Drawing.Point(238, 95)
         Me.btnEndAdd.Name = "btnEndAdd"
-        Me.btnEndAdd.Size = New System.Drawing.Size(120, 51)
+        Me.btnEndAdd.Size = New System.Drawing.Size(120, 40)
         Me.btnEndAdd.TabIndex = 53
         Me.btnEndAdd.Text = "Add/Update"
         Me.btnEndAdd.UseVisualStyleBackColor = True
@@ -405,7 +416,7 @@ Partial Class frmItemConversion
         '
         Me.btnEndReset.Location = New System.Drawing.Point(364, 95)
         Me.btnEndReset.Name = "btnEndReset"
-        Me.btnEndReset.Size = New System.Drawing.Size(120, 50)
+        Me.btnEndReset.Size = New System.Drawing.Size(100, 40)
         Me.btnEndReset.TabIndex = 54
         Me.btnEndReset.Text = "Reset"
         Me.btnEndReset.UseVisualStyleBackColor = True
@@ -414,7 +425,7 @@ Partial Class frmItemConversion
         '
         Me.btnEndSearchItem.Location = New System.Drawing.Point(238, 4)
         Me.btnEndSearchItem.Name = "btnEndSearchItem"
-        Me.btnEndSearchItem.Size = New System.Drawing.Size(120, 54)
+        Me.btnEndSearchItem.Size = New System.Drawing.Size(100, 40)
         Me.btnEndSearchItem.TabIndex = 51
         Me.btnEndSearchItem.Text = "Search"
         Me.btnEndSearchItem.UseVisualStyleBackColor = True
@@ -430,10 +441,11 @@ Partial Class frmItemConversion
         '
         'txtEndBarcode
         '
+        Me.txtEndBarcode.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtEndBarcode.Location = New System.Drawing.Point(117, 4)
         Me.txtEndBarcode.MaxLength = 50
         Me.txtEndBarcode.Name = "txtEndBarcode"
-        Me.txtEndBarcode.Size = New System.Drawing.Size(115, 22)
+        Me.txtEndBarcode.Size = New System.Drawing.Size(115, 24)
         Me.txtEndBarcode.TabIndex = 50
         '
         'Label7
@@ -456,19 +468,21 @@ Partial Class frmItemConversion
         '
         'txtEndItemCode
         '
+        Me.txtEndItemCode.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtEndItemCode.Location = New System.Drawing.Point(117, 35)
         Me.txtEndItemCode.MaxLength = 50
         Me.txtEndItemCode.Name = "txtEndItemCode"
-        Me.txtEndItemCode.Size = New System.Drawing.Size(115, 22)
+        Me.txtEndItemCode.Size = New System.Drawing.Size(115, 24)
         Me.txtEndItemCode.TabIndex = 39
         '
         'txtEndPrice
         '
+        Me.txtEndPrice.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtEndPrice.Location = New System.Drawing.Point(118, 95)
         Me.txtEndPrice.MaxLength = 50
         Me.txtEndPrice.Name = "txtEndPrice"
         Me.txtEndPrice.ReadOnly = True
-        Me.txtEndPrice.Size = New System.Drawing.Size(115, 22)
+        Me.txtEndPrice.Size = New System.Drawing.Size(115, 24)
         Me.txtEndPrice.TabIndex = 47
         Me.txtEndPrice.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
@@ -654,26 +668,6 @@ Partial Class frmItemConversion
         Me.ToolStrip1.TabIndex = 113
         Me.ToolStrip1.Text = "ToolStrip1"
         '
-        'ToolStripSeparator1
-        '
-        Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
-        Me.ToolStripSeparator1.Size = New System.Drawing.Size(6, 27)
-        '
-        'ToolStripSeparator2
-        '
-        Me.ToolStripSeparator2.Name = "ToolStripSeparator2"
-        Me.ToolStripSeparator2.Size = New System.Drawing.Size(6, 27)
-        '
-        'ToolStripSeparator3
-        '
-        Me.ToolStripSeparator3.Name = "ToolStripSeparator3"
-        Me.ToolStripSeparator3.Size = New System.Drawing.Size(6, 27)
-        '
-        'ToolStripSeparator4
-        '
-        Me.ToolStripSeparator4.Name = "ToolStripSeparator4"
-        Me.ToolStripSeparator4.Size = New System.Drawing.Size(6, 27)
-        '
         'btnNew
         '
         Me.btnNew.Image = Global.BackOffice.My.Resources.Resources.new_file
@@ -709,6 +703,26 @@ Partial Class frmItemConversion
         Me.btnSave.Size = New System.Drawing.Size(64, 24)
         Me.btnSave.Text = "Save"
         Me.btnSave.ToolTipText = "Save details of a new or existing document"
+        '
+        'ToolStripSeparator1
+        '
+        Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
+        Me.ToolStripSeparator1.Size = New System.Drawing.Size(6, 27)
+        '
+        'ToolStripSeparator2
+        '
+        Me.ToolStripSeparator2.Name = "ToolStripSeparator2"
+        Me.ToolStripSeparator2.Size = New System.Drawing.Size(6, 27)
+        '
+        'ToolStripSeparator3
+        '
+        Me.ToolStripSeparator3.Name = "ToolStripSeparator3"
+        Me.ToolStripSeparator3.Size = New System.Drawing.Size(6, 27)
+        '
+        'ToolStripSeparator4
+        '
+        Me.ToolStripSeparator4.Name = "ToolStripSeparator4"
+        Me.ToolStripSeparator4.Size = New System.Drawing.Size(6, 27)
         '
         'btnCancel
         '

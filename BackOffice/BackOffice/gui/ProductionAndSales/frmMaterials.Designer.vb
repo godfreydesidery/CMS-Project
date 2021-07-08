@@ -255,7 +255,7 @@ Partial Class frmMaterials
         '
         Me.btnSearch.Location = New System.Drawing.Point(277, 14)
         Me.btnSearch.Name = "btnSearch"
-        Me.btnSearch.Size = New System.Drawing.Size(120, 43)
+        Me.btnSearch.Size = New System.Drawing.Size(100, 40)
         Me.btnSearch.TabIndex = 16
         Me.btnSearch.Text = "&Search"
         Me.btnSearch.UseVisualStyleBackColor = True

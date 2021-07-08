@@ -191,7 +191,7 @@ Partial Class frmSalesPerson
         '
         Me.btnSearch.Location = New System.Drawing.Point(297, 14)
         Me.btnSearch.Name = "btnSearch"
-        Me.btnSearch.Size = New System.Drawing.Size(110, 52)
+        Me.btnSearch.Size = New System.Drawing.Size(100, 40)
         Me.btnSearch.TabIndex = 16
         Me.btnSearch.Text = "&Search"
         Me.btnSearch.UseVisualStyleBackColor = True

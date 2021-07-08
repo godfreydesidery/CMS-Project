@@ -1,5 +1,6 @@
 ﻿Public Class Priveledge
     Public Shared PRIVELEDGES = New String() {
+        "@ORDERS",
         "PRODUCT MANAGEMENT",
         "PRODUCT INQUIRY",
         "EDIT INVENTORY",

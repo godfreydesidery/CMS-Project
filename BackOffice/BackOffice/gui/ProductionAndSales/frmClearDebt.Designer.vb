@@ -65,26 +65,29 @@ Partial Class frmClearDebt
         '
         'txtIssueNo
         '
+        Me.txtIssueNo.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtIssueNo.Location = New System.Drawing.Point(146, 71)
         Me.txtIssueNo.Name = "txtIssueNo"
         Me.txtIssueNo.ReadOnly = True
-        Me.txtIssueNo.Size = New System.Drawing.Size(200, 22)
+        Me.txtIssueNo.Size = New System.Drawing.Size(200, 24)
         Me.txtIssueNo.TabIndex = 3
         '
         'txtSMOficer
         '
+        Me.txtSMOficer.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtSMOficer.Location = New System.Drawing.Point(146, 99)
         Me.txtSMOficer.Name = "txtSMOficer"
         Me.txtSMOficer.ReadOnly = True
-        Me.txtSMOficer.Size = New System.Drawing.Size(287, 22)
+        Me.txtSMOficer.Size = New System.Drawing.Size(287, 24)
         Me.txtSMOficer.TabIndex = 4
         '
         'txtDebt
         '
+        Me.txtDebt.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtDebt.Location = New System.Drawing.Point(146, 129)
         Me.txtDebt.Name = "txtDebt"
         Me.txtDebt.ReadOnly = True
-        Me.txtDebt.Size = New System.Drawing.Size(200, 22)
+        Me.txtDebt.Size = New System.Drawing.Size(200, 24)
         Me.txtDebt.TabIndex = 5
         Me.txtDebt.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
@@ -92,7 +95,7 @@ Partial Class frmClearDebt
         '
         Me.btnPay.Location = New System.Drawing.Point(144, 233)
         Me.btnPay.Name = "btnPay"
-        Me.btnPay.Size = New System.Drawing.Size(97, 57)
+        Me.btnPay.Size = New System.Drawing.Size(100, 40)
         Me.btnPay.TabIndex = 6
         Me.btnPay.Text = "Pay"
         Me.btnPay.UseVisualStyleBackColor = True
@@ -120,16 +123,17 @@ Partial Class frmClearDebt
         Me.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel
         Me.btnCancel.Location = New System.Drawing.Point(249, 233)
         Me.btnCancel.Name = "btnCancel"
-        Me.btnCancel.Size = New System.Drawing.Size(97, 57)
+        Me.btnCancel.Size = New System.Drawing.Size(100, 40)
         Me.btnCancel.TabIndex = 9
         Me.btnCancel.Text = "Cancel"
         Me.btnCancel.UseVisualStyleBackColor = True
         '
         'txtRemarks
         '
+        Me.txtRemarks.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtRemarks.Location = New System.Drawing.Point(144, 205)
         Me.txtRemarks.Name = "txtRemarks"
-        Me.txtRemarks.Size = New System.Drawing.Size(287, 22)
+        Me.txtRemarks.Size = New System.Drawing.Size(287, 24)
         Me.txtRemarks.TabIndex = 10
         '
         'Label5
@@ -147,7 +151,7 @@ Partial Class frmClearDebt
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.ClientSize = New System.Drawing.Size(445, 330)
+        Me.ClientSize = New System.Drawing.Size(445, 302)
         Me.Controls.Add(Me.Label5)
         Me.Controls.Add(Me.txtRemarks)
         Me.Controls.Add(Me.btnCancel)

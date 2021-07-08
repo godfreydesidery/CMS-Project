@@ -197,9 +197,9 @@ Partial Class frmDamagesReport
         '
         'btnGenerate
         '
-        Me.btnGenerate.Location = New System.Drawing.Point(357, 60)
+        Me.btnGenerate.Location = New System.Drawing.Point(357, 53)
         Me.btnGenerate.Name = "btnGenerate"
-        Me.btnGenerate.Size = New System.Drawing.Size(104, 34)
+        Me.btnGenerate.Size = New System.Drawing.Size(100, 40)
         Me.btnGenerate.TabIndex = 87
         Me.btnGenerate.Text = "Run"
         Me.btnGenerate.UseVisualStyleBackColor = True

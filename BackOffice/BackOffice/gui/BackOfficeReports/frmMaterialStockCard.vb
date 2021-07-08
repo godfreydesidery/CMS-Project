@@ -398,7 +398,7 @@ Public Class frmMaterialStockCard
             Dim conn As New MySqlConnection(Database.conString)
             Dim command As New MySqlCommand()
             Dim query As String = ""
-            query = "SELECT `material_stock_cards`.`date` as `date`,`material_stock_cards`.`material_code` AS `material_code`,`material_stock_cards`.`qty_in` AS `qty_in`,`material_stock_cards`.`qty_out` AS `qty_out`,`material_stock_cards`.`balance` AS `balance`,`material_stock_cards`.`reference` AS `reference` FROM `material_stock_cards` WHERE `material_stock_cards`.`date` BETWEEN '" + dateStart.Text + "' AND '" + dateEnd.Text + "'"
+            query = "SELECT `material_stock_cards`.`id` AS `id`, `material_stock_cards`.`date` as `date`,`material_stock_cards`.`material_code` AS `material_code`,`material_stock_cards`.`qty_in` AS `qty_in`,`material_stock_cards`.`qty_out` AS `qty_out`,`material_stock_cards`.`balance` AS `balance`,`material_stock_cards`.`reference` AS `reference` FROM `material_stock_cards` WHERE `material_stock_cards`.`date` BETWEEN '" + dateStart.Text + "' AND '" + dateEnd.Text + "' ORDER BY `id`"
             'If cmbCategory.Text <> "" Then
             'query = "SELECT `material_stock_cards`.`date` as `date`,`material_stock_cards`.`material_code` AS `material_code`,`material_stock_cards`.`qty_in` AS `qty_in`,`material_stock_cards`.`qty_out` AS `qty_out`,`material_stock_cards`.`balance` AS `balance`,`material_stock_cards`.`reference` AS `reference` FROM `material_stock_cards` WHERE `material_stock_cards`.`date` BETWEEN '" + dateStart.Text + "' AND '" + dateEnd.Text + "' AND `material_stock_cards`.`date`='" 'join later
             'End If
@@ -479,7 +479,9 @@ Public Class frmMaterialStockCard
     Dim list As String = ""
 
     Private Sub btnGenerate_Click(sender As Object, e As EventArgs) Handles btnGenerate.Click
+        Cursor = Cursors.AppStarting
         refreshList()
+        Cursor = Cursors.Default
     End Sub
 
     Private Sub btnPrint_Click(sender As Object, e As EventArgs)
