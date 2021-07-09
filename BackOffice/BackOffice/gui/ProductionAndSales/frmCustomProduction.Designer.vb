@@ -92,7 +92,7 @@ Partial Class frmCustomProduction
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(4, 28)
+        Me.Label1.Location = New System.Drawing.Point(6, 12)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(98, 17)
         Me.Label1.TabIndex = 0
@@ -101,7 +101,7 @@ Partial Class frmCustomProduction
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(7, 73)
+        Me.Label2.Location = New System.Drawing.Point(7, 58)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(98, 17)
         Me.Label2.TabIndex = 1
@@ -110,7 +110,7 @@ Partial Class frmCustomProduction
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(30, 103)
+        Me.Label3.Location = New System.Drawing.Point(30, 91)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(75, 17)
         Me.Label3.TabIndex = 2
@@ -119,7 +119,7 @@ Partial Class frmCustomProduction
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(57, 157)
+        Me.Label4.Location = New System.Drawing.Point(57, 158)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(48, 17)
         Me.Label4.TabIndex = 3
@@ -127,43 +127,43 @@ Partial Class frmCustomProduction
         '
         'txtProductionNo
         '
-        Me.txtProductionNo.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtProductionNo.Location = New System.Drawing.Point(110, 25)
+        Me.txtProductionNo.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtProductionNo.Location = New System.Drawing.Point(110, 12)
         Me.txtProductionNo.Name = "txtProductionNo"
-        Me.txtProductionNo.Size = New System.Drawing.Size(138, 24)
+        Me.txtProductionNo.Size = New System.Drawing.Size(138, 27)
         Me.txtProductionNo.TabIndex = 4
         '
         'txtBatchSize
         '
-        Me.txtBatchSize.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtBatchSize.Location = New System.Drawing.Point(110, 98)
+        Me.txtBatchSize.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtBatchSize.Location = New System.Drawing.Point(110, 91)
         Me.txtBatchSize.Name = "txtBatchSize"
         Me.txtBatchSize.ReadOnly = True
-        Me.txtBatchSize.Size = New System.Drawing.Size(138, 24)
+        Me.txtBatchSize.Size = New System.Drawing.Size(138, 27)
         Me.txtBatchSize.TabIndex = 5
         '
         'txtProductName
         '
-        Me.txtProductName.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtProductName.Location = New System.Drawing.Point(110, 70)
+        Me.txtProductName.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtProductName.Location = New System.Drawing.Point(110, 58)
         Me.txtProductName.Name = "txtProductName"
         Me.txtProductName.ReadOnly = True
-        Me.txtProductName.Size = New System.Drawing.Size(241, 24)
+        Me.txtProductName.Size = New System.Drawing.Size(241, 27)
         Me.txtProductName.TabIndex = 6
         '
         'txtStatus
         '
-        Me.txtStatus.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtStatus.Location = New System.Drawing.Point(110, 157)
+        Me.txtStatus.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtStatus.Location = New System.Drawing.Point(110, 158)
         Me.txtStatus.Name = "txtStatus"
         Me.txtStatus.ReadOnly = True
-        Me.txtStatus.Size = New System.Drawing.Size(138, 24)
+        Me.txtStatus.Size = New System.Drawing.Size(138, 27)
         Me.txtStatus.TabIndex = 7
         '
         'Label5
         '
         Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(64, 130)
+        Me.Label5.Location = New System.Drawing.Point(64, 124)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(40, 17)
         Me.Label5.TabIndex = 8
@@ -172,17 +172,17 @@ Partial Class frmCustomProduction
         'cmbUom
         '
         Me.cmbUom.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cmbUom.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbUom.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmbUom.FormattingEnabled = True
-        Me.cmbUom.Items.AddRange(New Object() {"", "KG", "LTR", "PCS"})
-        Me.cmbUom.Location = New System.Drawing.Point(110, 127)
+        Me.cmbUom.Items.AddRange(New Object() {"", "KG", "LTR", "PCS", "MT", "EA", "CART"})
+        Me.cmbUom.Location = New System.Drawing.Point(110, 124)
         Me.cmbUom.Name = "cmbUom"
-        Me.cmbUom.Size = New System.Drawing.Size(138, 26)
+        Me.cmbUom.Size = New System.Drawing.Size(138, 28)
         Me.cmbUom.TabIndex = 9
         '
         'btnSearch
         '
-        Me.btnSearch.Location = New System.Drawing.Point(250, 24)
+        Me.btnSearch.Location = New System.Drawing.Point(251, 12)
         Me.btnSearch.Name = "btnSearch"
         Me.btnSearch.Size = New System.Drawing.Size(100, 40)
         Me.btnSearch.TabIndex = 10
@@ -200,7 +200,7 @@ Partial Class frmCustomProduction
         Me.dtgrdProductionList.Name = "dtgrdProductionList"
         Me.dtgrdProductionList.ReadOnly = True
         Me.dtgrdProductionList.RowTemplate.Height = 24
-        Me.dtgrdProductionList.Size = New System.Drawing.Size(505, 204)
+        Me.dtgrdProductionList.Size = New System.Drawing.Size(505, 231)
         Me.dtgrdProductionList.TabIndex = 11
         '
         'Column1
@@ -224,7 +224,7 @@ Partial Class frmCustomProduction
         'Label6
         '
         Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(7, 289)
+        Me.Label6.Location = New System.Drawing.Point(12, 293)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(144, 17)
         Me.Label6.TabIndex = 13
@@ -234,29 +234,29 @@ Partial Class frmCustomProduction
         '
         Me.chklstMaterials.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
-        Me.chklstMaterials.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.chklstMaterials.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.chklstMaterials.FormattingEnabled = True
         Me.chklstMaterials.Location = New System.Drawing.Point(10, 309)
         Me.chklstMaterials.Name = "chklstMaterials"
-        Me.chklstMaterials.Size = New System.Drawing.Size(490, 463)
+        Me.chklstMaterials.Size = New System.Drawing.Size(490, 444)
         Me.chklstMaterials.TabIndex = 15
         '
         'lstbxMaterials
         '
         Me.lstbxMaterials.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
-        Me.lstbxMaterials.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lstbxMaterials.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lstbxMaterials.FormattingEnabled = True
-        Me.lstbxMaterials.ItemHeight = 18
+        Me.lstbxMaterials.ItemHeight = 20
         Me.lstbxMaterials.Location = New System.Drawing.Point(506, 309)
         Me.lstbxMaterials.Name = "lstbxMaterials"
-        Me.lstbxMaterials.Size = New System.Drawing.Size(487, 454)
+        Me.lstbxMaterials.Size = New System.Drawing.Size(487, 444)
         Me.lstbxMaterials.TabIndex = 16
         '
         'Label7
         '
         Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(506, 289)
+        Me.Label7.Location = New System.Drawing.Point(503, 289)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(250, 17)
         Me.Label7.TabIndex = 17
@@ -289,7 +289,7 @@ Partial Class frmCustomProduction
         'btnAdd
         '
         Me.btnAdd.Enabled = False
-        Me.btnAdd.Location = New System.Drawing.Point(251, 100)
+        Me.btnAdd.Location = New System.Drawing.Point(251, 102)
         Me.btnAdd.Name = "btnAdd"
         Me.btnAdd.Size = New System.Drawing.Size(120, 40)
         Me.btnAdd.TabIndex = 111
@@ -298,7 +298,7 @@ Partial Class frmCustomProduction
         '
         'btnReset
         '
-        Me.btnReset.Location = New System.Drawing.Point(386, 100)
+        Me.btnReset.Location = New System.Drawing.Point(397, 103)
         Me.btnReset.Name = "btnReset"
         Me.btnReset.Size = New System.Drawing.Size(100, 40)
         Me.btnReset.TabIndex = 112
@@ -316,11 +316,11 @@ Partial Class frmCustomProduction
         '
         'txtQty
         '
-        Me.txtQty.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtQty.Location = New System.Drawing.Point(89, 99)
+        Me.txtQty.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtQty.Location = New System.Drawing.Point(89, 103)
         Me.txtQty.MaxLength = 50
         Me.txtQty.Name = "txtQty"
-        Me.txtQty.Size = New System.Drawing.Size(115, 24)
+        Me.txtQty.Size = New System.Drawing.Size(115, 27)
         Me.txtQty.TabIndex = 109
         '
         'Label9
@@ -341,11 +341,11 @@ Partial Class frmCustomProduction
         Me.dtgrdItemList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.dtgrdItemList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dtgrdItemList.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn1, Me.DataGridViewTextBoxColumn2, Me.DataGridViewTextBoxColumn3, Me.Column4, Me.Column5})
-        Me.dtgrdItemList.Location = New System.Drawing.Point(5, 146)
+        Me.dtgrdItemList.Location = New System.Drawing.Point(5, 148)
         Me.dtgrdItemList.Name = "dtgrdItemList"
         Me.dtgrdItemList.ReadOnly = True
         Me.dtgrdItemList.RowTemplate.Height = 24
-        Me.dtgrdItemList.Size = New System.Drawing.Size(492, 266)
+        Me.dtgrdItemList.Size = New System.Drawing.Size(492, 264)
         Me.dtgrdItemList.TabIndex = 107
         '
         'DataGridViewTextBoxColumn1
@@ -381,11 +381,11 @@ Partial Class frmCustomProduction
         '
         'cmbDescription
         '
-        Me.cmbDescription.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbDescription.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmbDescription.FormattingEnabled = True
         Me.cmbDescription.Location = New System.Drawing.Point(89, 69)
         Me.cmbDescription.Name = "cmbDescription"
-        Me.cmbDescription.Size = New System.Drawing.Size(408, 26)
+        Me.cmbDescription.Size = New System.Drawing.Size(408, 28)
         Me.cmbDescription.TabIndex = 106
         '
         'btnSearchItem
@@ -408,11 +408,11 @@ Partial Class frmCustomProduction
         '
         'txtBarCode
         '
-        Me.txtBarCode.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtBarCode.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtBarCode.Location = New System.Drawing.Point(89, 5)
         Me.txtBarCode.MaxLength = 50
         Me.txtBarCode.Name = "txtBarCode"
-        Me.txtBarCode.Size = New System.Drawing.Size(115, 24)
+        Me.txtBarCode.Size = New System.Drawing.Size(115, 27)
         Me.txtBarCode.TabIndex = 104
         '
         'Label13
@@ -435,11 +435,11 @@ Partial Class frmCustomProduction
         '
         'txtItemCode
         '
-        Me.txtItemCode.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtItemCode.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtItemCode.Location = New System.Drawing.Point(89, 36)
         Me.txtItemCode.MaxLength = 50
         Me.txtItemCode.Name = "txtItemCode"
-        Me.txtItemCode.Size = New System.Drawing.Size(115, 24)
+        Me.txtItemCode.Size = New System.Drawing.Size(115, 27)
         Me.txtItemCode.TabIndex = 102
         '
         'Label8
@@ -461,17 +461,17 @@ Partial Class frmCustomProduction
         '
         'txtDate
         '
-        Me.txtDate.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtDate.Location = New System.Drawing.Point(110, 185)
+        Me.txtDate.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtDate.Location = New System.Drawing.Point(110, 191)
         Me.txtDate.Name = "txtDate"
         Me.txtDate.ReadOnly = True
-        Me.txtDate.Size = New System.Drawing.Size(138, 24)
+        Me.txtDate.Size = New System.Drawing.Size(138, 27)
         Me.txtDate.TabIndex = 29
         '
         'Label10
         '
         Me.Label10.AutoSize = True
-        Me.Label10.Location = New System.Drawing.Point(67, 185)
+        Me.Label10.Location = New System.Drawing.Point(67, 191)
         Me.Label10.Name = "Label10"
         Me.Label10.Size = New System.Drawing.Size(38, 17)
         Me.Label10.TabIndex = 30
@@ -507,7 +507,7 @@ Partial Class frmCustomProduction
         Me.Panel2.Controls.Add(Me.btnSearch)
         Me.Panel2.Location = New System.Drawing.Point(10, 50)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(363, 226)
+        Me.Panel2.Size = New System.Drawing.Size(363, 240)
         Me.Panel2.TabIndex = 34
         '
         'ToolStrip1
@@ -623,7 +623,7 @@ Partial Class frmCustomProduction
         'btnAddUpdate
         '
         Me.btnAddUpdate.Enabled = False
-        Me.btnAddUpdate.Location = New System.Drawing.Point(379, 237)
+        Me.btnAddUpdate.Location = New System.Drawing.Point(379, 224)
         Me.btnAddUpdate.Name = "btnAddUpdate"
         Me.btnAddUpdate.Size = New System.Drawing.Size(121, 66)
         Me.btnAddUpdate.TabIndex = 14

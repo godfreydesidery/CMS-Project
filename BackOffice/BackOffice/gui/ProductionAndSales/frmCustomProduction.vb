@@ -514,7 +514,7 @@ Public Class frmCustomProduction
                 materialUsed.price = materials.Item(i).price
                 materialUsed.qty = 0
                 materialUsed.uom = materials.Item(i).uom
-                materialUsed.summary = materials.Item(i).description + " (0) " + materials.Item(i).uom
+                materialUsed.summary = materials.Item(i).description + " [  0  ] " + materials.Item(i).uom
 
                 Dim j As Integer
                 Dim contains As Boolean = False
@@ -1589,7 +1589,7 @@ Public Class frmCustomProduction
         Dim status As String = (New Production).getStatus(txtId.Text)
         If status = "PENDING" Then
             If checkUnusedMaterials() = False Then
-                MsgBox("Could not approve, materials with zero quantity should be removed from the list of materials used", vbOKOnly + vbExclamation, "Invalid operation")
+                MsgBox("Could not approve, materials with zero quantity are not allowed in material to use list", vbOKOnly + vbExclamation, "Invalid operation")
                 Exit Sub
             End If
             Dim res As Integer = MsgBox("Approve production " + txtProductionNo.Text + " ?", vbYesNo + vbQuestion, "Approve production?")

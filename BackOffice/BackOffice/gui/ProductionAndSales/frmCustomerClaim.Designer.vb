@@ -22,10 +22,10 @@ Partial Class frmCustomerClaim
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmCustomerClaim))
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.txtSettlementDate = New System.Windows.Forms.TextBox()
@@ -163,15 +163,16 @@ Partial Class frmCustomerClaim
         Me.Panel1.Controls.Add(Me.Label1)
         Me.Panel1.Location = New System.Drawing.Point(10, 50)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(698, 247)
+        Me.Panel1.Size = New System.Drawing.Size(674, 247)
         Me.Panel1.TabIndex = 0
         '
         'txtSettlementDate
         '
+        Me.txtSettlementDate.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtSettlementDate.Location = New System.Drawing.Point(88, 60)
         Me.txtSettlementDate.Name = "txtSettlementDate"
         Me.txtSettlementDate.ReadOnly = True
-        Me.txtSettlementDate.Size = New System.Drawing.Size(115, 22)
+        Me.txtSettlementDate.Size = New System.Drawing.Size(115, 27)
         Me.txtSettlementDate.TabIndex = 114
         '
         'Label30
@@ -203,10 +204,11 @@ Partial Class frmCustomerClaim
         '
         'txtClaimDate
         '
+        Me.txtClaimDate.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtClaimDate.Location = New System.Drawing.Point(88, 32)
         Me.txtClaimDate.Name = "txtClaimDate"
         Me.txtClaimDate.ReadOnly = True
-        Me.txtClaimDate.Size = New System.Drawing.Size(115, 22)
+        Me.txtClaimDate.Size = New System.Drawing.Size(115, 27)
         Me.txtClaimDate.TabIndex = 12
         '
         'Label5
@@ -220,17 +222,19 @@ Partial Class frmCustomerClaim
         '
         'txtStatus
         '
+        Me.txtStatus.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtStatus.Location = New System.Drawing.Point(88, 88)
         Me.txtStatus.Name = "txtStatus"
         Me.txtStatus.ReadOnly = True
-        Me.txtStatus.Size = New System.Drawing.Size(115, 22)
+        Me.txtStatus.Size = New System.Drawing.Size(115, 27)
         Me.txtStatus.TabIndex = 10
         '
         'txtClaimNo
         '
+        Me.txtClaimNo.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtClaimNo.Location = New System.Drawing.Point(87, 4)
         Me.txtClaimNo.Name = "txtClaimNo"
-        Me.txtClaimNo.Size = New System.Drawing.Size(116, 22)
+        Me.txtClaimNo.Size = New System.Drawing.Size(116, 27)
         Me.txtClaimNo.TabIndex = 9
         '
         'Panel3
@@ -254,9 +258,10 @@ Partial Class frmCustomerClaim
         '
         'txtOther
         '
+        Me.txtOther.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtOther.Location = New System.Drawing.Point(80, 83)
         Me.txtOther.Name = "txtOther"
-        Me.txtOther.Size = New System.Drawing.Size(244, 22)
+        Me.txtOther.Size = New System.Drawing.Size(244, 27)
         Me.txtOther.TabIndex = 14
         '
         'Label31
@@ -270,16 +275,18 @@ Partial Class frmCustomerClaim
         '
         'txtReceivedBy
         '
+        Me.txtReceivedBy.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtReceivedBy.Location = New System.Drawing.Point(320, 48)
         Me.txtReceivedBy.Name = "txtReceivedBy"
-        Me.txtReceivedBy.Size = New System.Drawing.Size(319, 22)
+        Me.txtReceivedBy.Size = New System.Drawing.Size(319, 27)
         Me.txtReceivedBy.TabIndex = 12
         '
         'txtReturnedBy
         '
+        Me.txtReturnedBy.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtReturnedBy.Location = New System.Drawing.Point(320, 20)
         Me.txtReturnedBy.Name = "txtReturnedBy"
-        Me.txtReturnedBy.Size = New System.Drawing.Size(319, 22)
+        Me.txtReturnedBy.Size = New System.Drawing.Size(319, 27)
         Me.txtReturnedBy.TabIndex = 11
         '
         'Label28
@@ -302,16 +309,18 @@ Partial Class frmCustomerClaim
         '
         'txtInvoiceNo
         '
+        Me.txtInvoiceNo.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtInvoiceNo.Location = New System.Drawing.Point(80, 48)
         Me.txtInvoiceNo.Name = "txtInvoiceNo"
-        Me.txtInvoiceNo.Size = New System.Drawing.Size(118, 22)
+        Me.txtInvoiceNo.Size = New System.Drawing.Size(118, 27)
         Me.txtInvoiceNo.TabIndex = 8
         '
         'txtIssueNo
         '
+        Me.txtIssueNo.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtIssueNo.Location = New System.Drawing.Point(80, 20)
         Me.txtIssueNo.Name = "txtIssueNo"
-        Me.txtIssueNo.Size = New System.Drawing.Size(118, 22)
+        Me.txtIssueNo.Size = New System.Drawing.Size(118, 27)
         Me.txtIssueNo.TabIndex = 7
         '
         'Label8
@@ -358,23 +367,26 @@ Partial Class frmCustomerClaim
         '
         'txtClientAddress
         '
+        Me.txtClientAddress.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtClientAddress.Location = New System.Drawing.Point(69, 79)
         Me.txtClientAddress.Name = "txtClientAddress"
-        Me.txtClientAddress.Size = New System.Drawing.Size(249, 22)
+        Me.txtClientAddress.Size = New System.Drawing.Size(249, 27)
         Me.txtClientAddress.TabIndex = 9
         '
         'txtClientPhone
         '
+        Me.txtClientPhone.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtClientPhone.Location = New System.Drawing.Point(69, 51)
         Me.txtClientPhone.Name = "txtClientPhone"
-        Me.txtClientPhone.Size = New System.Drawing.Size(249, 22)
+        Me.txtClientPhone.Size = New System.Drawing.Size(249, 27)
         Me.txtClientPhone.TabIndex = 8
         '
         'txtClientName
         '
+        Me.txtClientName.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtClientName.Location = New System.Drawing.Point(69, 23)
         Me.txtClientName.Name = "txtClientName"
-        Me.txtClientName.Size = New System.Drawing.Size(249, 22)
+        Me.txtClientName.Size = New System.Drawing.Size(249, 27)
         Me.txtClientName.TabIndex = 7
         '
         'Label7
@@ -471,11 +483,12 @@ Partial Class frmCustomerClaim
         'cmbClaimType
         '
         Me.cmbClaimType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cmbClaimType.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmbClaimType.FormattingEnabled = True
         Me.cmbClaimType.Items.AddRange(New Object() {"", "REPLACEMENT"})
         Me.cmbClaimType.Location = New System.Drawing.Point(87, 202)
         Me.cmbClaimType.Name = "cmbClaimType"
-        Me.cmbClaimType.Size = New System.Drawing.Size(348, 24)
+        Me.cmbClaimType.Size = New System.Drawing.Size(348, 28)
         Me.cmbClaimType.TabIndex = 106
         '
         'Label17
@@ -498,10 +511,11 @@ Partial Class frmCustomerClaim
         '
         'txtClaimRemarks
         '
+        Me.txtClaimRemarks.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtClaimRemarks.Location = New System.Drawing.Point(87, 174)
         Me.txtClaimRemarks.MaxLength = 50
         Me.txtClaimRemarks.Name = "txtClaimRemarks"
-        Me.txtClaimRemarks.Size = New System.Drawing.Size(348, 22)
+        Me.txtClaimRemarks.Size = New System.Drawing.Size(348, 27)
         Me.txtClaimRemarks.TabIndex = 102
         '
         'Label14
@@ -515,18 +529,20 @@ Partial Class frmCustomerClaim
         '
         'txtClaimReason
         '
+        Me.txtClaimReason.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtClaimReason.Location = New System.Drawing.Point(87, 146)
         Me.txtClaimReason.MaxLength = 50
         Me.txtClaimReason.Name = "txtClaimReason"
-        Me.txtClaimReason.Size = New System.Drawing.Size(348, 22)
+        Me.txtClaimReason.Size = New System.Drawing.Size(348, 27)
         Me.txtClaimReason.TabIndex = 100
         '
         'cmbClaimDescription
         '
+        Me.cmbClaimDescription.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmbClaimDescription.FormattingEnabled = True
         Me.cmbClaimDescription.Location = New System.Drawing.Point(88, 60)
         Me.cmbClaimDescription.Name = "cmbClaimDescription"
-        Me.cmbClaimDescription.Size = New System.Drawing.Size(347, 24)
+        Me.cmbClaimDescription.Size = New System.Drawing.Size(347, 28)
         Me.cmbClaimDescription.TabIndex = 99
         '
         'Label19
@@ -540,10 +556,11 @@ Partial Class frmCustomerClaim
         '
         'txtClaimQty
         '
+        Me.txtClaimQty.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtClaimQty.Location = New System.Drawing.Point(87, 118)
         Me.txtClaimQty.MaxLength = 50
         Me.txtClaimQty.Name = "txtClaimQty"
-        Me.txtClaimQty.Size = New System.Drawing.Size(115, 22)
+        Me.txtClaimQty.Size = New System.Drawing.Size(115, 27)
         Me.txtClaimQty.TabIndex = 56
         '
         'btnClaimAdd
@@ -585,10 +602,11 @@ Partial Class frmCustomerClaim
         '
         'txtClaimBarCode
         '
+        Me.txtClaimBarCode.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtClaimBarCode.Location = New System.Drawing.Point(87, 4)
         Me.txtClaimBarCode.MaxLength = 50
         Me.txtClaimBarCode.Name = "txtClaimBarCode"
-        Me.txtClaimBarCode.Size = New System.Drawing.Size(115, 22)
+        Me.txtClaimBarCode.Size = New System.Drawing.Size(115, 27)
         Me.txtClaimBarCode.TabIndex = 50
         '
         'Label13
@@ -611,19 +629,21 @@ Partial Class frmCustomerClaim
         '
         'txtClaimItemCode
         '
+        Me.txtClaimItemCode.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtClaimItemCode.Location = New System.Drawing.Point(87, 32)
         Me.txtClaimItemCode.MaxLength = 50
         Me.txtClaimItemCode.Name = "txtClaimItemCode"
-        Me.txtClaimItemCode.Size = New System.Drawing.Size(115, 22)
+        Me.txtClaimItemCode.Size = New System.Drawing.Size(115, 27)
         Me.txtClaimItemCode.TabIndex = 39
         '
         'txtClaimPrice
         '
+        Me.txtClaimPrice.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtClaimPrice.Location = New System.Drawing.Point(88, 90)
         Me.txtClaimPrice.MaxLength = 50
         Me.txtClaimPrice.Name = "txtClaimPrice"
         Me.txtClaimPrice.ReadOnly = True
-        Me.txtClaimPrice.Size = New System.Drawing.Size(115, 22)
+        Me.txtClaimPrice.Size = New System.Drawing.Size(115, 27)
         Me.txtClaimPrice.TabIndex = 47
         Me.txtClaimPrice.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
@@ -673,16 +693,16 @@ Partial Class frmCustomerClaim
         '
         'Column4
         '
-        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.Column4.DefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.Column4.DefaultCellStyle = DataGridViewCellStyle5
         Me.Column4.HeaderText = "Price"
         Me.Column4.Name = "Column4"
         Me.Column4.ReadOnly = True
         '
         'Column9
         '
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.Column9.DefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.Column9.DefaultCellStyle = DataGridViewCellStyle6
         Me.Column9.HeaderText = "Amount"
         Me.Column9.Name = "Column9"
         Me.Column9.ReadOnly = True
@@ -748,16 +768,16 @@ Partial Class frmCustomerClaim
         '
         'Column10
         '
-        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.Column10.DefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.Column10.DefaultCellStyle = DataGridViewCellStyle7
         Me.Column10.HeaderText = "Price"
         Me.Column10.Name = "Column10"
         Me.Column10.ReadOnly = True
         '
         'DataGridViewTextBoxColumn7
         '
-        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.DataGridViewTextBoxColumn7.DefaultCellStyle = DataGridViewCellStyle4
+        DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.DataGridViewTextBoxColumn7.DefaultCellStyle = DataGridViewCellStyle8
         Me.DataGridViewTextBoxColumn7.HeaderText = "Amount"
         Me.DataGridViewTextBoxColumn7.Name = "DataGridViewTextBoxColumn7"
         Me.DataGridViewTextBoxColumn7.ReadOnly = True
@@ -803,10 +823,11 @@ Partial Class frmCustomerClaim
         '
         'cmbReplacementDescription
         '
+        Me.cmbReplacementDescription.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmbReplacementDescription.FormattingEnabled = True
         Me.cmbReplacementDescription.Location = New System.Drawing.Point(88, 60)
         Me.cmbReplacementDescription.Name = "cmbReplacementDescription"
-        Me.cmbReplacementDescription.Size = New System.Drawing.Size(356, 24)
+        Me.cmbReplacementDescription.Size = New System.Drawing.Size(356, 28)
         Me.cmbReplacementDescription.TabIndex = 99
         '
         'Label22
@@ -820,10 +841,11 @@ Partial Class frmCustomerClaim
         '
         'txtReplacementQty
         '
+        Me.txtReplacementQty.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtReplacementQty.Location = New System.Drawing.Point(87, 118)
         Me.txtReplacementQty.MaxLength = 50
         Me.txtReplacementQty.Name = "txtReplacementQty"
-        Me.txtReplacementQty.Size = New System.Drawing.Size(115, 22)
+        Me.txtReplacementQty.Size = New System.Drawing.Size(115, 27)
         Me.txtReplacementQty.TabIndex = 56
         '
         'btnReplacementAdd
@@ -865,10 +887,11 @@ Partial Class frmCustomerClaim
         '
         'txtReplacementBarcode
         '
+        Me.txtReplacementBarcode.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtReplacementBarcode.Location = New System.Drawing.Point(87, 4)
         Me.txtReplacementBarcode.MaxLength = 50
         Me.txtReplacementBarcode.Name = "txtReplacementBarcode"
-        Me.txtReplacementBarcode.Size = New System.Drawing.Size(115, 22)
+        Me.txtReplacementBarcode.Size = New System.Drawing.Size(115, 27)
         Me.txtReplacementBarcode.TabIndex = 50
         '
         'Label24
@@ -891,19 +914,21 @@ Partial Class frmCustomerClaim
         '
         'txtReplacementItemCode
         '
+        Me.txtReplacementItemCode.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtReplacementItemCode.Location = New System.Drawing.Point(87, 32)
         Me.txtReplacementItemCode.MaxLength = 50
         Me.txtReplacementItemCode.Name = "txtReplacementItemCode"
-        Me.txtReplacementItemCode.Size = New System.Drawing.Size(115, 22)
+        Me.txtReplacementItemCode.Size = New System.Drawing.Size(115, 27)
         Me.txtReplacementItemCode.TabIndex = 39
         '
         'txtreplacementPrice
         '
+        Me.txtreplacementPrice.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtreplacementPrice.Location = New System.Drawing.Point(88, 90)
         Me.txtreplacementPrice.MaxLength = 50
         Me.txtreplacementPrice.Name = "txtreplacementPrice"
         Me.txtreplacementPrice.ReadOnly = True
-        Me.txtreplacementPrice.Size = New System.Drawing.Size(115, 22)
+        Me.txtreplacementPrice.Size = New System.Drawing.Size(115, 27)
         Me.txtreplacementPrice.TabIndex = 47
         Me.txtreplacementPrice.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '

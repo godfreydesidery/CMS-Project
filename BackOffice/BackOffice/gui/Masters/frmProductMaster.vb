@@ -30,6 +30,7 @@ Public Class frmProductMaster
     Dim _class As String = ""
     Dim subClass As String = ""
     Dim active As String = ""
+    Dim sellable As String = ""
     Private Function assignValues()
         barCode = txtBarCode.Text
         itemCode = txtItemCode.Text
@@ -81,7 +82,7 @@ Public Class frmProductMaster
             assignValues()
             Dim conn As New MySqlConnection(Database.conString)
             Dim command As New MySqlCommand()
-            Dim Query As String = "UPDATE `items` SET `item_long_description`=@item_long_description,`item_description`=@item_description,`pck`=@pck,`department_id`=@department_id,`class_id`=@class_id,`sub_class_id`=@sub_class_id,`supplier_id`=@supplier_id,`unit_cost_price`=@unit_cost_price,`retail_price`=@retail_price,`discount`=@discount,`vat`=@vat,`margin`=@margin,`standard_uom`=@standard_uom,`active`=@active WHERE `item_code`='" + itemCode + "'"
+            Dim Query As String = "UPDATE `items` SET `item_long_description`=@item_long_description,`item_description`=@item_description,`pck`=@pck,`department_id`=@department_id,`class_id`=@class_id,`sub_class_id`=@sub_class_id,`supplier_id`=@supplier_id,`unit_cost_price`=@unit_cost_price,`retail_price`=@retail_price,`discount`=@discount,`vat`=@vat,`margin`=@margin,`standard_uom`=@standard_uom,`active`=@active,`sellable`=@sellable WHERE `item_code`='" + itemCode + "'"
             conn.Open()
             command.CommandText = Query
             command.Connection = conn
@@ -105,6 +106,12 @@ Public Class frmProductMaster
                 active = "0"
             End If
             command.Parameters.AddWithValue("@active", active)
+            If chkSellable.Checked = True Then
+                sellable = "1"
+            Else
+                sellable = "0"
+            End If
+            command.Parameters.AddWithValue("@sellable", sellable)
             command.ExecuteNonQuery()
             conn.Close()
             saved = True
@@ -187,6 +194,7 @@ Public Class frmProductMaster
         subClass = ""
 
         chkDiscontinued.Checked = False
+        chkSellable.Checked = False
 
         Return vbNull
     End Function
@@ -210,7 +218,7 @@ Public Class frmProductMaster
         Try
             Dim conn As New MySqlConnection(Database.conString)
             Dim suppcommand As New MySqlCommand()
-            Dim query As String = "SELECT  `item_code`, `item_scan_code`, `item_long_description`, `item_description`, `pck`, `department_id`, `class_id`, `sub_class_id`, `supplier_id`, `unit_cost_price`, `retail_price`, `discount`, `vat`, `margin`, `standard_uom`,`active` FROM `items` WHERE `item_code`='" + itemCode + "'"
+            Dim query As String = "SELECT  `item_code`, `item_scan_code`, `item_long_description`, `item_description`, `pck`, `department_id`, `class_id`, `sub_class_id`, `supplier_id`, `unit_cost_price`, `retail_price`, `discount`, `vat`, `margin`, `standard_uom`,`active`, `sellable` FROM `items` WHERE `item_code`='" + itemCode + "'"
             conn.Open()
             suppcommand.CommandText = query
             suppcommand.Connection = conn
@@ -240,6 +248,11 @@ Public Class frmProductMaster
                         chkDiscontinued.Checked = False
                     ElseIf reader.GetString("active") = "0" Then
                         chkDiscontinued.Checked = True
+                    End If
+                    If reader.GetString("sellable") = "1" Then
+                        chkSellable.Checked = True
+                    ElseIf reader.GetString("sellable") = "0" Then
+                        chkSellable.Checked = False
                     End If
                     found = True
                     Exit While
@@ -967,6 +980,10 @@ Public Class frmProductMaster
     End Sub
 
     Private Sub btnViewSuppliers1_Click(sender As Object, e As EventArgs)
+
+    End Sub
+
+    Private Sub btnClear_Click(sender As Object, e As EventArgs) Handles btnClear.Click
 
     End Sub
 End Class

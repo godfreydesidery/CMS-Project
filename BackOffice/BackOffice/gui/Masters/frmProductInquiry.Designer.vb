@@ -71,6 +71,7 @@ Partial Class frmProductInquiry
         Me.cmbDescription = New System.Windows.Forms.ComboBox()
         Me.ToolStrip1 = New System.Windows.Forms.ToolStrip()
         Me.btnReset = New System.Windows.Forms.ToolStripButton()
+        Me.chkSellable = New System.Windows.Forms.CheckBox()
         Me.Panel1.SuspendLayout()
         Me.ToolStrip1.SuspendLayout()
         Me.SuspendLayout()
@@ -532,11 +533,23 @@ Partial Class frmProductInquiry
         Me.btnReset.Text = "Reset"
         Me.btnReset.ToolTipText = "Clear all the fields"
         '
+        'chkSellable
+        '
+        Me.chkSellable.AutoSize = True
+        Me.chkSellable.Enabled = False
+        Me.chkSellable.Location = New System.Drawing.Point(305, 163)
+        Me.chkSellable.Name = "chkSellable"
+        Me.chkSellable.Size = New System.Drawing.Size(80, 21)
+        Me.chkSellable.TabIndex = 111
+        Me.chkSellable.Text = "Sellable"
+        Me.chkSellable.UseVisualStyleBackColor = True
+        '
         'frmProductInquiry
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(886, 539)
+        Me.Controls.Add(Me.chkSellable)
         Me.Controls.Add(Me.ToolStrip1)
         Me.Controls.Add(Me.txtCostPrice)
         Me.Controls.Add(Me.Label5)
@@ -637,4 +650,5 @@ Partial Class frmProductInquiry
     Friend WithEvents cmbDescription As ComboBox
     Friend WithEvents ToolStrip1 As ToolStrip
     Friend WithEvents btnReset As ToolStripButton
+    Friend WithEvents chkSellable As CheckBox
 End Class

@@ -1239,6 +1239,58 @@ Public Class frmPurchaseOrder
     Private Sub btnClear_Click(sender As Object, e As EventArgs) Handles btnClear.Click
         clear()
         clearFields()
+    End Sub
 
+    Private Sub btnArchiveAll_Click(sender As Object, e As EventArgs) Handles btnArchiveAll.Click
+        clear()
+        clearFields()
+        Dim res As Integer = MsgBox("Are you sure you want to archive all completed LPO documents? All completed documents will be sent to archives for future reference.", vbQuestion + vbYesNo, "Archive all cleared packing lists")
+        If res = DialogResult.Yes Then
+            Dim noOfdocuments As Integer = 0
+            Try
+                Cursor = Cursors.WaitCursor
+                For i As Integer = 0 To dtgrdLPOList.RowCount - 1
+                    Dim no As String = dtgrdLPOList.Item(0, i).Value.ToString
+                    Dim list As Order = New Order
+                    Dim status As String = list.getStatus(no)
+                    If status = "COMPLETED" Then
+                        noOfdocuments = noOfdocuments + 1
+                    End If
+                Next
+                If noOfdocuments = 0 Then
+                    MsgBox("No documents to archive, only completed documents can be arcived", vbOKOnly + vbExclamation, "No documents to archive")
+                    Cursor = Cursors.Default
+                    Exit Sub
+                Else
+                    Dim confirm As Integer = MsgBox(noOfdocuments.ToString + " documents will be archived, continue?", vbYesNo + vbQuestion, "Concirm archive")
+                    If Not confirm = DialogResult.Yes Then
+                        Cursor = Cursors.Default
+                        Exit Sub
+                    End If
+                End If
+            Catch ex As Exception
+                MsgBox("Could not archive")
+                Cursor = Cursors.Default
+                Exit Sub
+            End Try
+
+            Try
+                Cursor = Cursors.WaitCursor
+                For i As Integer = 0 To dtgrdLPOList.RowCount - 1
+                    Dim no As String = dtgrdLPOList.Item(0, i).Value.ToString
+                    Dim list As Order = New Order
+                    Dim status As String = list.getStatus(no)
+                    If status = "COMPLETED" Then
+                        'archive
+                        list.archiveOrder(no)
+                    End If
+                Next
+                MsgBox(noOfdocuments.ToString + " document(s) archived successifuly")
+            Catch ex As Exception
+                '  MsgBox(ex.ToString)
+            End Try
+            refreshLPOList()
+            Cursor = Cursors.Default
+        End If
     End Sub
 End Class

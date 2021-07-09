@@ -50,7 +50,7 @@ Public Class frmProductInquiry
             Dim command As New MySqlCommand()
             'create bar code
 
-            Dim codeQuery As String = "SELECT `item_code`, `item_scan_code`, `item_long_description`, `item_description`, `pck`, `department_id`, `class_id`, `sub_class_id`, `supplier_id`, `unit_cost_price`, `retail_price`, `discount`, `vat`, `margin`, `standard_uom`,`active` FROM `items` WHERE `item_code`='" + itemCode + "'"
+            Dim codeQuery As String = "SELECT `item_code`, `item_scan_code`, `item_long_description`, `item_description`, `pck`, `department_id`, `class_id`, `sub_class_id`, `supplier_id`, `unit_cost_price`, `retail_price`, `discount`, `vat`, `margin`, `standard_uom`,`active`, `sellable` FROM `items` WHERE `item_code`='" + itemCode + "'"
             conn.Open()
             command.CommandText = codeQuery
             command.Connection = conn
@@ -76,6 +76,11 @@ Public Class frmProductInquiry
                     chkDiscontinued.Checked = True
                 Else
                     chkDiscontinued.Checked = False
+                End If
+                If reader.GetString("sellable") = "1" Then
+                    chkSellable.Checked = True
+                Else
+                    chkSellable.Checked = False
                 End If
                 found = True
                 Exit While
@@ -151,6 +156,7 @@ Public Class frmProductInquiry
         txtReorderQty.Text = ""
         txtQty.Text = ""
         chkDiscontinued.Checked = False
+        chkSellable.Checked = False
         Return vbNull
     End Function
     Private Sub btnReset_Click(sender As Object, e As EventArgs) Handles btnReset.Click

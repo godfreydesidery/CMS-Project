@@ -75,6 +75,7 @@ Partial Class frmProductMaster
         Me.btnEditInventory = New System.Windows.Forms.ToolStripButton()
         Me.btnAddBarcode = New System.Windows.Forms.ToolStripButton()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
+        Me.chkSellable = New System.Windows.Forms.CheckBox()
         Me.Panel1.SuspendLayout()
         Me.ToolStrip1.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -143,7 +144,7 @@ Partial Class frmProductMaster
         'chkDiscontinued
         '
         Me.chkDiscontinued.AutoSize = True
-        Me.chkDiscontinued.Location = New System.Drawing.Point(593, 223)
+        Me.chkDiscontinued.Location = New System.Drawing.Point(714, 223)
         Me.chkDiscontinued.Name = "chkDiscontinued"
         Me.chkDiscontinued.Size = New System.Drawing.Size(112, 21)
         Me.chkDiscontinued.TabIndex = 45
@@ -492,6 +493,7 @@ Partial Class frmProductMaster
         Me.btnClear.Size = New System.Drawing.Size(67, 24)
         Me.btnClear.Text = "Clear"
         Me.btnClear.ToolTipText = "Clear all the fields"
+        Me.btnClear.Visible = False
         '
         'btnDelete
         '
@@ -561,11 +563,22 @@ Partial Class frmProductMaster
         Me.PictureBox1.TabIndex = 109
         Me.PictureBox1.TabStop = False
         '
+        'chkSellable
+        '
+        Me.chkSellable.AutoSize = True
+        Me.chkSellable.Location = New System.Drawing.Point(512, 222)
+        Me.chkSellable.Name = "chkSellable"
+        Me.chkSellable.Size = New System.Drawing.Size(80, 21)
+        Me.chkSellable.TabIndex = 110
+        Me.chkSellable.Text = "Sellable"
+        Me.chkSellable.UseVisualStyleBackColor = True
+        '
         'frmProductMaster
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(942, 430)
+        Me.Controls.Add(Me.chkSellable)
         Me.Controls.Add(Me.PictureBox1)
         Me.Controls.Add(Me.ToolStrip1)
         Me.Controls.Add(Me.cmbDescription)
@@ -663,4 +676,5 @@ Partial Class frmProductMaster
     Friend WithEvents btnEditInventory As ToolStripButton
     Friend WithEvents btnAddBarcode As ToolStripButton
     Friend WithEvents PictureBox1 As PictureBox
+    Friend WithEvents chkSellable As CheckBox
 End Class

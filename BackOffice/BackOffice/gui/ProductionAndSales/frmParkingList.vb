@@ -687,6 +687,8 @@ Public Class frmPackingList
                 txtId.Text = list.GL_ID
                 txtIssueNo.ReadOnly = True
 
+                token = touch(txtIssueNo.Text)
+
                 txtIssueDate.Text = list.GL_ISSUE_DATE
                 txtStatus.Text = list.GL_STATUS
                 cmbSalesPersons.Text = list.GL_SALES_PERSON
@@ -1271,6 +1273,11 @@ Public Class frmPackingList
 
         Dim sn As String = dtgrdItemList.Item(9, row).Value
 
+        If check(txtIssueNo.Text, token) = False Then
+            MsgBox("Could not modify document, the document has been modified by some one else. Please reload the document to continue", vbOKOnly + vbExclamation, "Invalid Operation")
+            Cursor = Cursors.Default
+            Exit Sub
+        End If
 
         Try
             Dim conn As New MySqlConnection(Database.conString)
@@ -1377,13 +1384,17 @@ Public Class frmPackingList
             Dim conn As New MySqlConnection(Database.conString)
             Dim command As New MySqlCommand()
             'create bar code
-            Dim codeQuery As String = "SELECT `item_code`, `item_long_description`, `pck`,`unit_cost_price`, `retail_price`,`vat`, `margin`, `standard_uom`, `active` FROM `items` WHERE `item_code`='" + itemCode + "'"
+            Dim codeQuery As String = "SELECT `item_code`, `item_long_description`, `pck`,`unit_cost_price`, `retail_price`,`vat`, `margin`, `standard_uom`, `active`, `sellable` FROM `items` WHERE `item_code`='" + itemCode + "'"
             conn.Open()
             command.CommandText = codeQuery
             command.Connection = conn
             command.CommandType = CommandType.Text
             Dim reader As MySqlDataReader = command.ExecuteReader()
             While reader.Read
+                If reader.GetString("sellable") <> "1" Then
+                    MsgBox("Item can not be sold", vbOKOnly + vbExclamation, "Item not sellable")
+                    Exit Sub
+                End If
                 txtItemCode.Text = reader.GetString("item_code")
                 cmbDescription.Text = reader.GetString("item_long_description")
                 txtPackSize.Text = reader.GetString("pck")
@@ -1542,6 +1553,7 @@ Public Class frmPackingList
                     list.getPackingList(txtIssueNo.Text)
                     txtId.Text = list.GL_ID
                     btnSave.Enabled = True
+                    token = touch(txtIssueNo.Text)
                 End If
             Else
 
@@ -1564,7 +1576,19 @@ Public Class frmPackingList
         list.GL_QTY_RETURNED = Math.Round((Val(qtyReturned)), 2, MidpointRounding.AwayFromZero)
         list.GL_QTY_SOLD = Math.Round((Val(qtySold)), 2, MidpointRounding.AwayFromZero)
         list.GL_QTY_DAMAGED = Math.Round((Val(qtyDamaged)), 2, MidpointRounding.AwayFromZero)
+
+        If check(txtIssueNo.Text, token) = False Then
+            MsgBox("Could not modify document, the document has been modified by some one else. Please reload the document to continue", vbOKOnly + vbExclamation, "Invalid Operation")
+            Cursor = Cursors.Default
+            Exit Sub
+        End If
+
         If checkDuplicate(itemCode, txtIssueNo.Text) = False Then
+            If dtgrdItemList.RowCount >= 200 Then
+                MsgBox("Maximum number of items in item list reached. The maximum allowed entries is 200", vbOKOnly + vbCritical, "Invalid operation")
+                Cursor = Cursors.Default
+                Exit Sub
+            End If
             list.addPackingListDetails()
         Else
             list.editPackingListDetails(txtIssueNo.Text, itemCode)
@@ -1586,6 +1610,11 @@ Public Class frmPackingList
             'continue
         Else
             MsgBox("Can not cancel, only Pending or Approved packing list can be canceled", vbOKOnly + vbCritical, "Error: Invalid operation")
+            Exit Sub
+        End If
+        If check(txtIssueNo.Text, token) = False Then
+            MsgBox("Could not modify document, the document has been modified by some one else. Please reload the document to continue", vbOKOnly + vbExclamation, "Invalid Operation")
+            Cursor = Cursors.Default
             Exit Sub
         End If
 
@@ -1641,6 +1670,11 @@ Public Class frmPackingList
             clearFields()
             Exit Sub
         End If
+        If check(txtIssueNo.Text, token) = False Then
+            MsgBox("Could not modify document, the document has been modified by some one else. Please reload the document to continue", vbOKOnly + vbExclamation, "Invalid Operation")
+            Cursor = Cursors.Default
+            Exit Sub
+        End If
         If 1 = 1 Then ' User.authorize("APPROVE PACKING LIST") = True Then
             If txtIssueNo.Text = "" Then
                 MsgBox("Select a packing list to approve", vbOKOnly + vbExclamation, "Error: No selection")
@@ -1682,6 +1716,8 @@ Public Class frmPackingList
         txtQtySold.Text = ""
         txtCPrice.Text = ""
         cmbDescription.Enabled = True
+        txtBarCode.ReadOnly = False
+        txtItemCode.ReadOnly = False
     End Sub
 
 
@@ -1719,6 +1755,10 @@ Public Class frmPackingList
         Dim status As String = (New PackingList).getStatus(txtIssueNo.Text)
         If status = "CANCELED" Or status = "COMPLETED" Or status = "ARCHIVED" Then
             MsgBox("Could not modify. Only Pending, Approved or Printed documents can be modified", vbOKOnly + vbExclamation, "Error: Invalid operation")
+            Exit Sub
+        End If
+        If check(txtIssueNo.Text, token) = False Then
+            MsgBox("Could not modify document, the document has been modified by some one else. Please reload the document to continue", vbOKOnly + vbExclamation, "Invalid Operation")
             Exit Sub
         End If
 
@@ -1842,10 +1882,14 @@ Public Class frmPackingList
             MsgBox("Select a document to print", vbOKOnly + vbExclamation, "Error: No selection")
             Exit Sub
         End If
-
+        If check(txtIssueNo.Text, token) = False Then
+            MsgBox("Could not print document, the document has been modified by some one else. Please reload the document to continue", vbOKOnly + vbExclamation, "Invalid Operation")
+            Cursor = Cursors.Default
+            Exit Sub
+        End If
         If 1 = 1 Then ' User.authorize("PRINT PACKING LIST") = True Then
             If txtIssueNo.Text = "" Then
-                MsgBox("Select a packing list to approve", vbOKOnly + vbExclamation, "Error: No selection")
+                MsgBox("Select a packing list to print", vbOKOnly + vbExclamation, "Error: No selection")
                 Exit Sub
             End If
             Dim res As Integer = 0
@@ -1873,7 +1917,6 @@ Public Class frmPackingList
                         Dim query As String = "UPDATE `packing_list` SET`status`='PRINTED' WHERE `issue_no`='" + txtIssueNo.Text + "';"
 
                         For i As Integer = 0 To dtgrdItemList.RowCount - 1
-
                             Dim itemCode As String = dtgrdItemList.Item(0, i).Value
                             Dim qtyIsssued As String = dtgrdItemList.Item(5, i).Value
                             'enter stock card
@@ -2084,6 +2127,12 @@ Public Class frmPackingList
             Exit Sub
         End If
 
+        If check(txtIssueNo.Text, token) = False Then
+            MsgBox("Could not modify document, the document has been modified by some one else. Please reload the document to continue", vbOKOnly + vbExclamation, "Invalid Operation")
+            Cursor = Cursors.Default
+            Exit Sub
+        End If
+
         If 1 = 1 Then ' User.authorize("APPROVE LPO") = True Then
             If txtIssueNo.Text = "" Then
                 MsgBox("Select a document to archive", vbOKOnly + vbExclamation, "Error: No selection")
@@ -2117,7 +2166,11 @@ Public Class frmPackingList
             Exit Sub
         End If
 
-
+        If check(txtIssueNo.Text, token) = False Then
+            MsgBox("Could not modify document, the document has been modified by some one else. Please reload the document to continue", vbOKOnly + vbExclamation, "Invalid Operation")
+            Cursor = Cursors.Default
+            Exit Sub
+        End If
 
         txtTotalAmountIssued.Text = LCurrency.displayValue(Math.Round((Val(LCurrency.getValue(txtTotalAmountIssued.Text))), 2, MidpointRounding.AwayFromZero).ToString)
         txtTotalReturns.Text = LCurrency.displayValue(Math.Round((Val(LCurrency.getValue(txtTotalReturns.Text))), 2, MidpointRounding.AwayFromZero).ToString)
@@ -2580,6 +2633,13 @@ Public Class frmPackingList
             MsgBox("Please select packing list", vbOKOnly + vbExclamation, "Error: No selection")
             Exit Sub
         End If
+
+        If check(txtIssueNo.Text, token) = False Then
+            MsgBox("Could not modify document, the document has been modified by some one else. Please reload the document to continue", vbOKOnly + vbExclamation, "Invalid Operation")
+            Cursor = Cursors.Default
+            Exit Sub
+        End If
+
         PackingList.GLOBAL_ISSUE_NO = txtIssueNo.Text
         PackingList.GLOBAL_SM_OFFICER = cmbSalesPersons.Text
         PackingList.GLOBAL_DEBT = LCurrency.getValue(txtDebt.Text)
@@ -2713,6 +2773,12 @@ Public Class frmPackingList
                 Exit Sub
             End If
 
+            If check(txtIssueNo.Text, token) = False Then
+                MsgBox("Could not print document, the document has been modified by some one else. Please reload the document to continue", vbOKOnly + vbExclamation, "Invalid Operation")
+                Cursor = Cursors.Default
+                Exit Sub
+            End If
+
             Dim document As Document = New Document
 
             document.Info.Title = "Packing List"
@@ -2842,5 +2908,43 @@ Public Class frmPackingList
             refreshPackingLists()
             Cursor = Cursors.Default
         End If
+    End Sub
+    Dim token As String = ""
+    Private Function touch(issueNo As String) As String
+        Dim token As String = Utility.generateRandom20TokenWithDateTime()
+        Try
+            Dim conn As New MySqlConnection(Database.conString)
+            Dim command As New MySqlCommand()
+            Dim codeQuery As String = "UPDATE `packing_list` SET `touch`='" + token + "' WHERE `issue_no`='" + issueNo + "'"
+            conn.Open()
+            command.CommandText = codeQuery
+            command.Connection = conn
+            command.CommandType = CommandType.Text
+            command.ExecuteNonQuery()
+            conn.Close()
+        Catch ex As Exception
+            token = ""
+        End Try
+        Return token
+    End Function
+    Private Function check(issueNo As String, token As String) As Boolean
+        Dim conn As New MySqlConnection(Database.conString)
+        Dim command As New MySqlCommand()
+        Dim query As String = "SELECT `issue_no`, `touch` FROM `packing_list` WHERE `issue_no`='" + txtIssueNo.Text + "'"
+        conn.Open()
+        command.CommandText = query
+        command.Connection = conn
+        command.CommandType = CommandType.Text
+        Dim reader As MySqlDataReader = command.ExecuteReader()
+        While reader.Read
+            If token = reader.GetString("touch") And token <> "" Then
+                Return True
+            End If
+        End While
+        Return False
+    End Function
+
+    Private Sub Button1_Click_2(sender As Object, e As EventArgs)
+        touch(txtIssueNo.Text)
     End Sub
 End Class

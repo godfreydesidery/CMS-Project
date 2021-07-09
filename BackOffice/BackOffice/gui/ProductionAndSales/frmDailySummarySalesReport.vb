@@ -406,6 +406,7 @@ Public Class frmDailySummarySalesReport
 
 
     Private Sub btnGenerate_Click(sender As Object, e As EventArgs) Handles btnGenerate.Click
+        dtgrdList.Rows.Clear()
         generate()
     End Sub
     Private Sub generate()
@@ -794,11 +795,12 @@ Public Class frmDailySummarySalesReport
     End Sub
 
     Private Sub btnPrint_Click(sender As Object, e As EventArgs) Handles btnExportToPDF.Click
-        generate()
+
         If dtgrdList.RowCount = 0 Then
             MsgBox("Nothing to print")
             Exit Sub
         End If
+        Cursor = Cursors.WaitCursor
 
         Dim document As Document = New Document
 
@@ -818,6 +820,7 @@ Public Class frmDailySummarySalesReport
         myRenderer.PdfDocument.Save(filename)
 
         Process.Start(filename)
+        Cursor = Cursors.Default
     End Sub
 
     Private Sub cmbSalesPersons_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbSalesPersons.SelectedIndexChanged

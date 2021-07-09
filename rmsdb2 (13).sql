@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 02, 2021 at 01:55 PM
+-- Generation Time: Jul 09, 2021 at 02:36 PM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.1.26
 
@@ -165,7 +165,8 @@ CREATE TABLE `company` (
   `email` varchar(50) DEFAULT NULL,
   `fax` varchar(50) DEFAULT NULL,
   `policy` varchar(100) DEFAULT NULL,
-  `logo` mediumblob
+  `logo` mediumblob,
+  `touch` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -268,7 +269,8 @@ CREATE TABLE `customer_claims` (
   `invoice_no` varchar(100) DEFAULT NULL,
   `other` varchar(100) DEFAULT NULL,
   `returned_by` varchar(100) DEFAULT NULL,
-  `received_by` varchar(100) DEFAULT NULL
+  `received_by` varchar(100) DEFAULT NULL,
+  `touch` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -519,7 +521,9 @@ CREATE TABLE `items` (
   `vat` double NOT NULL DEFAULT '18',
   `margin` double DEFAULT NULL,
   `standard_uom` varchar(10) DEFAULT NULL,
-  `active` tinyint(1) DEFAULT '1'
+  `active` tinyint(1) DEFAULT '1',
+  `sellable` tinyint(1) NOT NULL DEFAULT '1',
+  `image` blob COMMENT 'item image'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -549,7 +553,8 @@ CREATE TABLE `item_conversion` (
   `date` date NOT NULL,
   `reason` varchar(500) DEFAULT NULL,
   `status` varchar(50) DEFAULT NULL,
-  `user_id` varchar(50) DEFAULT NULL
+  `user_id` varchar(50) DEFAULT NULL,
+  `touch` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -626,7 +631,8 @@ CREATE TABLE `materials` (
   `qty` double NOT NULL DEFAULT '0',
   `price` double NOT NULL DEFAULT '0',
   `status` varchar(50) NOT NULL,
-  `category_id` varchar(50) DEFAULT NULL
+  `category_id` varchar(50) DEFAULT NULL,
+  `touch` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -639,7 +645,8 @@ CREATE TABLE `material_categories` (
   `category_no` varchar(50) NOT NULL,
   `category_name` varchar(100) NOT NULL,
   `status` varchar(50) DEFAULT NULL,
-  `id` int(11) NOT NULL
+  `id` int(11) NOT NULL,
+  `touch` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -690,7 +697,8 @@ CREATE TABLE `orders` (
   `valid_until` date DEFAULT NULL,
   `supplier_id` varchar(50) NOT NULL,
   `status` varchar(50) DEFAULT NULL,
-  `user_id` varchar(50) NOT NULL
+  `user_id` varchar(50) NOT NULL,
+  `touch` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -741,7 +749,8 @@ CREATE TABLE `packing_list` (
   `debt` double DEFAULT NULL,
   `user_id` varchar(50) DEFAULT NULL,
   `float_amount` double DEFAULT NULL,
-  `cost_of_goods` double NOT NULL DEFAULT '0'
+  `cost_of_goods` double NOT NULL DEFAULT '0',
+  `touch` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -860,7 +869,8 @@ CREATE TABLE `productions` (
   `batch_size` double DEFAULT NULL,
   `uom` varchar(50) NOT NULL,
   `status` varchar(50) DEFAULT NULL,
-  `date` date DEFAULT NULL
+  `date` date DEFAULT NULL,
+  `touch` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -996,7 +1006,8 @@ INSERT INTO `role_priveledge` (`id`, `role_id`, `priveledge`) VALUES
 (61, '3', 'EDIT LPO'),
 (62, '3', 'APPROVE LPO'),
 (63, '3', 'SALE INVOICE'),
-(66, '3', 'EDIT INVENTORY');
+(66, '3', 'EDIT INVENTORY'),
+(67, '4', 'PRODUCT INQUIRY');
 
 -- --------------------------------------------------------
 
@@ -1034,7 +1045,8 @@ CREATE TABLE `sales_persons` (
   `address` varchar(100) NOT NULL,
   `telephone` varchar(50) NOT NULL,
   `email` varchar(100) DEFAULT NULL,
-  `status` varchar(50) NOT NULL
+  `status` varchar(50) NOT NULL,
+  `touch` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -1147,7 +1159,8 @@ CREATE TABLE `supplier` (
   `email` varchar(50) DEFAULT NULL,
   `fax` varchar(50) DEFAULT NULL,
   `tin` varchar(50) DEFAULT NULL,
-  `vrn` varchar(50) DEFAULT NULL
+  `vrn` varchar(50) DEFAULT NULL,
+  `touch` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -2031,7 +2044,7 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT for table `role_priveledge`
 --
 ALTER TABLE `role_priveledge`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=67;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=68;
 
 --
 -- AUTO_INCREMENT for table `sale`
