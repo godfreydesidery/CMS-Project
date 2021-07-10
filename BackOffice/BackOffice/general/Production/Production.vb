@@ -163,4 +163,23 @@ Public Class Production
         End Try
         Return success
     End Function
+    Public Function archiveProduction(prNo As String) As Boolean
+        Dim success As Boolean = True
+        Try
+            Dim conn As New MySqlConnection(Database.conString)
+            Dim command As New MySqlCommand()
+            Dim codeQuery As String = "UPDATE `productions` SET`status`='ARCHIVED' WHERE `production_no`='" + prNo + "'"
+            conn.Open()
+            command.CommandText = codeQuery
+            command.Connection = conn
+            command.CommandType = CommandType.Text
+            command.ExecuteNonQuery()
+            conn.Close()
+            success = True
+        Catch ex As Exception
+            success = False
+            MsgBox(ex.Message)
+        End Try
+        Return success
+    End Function
 End Class

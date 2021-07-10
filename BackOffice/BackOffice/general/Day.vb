@@ -70,4 +70,23 @@ Public Class Day
         End Try
         Return success
     End Function
+    Public Shared Function getDatabaseDate() As String
+        Try
+            Dim conn As New MySqlConnection(Database.conString)
+            Dim command As New MySqlCommand()
+            Dim query As String = "SELECT CURDATE() AS `date`"
+            conn.Open()
+            command.CommandText = query
+            command.Connection = conn
+            command.CommandType = CommandType.Text
+            Dim reader As MySqlDataReader = command.ExecuteReader()
+            While reader.Read
+                Return reader.GetString("date").ToString()
+            End While
+            conn.Close()
+        Catch ex As Exception
+            MsgBox(ex.ToString)
+        End Try
+        Return ""
+    End Function
 End Class

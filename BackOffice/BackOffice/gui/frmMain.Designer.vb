@@ -37,7 +37,7 @@ Partial Class frmMain
         Me.tsrpDateTime = New System.Windows.Forms.ToolStripStatusLabel()
         Me.ToolTip = New System.Windows.Forms.ToolTip(Me.components)
         Me.PictureBox2 = New System.Windows.Forms.PictureBox()
-        Me.ToolStrip1 = New System.Windows.Forms.ToolStrip()
+        Me.tstrpMain = New System.Windows.Forms.ToolStrip()
         Me.ToolStripDropDownButton3 = New System.Windows.Forms.ToolStripDropDownButton()
         Me.ToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripMenuItem2 = New System.Windows.Forms.ToolStripMenuItem()
@@ -133,7 +133,7 @@ Partial Class frmMain
         Me.MenuStrip.SuspendLayout()
         Me.StatusStrip.SuspendLayout()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.ToolStrip1.SuspendLayout()
+        Me.tstrpMain.SuspendLayout()
         CType(Me.pctLogo, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -221,16 +221,16 @@ Partial Class frmMain
         Me.PictureBox2.TabIndex = 11
         Me.PictureBox2.TabStop = False
         '
-        'ToolStrip1
+        'tstrpMain
         '
-        Me.ToolStrip1.BackColor = System.Drawing.Color.Silver
-        Me.ToolStrip1.ImageScalingSize = New System.Drawing.Size(20, 20)
-        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripDropDownButton3, Me.ToolStripDropDownButton4, Me.ToolStripDropDownButton2, Me.ToolStripDropDownButton5, Me.ToolStripDropDownButton6, Me.ToolStripDropDownButton8, Me.ToolStripDropDownButton1, Me.ToolStripDropDownButton7})
-        Me.ToolStrip1.Location = New System.Drawing.Point(0, 28)
-        Me.ToolStrip1.Name = "ToolStrip1"
-        Me.ToolStrip1.Size = New System.Drawing.Size(1780, 31)
-        Me.ToolStrip1.TabIndex = 13
-        Me.ToolStrip1.Text = "ToolStrip1"
+        Me.tstrpMain.BackColor = System.Drawing.Color.Silver
+        Me.tstrpMain.ImageScalingSize = New System.Drawing.Size(20, 20)
+        Me.tstrpMain.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripDropDownButton3, Me.ToolStripDropDownButton4, Me.ToolStripDropDownButton2, Me.ToolStripDropDownButton5, Me.ToolStripDropDownButton6, Me.ToolStripDropDownButton8, Me.ToolStripDropDownButton1, Me.ToolStripDropDownButton7})
+        Me.tstrpMain.Location = New System.Drawing.Point(0, 28)
+        Me.tstrpMain.Name = "tstrpMain"
+        Me.tstrpMain.Size = New System.Drawing.Size(1780, 31)
+        Me.tstrpMain.TabIndex = 13
+        Me.tstrpMain.Text = "ToolStrip"
         '
         'ToolStripDropDownButton3
         '
@@ -974,7 +974,7 @@ Partial Class frmMain
         Me.Controls.Add(Me.btnUpdate)
         Me.Controls.Add(Me.dtCustomDate)
         Me.Controls.Add(Me.pctLogo)
-        Me.Controls.Add(Me.ToolStrip1)
+        Me.Controls.Add(Me.tstrpMain)
         Me.Controls.Add(Me.PictureBox2)
         Me.Controls.Add(Me.MenuStrip)
         Me.Controls.Add(Me.StatusStrip)
@@ -992,8 +992,8 @@ Partial Class frmMain
         Me.StatusStrip.ResumeLayout(False)
         Me.StatusStrip.PerformLayout()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.ToolStrip1.ResumeLayout(False)
-        Me.ToolStrip1.PerformLayout()
+        Me.tstrpMain.ResumeLayout(False)
+        Me.tstrpMain.PerformLayout()
         CType(Me.pctLogo, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
@@ -1008,7 +1008,7 @@ Partial Class frmMain
     Friend WithEvents ToolStripSeparator3 As System.Windows.Forms.ToolStripSeparator
     Friend WithEvents MenuStrip As System.Windows.Forms.MenuStrip
     Friend WithEvents PictureBox2 As System.Windows.Forms.PictureBox
-    Friend WithEvents ToolStrip1 As System.Windows.Forms.ToolStrip
+    Friend WithEvents tstrpMain As System.Windows.Forms.ToolStrip
     Friend WithEvents ToolStripDropDownButton2 As System.Windows.Forms.ToolStripDropDownButton
     Friend WithEvents BackOfficeReportsToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents FrontOfficeReportsToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem

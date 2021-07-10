@@ -94,6 +94,13 @@ Public Class frmMain
 
     Private Sub frmMain_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
+        Dim serverDate As String = Day.getDatabaseDate()
+        Dim computerDate As String = Date.Today.ToString("yyyy-MM-dd")
+        If serverDate <> computerDate Then
+            tstrpMain.Enabled = False
+            MsgBox("Could not load application. Server date and client date do not match. Server date: " + serverDate + ", Computer Date: " + computerDate + " Please ensure the server date matches with your computer date. Contact your system administrator for help.", vbOKOnly + vbCritical, "Error: Date synchronization failure")
+            End
+        End If
         'lblCompany.Text = Company.NAME
         Try
             pctLogo.Image = Image.FromStream(New System.IO.MemoryStream(Company.LOGO))
@@ -164,7 +171,7 @@ Public Class frmMain
         End If
     End Sub
 
-    Private Sub ToolStrip1_ItemClicked(sender As Object, e As ToolStripItemClickedEventArgs) Handles ToolStrip1.ItemClicked
+    Private Sub ToolStrip1_ItemClicked(sender As Object, e As ToolStripItemClickedEventArgs) Handles tstrpMain.ItemClicked
 
     End Sub
 

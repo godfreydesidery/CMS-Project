@@ -82,6 +82,8 @@ Partial Class frmCustomProduction
         Me.btnComplete = New System.Windows.Forms.ToolStripButton()
         Me.btnArchive = New System.Windows.Forms.ToolStripButton()
         Me.btnAddUpdate = New System.Windows.Forms.Button()
+        Me.btnArchiveAll = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripSeparator5 = New System.Windows.Forms.ToolStripSeparator()
         CType(Me.dtgrdProductionList, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
         CType(Me.dtgrdItemList, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -513,7 +515,7 @@ Partial Class frmCustomProduction
         'ToolStrip1
         '
         Me.ToolStrip1.ImageScalingSize = New System.Drawing.Size(20, 20)
-        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.btnNew, Me.btnEdit, Me.btnClear, Me.btnSave, Me.ToolStripSeparator1, Me.ToolStripSeparator2, Me.ToolStripSeparator3, Me.ToolStripSeparator4, Me.btnCancel, Me.btnApprove, Me.btnPrint, Me.btnComplete, Me.btnArchive})
+        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.btnNew, Me.btnEdit, Me.btnClear, Me.btnSave, Me.ToolStripSeparator1, Me.ToolStripSeparator2, Me.ToolStripSeparator3, Me.ToolStripSeparator4, Me.btnCancel, Me.btnApprove, Me.btnPrint, Me.btnComplete, Me.ToolStripSeparator5, Me.btnArchive, Me.btnArchiveAll})
         Me.ToolStrip1.Location = New System.Drawing.Point(0, 0)
         Me.ToolStrip1.Name = "ToolStrip1"
         Me.ToolStrip1.Size = New System.Drawing.Size(1510, 27)
@@ -630,6 +632,20 @@ Partial Class frmCustomProduction
         Me.btnAddUpdate.Text = "Add Selected Materials"
         Me.btnAddUpdate.UseVisualStyleBackColor = True
         '
+        'btnArchiveAll
+        '
+        Me.btnArchiveAll.Image = CType(resources.GetObject("btnArchiveAll.Image"), System.Drawing.Image)
+        Me.btnArchiveAll.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.btnArchiveAll.Name = "btnArchiveAll"
+        Me.btnArchiveAll.Size = New System.Drawing.Size(102, 24)
+        Me.btnArchiveAll.Text = "Archive all"
+        Me.btnArchiveAll.ToolTipText = "Sends all completed and cleared packing list to archives for future references"
+        '
+        'ToolStripSeparator5
+        '
+        Me.ToolStripSeparator5.Name = "ToolStripSeparator5"
+        Me.ToolStripSeparator5.Size = New System.Drawing.Size(6, 27)
+        '
         'frmCustomProduction
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
@@ -723,4 +739,6 @@ Partial Class frmCustomProduction
     Friend WithEvents btnArchive As ToolStripButton
     Friend WithEvents btnAddUpdate As Button
     Friend WithEvents btnComplete As ToolStripButton
+    Friend WithEvents btnArchiveAll As ToolStripButton
+    Friend WithEvents ToolStripSeparator5 As ToolStripSeparator
 End Class

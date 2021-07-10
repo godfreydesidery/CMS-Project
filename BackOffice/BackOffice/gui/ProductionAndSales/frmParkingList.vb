@@ -1508,6 +1508,11 @@ Public Class frmPackingList
             Cursor = Cursors.Default
             Exit Sub
         End If
+        If check(txtIssueNo.Text, token) = False And txtId.Text <> "" Then
+            MsgBox("Could not modify document, the document has been modified by some one else. Please reload the document to continue", vbOKOnly + vbExclamation, "Invalid Operation")
+            Cursor = Cursors.Default
+            Exit Sub
+        End If
         Dim barCode As String = txtBarCode.Text
         Dim itemCode As String = txtItemCode.Text
         Dim description As String = cmbDescription.Text
@@ -1550,10 +1555,10 @@ Public Class frmPackingList
             list.GL_STATUS = "PENDING"
             If list.isPackingListExist(txtIssueNo.Text) = False Then
                 If list.addNewPackingList() = True Then
+                    token = touch(txtIssueNo.Text)
                     list.getPackingList(txtIssueNo.Text)
                     txtId.Text = list.GL_ID
                     btnSave.Enabled = True
-                    token = touch(txtIssueNo.Text)
                 End If
             Else
 
@@ -1605,6 +1610,10 @@ Public Class frmPackingList
     End Sub
 
     Private Sub btnCancel_Click(sender As Object, e As EventArgs) Handles btnCancel.Click
+        If txtIssueNo.Text = "" Then
+            MsgBox("Please select document")
+            Exit Sub
+        End If
         Dim status As String = (New PackingList).getStatus(txtIssueNo.Text)
         If status = "PENDING" Or status = "APPROVED" Then
             'continue
@@ -1644,6 +1653,10 @@ Public Class frmPackingList
     End Sub
 
     Private Sub btnApprove_Click(sender As Object, e As EventArgs) Handles btnApprove.Click
+        If txtIssueNo.Text = "" Then
+            MsgBox("Please select document")
+            Exit Sub
+        End If
         Dim status As String = (New PackingList).getStatus(txtIssueNo.Text)
         If status = "APPROVED" Then
             MsgBox("Could not approve, already approved", vbOKOnly + vbExclamation, "Error: Invalid operation")
@@ -1868,6 +1881,10 @@ Public Class frmPackingList
 
 
     Private Sub btnPrint_Click1(sender As Object, e As EventArgs) Handles btnPrint.Click
+        If txtIssueNo.Text = "" Then
+            MsgBox("Please select document")
+            Exit Sub
+        End If
         Dim status As String = (New PackingList).getStatus(txtIssueNo.Text)
         report = False
         If status = "PENDING" Or status = "APPROVED" Or status = "PRINTED" Or status = "COMPLETED" Or status = "ARCHIVED" Then
@@ -2156,6 +2173,10 @@ Public Class frmPackingList
     End Sub
 
     Private Sub btnComplete_Click1(sender As Object, e As EventArgs) Handles btnComplete.Click
+        If txtIssueNo.Text = "" Then
+            MsgBox("Please select document")
+            Exit Sub
+        End If
         If txtIssueNo.Text = "" Then
             MsgBox("Select a packing list to complete", vbOKOnly + vbExclamation, "Error: No selection")
             Exit Sub
@@ -2873,7 +2894,7 @@ Public Class frmPackingList
                     End If
                 Next
                 If noOfdocuments = 0 Then
-                    MsgBox("No documents to archive, only completed and debt free documents can be arcived", vbOKOnly + vbExclamation, "No documents to archive")
+                    MsgBox("No documents to archive, only completed and debt free documents can be archived", vbOKOnly + vbExclamation, "No documents to archive")
                     Cursor = Cursors.Default
                     Exit Sub
                 Else
@@ -2943,8 +2964,4 @@ Public Class frmPackingList
         End While
         Return False
     End Function
-
-    Private Sub Button1_Click_2(sender As Object, e As EventArgs)
-        touch(txtIssueNo.Text)
-    End Sub
 End Class

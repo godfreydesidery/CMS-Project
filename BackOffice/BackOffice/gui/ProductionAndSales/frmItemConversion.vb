@@ -24,6 +24,9 @@ Public Class frmItemConversion
 
         dtgrdItemsToConvert.Rows.Clear()
         dtgrdEndItems.Rows.Clear()
+
+        resetRaw()
+        resetEnd()
     End Sub
 
     Dim longList As New List(Of String)
@@ -69,7 +72,9 @@ Public Class frmItemConversion
         End If
         If txtConversionNo.ReadOnly = False Then
             Dim conversion As New ItemConversion
+            Cursor = Cursors.AppStarting
             If conversion.getItemConversion(txtConversionNo.Text) = True Then
+                token = touch(txtConversionNo.Text)
                 txtId.Text = conversion.GL_ID
 
                 txtConversionNo.ReadOnly = True
@@ -153,14 +158,15 @@ Public Class frmItemConversion
                     txtRawQty.ReadOnly = True
 
                 End If
-
+                Cursor = Cursors.Default
             Else
+                Cursor = Cursors.Default
                 MsgBox("No matching record", vbOKOnly + vbCritical, "Error: Not found")
                 Return vbNull
                 Exit Function
             End If
         End If
-
+        Cursor = Cursors.Default
         Return vbNull
     End Function
 
@@ -168,6 +174,7 @@ Public Class frmItemConversion
         txtRawBarCode.Text = ""
         txtRawItemCode.Text = ""
         cmbRawDescription.SelectedItem = Nothing
+        cmbRawDescription.Text = ""
         txtRawQty.Text = ""
         txtRawPrice.Text = ""
     End Sub
@@ -256,6 +263,31 @@ Public Class frmItemConversion
         Return present
     End Function
 
+    Private Function checkInEnd(code As String) As Boolean
+        Try
+            For i As Integer = 0 To dtgrdEndItems.RowCount - 1
+                If dtgrdEndItems.Item(0, i).Value.ToString = code Then
+                    Return True
+                End If
+            Next
+        Catch ex As Exception
+            Return False
+        End Try
+        Return False
+    End Function
+    Private Function checkInRaw(code As String) As Boolean
+        Try
+            For i As Integer = 0 To dtgrdItemsToConvert.RowCount - 1
+                If dtgrdItemsToConvert.Item(0, i).Value.ToString = code Then
+                    Return True
+                End If
+            Next
+        Catch ex As Exception
+            Return False
+        End Try
+        Return False
+    End Function
+
     Private Sub btnRawAdd_Click(sender As Object, e As EventArgs) Handles btnRawAdd.Click
         txtConversionNo.ReadOnly = True
         If txtReason.Text = "" Then
@@ -303,9 +335,16 @@ Public Class frmItemConversion
             MsgBox("Could not add item. Invalid issue qty, qty should be non-negative", vbOKOnly + vbCritical, "Error: Invalid entry")
             Exit Sub
         End If
-
+        If checkInEnd(rawItemCode) Then
+            MsgBox("The item is present in the end product list. Converting a product to itself is not allowed", vbOKOnly + vbExclamation, "Error: Invalid operation")
+            Exit Sub
+        End If
         Dim conversion As ItemConversion
         If txtId.Text = "" Then
+            Cursor = Cursors.AppStarting
+
+
+
             conversion = New ItemConversion
             conversion.GL_CONVERSION_NO = txtConversionNo.Text
             conversion.GL_DATE = (New Day).getCurrentDay.ToString("yyyy-MM-dd")
@@ -313,6 +352,7 @@ Public Class frmItemConversion
             conversion.GL_STATUS = "PENDING"
             If conversion.isItemConversionExist(txtConversionNo.Text) = False Then
                 If conversion.addNewConversion() = True Then
+                    token = touch(txtConversionNo.Text)
                     conversion.getItemConversion(txtConversionNo.Text)
                     txtId.Text = conversion.GL_ID
                     btnSave.Enabled = True
@@ -320,7 +360,14 @@ Public Class frmItemConversion
             Else
 
             End If
+            Cursor = Cursors.Default
         End If
+
+        If check(txtConversionNo.Text, token) = False Then
+            MsgBox("Could not modify document, the document has been modified by some one else. Please reload the document to continue", vbOKOnly + vbExclamation, "Invalid Operation")
+            Exit Sub
+        End If
+
         conversion = New ItemConversion
 
         conversion.GL_ID = txtId.Text
@@ -329,8 +376,6 @@ Public Class frmItemConversion
         conversion.GL_RAW_DESCRIPTION = rawDescription
         conversion.GL_RAW_QTY = Math.Round((Val(rawQty)), 2, MidpointRounding.AwayFromZero)
         conversion.GL_RAW_PRICE = rawPrice
-
-
 
         If checkItemToConvertDuplicate(rawItemCode, txtId.Text) = False Then
             conversion.addItemToConvert()
@@ -544,6 +589,9 @@ Public Class frmItemConversion
     End Sub
 
     Private Sub btnRawReset_Click(sender As Object, e As EventArgs) Handles btnRawReset.Click
+        resetRaw()
+    End Sub
+    Private Sub resetRaw()
         txtRawBarCode.Text = ""
         txtRawItemCode.Text = ""
         cmbRawDescription.Text = ""
@@ -634,7 +682,7 @@ Public Class frmItemConversion
     End Function
     Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
 
-        If txtConversionNo.Text = "" Then
+        If txtId.Text = "" Then
             MsgBox("Please select document")
             Exit Sub
         End If
@@ -645,6 +693,10 @@ Public Class frmItemConversion
         Dim status As String = (New ItemConversion).getStatus(txtConversionNo.Text)
         If status = "CANCELED" Or status = "COMPLETED" Or status = "ARCHIVED" Then
             MsgBox("Could not modify. Only Pending, Approved or Printed documents can be modified", vbOKOnly + vbExclamation, "Error: Invalid operation")
+            Exit Sub
+        End If
+        If check(txtConversionNo.Text, token) = False Then
+            MsgBox("Could not modify document, the document has been modified by some one else. Please reload the document to continue", vbOKOnly + vbExclamation, "Invalid Operation")
             Exit Sub
         End If
 
@@ -1048,8 +1100,17 @@ Public Class frmItemConversion
             Exit Sub
         End If
 
+        If check(txtConversionNo.Text, token) = False Then
+            MsgBox("Could not modify document, the document has been modified by some one else. Please reload the document to continue", vbOKOnly + vbExclamation, "Invalid Operation")
+            Exit Sub
+        End If
+        If checkInRaw(endItemCode) Then
+            MsgBox("The item is present in the initial product list. Converting a product from itself is not allowed", vbOKOnly + vbExclamation, "Error: Invalid operation")
+            Exit Sub
+        End If
         Dim conversion As ItemConversion
         If txtId.Text = "" Then
+            Cursor = Cursors.AppStarting
             conversion = New ItemConversion
             conversion.GL_CONVERSION_NO = txtConversionNo.Text
             conversion.GL_DATE = (New Day).getCurrentDay.ToString("yyyy-MM-dd")
@@ -1057,6 +1118,7 @@ Public Class frmItemConversion
             conversion.GL_STATUS = "PENDING"
             If conversion.isItemConversionExist(txtConversionNo.Text) = False Then
                 If conversion.addNewConversion() = True Then
+                    token = touch(txtConversionNo.Text)
                     conversion.getItemConversion(txtConversionNo.Text)
                     txtId.Text = conversion.GL_ID
                     btnSave.Enabled = True
@@ -1064,6 +1126,7 @@ Public Class frmItemConversion
             Else
 
             End If
+            Cursor = Cursors.Default
         End If
         conversion = New ItemConversion
 
@@ -1091,6 +1154,9 @@ Public Class frmItemConversion
     End Sub
 
     Private Sub btnEndReset_Click(sender As Object, e As EventArgs) Handles btnEndReset.Click
+        resetEnd()
+    End Sub
+    Private Sub resetEnd()
         txtEndBarcode.Text = ""
         txtEndItemCode.Text = ""
         cmbEndDescription.Text = ""
@@ -1117,6 +1183,10 @@ Public Class frmItemConversion
     End Sub
 
     Private Sub btnApprove_Click(sender As Object, e As EventArgs) Handles btnApprove.Click
+        If txtId.Text = "" Then
+            MsgBox("Please select document")
+            Exit Sub
+        End If
         Dim status As String = (New ItemConversion).getStatus(txtConversionNo.Text)
         If status = "APPROVED" Then
             MsgBox("Could not approve, already approved", vbOKOnly + vbExclamation, "Error: Invalid operation")
@@ -1148,6 +1218,10 @@ Public Class frmItemConversion
                 MsgBox("Select a conversion to approve", vbOKOnly + vbExclamation, "Error: No selection")
                 Exit Sub
             End If
+            If check(txtConversionNo.Text, token) = False Then
+                MsgBox("Could not modify document, the document has been modified by some one else. Please reload the document to continue", vbOKOnly + vbExclamation, "Invalid Operation")
+                Exit Sub
+            End If
             Dim res As Integer = MsgBox("Approve product conversion: " + txtConversionNo.Text + " ? Editing will be disabled after approval", vbYesNo + vbQuestion, "Approve document?")
             If res = DialogResult.Yes Then
                 'approve order
@@ -1172,6 +1246,10 @@ Public Class frmItemConversion
     End Sub
 
     Private Sub btnCancel_Click(sender As Object, e As EventArgs) Handles btnCancel.Click
+        If txtId.Text = "" Then
+            MsgBox("Please select document")
+            Exit Sub
+        End If
         Dim status As String = (New ItemConversion).getStatus(txtConversionNo.Text)
         If status = "PENDING" Or status = "APPROVED" Then
             'continue
@@ -1183,6 +1261,10 @@ Public Class frmItemConversion
         If 1 = 1 Then ' User.authorize("APPROVE PACKING LIST") = True Then
             If txtConversionNo.Text = "" Then
                 MsgBox("Select a conversion to cancel", vbOKOnly + vbExclamation, "Error: No selection")
+                Exit Sub
+            End If
+            If check(txtConversionNo.Text, token) = False Then
+                MsgBox("Could not modify document, the document has been modified by some one else. Please reload the document to continue", vbOKOnly + vbExclamation, "Invalid Operation")
                 Exit Sub
             End If
             Dim res As Integer = MsgBox("Cancel conversion: " + txtConversionNo.Text + " ? Conversion document can not be used after canceling", vbYesNo + vbQuestion, "Cancel document?")
@@ -1206,7 +1288,10 @@ Public Class frmItemConversion
     End Sub
 
     Private Sub btnArchive_Click(sender As Object, e As EventArgs) Handles btnArchive.Click
-
+        If txtId.Text = "" Then
+            MsgBox("Please select document")
+            Exit Sub
+        End If
         Dim status As String = (New ItemConversion).getStatus(txtConversionNo.Text)
         If status = "COMPLETED" Then
             'continue
@@ -1218,7 +1303,10 @@ Public Class frmItemConversion
             MsgBox("Can not archive, only completed documents can be archived", vbOKOnly + vbExclamation, "Error: No selection")
             Exit Sub
         End If
-
+        If check(txtConversionNo.Text, token) = False Then
+            MsgBox("Could not modify document, the document has been modified by some one else. Please reload the document to continue", vbOKOnly + vbExclamation, "Invalid Operation")
+            Exit Sub
+        End If
         If 1 = 1 Then ' User.authorize("APPROVE LPO") = True Then
             If txtConversionNo.Text = "" Then
                 MsgBox("Select a document to archive", vbOKOnly + vbExclamation, "Error: No selection")
@@ -1241,7 +1329,81 @@ Public Class frmItemConversion
         refreshConversionList()
     End Sub
 
-    Private Sub btnComplete_Click(sender As Object, e As EventArgs) Handles btnComplete.Click
+    Private Sub btnComplete_Click1(sender As Object, e As EventArgs) Handles btnComplete.Click
+        If txtId.Text = "" Then
+            MsgBox("Please select document")
+            Exit Sub
+        End If
+        Dim success As Boolean = False
+        If txtConversionNo.Text = "" Then
+            MsgBox("Select a conversion document to complete", vbOKOnly + vbExclamation, "Error: No selection")
+            Exit Sub
+        End If
+        Dim status As String = (New ItemConversion).getStatus(txtConversionNo.Text)
+        If status <> "APPROVED" Then
+            MsgBox("Operation failed, Only approved documents can be completed", vbOKOnly + vbExclamation, "Error: Invalid operation")
+            Exit Sub
+        End If
+        If check(txtConversionNo.Text, token) = False Then
+            MsgBox("Could not modify document, the document has been modified by some one else. Please reload the document to continue", vbOKOnly + vbExclamation, "Invalid Operation")
+            Exit Sub
+        End If
+        Dim res As Integer = MsgBox("Complete transaction? Converted items will be deducted from stock and end products will be added to stock", vbYesNoCancel + vbQuestion, "Complete transaction")
+        If Not res = DialogResult.Yes Then
+            Exit Sub
+        End If
+        If check(txtConversionNo.Text, token) = False Then
+            MsgBox("Could not modify document, the document has been modified by some one else. Please reload the document to continue", vbOKOnly + vbExclamation, "Invalid Operation")
+            Exit Sub
+        End If
+        Cursor = Cursors.WaitCursor
+        Dim query As String = ""
+        For i As Integer = 0 To dtgrdItemsToConvert.RowCount - 1
+            Dim itemCode As String = dtgrdItemsToConvert.Item(0, i).Value
+            Dim qty As String = dtgrdItemsToConvert.Item(2, i).Value
+            query = query + "UPDATE `inventorys` SET `qty`=`qty`-'" + qty + "' WHERE `item_code`='" + itemCode + "';"
+            If Val(qty) <> 0 Then
+                query = query + "INSERT INTO `stock_cards`(`date`,`item_code`,`qty_out`,`balance`,`reference`) VALUES ('" + Day.DAY + "','" + itemCode + "','" + qty.ToString + "'," + ((New Inventory).getInventory(itemCode)) + "-" + qty.ToString + ",'Used CONVERSION#: " + txtConversionNo.Text + "');"
+            End If
+        Next
+        For i As Integer = 0 To dtgrdEndItems.RowCount - 1
+            Dim itemCode As String = dtgrdEndItems.Item(0, i).Value
+            Dim qty As String = dtgrdEndItems.Item(2, i).Value
+            query = query + "UPDATE `inventorys` SET `qty`=`qty`+'" + qty + "' WHERE `item_code`='" + itemCode + "';"
+            If Val(qty) <> 0 Then
+                query = query + "INSERT INTO `stock_cards`(`date`,`item_code`,`qty_in`,`balance`,`reference`) VALUES ('" + Day.DAY + "','" + itemCode + "','" + qty.ToString + "'," + ((New Inventory).getInventory(itemCode)) + "+" + qty.ToString + ",'Produced CONVERSION#: " + txtConversionNo.Text + "');"
+            End If
+        Next
+        query = query + "UPDATE `item_conversion` SET`status`='COMPLETED' WHERE `conversion_no`='" + txtConversionNo.Text + "';"
+        Cursor = Cursors.Default
+        Dim conn As New MySqlConnection(Database.conString)
+        Try
+            Cursor = Cursors.WaitCursor
+            conn.Open()
+            Dim command As New MySqlCommand()
+            command.Connection = conn
+            command.CommandText = query
+            command.Prepare()
+            command.ExecuteNonQuery()
+            conn.Close()
+            success = True
+            Cursor = Cursors.Default
+        Catch ex As Exception
+            Cursor = Cursors.Default
+            MsgBox(ex.ToString)
+        End Try
+        If success = True Then
+            MsgBox("Complete Success", vbOKOnly + vbInformation, "Success")
+        Else
+            MsgBox("Complete failed", vbOKOnly + vbExclamation, "Failure")
+        End If
+        txtStatus.Text = (New ItemConversion).getStatus(txtConversionNo.Text)
+        Cursor = Cursors.WaitCursor
+        refreshConversionList()
+        Cursor = Cursors.Default
+    End Sub
+
+    Private Sub btnComplete_Click(sender As Object, e As EventArgs) ' Handles btnComplete.Click
         If txtConversionNo.Text = "" Then
             MsgBox("Select a conversion document to complete", vbOKOnly + vbExclamation, "Error: No selection")
             Exit Sub
@@ -1258,6 +1420,7 @@ Public Class frmItemConversion
             Exit Sub
         End If
 
+        Dim query As String = ""
 
         For i As Integer = 0 To dtgrdItemsToConvert.RowCount - 1
 
@@ -1322,7 +1485,18 @@ Public Class frmItemConversion
     End Sub
 
     Private Sub btnPrint_Click(sender As Object, e As EventArgs) Handles btnPrint.Click
-
+        If txtId.Text = "" Then
+            MsgBox("Please select document")
+            Exit Sub
+        End If
+        If txtConversionNo.Text = "" Then
+            MsgBox("Select document to print", vbOKOnly + vbExclamation, "Error: No selection")
+            Exit Sub
+        End If
+        If check(txtConversionNo.Text, token) = False Then
+            MsgBox("Could not modify document, the document has been modified by some one else. Please reload the document to continue", vbOKOnly + vbExclamation, "Invalid Operation")
+            Exit Sub
+        End If
         Dim status As String = (New ItemConversion).getStatus(txtId.Text)
         If status = "APPROVED" Or status = "COMPLETED" Or status = "PRINTED" Or status = "ARCHIVED" Then
             'Dim res As Integer = MsgBox("Print conversion sheet " + txtConversionNo.Text + " ?", vbYesNo + vbQuestion, "Print conversion sheet?")
@@ -1572,11 +1746,10 @@ Public Class frmItemConversion
         Dim row As Row
 
         row = table.AddRow()
-        row.Format.Font.Bold = False
+        row.Format.Font.Bold = True
         row.HeadingFormat = True
         row.Format.Font.Size = 8
         row.Format.Alignment = ParagraphAlignment.Center
-        row.Format.Font.Bold = True
         row.Borders.Color = Colors.LightGray
         row.Cells(0).AddParagraph("SN")
         row.Cells(0).Format.Alignment = ParagraphAlignment.Left
@@ -1672,7 +1845,7 @@ Public Class frmItemConversion
         Dim row3 As Row
 
         row3 = table3.AddRow()
-        row3.Format.Font.Bold = False
+        row3.Format.Font.Bold = True
         row3.HeadingFormat = True
         row3.Format.Font.Size = 8
         row3.Format.Alignment = ParagraphAlignment.Center
@@ -1783,5 +1956,93 @@ Public Class frmItemConversion
         Me.Dispose()
     End Sub
 
+    Dim token As String = ""
+    Private Function touch(convNo As String) As String
+        Dim token As String = Utility.generateRandom20TokenWithDateTime()
+        Try
+            Dim conn As New MySqlConnection(Database.conString)
+            Dim command As New MySqlCommand()
+            Dim codeQuery As String = "UPDATE `item_conversion` SET `touch`='" + token + "' WHERE `conversion_no`='" + convNo + "'"
+            conn.Open()
+            command.CommandText = codeQuery
+            command.Connection = conn
+            command.CommandType = CommandType.Text
+            command.ExecuteNonQuery()
+            conn.Close()
+        Catch ex As Exception
+            token = ""
+        End Try
+        Return token
+    End Function
+    Private Function check(issueNo As String, token As String) As Boolean
+        Dim conn As New MySqlConnection(Database.conString)
+        Dim command As New MySqlCommand()
+        Dim query As String = "SELECT `conversion_no`, `touch` FROM `item_conversion` WHERE `conversion_no`='" + txtConversionNo.Text + "'"
+        conn.Open()
+        command.CommandText = query
+        command.Connection = conn
+        command.CommandType = CommandType.Text
+        Dim reader As MySqlDataReader = command.ExecuteReader()
+        While reader.Read
+            If token = reader.GetString("touch") And token <> "" Then
+                Return True
+            End If
+        End While
+        Return False
+    End Function
 
+    Private Sub btnArchiveAll_Click(sender As Object, e As EventArgs) Handles btnArchiveAll.Click
+        clearRawFields()
+        clearEndFields()
+        dtgrdItemsToConvert.Rows.Clear()
+        dtgrdEndItems.Rows.Clear()
+        Dim res As Integer = MsgBox("Are you sure you want to archive all completed documents? All the completed documents will be sent to archives for future reference.", vbQuestion + vbYesNo, "Archive all completed documents")
+        If res = DialogResult.Yes Then
+            Dim noOfdocuments As Integer = 0
+            Try
+                Cursor = Cursors.WaitCursor
+                For i As Integer = 0 To dtgrdConversionList.RowCount - 1
+                    Dim no As String = dtgrdConversionList.Item(0, i).Value.ToString
+                    Dim list As ItemConversion = New ItemConversion
+                    Dim status As String = list.getStatus(no)
+                    If status = "COMPLETED" Then
+                        noOfdocuments = noOfdocuments + 1
+                    End If
+                Next
+                If noOfdocuments = 0 Then
+                    MsgBox("No documents to archive, only completed documents can be archived", vbOKOnly + vbExclamation, "No documents to archive")
+                    Cursor = Cursors.Default
+                    Exit Sub
+                Else
+                    Dim confirm As Integer = MsgBox(noOfdocuments.ToString + "  documents will be archived, continue?", vbYesNo + vbQuestion, "Concirm archive")
+                    If Not confirm = DialogResult.Yes Then
+                        Cursor = Cursors.Default
+                        Exit Sub
+                    End If
+                End If
+            Catch ex As Exception
+                MsgBox("Could not archive")
+                Cursor = Cursors.Default
+                Exit Sub
+            End Try
+
+            Try
+                Cursor = Cursors.WaitCursor
+                For i As Integer = 0 To dtgrdConversionList.RowCount - 1
+                    Dim no As String = dtgrdConversionList.Item(0, i).Value.ToString
+                    Dim list As ItemConversion = New ItemConversion
+                    Dim status As String = list.getStatus(no)
+                    If status = "COMPLETED" Then
+                        'archive
+                        list.archiveConversion(no)
+                    End If
+                Next
+                MsgBox(noOfdocuments.ToString + " document(s) archived successifuly")
+            Catch ex As Exception
+                '  MsgBox(ex.ToString)
+            End Try
+            refreshConversionList()
+            Cursor = Cursors.Default
+        End If
+    End Sub
 End Class

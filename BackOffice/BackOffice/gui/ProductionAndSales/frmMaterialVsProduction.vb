@@ -296,21 +296,36 @@ Public Class frmMaterialVsProduction
             ' Dim categoryId As String = (New Material).getCategoryIdByCategoryName(cmbCategory.Text)
 
 
+
+
             query = "SELECT
-                        `material_usage`.`material_code` AS `material_code`, 
-                        `item_production`.`date` AS `date`, 
-                        SUM(`material_usage`.`qty`) AS `material_qty`, 
+                        `material_usage`.`material_code` AS `material_code`,
                         `item_production`.`item_code` AS `item_code`,
-                        SUM(`item_production`.`qty`) AS `item_qty` 
-                    FROM
-                       `material_usage`         
+                        `material_usage`.`date` AS `date`,
+                        `material_usage`.`sumqty` AS `material_qty`,
+                        `item_production`.`sumqty` AS `item_qty`
+                    FROM 
+                        (SELECT `material_code`,
+                            `date`,
+                            SUM(`qty`) `sumqty` 
+                            FROM 
+                                `material_usage` 
+                            WHERE 
+                                `date` BETWEEN '" + dateStart.Text + "' AND '" + dateEnd.Text + "' GROUP BY `material_code`) `material_usage`
                     INNER JOIN 
-                        `item_production` 
-                    ON
-                        `item_production`.`date`=`material_usage`.`date` AND (`item_production`.`date` BETWEEN '" + dateStart.Text + "' AND '" + dateEnd.Text + "') AND (`material_usage`.`date` BETWEEN '" + dateStart.Text + "' AND '" + dateEnd.Text + "')
-                    GROUP BY `date`, `material_code`,`item_code`
-                    ORDER BY 
-                        `date`"
+                        (SELECT 
+                            `item_code`,
+                            `date`,
+                            SUM(`qty`) `sumqty` 
+                        FROM 
+                            `item_production` 
+                        WHERE 
+                            `date` BETWEEN '" + dateStart.Text + "' AND '" + dateEnd.Text + "' GROUP BY `item_code`) `item_production`
+                    ON 
+                        `item_production`.`date`=`material_usage`.`date`
+                    GROUP BY 
+                        `material_code`,`item_code`,`date`"
+
             conn.Open()
             command.CommandText = query
             command.Connection = conn
@@ -319,6 +334,7 @@ Public Class frmMaterialVsProduction
 
             Dim dtgrdRow As DataGridViewRow
             Dim dtgrdCell As DataGridViewCell
+
 
             While reader.Read
 
@@ -365,6 +381,7 @@ Public Class frmMaterialVsProduction
 
             conn.Close()
 
+
             Dim conn2 As New MySqlConnection(Database.conString)
             Dim command2 As New MySqlCommand()
             conn2.Open()
@@ -395,8 +412,10 @@ Public Class frmMaterialVsProduction
             While reader2.Read
                 Dim _date As String = reader2.GetString("date")
                 Dim materialCode As String = reader2.GetString("material_code")
+                'Dim materialqty As String = (Val(reader2.GetString("material_qty")) / rowCount).ToString
                 Dim materialqty As String = reader2.GetString("material_qty")
                 Dim itemCode As String = reader2.GetString("item_code")
+                'Dim itemQty As String = (Val(reader2.GetString("item_qty")) / rowCount).ToString
                 Dim itemQty As String = reader2.GetString("item_qty")
 
 

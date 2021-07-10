@@ -22,8 +22,8 @@ Partial Class frmItemConversion
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle11 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle12 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmItemConversion))
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.txtId = New System.Windows.Forms.TextBox()
@@ -97,6 +97,8 @@ Partial Class frmItemConversion
         Me.btnPrint = New System.Windows.Forms.ToolStripButton()
         Me.btnComplete = New System.Windows.Forms.ToolStripButton()
         Me.btnArchive = New System.Windows.Forms.ToolStripButton()
+        Me.btnArchiveAll = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripSeparator5 = New System.Windows.Forms.ToolStripSeparator()
         Me.Panel1.SuspendLayout()
         Me.Panel2.SuspendLayout()
         Me.Panel3.SuspendLayout()
@@ -549,8 +551,8 @@ Partial Class frmItemConversion
         '
         'Column4
         '
-        DataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.Column4.DefaultCellStyle = DataGridViewCellStyle11
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.Column4.DefaultCellStyle = DataGridViewCellStyle3
         Me.Column4.HeaderText = "Price"
         Me.Column4.Name = "Column4"
         Me.Column4.ReadOnly = True
@@ -590,8 +592,8 @@ Partial Class frmItemConversion
         '
         'DataGridViewTextBoxColumn4
         '
-        DataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.DataGridViewTextBoxColumn4.DefaultCellStyle = DataGridViewCellStyle12
+        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.DataGridViewTextBoxColumn4.DefaultCellStyle = DataGridViewCellStyle4
         Me.DataGridViewTextBoxColumn4.HeaderText = "Price"
         Me.DataGridViewTextBoxColumn4.Name = "DataGridViewTextBoxColumn4"
         Me.DataGridViewTextBoxColumn4.ReadOnly = True
@@ -661,7 +663,7 @@ Partial Class frmItemConversion
         'ToolStrip1
         '
         Me.ToolStrip1.ImageScalingSize = New System.Drawing.Size(20, 20)
-        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.btnNew, Me.btnEdit, Me.btnClear, Me.btnSave, Me.ToolStripSeparator1, Me.ToolStripSeparator2, Me.ToolStripSeparator3, Me.ToolStripSeparator4, Me.btnCancel, Me.btnApprove, Me.btnPrint, Me.btnComplete, Me.btnArchive})
+        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.btnNew, Me.btnEdit, Me.btnClear, Me.btnSave, Me.ToolStripSeparator1, Me.ToolStripSeparator2, Me.ToolStripSeparator3, Me.ToolStripSeparator4, Me.btnCancel, Me.btnApprove, Me.btnPrint, Me.btnComplete, Me.ToolStripSeparator5, Me.btnArchive, Me.btnArchiveAll})
         Me.ToolStrip1.Location = New System.Drawing.Point(0, 0)
         Me.ToolStrip1.Name = "ToolStrip1"
         Me.ToolStrip1.Size = New System.Drawing.Size(1789, 27)
@@ -767,6 +769,20 @@ Partial Class frmItemConversion
         Me.btnArchive.Size = New System.Drawing.Size(82, 24)
         Me.btnArchive.Text = "Archive"
         Me.btnArchive.ToolTipText = "Sends a completed document to archives for future references"
+        '
+        'btnArchiveAll
+        '
+        Me.btnArchiveAll.Image = CType(resources.GetObject("btnArchiveAll.Image"), System.Drawing.Image)
+        Me.btnArchiveAll.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.btnArchiveAll.Name = "btnArchiveAll"
+        Me.btnArchiveAll.Size = New System.Drawing.Size(102, 24)
+        Me.btnArchiveAll.Text = "Archive all"
+        Me.btnArchiveAll.ToolTipText = "Sends all completed and cleared packing list to archives for future references"
+        '
+        'ToolStripSeparator5
+        '
+        Me.ToolStripSeparator5.Name = "ToolStripSeparator5"
+        Me.ToolStripSeparator5.Size = New System.Drawing.Size(6, 27)
         '
         'frmItemConversion
         '
@@ -878,4 +894,6 @@ Partial Class frmItemConversion
     Friend WithEvents btnPrint As ToolStripButton
     Friend WithEvents btnArchive As ToolStripButton
     Friend WithEvents btnComplete As ToolStripButton
+    Friend WithEvents ToolStripSeparator5 As ToolStripSeparator
+    Friend WithEvents btnArchiveAll As ToolStripButton
 End Class

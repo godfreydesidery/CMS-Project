@@ -502,6 +502,10 @@ Public Class frmCustomProduction
                 Exit Sub
             End If
         End If
+        If check(txtProductionNo.Text, token) = False Then
+            MsgBox("Could not modify document, the document has been modified by some one else. Please reload the document to continue", vbOKOnly + vbExclamation, "Invalid Operation")
+            Exit Sub
+        End If
         For i = 0 To chklstMaterials.Items.Count - 1
             If chklstMaterials.GetItemChecked(i) = True Then
 
@@ -541,7 +545,6 @@ Public Class frmCustomProduction
 
     Private Function save() As Boolean
         Dim saved = False
-
         If txtProductionNo.Text = "" Then
             MsgBox("Production No required", vbOKOnly + vbExclamation, "Error: Missing information")
             Return saved
@@ -558,6 +561,7 @@ Public Class frmCustomProduction
             MsgBox("Unit of measure required", vbOKOnly + vbExclamation, "Error: Missing information")
             Return saved
         End If
+        Cursor = Cursors.WaitCursor
         If txtId.Text = "" Then
             Dim conn As New MySqlConnection(Database.conString)
             Dim command As New MySqlCommand()
@@ -578,6 +582,8 @@ Public Class frmCustomProduction
                 conn.Close()
                 txtId.Text = getProductionId(txtProductionNo.Text)
                 saved = True
+                token = touch(txtProductionNo.Text)
+                refreshProductionList()
             Catch ex As Exception
                 MsgBox(ex.Message)
             End Try
@@ -585,7 +591,6 @@ Public Class frmCustomProduction
             Try
                 Dim conn As New MySqlConnection(Database.conString)
                 Dim command As New MySqlCommand()
-
                 Dim Query As String = "UPDATE `productions` SET `product_name`=@product_name,`batch_size`=@batch_size,`uom`=@uom WHERE `id`='" + txtId.Text + "'"
                 conn.Open()
                 command.CommandText = Query
@@ -596,11 +601,12 @@ Public Class frmCustomProduction
                 command.Parameters.AddWithValue("@uom", cmbUom.Text)
                 command.ExecuteNonQuery()
                 conn.Close()
-
+                saved = True
             Catch ex As Exception
                 MsgBox("Could not save record", vbCritical + vbOKOnly, "Error")
             End Try
         End If
+        Cursor = Cursors.Default
         Return saved
     End Function
 
@@ -736,6 +742,9 @@ Public Class frmCustomProduction
         If txtProductionNo.ReadOnly = False Then
             Dim list As New Production
             If list.getProduction(txtProductionNo.Text) = True Then
+
+                token = touch(txtProductionNo.Text)
+
                 txtId.Text = list.GL_ID
                 txtProductionNo.ReadOnly = True
                 txtDate.Text = list.GL_DATE
@@ -966,7 +975,17 @@ Public Class frmCustomProduction
     End Sub
 
     Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
-        save()
+        If txtId.Text = "" Then
+            MsgBox("Please select document")
+            Exit Sub
+        End If
+        If check(txtProductionNo.Text, token) = False Then
+            MsgBox("Could not modify document, the document has been modified by some one else. Please reload the document to continue", vbOKOnly + vbExclamation, "Invalid Operation")
+            Exit Sub
+        End If
+        If save() = True Then
+            MsgBox("Save success")
+        End If
     End Sub
 
     Private Sub btnEdit_Click(sender As Object, e As EventArgs) Handles btnEdit.Click
@@ -1198,6 +1217,10 @@ Public Class frmCustomProduction
         production = New Production
 
         If txtId.Text <> "" Then
+            If check(txtProductionNo.Text, token) = False Then
+                MsgBox("Could not modify document, the document has been modified by some one else. Please reload the document to continue", vbOKOnly + vbExclamation, "Invalid Operation")
+                Exit Sub
+            End If
             If (New Production).isFinishedProductExist(txtId.Text, txtItemCode.Text) = False Then
                 'add a new finished product
                 production.addFinishedProduct(txtId.Text, txtItemCode.Text, cmbDescription.Text, txtQty.Text)
@@ -1303,7 +1326,10 @@ Public Class frmCustomProduction
             MsgBox("Can not edit a completed document", vbOKOnly + vbCritical, "Error: Invalid oprration")
             Exit Sub
         End If
-
+        If check(txtProductionNo.Text, token) = False Then
+            MsgBox("Could not modify document, the document has been modified by some one else. Please reload the document to continue", vbOKOnly + vbExclamation, "Invalid Operation")
+            Exit Sub
+        End If
         Try
             Dim i As Integer = lstbxMaterials.SelectedIndex
             Dim id As String = materialsUsed.Item(i).id
@@ -1415,7 +1441,87 @@ Public Class frmCustomProduction
         Next
     End Sub
 
-    Private Sub btnComplete_Click(sender As Object, e As EventArgs) Handles btnComplete.Click
+    Private Sub btnComplete_Click1(sender As Object, e As EventArgs) Handles btnComplete.Click
+        If txtId.Text = "" Then
+            MsgBox("Please select document")
+            Exit Sub
+        End If
+        Dim status As String = (New Production).getStatus(txtId.Text)
+        Dim success As Boolean = False
+        If status = "COMPLETED" Or status = "ARCHIVED" Then
+            MsgBox("Already completed", vbOKOnly + vbExclamation, "Error: Invalid operation")
+            Exit Sub
+        End If
+        If check(txtProductionNo.Text, token) = False Then
+            MsgBox("Could not modify document, the document has been modified by some one else. Please reload the document to continue", vbOKOnly + vbExclamation, "Invalid Operation")
+            Exit Sub
+        End If
+        If status <> "PRINTED" Then
+            MsgBox("Could not complete, document not printed", vbOKOnly + vbExclamation, "Error: Invalid operation")
+            Exit Sub
+        End If
+        Dim res As Integer = MsgBox("Complete the production process? Materials will be removed from material stock and finished products will be added to stock", vbYesNo + vbQuestion, "Complete Process")
+        If res = DialogResult.Yes Then
+            Cursor = Cursors.WaitCursor
+            Dim query As String = ""
+            'add stock, register production, etc
+            For i = 0 To dtgrdItemList.RowCount - 1
+                Dim itemcode As String = dtgrdItemList.Item(0, i).Value
+                Dim qty As Double = Val(dtgrdItemList.Item(2, i).Value)
+                If Val(dtgrdItemList.Item(2, i).Value) > 0 Then
+                    'update inventory, add to inventory
+                    query = query + "UPDATE `inventorys` SET `qty`=`qty`+" + (dtgrdItemList.Item(2, i).Value).ToString + " WHERE `item_code`='" + dtgrdItemList.Item(0, i).Value + "';"
+                    'update stock cards, insert new stock card
+                    query = query + "INSERT INTO `stock_cards`(`date`,`item_code`,`qty_in`,`balance`,`reference`) VALUES ('" + Day.DAY + "','" + itemcode + "','" + qty.ToString + "'," + ((New Inventory).getInventory(itemcode)) + "+" + qty.ToString + ",'Produced CPRODXN#: " + txtProductionNo.Text + "');"
+                    'register production
+                    query = query + "INSERT INTO `item_production`(`date`,`item_code`, `price`, `qty`,`balance`,`reference`) VALUES ('" + Day.DAY + "','" + itemcode + "','" + (New Item).getItemCostPrice(itemcode).ToString + "','" + qty.ToString + "'," + ((New Inventory).getInventory(itemcode)) + "+" + qty.ToString + ",'CPRODXN#: " + txtProductionNo.Text + "');"
+                End If
+            Next
+            'deduct materials
+            Dim materialStockCard As New MaterialStockCard
+            Dim materialStock As Material = New Material
+            Dim materialUsage As Material = New Material
+            For i As Integer = 0 To materialsUsed.Count - 1
+                If materialsUsed.Item(i).qty > 0 Then
+                    'deduct material
+                    query = query + "UPDATE `materials` SET `qty`=`qty`-'" + materialsUsed.Item(i).qty.ToString + "' WHERE `id`='" + materialsUsed.Item(i).id + "';"
+                    'Update materials stock card
+                    query = query + "INSERT INTO `material_stock_cards`(`date`,`material_code`,`qty_out`,`balance`,`reference`) VALUES ('" + Day.DAY + "','" + materialsUsed.Item(i).materialCode.ToString + "','" + materialsUsed.Item(i).qty.ToString + "'," + materialStock.getStock(materialsUsed.Item(i).materialCode.ToString) + "-" + materialsUsed.Item(i).qty.ToString + ",'Used in CPRODXN#: " + txtProductionNo.Text + "');"
+                    'register material usage
+                    query = query + "INSERT INTO `material_usage`(`date`,`material_code`, `price`, `qty`,`balance`,`reference`) VALUES ('" + Day.DAY + "','" + materialsUsed.Item(i).materialCode.ToString + "','" + materialsUsed.Item(i).price.ToString + "','" + materialsUsed.Item(i).qty.ToString + "'," + materialStock.getStock(materialsUsed.Item(i).materialCode.ToString) + "-" + materialsUsed.Item(i).qty.ToString + ",'Used in CPRODXN#: " + txtProductionNo.Text + "');"
+                End If
+            Next
+            'complete production
+            query = query + "UPDATE `productions` SET`status`='COMPLETED' WHERE `production_no`='" + txtProductionNo.Text + "';"
+            Try
+                Dim conn As New MySqlConnection(Database.conString)
+                Dim command As New MySqlCommand()
+                conn.Open()
+                command.CommandText = query
+                command.Connection = conn
+                command.CommandType = CommandType.Text
+                command.ExecuteNonQuery()
+                conn.Close()
+                success = True
+            Catch ex As Exception
+                MsgBox(ex.ToString)
+            End Try
+            If success = True Then
+                btnEdit.Enabled = True
+                btnSave.Enabled = False
+                status = (New Production).getStatus(txtId.Text)
+                txtStatus.Text = status
+                refreshFinishedProductsList()
+                refreshProductionList()
+                MsgBox("Production process " + txtProductionNo.Text + " completed successifully", vbOKOnly + vbInformation, "Success")
+            Else
+                MsgBox("Operation failed")
+            End If
+            Cursor = Cursors.Default
+        End If
+    End Sub
+
+    Private Sub btnComplete_Click(sender As Object, e As EventArgs) ' Handles btnComplete.Click
         Dim status As String = (New Production).getStatus(txtId.Text)
         If status = "COMPLETED" Or status = "ARCHIVED" Then
             MsgBox("Already completed", vbOKOnly + vbExclamation, "Error: Invalid operation")
@@ -1586,8 +1692,16 @@ Public Class frmCustomProduction
     End Function
 
     Private Sub btnProduction_Click(sender As Object, e As EventArgs) Handles btnApprove.Click
+        If txtId.Text = "" Then
+            MsgBox("Please select document")
+            Exit Sub
+        End If
         Dim status As String = (New Production).getStatus(txtId.Text)
         If status = "PENDING" Then
+            If check(txtProductionNo.Text, token) = False Then
+                MsgBox("Could not modify document, the document has been modified by some one else. Please reload the document to continue", vbOKOnly + vbExclamation, "Invalid Operation")
+                Exit Sub
+            End If
             If checkUnusedMaterials() = False Then
                 MsgBox("Could not approve, materials with zero quantity are not allowed in material to use list", vbOKOnly + vbExclamation, "Invalid operation")
                 Exit Sub
@@ -1608,8 +1722,16 @@ Public Class frmCustomProduction
     End Sub
 
     Private Sub btnPrint_Click(sender As Object, e As EventArgs) Handles btnPrint.Click
+        If txtId.Text = "" Then
+            MsgBox("Please select document")
+            Exit Sub
+        End If
         Dim status As String = (New Production).getStatus(txtId.Text)
         If status = "APPROVED" Then
+            If check(txtProductionNo.Text, token) = False Then
+                MsgBox("Could not modify document, the document has been modified by some one else. Please reload the document to continue", vbOKOnly + vbExclamation, "Invalid Operation")
+                Exit Sub
+            End If
             Dim res As Integer = MsgBox("Print production sheet " + txtProductionNo.Text + " ?", vbYesNo + vbQuestion, "Print production sheet?")
             If res = DialogResult.Yes Then
                 printProduction(txtProductionNo.Text)
@@ -1652,9 +1774,16 @@ Public Class frmCustomProduction
     End Sub
 
     Private Sub btnCancel_Click(sender As Object, e As EventArgs) Handles btnCancel.Click
+        If txtId.Text = "" Then
+            MsgBox("Please select document")
+            Exit Sub
+        End If
         Dim status As String = (New Production).getStatus(txtId.Text)
         If status = "PENDING" Or status = "APPROVED" Then
-
+            If check(txtProductionNo.Text, token) = False Then
+                MsgBox("Could not modify document, the document has been modified by some one else. Please reload the document to continue", vbOKOnly + vbExclamation, "Invalid Operation")
+                Exit Sub
+            End If
             Dim res As Integer = MsgBox("Cancel production " + txtProductionNo.Text + " ?", vbYesNo + vbQuestion, "Cancel production?")
             If res = DialogResult.Yes Then
                 cancelProduction(txtProductionNo.Text)
@@ -1723,6 +1852,14 @@ Public Class frmCustomProduction
     End Sub
 
     Private Sub btnArchive_Click(sender As Object, e As EventArgs) Handles btnArchive.Click
+        If txtId.Text = "" Then
+            MsgBox("Please select document")
+            Exit Sub
+        End If
+        If check(txtProductionNo.Text, token) = False Then
+            MsgBox("Could not modify document, the document has been modified by some one else. Please reload the document to continue", vbOKOnly + vbExclamation, "Invalid Operation")
+            Exit Sub
+        End If
         Dim status As String = (New Production).getStatus(txtId.Text)
         If status = "COMPLETED" Then
             Dim res As Integer = MsgBox("Archive document? The document will be archived for future references", vbYesNo + vbQuestion, "Archive document")
@@ -1739,11 +1876,94 @@ Public Class frmCustomProduction
         End If
     End Sub
 
-    Private Sub btnClear_Click_1(sender As Object, e As EventArgs) Handles btnClear.Click
-
-    End Sub
-
     Private Sub btnClose_Click(sender As Object, e As EventArgs) Handles btnClose.Click
         Me.Dispose()
+    End Sub
+
+    Dim token As String = ""
+    Private Function touch(prNo As String) As String
+        Dim token As String = Utility.generateRandom20TokenWithDateTime()
+        Try
+            Dim conn As New MySqlConnection(Database.conString)
+            Dim command As New MySqlCommand()
+            Dim codeQuery As String = "UPDATE `productions` SET `touch`='" + token + "' WHERE `production_no`='" + prNo + "'"
+            conn.Open()
+            command.CommandText = codeQuery
+            command.Connection = conn
+            command.CommandType = CommandType.Text
+            command.ExecuteNonQuery()
+            conn.Close()
+        Catch ex As Exception
+            token = ""
+        End Try
+        Return token
+    End Function
+    Private Function check(issueNo As String, token As String) As Boolean
+        Dim conn As New MySqlConnection(Database.conString)
+        Dim command As New MySqlCommand()
+        Dim query As String = "SELECT `production_no`, `touch` FROM `productions` WHERE `production_no`='" + txtProductionNo.Text + "'"
+        conn.Open()
+        command.CommandText = query
+        command.Connection = conn
+        command.CommandType = CommandType.Text
+        Dim reader As MySqlDataReader = command.ExecuteReader()
+        While reader.Read
+            If token = reader.GetString("touch") And token <> "" Then
+                Return True
+            End If
+        End While
+        Return False
+    End Function
+
+    Private Sub btnArchiveAll_Click(sender As Object, e As EventArgs) Handles btnArchiveAll.Click
+        clear()
+        Dim res As Integer = MsgBox("Are you sure you want to archive all completed documents? All the completed documents will be sent to archives for future reference.", vbQuestion + vbYesNo, "Archive all completed documents")
+        If res = DialogResult.Yes Then
+            Dim noOfdocuments As Integer = 0
+            Try
+                Cursor = Cursors.WaitCursor
+                For i As Integer = 0 To dtgrdProductionList.RowCount - 1
+                    Dim no As String = dtgrdProductionList.Item(0, i).Value.ToString
+                    Dim list As Production = New Production
+                    Dim status As String = list.getStatus(no)
+                    If status = "COMPLETED" Then
+                        noOfdocuments = noOfdocuments + 1
+                    End If
+                Next
+                If noOfdocuments = 0 Then
+                    MsgBox("No documents to archive, only completed documents can be archived", vbOKOnly + vbExclamation, "No documents to archive")
+                    Cursor = Cursors.Default
+                    Exit Sub
+                Else
+                    Dim confirm As Integer = MsgBox(noOfdocuments.ToString + "  documents will be archived, continue?", vbYesNo + vbQuestion, "Concirm archive")
+                    If Not confirm = DialogResult.Yes Then
+                        Cursor = Cursors.Default
+                        Exit Sub
+                    End If
+                End If
+            Catch ex As Exception
+                MsgBox("Could not archive")
+                Cursor = Cursors.Default
+                Exit Sub
+            End Try
+
+            Try
+                Cursor = Cursors.WaitCursor
+                For i As Integer = 0 To dtgrdProductionList.RowCount - 1
+                    Dim no As String = dtgrdProductionList.Item(0, i).Value.ToString
+                    Dim list As Production = New Production
+                    Dim status As String = list.getStatus(no)
+                    If status = "COMPLETED" Then
+                        'archive
+                        list.archiveProduction(no)
+                    End If
+                Next
+                MsgBox(noOfdocuments.ToString + " document(s) archived successifuly")
+            Catch ex As Exception
+                '  MsgBox(ex.ToString)
+            End Try
+            refreshProductionList()
+            Cursor = Cursors.Default
+        End If
     End Sub
 End Class
