@@ -302,6 +302,7 @@ Public Class frmMaterialVsProduction
                         `material_usage`.`material_code` AS `material_code`,
                         `item_production`.`item_code` AS `item_code`,
                         `material_usage`.`date` AS `date`,
+                        `item_production`.`date` AS `date2`,
                         `material_usage`.`sumqty` AS `material_qty`,
                         `item_production`.`sumqty` AS `item_qty`
                     FROM 
@@ -311,8 +312,8 @@ Public Class frmMaterialVsProduction
                             FROM 
                                 `material_usage` 
                             WHERE 
-                                `date` BETWEEN '" + dateStart.Text + "' AND '" + dateEnd.Text + "' GROUP BY `material_code`) `material_usage`
-                    INNER JOIN 
+                                `date` BETWEEN '" + dateStart.Text + "' AND '" + dateEnd.Text + "' GROUP BY `material_code`,`date`) `material_usage`
+                    JOIN 
                         (SELECT 
                             `item_code`,
                             `date`,
@@ -320,11 +321,13 @@ Public Class frmMaterialVsProduction
                         FROM 
                             `item_production` 
                         WHERE 
-                            `date` BETWEEN '" + dateStart.Text + "' AND '" + dateEnd.Text + "' GROUP BY `item_code`) `item_production`
+                            `date` BETWEEN '" + dateStart.Text + "' AND '" + dateEnd.Text + "' GROUP BY `item_code`,`date`) `item_production`
                     ON 
                         `item_production`.`date`=`material_usage`.`date`
                     GROUP BY 
-                        `material_code`,`item_code`,`date`"
+                        `material_code`,`item_code`,`date`
+                    ORDER BY
+                        `date`"
 
             conn.Open()
             command.CommandText = query
