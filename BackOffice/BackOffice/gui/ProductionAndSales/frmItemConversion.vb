@@ -5,7 +5,10 @@ Imports MigraDoc.Rendering
 
 Public Class frmItemConversion
     Private Sub btnNew_Click(sender As Object, e As EventArgs) Handles btnNew.Click
-
+        If User.authorize("CREATE & CANCEL STOCK CONVERSION") = False Then
+            MsgBox("Access Denied", vbOKOnly + vbExclamation, "Access denied")
+            Exit Sub
+        End If
         txtId.Text = ""
         txtConversionNo.Text = ""
         txtConversionDate.Text = Day.DAY
@@ -289,6 +292,10 @@ Public Class frmItemConversion
     End Function
 
     Private Sub btnRawAdd_Click(sender As Object, e As EventArgs) Handles btnRawAdd.Click
+        If User.authorize("CREATE & CANCEL STOCK CONVERSION") = False Then
+            MsgBox("Access Denied", vbOKOnly + vbExclamation, "Access denied")
+            Exit Sub
+        End If
         txtConversionNo.ReadOnly = True
         If txtReason.Text = "" Then
             MsgBox("Please provide reason for conversion")
@@ -647,7 +654,10 @@ Public Class frmItemConversion
         'MsgBox("Action denied for current user.", vbOKOnly + vbExclamation, "Action denied")
         'Exit Sub
         ' End If
-
+        If User.authorize("CREATE & CANCEL STOCK CONVERSION") = False Then
+            MsgBox("Access Denied", vbOKOnly + vbExclamation, "Access denied")
+            Exit Sub
+        End If
         If txtId.Text = "" Then
             btnSave.Enabled = False
             txtConversionNo.ReadOnly = False
@@ -681,7 +691,10 @@ Public Class frmItemConversion
         Return valid
     End Function
     Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
-
+        If User.authorize("CREATE & CANCEL STOCK CONVERSION") = False Then
+            MsgBox("Access Denied", vbOKOnly + vbExclamation, "Access denied")
+            Exit Sub
+        End If
         If txtId.Text = "" Then
             MsgBox("Please select document")
             Exit Sub
@@ -1049,6 +1062,10 @@ Public Class frmItemConversion
     End Sub
 
     Private Sub btnEndAdd_Click(sender As Object, e As EventArgs) Handles btnEndAdd.Click
+        If User.authorize("CREATE & CANCEL STOCK CONVERSION") = False Then
+            MsgBox("Access Denied", vbOKOnly + vbExclamation, "Access denied")
+            Exit Sub
+        End If
         If txtId.Text = "" Then
             MsgBox("Operation failed, please select New", vbOKOnly + vbExclamation, "Error: Invalid operation")
             Exit Sub
@@ -1183,6 +1200,10 @@ Public Class frmItemConversion
     End Sub
 
     Private Sub btnApprove_Click(sender As Object, e As EventArgs) Handles btnApprove.Click
+        If User.authorize("APPROVE STOCK CONVERSION") = False Then
+            MsgBox("Access Denied", vbOKOnly + vbExclamation, "Access denied")
+            Exit Sub
+        End If
         If txtId.Text = "" Then
             MsgBox("Please select document")
             Exit Sub
@@ -1246,6 +1267,10 @@ Public Class frmItemConversion
     End Sub
 
     Private Sub btnCancel_Click(sender As Object, e As EventArgs) Handles btnCancel.Click
+        If User.authorize("CREATE & CANCEL STOCK CONVERSION") = False Then
+            MsgBox("Access Denied", vbOKOnly + vbExclamation, "Access denied")
+            Exit Sub
+        End If
         If txtId.Text = "" Then
             MsgBox("Please select document")
             Exit Sub
@@ -1288,6 +1313,10 @@ Public Class frmItemConversion
     End Sub
 
     Private Sub btnArchive_Click(sender As Object, e As EventArgs) Handles btnArchive.Click
+        If User.authorize("ARCHIVE DOCUMENTS") = False Then
+            MsgBox("Access Denied", vbOKOnly + vbExclamation, "Access denied")
+            Exit Sub
+        End If
         If txtId.Text = "" Then
             MsgBox("Please select document")
             Exit Sub
@@ -1330,6 +1359,10 @@ Public Class frmItemConversion
     End Sub
 
     Private Sub btnComplete_Click1(sender As Object, e As EventArgs) Handles btnComplete.Click
+        If User.authorize("COMPLETE STOCK CONVERSION") = False Then
+            MsgBox("Access Denied", vbOKOnly + vbExclamation, "Access denied")
+            Exit Sub
+        End If
         If txtId.Text = "" Then
             MsgBox("Please select document")
             Exit Sub
@@ -1485,6 +1518,10 @@ Public Class frmItemConversion
     End Sub
 
     Private Sub btnPrint_Click(sender As Object, e As EventArgs) Handles btnPrint.Click
+        If User.authorize("PRINT STOCK CONVERSION") = False Then
+            MsgBox("Access Denied", vbOKOnly + vbExclamation, "Access denied")
+            Exit Sub
+        End If
         If txtId.Text = "" Then
             MsgBox("Please select document")
             Exit Sub
@@ -1992,6 +2029,10 @@ Public Class frmItemConversion
     End Function
 
     Private Sub btnArchiveAll_Click(sender As Object, e As EventArgs) Handles btnArchiveAll.Click
+        If User.authorize("ARCHIVE DOCUMENTS") = False Then
+            MsgBox("Access Denied", vbOKOnly + vbExclamation, "Access denied")
+            Exit Sub
+        End If
         clearRawFields()
         clearEndFields()
         dtgrdItemsToConvert.Rows.Clear()

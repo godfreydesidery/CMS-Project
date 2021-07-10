@@ -107,8 +107,9 @@ Partial Class frmAccessControl
         '
         'Panel2
         '
-        Me.Panel2.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.Panel2.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.Panel2.Controls.Add(Me.lblInfo)
         Me.Panel2.Controls.Add(Me.dtgrdPriveledges)
@@ -132,8 +133,9 @@ Partial Class frmAccessControl
         '
         Me.dtgrdPriveledges.AllowUserToAddRows = False
         Me.dtgrdPriveledges.AllowUserToDeleteRows = False
-        Me.dtgrdPriveledges.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.dtgrdPriveledges.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.dtgrdPriveledges.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control
@@ -151,7 +153,7 @@ Partial Class frmAccessControl
         DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.WindowText
         Me.dtgrdPriveledges.RowsDefaultCellStyle = DataGridViewCellStyle2
         Me.dtgrdPriveledges.RowTemplate.Height = 24
-        Me.dtgrdPriveledges.Size = New System.Drawing.Size(406, 695)
+        Me.dtgrdPriveledges.Size = New System.Drawing.Size(392, 695)
         Me.dtgrdPriveledges.TabIndex = 7
         '
         'DataGridViewTextBoxColumn1
@@ -191,7 +193,7 @@ Partial Class frmAccessControl
         Me.btnBack.BackColor = System.Drawing.SystemColors.Control
         Me.btnBack.BackgroundImage = Global.BackOffice.My.Resources.Resources.red_back_arrow
         Me.btnBack.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.btnBack.Location = New System.Drawing.Point(832, 797)
+        Me.btnBack.Location = New System.Drawing.Point(836, 797)
         Me.btnBack.Name = "btnBack"
         Me.btnBack.Size = New System.Drawing.Size(115, 35)
         Me.btnBack.TabIndex = 13
@@ -204,7 +206,7 @@ Partial Class frmAccessControl
         Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.btnNew, Me.btnEdit, Me.btnDelete, Me.btnSave})
         Me.ToolStrip1.Location = New System.Drawing.Point(0, 0)
         Me.ToolStrip1.Name = "ToolStrip1"
-        Me.ToolStrip1.Size = New System.Drawing.Size(959, 27)
+        Me.ToolStrip1.Size = New System.Drawing.Size(963, 27)
         Me.ToolStrip1.TabIndex = 77
         Me.ToolStrip1.Text = "ToolStrip1"
         '
@@ -249,7 +251,7 @@ Partial Class frmAccessControl
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(959, 844)
+        Me.ClientSize = New System.Drawing.Size(963, 844)
         Me.Controls.Add(Me.ToolStrip1)
         Me.Controls.Add(Me.btnBack)
         Me.Controls.Add(Me.Panel2)
@@ -259,6 +261,7 @@ Partial Class frmAccessControl
         Me.ShowInTaskbar = False
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
         Me.Text = "Access Control Manager"
+        Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
         CType(Me.dtgrdRoles, System.ComponentModel.ISupportInitialize).EndInit()

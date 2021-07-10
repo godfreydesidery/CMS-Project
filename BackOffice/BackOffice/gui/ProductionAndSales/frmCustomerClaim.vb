@@ -7,7 +7,10 @@ Public Class frmCustomerClaim
 
 
     Private Sub btnNew_Click(sender As Object, e As EventArgs) Handles btnNew.Click
-
+        If User.authorize("CREATE & CANCEL CUSTOMER CLAIM") = False Then
+            MsgBox("Access Denied", vbOKOnly + vbExclamation, "Access denied")
+            Exit Sub
+        End If
         txtId.Text = ""
         txtClaimNo.Text = ""
         txtClaimDate.Text = Day.DAY
@@ -260,6 +263,10 @@ Public Class frmCustomerClaim
     End Sub
 
     Private Sub btnClaimAdd_Click(sender As Object, e As EventArgs) Handles btnClaimAdd.Click
+        If User.authorize("CREATE & CANCEL CUSTOMER CLAIM") = False Then
+            MsgBox("Access Denied", vbOKOnly + vbExclamation, "Access denied")
+            Exit Sub
+        End If
         txtClaimNo.ReadOnly = True
         If txtClaimNo.Text = "" Then
             MsgBox("Select new")
@@ -672,7 +679,10 @@ Public Class frmCustomerClaim
     End Sub
 
     Private Sub btnEdit_Click(sender As Object, e As EventArgs) Handles btnEdit.Click
-
+        If User.authorize("CREATE & CANCEL CUSTOMER CLAIM") = False Then
+            MsgBox("Access Denied", vbOKOnly + vbExclamation, "Access denied")
+            Exit Sub
+        End If
         ' If User.authorize("EDIT PACKING LIST") = True Then
 
 
@@ -706,7 +716,10 @@ Public Class frmCustomerClaim
         Return valid
     End Function
     Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
-
+        If User.authorize("CREATE & CANCEL CUSTOMER CLAIM") = False Then
+            MsgBox("Access Denied", vbOKOnly + vbExclamation, "Access denied")
+            Exit Sub
+        End If
         If txtClaimNo.Text = "" Then
             MsgBox("Please select document")
             Exit Sub
@@ -1103,6 +1116,10 @@ Public Class frmCustomerClaim
     End Sub
 
     Private Sub btnreplacementAdd_Click(sender As Object, e As EventArgs) Handles btnReplacementAdd.Click
+        If User.authorize("CREATE & CANCEL CUSTOMER CLAIM") = False Then
+            MsgBox("Access Denied", vbOKOnly + vbExclamation, "Access denied")
+            Exit Sub
+        End If
         If txtId.Text = "" Then
             MsgBox("Operation failed, please select New", vbOKOnly + vbExclamation, "Error: Invalid operation")
             Exit Sub
@@ -1204,6 +1221,10 @@ Public Class frmCustomerClaim
     End Sub
 
     Private Sub btnApprove_Click(sender As Object, e As EventArgs) Handles btnApprove.Click
+        If User.authorize("APPROVE CUSTOMER CLAIM") = False Then
+            MsgBox("Access Denied", vbOKOnly + vbExclamation, "Access denied")
+            Exit Sub
+        End If
         Dim status As String = (New CustomerClaim).getStatus(txtClaimNo.Text)
         If status = "APPROVED" Then
             MsgBox("Could not approve, already approved", vbOKOnly + vbExclamation, "Error: Invalid operation")
@@ -1259,6 +1280,10 @@ Public Class frmCustomerClaim
     End Sub
 
     Private Sub btnCancel_Click(sender As Object, e As EventArgs) Handles btnCancel.Click
+        If User.authorize("CREATE & CANCEL CUSTOMER CLAIM") = False Then
+            MsgBox("Access Denied", vbOKOnly + vbExclamation, "Access denied")
+            Exit Sub
+        End If
         Dim status As String = (New CustomerClaim).getStatus(txtClaimNo.Text)
         If status = "PENDING" Or status = "APPROVED" Then
             'continue
@@ -1294,6 +1319,10 @@ Public Class frmCustomerClaim
 
 
     Private Sub btnComplete_Click(sender As Object, e As EventArgs) Handles btnComplete.Click
+        If User.authorize("COMPLETE CUSTOMER CLAIM") = False Then
+            MsgBox("Access Denied", vbOKOnly + vbExclamation, "Access denied")
+            Exit Sub
+        End If
         If txtClaimNo.Text = "" Then
             MsgBox("Select a claim document to complete", vbOKOnly + vbExclamation, "Error: No selection")
             Exit Sub
@@ -1349,7 +1378,10 @@ Public Class frmCustomerClaim
     End Sub
 
     Private Sub btnPrint_Click(sender As Object, e As EventArgs) Handles btnPrint.Click
-
+        If User.authorize("PRINT CUSTOMER CLAIM") = False Then
+            MsgBox("Access Denied", vbOKOnly + vbExclamation, "Access denied")
+            Exit Sub
+        End If
         Dim status As String = (New CustomerClaim).getStatus(txtId.Text)
         If status = "APPROVED" Or status = "COMPLETED" Or status = "PRINTED" Or status = "ARCHIVED" Then
             'Dim res As Integer = MsgBox("Print claim sheet " + txtClaimNo.Text + " ?", vbYesNo + vbQuestion, "Print claim sheet?")
@@ -1855,5 +1887,12 @@ Public Class frmCustomerClaim
 
     Private Sub btnBack_Click(sender As Object, e As EventArgs) Handles btnBack.Click
         Me.Dispose()
+    End Sub
+
+    Private Sub btnArchive_Click(sender As Object, e As EventArgs) Handles btnArchive.Click
+        If User.authorize("ARCHIVE DOCUMENTS") = False Then
+            MsgBox("Access Denied", vbOKOnly + vbExclamation, "Access denied")
+            Exit Sub
+        End If
     End Sub
 End Class

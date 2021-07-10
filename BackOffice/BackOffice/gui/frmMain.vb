@@ -112,14 +112,6 @@ Public Class frmMain
         ' t.Start()
         tsrpDateTime.Text = "System Date: " + Day.DAY
 
-
-        If User.authorize("VIEW REPORTS") Then
-            tlstripReports.Enabled = True
-        Else
-            tlstripReports.Enabled = False
-        End If
-
-
     End Sub
 
     Private Sub WindowsMenu_Click(sender As Object, e As EventArgs)
@@ -406,10 +398,18 @@ Public Class frmMain
     End Sub
 
     Private Sub ToolStripMenuItem11_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem11.Click
+        If User.authorize("MANAGE SALES PERSONS") = False Then
+            MsgBox("Access Denied", vbOKOnly + vbExclamation, "Access denied")
+            Exit Sub
+        End If
         frmSalesPerson.ShowDialog()
     End Sub
 
     Private Sub ToolStripMenuItem15_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem15.Click
+        If User.authorize("MANAGE MATERIALS") = False Then
+            MsgBox("Access Denied", vbOKOnly + vbExclamation, "Access denied")
+            Exit Sub
+        End If
         frmMaterialCategory.ShowDialog()
     End Sub
 
@@ -418,46 +418,90 @@ Public Class frmMain
     End Sub
 
     Private Sub DetailedDailySalesReportToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles DetailedDailySalesReportToolStripMenuItem.Click
+        If User.authorize("VIEW PRODUCTION & SALES REPORTS") = False Then
+            MsgBox("Access Denied", vbOKOnly + vbExclamation, "Access denied")
+            Exit Sub
+        End If
         frmDetailedDailySalesReport.ShowDialog()
     End Sub
 
     Private Sub SummarizedDailySalesReportToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SummarizedDailySalesReportToolStripMenuItem.Click
+        If User.authorize("VIEW PRODUCTION & SALES REPORTS") = False Then
+            MsgBox("Access Denied", vbOKOnly + vbExclamation, "Access denied")
+            Exit Sub
+        End If
         frmDailySummarySalesReport.ShowDialog()
     End Sub
 
     Private Sub ConsolidatedDailySalesReportToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ConsolidatedDailySalesReportToolStripMenuItem.Click
+        If User.authorize("VIEW PRODUCTION & SALES REPORTS") = False Then
+            MsgBox("Access Denied", vbOKOnly + vbExclamation, "Access denied")
+            Exit Sub
+        End If
         frmConsolidatedDailySalesReport.ShowDialog()
     End Sub
 
     Private Sub DebtReportToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles DebtReportToolStripMenuItem.Click
+        If User.authorize("VIEW PRODUCTION & SALES REPORTS") = False Then
+            MsgBox("Access Denied", vbOKOnly + vbExclamation, "Access denied")
+            Exit Sub
+        End If
         frmDebtReport.ShowDialog()
     End Sub
 
     Private Sub DebtPaymentHistoryReportToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles DebtPaymentHistoryReportToolStripMenuItem.Click
+        If User.authorize("VIEW PRODUCTION & SALES REPORTS") = False Then
+            MsgBox("Access Denied", vbOKOnly + vbExclamation, "Access denied")
+            Exit Sub
+        End If
         frmDebtPayment.ShowDialog()
     End Sub
 
     Private Sub DamagesReportToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles DamagesReportToolStripMenuItem.Click
+        If User.authorize("VIEW PRODUCTION & SALES REPORTS") = False Then
+            MsgBox("Access Denied", vbOKOnly + vbExclamation, "Access denied")
+            Exit Sub
+        End If
         frmDamagesReport.ShowDialog()
     End Sub
 
     Private Sub MaterialStockStatusReportToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles MaterialStockStatusReportToolStripMenuItem.Click
+        If User.authorize("VIEW PRODUCTION & SALES REPORTS") = False Then
+            MsgBox("Access Denied", vbOKOnly + vbExclamation, "Access denied")
+            Exit Sub
+        End If
         frmMaterialStockStatus.ShowDialog()
     End Sub
 
     Private Sub MaterialStockCardReportToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles MaterialStockCardReportToolStripMenuItem.Click
+        If User.authorize("VIEW PRODUCTION & SALES REPORTS") = False Then
+            MsgBox("Access Denied", vbOKOnly + vbExclamation, "Access denied")
+            Exit Sub
+        End If
         frmMaterialStockCard.ShowDialog()
     End Sub
 
     Private Sub MaterialUsageReportToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles MaterialUsageReportToolStripMenuItem.Click
+        If User.authorize("VIEW PRODUCTION & SALES REPORTS") = False Then
+            MsgBox("Access Denied", vbOKOnly + vbExclamation, "Access denied")
+            Exit Sub
+        End If
         frmMaterialUsageReport.ShowDialog()
     End Sub
 
     Private Sub DailyProductionReportToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles DailyProductionReportToolStripMenuItem.Click
+        If User.authorize("VIEW PRODUCTION & SALES REPORTS") = False Then
+            MsgBox("Access Denied", vbOKOnly + vbExclamation, "Access denied")
+            Exit Sub
+        End If
         frmProductionReport.ShowDialog()
     End Sub
 
     Private Sub MaterialVsProductionReportToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles MaterialVsProductionReportToolStripMenuItem.Click
+        If User.authorize("VIEW PRODUCTION & SALES REPORTS") = False Then
+            MsgBox("Access Denied", vbOKOnly + vbExclamation, "Access denied")
+            Exit Sub
+        End If
         frmMaterialVsProduction.ShowDialog()
     End Sub
 
@@ -466,6 +510,10 @@ Public Class frmMain
     End Sub
 
     Private Sub ToolStripMenuItem16_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem16.Click
+        If User.authorize("MANAGE MATERIALS") = False Then
+            MsgBox("Access Denied", vbOKOnly + vbExclamation, "Access denied")
+            Exit Sub
+        End If
         frmMaterials.ShowDialog()
     End Sub
 
@@ -731,6 +779,12 @@ Public Class frmMain
     End Sub
 
     Private Sub ToolStripMenuItem25_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem25.Click
+        If User.authorize("VIEW PRODUCTION & SALES REPORTS") = False Then
+            MsgBox("Access Denied", vbOKOnly + vbExclamation, "Access denied")
+            Exit Sub
+        End If
         frmStockCardReports.ShowDialog()
     End Sub
+
+
 End Class

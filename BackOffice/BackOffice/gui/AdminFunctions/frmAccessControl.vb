@@ -89,8 +89,8 @@ Public Class frmAccessControl
     End Function
     Private Function refreshPriveledgeList(_role As String)
         dtgrdPriveledges.Rows.Clear()
+        Cursor = Cursors.AppStarting
         Try
-
 
             Dim _priveledge As String = ""
             Dim role As New Role
@@ -154,9 +154,10 @@ Public Class frmAccessControl
                 Next
             Next
         Catch ex As Exception
+            Cursor = Cursors.Default
             MsgBox(ex.ToString)
         End Try
-
+        Cursor = Cursors.Default
         Return vbNull
     End Function
 
@@ -317,7 +318,7 @@ Public Class frmAccessControl
         Catch ex As Exception
             row = -1
         End Try
-
+        Cursor = Cursors.AppStarting
         If dtgrdPriveledges.CurrentCell.ColumnIndex = 1 Then
 
             Try
@@ -334,9 +335,11 @@ Public Class frmAccessControl
 
                 While reader.Read
                     f = 1
+                    Cursor = Cursors.Default
                     MsgBox("Disabled")
                     Exit While
                 End While
+                Cursor = Cursors.AppStarting
                 conn.Close()
                 If f > 0 Then
                     deletePrev()
@@ -345,8 +348,10 @@ Public Class frmAccessControl
                 End If
 
             Catch ex As Exception
+                Cursor = Cursors.Default
                 MsgBox(ex.ToString)
             End Try
+            Cursor = Cursors.Default
             refreshPriveledgeList(cmbRole.SelectedItem.ToString)
         End If
     End Sub

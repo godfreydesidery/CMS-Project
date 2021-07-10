@@ -1,6 +1,5 @@
 ﻿Public Class Priveledge
     Public Shared PRIVELEDGES = New String() {
-        "@ORDERS",
         "PRODUCT MANAGEMENT",
         "PRODUCT INQUIRY",
         "EDIT INVENTORY",
@@ -24,6 +23,27 @@
         "APPROVE LPO",
         "EDIT LPO",
         "SALE INVOICE",
-        "CUSTOM DATING"
+        "CUSTOM DATING",
+        "MANAGE SALES PERSONS",
+        "MANAGE MATERIALS",
+        "CREATE & CANCEL PACKING LIST",
+        "APPROVE PACKING LIST",
+        "PRINT PACKING LIST",
+        "COMPLETE PACKING LIST",
+        "RECEIVE DEBT",
+        "CREATE & CANCEL PRODUCTION",
+        "APPROVE PRODUCTION",
+        "PRINT PRODUCTION",
+        "COMPLETE PRODUCTION",
+        "CREATE & CANCEL STOCK CONVERSION",
+        "APPROVE STOCK CONVERSION",
+        "PRINT STOCK CONVERSION",
+        "COMPLETE STOCK CONVERSION",
+        "CREATE & CANCEL CUSTOMER CLAIM",
+        "APPROVE CUSTOMER CLAIM",
+        "PRINT CUSTOMER CLAIM",
+        "COMPLETE CUSTOMER CLAIM",
+        "VIEW PRODUCTION & SALES REPORTS",
+        "ARCHIVE DOCUMENTS"
     }
 End Class

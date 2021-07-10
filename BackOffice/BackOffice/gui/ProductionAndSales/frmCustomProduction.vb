@@ -486,6 +486,10 @@ Public Class frmCustomProduction
     End Sub
 
     Private Sub btnAddUpdate_Click(sender As Object, e As EventArgs) Handles btnAddUpdate.Click
+        If User.authorize("CREATE & CANCEL PRODUCTION") = False Then
+            MsgBox("Access Denied", vbOKOnly + vbExclamation, "Access denied")
+            Exit Sub
+        End If
         Dim status As String = (New Production).getStatus(txtId.Text)
         If status = "CANCELED" Then
             MsgBox("Can not edit a canceled document", vbOKOnly + vbCritical, "Error: Invalid oprration")
@@ -951,6 +955,10 @@ Public Class frmCustomProduction
 
     End Sub
     Private Sub btnNew_Click(sender As Object, e As EventArgs) Handles btnNew.Click
+        If User.authorize("CREATE & CANCEL PRODUCTION") = False Then
+            MsgBox("Access Denied", vbOKOnly + vbExclamation, "Access denied")
+            Exit Sub
+        End If
         txtId.Text = ""
         txtProductionNo.Text = ""
         txtProductName.Text = ""
@@ -975,6 +983,10 @@ Public Class frmCustomProduction
     End Sub
 
     Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
+        If User.authorize("CREATE & CANCEL PRODUCTION") = False Then
+            MsgBox("Access Denied", vbOKOnly + vbExclamation, "Access denied")
+            Exit Sub
+        End If
         If txtId.Text = "" Then
             MsgBox("Please select document")
             Exit Sub
@@ -989,6 +1001,10 @@ Public Class frmCustomProduction
     End Sub
 
     Private Sub btnEdit_Click(sender As Object, e As EventArgs) Handles btnEdit.Click
+        If User.authorize("CREATE & CANCEL PRODUCTION") = False Then
+            MsgBox("Access Denied", vbOKOnly + vbExclamation, "Access denied")
+            Exit Sub
+        End If
         If txtId.Text = "" Then
             txtProductionNo.ReadOnly = False
             txtProductName.ReadOnly = True
@@ -1182,7 +1198,10 @@ Public Class frmCustomProduction
 
 
     Private Sub btnAdd_Click(sender As Object, e As EventArgs) Handles btnAdd.Click
-
+        If User.authorize("CREATE & CANCEL PRODUCTION") = False Then
+            MsgBox("Access Denied", vbOKOnly + vbExclamation, "Access denied")
+            Exit Sub
+        End If
         Dim status As String = (New Production).getStatus(txtId.Text)
         If status = "COMPLETED" Then
             MsgBox("You can not edit this production document. Document already completed.", vbOKOnly + vbExclamation, "Error: Invalid operation")
@@ -1318,6 +1337,10 @@ Public Class frmCustomProduction
 
 
     Private Sub lstbxMaterials_SelectedIndexChanged_1(sender As Object, e As EventArgs) Handles lstbxMaterials.SelectedIndexChanged
+        If User.authorize("CREATE & CANCEL PRODUCTION") = False Then
+            MsgBox("Access Denied", vbOKOnly + vbExclamation, "Access denied")
+            Exit Sub
+        End If
         Dim status As String = (New Production).getStatus(txtId.Text)
         If status = "CANCELED" Then
             MsgBox("Can not edit a canceled document", vbOKOnly + vbCritical, "Error: Invalid oprration")
@@ -1442,6 +1465,10 @@ Public Class frmCustomProduction
     End Sub
 
     Private Sub btnComplete_Click1(sender As Object, e As EventArgs) Handles btnComplete.Click
+        If User.authorize("COMPLETE PRODUCTION") = False Then
+            MsgBox("Access Denied", vbOKOnly + vbExclamation, "Access denied")
+            Exit Sub
+        End If
         If txtId.Text = "" Then
             MsgBox("Please select document")
             Exit Sub
@@ -1692,6 +1719,10 @@ Public Class frmCustomProduction
     End Function
 
     Private Sub btnProduction_Click(sender As Object, e As EventArgs) Handles btnApprove.Click
+        If User.authorize("APPROVE PRODUCTION") = False Then
+            MsgBox("Access Denied", vbOKOnly + vbExclamation, "Access denied")
+            Exit Sub
+        End If
         If txtId.Text = "" Then
             MsgBox("Please select document")
             Exit Sub
@@ -1722,6 +1753,10 @@ Public Class frmCustomProduction
     End Sub
 
     Private Sub btnPrint_Click(sender As Object, e As EventArgs) Handles btnPrint.Click
+        If User.authorize("PRINT PRODUCTION") = False Then
+            MsgBox("Access Denied", vbOKOnly + vbExclamation, "Access denied")
+            Exit Sub
+        End If
         If txtId.Text = "" Then
             MsgBox("Please select document")
             Exit Sub
@@ -1774,6 +1809,10 @@ Public Class frmCustomProduction
     End Sub
 
     Private Sub btnCancel_Click(sender As Object, e As EventArgs) Handles btnCancel.Click
+        If User.authorize("CREATE & CANCEL PRODUCTION") = False Then
+            MsgBox("Access Denied", vbOKOnly + vbExclamation, "Access denied")
+            Exit Sub
+        End If
         If txtId.Text = "" Then
             MsgBox("Please select document")
             Exit Sub
@@ -1852,6 +1891,10 @@ Public Class frmCustomProduction
     End Sub
 
     Private Sub btnArchive_Click(sender As Object, e As EventArgs) Handles btnArchive.Click
+        If User.authorize("ARCHIVE DOCUMENTS") = False Then
+            MsgBox("Access Denied", vbOKOnly + vbExclamation, "Access denied")
+            Exit Sub
+        End If
         If txtId.Text = "" Then
             MsgBox("Please select document")
             Exit Sub
@@ -1916,6 +1959,10 @@ Public Class frmCustomProduction
     End Function
 
     Private Sub btnArchiveAll_Click(sender As Object, e As EventArgs) Handles btnArchiveAll.Click
+        If User.authorize("ARCHIVE DOCUMENTS") = False Then
+            MsgBox("Access Denied", vbOKOnly + vbExclamation, "Access denied")
+            Exit Sub
+        End If
         clear()
         Dim res As Integer = MsgBox("Are you sure you want to archive all completed documents? All the completed documents will be sent to archives for future reference.", vbQuestion + vbYesNo, "Archive all completed documents")
         If res = DialogResult.Yes Then

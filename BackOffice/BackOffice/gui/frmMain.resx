@@ -1962,13 +1962,6 @@
         TgDQASA1MVpwzwAAAABJRU5ErkJggg==
 </value>
   </data>
-  <data name="ToolStripMenuItem24.ToolTipText" xml:space="preserve">
-    <value>Sets the current date to a custom date within a user session.
-This feature is used in back dating or foward dating, for operations that require a different date other than the normal system date.
-After enabling this feature, all operations shall be dated on the custom date.
-Remember to log in afresh so as to resume the normal system date.
-NB. You can not end the day when this feature is enabled, log in afresh to be able to end the day</value>
-  </data>
   <data name="ToolStripDropDownButton8.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
@@ -2013,6 +2006,13 @@ NB. You can not end the day when this feature is enabled, log in afresh to be ab
         kx0g8BTA3aZlButjSTyjODq/WcQcW/B/Je4OQhLvKQDnzN1mp0nnkvAhR8VuMzNrpm1mpjgkoVwB/v8D
         TgDQASA1MVpwzwAAAABJRU5ErkJggg==
 </value>
+  </data>
+  <data name="ToolStripMenuItem24.ToolTipText" xml:space="preserve">
+    <value>Sets the current date to a custom date within a user session.
+This feature is used in back dating or foward dating, for operations that require a different date other than the normal system date.
+After enabling this feature, all operations shall be dated on the custom date.
+Remember to log in afresh so as to resume the normal system date.
+NB. You can not end the day when this feature is enabled, log in afresh to be able to end the day</value>
   </data>
   <data name="ToolStripButton1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>

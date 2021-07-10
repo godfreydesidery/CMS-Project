@@ -866,6 +866,10 @@ Public Class frmPackingList
     End Sub
 
     Private Sub btnNew_Click(sender As Object, e As EventArgs) Handles btnNew.Click
+        If User.authorize("CREATE & CANCEL PACKING LIST") = False Then
+            MsgBox("Access Denied", vbOKOnly + vbExclamation, "Access denied")
+            Exit Sub
+        End If
         oldPrice = 0
 
         txtId.Text = ""
@@ -931,6 +935,7 @@ Public Class frmPackingList
     End Sub
 
     Private Sub btnEdit_Click(sender As Object, e As EventArgs) Handles btnEdit.Click
+
         oldPrice = 0
 
         ' If User.authorize("EDIT PACKING LIST") = True Then
@@ -942,6 +947,7 @@ Public Class frmPackingList
         ' End If
 
         If txtId.Text = "" Then
+
             btnSave.Enabled = False
             txtIssueNo.ReadOnly = False
             txtIssueNo.Text = ""
@@ -949,6 +955,10 @@ Public Class frmPackingList
             cmbSalesPersons.SelectedItem = Nothing
             txtStatus.Text = ""
         Else
+            If User.authorize("CREATE & CANCEL PACKING LIST") = False Then
+                MsgBox("Access Denied", vbOKOnly + vbExclamation, "Access denied")
+                Exit Sub
+            End If
             btnSave.Enabled = True
             txtIssueNo.ReadOnly = True
         End If
@@ -1473,6 +1483,10 @@ Public Class frmPackingList
         Return present
     End Function
     Private Sub btnAdd_Click(sender As Object, e As EventArgs) Handles btnAdd.Click
+        If User.authorize("CREATE & CANCEL PACKING LIST") = False Then
+            MsgBox("Access Denied", vbOKOnly + vbExclamation, "Access denied")
+            Exit Sub
+        End If
         Cursor = Cursors.WaitCursor
         If currentRow = -1 Then
             currentRow = dtgrdItemList.RowCount
@@ -1610,6 +1624,10 @@ Public Class frmPackingList
     End Sub
 
     Private Sub btnCancel_Click(sender As Object, e As EventArgs) Handles btnCancel.Click
+        If User.authorize("CREATE & CANCEL PACKING LIST") = False Then
+            MsgBox("Access Denied", vbOKOnly + vbExclamation, "Access denied")
+            Exit Sub
+        End If
         If txtIssueNo.Text = "" Then
             MsgBox("Please select document")
             Exit Sub
@@ -1653,6 +1671,10 @@ Public Class frmPackingList
     End Sub
 
     Private Sub btnApprove_Click(sender As Object, e As EventArgs) Handles btnApprove.Click
+        If User.authorize("APPROVE PACKING LIST") = False Then
+            MsgBox("Access Denied", vbOKOnly + vbExclamation, "Access denied")
+            Exit Sub
+        End If
         If txtIssueNo.Text = "" Then
             MsgBox("Please select document")
             Exit Sub
@@ -1759,7 +1781,10 @@ Public Class frmPackingList
     End Function
 
     Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
-
+        If User.authorize("CREATE & CANCEL PACKING LIST") = False Then
+            MsgBox("Access Denied", vbOKOnly + vbExclamation, "Access denied")
+            Exit Sub
+        End If
         If txtIssueNo.Text = "" Then
             MsgBox("Please select document")
             Exit Sub
@@ -1881,6 +1906,10 @@ Public Class frmPackingList
 
 
     Private Sub btnPrint_Click1(sender As Object, e As EventArgs) Handles btnPrint.Click
+        If User.authorize("PRINT PACKING LIST") = False Then
+            MsgBox("Access Denied", vbOKOnly + vbExclamation, "Access denied")
+            Exit Sub
+        End If
         If txtIssueNo.Text = "" Then
             MsgBox("Please select document")
             Exit Sub
@@ -2127,6 +2156,10 @@ Public Class frmPackingList
     End Sub
 
     Private Sub btnArchive_Click(sender As Object, e As EventArgs) Handles btnArchive.Click
+        If User.authorize("ARCHIVE DOCUMENTS") = False Then
+            MsgBox("Access Denied", vbOKOnly + vbExclamation, "Access denied")
+            Exit Sub
+        End If
         Dim debt As Double = Val((New PackingList).getDebt(txtIssueNo.Text))
         If debt > 0 Then
             MsgBox("Could not archive, debt not cleared", vbOKOnly + vbCritical, "Error: Debt not cleared")
@@ -2173,6 +2206,10 @@ Public Class frmPackingList
     End Sub
 
     Private Sub btnComplete_Click1(sender As Object, e As EventArgs) Handles btnComplete.Click
+        If User.authorize("COMPLETE PACKING LIST") = False Then
+            MsgBox("Access Denied", vbOKOnly + vbExclamation, "Access denied")
+            Exit Sub
+        End If
         If txtIssueNo.Text = "" Then
             MsgBox("Please select document")
             Exit Sub
@@ -2650,6 +2687,10 @@ Public Class frmPackingList
     End Sub
 
     Private Sub btnClearDebt_Click(sender As Object, e As EventArgs) Handles btnClearDebt.Click
+        If User.authorize("RECEIVE DEBT") = False Then
+            MsgBox("Access Denied", vbOKOnly + vbExclamation, "Access denied")
+            Exit Sub
+        End If
         If txtId.Text = "" Then
             MsgBox("Please select packing list", vbOKOnly + vbExclamation, "Error: No selection")
             Exit Sub
@@ -2878,6 +2919,10 @@ Public Class frmPackingList
     Dim currentRow As Integer = -1
 
     Private Sub btnArchiveAll_Click(sender As Object, e As EventArgs) Handles btnArchiveAll.Click
+        If User.authorize("ARCHIVE DOCUMENTS") = False Then
+            MsgBox("Access Denied", vbOKOnly + vbExclamation, "Access denied")
+            Exit Sub
+        End If
         resetAll()
         Dim res As Integer = MsgBox("Are you sure you want to archive all cleared packing list documents? All the cleared documents will be sent to archives for future reference.", vbQuestion + vbYesNo, "Archive all cleared packing lists")
         If res = DialogResult.Yes Then
