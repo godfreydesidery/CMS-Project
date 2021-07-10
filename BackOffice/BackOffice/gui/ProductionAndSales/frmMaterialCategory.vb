@@ -493,4 +493,8 @@ Public Class frmMaterialCategory
     Private Sub btnNew_Click_1(sender As Object, e As EventArgs) Handles btnNew.Click
 
     End Sub
+
+    Private Sub ToolStripButton5_Click(sender As Object, e As EventArgs) Handles ToolStripButton5.Click
+
+    End Sub
 End Class

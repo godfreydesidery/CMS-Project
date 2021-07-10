@@ -867,4 +867,8 @@ Public Class frmMaterials
     Private Sub MenuStrip1_ItemClicked(sender As Object, e As ToolStripItemClickedEventArgs)
 
     End Sub
+
+    Private Sub btnDelete_Click_1(sender As Object, e As EventArgs) Handles btnDelete.Click
+
+    End Sub
 End Class

@@ -353,7 +353,7 @@ Public Class frmSalesPerson
     Private Sub btnDelete_Click(sender As Object, e As EventArgs) Handles btnDelete.Click
         Dim res As Integer = MsgBox("Are you sure you want to delete the selected Sales Person? The record will be completely removed from the system", vbYesNo + vbQuestion, "Delete Sales Person?")
         If res = DialogResult.Yes Then
-
+            Exit Sub 'do not delete, delete code later
             Dim deleted As Boolean = False
             Try
                 Dim conn As New MySqlConnection(Database.conString)

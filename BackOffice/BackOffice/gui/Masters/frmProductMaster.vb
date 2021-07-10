@@ -754,6 +754,8 @@ Public Class frmProductMaster
         If res = DialogResult.Yes Then
             'delete the item
             'will proceed to delete the item
+            Return False 'do not delete, delete code later
+            Exit Function
         Else
             'do not delete the item; discard operation
             Return vbNull
