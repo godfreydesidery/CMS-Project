@@ -348,7 +348,8 @@ Public Class frmMaterialStockStatus
                 Dim materialCode As String = reader.GetString("material_code")
                 Dim description As String = reader.GetString("description")
                 Dim uom As String = reader.GetString("uom")
-                Dim qty As String = reader.GetString("qty")
+                'Dim qty As String = reader.GetString("qty")
+                Dim qty As String = (Math.Round(Val(reader.GetString("qty")), 2, MidpointRounding.AwayFromZero)).ToString
                 Dim price As String = reader.GetString("price")
                 Dim status As String = reader.GetString("status")
 

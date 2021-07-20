@@ -168,6 +168,18 @@ Public Class frmPackingList
         paragraph = section.AddParagraph()
         paragraph.AddFormattedText("S/M Officer:       " + cmbSalesPersons.Text)
         paragraph.Format.Font.Size = 8
+        If txtCustomerName.Text <> "" Then
+            paragraph = section.AddParagraph()
+            paragraph = section.AddParagraph()
+            paragraph.AddFormattedText("Customer :" + txtCustomerName.Text)
+            paragraph.Format.Font.Size = 8
+        End If
+        If txtCustomerAddress.Text <> "" Then
+            paragraph = section.AddParagraph()
+            paragraph.AddFormattedText("Contacts :" + txtCustomerAddress.Text)
+            paragraph.Format.Font.Size = 8
+            paragraph.Format.Font.Italic = True
+        End If
 
 
 
@@ -669,6 +681,9 @@ Public Class frmPackingList
             txtDebt.Text = LCurrency.displayValue(list.GL_DEBT.ToString)
             txtCostOfGoodsSold.Text = LCurrency.displayValue(list.GL_COST_OF_GOODS_SOLD.ToString)
 
+            txtCustomerName.Text = list.GL_CUSTOMER_NAME
+            txtCustomerAddress.Text = list.GL_CUSTOMER_ADDRESS
+
             'txtTotalSales.Text = LCurrency.displayValue((LCurrency.getValue(txtTotalAmountIssued.Text)).ToString)
 
         End If
@@ -700,6 +715,10 @@ Public Class frmPackingList
                 txtTotalBankCash.Text = LCurrency.displayValue(list.GL_TOTAL_BANK_CASH.ToString)
                 txtDebt.Text = LCurrency.displayValue(list.GL_DEBT.ToString)
                 txtCostOfGoodsSold.Text = LCurrency.displayValue(list.GL_COST_OF_GOODS_SOLD.ToString)
+
+                txtCustomerName.Text = list.GL_CUSTOMER_NAME
+                txtCustomerAddress.Text = list.GL_CUSTOMER_ADDRESS
+
 
                 'txtTotalSales.Text = LCurrency.displayValue((LCurrency.getValue(txtTotalAmountIssued.Text)).ToString)
 
@@ -734,7 +753,6 @@ Public Class frmPackingList
                     txtQtyReturned.ReadOnly = True
                     txtQtySold.ReadOnly = True
                     txtQtyDamaged.ReadOnly = True
-
 
                     txtTotalDiscounts.ReadOnly = True
                     txtTotalExpenditures.ReadOnly = True
@@ -878,6 +896,9 @@ Public Class frmPackingList
         cmbSalesPersons.SelectedItem = Nothing
         txtStatus.Text = "PENDING"
 
+        txtCustomerName.Text = ""
+        txtCustomerAddress.Text = ""
+
         txtBarCode.Text = ""
         txtItemCode.Text = ""
         cmbDescription.Text = ""
@@ -980,7 +1001,6 @@ Public Class frmPackingList
             list.GL_QTY_SOLD = qtySold
             list.GL_QTY_DAMAGED = qtyDamaged
             list.GL_C_PRICE = cPrice
-
 
             list.addPackingListDetails()
             success = True
@@ -1567,6 +1587,8 @@ Public Class frmPackingList
             list.GL_ISSUE_DATE = issueDate
             list.GL_SALES_PERSON = cmbSalesPersons.Text
             list.GL_STATUS = "PENDING"
+            list.GL_CUSTOMER_NAME = txtCustomerName.Text
+            list.GL_CUSTOMER_ADDRESS = txtCustomerAddress.Text
             If list.isPackingListExist(txtIssueNo.Text) = False Then
                 If list.addNewPackingList() = True Then
                     token = touch(txtIssueNo.Text)
@@ -1810,6 +1832,9 @@ Public Class frmPackingList
         list.GL_STATUS = txtStatus.Text
         list.GL_SALES_PERSON = cmbSalesPersons.Text
 
+        list.GL_CUSTOMER_NAME = txtCustomerName.Text
+        list.GL_CUSTOMER_ADDRESS = txtCustomerAddress.Text
+
         list.GL_AMOUNT_ISSUED = Val(LCurrency.getValue(txtTotalAmountIssued.Text))
         list.GL_TOTAL_RETURNS = Val(LCurrency.getValue(txtTotalReturns.Text))
         list.GL_TOTAL_DAMAGES = Val(LCurrency.getValue(txtTotalDamages.Text))
@@ -1852,6 +1877,9 @@ Public Class frmPackingList
         txtIssueDate.Text = ""
         cmbSalesPersons.SelectedItem = Nothing
         txtStatus.Text = ""
+
+        txtCustomerName.Text = ""
+        txtCustomerAddress.Text = ""
 
         txtBarCode.Text = ""
         txtItemCode.Text = ""
@@ -2287,6 +2315,9 @@ Public Class frmPackingList
         list.GL_STATUS = txtStatus.Text
         list.GL_SALES_PERSON = cmbSalesPersons.Text
 
+        list.GL_CUSTOMER_NAME = txtCustomerName.Text
+        list.GL_CUSTOMER_ADDRESS = txtCustomerAddress.Text
+
         list.GL_AMOUNT_ISSUED = Val(LCurrency.getValue(txtTotalAmountIssued.Text))
         list.GL_TOTAL_RETURNS = Val(LCurrency.getValue(txtTotalReturns.Text))
         list.GL_TOTAL_DAMAGES = Val(LCurrency.getValue(txtTotalDamages.Text))
@@ -2445,6 +2476,9 @@ Public Class frmPackingList
         list.GL_ISSUE_DATE = txtIssueDate.Text
         list.GL_STATUS = txtStatus.Text
         list.GL_SALES_PERSON = cmbSalesPersons.Text
+
+        list.GL_CUSTOMER_NAME = txtCustomerName.Text
+        list.GL_CUSTOMER_ADDRESS = txtCustomerAddress.Text
 
         list.GL_AMOUNT_ISSUED = Val(LCurrency.getValue(txtTotalAmountIssued.Text))
         list.GL_TOTAL_RETURNS = Val(LCurrency.getValue(txtTotalReturns.Text))
@@ -3009,4 +3043,10 @@ Public Class frmPackingList
         End While
         Return False
     End Function
+
+    Private Sub txtCustomerName_TextChanged(sender As Object, e As EventArgs) Handles txtCustomerName.TextChanged
+        If txtCustomerName.Text = "" Then
+            txtCustomerAddress.Text = ""
+        End If
+    End Sub
 End Class

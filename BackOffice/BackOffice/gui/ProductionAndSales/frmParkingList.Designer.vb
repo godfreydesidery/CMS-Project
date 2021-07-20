@@ -23,8 +23,8 @@ Partial Class frmPackingList
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmPackingList))
         Me.Label1 = New System.Windows.Forms.Label()
         Me.txtIssueNo = New System.Windows.Forms.TextBox()
@@ -131,6 +131,10 @@ Partial Class frmPackingList
         Me.ToolStripSeparator5 = New System.Windows.Forms.ToolStripSeparator()
         Me.btnPrintReport = New System.Windows.Forms.ToolStripButton()
         Me.btnBack = New System.Windows.Forms.Button()
+        Me.Label30 = New System.Windows.Forms.Label()
+        Me.txtCustomerName = New System.Windows.Forms.TextBox()
+        Me.Label31 = New System.Windows.Forms.Label()
+        Me.txtCustomerAddress = New System.Windows.Forms.TextBox()
         CType(Me.dtgrdPackingLists, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
         CType(Me.dtgrdItemList, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -143,7 +147,7 @@ Partial Class frmPackingList
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(38, 13)
+        Me.Label1.Location = New System.Drawing.Point(48, 13)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(63, 17)
         Me.Label1.TabIndex = 0
@@ -151,7 +155,7 @@ Partial Class frmPackingList
         '
         'txtIssueNo
         '
-        Me.txtIssueNo.Location = New System.Drawing.Point(106, 13)
+        Me.txtIssueNo.Location = New System.Drawing.Point(116, 10)
         Me.txtIssueNo.Name = "txtIssueNo"
         Me.txtIssueNo.ReadOnly = True
         Me.txtIssueNo.Size = New System.Drawing.Size(100, 22)
@@ -160,7 +164,7 @@ Partial Class frmPackingList
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(25, 43)
+        Me.Label2.Location = New System.Drawing.Point(37, 43)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(75, 17)
         Me.Label2.TabIndex = 2
@@ -169,7 +173,7 @@ Partial Class frmPackingList
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(25, 72)
+        Me.Label3.Location = New System.Drawing.Point(37, 72)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(78, 17)
         Me.Label3.TabIndex = 3
@@ -178,7 +182,7 @@ Partial Class frmPackingList
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(48, 99)
+        Me.Label4.Location = New System.Drawing.Point(63, 99)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(48, 17)
         Me.Label4.TabIndex = 4
@@ -186,7 +190,7 @@ Partial Class frmPackingList
         '
         'txtStatus
         '
-        Me.txtStatus.Location = New System.Drawing.Point(106, 99)
+        Me.txtStatus.Location = New System.Drawing.Point(117, 99)
         Me.txtStatus.Name = "txtStatus"
         Me.txtStatus.ReadOnly = True
         Me.txtStatus.Size = New System.Drawing.Size(187, 22)
@@ -194,7 +198,7 @@ Partial Class frmPackingList
         '
         'btnSearch
         '
-        Me.btnSearch.Location = New System.Drawing.Point(212, 13)
+        Me.btnSearch.Location = New System.Drawing.Point(255, 11)
         Me.btnSearch.Name = "btnSearch"
         Me.btnSearch.Size = New System.Drawing.Size(100, 40)
         Me.btnSearch.TabIndex = 9
@@ -219,9 +223,9 @@ Partial Class frmPackingList
         '
         'DataGridViewTextBoxColumn1
         '
-        DataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.White
-        DataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.Black
-        Me.DataGridViewTextBoxColumn1.DefaultCellStyle = DataGridViewCellStyle7
+        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.White
+        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black
+        Me.DataGridViewTextBoxColumn1.DefaultCellStyle = DataGridViewCellStyle3
         Me.DataGridViewTextBoxColumn1.FillWeight = 42.63959!
         Me.DataGridViewTextBoxColumn1.HeaderText = "Issue No"
         Me.DataGridViewTextBoxColumn1.Name = "DataGridViewTextBoxColumn1"
@@ -364,7 +368,7 @@ Partial Class frmPackingList
         Me.Panel1.Controls.Add(Me.txtTotalDiscounts)
         Me.Panel1.Controls.Add(Me.Label7)
         Me.Panel1.Controls.Add(Me.Label8)
-        Me.Panel1.Location = New System.Drawing.Point(10, 533)
+        Me.Panel1.Location = New System.Drawing.Point(10, 582)
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(423, 331)
         Me.Panel1.TabIndex = 84
@@ -492,7 +496,7 @@ Partial Class frmPackingList
         Me.dtgrdItemList.Name = "dtgrdItemList"
         Me.dtgrdItemList.ReadOnly = True
         Me.dtgrdItemList.RowTemplate.Height = 24
-        Me.dtgrdItemList.Size = New System.Drawing.Size(1042, 484)
+        Me.dtgrdItemList.Size = New System.Drawing.Size(1042, 533)
         Me.dtgrdItemList.TabIndex = 90
         '
         'Column8
@@ -511,8 +515,8 @@ Partial Class frmPackingList
         '
         'Column10
         '
-        DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.Column10.DefaultCellStyle = DataGridViewCellStyle8
+        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.Column10.DefaultCellStyle = DataGridViewCellStyle4
         Me.Column10.FillWeight = 89.8288!
         Me.Column10.HeaderText = "Price"
         Me.Column10.Name = "Column10"
@@ -605,7 +609,7 @@ Partial Class frmPackingList
         Me.Panel2.Controls.Add(Me.txtItemCode)
         Me.Panel2.Controls.Add(Me.txtPrice)
         Me.Panel2.Controls.Add(Me.Label18)
-        Me.Panel2.Location = New System.Drawing.Point(10, 191)
+        Me.Panel2.Location = New System.Drawing.Point(10, 240)
         Me.Panel2.Name = "Panel2"
         Me.Panel2.Size = New System.Drawing.Size(423, 336)
         Me.Panel2.TabIndex = 93
@@ -887,22 +891,23 @@ Partial Class frmPackingList
         Me.cmbSalesPersons.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cmbSalesPersons.FlatStyle = System.Windows.Forms.FlatStyle.System
         Me.cmbSalesPersons.FormattingEnabled = True
-        Me.cmbSalesPersons.Location = New System.Drawing.Point(105, 69)
+        Me.cmbSalesPersons.Location = New System.Drawing.Point(117, 69)
         Me.cmbSalesPersons.Name = "cmbSalesPersons"
-        Me.cmbSalesPersons.Size = New System.Drawing.Size(303, 24)
+        Me.cmbSalesPersons.Size = New System.Drawing.Size(291, 24)
         Me.cmbSalesPersons.TabIndex = 94
         '
         'txtId
         '
         Me.txtId.Location = New System.Drawing.Point(5, 11)
         Me.txtId.Name = "txtId"
+        Me.txtId.ReadOnly = True
         Me.txtId.Size = New System.Drawing.Size(23, 22)
         Me.txtId.TabIndex = 95
         Me.txtId.Visible = False
         '
         'txtIssueDate
         '
-        Me.txtIssueDate.Location = New System.Drawing.Point(105, 41)
+        Me.txtIssueDate.Location = New System.Drawing.Point(116, 38)
         Me.txtIssueDate.Name = "txtIssueDate"
         Me.txtIssueDate.ReadOnly = True
         Me.txtIssueDate.Size = New System.Drawing.Size(101, 22)
@@ -911,6 +916,10 @@ Partial Class frmPackingList
         'Panel3
         '
         Me.Panel3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+        Me.Panel3.Controls.Add(Me.txtCustomerAddress)
+        Me.Panel3.Controls.Add(Me.Label31)
+        Me.Panel3.Controls.Add(Me.Label30)
+        Me.Panel3.Controls.Add(Me.txtCustomerName)
         Me.Panel3.Controls.Add(Me.txtIssueNo)
         Me.Panel3.Controls.Add(Me.txtIssueDate)
         Me.Panel3.Controls.Add(Me.Label1)
@@ -923,7 +932,7 @@ Partial Class frmPackingList
         Me.Panel3.Controls.Add(Me.btnSearch)
         Me.Panel3.Location = New System.Drawing.Point(10, 50)
         Me.Panel3.Name = "Panel3"
-        Me.Panel3.Size = New System.Drawing.Size(423, 135)
+        Me.Panel3.Size = New System.Drawing.Size(423, 184)
         Me.Panel3.TabIndex = 97
         '
         'Label27
@@ -1102,17 +1111,49 @@ Partial Class frmPackingList
         Me.btnBack.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btnBack.BackgroundImage = Global.BackOffice.My.Resources.Resources.red_back_arrow
         Me.btnBack.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.btnBack.Location = New System.Drawing.Point(1389, 832)
+        Me.btnBack.Location = New System.Drawing.Point(1389, 881)
         Me.btnBack.Name = "btnBack"
         Me.btnBack.Size = New System.Drawing.Size(100, 40)
         Me.btnBack.TabIndex = 92
         Me.btnBack.UseVisualStyleBackColor = True
         '
+        'Label30
+        '
+        Me.Label30.AutoSize = True
+        Me.Label30.Location = New System.Drawing.Point(3, 127)
+        Me.Label30.Name = "Label30"
+        Me.Label30.Size = New System.Drawing.Size(109, 17)
+        Me.Label30.TabIndex = 97
+        Me.Label30.Text = "Customer Name"
+        '
+        'txtCustomerName
+        '
+        Me.txtCustomerName.Location = New System.Drawing.Point(118, 127)
+        Me.txtCustomerName.Name = "txtCustomerName"
+        Me.txtCustomerName.Size = New System.Drawing.Size(290, 22)
+        Me.txtCustomerName.TabIndex = 98
+        '
+        'Label31
+        '
+        Me.Label31.AutoSize = True
+        Me.Label31.Location = New System.Drawing.Point(18, 155)
+        Me.Label31.Name = "Label31"
+        Me.Label31.Size = New System.Drawing.Size(95, 17)
+        Me.Label31.TabIndex = 99
+        Me.Label31.Text = "Addr&&Contact"
+        '
+        'txtCustomerAddress
+        '
+        Me.txtCustomerAddress.Location = New System.Drawing.Point(118, 152)
+        Me.txtCustomerAddress.Name = "txtCustomerAddress"
+        Me.txtCustomerAddress.Size = New System.Drawing.Size(290, 22)
+        Me.txtCustomerAddress.TabIndex = 100
+        '
         'frmPackingList
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1501, 876)
+        Me.ClientSize = New System.Drawing.Size(1501, 925)
         Me.Controls.Add(Me.ToolStrip1)
         Me.Controls.Add(Me.Label27)
         Me.Controls.Add(Me.Panel3)
@@ -1247,4 +1288,8 @@ Partial Class frmPackingList
     Friend WithEvents DataGridViewTextBoxColumn3 As DataGridViewTextBoxColumn
     Friend WithEvents btnArchiveAll As ToolStripButton
     Friend WithEvents ToolStripSeparator6 As ToolStripSeparator
+    Friend WithEvents Label30 As Label
+    Friend WithEvents txtCustomerName As TextBox
+    Friend WithEvents txtCustomerAddress As TextBox
+    Friend WithEvents Label31 As Label
 End Class

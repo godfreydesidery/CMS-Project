@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 09, 2021 at 02:36 PM
+-- Generation Time: Jul 20, 2021 at 10:06 AM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.1.26
 
@@ -750,7 +750,9 @@ CREATE TABLE `packing_list` (
   `user_id` varchar(50) DEFAULT NULL,
   `float_amount` double DEFAULT NULL,
   `cost_of_goods` double NOT NULL DEFAULT '0',
-  `touch` varchar(100) DEFAULT NULL
+  `touch` varchar(100) DEFAULT NULL,
+  `customer_name` varchar(500) DEFAULT NULL,
+  `customer_address` varchar(500) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -1007,7 +1009,45 @@ INSERT INTO `role_priveledge` (`id`, `role_id`, `priveledge`) VALUES
 (62, '3', 'APPROVE LPO'),
 (63, '3', 'SALE INVOICE'),
 (66, '3', 'EDIT INVENTORY'),
-(67, '4', 'PRODUCT INQUIRY');
+(67, '3', 'CUSTOM DATING'),
+(69, '3', 'ACCESS MANAGEMENT'),
+(70, '5', 'PRODUCT MANAGEMENT'),
+(71, '5', 'PRODUCT INQUIRY'),
+(72, '5', 'EDIT INVENTORY'),
+(73, '5', 'COMPANY MANAGEMENT'),
+(74, '5', 'SUPPLIER MANAGEMENT'),
+(75, '5', 'PROCUREMENT'),
+(76, '5', 'VIEW REPORTS'),
+(77, '5', 'ACCOUNTS'),
+(78, '5', 'END DAY'),
+(79, '5', 'USER MANAGEMENT'),
+(80, '5', 'TILL MANAGEMENT'),
+(81, '5', 'ACCESS MANAGEMENT'),
+(82, '5', 'FLOAT MANAGEMENT'),
+(83, '3', 'MANAGE SALES PERSONS'),
+(84, '3', 'MANAGE MATERIALS'),
+(85, '3', 'CREATE & CANCEL PACKING LIST'),
+(87, '3', 'APPROVE PACKING LIST'),
+(88, '3', 'PRINT PACKING LIST'),
+(90, '3', 'ARCHIVE DOCUMENTS'),
+(91, '3', 'VIEW PRODUCTION & SALES REPORTS'),
+(92, '3', 'COMPLETE CUSTOMER CLAIM'),
+(93, '3', 'PRINT CUSTOMER CLAIM'),
+(94, '3', 'APPROVE CUSTOMER CLAIM'),
+(95, '3', 'CREATE & CANCEL CUSTOMER CLAIM'),
+(96, '3', 'COMPLETE STOCK CONVERSION'),
+(97, '3', 'PRINT STOCK CONVERSION'),
+(98, '3', 'APPROVE STOCK CONVERSION'),
+(99, '3', 'CREATE & CANCEL STOCK CONVERSION'),
+(100, '3', 'COMPLETE PRODUCTION'),
+(101, '3', 'PRINT PRODUCTION'),
+(102, '3', 'APPROVE PRODUCTION'),
+(103, '3', 'CREATE & CANCEL PRODUCTION'),
+(104, '3', 'RECEIVE DEBT'),
+(105, '3', 'COMPLETE PACKING LIST'),
+(106, '4', 'PRODUCT MANAGEMENT'),
+(107, '4', 'PRODUCT MANAGEMENT'),
+(108, '4', 'PRODUCT MANAGEMENT');
 
 -- --------------------------------------------------------
 
@@ -2044,7 +2084,7 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT for table `role_priveledge`
 --
 ALTER TABLE `role_priveledge`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=68;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=109;
 
 --
 -- AUTO_INCREMENT for table `sale`

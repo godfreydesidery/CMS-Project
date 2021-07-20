@@ -14,6 +14,9 @@ Public Class PackingList
     Public GL_ISSUE_DATE As String = ""
     Public GL_STATUS As String = ""
     Public GL_SALES_PERSON As String = ""
+    Public GL_CUSTOMER_NAME As String = ""
+    Public GL_CUSTOMER_ADDRESS As String = ""
+
     Public GL_DESCRIPTION As String = ""
     Public GL_RETURNS As Double = 0
     Public GL_PACKED As Double = 0
@@ -148,7 +151,7 @@ Public Class PackingList
         Try
             Dim conn As New MySqlConnection(Database.conString)
             Dim command As New MySqlCommand()
-            Dim codeQuery As String = "SELECT `packing_list`.`id` AS `id`, `packing_list`.`issue_no` AS `issue_no`, `packing_list`.`issue_date` AS `issue_date`, `packing_list`.`status` AS `status`, `packing_list`.`sales_person_id` AS `sales_person_id`, `packing_list`.`amount_issued` AS `amount_issued`, `packing_list`.`total_returns` AS `total_returns`, `packing_list`.`total_damages` AS `total_damages`, `packing_list`.`total_discounts` AS `total_discounts`, `packing_list`.`total_expenditures` AS `total_expenditures`, `packing_list`.`total_bank_cash` AS `total_bank_cash`, `packing_list`.`debt` AS `debt`, `packing_list`.`sales_person_id` AS `sales_person_id`, `packing_list`.`cost_of_goods` AS `cost_of_goods` FROM `packing_list` WHERE `packing_list`.`issue_no`='" + issueNo + "'"
+            Dim codeQuery As String = "SELECT `packing_list`.`id` AS `id`, `packing_list`.`issue_no` AS `issue_no`, `packing_list`.`customer_name` AS `customer_name`, `packing_list`.`customer_address` AS `customer_address`, `packing_list`.`issue_date` AS `issue_date`, `packing_list`.`status` AS `status`, `packing_list`.`sales_person_id` AS `sales_person_id`, `packing_list`.`amount_issued` AS `amount_issued`, `packing_list`.`total_returns` AS `total_returns`, `packing_list`.`total_damages` AS `total_damages`, `packing_list`.`total_discounts` AS `total_discounts`, `packing_list`.`total_expenditures` AS `total_expenditures`, `packing_list`.`total_bank_cash` AS `total_bank_cash`, `packing_list`.`debt` AS `debt`, `packing_list`.`sales_person_id` AS `sales_person_id`, `packing_list`.`cost_of_goods` AS `cost_of_goods` FROM `packing_list` WHERE `packing_list`.`issue_no`='" + issueNo + "'"
             conn.Open()
             command.CommandText = codeQuery
             command.Connection = conn
@@ -159,6 +162,8 @@ Public Class PackingList
                 Me.GL_ISSUE_NO = reader.GetString("issue_no")
                 Me.GL_ISSUE_DATE = reader.GetString("issue_date")
                 Me.GL_STATUS = reader.GetString("status")
+                Me.GL_CUSTOMER_NAME = reader.GetString("customer_name")
+                Me.GL_CUSTOMER_ADDRESS = reader.GetString("customer_address")
                 Me.GL_SALES_PERSON = getSalesPersonName(reader.GetString("sales_person_id"))
                 Me.GL_AMOUNT_ISSUED = reader.GetString("amount_issued")
                 Me.GL_TOTAL_RETURNS = reader.GetString("total_returns")
@@ -270,13 +275,15 @@ Public Class PackingList
         Try
             Dim conn As New MySqlConnection(Database.conString)
             Dim command As New MySqlCommand()
-            Dim codeQuery As String = "INSERT INTO `packing_list`(  `issue_no`, `issue_date`, `status`, `sales_person_id`,`amount_issued`,`total_returns`,`total_damages`,`total_discounts`,`total_expenditures`,`total_bank_cash`,`debt`) VALUES (@issue_no,@issue_date,@status,@sales_person_id,@amount_issued,@total_returns,@total_damages,@total_discounts,@total_expenditures,@total_bank_cash,@debt)"
+            Dim codeQuery As String = "INSERT INTO `packing_list`(  `issue_no`, `issue_date`, `customer_name`,`customer_address`, `status`, `sales_person_id`,`amount_issued`,`total_returns`,`total_damages`,`total_discounts`,`total_expenditures`,`total_bank_cash`,`debt`) VALUES (@issue_no,@issue_date,@customer_name,@customer_address,@status,@sales_person_id,@amount_issued,@total_returns,@total_damages,@total_discounts,@total_expenditures,@total_bank_cash,@debt)"
             conn.Open()
             command.CommandText = codeQuery
             command.Connection = conn
             command.CommandType = CommandType.Text
             command.Parameters.Add("@issue_no", GL_ISSUE_NO)
             command.Parameters.Add("@issue_date", GL_ISSUE_DATE)
+            command.Parameters.Add("@customer_name", GL_CUSTOMER_NAME)
+            command.Parameters.Add("@customer_address", GL_CUSTOMER_ADDRESS)
             command.Parameters.Add("@status", GL_STATUS)
             command.Parameters.Add("@sales_person_id", getSalesPersonId(GL_SALES_PERSON))
             command.Parameters.Add("@amount_issued", GL_AMOUNT_ISSUED)
@@ -504,7 +511,7 @@ Public Class PackingList
         Try
             Dim conn As New MySqlConnection(Database.conString)
             Dim command As New MySqlCommand()
-            Dim codeQuery As String = "UPDATE `packing_list` SET `sales_person_id`='" + getSalesPersonId(GL_SALES_PERSON) + "',`amount_issued`='" + GL_AMOUNT_ISSUED.ToString + "',`total_returns`='" + GL_TOTAL_RETURNS.ToString + "',`total_damages`='" + GL_TOTAL_DAMAGES.ToString + "',`total_discounts`='" + GL_TOTAL_DISCOUNTS.ToString + "',`total_expenditures`='" + GL_TOTAL_EXPENDITURES.ToString + "',`total_bank_cash`='" + GL_TOTAL_BANK_CASH.ToString + "',`debt`='" + GL_DEBT.ToString + "',`cost_of_goods`='" + GL_COST_OF_GOODS_SOLD.ToString + "' WHERE `issue_no`='" + issueNo + "'"
+            Dim codeQuery As String = "UPDATE `packing_list` SET `customer_name`='" + GL_CUSTOMER_NAME + "',`customer_address`='" + GL_CUSTOMER_ADDRESS + "', `sales_person_id`='" + getSalesPersonId(GL_SALES_PERSON) + "',`amount_issued`='" + GL_AMOUNT_ISSUED.ToString + "',`total_returns`='" + GL_TOTAL_RETURNS.ToString + "',`total_damages`='" + GL_TOTAL_DAMAGES.ToString + "',`total_discounts`='" + GL_TOTAL_DISCOUNTS.ToString + "',`total_expenditures`='" + GL_TOTAL_EXPENDITURES.ToString + "',`total_bank_cash`='" + GL_TOTAL_BANK_CASH.ToString + "',`debt`='" + GL_DEBT.ToString + "',`cost_of_goods`='" + GL_COST_OF_GOODS_SOLD.ToString + "' WHERE `issue_no`='" + issueNo + "'"
             conn.Open()
             command.CommandText = codeQuery
             command.Connection = conn
