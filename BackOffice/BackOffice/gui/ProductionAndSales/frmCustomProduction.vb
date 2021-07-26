@@ -434,11 +434,13 @@ Public Class frmCustomProduction
 
     End Sub
 
-
+    Dim longMaterialList As List(Of String)
+    Dim shortMaterialList As List(Of String)
 
 
     Private Sub loadMaterials()
-        chklstMaterials.Items.Clear()
+        '  chklstMaterials.Items.Clear()
+        longMaterialList.Clear()
         materials.Clear()
         Dim conn As New MySqlConnection(Database.conString)
         Try
@@ -468,7 +470,8 @@ Public Class frmCustomProduction
             conn.Close()
             Dim i As Integer
             For i = 0 To materials.Count - 1
-                chklstMaterials.Items.Add(materials.Item(i).summary)
+                longMaterialList.Add(materials.Item(i).summary)
+                '  chklstMaterials.Items.Add(materials.Item(i).summary)
             Next
         Catch ex As Devart.Data.MySql.MySqlException
             ErrorMessage.dbConnectionError()
@@ -2013,4 +2016,5 @@ Public Class frmCustomProduction
             Cursor = Cursors.Default
         End If
     End Sub
+
 End Class

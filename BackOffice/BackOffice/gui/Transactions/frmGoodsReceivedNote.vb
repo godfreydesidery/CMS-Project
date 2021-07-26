@@ -811,20 +811,8 @@ Public Class frmGoodsReceivedNote
         dtgrdItemList.Rows.Clear()
     End Sub
 
-    Private Sub txtOrderNo_TextChanged(sender As Object, e As EventArgs) Handles txtOrderNo.TextChanged
-
-    End Sub
-
-    Private Sub Button2_Click(sender As Object, e As EventArgs)
-
-    End Sub
-
-    Private Sub Label2_Click(sender As Object, e As EventArgs) Handles Label2.Click
-
-    End Sub
 
     Private Sub btnClear_Click(sender As Object, e As EventArgs) Handles btnClear.Click
-
         clearFields()
         dtgrdItemList.Rows.Clear()
     End Sub

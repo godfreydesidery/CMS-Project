@@ -80,10 +80,11 @@ Partial Class frmCustomProduction
         Me.btnApprove = New System.Windows.Forms.ToolStripButton()
         Me.btnPrint = New System.Windows.Forms.ToolStripButton()
         Me.btnComplete = New System.Windows.Forms.ToolStripButton()
-        Me.btnArchive = New System.Windows.Forms.ToolStripButton()
-        Me.btnAddUpdate = New System.Windows.Forms.Button()
-        Me.btnArchiveAll = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripSeparator5 = New System.Windows.Forms.ToolStripSeparator()
+        Me.btnArchive = New System.Windows.Forms.ToolStripButton()
+        Me.btnArchiveAll = New System.Windows.Forms.ToolStripButton()
+        Me.btnAddUpdate = New System.Windows.Forms.Button()
+        Me.txtFilterMaterials = New System.Windows.Forms.TextBox()
         CType(Me.dtgrdProductionList, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
         CType(Me.dtgrdItemList, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -238,9 +239,9 @@ Partial Class frmCustomProduction
             Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.chklstMaterials.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.chklstMaterials.FormattingEnabled = True
-        Me.chklstMaterials.Location = New System.Drawing.Point(10, 309)
+        Me.chklstMaterials.Location = New System.Drawing.Point(10, 353)
         Me.chklstMaterials.Name = "chklstMaterials"
-        Me.chklstMaterials.Size = New System.Drawing.Size(490, 444)
+        Me.chklstMaterials.Size = New System.Drawing.Size(490, 400)
         Me.chklstMaterials.TabIndex = 15
         '
         'lstbxMaterials
@@ -613,6 +614,11 @@ Partial Class frmCustomProduction
         Me.btnComplete.Size = New System.Drawing.Size(98, 24)
         Me.btnComplete.Text = "Complete"
         '
+        'ToolStripSeparator5
+        '
+        Me.ToolStripSeparator5.Name = "ToolStripSeparator5"
+        Me.ToolStripSeparator5.Size = New System.Drawing.Size(6, 27)
+        '
         'btnArchive
         '
         Me.btnArchive.Image = CType(resources.GetObject("btnArchive.Image"), System.Drawing.Image)
@@ -621,6 +627,15 @@ Partial Class frmCustomProduction
         Me.btnArchive.Size = New System.Drawing.Size(82, 24)
         Me.btnArchive.Text = "Archive"
         Me.btnArchive.ToolTipText = "Sends a completed document to archives for future references"
+        '
+        'btnArchiveAll
+        '
+        Me.btnArchiveAll.Image = CType(resources.GetObject("btnArchiveAll.Image"), System.Drawing.Image)
+        Me.btnArchiveAll.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.btnArchiveAll.Name = "btnArchiveAll"
+        Me.btnArchiveAll.Size = New System.Drawing.Size(102, 24)
+        Me.btnArchiveAll.Text = "Archive all"
+        Me.btnArchiveAll.ToolTipText = "Sends all completed and cleared packing list to archives for future references"
         '
         'btnAddUpdate
         '
@@ -632,25 +647,20 @@ Partial Class frmCustomProduction
         Me.btnAddUpdate.Text = "Add Selected Materials"
         Me.btnAddUpdate.UseVisualStyleBackColor = True
         '
-        'btnArchiveAll
+        'txtFilterMaterials
         '
-        Me.btnArchiveAll.Image = CType(resources.GetObject("btnArchiveAll.Image"), System.Drawing.Image)
-        Me.btnArchiveAll.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.btnArchiveAll.Name = "btnArchiveAll"
-        Me.btnArchiveAll.Size = New System.Drawing.Size(102, 24)
-        Me.btnArchiveAll.Text = "Archive all"
-        Me.btnArchiveAll.ToolTipText = "Sends all completed and cleared packing list to archives for future references"
-        '
-        'ToolStripSeparator5
-        '
-        Me.ToolStripSeparator5.Name = "ToolStripSeparator5"
-        Me.ToolStripSeparator5.Size = New System.Drawing.Size(6, 27)
+        Me.txtFilterMaterials.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtFilterMaterials.Location = New System.Drawing.Point(10, 316)
+        Me.txtFilterMaterials.Name = "txtFilterMaterials"
+        Me.txtFilterMaterials.Size = New System.Drawing.Size(226, 27)
+        Me.txtFilterMaterials.TabIndex = 103
         '
         'frmCustomProduction
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1510, 787)
+        Me.Controls.Add(Me.txtFilterMaterials)
         Me.Controls.Add(Me.ToolStrip1)
         Me.Controls.Add(Me.Panel2)
         Me.Controls.Add(Me.btnClose)
@@ -741,4 +751,5 @@ Partial Class frmCustomProduction
     Friend WithEvents btnComplete As ToolStripButton
     Friend WithEvents btnArchiveAll As ToolStripButton
     Friend WithEvents ToolStripSeparator5 As ToolStripSeparator
+    Friend WithEvents txtFilterMaterials As TextBox
 End Class
