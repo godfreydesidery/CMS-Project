@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class frmCustomProduction
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,7 +20,7 @@ Partial Class frmCustomProduction
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmCustomProduction))
         Me.Label1 = New System.Windows.Forms.Label()
@@ -85,6 +85,8 @@ Partial Class frmCustomProduction
         Me.btnArchiveAll = New System.Windows.Forms.ToolStripButton()
         Me.btnAddUpdate = New System.Windows.Forms.Button()
         Me.txtFilterMaterials = New System.Windows.Forms.TextBox()
+        Me.txtClear = New System.Windows.Forms.Button()
+        Me.Label11 = New System.Windows.Forms.Label()
         CType(Me.dtgrdProductionList, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
         CType(Me.dtgrdItemList, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -227,7 +229,7 @@ Partial Class frmCustomProduction
         'Label6
         '
         Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(12, 293)
+        Me.Label6.Location = New System.Drawing.Point(9, 353)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(144, 17)
         Me.Label6.TabIndex = 13
@@ -239,9 +241,9 @@ Partial Class frmCustomProduction
             Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.chklstMaterials.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.chklstMaterials.FormattingEnabled = True
-        Me.chklstMaterials.Location = New System.Drawing.Point(10, 353)
+        Me.chklstMaterials.Location = New System.Drawing.Point(10, 375)
         Me.chklstMaterials.Name = "chklstMaterials"
-        Me.chklstMaterials.Size = New System.Drawing.Size(490, 400)
+        Me.chklstMaterials.Size = New System.Drawing.Size(490, 378)
         Me.chklstMaterials.TabIndex = 15
         '
         'lstbxMaterials
@@ -251,15 +253,15 @@ Partial Class frmCustomProduction
         Me.lstbxMaterials.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lstbxMaterials.FormattingEnabled = True
         Me.lstbxMaterials.ItemHeight = 20
-        Me.lstbxMaterials.Location = New System.Drawing.Point(506, 309)
+        Me.lstbxMaterials.Location = New System.Drawing.Point(506, 349)
         Me.lstbxMaterials.Name = "lstbxMaterials"
-        Me.lstbxMaterials.Size = New System.Drawing.Size(487, 444)
+        Me.lstbxMaterials.Size = New System.Drawing.Size(487, 404)
         Me.lstbxMaterials.TabIndex = 16
         '
         'Label7
         '
         Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(503, 289)
+        Me.Label7.Location = New System.Drawing.Point(503, 328)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(250, 17)
         Me.Label7.TabIndex = 17
@@ -640,9 +642,9 @@ Partial Class frmCustomProduction
         'btnAddUpdate
         '
         Me.btnAddUpdate.Enabled = False
-        Me.btnAddUpdate.Location = New System.Drawing.Point(379, 224)
+        Me.btnAddUpdate.Location = New System.Drawing.Point(307, 323)
         Me.btnAddUpdate.Name = "btnAddUpdate"
-        Me.btnAddUpdate.Size = New System.Drawing.Size(121, 66)
+        Me.btnAddUpdate.Size = New System.Drawing.Size(190, 46)
         Me.btnAddUpdate.TabIndex = 14
         Me.btnAddUpdate.Text = "Add Selected Materials"
         Me.btnAddUpdate.UseVisualStyleBackColor = True
@@ -650,16 +652,37 @@ Partial Class frmCustomProduction
         'txtFilterMaterials
         '
         Me.txtFilterMaterials.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtFilterMaterials.Location = New System.Drawing.Point(10, 316)
+        Me.txtFilterMaterials.Location = New System.Drawing.Point(12, 323)
         Me.txtFilterMaterials.Name = "txtFilterMaterials"
-        Me.txtFilterMaterials.Size = New System.Drawing.Size(226, 27)
+        Me.txtFilterMaterials.Size = New System.Drawing.Size(248, 27)
         Me.txtFilterMaterials.TabIndex = 103
+        '
+        'txtClear
+        '
+        Me.txtClear.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtClear.Location = New System.Drawing.Point(266, 323)
+        Me.txtClear.Name = "txtClear"
+        Me.txtClear.Size = New System.Drawing.Size(35, 27)
+        Me.txtClear.TabIndex = 104
+        Me.txtClear.Text = "X"
+        Me.txtClear.UseVisualStyleBackColor = True
+        '
+        'Label11
+        '
+        Me.Label11.AutoSize = True
+        Me.Label11.Location = New System.Drawing.Point(12, 298)
+        Me.Label11.Name = "Label11"
+        Me.Label11.Size = New System.Drawing.Size(100, 17)
+        Me.Label11.TabIndex = 105
+        Me.Label11.Text = "Filter Materials"
         '
         'frmCustomProduction
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1510, 787)
+        Me.Controls.Add(Me.Label11)
+        Me.Controls.Add(Me.txtClear)
         Me.Controls.Add(Me.txtFilterMaterials)
         Me.Controls.Add(Me.ToolStrip1)
         Me.Controls.Add(Me.Panel2)
@@ -752,4 +775,6 @@ Partial Class frmCustomProduction
     Friend WithEvents btnArchiveAll As ToolStripButton
     Friend WithEvents ToolStripSeparator5 As ToolStripSeparator
     Friend WithEvents txtFilterMaterials As TextBox
+    Friend WithEvents txtClear As Button
+    Friend WithEvents Label11 As Label
 End Class

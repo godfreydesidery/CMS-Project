@@ -5,7 +5,8 @@ Imports MigraDoc.Rendering
 
 Public Class frmCustomProduction
     Dim ready As Boolean = True
-    Dim materials As New List(Of Material_)
+    Dim longMaterials As New List(Of Material_)
+    Dim shortMaterials As New List(Of Material_)
     Dim materialsUsed As New List(Of MaterialUsed)
 
     Private Sub defineStyles(doc As Document)
@@ -434,18 +435,18 @@ Public Class frmCustomProduction
 
     End Sub
 
-    Dim longMaterialList As List(Of String)
-    Dim shortMaterialList As List(Of String)
+    Dim longMaterialList As List(Of String) = New List(Of String)
+    Dim shortMaterialList As List(Of String) = New List(Of String)
 
 
     Private Sub loadMaterials()
         '  chklstMaterials.Items.Clear()
         longMaterialList.Clear()
-        materials.Clear()
+        longMaterials.Clear()
         Dim conn As New MySqlConnection(Database.conString)
         Try
             Dim suppcommand As New MySqlCommand()
-            Dim supplierQuery As String = "SELECT `id`, `material_code`, `description`, `uom`, `qty`, `price`, `status` FROM `materials` WHERE `status`='ACTIVE' OR `status`=''"
+            Dim supplierQuery As String = "SELECT `id`, `material_code`, `description`, `uom`, `qty`, `price`, `status` FROM `materials` WHERE `status`='ACTIVE' OR `status`='' ORDER BY `description` ASC"
             conn.Open()
             suppcommand.CommandText = supplierQuery
             suppcommand.Connection = conn
@@ -464,15 +465,16 @@ Public Class frmCustomProduction
                     material.price = Val(reader.GetString("price"))
                     material.status = reader.GetString("status")
                     material.summary = reader.GetString("description") + "  (" + reader.GetString("uom") + ")"
-                    materials.Add(material)
+                    longMaterials.Add(material)
                 End While
             End If
             conn.Close()
             Dim i As Integer
-            For i = 0 To materials.Count - 1
-                longMaterialList.Add(materials.Item(i).summary)
+            For i = 0 To longMaterials.Count - 1
+                longMaterialList.Add(longMaterials.Item(i).summary)
                 '  chklstMaterials.Items.Add(materials.Item(i).summary)
             Next
+            chklstMaterials.Items.AddRange(longMaterialList.ToArray)
         Catch ex As Devart.Data.MySql.MySqlException
             ErrorMessage.dbConnectionError()
             Exit Sub
@@ -502,7 +504,7 @@ Public Class frmCustomProduction
             Exit Sub
         End If
 
-        Dim i As Integer
+
         If txtId.Text = "" Then
             If save() = False Then
                 MsgBox("Could not save document", vbOKOnly + vbExclamation, "Error")
@@ -513,19 +515,20 @@ Public Class frmCustomProduction
             MsgBox("Could not modify document, the document has been modified by some one else. Please reload the document to continue", vbOKOnly + vbExclamation, "Invalid Operation")
             Exit Sub
         End If
-        For i = 0 To chklstMaterials.Items.Count - 1
+        For i As Integer = 0 To chklstMaterials.Items.Count - 1
             If chklstMaterials.GetItemChecked(i) = True Then
 
                 Dim material As New Material_
                 Dim materialUsed As New MaterialUsed
 
-                materialUsed.id = materials.Item(i).id
-                materialUsed.materialCode = materials.Item(i).materialCode
-                materialUsed.description = materials.Item(i).description
-                materialUsed.price = materials.Item(i).price
+
+                materialUsed.id = shortMaterials.Item(i).id
+                materialUsed.materialCode = shortMaterials.Item(i).materialCode
+                materialUsed.description = shortMaterials.Item(i).description
+                materialUsed.price = shortMaterials.Item(i).price
                 materialUsed.qty = 0
-                materialUsed.uom = materials.Item(i).uom
-                materialUsed.summary = materials.Item(i).description + " [  0  ] " + materials.Item(i).uom
+                materialUsed.uom = shortMaterials.Item(i).uom
+                materialUsed.summary = shortMaterials.Item(i).description + " [  0  ] " + shortMaterials.Item(i).uom
 
                 Dim j As Integer
                 Dim contains As Boolean = False
@@ -2017,4 +2020,21 @@ Public Class frmCustomProduction
         End If
     End Sub
 
+    Private Sub txtFilterMaterials_TextChanged(sender As Object, e As EventArgs) Handles txtFilterMaterials.TextChanged
+        Dim text As String = txtFilterMaterials.Text.ToUpper
+        chklstMaterials.Items.Clear()
+        shortMaterialList.Clear()
+        shortMaterials.Clear()
+        For i As Integer = 0 To longMaterialList.Count - 1
+            If longMaterialList.Item(i).ToUpper.Contains(text) Then
+                shortMaterialList.Add(longMaterialList.Item(i))
+                shortMaterials.Add(longMaterials(i))
+            End If
+        Next
+        chklstMaterials.Items.AddRange(shortMaterialList.ToArray)
+    End Sub
+
+    Private Sub txtClear_Click(sender As Object, e As EventArgs) Handles txtClear.Click
+        txtFilterMaterials.Text = ""
+    End Sub
 End Class
