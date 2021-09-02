@@ -361,6 +361,12 @@
     <Compile Include="gui\ProductionAndSales\frmSalesReport.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="gui\ProductionAndSales\frmSummarizedCustomerClaimsReport.Designer.vb">
+      <DependentUpon>frmSummarizedCustomerClaimsReport.vb</DependentUpon>
+    </Compile>
+    <Compile Include="gui\ProductionAndSales\frmSummarizedCustomerClaimsReport.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="gui\RandomKeyGenerator.vb" />
     <Compile Include="general\Transactions\CreditNote.vb" />
     <Compile Include="general\Transactions\GoodsReceivedNote.vb" />
@@ -1019,6 +1025,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="gui\ProductionAndSales\frmSalesReport.resx">
       <DependentUpon>frmSalesReport.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="gui\ProductionAndSales\frmSummarizedCustomerClaimsReport.resx">
+      <DependentUpon>frmSummarizedCustomerClaimsReport.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="gui\Transactions\Form1.resx">
       <DependentUpon>Form1.vb</DependentUpon>

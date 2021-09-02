@@ -130,6 +130,7 @@ Partial Class frmMain
         Me.btnUpdate = New System.Windows.Forms.Button()
         Me.lblCustomDate = New System.Windows.Forms.Label()
         Me.lblCustDate = New System.Windows.Forms.Label()
+        Me.SummarizedCustomerClaimsReportToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip.SuspendLayout()
         Me.StatusStrip.SuspendLayout()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -680,7 +681,7 @@ Partial Class frmMain
         '
         'tlstripReports
         '
-        Me.tlstripReports.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.DetailedDailySalesReportToolStripMenuItem, Me.SummarizedDailySalesReportToolStripMenuItem, Me.ConsolidatedDailySalesReportToolStripMenuItem, Me.ToolStripSeparator9, Me.DebtReportToolStripMenuItem, Me.DebtPaymentHistoryReportToolStripMenuItem, Me.DamagesReportToolStripMenuItem, Me.ToolStripSeparator7, Me.DailyProductionReportToolStripMenuItem, Me.ToolStripMenuItem25, Me.ToolStripSeparator8, Me.MaterialVsProductionReportToolStripMenuItem, Me.MaterialUsageReportToolStripMenuItem, Me.MaterialStockStatusReportToolStripMenuItem, Me.MaterialStockCardReportToolStripMenuItem})
+        Me.tlstripReports.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.DetailedDailySalesReportToolStripMenuItem, Me.SummarizedDailySalesReportToolStripMenuItem, Me.ConsolidatedDailySalesReportToolStripMenuItem, Me.ToolStripSeparator9, Me.DebtReportToolStripMenuItem, Me.DebtPaymentHistoryReportToolStripMenuItem, Me.DamagesReportToolStripMenuItem, Me.ToolStripSeparator7, Me.DailyProductionReportToolStripMenuItem, Me.ToolStripMenuItem25, Me.ToolStripSeparator8, Me.MaterialVsProductionReportToolStripMenuItem, Me.MaterialUsageReportToolStripMenuItem, Me.MaterialStockStatusReportToolStripMenuItem, Me.MaterialStockCardReportToolStripMenuItem, Me.SummarizedCustomerClaimsReportToolStripMenuItem})
         Me.tlstripReports.Font = New System.Drawing.Font("Candara", 12.0!)
         Me.tlstripReports.ForeColor = System.Drawing.Color.Maroon
         Me.tlstripReports.Name = "tlstripReports"
@@ -691,99 +692,99 @@ Partial Class frmMain
         '
         Me.DetailedDailySalesReportToolStripMenuItem.ForeColor = System.Drawing.SystemColors.InfoText
         Me.DetailedDailySalesReportToolStripMenuItem.Name = "DetailedDailySalesReportToolStripMenuItem"
-        Me.DetailedDailySalesReportToolStripMenuItem.Size = New System.Drawing.Size(350, 28)
+        Me.DetailedDailySalesReportToolStripMenuItem.Size = New System.Drawing.Size(395, 28)
         Me.DetailedDailySalesReportToolStripMenuItem.Text = "Detailed Daily Sales Report"
         '
         'SummarizedDailySalesReportToolStripMenuItem
         '
         Me.SummarizedDailySalesReportToolStripMenuItem.ForeColor = System.Drawing.SystemColors.InfoText
         Me.SummarizedDailySalesReportToolStripMenuItem.Name = "SummarizedDailySalesReportToolStripMenuItem"
-        Me.SummarizedDailySalesReportToolStripMenuItem.Size = New System.Drawing.Size(350, 28)
+        Me.SummarizedDailySalesReportToolStripMenuItem.Size = New System.Drawing.Size(395, 28)
         Me.SummarizedDailySalesReportToolStripMenuItem.Text = "Summarized Daily Sales Report"
         '
         'ConsolidatedDailySalesReportToolStripMenuItem
         '
         Me.ConsolidatedDailySalesReportToolStripMenuItem.ForeColor = System.Drawing.SystemColors.InfoText
         Me.ConsolidatedDailySalesReportToolStripMenuItem.Name = "ConsolidatedDailySalesReportToolStripMenuItem"
-        Me.ConsolidatedDailySalesReportToolStripMenuItem.Size = New System.Drawing.Size(350, 28)
+        Me.ConsolidatedDailySalesReportToolStripMenuItem.Size = New System.Drawing.Size(395, 28)
         Me.ConsolidatedDailySalesReportToolStripMenuItem.Text = "Consolidated Daily Sales Report"
         '
         'ToolStripSeparator9
         '
         Me.ToolStripSeparator9.Name = "ToolStripSeparator9"
-        Me.ToolStripSeparator9.Size = New System.Drawing.Size(347, 6)
+        Me.ToolStripSeparator9.Size = New System.Drawing.Size(392, 6)
         '
         'DebtReportToolStripMenuItem
         '
         Me.DebtReportToolStripMenuItem.ForeColor = System.Drawing.SystemColors.InfoText
         Me.DebtReportToolStripMenuItem.Name = "DebtReportToolStripMenuItem"
-        Me.DebtReportToolStripMenuItem.Size = New System.Drawing.Size(350, 28)
+        Me.DebtReportToolStripMenuItem.Size = New System.Drawing.Size(395, 28)
         Me.DebtReportToolStripMenuItem.Text = "Debt Report"
         '
         'DebtPaymentHistoryReportToolStripMenuItem
         '
         Me.DebtPaymentHistoryReportToolStripMenuItem.ForeColor = System.Drawing.SystemColors.InfoText
         Me.DebtPaymentHistoryReportToolStripMenuItem.Name = "DebtPaymentHistoryReportToolStripMenuItem"
-        Me.DebtPaymentHistoryReportToolStripMenuItem.Size = New System.Drawing.Size(350, 28)
+        Me.DebtPaymentHistoryReportToolStripMenuItem.Size = New System.Drawing.Size(395, 28)
         Me.DebtPaymentHistoryReportToolStripMenuItem.Text = "Debt Payment History Report"
         '
         'DamagesReportToolStripMenuItem
         '
         Me.DamagesReportToolStripMenuItem.ForeColor = System.Drawing.SystemColors.InfoText
         Me.DamagesReportToolStripMenuItem.Name = "DamagesReportToolStripMenuItem"
-        Me.DamagesReportToolStripMenuItem.Size = New System.Drawing.Size(350, 28)
+        Me.DamagesReportToolStripMenuItem.Size = New System.Drawing.Size(395, 28)
         Me.DamagesReportToolStripMenuItem.Text = "Damages Report"
         '
         'ToolStripSeparator7
         '
         Me.ToolStripSeparator7.Name = "ToolStripSeparator7"
-        Me.ToolStripSeparator7.Size = New System.Drawing.Size(347, 6)
+        Me.ToolStripSeparator7.Size = New System.Drawing.Size(392, 6)
         '
         'DailyProductionReportToolStripMenuItem
         '
         Me.DailyProductionReportToolStripMenuItem.ForeColor = System.Drawing.SystemColors.InfoText
         Me.DailyProductionReportToolStripMenuItem.Name = "DailyProductionReportToolStripMenuItem"
-        Me.DailyProductionReportToolStripMenuItem.Size = New System.Drawing.Size(350, 28)
+        Me.DailyProductionReportToolStripMenuItem.Size = New System.Drawing.Size(395, 28)
         Me.DailyProductionReportToolStripMenuItem.Text = "Daily Production Report"
         '
         'ToolStripMenuItem25
         '
         Me.ToolStripMenuItem25.ForeColor = System.Drawing.SystemColors.InfoText
         Me.ToolStripMenuItem25.Name = "ToolStripMenuItem25"
-        Me.ToolStripMenuItem25.Size = New System.Drawing.Size(350, 28)
+        Me.ToolStripMenuItem25.Size = New System.Drawing.Size(395, 28)
         Me.ToolStripMenuItem25.Text = "Stock Cards Report"
         '
         'ToolStripSeparator8
         '
         Me.ToolStripSeparator8.Name = "ToolStripSeparator8"
-        Me.ToolStripSeparator8.Size = New System.Drawing.Size(347, 6)
+        Me.ToolStripSeparator8.Size = New System.Drawing.Size(392, 6)
         '
         'MaterialVsProductionReportToolStripMenuItem
         '
         Me.MaterialVsProductionReportToolStripMenuItem.ForeColor = System.Drawing.SystemColors.InfoText
         Me.MaterialVsProductionReportToolStripMenuItem.Name = "MaterialVsProductionReportToolStripMenuItem"
-        Me.MaterialVsProductionReportToolStripMenuItem.Size = New System.Drawing.Size(350, 28)
+        Me.MaterialVsProductionReportToolStripMenuItem.Size = New System.Drawing.Size(395, 28)
         Me.MaterialVsProductionReportToolStripMenuItem.Text = "Material vs Production Report"
         '
         'MaterialUsageReportToolStripMenuItem
         '
         Me.MaterialUsageReportToolStripMenuItem.ForeColor = System.Drawing.SystemColors.InfoText
         Me.MaterialUsageReportToolStripMenuItem.Name = "MaterialUsageReportToolStripMenuItem"
-        Me.MaterialUsageReportToolStripMenuItem.Size = New System.Drawing.Size(350, 28)
+        Me.MaterialUsageReportToolStripMenuItem.Size = New System.Drawing.Size(395, 28)
         Me.MaterialUsageReportToolStripMenuItem.Text = "Material Usage Report"
         '
         'MaterialStockStatusReportToolStripMenuItem
         '
         Me.MaterialStockStatusReportToolStripMenuItem.ForeColor = System.Drawing.SystemColors.InfoText
         Me.MaterialStockStatusReportToolStripMenuItem.Name = "MaterialStockStatusReportToolStripMenuItem"
-        Me.MaterialStockStatusReportToolStripMenuItem.Size = New System.Drawing.Size(350, 28)
+        Me.MaterialStockStatusReportToolStripMenuItem.Size = New System.Drawing.Size(395, 28)
         Me.MaterialStockStatusReportToolStripMenuItem.Text = "Material Stock Status Report"
         '
         'MaterialStockCardReportToolStripMenuItem
         '
         Me.MaterialStockCardReportToolStripMenuItem.ForeColor = System.Drawing.SystemColors.InfoText
         Me.MaterialStockCardReportToolStripMenuItem.Name = "MaterialStockCardReportToolStripMenuItem"
-        Me.MaterialStockCardReportToolStripMenuItem.Size = New System.Drawing.Size(350, 28)
+        Me.MaterialStockCardReportToolStripMenuItem.Size = New System.Drawing.Size(395, 28)
         Me.MaterialStockCardReportToolStripMenuItem.Text = "Material Stock Card Report"
         '
         'ToolStripDropDownButton8
@@ -963,6 +964,12 @@ Partial Class frmMain
         Me.lblCustDate.Text = "Custom Date"
         Me.lblCustDate.Visible = False
         '
+        'SummarizedCustomerClaimsReportToolStripMenuItem
+        '
+        Me.SummarizedCustomerClaimsReportToolStripMenuItem.Name = "SummarizedCustomerClaimsReportToolStripMenuItem"
+        Me.SummarizedCustomerClaimsReportToolStripMenuItem.Size = New System.Drawing.Size(395, 28)
+        Me.SummarizedCustomerClaimsReportToolStripMenuItem.Text = "Summarized Customer Claims Report"
+        '
         'frmMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
@@ -1104,4 +1111,5 @@ Partial Class frmMain
     Friend WithEvents ToolStripSeparator8 As ToolStripSeparator
     Friend WithEvents ToolStripSeparator9 As ToolStripSeparator
     Friend WithEvents ToolStripMenuItem25 As ToolStripMenuItem
+    Friend WithEvents SummarizedCustomerClaimsReportToolStripMenuItem As ToolStripMenuItem
 End Class

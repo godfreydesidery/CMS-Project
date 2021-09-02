@@ -128,3 +128,4 @@ D:\CMS Project\BackOffice\BackOffice\obj\Debug\BackOffice.TrustInfo.xml
 D:\CMS Project\BackOffice\BackOffice\obj\Debug\BackOffice.exe.manifest
 D:\CMS Project\BackOffice\BackOffice\obj\Debug\BackOffice.application
 D:\CMS Project\BackOffice\BackOffice\obj\Debug\BackOffice.vbprojResolveAssemblyReference.cache
+D:\CMS Project\BackOffice\BackOffice\obj\Debug\BackOffice.frmSummarizedCustomerClaimsReport.resources
