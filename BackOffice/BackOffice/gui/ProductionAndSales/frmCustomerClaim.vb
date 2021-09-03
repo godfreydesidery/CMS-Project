@@ -493,8 +493,6 @@ Public Class frmCustomerClaim
                 dtgrdCell.Value = reader.GetString("id")
                 dtgrdRow.Cells.Add(dtgrdCell)
 
-
-
                 dtgrdClaimDetails.Rows.Add(dtgrdRow)
             End While
 

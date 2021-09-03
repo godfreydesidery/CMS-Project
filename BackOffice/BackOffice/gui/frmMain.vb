@@ -793,4 +793,12 @@ Public Class frmMain
         End If
         frmSummarizedCustomerClaimsReport.ShowDialog()
     End Sub
+
+    Private Sub ProductConversionReportToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ProductConversionReportToolStripMenuItem.Click
+        If User.authorize("VIEW PRODUCTION & SALES REPORTS") = False Then
+            MsgBox("Access Denied", vbOKOnly + vbExclamation, "Access denied")
+            Exit Sub
+        End If
+        frmProductConversionReport.ShowDialog()
+    End Sub
 End Class

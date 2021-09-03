@@ -3,9 +3,7 @@ Imports Microsoft.Office.Interop
 Imports MigraDoc.DocumentObjectModel
 Imports MigraDoc.DocumentObjectModel.Tables
 Imports MigraDoc.Rendering
-
-Public Class frmSummarizedCustomerClaimsReport
-
+Public Class frmProductConversionReport
     Private Sub defineStyles(doc As Document)
         'Get the predefined style Normal.
         Dim style As Style = doc.Styles("Normal")
@@ -127,7 +125,7 @@ Public Class frmSummarizedCustomerClaimsReport
         titleColumn.Format.Alignment = ParagraphAlignment.Left
         Dim titleRow As Tables.Row
         Dim documentTitle As New Paragraph
-        documentTitle.AddText("Summarized Customer Claims and Replacements Report")
+        documentTitle.AddText("Summarized Product Conversion Report")
         documentTitle.Format.Alignment = ParagraphAlignment.Left
         documentTitle.Format.Font.Size = 10
         documentTitle.Format.Font.Color = Colors.Black
@@ -158,7 +156,7 @@ Public Class frmSummarizedCustomerClaimsReport
         paragraph.AddDateField("dd.MM.yyyy")
 
         paragraph = section.AddParagraph()
-        paragraph.AddFormattedText("Items Claimed")
+        paragraph.AddFormattedText("Initial Products")
         paragraph.Format.Font.Size = 8
 
         Try
@@ -174,13 +172,13 @@ Public Class frmSummarizedCustomerClaimsReport
             'Before you can add a row, you must define the columns
             Dim column As Tables.Column
 
-            column = table.AddColumn("2.0cm")
+            column = table.AddColumn("2.5cm")
             column.Format.Alignment = ParagraphAlignment.Left
 
             column = table.AddColumn("1.5cm")
             column.Format.Alignment = ParagraphAlignment.Left
 
-            column = table.AddColumn("5.0cm")
+            column = table.AddColumn("6.0cm")
             column.Format.Alignment = ParagraphAlignment.Right
 
             column = table.AddColumn("1.0cm")
@@ -190,9 +188,6 @@ Public Class frmSummarizedCustomerClaimsReport
             column.Format.Alignment = ParagraphAlignment.Right
 
             column = table.AddColumn("2.5cm")
-            column.Format.Alignment = ParagraphAlignment.Left
-
-            column = table.AddColumn("3.5cm")
             column.Format.Alignment = ParagraphAlignment.Left
 
             'Create the header of the table
@@ -205,7 +200,7 @@ Public Class frmSummarizedCustomerClaimsReport
             row.Format.Alignment = ParagraphAlignment.Center
             row.Format.Font.Bold = True
             row.Borders.Color = Colors.LightGray
-            row.Cells(0).AddParagraph("Claim Date")
+            row.Cells(0).AddParagraph("Conversion Date")
             row.Cells(0).Format.Alignment = ParagraphAlignment.Left
             row.Cells(1).AddParagraph("Item Code")
             row.Cells(1).Format.Alignment = ParagraphAlignment.Left
@@ -217,23 +212,20 @@ Public Class frmSummarizedCustomerClaimsReport
             row.Cells(4).Format.Alignment = ParagraphAlignment.Left
             row.Cells(5).AddParagraph("Amount")
             row.Cells(5).Format.Alignment = ParagraphAlignment.Left
-            row.Cells(6).AddParagraph("Summary")
-            row.Cells(6).Format.Alignment = ParagraphAlignment.Left
 
-            table.SetEdge(0, 0, 7, 1, Edge.Box, BorderStyle.Single, 0.75, Color.Empty)
+            table.SetEdge(0, 0, 6, 1, Edge.Box, BorderStyle.Single, 0.75, Color.Empty)
 
             Dim totalAmount As Double = 0
             Dim totalVat As Double = 0
             Dim totalDiscount As Double = 0
 
-            For i As Integer = 0 To dtgrdItemsClaimed.RowCount - 1
-                Dim claimDate As String = dtgrdItemsClaimed.Item(0, i).Value.ToString
-                Dim itemCode As String = dtgrdItemsClaimed.Item(1, i).Value.ToString
-                Dim description As String = dtgrdItemsClaimed.Item(2, i).Value.ToString
-                Dim qty As String = dtgrdItemsClaimed.Item(3, i).Value.ToString
-                Dim price As String = dtgrdItemsClaimed.Item(4, i).Value.ToString
-                Dim amount As String = dtgrdItemsClaimed.Item(5, i).Value.ToString
-                Dim summary As String = dtgrdItemsClaimed.Item(6, i).Value.ToString
+            For i As Integer = 0 To dtgrdInitialProducts.RowCount - 1
+                Dim claimDate As String = dtgrdInitialProducts.Item(0, i).Value.ToString
+                Dim itemCode As String = dtgrdInitialProducts.Item(1, i).Value.ToString
+                Dim description As String = dtgrdInitialProducts.Item(2, i).Value.ToString
+                Dim qty As String = dtgrdInitialProducts.Item(3, i).Value.ToString
+                Dim price As String = dtgrdInitialProducts.Item(4, i).Value.ToString
+                Dim amount As String = dtgrdInitialProducts.Item(5, i).Value.ToString
 
                 row = table.AddRow()
                 row.Format.Font.Bold = False
@@ -254,18 +246,16 @@ Public Class frmSummarizedCustomerClaimsReport
                 row.Cells(4).Format.Alignment = ParagraphAlignment.Right
                 row.Cells(5).AddParagraph(amount)
                 row.Cells(5).Format.Alignment = ParagraphAlignment.Right
-                row.Cells(6).AddParagraph(summary)
-                row.Cells(6).Format.Alignment = ParagraphAlignment.Left
 
-                table.SetEdge(0, 0, 7, 1, Edge.Box, BorderStyle.Single, 0.75, Color.Empty)
+                table.SetEdge(0, 0, 6, 1, Edge.Box, BorderStyle.Single, 0.75, Color.Empty)
             Next
-            table.SetEdge(0, 0, 7, 1, Edge.Box, BorderStyle.Single, 0.75, Color.Empty)
+            table.SetEdge(0, 0, 6, 1, Edge.Box, BorderStyle.Single, 0.75, Color.Empty)
         Catch ex As Exception
 
         End Try
 
         paragraph = section.AddParagraph()
-        paragraph.AddFormattedText("Items issued as replacements")
+        paragraph.AddFormattedText("Final Products")
         paragraph.Format.Font.Size = 8
         Try
             'Create the item table
@@ -280,13 +270,13 @@ Public Class frmSummarizedCustomerClaimsReport
             'Before you can add a row, you must define the columns
             Dim column As Tables.Column
 
-            column = table.AddColumn("2.0cm")
+            column = table.AddColumn("2.5cm")
             column.Format.Alignment = ParagraphAlignment.Left
 
             column = table.AddColumn("1.5cm")
             column.Format.Alignment = ParagraphAlignment.Left
 
-            column = table.AddColumn("5.0cm")
+            column = table.AddColumn("6.0cm")
             column.Format.Alignment = ParagraphAlignment.Right
 
             column = table.AddColumn("1.0cm")
@@ -296,9 +286,6 @@ Public Class frmSummarizedCustomerClaimsReport
             column.Format.Alignment = ParagraphAlignment.Right
 
             column = table.AddColumn("2.5cm")
-            column.Format.Alignment = ParagraphAlignment.Left
-
-            column = table.AddColumn("3.5cm")
             column.Format.Alignment = ParagraphAlignment.Left
 
             'Create the header of the table
@@ -311,7 +298,7 @@ Public Class frmSummarizedCustomerClaimsReport
             row.Format.Alignment = ParagraphAlignment.Center
             row.Format.Font.Bold = True
             row.Borders.Color = Colors.LightGray
-            row.Cells(0).AddParagraph("Claim Date")
+            row.Cells(0).AddParagraph("Conversion Date")
             row.Cells(0).Format.Alignment = ParagraphAlignment.Left
             row.Cells(1).AddParagraph("Item Code")
             row.Cells(1).Format.Alignment = ParagraphAlignment.Left
@@ -323,23 +310,20 @@ Public Class frmSummarizedCustomerClaimsReport
             row.Cells(4).Format.Alignment = ParagraphAlignment.Left
             row.Cells(5).AddParagraph("Amount")
             row.Cells(5).Format.Alignment = ParagraphAlignment.Left
-            row.Cells(6).AddParagraph("Summary")
-            row.Cells(6).Format.Alignment = ParagraphAlignment.Left
 
-            table.SetEdge(0, 0, 7, 1, Edge.Box, BorderStyle.Single, 0.75, Color.Empty)
+            table.SetEdge(0, 0, 6, 1, Edge.Box, BorderStyle.Single, 0.75, Color.Empty)
 
             Dim totalAmount As Double = 0
             Dim totalVat As Double = 0
             Dim totalDiscount As Double = 0
 
-            For i As Integer = 0 To dtgrdReplacementItems.RowCount - 1
-                Dim claimDate As String = dtgrdReplacementItems.Item(0, i).Value.ToString
-                Dim itemCode As String = dtgrdReplacementItems.Item(1, i).Value.ToString
-                Dim description As String = dtgrdReplacementItems.Item(2, i).Value.ToString
-                Dim qty As String = dtgrdReplacementItems.Item(3, i).Value.ToString
-                Dim price As String = dtgrdReplacementItems.Item(4, i).Value.ToString
-                Dim amount As String = dtgrdReplacementItems.Item(5, i).Value.ToString
-                Dim summary As String = dtgrdReplacementItems.Item(6, i).Value.ToString
+            For i As Integer = 0 To dtgrdFinalProducts.RowCount - 1
+                Dim claimDate As String = dtgrdFinalProducts.Item(0, i).Value.ToString
+                Dim itemCode As String = dtgrdFinalProducts.Item(1, i).Value.ToString
+                Dim description As String = dtgrdFinalProducts.Item(2, i).Value.ToString
+                Dim qty As String = dtgrdFinalProducts.Item(3, i).Value.ToString
+                Dim price As String = dtgrdFinalProducts.Item(4, i).Value.ToString
+                Dim amount As String = dtgrdFinalProducts.Item(5, i).Value.ToString
 
                 row = table.AddRow()
                 row.Format.Font.Bold = False
@@ -360,12 +344,10 @@ Public Class frmSummarizedCustomerClaimsReport
                 row.Cells(4).Format.Alignment = ParagraphAlignment.Right
                 row.Cells(5).AddParagraph(amount)
                 row.Cells(5).Format.Alignment = ParagraphAlignment.Right
-                row.Cells(6).AddParagraph(summary)
-                row.Cells(6).Format.Alignment = ParagraphAlignment.Left
 
-                table.SetEdge(0, 0, 7, 1, Edge.Box, BorderStyle.Single, 0.75, Color.Empty)
+                table.SetEdge(0, 0, 6, 1, Edge.Box, BorderStyle.Single, 0.75, Color.Empty)
             Next
-            table.SetEdge(0, 0, 7, 1, Edge.Box, BorderStyle.Single, 0.75, Color.Empty)
+            table.SetEdge(0, 0, 6, 1, Edge.Box, BorderStyle.Single, 0.75, Color.Empty)
         Catch ex As Exception
 
         End Try
@@ -374,25 +356,25 @@ Public Class frmSummarizedCustomerClaimsReport
     Private Sub btnGenerate_Click(sender As Object, e As EventArgs) Handles btnGenerate.Click
         Cursor = Cursors.WaitCursor
         'load claimed items
-        dtgrdItemsClaimed.Rows.Clear()
-        dtgrdReplacementItems.Rows.Clear()
+        dtgrdInitialProducts.Rows.Clear()
+        dtgrdFinalProducts.Rows.Clear()
         Try
             Dim conn As New MySqlConnection(Database.conString)
             Dim command As New MySqlCommand()
             Dim query As String = "SELECT
-                                        `claim_details`.`item_code` AS `item_code`,
-                                        `customer_claims`.`claim_date` AS `claim_date`,
-                                        SUM(`claim_details`.`qty`) AS `qty`
+                                        `items_to_convert`.`item_code` AS `item_code`,
+                                        `item_conversion`.`date` AS `date`,
+                                        SUM(`items_to_convert`.`qty`) AS `qty`
                                     FROM
-                                        `claim_details`
+                                        `items_to_convert`
                                     JOIN
-                                        (SELECT * FROM `customer_claims` WHERE `claim_date` BETWEEN '" + dateStart.Text + "' AND '" + dateEnd.Text + "' AND `status`='COMPLETED' OR `status`='ARCHIVED')`customer_claims`
+                                        (SELECT * FROM `item_conversion` WHERE `date` BETWEEN '" + dateStart.Text + "' AND '" + dateEnd.Text + "' AND `status`='COMPLETED' OR `status`='ARCHIVED')`item_conversion`
                                     ON
-                                        `customer_claims`.`id`=`claim_details`.`claim_id`
+                                        `item_conversion`.`id`=`items_to_convert`.`conversion_id`
                                     GROUP BY 
-                                        `item_code`,`claim_date`
+                                        `item_code`,`date`
                                     ORDER BY
-                                        `claim_date`
+                                        `date`
                                     "
             conn.Open()
             command.CommandText = query
@@ -410,7 +392,7 @@ Public Class frmSummarizedCustomerClaimsReport
                 Dim dtgrdCell As DataGridViewCell
 
                 dtgrdCell = New DataGridViewTextBoxCell()
-                dtgrdCell.Value = reader.GetString("claim_date")
+                dtgrdCell.Value = reader.GetString("date")
                 dtgrdRow.Cells.Add(dtgrdCell)
 
                 dtgrdCell = New DataGridViewTextBoxCell()
@@ -433,11 +415,7 @@ Public Class frmSummarizedCustomerClaimsReport
                 dtgrdCell.Value = LCurrency.displayValue((Val(reader.GetString("qty") * Val((New Item).getItemPrice(reader.GetString("item_code")).ToString))))
                 dtgrdRow.Cells.Add(dtgrdCell)
 
-                dtgrdCell = New DataGridViewTextBoxCell()
-                dtgrdCell.Value = ""
-                dtgrdRow.Cells.Add(dtgrdCell)
-
-                dtgrdItemsClaimed.Rows.Add(dtgrdRow)
+                dtgrdInitialProducts.Rows.Add(dtgrdRow)
             End While
 
             conn.Close()
@@ -469,11 +447,7 @@ Public Class frmSummarizedCustomerClaimsReport
             dtgrdCell1.Value = LCurrency.displayValue(total)
             dtgrdRow1.Cells.Add(dtgrdCell1)
 
-            dtgrdCell1 = New DataGridViewTextBoxCell()
-            dtgrdCell1.Value = ""
-            dtgrdRow1.Cells.Add(dtgrdCell1)
-
-            dtgrdItemsClaimed.Rows.Add(dtgrdRow1)
+            dtgrdInitialProducts.Rows.Add(dtgrdRow1)
 
         Catch ex As Exception
             MsgBox(ex.ToString)
@@ -485,19 +459,19 @@ Public Class frmSummarizedCustomerClaimsReport
             Dim conn As New MySqlConnection(Database.conString)
             Dim command As New MySqlCommand()
             Dim query As String = "SELECT
-                                        `claim_replacement_details`.`item_code` AS `item_code`,
-                                        `customer_claims`.`claim_date` AS `claim_date`,
-                                        SUM(`claim_replacement_details`.`qty`) AS `qty`
+                                        `converted`.`item_code` AS `item_code`,
+                                        `item_conversion`.`date` AS `date`,
+                                        SUM(`converted`.`qty`) AS `qty`
                                     FROM
-                                        `claim_replacement_details`
+                                        `converted`
                                     JOIN
-                                        (SELECT * FROM `customer_claims` WHERE `claim_date` BETWEEN '" + dateStart.Text + "' AND '" + dateEnd.Text + "' AND `status`='COMPLETED' OR `status`='ARCHIVED')`customer_claims`
+                                        (SELECT * FROM `item_conversion` WHERE `date` BETWEEN '" + dateStart.Text + "' AND '" + dateEnd.Text + "' AND `status`='COMPLETED' OR `status`='ARCHIVED')`item_conversion`
                                     ON
-                                        `customer_claims`.`id`=`claim_replacement_details`.`claim_id`
+                                        `item_conversion`.`id`=`converted`.`conversion_id`
                                     GROUP BY 
-                                        `item_code`,`claim_date`
+                                        `item_code`,`date`
                                     ORDER BY
-                                        `claim_date`
+                                        `date`
                                     "
 
             conn.Open()
@@ -518,7 +492,7 @@ Public Class frmSummarizedCustomerClaimsReport
                 Dim dtgrdCell As DataGridViewCell
 
                 dtgrdCell = New DataGridViewTextBoxCell()
-                dtgrdCell.Value = reader.GetString("claim_date")
+                dtgrdCell.Value = reader.GetString("date")
                 dtgrdRow.Cells.Add(dtgrdCell)
 
                 dtgrdCell = New DataGridViewTextBoxCell()
@@ -541,11 +515,7 @@ Public Class frmSummarizedCustomerClaimsReport
                 dtgrdCell.Value = LCurrency.displayValue((Val(reader.GetString("qty") * Val((New Item).getItemPrice(reader.GetString("item_code")).ToString))))
                 dtgrdRow.Cells.Add(dtgrdCell)
 
-                dtgrdCell = New DataGridViewTextBoxCell()
-                dtgrdCell.Value = ""
-                dtgrdRow.Cells.Add(dtgrdCell)
-
-                dtgrdReplacementItems.Rows.Add(dtgrdRow)
+                dtgrdFinalProducts.Rows.Add(dtgrdRow)
             End While
 
             conn.Close()
@@ -577,30 +547,28 @@ Public Class frmSummarizedCustomerClaimsReport
             dtgrdCell1.Value = LCurrency.displayValue(total)
             dtgrdRow1.Cells.Add(dtgrdCell1)
 
-            dtgrdCell1 = New DataGridViewTextBoxCell()
-            dtgrdCell1.Value = ""
-            dtgrdRow1.Cells.Add(dtgrdCell1)
-
-            dtgrdReplacementItems.Rows.Add(dtgrdRow1)
+            dtgrdFinalProducts.Rows.Add(dtgrdRow1)
 
         Catch ex As Exception
             MsgBox(ex.ToString)
         End Try
-        dtgrdItemsClaimed.ClearSelection()
-        dtgrdReplacementItems.ClearSelection()
+        dtgrdInitialProducts.ClearSelection()
+        dtgrdFinalProducts.ClearSelection()
         Cursor = Cursors.Default
     End Sub
 
     Private Sub btnExportToPDF_Click(sender As Object, e As EventArgs) Handles btnExportToPDF.Click
-        If dtgrdItemsClaimed.RowCount = 0 And dtgrdReplacementItems.RowCount = 0 Then
+        Cursor = Cursors.WaitCursor
+        If dtgrdInitialProducts.RowCount = 0 And dtgrdFinalProducts.RowCount = 0 Then
+            Cursor = Cursors.Default
             MsgBox("Nothing to print")
             Exit Sub
         End If
-        Cursor = Cursors.WaitCursor
+
         Dim document As Document = New Document
 
-        document.Info.Title = "Summarized Customer Claims and Replacements Report"
-        document.Info.Subject = "Summarized Customer Claims and Replacements Report"
+        document.Info.Title = "Summarized Product Conversion Report"
+        document.Info.Subject = "Summarized Product Conversion Report"
         document.Info.Author = "Orbit"
 
         defineStyles(document)
@@ -610,7 +578,7 @@ Public Class frmSummarizedCustomerClaimsReport
         myRenderer.Document = document
         myRenderer.RenderDocument()
 
-        Dim filename As String = LSystem.getRoot & "\Summarized Customer Claims and Replacements Report " & dateStart.Text & dateEnd.Text & ".pdf"
+        Dim filename As String = LSystem.getRoot & "\Summarized Product Conversion Report " & dateStart.Text & dateEnd.Text & ".pdf"
 
         myRenderer.PdfDocument.Save(filename)
 
@@ -618,8 +586,8 @@ Public Class frmSummarizedCustomerClaimsReport
         Cursor = Cursors.Default
     End Sub
 
-    Private Sub frmSummarizedCustomerClaimsReport_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        dtgrdItemsClaimed.Rows.Clear()
-        dtgrdReplacementItems.Rows.Clear()
+    Private Sub frmProductConversionReport_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        dtgrdInitialProducts.Rows.Clear()
+        dtgrdFinalProducts.Rows.Clear()
     End Sub
 End Class

@@ -36,8 +36,12 @@ Partial Class frmMain
         Me.tstrpAlias = New System.Windows.Forms.ToolStripStatusLabel()
         Me.tsrpDateTime = New System.Windows.Forms.ToolStripStatusLabel()
         Me.ToolTip = New System.Windows.Forms.ToolTip(Me.components)
-        Me.PictureBox2 = New System.Windows.Forms.PictureBox()
         Me.tstrpMain = New System.Windows.Forms.ToolStrip()
+        Me.dtCustomDate = New System.Windows.Forms.DateTimePicker()
+        Me.btnUpdate = New System.Windows.Forms.Button()
+        Me.lblCustomDate = New System.Windows.Forms.Label()
+        Me.lblCustDate = New System.Windows.Forms.Label()
+        Me.pctLogo = New System.Windows.Forms.PictureBox()
         Me.ToolStripDropDownButton3 = New System.Windows.Forms.ToolStripDropDownButton()
         Me.ToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripMenuItem2 = New System.Windows.Forms.ToolStripMenuItem()
@@ -112,6 +116,9 @@ Partial Class frmMain
         Me.MaterialUsageReportToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MaterialStockStatusReportToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MaterialStockCardReportToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripSeparator10 = New System.Windows.Forms.ToolStripSeparator()
+        Me.SummarizedCustomerClaimsReportToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ProductConversionReportToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripDropDownButton8 = New System.Windows.Forms.ToolStripDropDownButton()
         Me.ToolStripMenuItem23 = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripMenuItem24 = New System.Windows.Forms.ToolStripMenuItem()
@@ -124,18 +131,13 @@ Partial Class frmMain
         Me.ToolStripMenuItem20 = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripMenuItem21 = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripMenuItem22 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.PictureBox2 = New System.Windows.Forms.PictureBox()
         Me.ToolStripButton1 = New System.Windows.Forms.ToolStripButton()
-        Me.pctLogo = New System.Windows.Forms.PictureBox()
-        Me.dtCustomDate = New System.Windows.Forms.DateTimePicker()
-        Me.btnUpdate = New System.Windows.Forms.Button()
-        Me.lblCustomDate = New System.Windows.Forms.Label()
-        Me.lblCustDate = New System.Windows.Forms.Label()
-        Me.SummarizedCustomerClaimsReportToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip.SuspendLayout()
         Me.StatusStrip.SuspendLayout()
-        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.tstrpMain.SuspendLayout()
         CType(Me.pctLogo, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'MenuStrip
@@ -208,20 +210,6 @@ Partial Class frmMain
         Me.tsrpDateTime.Size = New System.Drawing.Size(138, 20)
         Me.tsrpDateTime.Text = "System Date/Time: "
         '
-        'PictureBox2
-        '
-        Me.PictureBox2.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.PictureBox2.BackColor = System.Drawing.Color.Silver
-        Me.PictureBox2.Image = CType(resources.GetObject("PictureBox2.Image"), System.Drawing.Image)
-        Me.PictureBox2.Location = New System.Drawing.Point(4, 62)
-        Me.PictureBox2.Name = "PictureBox2"
-        Me.PictureBox2.Size = New System.Drawing.Size(1772, 519)
-        Me.PictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage
-        Me.PictureBox2.TabIndex = 11
-        Me.PictureBox2.TabStop = False
-        '
         'tstrpMain
         '
         Me.tstrpMain.BackColor = System.Drawing.Color.Silver
@@ -232,6 +220,66 @@ Partial Class frmMain
         Me.tstrpMain.Size = New System.Drawing.Size(1780, 31)
         Me.tstrpMain.TabIndex = 13
         Me.tstrpMain.Text = "ToolStrip"
+        '
+        'dtCustomDate
+        '
+        Me.dtCustomDate.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.dtCustomDate.Location = New System.Drawing.Point(752, 89)
+        Me.dtCustomDate.Name = "dtCustomDate"
+        Me.dtCustomDate.Size = New System.Drawing.Size(278, 22)
+        Me.dtCustomDate.TabIndex = 18
+        Me.dtCustomDate.Visible = False
+        '
+        'btnUpdate
+        '
+        Me.btnUpdate.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnUpdate.FlatStyle = System.Windows.Forms.FlatStyle.System
+        Me.btnUpdate.Location = New System.Drawing.Point(752, 117)
+        Me.btnUpdate.Name = "btnUpdate"
+        Me.btnUpdate.Size = New System.Drawing.Size(278, 51)
+        Me.btnUpdate.TabIndex = 19
+        Me.btnUpdate.Text = "Update"
+        Me.btnUpdate.UseVisualStyleBackColor = True
+        Me.btnUpdate.Visible = False
+        '
+        'lblCustomDate
+        '
+        Me.lblCustomDate.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.lblCustomDate.AutoSize = True
+        Me.lblCustomDate.Font = New System.Drawing.Font("Microsoft Sans Serif", 13.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblCustomDate.Location = New System.Drawing.Point(12, 174)
+        Me.lblCustomDate.Name = "lblCustomDate"
+        Me.lblCustomDate.Size = New System.Drawing.Size(92, 29)
+        Me.lblCustomDate.TabIndex = 20
+        Me.lblCustomDate.Text = "Label1"
+        Me.lblCustomDate.Visible = False
+        '
+        'lblCustDate
+        '
+        Me.lblCustDate.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.lblCustDate.AutoSize = True
+        Me.lblCustDate.Location = New System.Drawing.Point(749, 69)
+        Me.lblCustDate.Name = "lblCustDate"
+        Me.lblCustDate.Size = New System.Drawing.Size(89, 17)
+        Me.lblCustDate.TabIndex = 21
+        Me.lblCustDate.Text = "Custom Date"
+        Me.lblCustDate.Visible = False
+        '
+        'pctLogo
+        '
+        Me.pctLogo.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.pctLogo.BackColor = System.Drawing.Color.Silver
+        Me.pctLogo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
+        Me.pctLogo.Location = New System.Drawing.Point(809, 174)
+        Me.pctLogo.Name = "pctLogo"
+        Me.pctLogo.Size = New System.Drawing.Size(175, 161)
+        Me.pctLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
+        Me.pctLogo.TabIndex = 16
+        Me.pctLogo.TabStop = False
         '
         'ToolStripDropDownButton3
         '
@@ -681,7 +729,7 @@ Partial Class frmMain
         '
         'tlstripReports
         '
-        Me.tlstripReports.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.DetailedDailySalesReportToolStripMenuItem, Me.SummarizedDailySalesReportToolStripMenuItem, Me.ConsolidatedDailySalesReportToolStripMenuItem, Me.ToolStripSeparator9, Me.DebtReportToolStripMenuItem, Me.DebtPaymentHistoryReportToolStripMenuItem, Me.DamagesReportToolStripMenuItem, Me.ToolStripSeparator7, Me.DailyProductionReportToolStripMenuItem, Me.ToolStripMenuItem25, Me.ToolStripSeparator8, Me.MaterialVsProductionReportToolStripMenuItem, Me.MaterialUsageReportToolStripMenuItem, Me.MaterialStockStatusReportToolStripMenuItem, Me.MaterialStockCardReportToolStripMenuItem, Me.SummarizedCustomerClaimsReportToolStripMenuItem})
+        Me.tlstripReports.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.DetailedDailySalesReportToolStripMenuItem, Me.SummarizedDailySalesReportToolStripMenuItem, Me.ConsolidatedDailySalesReportToolStripMenuItem, Me.ToolStripSeparator9, Me.DebtReportToolStripMenuItem, Me.DebtPaymentHistoryReportToolStripMenuItem, Me.DamagesReportToolStripMenuItem, Me.ToolStripSeparator7, Me.DailyProductionReportToolStripMenuItem, Me.ToolStripMenuItem25, Me.ToolStripSeparator8, Me.MaterialVsProductionReportToolStripMenuItem, Me.MaterialUsageReportToolStripMenuItem, Me.MaterialStockStatusReportToolStripMenuItem, Me.MaterialStockCardReportToolStripMenuItem, Me.ToolStripSeparator10, Me.SummarizedCustomerClaimsReportToolStripMenuItem, Me.ProductConversionReportToolStripMenuItem})
         Me.tlstripReports.Font = New System.Drawing.Font("Candara", 12.0!)
         Me.tlstripReports.ForeColor = System.Drawing.Color.Maroon
         Me.tlstripReports.Name = "tlstripReports"
@@ -692,100 +740,117 @@ Partial Class frmMain
         '
         Me.DetailedDailySalesReportToolStripMenuItem.ForeColor = System.Drawing.SystemColors.InfoText
         Me.DetailedDailySalesReportToolStripMenuItem.Name = "DetailedDailySalesReportToolStripMenuItem"
-        Me.DetailedDailySalesReportToolStripMenuItem.Size = New System.Drawing.Size(395, 28)
+        Me.DetailedDailySalesReportToolStripMenuItem.Size = New System.Drawing.Size(536, 28)
         Me.DetailedDailySalesReportToolStripMenuItem.Text = "Detailed Daily Sales Report"
         '
         'SummarizedDailySalesReportToolStripMenuItem
         '
         Me.SummarizedDailySalesReportToolStripMenuItem.ForeColor = System.Drawing.SystemColors.InfoText
         Me.SummarizedDailySalesReportToolStripMenuItem.Name = "SummarizedDailySalesReportToolStripMenuItem"
-        Me.SummarizedDailySalesReportToolStripMenuItem.Size = New System.Drawing.Size(395, 28)
+        Me.SummarizedDailySalesReportToolStripMenuItem.Size = New System.Drawing.Size(536, 28)
         Me.SummarizedDailySalesReportToolStripMenuItem.Text = "Summarized Daily Sales Report"
         '
         'ConsolidatedDailySalesReportToolStripMenuItem
         '
         Me.ConsolidatedDailySalesReportToolStripMenuItem.ForeColor = System.Drawing.SystemColors.InfoText
         Me.ConsolidatedDailySalesReportToolStripMenuItem.Name = "ConsolidatedDailySalesReportToolStripMenuItem"
-        Me.ConsolidatedDailySalesReportToolStripMenuItem.Size = New System.Drawing.Size(395, 28)
+        Me.ConsolidatedDailySalesReportToolStripMenuItem.Size = New System.Drawing.Size(536, 28)
         Me.ConsolidatedDailySalesReportToolStripMenuItem.Text = "Consolidated Daily Sales Report"
         '
         'ToolStripSeparator9
         '
         Me.ToolStripSeparator9.Name = "ToolStripSeparator9"
-        Me.ToolStripSeparator9.Size = New System.Drawing.Size(392, 6)
+        Me.ToolStripSeparator9.Size = New System.Drawing.Size(533, 6)
         '
         'DebtReportToolStripMenuItem
         '
         Me.DebtReportToolStripMenuItem.ForeColor = System.Drawing.SystemColors.InfoText
         Me.DebtReportToolStripMenuItem.Name = "DebtReportToolStripMenuItem"
-        Me.DebtReportToolStripMenuItem.Size = New System.Drawing.Size(395, 28)
+        Me.DebtReportToolStripMenuItem.Size = New System.Drawing.Size(536, 28)
         Me.DebtReportToolStripMenuItem.Text = "Debt Report"
         '
         'DebtPaymentHistoryReportToolStripMenuItem
         '
         Me.DebtPaymentHistoryReportToolStripMenuItem.ForeColor = System.Drawing.SystemColors.InfoText
         Me.DebtPaymentHistoryReportToolStripMenuItem.Name = "DebtPaymentHistoryReportToolStripMenuItem"
-        Me.DebtPaymentHistoryReportToolStripMenuItem.Size = New System.Drawing.Size(395, 28)
+        Me.DebtPaymentHistoryReportToolStripMenuItem.Size = New System.Drawing.Size(536, 28)
         Me.DebtPaymentHistoryReportToolStripMenuItem.Text = "Debt Payment History Report"
         '
         'DamagesReportToolStripMenuItem
         '
         Me.DamagesReportToolStripMenuItem.ForeColor = System.Drawing.SystemColors.InfoText
         Me.DamagesReportToolStripMenuItem.Name = "DamagesReportToolStripMenuItem"
-        Me.DamagesReportToolStripMenuItem.Size = New System.Drawing.Size(395, 28)
+        Me.DamagesReportToolStripMenuItem.Size = New System.Drawing.Size(536, 28)
         Me.DamagesReportToolStripMenuItem.Text = "Damages Report"
         '
         'ToolStripSeparator7
         '
         Me.ToolStripSeparator7.Name = "ToolStripSeparator7"
-        Me.ToolStripSeparator7.Size = New System.Drawing.Size(392, 6)
+        Me.ToolStripSeparator7.Size = New System.Drawing.Size(533, 6)
         '
         'DailyProductionReportToolStripMenuItem
         '
         Me.DailyProductionReportToolStripMenuItem.ForeColor = System.Drawing.SystemColors.InfoText
         Me.DailyProductionReportToolStripMenuItem.Name = "DailyProductionReportToolStripMenuItem"
-        Me.DailyProductionReportToolStripMenuItem.Size = New System.Drawing.Size(395, 28)
+        Me.DailyProductionReportToolStripMenuItem.Size = New System.Drawing.Size(536, 28)
         Me.DailyProductionReportToolStripMenuItem.Text = "Daily Production Report"
         '
         'ToolStripMenuItem25
         '
         Me.ToolStripMenuItem25.ForeColor = System.Drawing.SystemColors.InfoText
         Me.ToolStripMenuItem25.Name = "ToolStripMenuItem25"
-        Me.ToolStripMenuItem25.Size = New System.Drawing.Size(395, 28)
+        Me.ToolStripMenuItem25.Size = New System.Drawing.Size(536, 28)
         Me.ToolStripMenuItem25.Text = "Stock Cards Report"
         '
         'ToolStripSeparator8
         '
         Me.ToolStripSeparator8.Name = "ToolStripSeparator8"
-        Me.ToolStripSeparator8.Size = New System.Drawing.Size(392, 6)
+        Me.ToolStripSeparator8.Size = New System.Drawing.Size(533, 6)
         '
         'MaterialVsProductionReportToolStripMenuItem
         '
         Me.MaterialVsProductionReportToolStripMenuItem.ForeColor = System.Drawing.SystemColors.InfoText
         Me.MaterialVsProductionReportToolStripMenuItem.Name = "MaterialVsProductionReportToolStripMenuItem"
-        Me.MaterialVsProductionReportToolStripMenuItem.Size = New System.Drawing.Size(395, 28)
+        Me.MaterialVsProductionReportToolStripMenuItem.Size = New System.Drawing.Size(536, 28)
         Me.MaterialVsProductionReportToolStripMenuItem.Text = "Material vs Production Report"
         '
         'MaterialUsageReportToolStripMenuItem
         '
         Me.MaterialUsageReportToolStripMenuItem.ForeColor = System.Drawing.SystemColors.InfoText
         Me.MaterialUsageReportToolStripMenuItem.Name = "MaterialUsageReportToolStripMenuItem"
-        Me.MaterialUsageReportToolStripMenuItem.Size = New System.Drawing.Size(395, 28)
+        Me.MaterialUsageReportToolStripMenuItem.Size = New System.Drawing.Size(536, 28)
         Me.MaterialUsageReportToolStripMenuItem.Text = "Material Usage Report"
         '
         'MaterialStockStatusReportToolStripMenuItem
         '
         Me.MaterialStockStatusReportToolStripMenuItem.ForeColor = System.Drawing.SystemColors.InfoText
         Me.MaterialStockStatusReportToolStripMenuItem.Name = "MaterialStockStatusReportToolStripMenuItem"
-        Me.MaterialStockStatusReportToolStripMenuItem.Size = New System.Drawing.Size(395, 28)
+        Me.MaterialStockStatusReportToolStripMenuItem.Size = New System.Drawing.Size(536, 28)
         Me.MaterialStockStatusReportToolStripMenuItem.Text = "Material Stock Status Report"
         '
         'MaterialStockCardReportToolStripMenuItem
         '
         Me.MaterialStockCardReportToolStripMenuItem.ForeColor = System.Drawing.SystemColors.InfoText
         Me.MaterialStockCardReportToolStripMenuItem.Name = "MaterialStockCardReportToolStripMenuItem"
-        Me.MaterialStockCardReportToolStripMenuItem.Size = New System.Drawing.Size(395, 28)
+        Me.MaterialStockCardReportToolStripMenuItem.Size = New System.Drawing.Size(536, 28)
         Me.MaterialStockCardReportToolStripMenuItem.Text = "Material Stock Card Report"
+        '
+        'ToolStripSeparator10
+        '
+        Me.ToolStripSeparator10.Name = "ToolStripSeparator10"
+        Me.ToolStripSeparator10.Size = New System.Drawing.Size(533, 6)
+        '
+        'SummarizedCustomerClaimsReportToolStripMenuItem
+        '
+        Me.SummarizedCustomerClaimsReportToolStripMenuItem.Name = "SummarizedCustomerClaimsReportToolStripMenuItem"
+        Me.SummarizedCustomerClaimsReportToolStripMenuItem.Size = New System.Drawing.Size(536, 28)
+        Me.SummarizedCustomerClaimsReportToolStripMenuItem.Text = "Summarized Customer Claims && Replacements Report"
+        '
+        'ProductConversionReportToolStripMenuItem
+        '
+        Me.ProductConversionReportToolStripMenuItem.Name = "ProductConversionReportToolStripMenuItem"
+        Me.ProductConversionReportToolStripMenuItem.Size = New System.Drawing.Size(536, 28)
+        Me.ProductConversionReportToolStripMenuItem.Text = "Product Conversion Report"
         '
         'ToolStripDropDownButton8
         '
@@ -894,6 +959,20 @@ Partial Class frmMain
         Me.ToolStripMenuItem22.Size = New System.Drawing.Size(258, 28)
         Me.ToolStripMenuItem22.Text = "Access Control"
         '
+        'PictureBox2
+        '
+        Me.PictureBox2.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.PictureBox2.BackColor = System.Drawing.Color.Silver
+        Me.PictureBox2.Image = CType(resources.GetObject("PictureBox2.Image"), System.Drawing.Image)
+        Me.PictureBox2.Location = New System.Drawing.Point(4, 62)
+        Me.PictureBox2.Name = "PictureBox2"
+        Me.PictureBox2.Size = New System.Drawing.Size(1772, 519)
+        Me.PictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage
+        Me.PictureBox2.TabIndex = 11
+        Me.PictureBox2.TabStop = False
+        '
         'ToolStripButton1
         '
         Me.ToolStripButton1.Font = New System.Drawing.Font("Constantia", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -903,72 +982,6 @@ Partial Class frmMain
         Me.ToolStripButton1.Name = "ToolStripButton1"
         Me.ToolStripButton1.Size = New System.Drawing.Size(103, 28)
         Me.ToolStripButton1.Text = "&Masters"
-        '
-        'pctLogo
-        '
-        Me.pctLogo.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.pctLogo.BackColor = System.Drawing.Color.Silver
-        Me.pctLogo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
-        Me.pctLogo.Location = New System.Drawing.Point(809, 174)
-        Me.pctLogo.Name = "pctLogo"
-        Me.pctLogo.Size = New System.Drawing.Size(175, 161)
-        Me.pctLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
-        Me.pctLogo.TabIndex = 16
-        Me.pctLogo.TabStop = False
-        '
-        'dtCustomDate
-        '
-        Me.dtCustomDate.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.dtCustomDate.Location = New System.Drawing.Point(752, 89)
-        Me.dtCustomDate.Name = "dtCustomDate"
-        Me.dtCustomDate.Size = New System.Drawing.Size(278, 22)
-        Me.dtCustomDate.TabIndex = 18
-        Me.dtCustomDate.Visible = False
-        '
-        'btnUpdate
-        '
-        Me.btnUpdate.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btnUpdate.FlatStyle = System.Windows.Forms.FlatStyle.System
-        Me.btnUpdate.Location = New System.Drawing.Point(752, 117)
-        Me.btnUpdate.Name = "btnUpdate"
-        Me.btnUpdate.Size = New System.Drawing.Size(278, 51)
-        Me.btnUpdate.TabIndex = 19
-        Me.btnUpdate.Text = "Update"
-        Me.btnUpdate.UseVisualStyleBackColor = True
-        Me.btnUpdate.Visible = False
-        '
-        'lblCustomDate
-        '
-        Me.lblCustomDate.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.lblCustomDate.AutoSize = True
-        Me.lblCustomDate.Font = New System.Drawing.Font("Microsoft Sans Serif", 13.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblCustomDate.Location = New System.Drawing.Point(12, 174)
-        Me.lblCustomDate.Name = "lblCustomDate"
-        Me.lblCustomDate.Size = New System.Drawing.Size(92, 29)
-        Me.lblCustomDate.TabIndex = 20
-        Me.lblCustomDate.Text = "Label1"
-        Me.lblCustomDate.Visible = False
-        '
-        'lblCustDate
-        '
-        Me.lblCustDate.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.lblCustDate.AutoSize = True
-        Me.lblCustDate.Location = New System.Drawing.Point(749, 69)
-        Me.lblCustDate.Name = "lblCustDate"
-        Me.lblCustDate.Size = New System.Drawing.Size(89, 17)
-        Me.lblCustDate.TabIndex = 21
-        Me.lblCustDate.Text = "Custom Date"
-        Me.lblCustDate.Visible = False
-        '
-        'SummarizedCustomerClaimsReportToolStripMenuItem
-        '
-        Me.SummarizedCustomerClaimsReportToolStripMenuItem.Name = "SummarizedCustomerClaimsReportToolStripMenuItem"
-        Me.SummarizedCustomerClaimsReportToolStripMenuItem.Size = New System.Drawing.Size(395, 28)
-        Me.SummarizedCustomerClaimsReportToolStripMenuItem.Text = "Summarized Customer Claims Report"
         '
         'frmMain
         '
@@ -998,10 +1011,10 @@ Partial Class frmMain
         Me.MenuStrip.PerformLayout()
         Me.StatusStrip.ResumeLayout(False)
         Me.StatusStrip.PerformLayout()
-        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.tstrpMain.ResumeLayout(False)
         Me.tstrpMain.PerformLayout()
         CType(Me.pctLogo, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -1112,4 +1125,6 @@ Partial Class frmMain
     Friend WithEvents ToolStripSeparator9 As ToolStripSeparator
     Friend WithEvents ToolStripMenuItem25 As ToolStripMenuItem
     Friend WithEvents SummarizedCustomerClaimsReportToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ToolStripSeparator10 As ToolStripSeparator
+    Friend WithEvents ProductConversionReportToolStripMenuItem As ToolStripMenuItem
 End Class

@@ -343,6 +343,12 @@
     <Compile Include="gui\ProductionAndSales\frmParkingList.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="gui\ProductionAndSales\frmProductConversionReport.Designer.vb">
+      <DependentUpon>frmProductConversionReport.vb</DependentUpon>
+    </Compile>
+    <Compile Include="gui\ProductionAndSales\frmProductConversionReport.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="gui\ProductionAndSales\frmProductionReport.Designer.vb">
       <DependentUpon>frmProductionReport.vb</DependentUpon>
     </Compile>
@@ -1016,6 +1022,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="gui\ProductionAndSales\frmParkingList.resx">
       <DependentUpon>frmParkingList.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="gui\ProductionAndSales\frmProductConversionReport.resx">
+      <DependentUpon>frmProductConversionReport.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="gui\ProductionAndSales\frmProductionReport.resx">
       <DependentUpon>frmProductionReport.vb</DependentUpon>
