@@ -11,6 +11,7 @@ Public Class frmItemConversion
         End If
         txtId.Text = ""
         txtConversionNo.Text = ""
+        txtReason.Text = ""
         txtConversionDate.Text = Day.DAY
         txtStatus.Text = "PENDING"
 
@@ -607,6 +608,7 @@ Public Class frmItemConversion
         cmbRawDescription.Enabled = True
         txtRawBarCode.ReadOnly = False
         txtRawItemCode.ReadOnly = False
+        txtRawQty.ReadOnly = False
         btnRawAdd.Enabled = False
     End Sub
 
@@ -1182,6 +1184,7 @@ Public Class frmItemConversion
         cmbEndDescription.Enabled = True
         txtEndBarcode.ReadOnly = False
         txtEndItemCode.ReadOnly = False
+        txtEndQty.ReadOnly = False
         btnEndAdd.Enabled = False
     End Sub
 

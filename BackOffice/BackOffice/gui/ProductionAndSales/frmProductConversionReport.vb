@@ -178,7 +178,7 @@ Public Class frmProductConversionReport
             column = table.AddColumn("1.5cm")
             column.Format.Alignment = ParagraphAlignment.Left
 
-            column = table.AddColumn("6.0cm")
+            column = table.AddColumn("5.5cm")
             column.Format.Alignment = ParagraphAlignment.Right
 
             column = table.AddColumn("1.0cm")
@@ -186,6 +186,9 @@ Public Class frmProductConversionReport
 
             column = table.AddColumn("2.0cm")
             column.Format.Alignment = ParagraphAlignment.Right
+
+            column = table.AddColumn("2.5cm")
+            column.Format.Alignment = ParagraphAlignment.Left
 
             column = table.AddColumn("2.5cm")
             column.Format.Alignment = ParagraphAlignment.Left
@@ -212,8 +215,11 @@ Public Class frmProductConversionReport
             row.Cells(4).Format.Alignment = ParagraphAlignment.Left
             row.Cells(5).AddParagraph("Amount")
             row.Cells(5).Format.Alignment = ParagraphAlignment.Left
+            row.Cells(6).AddParagraph("Summary")
+            row.Cells(6).Format.Alignment = ParagraphAlignment.Left
 
-            table.SetEdge(0, 0, 6, 1, Edge.Box, BorderStyle.Single, 0.75, Color.Empty)
+
+            table.SetEdge(0, 0, 7, 1, Edge.Box, BorderStyle.Single, 0.75, Color.Empty)
 
             Dim totalAmount As Double = 0
             Dim totalVat As Double = 0
@@ -226,6 +232,7 @@ Public Class frmProductConversionReport
                 Dim qty As String = dtgrdInitialProducts.Item(3, i).Value.ToString
                 Dim price As String = dtgrdInitialProducts.Item(4, i).Value.ToString
                 Dim amount As String = dtgrdInitialProducts.Item(5, i).Value.ToString
+                Dim summary As String = dtgrdInitialProducts.Item(6, i).Value.ToString
 
                 row = table.AddRow()
                 row.Format.Font.Bold = False
@@ -246,10 +253,12 @@ Public Class frmProductConversionReport
                 row.Cells(4).Format.Alignment = ParagraphAlignment.Right
                 row.Cells(5).AddParagraph(amount)
                 row.Cells(5).Format.Alignment = ParagraphAlignment.Right
+                row.Cells(6).AddParagraph(summary)
+                row.Cells(6).Format.Alignment = ParagraphAlignment.Left
 
-                table.SetEdge(0, 0, 6, 1, Edge.Box, BorderStyle.Single, 0.75, Color.Empty)
+                table.SetEdge(0, 0, 7, 1, Edge.Box, BorderStyle.Single, 0.75, Color.Empty)
             Next
-            table.SetEdge(0, 0, 6, 1, Edge.Box, BorderStyle.Single, 0.75, Color.Empty)
+            table.SetEdge(0, 0, 7, 1, Edge.Box, BorderStyle.Single, 0.75, Color.Empty)
         Catch ex As Exception
 
         End Try
@@ -276,7 +285,7 @@ Public Class frmProductConversionReport
             column = table.AddColumn("1.5cm")
             column.Format.Alignment = ParagraphAlignment.Left
 
-            column = table.AddColumn("6.0cm")
+            column = table.AddColumn("5.5cm")
             column.Format.Alignment = ParagraphAlignment.Right
 
             column = table.AddColumn("1.0cm")
@@ -284,6 +293,9 @@ Public Class frmProductConversionReport
 
             column = table.AddColumn("2.0cm")
             column.Format.Alignment = ParagraphAlignment.Right
+
+            column = table.AddColumn("2.5cm")
+            column.Format.Alignment = ParagraphAlignment.Left
 
             column = table.AddColumn("2.5cm")
             column.Format.Alignment = ParagraphAlignment.Left
@@ -310,8 +322,10 @@ Public Class frmProductConversionReport
             row.Cells(4).Format.Alignment = ParagraphAlignment.Left
             row.Cells(5).AddParagraph("Amount")
             row.Cells(5).Format.Alignment = ParagraphAlignment.Left
+            row.Cells(6).AddParagraph("Summary")
+            row.Cells(6).Format.Alignment = ParagraphAlignment.Left
 
-            table.SetEdge(0, 0, 6, 1, Edge.Box, BorderStyle.Single, 0.75, Color.Empty)
+            table.SetEdge(0, 0, 7, 1, Edge.Box, BorderStyle.Single, 0.75, Color.Empty)
 
             Dim totalAmount As Double = 0
             Dim totalVat As Double = 0
@@ -324,6 +338,7 @@ Public Class frmProductConversionReport
                 Dim qty As String = dtgrdFinalProducts.Item(3, i).Value.ToString
                 Dim price As String = dtgrdFinalProducts.Item(4, i).Value.ToString
                 Dim amount As String = dtgrdFinalProducts.Item(5, i).Value.ToString
+                Dim summary As String = dtgrdFinalProducts.Item(6, i).Value.ToString
 
                 row = table.AddRow()
                 row.Format.Font.Bold = False
@@ -344,10 +359,12 @@ Public Class frmProductConversionReport
                 row.Cells(4).Format.Alignment = ParagraphAlignment.Right
                 row.Cells(5).AddParagraph(amount)
                 row.Cells(5).Format.Alignment = ParagraphAlignment.Right
+                row.Cells(6).AddParagraph(summary)
+                row.Cells(6).Format.Alignment = ParagraphAlignment.Left
 
-                table.SetEdge(0, 0, 6, 1, Edge.Box, BorderStyle.Single, 0.75, Color.Empty)
+                table.SetEdge(0, 0, 7, 1, Edge.Box, BorderStyle.Single, 0.75, Color.Empty)
             Next
-            table.SetEdge(0, 0, 6, 1, Edge.Box, BorderStyle.Single, 0.75, Color.Empty)
+            table.SetEdge(0, 0, 7, 1, Edge.Box, BorderStyle.Single, 0.75, Color.Empty)
         Catch ex As Exception
 
         End Try
@@ -364,6 +381,7 @@ Public Class frmProductConversionReport
             Dim query As String = "SELECT
                                         `items_to_convert`.`item_code` AS `item_code`,
                                         `item_conversion`.`date` AS `date`,
+                                        `item_conversion`.`reason` AS `reason`,
                                         SUM(`items_to_convert`.`qty`) AS `qty`
                                     FROM
                                         `items_to_convert`
@@ -415,6 +433,10 @@ Public Class frmProductConversionReport
                 dtgrdCell.Value = LCurrency.displayValue((Val(reader.GetString("qty") * Val((New Item).getItemPrice(reader.GetString("item_code")).ToString))))
                 dtgrdRow.Cells.Add(dtgrdCell)
 
+                dtgrdCell = New DataGridViewTextBoxCell()
+                dtgrdCell.Value = reader.GetString("reason")
+                dtgrdRow.Cells.Add(dtgrdCell)
+
                 dtgrdInitialProducts.Rows.Add(dtgrdRow)
             End While
 
@@ -461,6 +483,7 @@ Public Class frmProductConversionReport
             Dim query As String = "SELECT
                                         `converted`.`item_code` AS `item_code`,
                                         `item_conversion`.`date` AS `date`,
+                                        `item_conversion`.`reason` AS `reason`,
                                         SUM(`converted`.`qty`) AS `qty`
                                     FROM
                                         `converted`
@@ -513,6 +536,10 @@ Public Class frmProductConversionReport
 
                 dtgrdCell = New DataGridViewTextBoxCell()
                 dtgrdCell.Value = LCurrency.displayValue((Val(reader.GetString("qty") * Val((New Item).getItemPrice(reader.GetString("item_code")).ToString))))
+                dtgrdRow.Cells.Add(dtgrdCell)
+
+                dtgrdCell = New DataGridViewTextBoxCell()
+                dtgrdCell.Value = reader.GetString("reason")
                 dtgrdRow.Cells.Add(dtgrdCell)
 
                 dtgrdFinalProducts.Rows.Add(dtgrdRow)
