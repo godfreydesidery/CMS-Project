@@ -199,7 +199,7 @@ Public Class frmProductionReport
         row = table.AddRow()
         row.Format.Font.Bold = True
         row.HeadingFormat = True
-        row.Format.Font.Size = 8
+        row.Format.Font.Size = 9
         row.Format.Alignment = ParagraphAlignment.Center
         row.Format.Font.Bold = True
         row.Borders.Color = Colors.LightGray
@@ -237,7 +237,7 @@ Public Class frmProductionReport
             row = table.AddRow()
             row.Format.Font.Bold = False
             row.HeadingFormat = False
-            row.Format.Font.Size = 8
+            row.Format.Font.Size = 9
             row.Height = "5mm"
             row.Format.Alignment = ParagraphAlignment.Center
             row.Borders.Color = Colors.LightGray
@@ -259,7 +259,7 @@ Public Class frmProductionReport
         row = table.AddRow()
         row.Format.Font.Bold = True
         row.HeadingFormat = False
-        row.Format.Font.Size = 8
+        row.Format.Font.Size = 9
         row.Height = "5mm"
         row.Format.Alignment = ParagraphAlignment.Center
         row.Borders.Color = Colors.LightGray
