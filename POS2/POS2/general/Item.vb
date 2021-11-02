@@ -111,4 +111,27 @@ Public Class Item
         End Try
         Return list
     End Function
+
+    Public Function getStock(itemCode As String) As Double
+        Dim stock As String = ""
+        Try
+            Dim conn As New MySqlConnection(Database.conString)
+            Dim command As New MySqlCommand()
+            'create bar code
+            Dim query As String = "SELECT `qty` FROM `inventorys` WHERE `item_code`='" + itemCode + "'"
+            conn.Open()
+            command.CommandText = query
+            command.Connection = conn
+            command.CommandType = CommandType.Text
+            Dim reader As MySqlDataReader = command.ExecuteReader()
+            While reader.Read
+                stock = reader.GetString("qty")
+                Exit While
+            End While
+            conn.Close()
+        Catch ex As Exception
+            MsgBox(ex.ToString)
+        End Try
+        Return Val(stock)
+    End Function
 End Class

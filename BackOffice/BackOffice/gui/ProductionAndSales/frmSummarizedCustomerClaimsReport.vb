@@ -159,7 +159,7 @@ Public Class frmSummarizedCustomerClaimsReport
 
         paragraph = section.AddParagraph()
         paragraph.AddFormattedText("Items Claimed")
-        paragraph.Format.Font.Size = 8
+        paragraph.Format.Font.Size = 9
 
         Try
             'Create the item table
@@ -177,10 +177,10 @@ Public Class frmSummarizedCustomerClaimsReport
             column = table.AddColumn("2.0cm")
             column.Format.Alignment = ParagraphAlignment.Left
 
-            column = table.AddColumn("1.5cm")
+            column = table.AddColumn("2.0cm")
             column.Format.Alignment = ParagraphAlignment.Left
 
-            column = table.AddColumn("5.0cm")
+            column = table.AddColumn("7.0cm")
             column.Format.Alignment = ParagraphAlignment.Right
 
             column = table.AddColumn("1.0cm")
@@ -192,16 +192,13 @@ Public Class frmSummarizedCustomerClaimsReport
             column = table.AddColumn("2.5cm")
             column.Format.Alignment = ParagraphAlignment.Left
 
-            column = table.AddColumn("3.5cm")
-            column.Format.Alignment = ParagraphAlignment.Left
-
             'Create the header of the table
             Dim row As Tables.Row
 
             row = table.AddRow()
             row.Format.Font.Bold = True
             row.HeadingFormat = True
-            row.Format.Font.Size = 8
+            row.Format.Font.Size = 9
             row.Format.Alignment = ParagraphAlignment.Center
             row.Format.Font.Bold = True
             row.Borders.Color = Colors.LightGray
@@ -217,10 +214,8 @@ Public Class frmSummarizedCustomerClaimsReport
             row.Cells(4).Format.Alignment = ParagraphAlignment.Left
             row.Cells(5).AddParagraph("Amount")
             row.Cells(5).Format.Alignment = ParagraphAlignment.Left
-            row.Cells(6).AddParagraph("Summary")
-            row.Cells(6).Format.Alignment = ParagraphAlignment.Left
 
-            table.SetEdge(0, 0, 7, 1, Edge.Box, BorderStyle.Single, 0.75, Color.Empty)
+            table.SetEdge(0, 0, 6, 1, Edge.Box, BorderStyle.Single, 0.75, Color.Empty)
 
             Dim totalAmount As Double = 0
             Dim totalVat As Double = 0
@@ -233,12 +228,11 @@ Public Class frmSummarizedCustomerClaimsReport
                 Dim qty As String = dtgrdItemsClaimed.Item(3, i).Value.ToString
                 Dim price As String = dtgrdItemsClaimed.Item(4, i).Value.ToString
                 Dim amount As String = dtgrdItemsClaimed.Item(5, i).Value.ToString
-                Dim summary As String = dtgrdItemsClaimed.Item(6, i).Value.ToString
 
                 row = table.AddRow()
                 row.Format.Font.Bold = False
                 row.HeadingFormat = False
-                row.Format.Font.Size = 8
+                row.Format.Font.Size = 9
                 row.Height = "5mm"
                 row.Format.Alignment = ParagraphAlignment.Center
                 row.Borders.Color = Colors.LightGray
@@ -254,19 +248,18 @@ Public Class frmSummarizedCustomerClaimsReport
                 row.Cells(4).Format.Alignment = ParagraphAlignment.Right
                 row.Cells(5).AddParagraph(amount)
                 row.Cells(5).Format.Alignment = ParagraphAlignment.Right
-                row.Cells(6).AddParagraph(summary)
-                row.Cells(6).Format.Alignment = ParagraphAlignment.Left
 
-                table.SetEdge(0, 0, 7, 1, Edge.Box, BorderStyle.Single, 0.75, Color.Empty)
+                table.SetEdge(0, 0, 6, 1, Edge.Box, BorderStyle.Single, 0.75, Color.Empty)
             Next
-            table.SetEdge(0, 0, 7, 1, Edge.Box, BorderStyle.Single, 0.75, Color.Empty)
+            table.SetEdge(0, 0, 6, 1, Edge.Box, BorderStyle.Single, 0.75, Color.Empty)
         Catch ex As Exception
 
         End Try
 
         paragraph = section.AddParagraph()
+        paragraph = section.AddParagraph()
         paragraph.AddFormattedText("Items issued as replacements")
-        paragraph.Format.Font.Size = 8
+        paragraph.Format.Font.Size = 9
         Try
             'Create the item table
             Dim table As Tables.Table = section.AddTable()
@@ -283,10 +276,10 @@ Public Class frmSummarizedCustomerClaimsReport
             column = table.AddColumn("2.0cm")
             column.Format.Alignment = ParagraphAlignment.Left
 
-            column = table.AddColumn("1.5cm")
+            column = table.AddColumn("2.0cm")
             column.Format.Alignment = ParagraphAlignment.Left
 
-            column = table.AddColumn("5.0cm")
+            column = table.AddColumn("7.0cm")
             column.Format.Alignment = ParagraphAlignment.Right
 
             column = table.AddColumn("1.0cm")
@@ -298,8 +291,6 @@ Public Class frmSummarizedCustomerClaimsReport
             column = table.AddColumn("2.5cm")
             column.Format.Alignment = ParagraphAlignment.Left
 
-            column = table.AddColumn("3.5cm")
-            column.Format.Alignment = ParagraphAlignment.Left
 
             'Create the header of the table
             Dim row As Tables.Row
@@ -307,7 +298,7 @@ Public Class frmSummarizedCustomerClaimsReport
             row = table.AddRow()
             row.Format.Font.Bold = True
             row.HeadingFormat = True
-            row.Format.Font.Size = 8
+            row.Format.Font.Size = 9
             row.Format.Alignment = ParagraphAlignment.Center
             row.Format.Font.Bold = True
             row.Borders.Color = Colors.LightGray
@@ -323,10 +314,8 @@ Public Class frmSummarizedCustomerClaimsReport
             row.Cells(4).Format.Alignment = ParagraphAlignment.Left
             row.Cells(5).AddParagraph("Amount")
             row.Cells(5).Format.Alignment = ParagraphAlignment.Left
-            row.Cells(6).AddParagraph("Summary")
-            row.Cells(6).Format.Alignment = ParagraphAlignment.Left
 
-            table.SetEdge(0, 0, 7, 1, Edge.Box, BorderStyle.Single, 0.75, Color.Empty)
+            table.SetEdge(0, 0, 6, 1, Edge.Box, BorderStyle.Single, 0.75, Color.Empty)
 
             Dim totalAmount As Double = 0
             Dim totalVat As Double = 0
@@ -339,12 +328,11 @@ Public Class frmSummarizedCustomerClaimsReport
                 Dim qty As String = dtgrdReplacementItems.Item(3, i).Value.ToString
                 Dim price As String = dtgrdReplacementItems.Item(4, i).Value.ToString
                 Dim amount As String = dtgrdReplacementItems.Item(5, i).Value.ToString
-                Dim summary As String = dtgrdReplacementItems.Item(6, i).Value.ToString
 
                 row = table.AddRow()
                 row.Format.Font.Bold = False
                 row.HeadingFormat = False
-                row.Format.Font.Size = 8
+                row.Format.Font.Size = 9
                 row.Height = "5mm"
                 row.Format.Alignment = ParagraphAlignment.Center
                 row.Borders.Color = Colors.LightGray
@@ -360,12 +348,10 @@ Public Class frmSummarizedCustomerClaimsReport
                 row.Cells(4).Format.Alignment = ParagraphAlignment.Right
                 row.Cells(5).AddParagraph(amount)
                 row.Cells(5).Format.Alignment = ParagraphAlignment.Right
-                row.Cells(6).AddParagraph(summary)
-                row.Cells(6).Format.Alignment = ParagraphAlignment.Left
 
-                table.SetEdge(0, 0, 7, 1, Edge.Box, BorderStyle.Single, 0.75, Color.Empty)
+                table.SetEdge(0, 0, 6, 1, Edge.Box, BorderStyle.Single, 0.75, Color.Empty)
             Next
-            table.SetEdge(0, 0, 7, 1, Edge.Box, BorderStyle.Single, 0.75, Color.Empty)
+            table.SetEdge(0, 0, 6, 1, Edge.Box, BorderStyle.Single, 0.75, Color.Empty)
         Catch ex As Exception
 
         End Try
@@ -433,10 +419,6 @@ Public Class frmSummarizedCustomerClaimsReport
                 dtgrdCell.Value = LCurrency.displayValue((Val(reader.GetString("qty") * Val((New Item).getItemPrice(reader.GetString("item_code")).ToString))))
                 dtgrdRow.Cells.Add(dtgrdCell)
 
-                dtgrdCell = New DataGridViewTextBoxCell()
-                dtgrdCell.Value = ""
-                dtgrdRow.Cells.Add(dtgrdCell)
-
                 dtgrdItemsClaimed.Rows.Add(dtgrdRow)
             End While
 
@@ -467,10 +449,6 @@ Public Class frmSummarizedCustomerClaimsReport
 
             dtgrdCell1 = New DataGridViewTextBoxCell()
             dtgrdCell1.Value = LCurrency.displayValue(total)
-            dtgrdRow1.Cells.Add(dtgrdCell1)
-
-            dtgrdCell1 = New DataGridViewTextBoxCell()
-            dtgrdCell1.Value = ""
             dtgrdRow1.Cells.Add(dtgrdCell1)
 
             dtgrdItemsClaimed.Rows.Add(dtgrdRow1)
@@ -541,9 +519,6 @@ Public Class frmSummarizedCustomerClaimsReport
                 dtgrdCell.Value = LCurrency.displayValue((Val(reader.GetString("qty") * Val((New Item).getItemPrice(reader.GetString("item_code")).ToString))))
                 dtgrdRow.Cells.Add(dtgrdCell)
 
-                dtgrdCell = New DataGridViewTextBoxCell()
-                dtgrdCell.Value = ""
-                dtgrdRow.Cells.Add(dtgrdCell)
 
                 dtgrdReplacementItems.Rows.Add(dtgrdRow)
             End While
@@ -575,10 +550,6 @@ Public Class frmSummarizedCustomerClaimsReport
 
             dtgrdCell1 = New DataGridViewTextBoxCell()
             dtgrdCell1.Value = LCurrency.displayValue(total)
-            dtgrdRow1.Cells.Add(dtgrdCell1)
-
-            dtgrdCell1 = New DataGridViewTextBoxCell()
-            dtgrdCell1.Value = ""
             dtgrdRow1.Cells.Add(dtgrdCell1)
 
             dtgrdReplacementItems.Rows.Add(dtgrdRow1)

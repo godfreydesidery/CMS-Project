@@ -257,7 +257,7 @@ Public Class frmMain
         ' dtgrdViewItemList.Select()
     End Sub
 
-    Private Function searchByBarcode(barCode As String, q As Integer)
+    Private Function searchByBarcode(barCode As String, q As Double)
 
         Dim found As Boolean = False
         Dim query As String = "SELECT `items`.`item_code`, `bar_codes`.`item_scan_code`, `items`.`item_description`,`items`.`item_long_description`,`items`.`pck`, `items`.`retail_price`,`items`.`discount`,`items`.`vat`,`inventorys`.`item_code` FROM `items`,`inventorys`,`bar_codes` WHERE `items`.`item_code`=`inventorys`.`item_code` AND `bar_codes`.`item_scan_code` =@item_scan_code AND `bar_codes`.`item_code`=`items`.`item_code`"
@@ -298,14 +298,15 @@ Public Class frmMain
                     qty = q
                     price = (Val(price)) * (1 - Val(discount) / 100)
                     amount = (Val(qty) * price) * (1 - Val(discount) / 100)
-
                     found = True
 
                     If barCode = "" Then
                         found = False
                         loadCart(Till.TILLNO)
                     End If
+
                     If found = True Then
+
                         If addInList(itemCode, barCode) = True Then
                             loadCart(Till.TILLNO)
                         Else
@@ -575,6 +576,19 @@ Public Class frmMain
                 If dtgrdViewItemList.Item(1, i).Value = "" Or Val(dtgrdViewItemList.Item(7, i).Value) <= 0 Then
                     ' dtgrdViewItemList.Rows.RemoveAt(i)
                 End If
+
+
+
+
+                'to check for insufficient stock balance, to disable negative sales, put a true condition, eg 1=1 or 2=2 etc, to enable, put a false condition, eg 1=2,1=3 etc
+                If (New Item).getStock(dtgrdViewItemList.Item(1, i).Value) < Val(dtgrdViewItemList.Item(7, i).Value) And dtgrdViewItemList.Item(9, i).Value = False And 1 = 2 Then
+                    MsgBox("Insufficient stock balance in item " + dtgrdViewItemList.Item(1, i).Value + " [Stock balance: " + (New Item).getStock(dtgrdViewItemList.Item(1, i).Value).ToString + "] Item will be removed")
+                    remove(Till.TILLNO, dtgrdViewItemList.Item(11, i).Value)
+                    dtgrdViewItemList.Rows.RemoveAt(i)
+                End If
+
+
+
             Next
         End If
         Try
@@ -831,25 +845,6 @@ Public Class frmMain
     End Sub
 
     Private Sub ToolStripButton6_Click(sender As Object, e As EventArgs) Handles tlstrDescription.Click
-        'Dim cont As Boolean = True
-        'While cont = True
-        '    Try
-        '        dialog = New frmSearchItem()
-        '        dialog.Text = "Search Item by Description"
-        '        dialog.lblSearchBy.Text = "Description"
-        '        dialog.ShowDialog(Me)
-        '        If dialog.DialogResult = Windows.Forms.DialogResult.OK Then
-        '            setDetails()
-        '            dialog.Dispose()
-        '        Else
-        '            dialog.Dispose()
-        '            cont = False
-        '        End If
-        '    Catch ex As Exception
-
-        '    End Try
-        '    calculateValues()
-        'End While
 
         Dim control As TextBox = DirectCast(dtgrdViewItemList.EditingControl, TextBox)
 
@@ -861,7 +856,6 @@ Public Class frmMain
         control.AutoCompleteCustomSource = mySource
         control.AutoCompleteMode = AutoCompleteMode.Suggest
         control.AutoCompleteSource = AutoCompleteSource.CustomSource
-
 
     End Sub
 
@@ -1565,8 +1559,8 @@ Public Class frmMain
 
     Private Sub dtgrdViewItemList_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles dtgrdViewItemList.CellClick
         Try
+            Dim control As New TextBox
             If dtgrdViewItemList.CurrentCell.ColumnIndex = 2 Then
-                Dim control As New TextBox
 
                 control = DirectCast(dtgrdViewItemList.EditingControl, TextBox)
                 Dim list As New List(Of String)
@@ -1578,27 +1572,20 @@ Public Class frmMain
                 control.AutoCompleteMode = AutoCompleteMode.Suggest
                 control.AutoCompleteSource = AutoCompleteSource.CustomSource
 
-                'Dim control As New ComboBox
-                'Control = DirectCast(dtgrdViewItemList.EditingControl, ComboBox)
-                'shortList.Clear()
-                'Control.Items.Clear()
-                'Control.DroppedDown = True
-                'For Each text As String In longList
-                'Dim formattedText As String = text.ToUpper()
-                'If formattedText.Contains(control.Text.ToUpper()) Then
-                'shortList.Add(text)
-                'End If
-                ' Next
-                'Control.Items.AddRange(shortList.ToArray())
-                'Control.SelectionStart = control.Text.Length
-                ' Cursor.Current = Cursors.Default
-
-
-
+            Else
+                control = DirectCast(dtgrdViewItemList.EditingControl, TextBox)
+                Dim list As New List(Of String)
+                Dim mySource As New AutoCompleteStringCollection
+                Dim item As New Item
+                ' list = item.getItems(control.Text)
+                mySource.AddRange(list.ToArray)
+                control.AutoCompleteCustomSource = mySource
+                control.AutoCompleteMode = AutoCompleteMode.Suggest
+                control.AutoCompleteSource = AutoCompleteSource.CustomSource
 
             End If
         Catch ex As Exception
-            MsgBox(ex.ToString)
+            '  MsgBox(ex.ToString)
         End Try
     End Sub
     Dim longList As New List(Of String)
@@ -1801,28 +1788,10 @@ Public Class frmMain
         place("0")
     End Sub
 
-
-
-    Private Sub dtgrdViewItemList_KeyPress(sender As Object, e As KeyPressEventArgs) Handles dtgrdViewItemList.KeyPress
-
-    End Sub
-
-    Private Sub dtgrdViewItemList_Leave(sender As Object, e As EventArgs) Handles dtgrdViewItemList.Leave
-
-    End Sub
-
-    Private Sub dtgrdViewItemList_CellLeave(sender As Object, e As DataGridViewCellEventArgs) Handles dtgrdViewItemList.CellLeave
-
-    End Sub
     Declare Function Wow64DisableWow64FsRedirection Lib "kernel32" (ByRef oldvalue As Long) As Boolean
     Declare Function Wow64EnableWow64FsRedirection Lib "kernel32" (ByRef oldvalue As Long) As Boolean
     Private osk As String = "C:\Windows\System32\osk.exe"
-    Private Sub ToolStripButton8_Click(sender As Object, e As EventArgs) Handles ToolStripButton8.Click
 
-        'Private Sub Form1_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
-
-        'End Sub
-    End Sub
     Private Sub startOSK()
         Dim old As Long
         If Environment.Is64BitOperatingSystem Then
@@ -1933,6 +1902,21 @@ Public Class frmMain
 
         Return isVoid
     End Function
+    Private Sub remove(tillNo As String, sn As String)
+        Dim conn As New MySqlConnection(Database.conString)
+        Try
+            conn.Open()
+            Dim command As New MySqlCommand()
+            command.Connection = conn
+            command.CommandText = "DELETE FROM `cart` WHERE `sn`='" + sn + "'"
+            command.Prepare()
+            command.ExecuteNonQuery()
+            conn.Close()
+        Catch ex As Exception
+            MsgBox(ex.StackTrace)
+            Exit Sub
+        End Try
+    End Sub
     Private Sub _void(tillNo As String, sn As String)
         Dim conn As New MySqlConnection(Database.conString)
         Try
@@ -2122,13 +2106,5 @@ Public Class frmMain
             order = New frmOrder()
             order.ShowDialog(Me)
         End If
-    End Sub
-
-    Private Sub Panel2_Paint(sender As Object, e As PaintEventArgs) Handles Panel2.Paint
-
-    End Sub
-
-    Private Sub Panel1_Paint(sender As Object, e As PaintEventArgs) Handles Panel1.Paint
-
     End Sub
 End Class

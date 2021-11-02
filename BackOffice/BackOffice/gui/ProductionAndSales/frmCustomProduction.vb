@@ -968,9 +968,9 @@ Public Class frmCustomProduction
         txtId.Text = ""
         txtProductionNo.Text = ""
         txtProductName.Text = ""
-        txtStatus.Text = ""
+        txtStatus.Text = "PENDING"
         txtBatchSize.Text = ""
-        txtDate.Text = ""
+        txtDate.Text = Day.DAY
         cmbUom.Text = ""
 
         btnAddUpdate.Enabled = True

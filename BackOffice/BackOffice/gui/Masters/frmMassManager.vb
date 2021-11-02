@@ -807,8 +807,8 @@ Public Class frmMassManager
                             command.ExecuteNonQuery()
                             conn.Close()
 
-                            Dim stockCard As New StockCard
-                            stockCard.qtyIn(Day.DAY, itemcode, Val(stock), Val(stock), "Opening Balance, Mass upload")
+                            '     Dim stockCard As New StockCard
+                            '     StockCard.qtyIn(Day.DAY, itemcode, Val(stock), Val(stock), "Opening Balance, Mass upload")
 
                         Next
                         lblOperation.Text = ""
@@ -1064,8 +1064,8 @@ Public Class frmMassManager
                             command.ExecuteNonQuery()
                             conn.Close()
 
-                            Dim stockCard As New StockCard
-                            stockCard.qtyIn(Day.DAY, itemcode, Val(stock), Val(stock), "Stock adjustment, Mass update")
+                            '  Dim stockCard As New StockCard
+                            '  StockCard.qtyIn(Day.DAY, itemcode, Val(stock), Val(stock), "Stock adjustment, Mass update")
 
                         Next
                         lblOperation.Text = ""

@@ -192,6 +192,9 @@ Public Class frmProductionReport
         column = table.AddColumn("2cm")
         column.Format.Alignment = ParagraphAlignment.Right
 
+        column = table.AddColumn("2cm")
+        column.Format.Alignment = ParagraphAlignment.Right
+
 
         'Create the header of the table
         Dim row As Tables.Row
@@ -211,10 +214,12 @@ Public Class frmProductionReport
         row.Cells(2).Format.Alignment = ParagraphAlignment.Left
         row.Cells(3).AddParagraph("Qty")
         row.Cells(3).Format.Alignment = ParagraphAlignment.Left
-        row.Cells(4).AddParagraph("Price")
+        row.Cells(4).AddParagraph("C Price")
         row.Cells(4).Format.Alignment = ParagraphAlignment.Left
-        row.Cells(5).AddParagraph("Amount")
+        row.Cells(5).AddParagraph("S Price")
         row.Cells(5).Format.Alignment = ParagraphAlignment.Left
+        row.Cells(6).AddParagraph("Amount")
+        row.Cells(6).Format.Alignment = ParagraphAlignment.Left
 
 
 
@@ -230,8 +235,9 @@ Public Class frmProductionReport
             Dim code As String = dtgrdList.Item(1, i).Value.ToString
             Dim description As String = dtgrdList.Item(2, i).Value.ToString
             Dim qty As String = dtgrdList.Item(3, i).Value.ToString
-            Dim price As String = dtgrdList.Item(4, i).Value.ToString
-            Dim amount As String = dtgrdList.Item(5, i).Value.ToString
+            Dim costPrice As String = dtgrdList.Item(4, i).Value.ToString
+            Dim sellingPrice As String = dtgrdList.Item(5, i).Value.ToString
+            Dim amount As String = dtgrdList.Item(6, i).Value.ToString
 
 
             row = table.AddRow()
@@ -249,12 +255,14 @@ Public Class frmProductionReport
             row.Cells(2).Format.Alignment = ParagraphAlignment.Left
             row.Cells(3).AddParagraph(qty)
             row.Cells(3).Format.Alignment = ParagraphAlignment.Left
-            row.Cells(4).AddParagraph(price)
+            row.Cells(4).AddParagraph(costPrice)
             row.Cells(4).Format.Alignment = ParagraphAlignment.Right
-            row.Cells(5).AddParagraph(amount)
+            row.Cells(5).AddParagraph(sellingPrice)
             row.Cells(5).Format.Alignment = ParagraphAlignment.Right
+            row.Cells(6).AddParagraph(amount)
+            row.Cells(6).Format.Alignment = ParagraphAlignment.Right
 
-            table.SetEdge(0, 0, 6, 1, Edge.Box, BorderStyle.Single, 0.75, Color.Empty)
+            table.SetEdge(0, 0, 7, 1, Edge.Box, BorderStyle.Single, 0.75, Color.Empty)
         Next
         row = table.AddRow()
         row.Format.Font.Bold = True
@@ -271,11 +279,13 @@ Public Class frmProductionReport
         row.Cells(2).Format.Alignment = ParagraphAlignment.Left
         row.Cells(3).AddParagraph("")
         row.Cells(3).Format.Alignment = ParagraphAlignment.Left
-        row.Cells(4).AddParagraph("Total")
+        row.Cells(4).AddParagraph("")
         row.Cells(4).Format.Alignment = ParagraphAlignment.Left
-        row.Cells(5).AddParagraph(txtTotalAmount.Text)
-        row.Cells(5).Format.Alignment = ParagraphAlignment.Right
-        table.SetEdge(0, 0, 6, 1, Edge.Box, BorderStyle.Single, 0.75, Color.Empty)
+        row.Cells(5).AddParagraph("Total")
+        row.Cells(5).Format.Alignment = ParagraphAlignment.Left
+        row.Cells(6).AddParagraph(txtTotalAmount.Text)
+        row.Cells(6).Format.Alignment = ParagraphAlignment.Right
+        table.SetEdge(0, 0, 7, 1, Edge.Box, BorderStyle.Single, 0.75, Color.Empty)
 
         paragraph = section.AddParagraph()
         paragraph = section.AddParagraph()
@@ -365,8 +375,9 @@ Public Class frmProductionReport
                 'Continue While
                 ' End If
 
-                Dim price As String = (New Item).getItemPrice(itemCode)
-                totalAmount = totalAmount + (Val(qty) * Val(price))
+                Dim selingPrice As String = (New Item).getItemPrice(itemCode)
+                Dim costPrice As String = (New Item).getItemCostPrice(itemCode)
+                totalAmount = totalAmount + (Val(qty) * Val(selingPrice))
 
                 dtgrdRow = New DataGridViewRow
 
@@ -392,11 +403,15 @@ Public Class frmProductionReport
                 dtgrdRow.Cells.Add(dtgrdCell)
 
                 dtgrdCell = New DataGridViewTextBoxCell()
-                dtgrdCell.Value = LCurrency.displayValue(price)
+                dtgrdCell.Value = LCurrency.displayValue(costPrice)
                 dtgrdRow.Cells.Add(dtgrdCell)
 
                 dtgrdCell = New DataGridViewTextBoxCell()
-                dtgrdCell.Value = LCurrency.displayValue((Val(qty) * Val(price)).ToString)
+                dtgrdCell.Value = LCurrency.displayValue(selingPrice)
+                dtgrdRow.Cells.Add(dtgrdCell)
+
+                dtgrdCell = New DataGridViewTextBoxCell()
+                dtgrdCell.Value = LCurrency.displayValue((Val(qty) * Val(selingPrice)).ToString)
                 dtgrdRow.Cells.Add(dtgrdCell)
 
                 dtgrdList.Rows.Add(dtgrdRow)
@@ -623,10 +638,11 @@ Public Class frmProductionReport
         shXL.Cells(r, 2).Value = "Code"
         shXL.Cells(r, 3).Value = "Description"
         shXL.Cells(r, 4).Value = "Qty"
-        shXL.Cells(r, 5).Value = "Price"
-        shXL.Cells(r, 6).Value = "Amount"
+        shXL.Cells(r, 5).Value = "C Price"
+        shXL.Cells(r, 6).Value = "S Price"
+        shXL.Cells(r, 7).Value = "Amount"
         ' Format A1:D1 as bold, vertical alignment = center.
-        With shXL.Range("A" + r.ToString, "F" + r.ToString)
+        With shXL.Range("A" + r.ToString, "G" + r.ToString)
             .Font.Bold = True
             .VerticalAlignment = Excel.XlVAlign.xlVAlignCenter
         End With
@@ -642,22 +658,23 @@ Public Class frmProductionReport
                 .Cells(r, 4).Value = dtgrdList.Item(3, i).Value
                 .Cells(r, 5).Value = dtgrdList.Item(4, i).Value
                 .Cells(r, 6).Value = dtgrdList.Item(5, i).Value
+                .Cells(r, 7).Value = dtgrdList.Item(6, i).Value
             End With
             r = r + 1
         Next
         ' Add table headers going cell by cell.
-        shXL.Cells(r, 5).Value = "Total"
-        shXL.Cells(r, 6).Value = txtTotalAmount.Text
+        shXL.Cells(r, 6).Value = "Total"
+        shXL.Cells(r, 7).Value = txtTotalAmount.Text
 
         ' Format A1:D1 as bold, vertical alignment = center.
-        With shXL.Range("A" + r.ToString, "F" + r.ToString)
+        With shXL.Range("A" + r.ToString, "G" + r.ToString)
             .Font.Bold = True
             .VerticalAlignment = Excel.XlVAlign.xlVAlignCenter
         End With
 
 
         ' AutoFit columns A:D.
-        raXL = shXL.Range("A1", "F1")
+        raXL = shXL.Range("A1", "G1")
         raXL.EntireColumn.AutoFit()
         Dim strFileName As String = LSystem.saveToDesktop & "\Daily Production Report " & dateStart.Text & dateEnd.Text & ".xls"
         Dim blnFileOpen As Boolean = False
