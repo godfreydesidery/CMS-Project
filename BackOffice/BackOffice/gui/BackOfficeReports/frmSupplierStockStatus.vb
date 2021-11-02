@@ -48,11 +48,11 @@ Public Class frmSupplierStockStatus
                     query = "SELECT `item_code`,`item_scan_code`, `item_long_description`, `item_description`, `pck`, `department_id`, `class_id`, `sub_class_id`, `supplier_id`, `unit_cost_price`, `retail_price`, `discount`, `vat`, `margin`, `standard_uom`, `active` FROM `items` WHERE `supplier_id`='" + (New Supplier).getSupplierID("", supplierName) + "'AND `item_code` IN (" + list + ")"
                 End If
             Else
-                query = "SELECT `sn`, `item_code`, `item_scan_code`, `item_long_description`, `item_description`, `pck`, `department_id`, `class_id`, `sub_class_id`, `supplier_id`, `unit_cost_price`, `retail_price`, `discount`, `vat`, `margin`, `standard_uom`, `active` FROM `items`"
+                query = "SELECT `item_code`, `item_long_description`, `department_id`, `class_id`, `sub_class_id`, `supplier_id`, `unit_cost_price`, `retail_price`, `active` FROM `items`"
                 If list <> "" Then
                     cmbSupplier.Text = ""
                     cmbDepartment.Text = ""
-                    query = "SELECT `sn`, `item_code`, `item_scan_code`, `item_long_description`, `item_description`, `pck`, `department_id`, `class_id`, `sub_class_id`, `supplier_id`, `unit_cost_price`, `retail_price`, `discount`, `vat`, `margin`, `standard_uom`, `active` FROM `items` WHERE `item_code` IN (" + list + ")"
+                    query = "SELECT `item_code`, `item_long_description`, `department_id`, `class_id`, `sub_class_id`, `supplier_id`, `unit_cost_price`, `retail_price`, `discount`, `vat`, `margin`, `standard_uom`, `active` FROM `items` WHERE `item_code` IN (" + list + ")"
                 End If
             End If
 
