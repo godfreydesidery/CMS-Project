@@ -258,7 +258,6 @@ Partial Class frmMain
         '
         'CorporateCustomersToolStripMenuItem
         '
-        Me.CorporateCustomersToolStripMenuItem.Enabled = False
         Me.CorporateCustomersToolStripMenuItem.Font = New System.Drawing.Font("Candara", 12.0!)
         Me.CorporateCustomersToolStripMenuItem.ForeColor = System.Drawing.SystemColors.InfoText
         Me.CorporateCustomersToolStripMenuItem.Name = "CorporateCustomersToolStripMenuItem"
