@@ -803,6 +803,6 @@ Public Class frmMain
     End Sub
 
     Private Sub SalesReceiptToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SalesReceiptToolStripMenuItem.Click
-
+        frmSalesReceipts.ShowDialog()
     End Sub
 End Class

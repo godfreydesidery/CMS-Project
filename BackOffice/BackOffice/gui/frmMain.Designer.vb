@@ -84,6 +84,7 @@ Partial Class frmMain
         Me.SalesJournalToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.VendorsInvoiceBookToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.SalesInvoiceToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.SalesReceiptToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripDropDownButton6 = New System.Windows.Forms.ToolStripDropDownButton()
         Me.ToolStripMenuItem11 = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripMenuItem12 = New System.Windows.Forms.ToolStripMenuItem()
@@ -133,7 +134,6 @@ Partial Class frmMain
         Me.pctLogo = New System.Windows.Forms.PictureBox()
         Me.PictureBox2 = New System.Windows.Forms.PictureBox()
         Me.ToolStripButton1 = New System.Windows.Forms.ToolStripButton()
-        Me.SalesReceiptToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip.SuspendLayout()
         Me.StatusStrip.SuspendLayout()
         Me.tstrpMain.SuspendLayout()
@@ -528,7 +528,6 @@ Partial Class frmMain
         '
         'AllocationsToolStripMenuItem
         '
-        Me.AllocationsToolStripMenuItem.Enabled = False
         Me.AllocationsToolStripMenuItem.ForeColor = System.Drawing.SystemColors.InfoText
         Me.AllocationsToolStripMenuItem.Name = "AllocationsToolStripMenuItem"
         Me.AllocationsToolStripMenuItem.Size = New System.Drawing.Size(329, 28)
@@ -585,6 +584,12 @@ Partial Class frmMain
         Me.SalesInvoiceToolStripMenuItem.Name = "SalesInvoiceToolStripMenuItem"
         Me.SalesInvoiceToolStripMenuItem.Size = New System.Drawing.Size(329, 28)
         Me.SalesInvoiceToolStripMenuItem.Text = "Sales Invoice"
+        '
+        'SalesReceiptToolStripMenuItem
+        '
+        Me.SalesReceiptToolStripMenuItem.Name = "SalesReceiptToolStripMenuItem"
+        Me.SalesReceiptToolStripMenuItem.Size = New System.Drawing.Size(329, 28)
+        Me.SalesReceiptToolStripMenuItem.Text = "Sales Receipt"
         '
         'ToolStripDropDownButton6
         '
@@ -982,12 +987,6 @@ Partial Class frmMain
         Me.ToolStripButton1.Name = "ToolStripButton1"
         Me.ToolStripButton1.Size = New System.Drawing.Size(103, 28)
         Me.ToolStripButton1.Text = "&Masters"
-        '
-        'SalesReceiptToolStripMenuItem
-        '
-        Me.SalesReceiptToolStripMenuItem.Name = "SalesReceiptToolStripMenuItem"
-        Me.SalesReceiptToolStripMenuItem.Size = New System.Drawing.Size(329, 28)
-        Me.SalesReceiptToolStripMenuItem.Text = "Sales Receipt"
         '
         'frmMain
         '

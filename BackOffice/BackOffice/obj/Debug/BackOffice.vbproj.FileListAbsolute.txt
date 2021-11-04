@@ -131,3 +131,4 @@ D:\CMS Project\BackOffice\BackOffice\obj\Debug\BackOffice.vbprojResolveAssemblyR
 D:\CMS Project\BackOffice\BackOffice\obj\Debug\BackOffice.frmSummarizedCustomerClaimsReport.resources
 D:\CMS Project\BackOffice\BackOffice\obj\Debug\BackOffice.frmProductConversionReport.resources
 D:\CMS Project\BackOffice\BackOffice\obj\Debug\BackOffice.frmSalesInvoice.resources
+D:\CMS Project\BackOffice\BackOffice\obj\Debug\BackOffice.frmSalesReceipts.resources
