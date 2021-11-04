@@ -542,7 +542,6 @@ Partial Class frmMain
         '
         'QuotationsToolStripMenuItem
         '
-        Me.QuotationsToolStripMenuItem.Enabled = False
         Me.QuotationsToolStripMenuItem.ForeColor = System.Drawing.SystemColors.InfoText
         Me.QuotationsToolStripMenuItem.Name = "QuotationsToolStripMenuItem"
         Me.QuotationsToolStripMenuItem.Size = New System.Drawing.Size(329, 28)

@@ -331,11 +331,11 @@ Public Class frmMain
     End Sub
 
     Private Sub AllocationsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AllocationsToolStripMenuItem.Click
-        If User.authorize("ACCOUNTS") Then
-            ' frmAllocations.ShowDialog()
-        Else
-            MsgBox("Access denied!", vbOKOnly + vbExclamation)
-        End If
+        ' If User.authorize("ACCOUNTS") Then
+        frmAllocations.ShowDialog()
+        '  Else
+        ' MsgBox("Access denied!", vbOKOnly + vbExclamation)
+        ' End If
     End Sub
 
     Private Sub ReceiptsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ReceiptsToolStripMenuItem.Click
@@ -348,11 +348,11 @@ Public Class frmMain
     End Sub
 
     Private Sub QuotationsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles QuotationsToolStripMenuItem.Click
-        If User.authorize("ACCOUNTS") Then
-            'frmQuotations.ShowDialog()
-        Else
-            MsgBox("Access denied!", vbOKOnly + vbExclamation)
-        End If
+        'If User.authorize("ACCOUNTS") Then
+        frmQuotations.ShowDialog()
+        'Else
+        'MsgBox("Access denied!", vbOKOnly + vbExclamation)
+        ' End If
     End Sub
 
     Private Sub ReturnToVendorToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ReturnToVendorToolStripMenuItem.Click
