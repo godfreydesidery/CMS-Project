@@ -7,7 +7,7 @@ Imports MigraDoc.Rendering
 
 Public Class frmSupplierStockStatus
 
-    Private Sub btnBack_Click(sender As Object, e As EventArgs) Handles btnBack.Click
+    Private Sub btnBack_Click(sender As Object, e As EventArgs)
         Me.Dispose()
     End Sub
 
@@ -609,27 +609,8 @@ Public Class frmSupplierStockStatus
 
     End Sub
 
-    Private Sub btnPrint_Click(sender As Object, e As EventArgs) Handles btnPrint.Click
-        'refreshList(cmbSupplier.Text, cmbDepartment.Text)
-        If dtgrdItemList.RowCount = 0 Then
-            MsgBox("Nothing to export")
-            Exit Sub
-        End If
-        If cmbSupplier.Text = "" Then
-            If list = "" Then
-                '   MsgBox("Select a supplier.", vbOKOnly + vbCritical, "Error: No selection")
-                '  Exit Sub
-            End If
+    Private Sub btnPrint_Click(sender As Object, e As EventArgs)
 
-        End If
-        If dtgrdItemList.RowCount > 0 Then
-            print()
-        Else
-            Dim res As Integer = MsgBox("List is empty. Would you like to print an empty list?", vbYesNo + vbQuestion, "List empty")
-            If res = DialogResult.Yes Then
-                print()
-            End If
-        End If
     End Sub
     Private Sub searchItem()
         Dim found As Boolean = False
@@ -739,7 +720,38 @@ Public Class frmSupplierStockStatus
         Cursor.Current = Cursors.Default
     End Sub
 
-    Private Sub btnExportToExcel_Click(sender As Object, e As EventArgs) Handles btnExportToExcel.Click
+    Private Sub btnExportToExcel_Click(sender As Object, e As EventArgs)
+
+    End Sub
+
+    Private Sub cmbSupplier_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbSupplier.SelectedIndexChanged
+        dtgrdItemList.Rows.Clear()
+    End Sub
+
+    Private Sub btnExportToPDF_Click(sender As Object, e As EventArgs) Handles btnExportToPDF.Click
+        'refreshList(cmbSupplier.Text, cmbDepartment.Text)
+        If dtgrdItemList.RowCount = 0 Then
+            MsgBox("Nothing to export")
+            Exit Sub
+        End If
+        If cmbSupplier.Text = "" Then
+            If list = "" Then
+                '   MsgBox("Select a supplier.", vbOKOnly + vbCritical, "Error: No selection")
+                '  Exit Sub
+            End If
+
+        End If
+        If dtgrdItemList.RowCount > 0 Then
+            print()
+        Else
+            Dim res As Integer = MsgBox("List is empty. Would you like to print an empty list?", vbYesNo + vbQuestion, "List empty")
+            If res = DialogResult.Yes Then
+                print()
+            End If
+        End If
+    End Sub
+
+    Private Sub ToolStripButton1_Click(sender As Object, e As EventArgs) Handles ToolStripButton1.Click
         If dtgrdItemList.RowCount = 0 Then
             MsgBox("Nothing to export")
             Exit Sub
@@ -817,9 +829,5 @@ Public Class frmSupplierStockStatus
 Err_Handler:
         MsgBox(Err.Description, vbCritical, "Error: " & Err.Number)
 
-    End Sub
-
-    Private Sub cmbSupplier_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbSupplier.SelectedIndexChanged
-        dtgrdItemList.Rows.Clear()
     End Sub
 End Class

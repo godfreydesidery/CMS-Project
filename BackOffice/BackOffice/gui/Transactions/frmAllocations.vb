@@ -1,10 +1,7 @@
 ﻿Public Class frmAllocations
 
-    Private Sub btnBack_Click(sender As Object, e As EventArgs)
+    Private Sub btnBack_Click(sender As Object, e As EventArgs) Handles btnBack.Click
         Me.Dispose()
     End Sub
 
-    Private Sub Label7_Click(sender As Object, e As EventArgs)
-
-    End Sub
 End Class
