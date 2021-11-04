@@ -751,6 +751,12 @@
     <Compile Include="gui\Transactions\frmReceipts.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="gui\Transactions\frmSalesInvoice.Designer.vb">
+      <DependentUpon>frmSalesInvoice.vb</DependentUpon>
+    </Compile>
+    <Compile Include="gui\Transactions\frmSalesInvoice.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="gui\Transactions\frmSalesJournal.Designer.vb">
       <DependentUpon>frmSalesJournal.vb</DependentUpon>
     </Compile>
@@ -761,6 +767,12 @@
       <DependentUpon>frmSalesLedge.vb</DependentUpon>
     </Compile>
     <Compile Include="gui\Transactions\frmSalesLedge.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="gui\Transactions\frmSalesReceipts.Designer.vb">
+      <DependentUpon>frmSalesReceipts.vb</DependentUpon>
+    </Compile>
+    <Compile Include="gui\Transactions\frmSalesReceipts.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="gui\Transactions\frmSupplierCreditNote.Designer.vb">
@@ -1074,11 +1086,17 @@
     <EmbeddedResource Include="gui\Transactions\frmReceipts.resx">
       <DependentUpon>frmReceipts.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="gui\Transactions\frmSalesInvoice.resx">
+      <DependentUpon>frmSalesInvoice.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="gui\Transactions\frmSalesJournal.resx">
       <DependentUpon>frmSalesJournal.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="gui\Transactions\frmSalesLedge.resx">
       <DependentUpon>frmSalesLedge.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="gui\Transactions\frmSalesReceipts.resx">
+      <DependentUpon>frmSalesReceipts.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="gui\Transactions\frmSupplierCreditNote.resx">
       <DependentUpon>frmSupplierCreditNote.vb</DependentUpon>

@@ -133,6 +133,7 @@ Partial Class frmMain
         Me.pctLogo = New System.Windows.Forms.PictureBox()
         Me.PictureBox2 = New System.Windows.Forms.PictureBox()
         Me.ToolStripButton1 = New System.Windows.Forms.ToolStripButton()
+        Me.SalesReceiptToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip.SuspendLayout()
         Me.StatusStrip.SuspendLayout()
         Me.tstrpMain.SuspendLayout()
@@ -487,7 +488,7 @@ Partial Class frmMain
         '
         'ToolStripDropDownButton5
         '
-        Me.ToolStripDropDownButton5.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripMenuItem7, Me.ToolStripMenuItem8, Me.ToolStripMenuItem9, Me.ToolStripMenuItem10, Me.AllocationsToolStripMenuItem, Me.ReceiptsToolStripMenuItem, Me.QuotationsToolStripMenuItem, Me.ReturnToVendorToolStripMenuItem, Me.SalesLedgeToolStripMenuItem, Me.SalesJournalToolStripMenuItem, Me.VendorsInvoiceBookToolStripMenuItem, Me.SalesInvoiceToolStripMenuItem})
+        Me.ToolStripDropDownButton5.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripMenuItem7, Me.ToolStripMenuItem8, Me.ToolStripMenuItem9, Me.ToolStripMenuItem10, Me.AllocationsToolStripMenuItem, Me.ReceiptsToolStripMenuItem, Me.QuotationsToolStripMenuItem, Me.ReturnToVendorToolStripMenuItem, Me.SalesLedgeToolStripMenuItem, Me.SalesJournalToolStripMenuItem, Me.VendorsInvoiceBookToolStripMenuItem, Me.SalesInvoiceToolStripMenuItem, Me.SalesReceiptToolStripMenuItem})
         Me.ToolStripDropDownButton5.Font = New System.Drawing.Font("Constantia", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ToolStripDropDownButton5.ForeColor = System.Drawing.Color.MidnightBlue
         Me.ToolStripDropDownButton5.Image = CType(resources.GetObject("ToolStripDropDownButton5.Image"), System.Drawing.Image)
@@ -982,6 +983,12 @@ Partial Class frmMain
         Me.ToolStripButton1.Size = New System.Drawing.Size(103, 28)
         Me.ToolStripButton1.Text = "&Masters"
         '
+        'SalesReceiptToolStripMenuItem
+        '
+        Me.SalesReceiptToolStripMenuItem.Name = "SalesReceiptToolStripMenuItem"
+        Me.SalesReceiptToolStripMenuItem.Size = New System.Drawing.Size(329, 28)
+        Me.SalesReceiptToolStripMenuItem.Text = "Sales Receipt"
+        '
         'frmMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
@@ -1126,4 +1133,5 @@ Partial Class frmMain
     Friend WithEvents SummarizedCustomerClaimsReportToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ToolStripSeparator10 As ToolStripSeparator
     Friend WithEvents ProductConversionReportToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents SalesReceiptToolStripMenuItem As ToolStripMenuItem
 End Class

@@ -391,7 +391,7 @@ Public Class frmMain
 
     Private Sub SalesInvoiceToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SalesInvoiceToolStripMenuItem.Click
         If User.authorize("SALE INVOICE") Then
-            frmSaleInvoice.ShowDialog()
+            frmSalesInvoice.ShowDialog()
         Else
             MsgBox("Access denied!", vbOKOnly + vbExclamation)
         End If
@@ -800,5 +800,9 @@ Public Class frmMain
             Exit Sub
         End If
         frmProductConversionReport.ShowDialog()
+    End Sub
+
+    Private Sub SalesReceiptToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SalesReceiptToolStripMenuItem.Click
+
     End Sub
 End Class
