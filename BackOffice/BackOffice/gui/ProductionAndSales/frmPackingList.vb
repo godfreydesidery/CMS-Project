@@ -3049,4 +3049,8 @@ Public Class frmPackingList
             txtCustomerAddress.Text = ""
         End If
     End Sub
+
+    Private Sub Label31_Click(sender As Object, e As EventArgs) Handles Label31.Click
+
+    End Sub
 End Class

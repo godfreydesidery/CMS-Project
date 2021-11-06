@@ -710,7 +710,7 @@ Public Class frmMain
         calculateValues()
     End Sub
     Dim discountDialog As frmDiscount
-    Private Sub dtgrdViewItemList_CellClick1(sender As Object, e As DataGridViewCellEventArgs) Handles dtgrdViewItemList.CellClick
+    Private Sub dtgrdViewItemList_CellClick2(sender As Object, e As DataGridViewCellEventArgs) Handles dtgrdViewItemList.CellClick
         Dim row As Integer = -1
         Dim col As Integer = -1
         Dim amount = 0
@@ -1588,6 +1588,39 @@ Public Class frmMain
             '  MsgBox(ex.ToString)
         End Try
     End Sub
+
+    Private Sub dtgrdViewItemList_CellClick1(sender As Object, e As DataGridViewCellEventArgs) Handles dtgrdViewItemList.CellEnter
+        Try
+            Dim control As New TextBox
+            If dtgrdViewItemList.CurrentCell.ColumnIndex = 2 Then
+
+                control = DirectCast(dtgrdViewItemList.EditingControl, TextBox)
+                Dim list As New List(Of String)
+                Dim mySource As New AutoCompleteStringCollection
+                Dim item As New Item
+                list = item.getItems(control.Text)
+                mySource.AddRange(list.ToArray)
+                control.AutoCompleteCustomSource = mySource
+                control.AutoCompleteMode = AutoCompleteMode.Suggest
+                control.AutoCompleteSource = AutoCompleteSource.CustomSource
+
+            Else
+                control = DirectCast(dtgrdViewItemList.EditingControl, TextBox)
+                Dim list As New List(Of String)
+                Dim mySource As New AutoCompleteStringCollection
+                Dim item As New Item
+                ' list = item.getItems(control.Text)
+                mySource.AddRange(list.ToArray)
+                control.AutoCompleteCustomSource = mySource
+                control.AutoCompleteMode = AutoCompleteMode.Suggest
+                control.AutoCompleteSource = AutoCompleteSource.CustomSource
+
+            End If
+        Catch ex As Exception
+            '  MsgBox(ex.ToString)
+        End Try
+    End Sub
+
     Dim longList As New List(Of String)
     Dim shortList As New List(Of String)
 

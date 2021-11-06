@@ -321,7 +321,7 @@ Public Class frmNegativeStockReports
         refreshList()
     End Sub
 
-    Private Sub btnPrint_Click(sender As Object, e As EventArgs) Handles btnPrint.Click
+    Private Sub btnPrint_Click(sender As Object, e As EventArgs)
         refreshList()
         If dtgrdItemList.RowCount = 0 Then
             Dim res As Integer = MsgBox("The list is empty. Would you like to print an empty list?", vbYesNo + vbQuestion, "List empty")
@@ -337,5 +337,19 @@ Public Class frmNegativeStockReports
 
     Private Sub dtgrdItemList_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles dtgrdItemList.CellContentClick
 
+    End Sub
+
+    Private Sub btnExportToPDF_Click(sender As Object, e As EventArgs) Handles btnExportToPDF.Click
+        refreshList()
+        If dtgrdItemList.RowCount = 0 Then
+            Dim res As Integer = MsgBox("The list is empty. Would you like to print an empty list?", vbYesNo + vbQuestion, "List empty")
+            If res = DialogResult.Yes Then
+                'continue
+            Else
+                Exit Sub
+            End If
+
+        End If
+        print()
     End Sub
 End Class

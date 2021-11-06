@@ -154,6 +154,7 @@
     <Compile Include="general\Masters\Class.vb" />
     <Compile Include="general\Database\Database.vb" />
     <Compile Include="general\Masters\Company.vb" />
+    <Compile Include="general\Masters\CorporateCustomer.vb" />
     <Compile Include="general\Masters\Customer.vb" />
     <Compile Include="general\Damage.vb" />
     <Compile Include="general\Masters\Department.vb" />
@@ -337,10 +338,10 @@
     <Compile Include="gui\ProductionAndSales\frmMaterialVsProduction.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="gui\ProductionAndSales\frmParkingList.Designer.vb">
-      <DependentUpon>frmParkingList.vb</DependentUpon>
+    <Compile Include="gui\ProductionAndSales\frmPackingList.Designer.vb">
+      <DependentUpon>frmPackingList.vb</DependentUpon>
     </Compile>
-    <Compile Include="gui\ProductionAndSales\frmParkingList.vb">
+    <Compile Include="gui\ProductionAndSales\frmPackingList.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="gui\ProductionAndSales\frmProductConversionReport.Designer.vb">
@@ -1032,8 +1033,8 @@
     <EmbeddedResource Include="gui\ProductionAndSales\frmMaterialVsProduction.resx">
       <DependentUpon>frmMaterialVsProduction.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="gui\ProductionAndSales\frmParkingList.resx">
-      <DependentUpon>frmParkingList.vb</DependentUpon>
+    <EmbeddedResource Include="gui\ProductionAndSales\frmPackingList.resx">
+      <DependentUpon>frmPackingList.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="gui\ProductionAndSales\frmProductConversionReport.resx">
       <DependentUpon>frmProductConversionReport.vb</DependentUpon>
