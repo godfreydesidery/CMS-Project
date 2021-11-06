@@ -22,8 +22,8 @@ Partial Class frmGoodsReceivedNote
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle15 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle16 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.btnBack = New System.Windows.Forms.Button()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.txtOrderNo = New System.Windows.Forms.TextBox()
@@ -53,9 +53,17 @@ Partial Class frmGoodsReceivedNote
         Me.btnReceive = New System.Windows.Forms.ToolStripButton()
         Me.btnClear = New System.Windows.Forms.ToolStripButton()
         Me.btnCancel = New System.Windows.Forms.ToolStripButton()
+        Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.Panel3 = New System.Windows.Forms.Panel()
+        Me.Panel4 = New System.Windows.Forms.Panel()
+        Me.Panel5 = New System.Windows.Forms.Panel()
+        Me.Panel6 = New System.Windows.Forms.Panel()
         CType(Me.dtgrdItemList, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
         Me.ToolStrip1.SuspendLayout()
+        Me.Panel2.SuspendLayout()
+        Me.Panel4.SuspendLayout()
+        Me.Panel5.SuspendLayout()
         Me.SuspendLayout()
         '
         'btnBack
@@ -64,7 +72,7 @@ Partial Class frmGoodsReceivedNote
         Me.btnBack.BackColor = System.Drawing.SystemColors.Control
         Me.btnBack.BackgroundImage = Global.BackOffice.My.Resources.Resources.red_back_arrow
         Me.btnBack.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.btnBack.Location = New System.Drawing.Point(1245, 668)
+        Me.btnBack.Location = New System.Drawing.Point(901, 7)
         Me.btnBack.Name = "btnBack"
         Me.btnBack.Size = New System.Drawing.Size(100, 40)
         Me.btnBack.TabIndex = 5
@@ -73,7 +81,7 @@ Partial Class frmGoodsReceivedNote
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(29, 7)
+        Me.Label2.Location = New System.Drawing.Point(10, 9)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(67, 17)
         Me.Label2.TabIndex = 7
@@ -81,25 +89,27 @@ Partial Class frmGoodsReceivedNote
         '
         'txtOrderNo
         '
-        Me.txtOrderNo.Location = New System.Drawing.Point(102, 7)
+        Me.txtOrderNo.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtOrderNo.Location = New System.Drawing.Point(83, 7)
         Me.txtOrderNo.MaxLength = 50
         Me.txtOrderNo.Name = "txtOrderNo"
-        Me.txtOrderNo.Size = New System.Drawing.Size(128, 22)
+        Me.txtOrderNo.Size = New System.Drawing.Size(147, 24)
         Me.txtOrderNo.TabIndex = 8
         '
         'txtSupplier
         '
-        Me.txtSupplier.Location = New System.Drawing.Point(7, 152)
+        Me.txtSupplier.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtSupplier.Location = New System.Drawing.Point(83, 170)
         Me.txtSupplier.Name = "txtSupplier"
         Me.txtSupplier.ReadOnly = True
-        Me.txtSupplier.Size = New System.Drawing.Size(344, 22)
+        Me.txtSupplier.Size = New System.Drawing.Size(254, 24)
         Me.txtSupplier.TabIndex = 10
         '
         'btnSearch
         '
         Me.btnSearch.Location = New System.Drawing.Point(236, 6)
         Me.btnSearch.Name = "btnSearch"
-        Me.btnSearch.Size = New System.Drawing.Size(115, 51)
+        Me.btnSearch.Size = New System.Drawing.Size(100, 35)
         Me.btnSearch.TabIndex = 11
         Me.btnSearch.Text = "Search"
         Me.btnSearch.UseVisualStyleBackColor = True
@@ -112,12 +122,13 @@ Partial Class frmGoodsReceivedNote
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.dtgrdItemList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.dtgrdItemList.BackgroundColor = System.Drawing.SystemColors.ButtonFace
+        Me.dtgrdItemList.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.dtgrdItemList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dtgrdItemList.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column1, Me.Column2, Me.Column3, Me.Column4, Me.Column5, Me.Column6, Me.Column7, Me.Column8})
-        Me.dtgrdItemList.Location = New System.Drawing.Point(10, 270)
+        Me.dtgrdItemList.Location = New System.Drawing.Point(350, 43)
         Me.dtgrdItemList.Name = "dtgrdItemList"
         Me.dtgrdItemList.RowTemplate.Height = 24
-        Me.dtgrdItemList.Size = New System.Drawing.Size(1335, 389)
+        Me.dtgrdItemList.Size = New System.Drawing.Size(972, 624)
         Me.dtgrdItemList.TabIndex = 12
         '
         'Column1
@@ -149,16 +160,16 @@ Partial Class frmGoodsReceivedNote
         '
         'Column5
         '
-        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.Column5.DefaultCellStyle = DataGridViewCellStyle5
+        DataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.Column5.DefaultCellStyle = DataGridViewCellStyle15
         Me.Column5.FillWeight = 92.78905!
         Me.Column5.HeaderText = "Supplier Unit Cost"
         Me.Column5.Name = "Column5"
         '
         'Column6
         '
-        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.Column6.DefaultCellStyle = DataGridViewCellStyle6
+        DataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.Column6.DefaultCellStyle = DataGridViewCellStyle16
         Me.Column6.FillWeight = 92.78905!
         Me.Column6.HeaderText = "Client Cost"
         Me.Column6.Name = "Column6"
@@ -178,16 +189,17 @@ Partial Class frmGoodsReceivedNote
         '
         'txtInvoiceNo
         '
-        Me.txtInvoiceNo.Location = New System.Drawing.Point(102, 35)
+        Me.txtInvoiceNo.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtInvoiceNo.Location = New System.Drawing.Point(83, 51)
         Me.txtInvoiceNo.MaxLength = 50
         Me.txtInvoiceNo.Name = "txtInvoiceNo"
-        Me.txtInvoiceNo.Size = New System.Drawing.Size(128, 22)
+        Me.txtInvoiceNo.Size = New System.Drawing.Size(253, 24)
         Me.txtInvoiceNo.TabIndex = 16
         '
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(22, 38)
+        Me.Label4.Location = New System.Drawing.Point(3, 56)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(74, 17)
         Me.Label4.TabIndex = 17
@@ -195,16 +207,17 @@ Partial Class frmGoodsReceivedNote
         '
         'txtSupplierCode
         '
-        Me.txtSupplierCode.Location = New System.Drawing.Point(102, 124)
+        Me.txtSupplierCode.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtSupplierCode.Location = New System.Drawing.Point(83, 140)
         Me.txtSupplierCode.Name = "txtSupplierCode"
         Me.txtSupplierCode.ReadOnly = True
-        Me.txtSupplierCode.Size = New System.Drawing.Size(128, 22)
+        Me.txtSupplierCode.Size = New System.Drawing.Size(253, 24)
         Me.txtSupplierCode.TabIndex = 19
         '
         'Label5
         '
         Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(36, 123)
+        Me.Label5.Location = New System.Drawing.Point(17, 141)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(60, 17)
         Me.Label5.TabIndex = 18
@@ -212,35 +225,37 @@ Partial Class frmGoodsReceivedNote
         '
         'txtDate
         '
-        Me.txtDate.Location = New System.Drawing.Point(102, 96)
+        Me.txtDate.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtDate.Location = New System.Drawing.Point(83, 112)
         Me.txtDate.MaxLength = 50
         Me.txtDate.Name = "txtDate"
         Me.txtDate.ReadOnly = True
-        Me.txtDate.Size = New System.Drawing.Size(128, 22)
+        Me.txtDate.Size = New System.Drawing.Size(253, 24)
         Me.txtDate.TabIndex = 21
         '
         'Label6
         '
         Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(4, 93)
+        Me.Label6.Location = New System.Drawing.Point(39, 112)
         Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(92, 17)
+        Me.Label6.Size = New System.Drawing.Size(38, 17)
         Me.Label6.TabIndex = 20
-        Me.Label6.Text = "Date Created"
+        Me.Label6.Text = "Date"
         '
         'txtGRNNo
         '
-        Me.txtGRNNo.Location = New System.Drawing.Point(102, 66)
+        Me.txtGRNNo.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtGRNNo.Location = New System.Drawing.Point(83, 82)
         Me.txtGRNNo.MaxLength = 50
         Me.txtGRNNo.Name = "txtGRNNo"
         Me.txtGRNNo.ReadOnly = True
-        Me.txtGRNNo.Size = New System.Drawing.Size(128, 22)
+        Me.txtGRNNo.Size = New System.Drawing.Size(253, 24)
         Me.txtGRNNo.TabIndex = 23
         '
         'Label7
         '
         Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(35, 66)
+        Me.Label7.Location = New System.Drawing.Point(16, 84)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(61, 17)
         Me.Label7.TabIndex = 22
@@ -251,7 +266,7 @@ Partial Class frmGoodsReceivedNote
         Me.Label8.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label8.AutoSize = True
         Me.Label8.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label8.Location = New System.Drawing.Point(907, 668)
+        Me.Label8.Location = New System.Drawing.Point(12, 11)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(62, 17)
         Me.Label8.TabIndex = 25
@@ -261,10 +276,10 @@ Partial Class frmGoodsReceivedNote
         '
         Me.txtAmount.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.txtAmount.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtAmount.Location = New System.Drawing.Point(975, 670)
+        Me.txtAmount.Location = New System.Drawing.Point(85, 11)
         Me.txtAmount.Name = "txtAmount"
         Me.txtAmount.ReadOnly = True
-        Me.txtAmount.Size = New System.Drawing.Size(264, 30)
+        Me.txtAmount.Size = New System.Drawing.Size(253, 30)
         Me.txtAmount.TabIndex = 26
         Me.txtAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
@@ -283,9 +298,10 @@ Partial Class frmGoodsReceivedNote
         Me.Panel1.Controls.Add(Me.Label4)
         Me.Panel1.Controls.Add(Me.txtSupplierCode)
         Me.Panel1.Controls.Add(Me.Label5)
-        Me.Panel1.Location = New System.Drawing.Point(10, 50)
+        Me.Panel1.Dock = System.Windows.Forms.DockStyle.Top
+        Me.Panel1.Location = New System.Drawing.Point(0, 0)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(540, 191)
+        Me.Panel1.Size = New System.Drawing.Size(344, 219)
         Me.Panel1.TabIndex = 27
         '
         'ToolStrip1
@@ -325,17 +341,62 @@ Partial Class frmGoodsReceivedNote
         Me.btnCancel.Text = "Clear"
         Me.btnCancel.ToolTipText = "Clear all the fields"
         '
+        'Panel2
+        '
+        Me.Panel2.Controls.Add(Me.Panel4)
+        Me.Panel2.Controls.Add(Me.Panel1)
+        Me.Panel2.Dock = System.Windows.Forms.DockStyle.Left
+        Me.Panel2.Location = New System.Drawing.Point(0, 27)
+        Me.Panel2.Name = "Panel2"
+        Me.Panel2.Size = New System.Drawing.Size(344, 690)
+        Me.Panel2.TabIndex = 103
+        '
+        'Panel3
+        '
+        Me.Panel3.Dock = System.Windows.Forms.DockStyle.Top
+        Me.Panel3.Location = New System.Drawing.Point(344, 27)
+        Me.Panel3.Name = "Panel3"
+        Me.Panel3.Size = New System.Drawing.Size(1004, 10)
+        Me.Panel3.TabIndex = 104
+        '
+        'Panel4
+        '
+        Me.Panel4.Controls.Add(Me.Label8)
+        Me.Panel4.Controls.Add(Me.txtAmount)
+        Me.Panel4.Dock = System.Windows.Forms.DockStyle.Top
+        Me.Panel4.Location = New System.Drawing.Point(0, 219)
+        Me.Panel4.Name = "Panel4"
+        Me.Panel4.Size = New System.Drawing.Size(344, 53)
+        Me.Panel4.TabIndex = 28
+        '
+        'Panel5
+        '
+        Me.Panel5.Controls.Add(Me.btnBack)
+        Me.Panel5.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.Panel5.Location = New System.Drawing.Point(344, 667)
+        Me.Panel5.Name = "Panel5"
+        Me.Panel5.Size = New System.Drawing.Size(1004, 50)
+        Me.Panel5.TabIndex = 105
+        '
+        'Panel6
+        '
+        Me.Panel6.Dock = System.Windows.Forms.DockStyle.Right
+        Me.Panel6.Location = New System.Drawing.Point(1319, 37)
+        Me.Panel6.Name = "Panel6"
+        Me.Panel6.Size = New System.Drawing.Size(29, 630)
+        Me.Panel6.TabIndex = 106
+        '
         'frmGoodsReceivedNote
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1348, 717)
+        Me.Controls.Add(Me.Panel6)
+        Me.Controls.Add(Me.Panel5)
+        Me.Controls.Add(Me.Panel3)
+        Me.Controls.Add(Me.Panel2)
         Me.Controls.Add(Me.ToolStrip1)
-        Me.Controls.Add(Me.Panel1)
-        Me.Controls.Add(Me.txtAmount)
-        Me.Controls.Add(Me.Label8)
         Me.Controls.Add(Me.dtgrdItemList)
-        Me.Controls.Add(Me.btnBack)
         Me.MinimizeBox = False
         Me.Name = "frmGoodsReceivedNote"
         Me.ShowIcon = False
@@ -348,6 +409,10 @@ Partial Class frmGoodsReceivedNote
         Me.Panel1.PerformLayout()
         Me.ToolStrip1.ResumeLayout(False)
         Me.ToolStrip1.PerformLayout()
+        Me.Panel2.ResumeLayout(False)
+        Me.Panel4.ResumeLayout(False)
+        Me.Panel4.PerformLayout()
+        Me.Panel5.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -381,4 +446,9 @@ Partial Class frmGoodsReceivedNote
     Friend WithEvents btnReceive As ToolStripButton
     Friend WithEvents btnClear As ToolStripButton
     Friend WithEvents btnCancel As ToolStripButton
+    Friend WithEvents Panel2 As Panel
+    Friend WithEvents Panel4 As Panel
+    Friend WithEvents Panel3 As Panel
+    Friend WithEvents Panel5 As Panel
+    Friend WithEvents Panel6 As Panel
 End Class

@@ -93,10 +93,10 @@ Public Class frmMain
     End Function
 
     Private Sub dtgrdViewItemList_CellEndEdit(sender As Object, e As DataGridViewCellEventArgs) Handles dtgrdViewItemList.CellEndEdit
-        Dim qty As Integer = 0
+        Dim qty As Double = 0
         Dim sn As String = ""
         Try
-            qty = Val(dtgrdViewItemList.Item(7, e.RowIndex).Value)
+            qty = Val(LCurrency.getValue(dtgrdViewItemList.Item(7, e.RowIndex).Value))
             sn = dtgrdViewItemList.Item(11, e.RowIndex).Value.ToString
         Catch ex As Exception
 
@@ -276,7 +276,6 @@ Public Class frmMain
         End Try
 
         Dim reader As MySqlDataReader = command.ExecuteReader()
-        Dim no As Integer = 0
         Dim row As Integer = 0
         Try
             row = dtgrdViewItemList.CurrentCell.RowIndex
@@ -325,7 +324,7 @@ Public Class frmMain
                             dtgrdViewItemList.Item(2, row).ReadOnly = True
 
                             seq = seq + 1
-                            AddToCart(Format(Now, "mm/dd/yy hh:mm:ss") + (New Random).Next(0, 1000).ToString + Till.TILLNO + seq.ToString, Till.TILLNO, dtgrdViewItemList.Item(0, row).Value, dtgrdViewItemList.Item(1, row).Value, dtgrdViewItemList.Item(2, row).Value, dtgrdViewItemList.Item(4, row).Value, dtgrdViewItemList.Item(5, row).Value, dtgrdViewItemList.Item(6, row).Value, dtgrdViewItemList.Item(7, row).Value, dtgrdViewItemList.Item(8, row).Value, dtgrdViewItemList.Item(10, row).Value)
+                            AddToCart(Format(Now, "mm/dd/yy hh:mm:ss") + (New Random).Next(0, 1000).ToString + Till.TILLNO + seq.ToString, Till.TILLNO, dtgrdViewItemList.Item(0, row).Value.ToString, dtgrdViewItemList.Item(1, row).Value.ToString, dtgrdViewItemList.Item(2, row).Value.ToString, dtgrdViewItemList.Item(4, row).Value.ToString, dtgrdViewItemList.Item(5, row).Value.ToString, dtgrdViewItemList.Item(6, row).Value.ToString, dtgrdViewItemList.Item(7, row).Value.ToString, dtgrdViewItemList.Item(8, row).Value, dtgrdViewItemList.Item(10, row).Value)
                         End If
 
                         If dtgrdViewItemList.RowCount > 1 Then
@@ -363,7 +362,7 @@ Public Class frmMain
         loadCart(Till.TILLNO)
         Return found
     End Function
-    Private Function searchByDescription(longDescr As String, q As Integer)
+    Private Function searchByDescription(longDescr As String, q As Double)
 
         Dim found As Boolean = False
         Dim query As String = "SELECT `sn`, `item_code`, `item_scan_code`, `item_long_description`, `item_description`, `pck`, `department_id`, `class_id`, `sub_class_id`, `supplier_id`, `unit_cost_price`, `retail_price`, `discount`, `vat`, `margin`, `standard_uom`, `active` FROM `items` WHERE `item_long_description`='" + longDescr + "'"
@@ -381,7 +380,7 @@ Public Class frmMain
         End Try
 
         Dim reader As MySqlDataReader = command.ExecuteReader()
-        Dim no As Integer = 0
+        '   Dim no As Integer = 0
         Dim row As Integer = 0
         Try
             row = dtgrdViewItemList.CurrentCell.RowIndex
@@ -465,7 +464,7 @@ Public Class frmMain
         loadCart(Till.TILLNO)
         Return found
     End Function
-    Private Function searchByItemCode(itemCode As String, q As Integer)
+    Private Function searchByItemCode(itemCode As String, q As Double)
 
         Dim found As Boolean = False
         Dim query As String = "SELECT `items`.`item_code`, `items`.`item_description`,`items`.`item_long_description`,`items`.`pck`, `items`.`retail_price`,`items`.`discount`,`items`.`vat`,`inventorys`.`item_code` FROM `items`,`inventorys` WHERE `items`.`item_code`=`inventorys`.`item_code` AND `items`.`item_code` =@item_code"
@@ -483,7 +482,7 @@ Public Class frmMain
             Exit Function
         End Try
         Dim reader As MySqlDataReader = command.ExecuteReader()
-        Dim no As Integer = 0
+        '    Dim no As Integer = 0
         Dim row As Integer = 0
         Try
             row = dtgrdViewItemList.CurrentCell.RowIndex
@@ -629,7 +628,7 @@ Public Class frmMain
                 Dim price As Double = Val(LCurrency.getValue(dtgrdViewItemList.Item(4, i).Value))
                 Dim vat As Double = Val(LCurrency.getValue(dtgrdViewItemList.Item(5, i).Value))
                 Dim discount As Double = Val(LCurrency.getValue(dtgrdViewItemList.Item(6, i).Value))
-                Dim qty As Integer = Val(dtgrdViewItemList.Item(7, i).Value)
+                Dim qty As Double = Val(LCurrency.getValue(dtgrdViewItemList.Item(7, i).Value))
 
                 Dim amount As Double = price * qty * (1 - discount / 100)
                 dtgrdViewItemList.Item(8, i).Value = LCurrency.displayValue(amount.ToString)
@@ -1155,7 +1154,7 @@ Public Class frmMain
             conn.Open()
             Dim command As New MySqlCommand()
             command.Connection = conn
-            command.CommandText = "UPDATE `cart` SET `qty`=qty+1 WHERE `sn`='" + sn + "'"
+            command.CommandText = "UPDATE `cart` SET `qty`=`qty`+ 1 WHERE `sn`='" + sn + "'"
             command.Prepare()
             command.ExecuteNonQuery()
             conn.Close()
@@ -1182,7 +1181,7 @@ Public Class frmMain
         End If
         Return updated
     End Function
-    Private Function updateQty(qty As Integer, sn As String)
+    Private Function updateQty(qty As Double, sn As String)
         Dim updated As Boolean = False
 
         Dim conn As New MySqlConnection(Database.conString)
@@ -1294,7 +1293,7 @@ Public Class frmMain
                 dtgrdViewItemList.Item(7, row).Value = qty.ToString
                 calculateValues()
             Else
-                MsgBox("Invalid Quantity. Quantity should be a whole number ie. 1,2,3,...", vbExclamation + vbOKOnly, "Error: Invalid Entry")
+                MsgBox("Invalid Quantity. Quantity should be a number", vbExclamation + vbOKOnly, "Error: Invalid Entry")
             End If
         End If
     End Sub

@@ -45,17 +45,20 @@ Partial Class frmNegativeStockReports
         'dtgrdItemList
         '
         Me.dtgrdItemList.AllowUserToAddRows = False
+        Me.dtgrdItemList.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.dtgrdItemList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.dtgrdItemList.BackgroundColor = System.Drawing.SystemColors.ButtonFace
-        Me.dtgrdItemList.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+        Me.dtgrdItemList.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.dtgrdItemList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dtgrdItemList.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column1, Me.Column4, Me.Column2, Me.Column3})
         Me.dtgrdItemList.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnF2
-        Me.dtgrdItemList.Location = New System.Drawing.Point(103, 73)
+        Me.dtgrdItemList.Location = New System.Drawing.Point(274, 73)
         Me.dtgrdItemList.Name = "dtgrdItemList"
         Me.dtgrdItemList.ReadOnly = True
         Me.dtgrdItemList.RowTemplate.Height = 24
-        Me.dtgrdItemList.Size = New System.Drawing.Size(1192, 538)
+        Me.dtgrdItemList.Size = New System.Drawing.Size(1021, 538)
         Me.dtgrdItemList.TabIndex = 6
         '
         'Column1
@@ -101,7 +104,7 @@ Partial Class frmNegativeStockReports
         Me.btnBack.BackColor = System.Drawing.SystemColors.Control
         Me.btnBack.BackgroundImage = Global.BackOffice.My.Resources.Resources.red_back_arrow
         Me.btnBack.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.btnBack.Location = New System.Drawing.Point(1137, 8)
+        Me.btnBack.Location = New System.Drawing.Point(969, 8)
         Me.btnBack.Name = "btnBack"
         Me.btnBack.Size = New System.Drawing.Size(115, 35)
         Me.btnBack.TabIndex = 5
@@ -136,28 +139,29 @@ Partial Class frmNegativeStockReports
         '
         'Panel1
         '
+        Me.Panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Left
         Me.Panel1.Location = New System.Drawing.Point(0, 27)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(100, 636)
+        Me.Panel1.Size = New System.Drawing.Size(268, 636)
         Me.Panel1.TabIndex = 111
         '
         'Panel2
         '
         Me.Panel2.Controls.Add(Me.btnRefresh)
         Me.Panel2.Dock = System.Windows.Forms.DockStyle.Top
-        Me.Panel2.Location = New System.Drawing.Point(100, 27)
+        Me.Panel2.Location = New System.Drawing.Point(268, 27)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(1255, 40)
+        Me.Panel2.Size = New System.Drawing.Size(1087, 40)
         Me.Panel2.TabIndex = 112
         '
         'Panel3
         '
         Me.Panel3.Controls.Add(Me.btnBack)
         Me.Panel3.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.Panel3.Location = New System.Drawing.Point(100, 617)
+        Me.Panel3.Location = New System.Drawing.Point(268, 617)
         Me.Panel3.Name = "Panel3"
-        Me.Panel3.Size = New System.Drawing.Size(1255, 46)
+        Me.Panel3.Size = New System.Drawing.Size(1087, 46)
         Me.Panel3.TabIndex = 113
         '
         'Panel4

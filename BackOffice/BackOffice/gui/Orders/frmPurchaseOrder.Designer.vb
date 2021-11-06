@@ -22,11 +22,11 @@ Partial Class frmPurchaseOrder
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle23 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle21 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle22 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle24 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmPurchaseOrder))
+        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.btnBack = New System.Windows.Forms.Button()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
@@ -86,21 +86,36 @@ Partial Class frmPurchaseOrder
         Me.btnCancel = New System.Windows.Forms.ToolStripButton()
         Me.btnApprove = New System.Windows.Forms.ToolStripButton()
         Me.btnPrint = New System.Windows.Forms.ToolStripButton()
-        Me.btnArchive = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripSeparator5 = New System.Windows.Forms.ToolStripSeparator()
+        Me.ToolStripSeparator6 = New System.Windows.Forms.ToolStripSeparator()
+        Me.ToolStripSeparator7 = New System.Windows.Forms.ToolStripSeparator()
+        Me.btnArchive = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripSeparator8 = New System.Windows.Forms.ToolStripSeparator()
+        Me.btnArchiveAll = New System.Windows.Forms.ToolStripButton()
         Me.dtgrdLPOList = New System.Windows.Forms.DataGridView()
         Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.btnArchiveAll = New System.Windows.Forms.ToolStripButton()
-        Me.ToolStripSeparator6 = New System.Windows.Forms.ToolStripSeparator()
-        Me.ToolStripSeparator7 = New System.Windows.Forms.ToolStripSeparator()
-        Me.ToolStripSeparator8 = New System.Windows.Forms.ToolStripSeparator()
+        Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.TabControl1 = New System.Windows.Forms.TabControl()
+        Me.TabPage1 = New System.Windows.Forms.TabPage()
+        Me.TabPage2 = New System.Windows.Forms.TabPage()
+        Me.Panel4 = New System.Windows.Forms.Panel()
+        Me.Panel5 = New System.Windows.Forms.Panel()
+        Me.Panel6 = New System.Windows.Forms.Panel()
+        Me.Panel7 = New System.Windows.Forms.Panel()
         CType(Me.dtgrdItemList, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel2.SuspendLayout()
         Me.Panel3.SuspendLayout()
         Me.ToolStrip1.SuspendLayout()
         CType(Me.dtgrdLPOList, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.Panel1.SuspendLayout()
+        Me.TabControl1.SuspendLayout()
+        Me.TabPage1.SuspendLayout()
+        Me.TabPage2.SuspendLayout()
+        Me.Panel4.SuspendLayout()
+        Me.Panel5.SuspendLayout()
+        Me.Panel7.SuspendLayout()
         Me.SuspendLayout()
         '
         'btnBack
@@ -110,7 +125,7 @@ Partial Class frmPurchaseOrder
         Me.btnBack.BackgroundImage = Global.BackOffice.My.Resources.Resources.red_back_arrow
         Me.btnBack.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.btnBack.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnBack.Location = New System.Drawing.Point(1415, 704)
+        Me.btnBack.Location = New System.Drawing.Point(1024, 6)
         Me.btnBack.Name = "btnBack"
         Me.btnBack.Size = New System.Drawing.Size(100, 40)
         Me.btnBack.TabIndex = 10
@@ -119,7 +134,7 @@ Partial Class frmPurchaseOrder
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(16, 42)
+        Me.Label1.Location = New System.Drawing.Point(7, 42)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(97, 17)
         Me.Label1.TabIndex = 11
@@ -128,7 +143,7 @@ Partial Class frmPurchaseOrder
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(12, 75)
+        Me.Label2.Location = New System.Drawing.Point(3, 75)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(101, 17)
         Me.Label2.TabIndex = 12
@@ -137,7 +152,7 @@ Partial Class frmPurchaseOrder
         'txtSupplierCode
         '
         Me.txtSupplierCode.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtSupplierCode.Location = New System.Drawing.Point(119, 42)
+        Me.txtSupplierCode.Location = New System.Drawing.Point(107, 42)
         Me.txtSupplierCode.MaxLength = 50
         Me.txtSupplierCode.Name = "txtSupplierCode"
         Me.txtSupplierCode.Size = New System.Drawing.Size(184, 24)
@@ -147,31 +162,30 @@ Partial Class frmPurchaseOrder
         '
         Me.dtgrdItemList.AllowUserToAddRows = False
         Me.dtgrdItemList.AllowUserToResizeColumns = False
-        Me.dtgrdItemList.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.dtgrdItemList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.dtgrdItemList.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells
         Me.dtgrdItemList.BackgroundColor = System.Drawing.SystemColors.ButtonFace
+        Me.dtgrdItemList.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.dtgrdItemList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dtgrdItemList.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column13, Me.Column7, Me.Column8, Me.Column10, Me.Column9, Me.Column11, Me.Column2, Me.Column12, Me.Column1})
-        DataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle23.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle23.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle23.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle23.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle23.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle23.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dtgrdItemList.DefaultCellStyle = DataGridViewCellStyle23
+        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle7.Font = New System.Drawing.Font("Microsoft Sans Serif", 7.8!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dtgrdItemList.DefaultCellStyle = DataGridViewCellStyle7
+        Me.dtgrdItemList.Dock = System.Windows.Forms.DockStyle.Fill
         Me.dtgrdItemList.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically
         Me.dtgrdItemList.GridColor = System.Drawing.SystemColors.ActiveBorder
         Me.dtgrdItemList.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.dtgrdItemList.Location = New System.Drawing.Point(443, 302)
+        Me.dtgrdItemList.Location = New System.Drawing.Point(400, 308)
         Me.dtgrdItemList.Name = "dtgrdItemList"
         Me.dtgrdItemList.ReadOnly = True
         Me.dtgrdItemList.RowTemplate.Height = 24
         Me.dtgrdItemList.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
-        Me.dtgrdItemList.Size = New System.Drawing.Size(1072, 396)
+        Me.dtgrdItemList.Size = New System.Drawing.Size(1127, 443)
         Me.dtgrdItemList.TabIndex = 16
         '
         'Column13
@@ -212,8 +226,8 @@ Partial Class frmPurchaseOrder
         '
         'Column11
         '
-        DataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.Column11.DefaultCellStyle = DataGridViewCellStyle21
+        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.Column11.DefaultCellStyle = DataGridViewCellStyle5
         Me.Column11.FillWeight = 83.45177!
         Me.Column11.HeaderText = "Cost Price@"
         Me.Column11.Name = "Column11"
@@ -221,8 +235,8 @@ Partial Class frmPurchaseOrder
         '
         'Column2
         '
-        DataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.Column2.DefaultCellStyle = DataGridViewCellStyle22
+        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.Column2.DefaultCellStyle = DataGridViewCellStyle6
         Me.Column2.HeaderText = "Total Cost"
         Me.Column2.Name = "Column2"
         Me.Column2.ReadOnly = True
@@ -244,7 +258,7 @@ Partial Class frmPurchaseOrder
         'txtOrderNo
         '
         Me.txtOrderNo.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtOrderNo.Location = New System.Drawing.Point(119, 9)
+        Me.txtOrderNo.Location = New System.Drawing.Point(107, 7)
         Me.txtOrderNo.MaxLength = 50
         Me.txtOrderNo.Name = "txtOrderNo"
         Me.txtOrderNo.ReadOnly = True
@@ -254,7 +268,7 @@ Partial Class frmPurchaseOrder
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(46, 14)
+        Me.Label3.Location = New System.Drawing.Point(34, 14)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(67, 17)
         Me.Label3.TabIndex = 17
@@ -263,7 +277,7 @@ Partial Class frmPurchaseOrder
         'txtOrderDate
         '
         Me.txtOrderDate.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtOrderDate.Location = New System.Drawing.Point(119, 110)
+        Me.txtOrderDate.Location = New System.Drawing.Point(107, 138)
         Me.txtOrderDate.Name = "txtOrderDate"
         Me.txtOrderDate.ReadOnly = True
         Me.txtOrderDate.Size = New System.Drawing.Size(115, 24)
@@ -272,7 +286,7 @@ Partial Class frmPurchaseOrder
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(34, 110)
+        Me.Label4.Location = New System.Drawing.Point(22, 138)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(79, 17)
         Me.Label4.TabIndex = 24
@@ -281,7 +295,7 @@ Partial Class frmPurchaseOrder
         'Label5
         '
         Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(24, 143)
+        Me.Label5.Location = New System.Drawing.Point(7, 171)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(89, 17)
         Me.Label5.TabIndex = 26
@@ -290,7 +304,7 @@ Partial Class frmPurchaseOrder
         'txtVaildUntil
         '
         Me.txtVaildUntil.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtVaildUntil.Location = New System.Drawing.Point(119, 177)
+        Me.txtVaildUntil.Location = New System.Drawing.Point(107, 207)
         Me.txtVaildUntil.Name = "txtVaildUntil"
         Me.txtVaildUntil.ReadOnly = True
         Me.txtVaildUntil.Size = New System.Drawing.Size(115, 24)
@@ -299,7 +313,7 @@ Partial Class frmPurchaseOrder
         'Label6
         '
         Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(77, 184)
+        Me.Label6.Location = New System.Drawing.Point(60, 207)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(36, 17)
         Me.Label6.TabIndex = 28
@@ -308,7 +322,7 @@ Partial Class frmPurchaseOrder
         'txtOrderStatus
         '
         Me.txtOrderStatus.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtOrderStatus.Location = New System.Drawing.Point(119, 212)
+        Me.txtOrderStatus.Location = New System.Drawing.Point(107, 240)
         Me.txtOrderStatus.Name = "txtOrderStatus"
         Me.txtOrderStatus.ReadOnly = True
         Me.txtOrderStatus.Size = New System.Drawing.Size(115, 24)
@@ -317,7 +331,7 @@ Partial Class frmPurchaseOrder
         'Label7
         '
         Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(65, 212)
+        Me.Label7.Location = New System.Drawing.Point(48, 240)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(48, 17)
         Me.Label7.TabIndex = 30
@@ -329,7 +343,7 @@ Partial Class frmPurchaseOrder
         Me.cmbValidityPeriod.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmbValidityPeriod.FormattingEnabled = True
         Me.cmbValidityPeriod.Items.AddRange(New Object() {"30", "7", "14", "21", "30", "45", "60"})
-        Me.cmbValidityPeriod.Location = New System.Drawing.Point(119, 143)
+        Me.cmbValidityPeriod.Location = New System.Drawing.Point(107, 168)
         Me.cmbValidityPeriod.Name = "cmbValidityPeriod"
         Me.cmbValidityPeriod.Size = New System.Drawing.Size(115, 26)
         Me.cmbValidityPeriod.TabIndex = 32
@@ -338,7 +352,7 @@ Partial Class frmPurchaseOrder
         '
         Me.Label9.AutoSize = True
         Me.Label9.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label9.Location = New System.Drawing.Point(173, 554)
+        Me.Label9.Location = New System.Drawing.Point(53, 9)
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(56, 25)
         Me.Label9.TabIndex = 35
@@ -347,7 +361,7 @@ Partial Class frmPurchaseOrder
         'txtTotal
         '
         Me.txtTotal.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtTotal.Location = New System.Drawing.Point(235, 554)
+        Me.txtTotal.Location = New System.Drawing.Point(109, 6)
         Me.txtTotal.Name = "txtTotal"
         Me.txtTotal.ReadOnly = True
         Me.txtTotal.Size = New System.Drawing.Size(195, 30)
@@ -476,7 +490,7 @@ Partial Class frmPurchaseOrder
         '
         'btnSearch
         '
-        Me.btnSearch.Location = New System.Drawing.Point(318, 9)
+        Me.btnSearch.Location = New System.Drawing.Point(295, 7)
         Me.btnSearch.Name = "btnSearch"
         Me.btnSearch.Size = New System.Drawing.Size(100, 40)
         Me.btnSearch.TabIndex = 19
@@ -494,7 +508,6 @@ Partial Class frmPurchaseOrder
         '
         'Panel2
         '
-        Me.Panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.Panel2.Controls.Add(Me.cmbDescription)
         Me.Panel2.Controls.Add(Me.btnAdd)
         Me.Panel2.Controls.Add(Me.btnReset)
@@ -512,7 +525,7 @@ Partial Class frmPurchaseOrder
         Me.Panel2.Controls.Add(Me.txtQuantity)
         Me.Panel2.Controls.Add(Me.Label15)
         Me.Panel2.Controls.Add(Me.txtPackSize)
-        Me.Panel2.Location = New System.Drawing.Point(10, 302)
+        Me.Panel2.Location = New System.Drawing.Point(0, 0)
         Me.Panel2.Name = "Panel2"
         Me.Panel2.Size = New System.Drawing.Size(425, 240)
         Me.Panel2.TabIndex = 52
@@ -563,16 +576,17 @@ Partial Class frmPurchaseOrder
         Me.Panel3.Controls.Add(Me.Label5)
         Me.Panel3.Controls.Add(Me.Label4)
         Me.Panel3.Controls.Add(Me.txtOrderDate)
-        Me.Panel3.Location = New System.Drawing.Point(10, 50)
+        Me.Panel3.Dock = System.Windows.Forms.DockStyle.Top
+        Me.Panel3.Location = New System.Drawing.Point(0, 0)
         Me.Panel3.Name = "Panel3"
-        Me.Panel3.Size = New System.Drawing.Size(425, 246)
+        Me.Panel3.Size = New System.Drawing.Size(400, 291)
         Me.Panel3.TabIndex = 53
         '
         'cmbSupplier
         '
         Me.cmbSupplier.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmbSupplier.FormattingEnabled = True
-        Me.cmbSupplier.Location = New System.Drawing.Point(119, 75)
+        Me.cmbSupplier.Location = New System.Drawing.Point(3, 95)
         Me.cmbSupplier.Name = "cmbSupplier"
         Me.cmbSupplier.Size = New System.Drawing.Size(299, 26)
         Me.cmbSupplier.TabIndex = 100
@@ -672,6 +686,21 @@ Partial Class frmPurchaseOrder
         Me.btnPrint.Text = "Print"
         Me.btnPrint.ToolTipText = "Print LPO, a printed LPO can be sent to its respective supplier"
         '
+        'ToolStripSeparator5
+        '
+        Me.ToolStripSeparator5.Name = "ToolStripSeparator5"
+        Me.ToolStripSeparator5.Size = New System.Drawing.Size(6, 27)
+        '
+        'ToolStripSeparator6
+        '
+        Me.ToolStripSeparator6.Name = "ToolStripSeparator6"
+        Me.ToolStripSeparator6.Size = New System.Drawing.Size(6, 27)
+        '
+        'ToolStripSeparator7
+        '
+        Me.ToolStripSeparator7.Name = "ToolStripSeparator7"
+        Me.ToolStripSeparator7.Size = New System.Drawing.Size(6, 27)
+        '
         'btnArchive
         '
         Me.btnArchive.Image = Global.BackOffice.My.Resources.Resources.tick
@@ -681,10 +710,19 @@ Partial Class frmPurchaseOrder
         Me.btnArchive.Text = "Archive"
         Me.btnArchive.ToolTipText = "Sends completed LPO to archives for future references"
         '
-        'ToolStripSeparator5
+        'ToolStripSeparator8
         '
-        Me.ToolStripSeparator5.Name = "ToolStripSeparator5"
-        Me.ToolStripSeparator5.Size = New System.Drawing.Size(6, 27)
+        Me.ToolStripSeparator8.Name = "ToolStripSeparator8"
+        Me.ToolStripSeparator8.Size = New System.Drawing.Size(6, 27)
+        '
+        'btnArchiveAll
+        '
+        Me.btnArchiveAll.Image = CType(resources.GetObject("btnArchiveAll.Image"), System.Drawing.Image)
+        Me.btnArchiveAll.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.btnArchiveAll.Name = "btnArchiveAll"
+        Me.btnArchiveAll.Size = New System.Drawing.Size(102, 24)
+        Me.btnArchiveAll.Text = "Archive all"
+        Me.btnArchiveAll.ToolTipText = "Sends all completed and cleared packing list to archives for future references"
         '
         'dtgrdLPOList
         '
@@ -695,18 +733,18 @@ Partial Class frmPurchaseOrder
         Me.dtgrdLPOList.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.dtgrdLPOList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dtgrdLPOList.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn1, Me.DataGridViewTextBoxColumn2, Me.DataGridViewTextBoxColumn3})
-        Me.dtgrdLPOList.Location = New System.Drawing.Point(903, 50)
+        Me.dtgrdLPOList.Location = New System.Drawing.Point(6, 6)
         Me.dtgrdLPOList.Name = "dtgrdLPOList"
         Me.dtgrdLPOList.ReadOnly = True
         Me.dtgrdLPOList.RowTemplate.Height = 24
-        Me.dtgrdLPOList.Size = New System.Drawing.Size(612, 241)
+        Me.dtgrdLPOList.Size = New System.Drawing.Size(678, 225)
         Me.dtgrdLPOList.TabIndex = 103
         '
         'DataGridViewTextBoxColumn1
         '
-        DataGridViewCellStyle24.SelectionBackColor = System.Drawing.Color.White
-        DataGridViewCellStyle24.SelectionForeColor = System.Drawing.Color.Black
-        Me.DataGridViewTextBoxColumn1.DefaultCellStyle = DataGridViewCellStyle24
+        DataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.White
+        DataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.Black
+        Me.DataGridViewTextBoxColumn1.DefaultCellStyle = DataGridViewCellStyle8
         Me.DataGridViewTextBoxColumn1.FillWeight = 42.63959!
         Me.DataGridViewTextBoxColumn1.HeaderText = "LPO #"
         Me.DataGridViewTextBoxColumn1.Name = "DataGridViewTextBoxColumn1"
@@ -726,43 +764,95 @@ Partial Class frmPurchaseOrder
         Me.DataGridViewTextBoxColumn3.Name = "DataGridViewTextBoxColumn3"
         Me.DataGridViewTextBoxColumn3.ReadOnly = True
         '
-        'btnArchiveAll
+        'Panel1
         '
-        Me.btnArchiveAll.Image = CType(resources.GetObject("btnArchiveAll.Image"), System.Drawing.Image)
-        Me.btnArchiveAll.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.btnArchiveAll.Name = "btnArchiveAll"
-        Me.btnArchiveAll.Size = New System.Drawing.Size(102, 24)
-        Me.btnArchiveAll.Text = "Archive all"
-        Me.btnArchiveAll.ToolTipText = "Sends all completed and cleared packing list to archives for future references"
+        Me.Panel1.Controls.Add(Me.Panel7)
+        Me.Panel1.Controls.Add(Me.Panel3)
+        Me.Panel1.Dock = System.Windows.Forms.DockStyle.Left
+        Me.Panel1.Location = New System.Drawing.Point(0, 27)
+        Me.Panel1.Name = "Panel1"
+        Me.Panel1.Size = New System.Drawing.Size(400, 724)
+        Me.Panel1.TabIndex = 104
         '
-        'ToolStripSeparator6
+        'TabControl1
         '
-        Me.ToolStripSeparator6.Name = "ToolStripSeparator6"
-        Me.ToolStripSeparator6.Size = New System.Drawing.Size(6, 27)
+        Me.TabControl1.Controls.Add(Me.TabPage1)
+        Me.TabControl1.Controls.Add(Me.TabPage2)
+        Me.TabControl1.Location = New System.Drawing.Point(6, 3)
+        Me.TabControl1.Name = "TabControl1"
+        Me.TabControl1.SelectedIndex = 0
+        Me.TabControl1.Size = New System.Drawing.Size(698, 271)
+        Me.TabControl1.TabIndex = 105
         '
-        'ToolStripSeparator7
+        'TabPage1
         '
-        Me.ToolStripSeparator7.Name = "ToolStripSeparator7"
-        Me.ToolStripSeparator7.Size = New System.Drawing.Size(6, 27)
+        Me.TabPage1.BackColor = System.Drawing.SystemColors.Control
+        Me.TabPage1.Controls.Add(Me.Panel2)
+        Me.TabPage1.Location = New System.Drawing.Point(4, 25)
+        Me.TabPage1.Name = "TabPage1"
+        Me.TabPage1.Padding = New System.Windows.Forms.Padding(3)
+        Me.TabPage1.Size = New System.Drawing.Size(690, 242)
+        Me.TabPage1.TabIndex = 0
+        Me.TabPage1.Text = "Item Entry"
         '
-        'ToolStripSeparator8
+        'TabPage2
         '
-        Me.ToolStripSeparator8.Name = "ToolStripSeparator8"
-        Me.ToolStripSeparator8.Size = New System.Drawing.Size(6, 27)
+        Me.TabPage2.BackColor = System.Drawing.SystemColors.Control
+        Me.TabPage2.Controls.Add(Me.dtgrdLPOList)
+        Me.TabPage2.Location = New System.Drawing.Point(4, 25)
+        Me.TabPage2.Name = "TabPage2"
+        Me.TabPage2.Padding = New System.Windows.Forms.Padding(3)
+        Me.TabPage2.Size = New System.Drawing.Size(690, 242)
+        Me.TabPage2.TabIndex = 1
+        Me.TabPage2.Text = "LPO List"
+        '
+        'Panel4
+        '
+        Me.Panel4.Controls.Add(Me.TabControl1)
+        Me.Panel4.Dock = System.Windows.Forms.DockStyle.Top
+        Me.Panel4.Location = New System.Drawing.Point(400, 27)
+        Me.Panel4.Name = "Panel4"
+        Me.Panel4.Size = New System.Drawing.Size(1127, 281)
+        Me.Panel4.TabIndex = 106
+        '
+        'Panel5
+        '
+        Me.Panel5.Controls.Add(Me.btnBack)
+        Me.Panel5.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.Panel5.Location = New System.Drawing.Point(400, 679)
+        Me.Panel5.Name = "Panel5"
+        Me.Panel5.Size = New System.Drawing.Size(1127, 72)
+        Me.Panel5.TabIndex = 107
+        '
+        'Panel6
+        '
+        Me.Panel6.Dock = System.Windows.Forms.DockStyle.Right
+        Me.Panel6.Location = New System.Drawing.Point(1511, 308)
+        Me.Panel6.Name = "Panel6"
+        Me.Panel6.Size = New System.Drawing.Size(16, 371)
+        Me.Panel6.TabIndex = 108
+        '
+        'Panel7
+        '
+        Me.Panel7.Controls.Add(Me.txtTotal)
+        Me.Panel7.Controls.Add(Me.Label9)
+        Me.Panel7.Dock = System.Windows.Forms.DockStyle.Top
+        Me.Panel7.Location = New System.Drawing.Point(0, 291)
+        Me.Panel7.Name = "Panel7"
+        Me.Panel7.Size = New System.Drawing.Size(400, 42)
+        Me.Panel7.TabIndex = 54
         '
         'frmPurchaseOrder
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1527, 751)
-        Me.Controls.Add(Me.dtgrdLPOList)
-        Me.Controls.Add(Me.ToolStrip1)
-        Me.Controls.Add(Me.Panel3)
-        Me.Controls.Add(Me.Panel2)
-        Me.Controls.Add(Me.txtTotal)
-        Me.Controls.Add(Me.Label9)
+        Me.Controls.Add(Me.Panel6)
+        Me.Controls.Add(Me.Panel5)
         Me.Controls.Add(Me.dtgrdItemList)
-        Me.Controls.Add(Me.btnBack)
+        Me.Controls.Add(Me.Panel4)
+        Me.Controls.Add(Me.Panel1)
+        Me.Controls.Add(Me.ToolStrip1)
         Me.MinimizeBox = False
         Me.Name = "frmPurchaseOrder"
         Me.ShowIcon = False
@@ -778,6 +868,14 @@ Partial Class frmPurchaseOrder
         Me.ToolStrip1.ResumeLayout(False)
         Me.ToolStrip1.PerformLayout()
         CType(Me.dtgrdLPOList, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.Panel1.ResumeLayout(False)
+        Me.TabControl1.ResumeLayout(False)
+        Me.TabPage1.ResumeLayout(False)
+        Me.TabPage2.ResumeLayout(False)
+        Me.Panel4.ResumeLayout(False)
+        Me.Panel5.ResumeLayout(False)
+        Me.Panel7.ResumeLayout(False)
+        Me.Panel7.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -851,4 +949,12 @@ Partial Class frmPurchaseOrder
     Friend WithEvents ToolStripSeparator6 As ToolStripSeparator
     Friend WithEvents ToolStripSeparator7 As ToolStripSeparator
     Friend WithEvents ToolStripSeparator8 As ToolStripSeparator
+    Friend WithEvents Panel1 As Panel
+    Friend WithEvents TabControl1 As TabControl
+    Friend WithEvents TabPage1 As TabPage
+    Friend WithEvents TabPage2 As TabPage
+    Friend WithEvents Panel4 As Panel
+    Friend WithEvents Panel5 As Panel
+    Friend WithEvents Panel6 As Panel
+    Friend WithEvents Panel7 As Panel
 End Class

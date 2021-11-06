@@ -954,16 +954,29 @@ Public Class frmMassManager
                             Dim itemcode As String = objXLWs.Range("A" & i).Value
                             Dim qty As String = objXLWs.Range("T" & i).Value
 
+                            Dim query As String = "" ' a query to update inventory and stock cards
+                            query = "UPDATE `inventorys` SET `qty`='" + qty + "' WHERE `item_code`='" + itemcode + "';"
+                            If Val(qty) <> 0 Then
+                                query = query + "INSERT INTO `stock_cards`(`date`,`item_code`,`qty_in`,`balance`,`reference`) VALUES (@date,@item_code,@qty,@balance,@reference)"
+                            End If
+
                             Dim conn As New MySqlConnection(Database.conString)
                             conn.Open()
                             Dim command As New MySqlCommand()
+
                             command.Connection = conn
-                            command.CommandText = "UPDATE `inventorys` SET `qty`='" + qty + "' WHERE `item_code`='" + itemcode + "'"
+
+                            command.Parameters.AddWithValue("@date", Day.DAY)
+                            command.Parameters.AddWithValue("@item_code", itemcode)
+                            command.Parameters.AddWithValue("@qty", qty)
+                            command.Parameters.AddWithValue("@balance", qty)
+                            command.Parameters.AddWithValue("@reference", "Stock adjustment, Mass update")
+
+                            command.CommandText = query
                             command.Prepare()
                             command.ExecuteNonQuery()
                             conn.Close()
-                            Dim stockCard As New StockCard
-                            stockCard.qtyIn(Day.DAY, itemcode, Val(qty), Val(qty), "Stock adjustment, Mass update")
+
                         Next
                         lblOperation.Text = ""
                         MsgBox("Operation completed")

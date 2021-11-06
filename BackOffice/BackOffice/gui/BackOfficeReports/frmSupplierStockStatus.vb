@@ -17,6 +17,7 @@ Public Class frmSupplierStockStatus
     Dim list As String = ""
 
     Private Sub btnGenerate_Click(sender As Object, e As EventArgs) Handles btnView.Click
+        Cursor = Cursors.AppStarting
         list = ""
         For i As Integer = 0 To lstCode.Items.Count - 1
             list = list + "'" + lstCode.Items.Item(i) + "'"
@@ -25,6 +26,7 @@ Public Class frmSupplierStockStatus
             End If
         Next
         refreshList(cmbSupplier.Text, cmbDepartment.Text)
+        Cursor = Cursors.Default
     End Sub
     Private Function refreshList(supplierName As String, departmentName As String)
         dtgrdItemList.Rows.Clear()

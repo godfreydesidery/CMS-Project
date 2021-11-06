@@ -489,30 +489,6 @@ Public Class frmStockCardReports
         print()
     End Sub
 
-    Private Sub txtTotal_TextChanged(sender As Object, e As EventArgs)
-
-    End Sub
-
-    Private Sub Label5_Click(sender As Object, e As EventArgs)
-
-    End Sub
-
-    Private Sub txtTotalDiscount_TextChanged(sender As Object, e As EventArgs)
-
-    End Sub
-
-    Private Sub Label4_Click(sender As Object, e As EventArgs)
-
-    End Sub
-
-    Private Sub txtTotalVAT_TextChanged(sender As Object, e As EventArgs)
-
-    End Sub
-
-    Private Sub Label3_Click(sender As Object, e As EventArgs)
-
-    End Sub
-
     Private Sub cmbSupplier_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbSupplier.SelectedIndexChanged
         clearFields()
         lstCode.Items.Clear()
@@ -522,9 +498,6 @@ Public Class frmStockCardReports
         printWithoutProfit()
     End Sub
 
-    Private Sub Panel1_Paint(sender As Object, e As PaintEventArgs) Handles Panel1.Paint
-
-    End Sub
     Private Sub searchItem()
         Dim found As Boolean = False
         Dim valid As Boolean = False

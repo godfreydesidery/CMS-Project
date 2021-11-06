@@ -30,10 +30,11 @@ Partial Class frmSalesReceipts
         Me.btnSave = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
         Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.Panel2 = New System.Windows.Forms.Panel()
-        Me.Panel3 = New System.Windows.Forms.Panel()
-        Me.Panel4 = New System.Windows.Forms.Panel()
         Me.Panel5 = New System.Windows.Forms.Panel()
+        Me.Label7 = New System.Windows.Forms.Label()
+        Me.ComboBox1 = New System.Windows.Forms.ComboBox()
+        Me.TextBox5 = New System.Windows.Forms.TextBox()
+        Me.Label6 = New System.Windows.Forms.Label()
         Me.cmbDescription = New System.Windows.Forms.ComboBox()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.TextBox4 = New System.Windows.Forms.TextBox()
@@ -43,12 +44,11 @@ Partial Class frmSalesReceipts
         Me.Label2 = New System.Windows.Forms.Label()
         Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.TextBox5 = New System.Windows.Forms.TextBox()
-        Me.Label6 = New System.Windows.Forms.Label()
-        Me.ComboBox1 = New System.Windows.Forms.ComboBox()
-        Me.Label7 = New System.Windows.Forms.Label()
-        Me.dtgrdParticulars = New System.Windows.Forms.DataGridView()
+        Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.Panel3 = New System.Windows.Forms.Panel()
         Me.Button2 = New System.Windows.Forms.Button()
+        Me.Panel4 = New System.Windows.Forms.Panel()
+        Me.dtgrdParticulars = New System.Windows.Forms.DataGridView()
         Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -56,8 +56,8 @@ Partial Class frmSalesReceipts
         Me.Column4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ToolStrip1.SuspendLayout()
         Me.Panel1.SuspendLayout()
-        Me.Panel3.SuspendLayout()
         Me.Panel5.SuspendLayout()
+        Me.Panel3.SuspendLayout()
         CType(Me.dtgrdParticulars, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -128,37 +128,13 @@ Partial Class frmSalesReceipts
         '
         'Panel1
         '
+        Me.Panel1.BackColor = System.Drawing.SystemColors.Control
         Me.Panel1.Controls.Add(Me.Panel5)
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Left
         Me.Panel1.Location = New System.Drawing.Point(0, 27)
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(400, 681)
         Me.Panel1.TabIndex = 111
-        '
-        'Panel2
-        '
-        Me.Panel2.Dock = System.Windows.Forms.DockStyle.Top
-        Me.Panel2.Location = New System.Drawing.Point(400, 27)
-        Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(816, 40)
-        Me.Panel2.TabIndex = 112
-        '
-        'Panel3
-        '
-        Me.Panel3.Controls.Add(Me.Button2)
-        Me.Panel3.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.Panel3.Location = New System.Drawing.Point(400, 668)
-        Me.Panel3.Name = "Panel3"
-        Me.Panel3.Size = New System.Drawing.Size(816, 40)
-        Me.Panel3.TabIndex = 113
-        '
-        'Panel4
-        '
-        Me.Panel4.Dock = System.Windows.Forms.DockStyle.Right
-        Me.Panel4.Location = New System.Drawing.Point(1176, 67)
-        Me.Panel4.Name = "Panel4"
-        Me.Panel4.Size = New System.Drawing.Size(40, 601)
-        Me.Panel4.TabIndex = 114
         '
         'Panel5
         '
@@ -180,6 +156,43 @@ Partial Class frmSalesReceipts
         Me.Panel5.Name = "Panel5"
         Me.Panel5.Size = New System.Drawing.Size(400, 275)
         Me.Panel5.TabIndex = 0
+        '
+        'Label7
+        '
+        Me.Label7.AutoSize = True
+        Me.Label7.Location = New System.Drawing.Point(24, 127)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(71, 17)
+        Me.Label7.TabIndex = 131
+        Me.Label7.Text = "Pay Mode"
+        '
+        'ComboBox1
+        '
+        Me.ComboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.ComboBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ComboBox1.FormattingEnabled = True
+        Me.ComboBox1.Items.AddRange(New Object() {"Cash", "Cheque", "Other"})
+        Me.ComboBox1.Location = New System.Drawing.Point(103, 121)
+        Me.ComboBox1.Name = "ComboBox1"
+        Me.ComboBox1.Size = New System.Drawing.Size(180, 28)
+        Me.ComboBox1.TabIndex = 130
+        '
+        'TextBox5
+        '
+        Me.TextBox5.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TextBox5.Location = New System.Drawing.Point(103, 157)
+        Me.TextBox5.Name = "TextBox5"
+        Me.TextBox5.Size = New System.Drawing.Size(180, 27)
+        Me.TextBox5.TabIndex = 129
+        '
+        'Label6
+        '
+        Me.Label6.AutoSize = True
+        Me.Label6.Location = New System.Drawing.Point(41, 163)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(56, 17)
+        Me.Label6.TabIndex = 128
+        Me.Label6.Text = "Amount"
         '
         'cmbDescription
         '
@@ -260,60 +273,22 @@ Partial Class frmSalesReceipts
         Me.Label1.TabIndex = 117
         Me.Label1.Text = "Receipt No"
         '
-        'TextBox5
+        'Panel2
         '
-        Me.TextBox5.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox5.Location = New System.Drawing.Point(103, 157)
-        Me.TextBox5.Name = "TextBox5"
-        Me.TextBox5.Size = New System.Drawing.Size(180, 27)
-        Me.TextBox5.TabIndex = 129
+        Me.Panel2.Dock = System.Windows.Forms.DockStyle.Top
+        Me.Panel2.Location = New System.Drawing.Point(400, 27)
+        Me.Panel2.Name = "Panel2"
+        Me.Panel2.Size = New System.Drawing.Size(816, 40)
+        Me.Panel2.TabIndex = 112
         '
-        'Label6
+        'Panel3
         '
-        Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(41, 163)
-        Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(56, 17)
-        Me.Label6.TabIndex = 128
-        Me.Label6.Text = "Amount"
-        '
-        'ComboBox1
-        '
-        Me.ComboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.ComboBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ComboBox1.FormattingEnabled = True
-        Me.ComboBox1.Items.AddRange(New Object() {"Cash", "Cheque", "Other"})
-        Me.ComboBox1.Location = New System.Drawing.Point(103, 121)
-        Me.ComboBox1.Name = "ComboBox1"
-        Me.ComboBox1.Size = New System.Drawing.Size(180, 28)
-        Me.ComboBox1.TabIndex = 130
-        '
-        'Label7
-        '
-        Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(24, 127)
-        Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(71, 17)
-        Me.Label7.TabIndex = 131
-        Me.Label7.Text = "Pay Mode"
-        '
-        'dtgrdParticulars
-        '
-        Me.dtgrdParticulars.AllowUserToAddRows = False
-        Me.dtgrdParticulars.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.dtgrdParticulars.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
-        Me.dtgrdParticulars.BackgroundColor = System.Drawing.SystemColors.ButtonFace
-        Me.dtgrdParticulars.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.dtgrdParticulars.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dtgrdParticulars.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column1, Me.Column2, Me.Column3, Me.Column5, Me.Column4})
-        Me.dtgrdParticulars.Location = New System.Drawing.Point(406, 73)
-        Me.dtgrdParticulars.Name = "dtgrdParticulars"
-        Me.dtgrdParticulars.ReadOnly = True
-        Me.dtgrdParticulars.RowTemplate.Height = 24
-        Me.dtgrdParticulars.Size = New System.Drawing.Size(764, 589)
-        Me.dtgrdParticulars.TabIndex = 115
+        Me.Panel3.Controls.Add(Me.Button2)
+        Me.Panel3.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.Panel3.Location = New System.Drawing.Point(400, 668)
+        Me.Panel3.Name = "Panel3"
+        Me.Panel3.Size = New System.Drawing.Size(816, 40)
+        Me.Panel3.TabIndex = 113
         '
         'Button2
         '
@@ -325,6 +300,30 @@ Partial Class frmSalesReceipts
         Me.Button2.Size = New System.Drawing.Size(100, 35)
         Me.Button2.TabIndex = 115
         Me.Button2.UseVisualStyleBackColor = True
+        '
+        'Panel4
+        '
+        Me.Panel4.Dock = System.Windows.Forms.DockStyle.Right
+        Me.Panel4.Location = New System.Drawing.Point(1176, 67)
+        Me.Panel4.Name = "Panel4"
+        Me.Panel4.Size = New System.Drawing.Size(40, 601)
+        Me.Panel4.TabIndex = 114
+        '
+        'dtgrdParticulars
+        '
+        Me.dtgrdParticulars.AllowUserToAddRows = False
+        Me.dtgrdParticulars.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
+        Me.dtgrdParticulars.BackgroundColor = System.Drawing.SystemColors.ButtonFace
+        Me.dtgrdParticulars.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.dtgrdParticulars.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dtgrdParticulars.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column1, Me.Column2, Me.Column3, Me.Column5, Me.Column4})
+        Me.dtgrdParticulars.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.dtgrdParticulars.Location = New System.Drawing.Point(400, 67)
+        Me.dtgrdParticulars.Name = "dtgrdParticulars"
+        Me.dtgrdParticulars.ReadOnly = True
+        Me.dtgrdParticulars.RowTemplate.Height = 24
+        Me.dtgrdParticulars.Size = New System.Drawing.Size(776, 601)
+        Me.dtgrdParticulars.TabIndex = 115
         '
         'Column1
         '
@@ -375,9 +374,9 @@ Partial Class frmSalesReceipts
         Me.ToolStrip1.ResumeLayout(False)
         Me.ToolStrip1.PerformLayout()
         Me.Panel1.ResumeLayout(False)
-        Me.Panel3.ResumeLayout(False)
         Me.Panel5.ResumeLayout(False)
         Me.Panel5.PerformLayout()
+        Me.Panel3.ResumeLayout(False)
         CType(Me.dtgrdParticulars, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()

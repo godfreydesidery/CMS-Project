@@ -22,10 +22,10 @@ Partial Class frmSupplierStockStatus
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle13 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle14 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle15 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle16 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.cmbSupplier = New System.Windows.Forms.ComboBox()
         Me.btnView = New System.Windows.Forms.Button()
         Me.dtgrdItemList = New System.Windows.Forms.DataGridView()
@@ -58,26 +58,26 @@ Partial Class frmSupplierStockStatus
         Me.btnExportToPDF = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripButton1 = New System.Windows.Forms.ToolStripButton()
         Me.Panel4 = New System.Windows.Forms.Panel()
-        Me.Panel5 = New System.Windows.Forms.Panel()
-        Me.Panel6 = New System.Windows.Forms.Panel()
-        Me.Panel7 = New System.Windows.Forms.Panel()
-        Me.Panel8 = New System.Windows.Forms.Panel()
         Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.btnBack = New System.Windows.Forms.Button()
-        Me.ComboBox1 = New System.Windows.Forms.ComboBox()
-        Me.Label3 = New System.Windows.Forms.Label()
-        Me.ComboBox2 = New System.Windows.Forms.ComboBox()
-        Me.Label6 = New System.Windows.Forms.Label()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.txtNetValue = New System.Windows.Forms.TextBox()
+        Me.Panel8 = New System.Windows.Forms.Panel()
+        Me.ComboBox2 = New System.Windows.Forms.ComboBox()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.ComboBox1 = New System.Windows.Forms.ComboBox()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.Panel5 = New System.Windows.Forms.Panel()
+        Me.Panel6 = New System.Windows.Forms.Panel()
+        Me.btnBack = New System.Windows.Forms.Button()
+        Me.Panel7 = New System.Windows.Forms.Panel()
         CType(Me.dtgrdItemList, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel3.SuspendLayout()
         Me.ToolStrip1.SuspendLayout()
         Me.Panel4.SuspendLayout()
+        Me.Panel1.SuspendLayout()
+        Me.Panel8.SuspendLayout()
         Me.Panel5.SuspendLayout()
         Me.Panel6.SuspendLayout()
-        Me.Panel8.SuspendLayout()
-        Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
         '
         'cmbSupplier
@@ -100,6 +100,9 @@ Partial Class frmSupplierStockStatus
         'dtgrdItemList
         '
         Me.dtgrdItemList.AllowUserToAddRows = False
+        Me.dtgrdItemList.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.dtgrdItemList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.dtgrdItemList.BackgroundColor = System.Drawing.SystemColors.ButtonFace
         Me.dtgrdItemList.BorderStyle = System.Windows.Forms.BorderStyle.None
@@ -128,8 +131,8 @@ Partial Class frmSupplierStockStatus
         '
         'Column3
         '
-        DataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.Column3.DefaultCellStyle = DataGridViewCellStyle13
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.Column3.DefaultCellStyle = DataGridViewCellStyle1
         Me.Column3.FillWeight = 62.43238!
         Me.Column3.HeaderText = "Stock"
         Me.Column3.Name = "Column3"
@@ -137,8 +140,8 @@ Partial Class frmSupplierStockStatus
         '
         'Column4
         '
-        DataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.Column4.DefaultCellStyle = DataGridViewCellStyle14
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.Column4.DefaultCellStyle = DataGridViewCellStyle2
         Me.Column4.FillWeight = 73.40728!
         Me.Column4.HeaderText = "Cost Price@"
         Me.Column4.Name = "Column4"
@@ -146,8 +149,8 @@ Partial Class frmSupplierStockStatus
         '
         'Column5
         '
-        DataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.Column5.DefaultCellStyle = DataGridViewCellStyle15
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.Column5.DefaultCellStyle = DataGridViewCellStyle3
         Me.Column5.FillWeight = 71.06599!
         Me.Column5.HeaderText = "Selling Price@"
         Me.Column5.Name = "Column5"
@@ -155,8 +158,8 @@ Partial Class frmSupplierStockStatus
         '
         'Column6
         '
-        DataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.Column6.DefaultCellStyle = DataGridViewCellStyle16
+        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.Column6.DefaultCellStyle = DataGridViewCellStyle4
         Me.Column6.FillWeight = 88.30824!
         Me.Column6.HeaderText = "Stock Value"
         Me.Column6.Name = "Column6"
@@ -374,49 +377,6 @@ Partial Class frmSupplierStockStatus
         Me.Panel4.Size = New System.Drawing.Size(250, 740)
         Me.Panel4.TabIndex = 110
         '
-        'Panel5
-        '
-        Me.Panel5.Controls.Add(Me.Panel3)
-        Me.Panel5.Controls.Add(Me.btnView)
-        Me.Panel5.Dock = System.Windows.Forms.DockStyle.Top
-        Me.Panel5.Location = New System.Drawing.Point(250, 27)
-        Me.Panel5.Name = "Panel5"
-        Me.Panel5.Size = New System.Drawing.Size(1225, 149)
-        Me.Panel5.TabIndex = 111
-        '
-        'Panel6
-        '
-        Me.Panel6.Controls.Add(Me.btnBack)
-        Me.Panel6.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.Panel6.Location = New System.Drawing.Point(250, 707)
-        Me.Panel6.Name = "Panel6"
-        Me.Panel6.Size = New System.Drawing.Size(1225, 60)
-        Me.Panel6.TabIndex = 112
-        '
-        'Panel7
-        '
-        Me.Panel7.Dock = System.Windows.Forms.DockStyle.Right
-        Me.Panel7.Location = New System.Drawing.Point(1451, 176)
-        Me.Panel7.Name = "Panel7"
-        Me.Panel7.Size = New System.Drawing.Size(24, 531)
-        Me.Panel7.TabIndex = 113
-        '
-        'Panel8
-        '
-        Me.Panel8.Controls.Add(Me.ComboBox2)
-        Me.Panel8.Controls.Add(Me.Label6)
-        Me.Panel8.Controls.Add(Me.ComboBox1)
-        Me.Panel8.Controls.Add(Me.Label3)
-        Me.Panel8.Controls.Add(Me.cmbDepartment)
-        Me.Panel8.Controls.Add(Me.Label5)
-        Me.Panel8.Controls.Add(Me.Label2)
-        Me.Panel8.Controls.Add(Me.cmbSupplier)
-        Me.Panel8.Dock = System.Windows.Forms.DockStyle.Top
-        Me.Panel8.Location = New System.Drawing.Point(0, 0)
-        Me.Panel8.Name = "Panel8"
-        Me.Panel8.Size = New System.Drawing.Size(246, 212)
-        Me.Panel8.TabIndex = 0
-        '
         'Panel1
         '
         Me.Panel1.Controls.Add(Me.Label7)
@@ -429,52 +389,6 @@ Partial Class frmSupplierStockStatus
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(246, 193)
         Me.Panel1.TabIndex = 1
-        '
-        'btnBack
-        '
-        Me.btnBack.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btnBack.BackColor = System.Drawing.SystemColors.Control
-        Me.btnBack.BackgroundImage = Global.BackOffice.My.Resources.Resources.red_back_arrow
-        Me.btnBack.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.btnBack.Location = New System.Drawing.Point(1122, 8)
-        Me.btnBack.Name = "btnBack"
-        Me.btnBack.Size = New System.Drawing.Size(100, 40)
-        Me.btnBack.TabIndex = 81
-        Me.btnBack.UseVisualStyleBackColor = False
-        '
-        'ComboBox1
-        '
-        Me.ComboBox1.FormattingEnabled = True
-        Me.ComboBox1.Location = New System.Drawing.Point(6, 123)
-        Me.ComboBox1.Name = "ComboBox1"
-        Me.ComboBox1.Size = New System.Drawing.Size(238, 24)
-        Me.ComboBox1.TabIndex = 49
-        '
-        'Label3
-        '
-        Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(5, 103)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(42, 17)
-        Me.Label3.TabIndex = 50
-        Me.Label3.Text = "Class"
-        '
-        'ComboBox2
-        '
-        Me.ComboBox2.FormattingEnabled = True
-        Me.ComboBox2.Location = New System.Drawing.Point(6, 175)
-        Me.ComboBox2.Name = "ComboBox2"
-        Me.ComboBox2.Size = New System.Drawing.Size(238, 24)
-        Me.ComboBox2.TabIndex = 51
-        '
-        'Label6
-        '
-        Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(5, 155)
-        Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(71, 17)
-        Me.Label6.TabIndex = 52
-        Me.Label6.Text = "Sub Class"
         '
         'Label7
         '
@@ -495,6 +409,95 @@ Partial Class frmSupplierStockStatus
         Me.txtNetValue.Size = New System.Drawing.Size(236, 30)
         Me.txtNetValue.TabIndex = 52
         Me.txtNetValue.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        '
+        'Panel8
+        '
+        Me.Panel8.Controls.Add(Me.ComboBox2)
+        Me.Panel8.Controls.Add(Me.Label6)
+        Me.Panel8.Controls.Add(Me.ComboBox1)
+        Me.Panel8.Controls.Add(Me.Label3)
+        Me.Panel8.Controls.Add(Me.cmbDepartment)
+        Me.Panel8.Controls.Add(Me.Label5)
+        Me.Panel8.Controls.Add(Me.Label2)
+        Me.Panel8.Controls.Add(Me.cmbSupplier)
+        Me.Panel8.Dock = System.Windows.Forms.DockStyle.Top
+        Me.Panel8.Location = New System.Drawing.Point(0, 0)
+        Me.Panel8.Name = "Panel8"
+        Me.Panel8.Size = New System.Drawing.Size(246, 212)
+        Me.Panel8.TabIndex = 0
+        '
+        'ComboBox2
+        '
+        Me.ComboBox2.FormattingEnabled = True
+        Me.ComboBox2.Location = New System.Drawing.Point(6, 175)
+        Me.ComboBox2.Name = "ComboBox2"
+        Me.ComboBox2.Size = New System.Drawing.Size(238, 24)
+        Me.ComboBox2.TabIndex = 51
+        '
+        'Label6
+        '
+        Me.Label6.AutoSize = True
+        Me.Label6.Location = New System.Drawing.Point(5, 155)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(71, 17)
+        Me.Label6.TabIndex = 52
+        Me.Label6.Text = "Sub Class"
+        '
+        'ComboBox1
+        '
+        Me.ComboBox1.FormattingEnabled = True
+        Me.ComboBox1.Location = New System.Drawing.Point(6, 123)
+        Me.ComboBox1.Name = "ComboBox1"
+        Me.ComboBox1.Size = New System.Drawing.Size(238, 24)
+        Me.ComboBox1.TabIndex = 49
+        '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Location = New System.Drawing.Point(5, 103)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(42, 17)
+        Me.Label3.TabIndex = 50
+        Me.Label3.Text = "Class"
+        '
+        'Panel5
+        '
+        Me.Panel5.Controls.Add(Me.Panel3)
+        Me.Panel5.Controls.Add(Me.btnView)
+        Me.Panel5.Dock = System.Windows.Forms.DockStyle.Top
+        Me.Panel5.Location = New System.Drawing.Point(250, 27)
+        Me.Panel5.Name = "Panel5"
+        Me.Panel5.Size = New System.Drawing.Size(1225, 149)
+        Me.Panel5.TabIndex = 111
+        '
+        'Panel6
+        '
+        Me.Panel6.Controls.Add(Me.btnBack)
+        Me.Panel6.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.Panel6.Location = New System.Drawing.Point(250, 707)
+        Me.Panel6.Name = "Panel6"
+        Me.Panel6.Size = New System.Drawing.Size(1225, 60)
+        Me.Panel6.TabIndex = 112
+        '
+        'btnBack
+        '
+        Me.btnBack.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnBack.BackColor = System.Drawing.SystemColors.Control
+        Me.btnBack.BackgroundImage = Global.BackOffice.My.Resources.Resources.red_back_arrow
+        Me.btnBack.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.btnBack.Location = New System.Drawing.Point(1122, 8)
+        Me.btnBack.Name = "btnBack"
+        Me.btnBack.Size = New System.Drawing.Size(100, 40)
+        Me.btnBack.TabIndex = 81
+        Me.btnBack.UseVisualStyleBackColor = False
+        '
+        'Panel7
+        '
+        Me.Panel7.Dock = System.Windows.Forms.DockStyle.Right
+        Me.Panel7.Location = New System.Drawing.Point(1451, 176)
+        Me.Panel7.Name = "Panel7"
+        Me.Panel7.Size = New System.Drawing.Size(24, 531)
+        Me.Panel7.TabIndex = 113
         '
         'frmSupplierStockStatus
         '
@@ -519,12 +522,12 @@ Partial Class frmSupplierStockStatus
         Me.ToolStrip1.ResumeLayout(False)
         Me.ToolStrip1.PerformLayout()
         Me.Panel4.ResumeLayout(False)
-        Me.Panel5.ResumeLayout(False)
-        Me.Panel6.ResumeLayout(False)
-        Me.Panel8.ResumeLayout(False)
-        Me.Panel8.PerformLayout()
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
+        Me.Panel8.ResumeLayout(False)
+        Me.Panel8.PerformLayout()
+        Me.Panel5.ResumeLayout(False)
+        Me.Panel6.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 

@@ -7,7 +7,7 @@
     <framework targetVersion="4.5" profile="Full" supportedRuntime="4.0.30319" />
   </compatibleFrameworks>
   <dependency>
-    <dependentAssembly dependencyType="install" codebase="POS2.exe.manifest" size="6690">
+    <dependentAssembly dependencyType="install" codebase="Application Files\POS2_1_0_0_67\POS2.exe.manifest" size="6690">
       <assemblyIdentity name="POS2.exe" version="1.0.0.67" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
       <hash>
         <dsig:Transforms>

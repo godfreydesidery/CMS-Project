@@ -957,8 +957,8 @@ Public Class frmPurchaseOrder
             Exit Sub
         End If
         If Val(qty) Mod 1 <> 0 Then
-            MsgBox("Could not add item. Invalid quantity entry. Quantity should be a whole number", vbOKOnly + vbCritical, "Error: Invalid entry")
-            Exit Sub
+            ' MsgBox("Could not add item. Invalid quantity entry. Quantity should be a whole number", vbOKOnly + vbCritical, "Error: Invalid entry")
+            ' Exit Sub
         End If
         Dim order As Order
         If ORDER_STAT = "NEW" Then
@@ -1292,5 +1292,13 @@ Public Class frmPurchaseOrder
             refreshLPOList()
             Cursor = Cursors.Default
         End If
+    End Sub
+
+    Private Sub Label9_Click(sender As Object, e As EventArgs) Handles Label9.Click
+
+    End Sub
+
+    Private Sub txtTotal_TextChanged(sender As Object, e As EventArgs) Handles txtTotal.TextChanged
+
     End Sub
 End Class
