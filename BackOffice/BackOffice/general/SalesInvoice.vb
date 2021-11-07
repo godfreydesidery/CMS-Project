@@ -368,12 +368,12 @@ Public Class SalesInvoice
         Return exist
     End Function
 
-    Public Function editInvoice(issueNo As String) As Boolean
+    Public Function editInvoice(invoiceNo As String) As Boolean
         Dim success As Boolean = False
         Try
             Dim conn As New MySqlConnection(Database.conString)
             Dim command As New MySqlCommand()
-            Dim codeQuery As String = "UPDATE `sales_invoices` SET `customer_no`='" + (New CorporateCustomer).getCustomerCode("", GL_CUSTOMER_NAME) + "' WHERE `issue_no`='" + issueNo + "'"
+            Dim codeQuery As String = "UPDATE `sales_invoices` SET `customer_no`='" + (New CorporateCustomer).getCustomerCode("", GL_CUSTOMER_NAME) + "' WHERE `invoice_no`='" + invoiceNo + "'"
             conn.Open()
             command.CommandText = codeQuery
             command.Connection = conn

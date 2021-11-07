@@ -69,19 +69,19 @@ Public Class Quotation
     End Function
 
 
-    Public Function getInvoiceId(invoiceNo As String) As String
+    Public Function getQuotationId(quotationNo As String) As String
         Dim id As String = ""
         Try
             Dim conn As New MySqlConnection(Database.conString)
             Dim command As New MySqlCommand()
-            Dim codeQuery As String = "SELECT `id` FROM `sales_invoices` WHERE `invoice_no`='" + invoiceNo + "'"
+            Dim codeQuery As String = "SELECT `quotation_id` FROM `quotations` WHERE `quotation_no`='" + quotationNo + "'"
             conn.Open()
             command.CommandText = codeQuery
             command.Connection = conn
             command.CommandType = CommandType.Text
             Dim reader As MySqlDataReader = command.ExecuteReader()
             While reader.Read
-                id = reader.GetString("id")
+                id = reader.GetString("quotation_id")
                 Exit While
             End While
             conn.Close()
@@ -117,7 +117,7 @@ Public Class Quotation
         Try
             Dim conn As New MySqlConnection(Database.conString)
             Dim command As New MySqlCommand()
-            Dim codeQuery As String = "SELECT `sales_invoices`.`invoice_id` AS `id`, `sales_invoices`.`invoice_no` AS `invoice_no`, `sales_invoices`.`customer_no` AS `customer_no`, `sales_invoices`.`invoice_date` AS `invoice_date`, `sales_invoices`.`status` AS `status` FROM `sales_invoices` WHERE `sales_invoices`.`invoice_no`='" + invoiceNo + "'"
+            Dim codeQuery As String = "SELECT `quotations`.`quotation_id` AS `id`, `quotations`.`quotation_no` AS `quotation_no`, `quotations`.`customer_no` AS `customer_no`, `quotations`.`quotation_date` AS `quotation_date`, `quotations`.`status` AS `status` FROM `quotations` WHERE `quotations`.`quotation_no`='" + quotationNo + "'"
             conn.Open()
             command.CommandText = codeQuery
             command.Connection = conn
@@ -125,8 +125,8 @@ Public Class Quotation
             Dim reader As MySqlDataReader = command.ExecuteReader()
             While reader.Read
                 Me.GL_ID = reader.GetString("id")
-                Me.GL_INVOICE_NO = reader.GetString("invoice_no")
-                Me.GL_INVOICE_DATE = reader.GetString("invoice_date")
+                Me.GL_QUOTATION_NO = reader.GetString("quotation_no")
+                Me.GL_QUOTATION_DATE = reader.GetString("quotation_date")
                 Me.GL_STATUS = reader.GetString("status")
                 Me.GL_CUSTOMER_NAME = (New CorporateCustomer).getCustomerName("", reader.GetString("customer_no"))
                 '   Me.GL_CUSTOMER_ADDRESS = reader.GetString("customer_address")
@@ -141,12 +141,12 @@ Public Class Quotation
         End Try
         Return success
     End Function
-    Public Function getStatus(invoiceNo As String) As String
+    Public Function getStatus(quotationNo As String) As String
         Dim status As String = ""
         Try
             Dim conn As New MySqlConnection(Database.conString)
             Dim command As New MySqlCommand()
-            Dim codeQuery As String = "SELECT `status` FROM `sales_invoices` WHERE `invoice_no`='" + invoiceNo + "'"
+            Dim codeQuery As String = "SELECT `status` FROM `quotations` WHERE `quotation_no`='" + quotationNo + "'"
             conn.Open()
             command.CommandText = codeQuery
             command.Connection = conn
@@ -164,18 +164,18 @@ Public Class Quotation
     End Function
 
 
-    Public Function addNewInvoice() As Boolean
+    Public Function addNewQuotation() As Boolean
         Dim success As Boolean = False
         Try
             Dim conn As New MySqlConnection(Database.conString)
             Dim command As New MySqlCommand()
-            Dim codeQuery As String = "INSERT INTO `sales_invoices`(  `invoice_no`, `invoice_date`, `customer_no`, `status`) VALUES (@invoice_no,@invoice_date,@customer_no,@status)"
+            Dim codeQuery As String = "INSERT INTO `quotations`(  `quotation_no`, `quotation_date`, `customer_no`, `status`) VALUES (@quotation_no,@quotation_date,@customer_no,@status)"
             conn.Open()
             command.CommandText = codeQuery
             command.Connection = conn
             command.CommandType = CommandType.Text
-            command.Parameters.Add("@invoice_no", GL_INVOICE_NO)
-            command.Parameters.Add("@invoice_date", GL_INVOICE_DATE)
+            command.Parameters.Add("@quotation_no", GL_QUOTATION_NO)
+            command.Parameters.Add("@quotation_date", GL_QUOTATION_DATE)
             command.Parameters.Add("@customer_no", (New CorporateCustomer).getCustomerCode("", GL_CUSTOMER_NAME))
             command.Parameters.Add("@status", "NEW")
             command.ExecuteNonQuery()
@@ -187,18 +187,18 @@ Public Class Quotation
         End Try
         Return success
     End Function
-    Public Function addInvoiceDetails() As Boolean
+    Public Function addQuotationDetails() As Boolean
         Dim success As Boolean = False
         Try
             Dim conn As New MySqlConnection(Database.conString)
             Dim command As New MySqlCommand()
-            Dim codeQuery As String = "INSERT INTO `sales_invoice_details`( `invoice_no`, `item_code`, `description`, `price`, `qty`) VALUES (@invoice_no,@item_code,@description,@price,@qty)"
+            Dim codeQuery As String = "INSERT INTO `quotation_details`( `quotation_no`, `item_code`, `description`, `price`, `qty`) VALUES (@quotation_no,@item_code,@description,@price,@qty)"
             conn.Open()
             command.CommandText = codeQuery
             command.Connection = conn
             command.CommandType = CommandType.Text
 
-            command.Parameters.Add("@invoice_no", GL_INVOICE_NO)
+            command.Parameters.Add("@quotation_no", GL_QUOTATION_NO)
             command.Parameters.Add("@item_code", GL_ITEM_CODE)
             command.Parameters.Add("@description", GL_DESCRIPTION)
             command.Parameters.Add("@price", GL_PRICE)
@@ -212,12 +212,12 @@ Public Class Quotation
         End Try
         Return success
     End Function
-    Public Function editInvoiceDetails(invoiceNo As String, itemCode As String) As Boolean
+    Public Function editQuotationDetails(quotationNo As String, itemCode As String) As Boolean
         Dim success As Boolean = True
         Try
             Dim conn As New MySqlConnection(Database.conString)
             Dim command As New MySqlCommand()
-            Dim codeQuery As String = "UPDATE `sales_invoice_details` SET `price`='" + GL_PRICE.ToString + "', `qty`='" + GL_QTY.ToString + "' WHERE `invoice_no`='" + invoiceNo + "' AND `item_code`='" + itemCode + "'"
+            Dim codeQuery As String = "UPDATE `quotation_details` SET `price`='" + GL_PRICE.ToString + "', `qty`='" + GL_QTY.ToString + "' WHERE `quotation_no`='" + quotationNo + "' AND `item_code`='" + itemCode + "'"
             conn.Open()
             command.CommandText = codeQuery
             command.Connection = conn
@@ -232,12 +232,12 @@ Public Class Quotation
         Return success
     End Function
 
-    Public Function printPackingList(issueNo As String) As Boolean
+    Public Function cancelQuotation(quotationNo As String) As Boolean
         Dim success As Boolean = True
         Try
             Dim conn As New MySqlConnection(Database.conString)
             Dim command As New MySqlCommand()
-            Dim codeQuery As String = "UPDATE `packing_list` SET`status`='PRINTED' WHERE `issue_no`='" + issueNo + "'"
+            Dim codeQuery As String = "UPDATE `quotations` SET`status`='CANCELED' WHERE `quotation_no`='" + quotationNo + "'"
             conn.Open()
             command.CommandText = codeQuery
             command.Connection = conn
@@ -251,12 +251,12 @@ Public Class Quotation
         End Try
         Return success
     End Function
-    Public Function completePackingList(issueNo As String) As Boolean
+    Public Function archiveQuotation(quotationNo As String) As Boolean
         Dim success As Boolean = True
         Try
             Dim conn As New MySqlConnection(Database.conString)
             Dim command As New MySqlCommand()
-            Dim codeQuery As String = "UPDATE `packing_list` SET`status`='COMPLETED' WHERE `issue_no`='" + issueNo + "'"
+            Dim codeQuery As String = "UPDATE `quotations` SET`status`='ARCHIVED' WHERE `quotation_no`='" + quotationNo + "'"
             conn.Open()
             command.CommandText = codeQuery
             command.Connection = conn
@@ -270,12 +270,12 @@ Public Class Quotation
         End Try
         Return success
     End Function
-    Public Function cancelInvoice(invoiceNo As String) As Boolean
+    Public Function deleteQuotationDetails(quotationNo As String, itemCode As String) As Boolean
         Dim success As Boolean = True
         Try
             Dim conn As New MySqlConnection(Database.conString)
             Dim command As New MySqlCommand()
-            Dim codeQuery As String = "UPDATE `sales_invoices` SET`status`='CANCELED' WHERE `invoice_no`='" + invoiceNo + "'"
+            Dim codeQuery As String = "DELETE FROM `quotation_details` WHERE `quotation_no`='" + quotationNo + "' AND `item_code`='" + itemCode + "'"
             conn.Open()
             command.CommandText = codeQuery
             command.Connection = conn
@@ -289,50 +289,12 @@ Public Class Quotation
         End Try
         Return success
     End Function
-    Public Function archiveInvoice(invoiceNo As String) As Boolean
-        Dim success As Boolean = True
-        Try
-            Dim conn As New MySqlConnection(Database.conString)
-            Dim command As New MySqlCommand()
-            Dim codeQuery As String = "UPDATE `sales_invoices` SET`status`='ARCHIVED' WHERE `invoice_no`='" + invoiceNo + "'"
-            conn.Open()
-            command.CommandText = codeQuery
-            command.Connection = conn
-            command.CommandType = CommandType.Text
-            command.ExecuteNonQuery()
-            conn.Close()
-            success = True
-        Catch ex As Exception
-            success = False
-            MsgBox(ex.Message)
-        End Try
-        Return success
-    End Function
-    Public Function deletePackingListDetails(invoiceNo As String, itemCode As String) As Boolean
-        Dim success As Boolean = True
-        Try
-            Dim conn As New MySqlConnection(Database.conString)
-            Dim command As New MySqlCommand()
-            Dim codeQuery As String = "DELETE FROM `sales_invoice_details` WHERE `invoice_no`='" + invoiceNo + "' AND `item_code`='" + itemCode + "'"
-            conn.Open()
-            command.CommandText = codeQuery
-            command.Connection = conn
-            command.CommandType = CommandType.Text
-            command.ExecuteNonQuery()
-            conn.Close()
-            success = True
-        Catch ex As Exception
-            success = False
-            MsgBox(ex.Message)
-        End Try
-        Return success
-    End Function
-    Public Function isInvoiceExist(invoiceNo As String) As Boolean
+    Public Function isQuotationExist(quotationNo As String) As Boolean
         Dim exist As Boolean = False
         Try
             Dim conn As New MySqlConnection(Database.conString)
             Dim command As New MySqlCommand()
-            Dim codeQuery As String = "SELECT `invoice_no` FROM `sales_invoices` WHERE `invoice_no`='" + invoiceNo + "'"
+            Dim codeQuery As String = "SELECT `quotation_no` FROM `quotations` WHERE `quotation_no`='" + quotationNo + "'"
             conn.Open()
             command.CommandText = codeQuery
             command.Connection = conn
@@ -348,12 +310,12 @@ Public Class Quotation
         Return exist
     End Function
 
-    Public Function editInvoice(issueNo As String) As Boolean
+    Public Function editQuotation(quotationNo As String) As Boolean
         Dim success As Boolean = False
         Try
             Dim conn As New MySqlConnection(Database.conString)
             Dim command As New MySqlCommand()
-            Dim codeQuery As String = "UPDATE `sales_invoices` SET `customer_no`='" + (New CorporateCustomer).getCustomerCode("", GL_CUSTOMER_NAME) + "' WHERE `issue_no`='" + issueNo + "'"
+            Dim codeQuery As String = "UPDATE `quotations` SET `customer_no`='" + (New CorporateCustomer).getCustomerCode("", GL_CUSTOMER_NAME) + "' WHERE `quotation_no`='" + quotationNo + "'"
             conn.Open()
             command.CommandText = codeQuery
             command.Connection = conn
@@ -368,12 +330,12 @@ Public Class Quotation
         Return success
     End Function
 
-    Public Function deletePackingList(invoiceNo As String) As Boolean
+    Public Function deletePackingList(quotationNo As String) As Boolean
         Dim success As Boolean = False
         Try
             Dim conn As New MySqlConnection(Database.conString)
             Dim command As New MySqlCommand()
-            Dim codeQuery As String = "DELETE FROM `sales_invoices` WHERE `invoice_no`='" + invoiceNo + "';DELETE FROM `sales_invoice_details` WHERE `invoice_no`='" + invoiceNo + "'"
+            Dim codeQuery As String = "DELETE FROM `quotations` WHERE `quotation_no`='" + quotationNo + "';DELETE FROM `quotation_details` WHERE `quotation_no`='" + quotationNo + "'"
             conn.Open()
             command.CommandText = codeQuery
             command.Connection = conn
