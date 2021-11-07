@@ -1820,6 +1820,7 @@ Public Class frmSalesInvoice
                 txtInvoiceLimit.Text = LCurrency.displayValue(reader.GetString("invoice_limit"))
                 txtCreditLimit.Text = LCurrency.displayValue(reader.GetString("credit_limit"))
                 txtCreditBalance.Text = LCurrency.displayValue(reader.GetString("credit_balance"))
+                txtContact.Text = reader.GetString("post_code") + reader.GetString("address") + "\n" + reader.GetString("physical_address") + "\n" + reader.GetString("telephone") + "\n" + reader.GetString("email")
                 Exit While
             End While
             conn.Close()
@@ -1832,6 +1833,7 @@ Public Class frmSalesInvoice
             txtInvoiceLimit.Text = ""
             txtCreditLimit.Text = ""
             txtCreditBalance.Text = ""
+            txtContact.Text = ""
         End If
     End Sub
 End Class

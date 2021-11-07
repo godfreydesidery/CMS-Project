@@ -22,6 +22,8 @@ Public Class CorporateCustomer
     Public GL_INVOICE_LIMIT As Double = 0
     Public GL_CREDIT_LIMIT As Double = 0
     Public GL_STATUS As String = ""
+    Public GL_CREDIT_DAYS As Integer = 0
+    Public GL_CREDIT_BALANCE As Double = 0
 
     Public Function getCustomerID(customerCode As String, customerName As String) As String
         Dim id As String = ""
@@ -116,7 +118,7 @@ Public Class CorporateCustomer
             Dim conn As New MySqlConnection(Database.conString)
             Dim command As New MySqlCommand()
             'create bar code
-            Dim codeQuery As String = "SELECT `customer_id`, `customer_code`, `customer_name`, `address`, `post_code`, `physical_address`, `contact_name`, `bank_acc_name`, `bank_acc_address`, `bank_post_code`, `bank_name`, `bank_acc_no`, `telephone`, `mob`, `email`, `fax`, `tin`, `vrn`, `invoice_limit`, `credit_limit`, `status` FROM `corporate_customers` WHERE `customer_code`='" + customerCode + "'"
+            Dim codeQuery As String = "SELECT `customer_id`, `customer_code`, `customer_name`, `address`, `post_code`, `physical_address`, `contact_name`, `bank_acc_name`, `bank_acc_address`, `bank_post_code`, `bank_name`, `bank_acc_no`, `telephone`, `mob`, `email`, `fax`, `tin`, `vrn`, `invoice_limit`, `credit_limit`, `credit_balance`, `status`, `credit_days` FROM `corporate_customers` WHERE `customer_code`='" + customerCode + "'"
             conn.Open()
             command.CommandText = codeQuery
             command.Connection = conn
@@ -143,6 +145,8 @@ Public Class CorporateCustomer
                 GL_VRN = reader.GetString("vrn")
                 GL_INVOICE_LIMIT = reader.GetString("invoice_limit")
                 GL_CREDIT_LIMIT = reader.GetString("credit_limit")
+                GL_CREDIT_DAYS = reader.GetString("credit_days")
+                GL_CREDIT_balance = reader.GetString("credit_balance")
                 GL_STATUS = reader.GetString("status")
                 found = True
 
@@ -156,7 +160,7 @@ Public Class CorporateCustomer
 
         Return found
     End Function
-    Public Function addCustomer(customerCode As String, customerName As String, address As String, postCode As String, physicalAddress As String, contactName As String, bankAccName As String, bankAccAddress As String, bankPostCode As String, bankName As String, bankAccNo As String, telephone As String, mob As String, email As String, fax As String, tin As String, vrn As String, invoiceLimit As Double, creditLimit As Double, status As String) As Boolean
+    Public Function addCustomer(customerCode As String, customerName As String, address As String, postCode As String, physicalAddress As String, contactName As String, bankAccName As String, bankAccAddress As String, bankPostCode As String, bankName As String, bankAccNo As String, telephone As String, mob As String, email As String, fax As String, tin As String, vrn As String, invoiceLimit As Double, creditLimit As Double, status As String, creditBalance As Double) As Boolean
         Dim added As Boolean = False
 
         Try
@@ -164,7 +168,7 @@ Public Class CorporateCustomer
             Dim command As New MySqlCommand()
             'Dim reader As MySqlDataReader
             'create bar code
-            Dim codeQuery As String = "INSERT INTO `corporate_customers`( `customer_code`, `customer_name`, `address`, `post_code`, `physical_address`, `contact_name`, `bank_acc_name`, `bank_acc_address`, `bank_post_code`,`bank_name`, `bank_acc_no`, `telephone`, `mob`, `email`, `fax`, `tin`, `vrn`, `invoice_limit`, `credit_limit`, `status`) VALUES (@customer_code,@customer_name,@address,@post_code,@physical_address,@contact_name,@bank_acc_name,@bank_acc_address,@bank_post_code,@bank_name,@bank_acc_no,@telephone,@mob,@email,@fax,@tin,@vrn,@invoice_limit,@credit_limit,@status)"
+            Dim codeQuery As String = "INSERT INTO `corporate_customers`( `customer_code`, `customer_name`, `address`, `post_code`, `physical_address`, `contact_name`, `bank_acc_name`, `bank_acc_address`, `bank_post_code`,`bank_name`, `bank_acc_no`, `telephone`, `mob`, `email`, `fax`, `tin`, `vrn`, `invoice_limit`, `credit_limit`, `status`, `credit_balance`) VALUES (@customer_code,@customer_name,@address,@post_code,@physical_address,@contact_name,@bank_acc_name,@bank_acc_address,@bank_post_code,@bank_name,@bank_acc_no,@telephone,@mob,@email,@fax,@tin,@vrn,@invoice_limit,@credit_limit,@status@credit_balance)"
             conn.Open()
             command.CommandText = codeQuery
             command.Connection = conn
@@ -189,6 +193,7 @@ Public Class CorporateCustomer
             command.Parameters.AddWithValue("@invoice_limit", invoiceLimit.ToString())
             command.Parameters.AddWithValue("@credit_limit", creditLimit.ToString())
             command.Parameters.AddWithValue("@status", status)
+            command.Parameters.AddWithValue("@credit_balance", creditBalance)
             command.ExecuteNonQuery()
             conn.Close()
             added = True
@@ -203,7 +208,7 @@ Public Class CorporateCustomer
 
         Return added
     End Function
-    Public Function editCustomer(customerCode As String, customerName As String, address As String, postCode As String, physicalAddress As String, contactName As String, bankAccName As String, bankAccAddress As String, bankPostCode As String, bankName As String, bankAccNo As String, telephone As String, mob As String, email As String, fax As String, tin As String, vrn As String, invoiceLimit As Double, creditLimit As Double, status As String) As Boolean
+    Public Function editCustomer(customerCode As String, customerName As String, address As String, postCode As String, physicalAddress As String, contactName As String, bankAccName As String, bankAccAddress As String, bankPostCode As String, bankName As String, bankAccNo As String, telephone As String, mob As String, email As String, fax As String, tin As String, vrn As String, invoiceLimit As Double, creditLimit As Double, status As String, creditBalance As Double) As Boolean
         Dim edited As Boolean = False
 
         Try
@@ -211,7 +216,7 @@ Public Class CorporateCustomer
             Dim command As New MySqlCommand()
             'Dim reader As MySqlDataReader
             'create bar code
-            Dim codeQuery As String = "UPDATE `corporate_customers` SET `customer_name`='" + customerName + "',`address`='" + address + "',`post_code`='" + postCode + "',`physical_address`='" + physicalAddress + "',`contact_name`='" + contactName + "',`bank_acc_name`='" + bankAccName + "',`bank_acc_address`='" + bankAccAddress + "',`bank_post_code`='" + bankPostCode + "',`bank_name`='" + bankName + "',`bank_acc_no`='" + bankAccNo + "',`telephone`='" + telephone + "',`mob`='" + mob + "',`email`='" + email + "',`fax`='" + fax + "',`tin`='" + tin + "',`vrn`='" + vrn + "',`invoice_limit`='" + invoiceLimit.ToString + "',`credit_limit`='" + creditLimit.ToString + "',`status`='" + status + "' WHERE `customer_code`='" + customerCode + "'"
+            Dim codeQuery As String = "UPDATE `corporate_customers` SET `customer_name`='" + customerName + "',`address`='" + address + "',`post_code`='" + postCode + "',`physical_address`='" + physicalAddress + "',`contact_name`='" + contactName + "',`bank_acc_name`='" + bankAccName + "',`bank_acc_address`='" + bankAccAddress + "',`bank_post_code`='" + bankPostCode + "',`bank_name`='" + bankName + "',`bank_acc_no`='" + bankAccNo + "',`telephone`='" + telephone + "',`mob`='" + mob + "',`email`='" + email + "',`fax`='" + fax + "',`tin`='" + tin + "',`vrn`='" + vrn + "',`invoice_limit`='" + invoiceLimit.ToString + "',`credit_limit`='" + creditLimit.ToString + "',`status`='" + status + "', `credit_balance`='" + creditBalance.ToString + "' WHERE `customer_code`='" + customerCode + "'"
             conn.Open()
             command.CommandText = codeQuery
             command.Connection = conn

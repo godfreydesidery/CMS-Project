@@ -87,6 +87,8 @@ Partial Class frmCorporateCustomers
         Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.txtCreditBalance = New System.Windows.Forms.TextBox()
+        Me.Label19 = New System.Windows.Forms.Label()
         Me.ToolStrip1.SuspendLayout()
         Me.Panel1.SuspendLayout()
         Me.Panel8.SuspendLayout()
@@ -189,7 +191,7 @@ Partial Class frmCorporateCustomers
         Me.Panel8.Controls.Add(Me.Label18)
         Me.Panel8.Controls.Add(Me.txtBankAccountName)
         Me.Panel8.Dock = System.Windows.Forms.DockStyle.Top
-        Me.Panel8.Location = New System.Drawing.Point(0, 483)
+        Me.Panel8.Location = New System.Drawing.Point(0, 503)
         Me.Panel8.Name = "Panel8"
         Me.Panel8.Size = New System.Drawing.Size(396, 147)
         Me.Panel8.TabIndex = 3
@@ -292,7 +294,7 @@ Partial Class frmCorporateCustomers
         Me.Panel6.Controls.Add(Me.Label7)
         Me.Panel6.Controls.Add(Me.txtPhysicalAddress)
         Me.Panel6.Dock = System.Windows.Forms.DockStyle.Top
-        Me.Panel6.Location = New System.Drawing.Point(0, 273)
+        Me.Panel6.Location = New System.Drawing.Point(0, 293)
         Me.Panel6.Name = "Panel6"
         Me.Panel6.Size = New System.Drawing.Size(396, 210)
         Me.Panel6.TabIndex = 2
@@ -412,6 +414,8 @@ Partial Class frmCorporateCustomers
         'Panel5
         '
         Me.Panel5.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+        Me.Panel5.Controls.Add(Me.txtCreditBalance)
+        Me.Panel5.Controls.Add(Me.Label19)
         Me.Panel5.Controls.Add(Me.Label13)
         Me.Panel5.Controls.Add(Me.txtCreditDays)
         Me.Panel5.Controls.Add(Me.Label23)
@@ -421,7 +425,7 @@ Partial Class frmCorporateCustomers
         Me.Panel5.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel5.Location = New System.Drawing.Point(0, 173)
         Me.Panel5.Name = "Panel5"
-        Me.Panel5.Size = New System.Drawing.Size(396, 100)
+        Me.Panel5.Size = New System.Drawing.Size(396, 120)
         Me.Panel5.TabIndex = 1
         '
         'Label13
@@ -435,7 +439,7 @@ Partial Class frmCorporateCustomers
         '
         'txtCreditDays
         '
-        Me.txtCreditDays.Location = New System.Drawing.Point(124, 61)
+        Me.txtCreditDays.Location = New System.Drawing.Point(123, 90)
         Me.txtCreditDays.Name = "txtCreditDays"
         Me.txtCreditDays.Size = New System.Drawing.Size(153, 22)
         Me.txtCreditDays.TabIndex = 120
@@ -443,7 +447,7 @@ Partial Class frmCorporateCustomers
         'Label23
         '
         Me.Label23.AutoSize = True
-        Me.Label23.Location = New System.Drawing.Point(36, 61)
+        Me.Label23.Location = New System.Drawing.Point(35, 90)
         Me.Label23.Name = "Label23"
         Me.Label23.Size = New System.Drawing.Size(81, 17)
         Me.Label23.TabIndex = 121
@@ -683,6 +687,23 @@ Partial Class frmCorporateCustomers
         Me.Column4.HeaderText = "Status"
         Me.Column4.Name = "Column4"
         '
+        'txtCreditBalance
+        '
+        Me.txtCreditBalance.Location = New System.Drawing.Point(124, 61)
+        Me.txtCreditBalance.Name = "txtCreditBalance"
+        Me.txtCreditBalance.Size = New System.Drawing.Size(153, 22)
+        Me.txtCreditBalance.TabIndex = 122
+        Me.txtCreditBalance.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        '
+        'Label19
+        '
+        Me.Label19.AutoSize = True
+        Me.Label19.Location = New System.Drawing.Point(16, 61)
+        Me.Label19.Name = "Label19"
+        Me.Label19.Size = New System.Drawing.Size(100, 17)
+        Me.Label19.TabIndex = 123
+        Me.Label19.Text = "Credit Balance"
+        '
         'frmCorporateCustomers
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
@@ -785,4 +806,6 @@ Partial Class frmCorporateCustomers
     Friend WithEvents Column2 As DataGridViewTextBoxColumn
     Friend WithEvents Column3 As DataGridViewTextBoxColumn
     Friend WithEvents Column4 As DataGridViewTextBoxColumn
+    Friend WithEvents txtCreditBalance As TextBox
+    Friend WithEvents Label19 As Label
 End Class

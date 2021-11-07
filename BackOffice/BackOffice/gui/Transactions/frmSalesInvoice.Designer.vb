@@ -23,9 +23,9 @@ Partial Class frmSalesInvoice
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmSalesInvoice))
-        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.btnBack = New System.Windows.Forms.Button()
         Me.ToolStrip1 = New System.Windows.Forms.ToolStrip()
         Me.btnNew = New System.Windows.Forms.ToolStripButton()
@@ -44,6 +44,9 @@ Partial Class frmSalesInvoice
         Me.btnArchiveAll = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripSeparator5 = New System.Windows.Forms.ToolStripSeparator()
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.GroupBox2 = New System.Windows.Forms.GroupBox()
+        Me.Label10 = New System.Windows.Forms.Label()
+        Me.txtTotal = New System.Windows.Forms.TextBox()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.txtCustomerNo = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
@@ -106,11 +109,11 @@ Partial Class frmSalesInvoice
         Me.Column17 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.GroupBox2 = New System.Windows.Forms.GroupBox()
-        Me.Label10 = New System.Windows.Forms.Label()
-        Me.txtTotal = New System.Windows.Forms.TextBox()
+        Me.Label11 = New System.Windows.Forms.Label()
+        Me.txtContact = New System.Windows.Forms.TextBox()
         Me.ToolStrip1.SuspendLayout()
         Me.Panel1.SuspendLayout()
+        Me.GroupBox2.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
         Me.Panel2.SuspendLayout()
         Me.Panel5.SuspendLayout()
@@ -121,7 +124,6 @@ Partial Class frmSalesInvoice
         CType(Me.dtgrdInvoiceLists, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel6.SuspendLayout()
         CType(Me.dtgrdItemList, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.GroupBox2.SuspendLayout()
         Me.SuspendLayout()
         '
         'btnBack
@@ -267,8 +269,40 @@ Partial Class frmSalesInvoice
         Me.Panel1.Size = New System.Drawing.Size(400, 733)
         Me.Panel1.TabIndex = 116
         '
+        'GroupBox2
+        '
+        Me.GroupBox2.Controls.Add(Me.Label10)
+        Me.GroupBox2.Controls.Add(Me.txtTotal)
+        Me.GroupBox2.Dock = System.Windows.Forms.DockStyle.Top
+        Me.GroupBox2.Location = New System.Drawing.Point(0, 490)
+        Me.GroupBox2.Name = "GroupBox2"
+        Me.GroupBox2.Size = New System.Drawing.Size(400, 55)
+        Me.GroupBox2.TabIndex = 2
+        Me.GroupBox2.TabStop = False
+        Me.GroupBox2.Text = "Summary"
+        '
+        'Label10
+        '
+        Me.Label10.AutoSize = True
+        Me.Label10.Location = New System.Drawing.Point(32, 21)
+        Me.Label10.Name = "Label10"
+        Me.Label10.Size = New System.Drawing.Size(88, 17)
+        Me.Label10.TabIndex = 150
+        Me.Label10.Text = "Invoice Total"
+        '
+        'txtTotal
+        '
+        Me.txtTotal.Location = New System.Drawing.Point(128, 21)
+        Me.txtTotal.Name = "txtTotal"
+        Me.txtTotal.ReadOnly = True
+        Me.txtTotal.Size = New System.Drawing.Size(228, 22)
+        Me.txtTotal.TabIndex = 149
+        Me.txtTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        '
         'GroupBox1
         '
+        Me.GroupBox1.Controls.Add(Me.Label11)
+        Me.GroupBox1.Controls.Add(Me.txtContact)
         Me.GroupBox1.Controls.Add(Me.txtCustomerNo)
         Me.GroupBox1.Controls.Add(Me.Label1)
         Me.GroupBox1.Controls.Add(Me.Label9)
@@ -284,7 +318,7 @@ Partial Class frmSalesInvoice
         Me.GroupBox1.Dock = System.Windows.Forms.DockStyle.Top
         Me.GroupBox1.Location = New System.Drawing.Point(0, 180)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(400, 209)
+        Me.GroupBox1.Size = New System.Drawing.Size(400, 310)
         Me.GroupBox1.TabIndex = 1
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Customer Inf"
@@ -426,7 +460,7 @@ Partial Class frmSalesInvoice
         Me.txtComment.Location = New System.Drawing.Point(128, 96)
         Me.txtComment.Multiline = True
         Me.txtComment.Name = "txtComment"
-        Me.txtComment.Size = New System.Drawing.Size(228, 61)
+        Me.txtComment.Size = New System.Drawing.Size(263, 61)
         Me.txtComment.TabIndex = 153
         '
         'Label6
@@ -823,8 +857,8 @@ Partial Class frmSalesInvoice
         '
         'Column17
         '
-        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.Column17.DefaultCellStyle = DataGridViewCellStyle4
+        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.Column17.DefaultCellStyle = DataGridViewCellStyle7
         Me.Column17.HeaderText = "Cost Price (Vat Incl)"
         Me.Column17.Name = "Column17"
         Me.Column17.ReadOnly = True
@@ -832,49 +866,38 @@ Partial Class frmSalesInvoice
         '
         'Column2
         '
-        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.Column2.DefaultCellStyle = DataGridViewCellStyle5
+        DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.Column2.DefaultCellStyle = DataGridViewCellStyle8
         Me.Column2.HeaderText = "Price"
         Me.Column2.Name = "Column2"
         Me.Column2.ReadOnly = True
         '
         'Column4
         '
-        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.Column4.DefaultCellStyle = DataGridViewCellStyle6
+        DataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.Column4.DefaultCellStyle = DataGridViewCellStyle9
         Me.Column4.HeaderText = "Amount"
         Me.Column4.Name = "Column4"
         Me.Column4.ReadOnly = True
         '
-        'GroupBox2
+        'Label11
         '
-        Me.GroupBox2.Controls.Add(Me.Label10)
-        Me.GroupBox2.Controls.Add(Me.txtTotal)
-        Me.GroupBox2.Dock = System.Windows.Forms.DockStyle.Top
-        Me.GroupBox2.Location = New System.Drawing.Point(0, 389)
-        Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(400, 55)
-        Me.GroupBox2.TabIndex = 2
-        Me.GroupBox2.TabStop = False
-        Me.GroupBox2.Text = "Summary"
+        Me.Label11.AutoSize = True
+        Me.Label11.Location = New System.Drawing.Point(64, 194)
+        Me.Label11.Name = "Label11"
+        Me.Label11.Size = New System.Drawing.Size(56, 17)
+        Me.Label11.TabIndex = 154
+        Me.Label11.Text = "Contact"
         '
-        'Label10
+        'txtContact
         '
-        Me.Label10.AutoSize = True
-        Me.Label10.Location = New System.Drawing.Point(32, 21)
-        Me.Label10.Name = "Label10"
-        Me.Label10.Size = New System.Drawing.Size(88, 17)
-        Me.Label10.TabIndex = 150
-        Me.Label10.Text = "Invoice Total"
-        '
-        'txtTotal
-        '
-        Me.txtTotal.Location = New System.Drawing.Point(128, 21)
-        Me.txtTotal.Name = "txtTotal"
-        Me.txtTotal.ReadOnly = True
-        Me.txtTotal.Size = New System.Drawing.Size(228, 22)
-        Me.txtTotal.TabIndex = 149
-        Me.txtTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        Me.txtContact.Location = New System.Drawing.Point(128, 191)
+        Me.txtContact.Multiline = True
+        Me.txtContact.Name = "txtContact"
+        Me.txtContact.ReadOnly = True
+        Me.txtContact.ScrollBars = System.Windows.Forms.ScrollBars.Both
+        Me.txtContact.Size = New System.Drawing.Size(263, 92)
+        Me.txtContact.TabIndex = 153
         '
         'frmSalesInvoice
         '
@@ -894,6 +917,8 @@ Partial Class frmSalesInvoice
         Me.ToolStrip1.ResumeLayout(False)
         Me.ToolStrip1.PerformLayout()
         Me.Panel1.ResumeLayout(False)
+        Me.GroupBox2.ResumeLayout(False)
+        Me.GroupBox2.PerformLayout()
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
         Me.Panel2.ResumeLayout(False)
@@ -907,8 +932,6 @@ Partial Class frmSalesInvoice
         CType(Me.dtgrdInvoiceLists, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel6.ResumeLayout(False)
         CType(Me.dtgrdItemList, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.GroupBox2.ResumeLayout(False)
-        Me.GroupBox2.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -996,4 +1019,6 @@ Partial Class frmSalesInvoice
     Friend WithEvents GroupBox2 As GroupBox
     Friend WithEvents Label10 As Label
     Friend WithEvents txtTotal As TextBox
+    Friend WithEvents Label11 As Label
+    Friend WithEvents txtContact As TextBox
 End Class

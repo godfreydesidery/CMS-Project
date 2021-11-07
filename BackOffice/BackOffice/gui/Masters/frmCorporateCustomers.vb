@@ -10,6 +10,10 @@ Public Class frmCorporateCustomers
         txtContactName.Text = ""
         txtTin.Text = ""
         txtVrn.Text = ""
+        txtCreditLimit.Text = ""
+        txtCreditDays.Text = ""
+        txtInvoiceLimit.Text = ""
+        txtCreditBalance.Text = ""
         txtBankAccountName.Text = ""
         txtBankAddress.Text = ""
         txtBankPostCode.Text = ""
@@ -30,6 +34,10 @@ Public Class frmCorporateCustomers
         txtContactName.ReadOnly = True
         txtTin.ReadOnly = True
         txtVrn.ReadOnly = True
+        txtCreditLimit.ReadOnly = True
+        txtCreditDays.ReadOnly = True
+        txtInvoiceLimit.ReadOnly = True
+        txtCreditBalance.ReadOnly = True
         txtBankAccountName.ReadOnly = True
         txtBankAddress.ReadOnly = True
         txtBankPostCode.ReadOnly = True
@@ -50,6 +58,10 @@ Public Class frmCorporateCustomers
         txtContactName.ReadOnly = False
         txtTin.ReadOnly = False
         txtVrn.ReadOnly = False
+        txtCreditLimit.ReadOnly = False
+        txtCreditDays.ReadOnly = False
+        txtInvoiceLimit.ReadOnly = False
+        txtCreditBalance.ReadOnly = False
         txtBankAccountName.ReadOnly = False
         txtBankAddress.ReadOnly = False
         txtBankPostCode.ReadOnly = False
@@ -108,7 +120,7 @@ Public Class frmCorporateCustomers
         If chkActive.Checked = False Then
             status = "INACTIVE"
         End If
-        If customer.addCustomer(txtNo.Text, cmbName.Text, txtPostAddress.Text, txtPostCode.Text, txtPhysicalAddress.Text, txtContactName.Text, txtBankAccountName.Text, txtBankAddress.Text, txtBankPostCode.Text, txtBankName.Text, txtBankAccountNo.Text, txtTelephone.Text, txtMobile.Text, txtEmail.Text, txtFax.Text, txtTin.Text, txtVrn.Text, Val(LCurrency.getValue(txtInvoiceLimit.Text)), Val(LCurrency.getValue(txtCreditLimit.Text)), status) = True Then
+        If customer.addCustomer(txtNo.Text, cmbName.Text, txtPostAddress.Text, txtPostCode.Text, txtPhysicalAddress.Text, txtContactName.Text, txtBankAccountName.Text, txtBankAddress.Text, txtBankPostCode.Text, txtBankName.Text, txtBankAccountNo.Text, txtTelephone.Text, txtMobile.Text, txtEmail.Text, txtFax.Text, txtTin.Text, txtVrn.Text, Val(LCurrency.getValue(txtInvoiceLimit.Text)), Val(LCurrency.getValue(txtCreditLimit.Text)), status, Val(LCurrency.getValue(txtCreditBalance.Text))) = True Then
             saved = True
         End If
         Return saved
@@ -131,7 +143,7 @@ Public Class frmCorporateCustomers
 
         End If
 
-        If customer.editCustomer(txtNo.Text, cmbName.Text, txtPostAddress.Text, txtPostCode.Text, txtPhysicalAddress.Text, txtContactName.Text, txtBankAccountName.Text, txtBankAddress.Text, txtBankPostCode.Text, txtBankName.Text, txtBankAccountNo.Text, txtTelephone.Text, txtMobile.Text, txtEmail.Text, txtFax.Text, txtTin.Text, txtVrn.Text, Val(LCurrency.getValue(txtInvoiceLimit.Text)), Val(LCurrency.getValue(txtCreditLimit.Text)), status.ToString) = True Then
+        If customer.editCustomer(txtNo.Text, cmbName.Text, txtPostAddress.Text, txtPostCode.Text, txtPhysicalAddress.Text, txtContactName.Text, txtBankAccountName.Text, txtBankAddress.Text, txtBankPostCode.Text, txtBankName.Text, txtBankAccountNo.Text, txtTelephone.Text, txtMobile.Text, txtEmail.Text, txtFax.Text, txtTin.Text, txtVrn.Text, Val(LCurrency.getValue(txtInvoiceLimit.Text)), Val(LCurrency.getValue(txtCreditLimit.Text)), status.ToString, Val(LCurrency.getValue(txtCreditBalance.Text))) = True Then
             saved = True
         End If
         Return saved
@@ -221,6 +233,10 @@ Public Class frmCorporateCustomers
             Else
                 chkActive.Checked = True
             End If
+            txtCreditBalance.Text = LCurrency.displayValue(customer.GL_CREDIT_BALANCE)
+            txtCreditLimit.Text = LCurrency.displayValue(customer.GL_CREDIT_LIMIT)
+            txtCreditDays.Text = customer.GL_CREDIT_DAYS
+            txtInvoiceLimit.Text = LCurrency.displayValue(customer.GL_INVOICE_LIMIT)
 
             dtgrdCustomerList.Enabled = True
             btnDelete.Enabled = True
