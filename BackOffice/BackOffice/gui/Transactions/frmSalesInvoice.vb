@@ -162,22 +162,11 @@ Public Class frmSalesInvoice
         paragraph.AddFormattedText("Invoice Date: " + txtIssueDate.Text)
         paragraph.Format.Font.Size = 8
         paragraph = section.AddParagraph()
-        paragraph.AddFormattedText("Status: " + (New PackingList).getStatus(txtIssueNo.Text))
+        paragraph.AddFormattedText("Status: " + (New SalesInvoice).getStatus(txtInvoiceNo.Text))
         paragraph.Format.Font.Size = 8
         paragraph = section.AddParagraph()
-        paragraph.AddFormattedText("S/M Officer:       " + cmbSalesPersons.Text)
+        paragraph.AddFormattedText("Customer:       " + cmbCustomerName.Text)
         paragraph.Format.Font.Size = 8
-
-        paragraph = section.AddParagraph()
-            paragraph = section.AddParagraph()
-            paragraph.AddFormattedText("Customer :" + txtCustomerName.Text)
-            paragraph.Format.Font.Size = 8
-
-
-        paragraph = section.AddParagraph()
-            paragraph.AddFormattedText("Contacts :" + txtCustomerAddress.Text)
-            paragraph.Format.Font.Size = 8
-            paragraph.Format.Font.Italic = True
 
 
 
@@ -202,12 +191,9 @@ Public Class frmSalesInvoice
 
         Dim skip As Integer = 0
 
-        If status = "PRINTED" Or status = "APPROVED" Or status = "COMPLETED" Or status = "ARCHIVED" Then
 
-
-
-            'Before you can add a row, you must define the columns
-            Dim column As Column
+        'Before you can add a row, you must define the columns
+        Dim column As Column
 
             column = table.AddColumn("1.5cm")
             column.Format.Alignment = ParagraphAlignment.Left
@@ -225,14 +211,6 @@ Public Class frmSalesInvoice
             column = table.AddColumn("2cm")
             column.Format.Alignment = ParagraphAlignment.Right
 
-            column = table.AddColumn("2cm")
-            column.Format.Alignment = ParagraphAlignment.Right
-
-            column = table.AddColumn("2cm")
-            column.Format.Alignment = ParagraphAlignment.Right
-
-
-
             'Create the header of the table
             Dim row As Row
 
@@ -243,49 +221,34 @@ Public Class frmSalesInvoice
             row.Format.Alignment = ParagraphAlignment.Center
             row.Format.Font.Bold = True
             row.Borders.Color = Colors.Black
-            row.Cells(0).AddParagraph("Code")
+            row.Cells(0).AddParagraph("Item code")
             row.Cells(0).Format.Alignment = ParagraphAlignment.Left
             row.Cells(1).AddParagraph("Description")
             row.Cells(1).Format.Alignment = ParagraphAlignment.Left
-            row.Cells(2).AddParagraph("@Price")
+            row.Cells(2).AddParagraph("Qty")
             row.Cells(2).Format.Alignment = ParagraphAlignment.Left
-            row.Cells(3).AddParagraph("Qty Issued")
+            row.Cells(3).AddParagraph("@Price")
             row.Cells(3).Format.Alignment = ParagraphAlignment.Left
-            row.Cells(4).AddParagraph("Qty Sold")
+            row.Cells(4).AddParagraph("Amount")
             row.Cells(4).Format.Alignment = ParagraphAlignment.Left
-            row.Cells(5).AddParagraph("Qty Returned")
-            row.Cells(5).Format.Alignment = ParagraphAlignment.Left
-            row.Cells(6).AddParagraph("Qty Damaged")
-            row.Cells(6).Format.Alignment = ParagraphAlignment.Left
 
 
-            table.SetEdge(0, 0, 7, 1, Edge.Box, BorderStyle.Single, 0.75, Color.Empty)
+        table.SetEdge(0, 0, 5, 1, Edge.Box, BorderStyle.Single, 0.75, Color.Empty)
 
-            Dim totalAmount As Double = 0
+        Dim totalAmount As Double = 0
             Dim totalVat As Double = 0
             Dim totalDiscount As Double = 0
 
 
 
             For i As Integer = 0 To dtgrdItemList.RowCount - 1
-                Dim code As String = dtgrdItemList.Item(0, i).Value.ToString
-                Dim description As String = dtgrdItemList.Item(1, i).Value.ToString
-                '  Dim price As String = LCurrency.displayValue(dtgrdItemList.Item(2, i).Value.ToString)
-                Dim price As String = dtgrdItemList.Item(2, i).Value.ToString
-                Dim qtyIssued As String = dtgrdItemList.Item(5, i).Value.ToString
-                Dim qtysold As String = dtgrdItemList.Item(6, i).Value.ToString
-                Dim qtyReturned As String = dtgrdItemList.Item(7, i).Value.ToString
-                Dim qtyDamaged As String = dtgrdItemList.Item(8, i).Value.ToString
-                ' Dim cPrice As String = LCurrency.displayValue(dtgrdItemList.Item(10, i).Value.ToString)
-                Dim cPrice As String = dtgrdItemList.Item(10, i).Value.ToString
+                Dim code As String = dtgrdItemList.Item(2, i).Value.ToString
+                Dim description As String = dtgrdItemList.Item(3, i).Value.ToString
+                Dim price As String = dtgrdItemList.Item(6, i).Value.ToString
+                Dim qty As String = dtgrdItemList.Item(4, i).Value.ToString
+                Dim amount As String = dtgrdItemList.Item(7, i).Value.ToString
 
                 skip = skip + 1
-
-                If status = "PRINTED" And report = False Then
-                    qtyReturned = ""
-                    qtysold = ""
-                    qtyDamaged = ""
-                End If
 
                 row = table.AddRow()
                 row.Format.Font.Bold = False
@@ -298,142 +261,18 @@ Public Class frmSalesInvoice
                 row.Cells(0).Format.Alignment = ParagraphAlignment.Left
                 row.Cells(1).AddParagraph(description)
                 row.Cells(1).Format.Alignment = ParagraphAlignment.Left
-                row.Cells(2).AddParagraph(price)
+                row.Cells(2).AddParagraph(qty)
                 row.Cells(2).Format.Alignment = ParagraphAlignment.Right
-                row.Cells(3).AddParagraph(qtyIssued)
+                row.Cells(3).AddParagraph(price)
                 row.Cells(3).Format.Alignment = ParagraphAlignment.Left
-                row.Cells(4).AddParagraph(qtysold)
+                row.Cells(4).AddParagraph(amount)
                 row.Cells(4).Format.Alignment = ParagraphAlignment.Left
-                row.Cells(5).AddParagraph(qtyReturned)
-                row.Cells(5).Format.Alignment = ParagraphAlignment.Left
-                row.Cells(6).AddParagraph(qtyDamaged)
-                row.Cells(6).Format.Alignment = ParagraphAlignment.Left
 
-                table.SetEdge(0, 0, 7, 1, Edge.Box, BorderStyle.Single, 0.75, Color.Empty)
-            Next
-            table.SetEdge(0, 0, 7, 1, Edge.Box, BorderStyle.Single, 0.75, Color.Empty)
-
-        ElseIf status = "PENDING" Then
-
-            'Before you can add a row, you must define the columns
-            Dim column As Column
-
-            column = table.AddColumn("1.5cm")
-            column.Format.Alignment = ParagraphAlignment.Left
-
-            column = table.AddColumn("6cm")
-            column.Format.Alignment = ParagraphAlignment.Left
-
-            column = table.AddColumn("2.0cm")
-            column.Format.Alignment = ParagraphAlignment.Right
-
-            column = table.AddColumn("2.0cm")
-            column.Format.Alignment = ParagraphAlignment.Right
-
-            column = table.AddColumn("2cm")
-            column.Format.Alignment = ParagraphAlignment.Right
-
-            column = table.AddColumn("2cm")
-            column.Format.Alignment = ParagraphAlignment.Right
-
-            'column = table.AddColumn("2cm")
-            'column.Format.Alignment = ParagraphAlignment.Right
-
-            'column = table.AddColumn("2cm")
-            'column.Format.Alignment = ParagraphAlignment.Right
-
-            'column = table.AddColumn("2cm")
-            'column.Format.Alignment = ParagraphAlignment.Right
+            table.SetEdge(0, 0, 5, 1, Edge.Box, BorderStyle.Single, 0.75, Color.Empty)
+        Next
+        table.SetEdge(0, 0, 5, 1, Edge.Box, BorderStyle.Single, 0.75, Color.Empty)
 
 
-
-            'Create the header of the table
-            Dim row As Row
-
-            row = table.AddRow()
-            row.Format.Font.Bold = True
-            row.HeadingFormat = True
-            row.Format.Font.Size = 9
-            row.Format.Alignment = ParagraphAlignment.Center
-            row.Format.Font.Bold = True
-            row.Borders.Color = Colors.Black
-            row.Cells(0).AddParagraph("Code")
-            row.Cells(0).Format.Alignment = ParagraphAlignment.Left
-            row.Cells(1).AddParagraph("Description")
-            row.Cells(1).Format.Alignment = ParagraphAlignment.Left
-            row.Cells(2).AddParagraph("@Price")
-            row.Cells(2).Format.Alignment = ParagraphAlignment.Left
-            row.Cells(3).AddParagraph("Returns")
-            row.Cells(3).Format.Alignment = ParagraphAlignment.Left
-            row.Cells(4).AddParagraph("Packed")
-            row.Cells(4).Format.Alignment = ParagraphAlignment.Left
-            row.Cells(5).AddParagraph("Total Issued")
-            row.Cells(5).Format.Alignment = ParagraphAlignment.Left
-            'row.Cells(4).AddParagraph("Qty Sold")
-            'row.Cells(4).Format.Alignment = ParagraphAlignment.Left
-            'row.Cells(5).AddParagraph("Qty Returned")
-            'row.Cells(5).Format.Alignment = ParagraphAlignment.Left
-            'row.Cells(6).AddParagraph("Qty Damaged")
-            'row.Cells(6).Format.Alignment = ParagraphAlignment.Left
-
-
-            table.SetEdge(0, 0, 6, 1, Edge.Box, BorderStyle.Single, 0.75, Color.Empty)
-
-            Dim totalAmount As Double = 0
-            Dim totalVat As Double = 0
-            Dim totalDiscount As Double = 0
-
-
-
-            For i As Integer = 0 To dtgrdItemList.RowCount - 1
-                Dim code As String = dtgrdItemList.Item(0, i).Value.ToString
-                Dim description As String = dtgrdItemList.Item(1, i).Value.ToString
-                ' Dim price As String = LCurrency.displayValue(dtgrdItemList.Item(2, i).Value.ToString)
-                Dim price As String = dtgrdItemList.Item(2, i).Value.ToString
-                Dim returns As String = dtgrdItemList.Item(3, i).Value.ToString
-                Dim packed As String = dtgrdItemList.Item(4, i).Value.ToString
-                Dim totalIssued As String = dtgrdItemList.Item(5, i).Value.ToString
-
-                'Dim qtysold As String = dtgrdItemList.Item(4, i).Value.ToString
-                'Dim qtyReturned As String = dtgrdItemList.Item(5, i).Value.ToString
-                'Dim qtyDamaged As String = dtgrdItemList.Item(6, i).Value.ToString
-
-                If status = "PRINTED" Then
-                    'qtyReturned = ""
-                    'qtysold = ""
-                    'qtyDamaged = ""
-                End If
-
-                row = table.AddRow()
-                row.Format.Font.Bold = False
-                row.HeadingFormat = False
-                row.Format.Font.Size = 9
-                row.Height = "5mm"
-                row.Format.Alignment = ParagraphAlignment.Center
-                row.Borders.Color = Colors.Black
-                row.Cells(0).AddParagraph(code)
-                row.Cells(0).Format.Alignment = ParagraphAlignment.Left
-                row.Cells(1).AddParagraph(description)
-                row.Cells(1).Format.Alignment = ParagraphAlignment.Left
-                row.Cells(2).AddParagraph(price)
-                row.Cells(2).Format.Alignment = ParagraphAlignment.Right
-                row.Cells(3).AddParagraph(returns)
-                row.Cells(3).Format.Alignment = ParagraphAlignment.Left
-                row.Cells(4).AddParagraph(packed)
-                row.Cells(4).Format.Alignment = ParagraphAlignment.Left
-                row.Cells(5).AddParagraph(totalIssued)
-                row.Cells(5).Format.Alignment = ParagraphAlignment.Left
-                'row.Cells(4).AddParagraph(qtysold)
-                'row.Cells(4).Format.Alignment = ParagraphAlignment.Left
-                'row.Cells(5).AddParagraph(qtyReturned)
-                'row.Cells(5).Format.Alignment = ParagraphAlignment.Left
-                'row.Cells(6).AddParagraph(qtyDamaged)
-                'row.Cells(6).Format.Alignment = ParagraphAlignment.Left
-
-                table.SetEdge(0, 0, 6, 1, Edge.Box, BorderStyle.Single, 0.75, Color.Empty)
-            Next
-            table.SetEdge(0, 0, 6, 1, Edge.Box, BorderStyle.Single, 0.75, Color.Empty)
-        End If
 
         paragraph = section.AddParagraph()
 
@@ -467,182 +306,13 @@ Public Class frmSalesInvoice
         If status = "PENDING" Then
 
             paragraph = section.AddParagraph()
-            paragraph.AddFormattedText("Returns:" + LCurrency.displayValue(txtTotalPreviousReturns.Text))
+            paragraph.AddFormattedText("Amount:" + LCurrency.displayValue(txtAmount.Text))
             paragraph.Format.Font.Size = 8
-            paragraph = section.AddParagraph()
-            paragraph.AddFormattedText("Packed:" + LCurrency.displayValue(txtTotalPacked.Text))
-            paragraph.Format.Font.Size = 8
-            paragraph = section.AddParagraph()
-            paragraph.AddFormattedText("Total Issued:" + LCurrency.displayValue(txtTotalAmountIssued.Text))
-            paragraph.Format.Font.Size = 8
+
 
         End If
         'Create the header of the table
-        Dim row3 As Row
-        If Not status = "PENDING" Then
 
-            row3 = table3.AddRow()
-            row3.Format.Font.Bold = True
-            row3.HeadingFormat = True
-            row3.Format.Font.Size = 9
-            row3.Height = "6mm"
-            row3.Format.Alignment = ParagraphAlignment.Center
-            row3.Borders.Color = Colors.Gray
-            row3.Cells(0).AddParagraph("Issue No")
-            row3.Cells(0).Format.Alignment = ParagraphAlignment.Left
-            row3.Cells(1).AddParagraph(txtIssueNo.Text)
-            row3.Cells(1).Format.Alignment = ParagraphAlignment.Left
-
-            table3.SetEdge(0, 0, 2, 1, Edge.Box, BorderStyle.Single, 0.75, Color.Empty)
-
-            row3 = table3.AddRow()
-            row3.Format.Font.Bold = False
-            row3.HeadingFormat = True
-            row3.Format.Font.Size = 9
-            row3.Height = "6mm"
-            row3.Format.Alignment = ParagraphAlignment.Center
-            row3.Borders.Color = Colors.Gray
-            row3.Cells(0).AddParagraph("Total Issued")
-            row3.Cells(0).Format.Alignment = ParagraphAlignment.Left
-            row3.Cells(1).AddParagraph(LCurrency.displayValue(txtTotalAmountIssued.Text))
-            row3.Cells(1).Format.Alignment = ParagraphAlignment.Right
-
-            table3.SetEdge(0, 0, 2, 1, Edge.Box, BorderStyle.Single, 0.75, Color.Empty)
-
-            row3 = table3.AddRow()
-            row3.Format.Font.Bold = False
-            row3.HeadingFormat = True
-            row3.Format.Font.Size = 9
-            row3.Format.Alignment = ParagraphAlignment.Center
-            row3.Borders.Color = Colors.Gray
-            row3.Cells(0).AddParagraph("Total Sales")
-            row3.Height = "6mm"
-            row3.Cells(0).Format.Alignment = ParagraphAlignment.Left
-            If Not status = "PRINTED" Or report = True Then
-                row3.Cells(1).AddParagraph(LCurrency.displayValue(txtTotalSales.Text))
-            Else
-                row3.Cells(1).AddParagraph("")
-            End If
-
-            row3.Cells(1).Format.Alignment = ParagraphAlignment.Right
-
-            table3.SetEdge(0, 0, 2, 1, Edge.Box, BorderStyle.Single, 0.75, Color.Empty)
-
-            row3 = table3.AddRow()
-            row3.Format.Font.Bold = False
-            row3.HeadingFormat = True
-            row3.Format.Font.Size = 9
-            row3.Format.Alignment = ParagraphAlignment.Center
-            row3.Borders.Color = Colors.Gray
-            row3.Cells(0).AddParagraph("Total Returns")
-            row3.Height = "6mm"
-            row3.Cells(0).Format.Alignment = ParagraphAlignment.Left
-            If Not status = "PRINTED" Or report = True Then
-                row3.Cells(1).AddParagraph(LCurrency.displayValue(txtTotalReturns.Text))
-            Else
-                row3.Cells(1).AddParagraph("")
-            End If
-
-            row3.Cells(1).Format.Alignment = ParagraphAlignment.Right
-
-            table3.SetEdge(0, 0, 2, 1, Edge.Box, BorderStyle.Single, 0.75, Color.Empty)
-
-            row3 = table3.AddRow()
-            row3.Format.Font.Bold = False
-            row3.HeadingFormat = True
-            row3.Format.Font.Size = 9
-            row3.Format.Alignment = ParagraphAlignment.Center
-            row3.Borders.Color = Colors.Gray
-            row3.Cells(0).AddParagraph("Total Damages")
-            row3.Height = "6mm"
-            row3.Cells(0).Format.Alignment = ParagraphAlignment.Left
-            If Not status = "PRINTED" Or report = True Then
-                row3.Cells(1).AddParagraph(LCurrency.displayValue(txtTotalDamages.Text))
-            Else
-                row3.Cells(1).AddParagraph("")
-            End If
-
-            row3.Cells(1).Format.Alignment = ParagraphAlignment.Right
-
-            table3.SetEdge(0, 0, 2, 1, Edge.Box, BorderStyle.Single, 0.75, Color.Empty)
-
-            row3 = table3.AddRow()
-            row3.Format.Font.Bold = False
-            row3.HeadingFormat = True
-            row3.Format.Font.Size = 9
-            row3.Format.Alignment = ParagraphAlignment.Center
-            row3.Borders.Color = Colors.Gray
-            row3.Cells(0).AddParagraph("Total Discounts")
-            row3.Height = "6mm"
-            row3.Cells(0).Format.Alignment = ParagraphAlignment.Left
-            If Not status = "PRINTED" Or report = True Then
-                row3.Cells(1).AddParagraph(LCurrency.displayValue(txtTotalDiscounts.Text))
-            Else
-                row3.Cells(1).AddParagraph("")
-            End If
-
-            row3.Cells(1).Format.Alignment = ParagraphAlignment.Right
-
-            table3.SetEdge(0, 0, 2, 1, Edge.Box, BorderStyle.Single, 0.75, Color.Empty)
-
-            row3 = table3.AddRow()
-            row3.Format.Font.Bold = False
-            row3.HeadingFormat = True
-            row3.Format.Font.Size = 9
-            row3.Format.Alignment = ParagraphAlignment.Center
-            row3.Borders.Color = Colors.Gray
-            row3.Cells(0).AddParagraph("Total Expenditures")
-            row3.Height = "6mm"
-            row3.Cells(0).Format.Alignment = ParagraphAlignment.Left
-            If Not status = "PRINTED" Or report = True Then
-                row3.Cells(1).AddParagraph(LCurrency.displayValue(txtTotalExpenditures.Text))
-            Else
-                row3.Cells(1).AddParagraph("")
-            End If
-
-            row3.Cells(1).Format.Alignment = ParagraphAlignment.Right
-
-            table3.SetEdge(0, 0, 2, 1, Edge.Box, BorderStyle.Single, 0.75, Color.Empty)
-
-            row3 = table3.AddRow()
-            row3.Format.Font.Bold = False
-            row3.HeadingFormat = True
-            row3.Format.Font.Size = 9
-            row3.Format.Alignment = ParagraphAlignment.Center
-            row3.Borders.Color = Colors.Gray
-            row3.Cells(0).AddParagraph("Cash & Bank Deposit")
-            row3.Height = "6mm"
-            row3.Cells(0).Format.Alignment = ParagraphAlignment.Left
-            If Not status = "PRINTED" Or report = True Then
-                row3.Cells(1).AddParagraph(LCurrency.displayValue(txtTotalBankCash.Text))
-            Else
-                row3.Cells(1).AddParagraph("")
-            End If
-
-            row3.Cells(1).Format.Alignment = ParagraphAlignment.Right
-
-            table3.SetEdge(0, 0, 2, 1, Edge.Box, BorderStyle.Single, 0.75, Color.Empty)
-
-            row3 = table3.AddRow()
-            row3.Format.Font.Bold = False
-            row3.HeadingFormat = True
-            row3.Format.Font.Size = 9
-            row3.Format.Alignment = ParagraphAlignment.Center
-            row3.Borders.Color = Colors.Gray
-            row3.Cells(0).AddParagraph("Total Deficit / Debt")
-            row3.Height = "6mm"
-            row3.Cells(0).Format.Alignment = ParagraphAlignment.Left
-            If Not status = "PRINTED" Or report = True Then
-                row3.Cells(1).AddParagraph(LCurrency.displayValue(txtDebt.Text))
-            Else
-                row3.Cells(1).AddParagraph("")
-            End If
-
-            row3.Cells(1).Format.Alignment = ParagraphAlignment.Right
-
-            table3.SetEdge(0, 0, 2, 1, Edge.Box, BorderStyle.Single, 0.75, Color.Empty)
-
-        End If
 
         paragraph = section.AddParagraph()
         paragraph = section.AddParagraph()
@@ -654,33 +324,23 @@ Public Class frmSalesInvoice
     End Sub
 
     Private Function clear()
-        txtIssueNo.Text = ""
+        txtInvoiceNo.Text = ""
 
         Return vbNull
     End Function
 
 
-    Private Function searchPackingList(issueNo As String) As Boolean
+    Private Function searchinvoice(invoiceNo As String) As Boolean
         Dim found As Boolean = False
-        Dim list As New PackingList
-        If list.getPackingList(issueNo) = True Then
-            txtIssueNo.ReadOnly = True
+        Dim list As New SalesInvoice
+        If list.getInvoice(invoiceNo) = True Then
+            txtInvoiceNo.ReadOnly = True
             'txtOrderNo.Text = order.GL_ORDER_NO
 
-            txtIssueDate.Text = list.GL_ISSUE_DATE
+            txtIssueDate.Text = list.GL_INVOICE_DATE
             txtStatus.Text = list.GL_STATUS
-            cmbSalesPersons.Text = list.GL_SALES_PERSON
-            txtTotalAmountIssued.Text = LCurrency.displayValue(list.GL_AMOUNT_ISSUED.ToString)
-            txtTotalReturns.Text = LCurrency.displayValue(list.GL_TOTAL_RETURNS.ToString)
-            txtTotalDamages.Text = LCurrency.displayValue(list.GL_TOTAL_DAMAGES.ToString)
-            txtTotalDiscounts.Text = LCurrency.displayValue(list.GL_TOTAL_DISCOUNTS.ToString)
-            txtTotalExpenditures.Text = LCurrency.displayValue(list.GL_TOTAL_EXPENDITURES.ToString)
-            txtTotalBankCash.Text = LCurrency.displayValue(list.GL_TOTAL_BANK_CASH.ToString)
-            txtDebt.Text = LCurrency.displayValue(list.GL_DEBT.ToString)
-            txtCostOfGoodsSold.Text = LCurrency.displayValue(list.GL_COST_OF_GOODS_SOLD.ToString)
+            cmbCustomerName.Text = list.GL_CUSTOMER_NAME
 
-            txtCustomerName.Text = list.GL_CUSTOMER_NAME
-            txtCustomerAddress.Text = list.GL_CUSTOMER_ADDRESS
 
             'txtTotalSales.Text = LCurrency.displayValue((LCurrency.getValue(txtTotalAmountIssued.Text)).ToString)
 
@@ -717,128 +377,24 @@ Public Class frmSalesInvoice
 
                 Dim status As String = list.GL_STATUS
 
-                If status = "APPROVED" Or status = "PRINTED" Or status = "REPRINTED" Or status = "COMPLETED" Or status = "CANCELED" Then
+                If status = "PENDING" Or status = "PARTIAL" Or status = "PAID" Or status = "ARCHIVED" Or status = "CANCELED" Then
                     btnApprove.Enabled = False
-                ElseIf status = "PENDING" Then
+                ElseIf status = "NEW" Then
                     btnApprove.Enabled = True
                 Else
                     btnApprove.Enabled = False
                 End If
 
-                If status = "PENDING" Then
-                    txtIssueNo.ReadOnly = True
-                    cmbSalesPersons.Enabled = True
+                If status = "NEW" Then
+                    txtInvoiceNo.ReadOnly = True
+                    cmbCustomerName.Enabled = True
 
                     txtBarCode.ReadOnly = False
                     txtItemCode.ReadOnly = False
                     cmbDescription.Enabled = True
-                    txtReturns.ReadOnly = False
-                    txtPacked.ReadOnly = False
-                    txtQtyReturned.ReadOnly = True
-                    txtQtySold.ReadOnly = True
-                    txtQtyDamaged.ReadOnly = True
-
-                    txtTotalDiscounts.ReadOnly = True
-                    txtTotalExpenditures.ReadOnly = True
-                    txtTotalBankCash.ReadOnly = True
-                    txtDebt.ReadOnly = True
                 End If
 
-                If status = "APPROVED" Then
-                    txtIssueNo.ReadOnly = True
-                    cmbSalesPersons.Enabled = False
 
-                    txtBarCode.ReadOnly = True
-                    txtItemCode.ReadOnly = True
-                    cmbDescription.Enabled = False
-                    txtReturns.ReadOnly = True
-                    txtPacked.ReadOnly = True
-                    txtQtyReturned.ReadOnly = True
-                    txtQtySold.ReadOnly = True
-                    txtQtyDamaged.ReadOnly = True
-
-
-                    txtTotalDiscounts.ReadOnly = True
-                    txtTotalExpenditures.ReadOnly = True
-                    txtTotalBankCash.ReadOnly = True
-                    txtDebt.ReadOnly = True
-                End If
-                If status = "PRINTED" Then
-                    txtIssueNo.ReadOnly = True
-                    cmbSalesPersons.Enabled = False
-
-                    txtBarCode.ReadOnly = True
-                    txtItemCode.ReadOnly = True
-                    cmbDescription.Enabled = False
-                    txtReturns.ReadOnly = True
-                    txtPacked.ReadOnly = True
-                    txtQtyReturned.ReadOnly = False
-                    txtQtySold.ReadOnly = False
-                    txtQtyDamaged.ReadOnly = False
-
-
-                    txtTotalDiscounts.ReadOnly = False
-                    txtTotalExpenditures.ReadOnly = False
-                    txtTotalBankCash.ReadOnly = False
-                    txtDebt.ReadOnly = False
-                End If
-                If status = "COMPLETED" Then
-                    txtIssueNo.ReadOnly = True
-                    cmbSalesPersons.Enabled = False
-
-                    txtBarCode.ReadOnly = True
-                    txtItemCode.ReadOnly = True
-                    cmbDescription.Enabled = False
-                    txtReturns.ReadOnly = True
-                    txtPacked.ReadOnly = True
-                    txtQtyReturned.ReadOnly = True
-                    txtQtySold.ReadOnly = True
-                    txtQtyDamaged.ReadOnly = True
-
-
-                    txtTotalDiscounts.ReadOnly = True
-                    txtTotalExpenditures.ReadOnly = True
-                    txtTotalBankCash.ReadOnly = True
-                    txtDebt.ReadOnly = True
-                End If
-                If status = "CANCELED" Then
-                    txtIssueNo.ReadOnly = True
-                    cmbSalesPersons.Enabled = False
-
-                    txtBarCode.ReadOnly = True
-                    txtItemCode.ReadOnly = True
-                    cmbDescription.Enabled = False
-                    txtReturns.ReadOnly = True
-                    txtPacked.ReadOnly = True
-                    txtQtyReturned.ReadOnly = True
-                    txtQtySold.ReadOnly = True
-                    txtQtyDamaged.ReadOnly = True
-
-
-                    txtTotalDiscounts.ReadOnly = True
-                    txtTotalExpenditures.ReadOnly = True
-                    txtTotalBankCash.ReadOnly = True
-                    txtDebt.ReadOnly = True
-                End If
-                If status = "ARCHIVED" Then
-                    txtIssueNo.ReadOnly = True
-                    cmbSalesPersons.Enabled = False
-
-                    txtBarCode.ReadOnly = True
-                    txtItemCode.ReadOnly = True
-                    cmbDescription.Enabled = False
-                    txtReturns.ReadOnly = True
-                    txtPacked.ReadOnly = True
-                    txtQtyReturned.ReadOnly = True
-                    txtQtySold.ReadOnly = True
-                    txtQtyDamaged.ReadOnly = True
-
-
-                    txtTotalDiscounts.ReadOnly = True
-                    txtTotalExpenditures.ReadOnly = True
-                    txtTotalBankCash.ReadOnly = True
-                    txtDebt.ReadOnly = True
-                End If
 
             Else
                 MsgBox("No matching record", vbOKOnly + vbCritical, "Error: Not found")
@@ -1010,7 +566,7 @@ Public Class frmSalesInvoice
                 dtgrdRow.Cells.Add(dtgrdCell)
 
                 dtgrdCell = New DataGridViewTextBoxCell()
-                dtgrdCell.Value = LCurrency.displayValue((Val(qty) * Val(price)).ToString 
+                dtgrdCell.Value = LCurrency.displayValue((Val(qty) * Val(price)).ToString)
                 dtgrdRow.Cells.Add(dtgrdCell)
 
                 dtgrdItemList.Rows.Add(dtgrdRow)
@@ -1449,29 +1005,29 @@ Public Class frmSalesInvoice
             MsgBox("Please select document")
             Exit Sub
         End If
-        Dim status As String = (New PackingList).getStatus(txtIssueNo.Text)
-        If status = "PENDING" Or status = "APPROVED" Then
+        Dim status As String = (New SalesInvoice).getStatus(txtInvoiceNo.Text)
+        If status = "NEW" Then
             'continue
         Else
-            MsgBox("Can not cancel, only Pending or Approved packing list can be canceled", vbOKOnly + vbCritical, "Error: Invalid operation")
+            MsgBox("Can not cancel, only a New invoice can be canceled", vbOKOnly + vbCritical, "Error: Invalid operation")
             Exit Sub
         End If
-        If check(txtIssueNo.Text, token) = False Then
+        If check(txtInvoiceNo.Text, token) = False Then
             MsgBox("Could not modify document, the document has been modified by some one else. Please reload the document to continue", vbOKOnly + vbExclamation, "Invalid Operation")
             Cursor = Cursors.Default
             Exit Sub
         End If
 
         If 1 = 1 Then ' User.authorize("APPROVE PACKING LIST") = True Then
-            If txtIssueNo.Text = "" Then
-                MsgBox("Select a packing list to cancel", vbOKOnly + vbExclamation, "Error: No selection")
+            If txtInvoiceNo.Text = "" Then
+                MsgBox("Select an invoice to cancel", vbOKOnly + vbExclamation, "Error: No selection")
                 Exit Sub
             End If
-            Dim res As Integer = MsgBox("Cancel packing list: " + txtIssueNo.Text + " ? Packing list can not be used after canceling", vbYesNo + vbQuestion, "Cancel document?")
+            Dim res As Integer = MsgBox("Cancel invoice: " + txtInvoiceNo.Text + " ? Invoice can not be used after canceling", vbYesNo + vbQuestion, "Cancel document?")
             If res = DialogResult.Yes Then
 
-                Dim list As PackingList = New PackingList
-                If list.cancelPackingList(txtIssueNo.Text) = True Then
+                Dim list As SalesInvoice = New SalesInvoice
+                If list.cancelInvoice(txtInvoiceNo.Text) = True Then
                     MsgBox("Cancel Success", vbOKOnly + vbInformation, "Success")
                 Else
                     MsgBox("Cancel failed", vbOKOnly + vbExclamation, "Failed")
@@ -1480,93 +1036,21 @@ Public Class frmSalesInvoice
 
 
             End If
-            txtStatus.Text = (New PackingList).getStatus(txtIssueNo.Text)
+            txtStatus.Text = (New SalesInvoice).getStatus(txtInvoiceNo.Text)
         Else
             MsgBox("Access denied!", vbOKOnly + vbExclamation, "Error: Access denied")
         End If
-        refreshPackingLists()
+        refreshInvoiceLists()
     End Sub
 
-    Private Sub btnApprove_Click(sender As Object, e As EventArgs) Handles btnApprove.Click
-        If User.authorize("APPROVE PACKING LIST") = False Then
-            MsgBox("Access Denied", vbOKOnly + vbExclamation, "Access denied")
-            Exit Sub
-        End If
-        If txtIssueNo.Text = "" Then
-            MsgBox("Please select document")
-            Exit Sub
-        End If
-        Dim status As String = (New PackingList).getStatus(txtIssueNo.Text)
-        If status = "APPROVED" Then
-            MsgBox("Could not approve, already approved", vbOKOnly + vbExclamation, "Error: Invalid operation")
-            clearFields()
-            Exit Sub
-        End If
-        If status = "PRINTED" Then
-            MsgBox("Could not approve, already printed", vbOKOnly + vbExclamation, "Error: Invalid operation")
-            clearFields()
-            Exit Sub
-        End If
-        If status = "REPRINTED" Then
-            MsgBox("Could not approve, already printed", vbOKOnly + vbExclamation, "Error: Invalid operation")
-            clearFields()
-            Exit Sub
-        End If
-        If status = "COMPLETED" Then
-            MsgBox("Could not approve, already completed", vbOKOnly + vbExclamation, "Error: Invalid operation")
-            clearFields()
-            Exit Sub
-        End If
-        If status = "CANCELED" Then
-            MsgBox("Could not approve, document has been canceled", vbOKOnly + vbExclamation, "Error: Invalid operation")
-            clearFields()
-            Exit Sub
-        End If
-        If check(txtIssueNo.Text, token) = False Then
-            MsgBox("Could not modify document, the document has been modified by some one else. Please reload the document to continue", vbOKOnly + vbExclamation, "Invalid Operation")
-            Cursor = Cursors.Default
-            Exit Sub
-        End If
-        If 1 = 1 Then ' User.authorize("APPROVE PACKING LIST") = True Then
-            If txtIssueNo.Text = "" Then
-                MsgBox("Select a packing list to approve", vbOKOnly + vbExclamation, "Error: No selection")
-                Exit Sub
-            End If
-            Dim res As Integer = MsgBox("Approve packing list: " + txtIssueNo.Text + " ? Editing will be disabled after approval", vbYesNo + vbQuestion, "Approve document?")
-            If res = DialogResult.Yes Then
-                'approve order
 
-                If dtgrdItemList.RowCount = 0 Then
-                    MsgBox("Could not approve an empty packing list", vbOKOnly + vbExclamation, "Error: Invalid operation")
-                    Exit Sub
-                End If
-                Dim list As PackingList = New PackingList
-                If list.approvePackingList(txtIssueNo.Text) = True Then
-                    MsgBox("Approve Success", vbOKOnly + vbInformation, "Success")
-                Else
-                    MsgBox("Approve failed", vbOKOnly + vbExclamation, "Failure")
-                End If
-
-            End If
-            txtStatus.Text = (New PackingList).getStatus(txtIssueNo.Text)
-        Else
-            MsgBox("Access denied!", vbOKOnly + vbExclamation)
-        End If
-        refreshPackingLists()
-    End Sub
 
     Private Sub clearItemdetails()
         txtBarCode.Text = ""
         txtItemCode.Text = ""
         cmbDescription.Text = ""
         txtPrice.Text = ""
-        txtReturns.Text = ""
-        txtPacked.Text = ""
-        txtIssued.Text = ""
-        txtQtyReturned.Text = ""
-        txtQtyDamaged.Text = ""
-        txtQtySold.Text = ""
-        txtCPrice.Text = ""
+        txtQty.Text = ""
         cmbDescription.Enabled = True
         txtBarCode.ReadOnly = False
         txtItemCode.ReadOnly = False
@@ -1582,15 +1066,15 @@ Public Class frmSalesInvoice
 
     Private Function validateInputs() As Boolean
         Dim valid As Boolean = True
-        If txtIssueNo.Text = "" Then
+        If txtInvoiceNo.Text = "" Then
             valid = False
-            MsgBox("Operation failed, issue no required", vbOKOnly + vbCritical, "Error: Missing information")
+            MsgBox("Operation failed, invoice no required", vbOKOnly + vbCritical, "Error: Missing information")
             Return valid
             Exit Function
         End If
-        If cmbSalesPersons.Text = "" Then
+        If cmbCustomerName.Text = "" Then
             valid = False
-            MsgBox("Operation failed, Sales person required", vbOKOnly + vbCritical, "Error: Missing information")
+            MsgBox("Operation failed, customer required", vbOKOnly + vbCritical, "Error: Missing information")
             Return valid
             Exit Function
         End If
@@ -1599,20 +1083,20 @@ Public Class frmSalesInvoice
 
     Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
         If User.authorize("CREATE & CANCEL PACKING LIST") = False Then
-            MsgBox("Access Denied", vbOKOnly + vbExclamation, "Access denied")
-            Exit Sub
+            '    MsgBox("Access Denied", vbOKOnly + vbExclamation, "Access denied")
+            '   Exit Sub
         End If
-        If txtIssueNo.Text = "" Then
+        If txtInvoiceNo.Text = "" Then
             MsgBox("Please select document")
             Exit Sub
         End If
 
-        Dim status As String = (New PackingList).getStatus(txtIssueNo.Text)
-        If status = "CANCELED" Or status = "COMPLETED" Or status = "ARCHIVED" Then
-            MsgBox("Could not modify. Only Pending, Approved or Printed documents can be modified", vbOKOnly + vbExclamation, "Error: Invalid operation")
+        Dim status As String = (New SalesInvoice).getStatus(txtInvoiceNo.Text)
+        If Not status = "NEW" Then
+            MsgBox("Could not modify. Only New invoices can be modified", vbOKOnly + vbExclamation, "Error: Invalid operation")
             Exit Sub
         End If
-        If check(txtIssueNo.Text, token) = False Then
+        If check(txtInvoiceNo.Text, token) = False Then
             MsgBox("Could not modify document, the document has been modified by some one else. Please reload the document to continue", vbOKOnly + vbExclamation, "Invalid Operation")
             Exit Sub
         End If
@@ -1621,29 +1105,22 @@ Public Class frmSalesInvoice
         If validateInputs() = False Then
             Exit Sub
         End If
-        Dim list As New PackingList
-        list.GL_ISSUE_NO = txtIssueNo.Text
-        list.GL_ISSUE_DATE = txtIssueDate.Text
+        Dim list As New SalesInvoice
+        list.GL_INVOICE_NO = txtInvoiceNo.Text
+        list.GL_INVOICE_DATE = txtIssueDate.Text
         list.GL_STATUS = txtStatus.Text
-        list.GL_SALES_PERSON = cmbSalesPersons.Text
+        list.GL_CUSTOMER_NAME = cmbCustomerName.Text
 
-        list.GL_CUSTOMER_NAME = txtCustomerName.Text
-        list.GL_CUSTOMER_ADDRESS = txtCustomerAddress.Text
 
-        list.GL_AMOUNT_ISSUED = Val(LCurrency.getValue(txtTotalAmountIssued.Text))
-        list.GL_TOTAL_RETURNS = Val(LCurrency.getValue(txtTotalReturns.Text))
-        list.GL_TOTAL_DAMAGES = Val(LCurrency.getValue(txtTotalDamages.Text))
-        list.GL_TOTAL_DISCOUNTS = Val(LCurrency.getValue(txtTotalDiscounts.Text))
-        list.GL_TOTAL_EXPENDITURES = Val(LCurrency.getValue(txtTotalExpenditures.Text))
-        list.GL_TOTAL_BANK_CASH = Val(LCurrency.getValue(txtTotalBankCash.Text))
-        list.GL_DEBT = Val(LCurrency.getValue(txtDebt.Text))
-        list.GL_COST_OF_GOODS_SOLD = Val(LCurrency.getValue(txtCostOfGoodsSold.Text))
+        '    list.GL_CUSTOMER_ADDRESS = txtCustomerAddress.Text
+
+
         'check if new or existing 
 
         If txtId.Text = "" Then
             'save a new record
-            If list.addNewPackingList() = True Then
-                list.getPackingList(txtIssueNo.Text)
+            If list.addNewInvoice() = True Then
+                list.getInvoice(txtInvoiceNo.Text)
                 MsgBox("Save success", vbOKOnly + vbInformation, "Success")
             Else
                 MsgBox("Saving failed", vbOKOnly + vbExclamation, "Failure")
@@ -1651,8 +1128,8 @@ Public Class frmSalesInvoice
         Else
             'save an existing record
 
-            If list.editPackingList(txtIssueNo.Text) = True Then
-                list.getPackingList(txtIssueNo.Text)
+            If list.editinvoice(txtInvoiceNo.Text) = True Then
+                list.getInvoice(txtInvoiceNo.Text)
                 MsgBox("Edit success", vbOKOnly + vbInformation, "Success")
             Else
                 MsgBox("Editing failed", vbOKOnly + vbExclamation, "Failure")
@@ -1668,50 +1145,25 @@ Public Class frmSalesInvoice
         oldPrice = 0
 
         txtId.Text = ""
-        txtIssueNo.Text = ""
+        txtInvoiceNo.Text = ""
         txtIssueDate.Text = ""
-        cmbSalesPersons.SelectedItem = Nothing
+        cmbCustomerName.SelectedItem = Nothing
         txtStatus.Text = ""
 
-        txtCustomerName.Text = ""
-        txtCustomerAddress.Text = ""
+
+        'txtCustomerAddress.Text = ""
 
         txtBarCode.Text = ""
         txtItemCode.Text = ""
         cmbDescription.SelectedItem = Nothing
         cmbDescription.Text = ""
         txtPrice.Text = ""
-        txtReturns.Text = ""
-        txtPacked.Text = ""
-        txtIssued.Text = ""
-        txtQtyReturned.Text = ""
-        txtQtyDamaged.Text = ""
-        txtQtySold.Text = ""
-        txtCPrice.Text = ""
 
-        txtTotalPreviousReturns.Text = ""
-        txtTotalPacked.Text = ""
-        txtTotalAmountIssued.Text = ""
-        txtTotalSales.Text = ""
-        txtTotalReturns.Text = ""
-        txtTotalDiscounts.Text = ""
-        txtTotalExpenditures.Text = ""
-        txtTotalDamages.Text = ""
-        txtTotalBankCash.Text = ""
-        txtDebt.Text = ""
-        txtCostOfGoodsSold.Text = ""
-
+        txtQty.Text = ""
 
         'lock
-        txtIssueNo.ReadOnly = True
-        txtQtyReturned.ReadOnly = True
-        txtQtySold.ReadOnly = True
-        txtQtyDamaged.ReadOnly = True
+        txtInvoiceNo.ReadOnly = True
 
-        txtTotalDiscounts.ReadOnly = True
-        txtTotalExpenditures.ReadOnly = True
-        txtTotalBankCash.ReadOnly = True
-        txtDebt.ReadOnly = True
         txtPrice.ReadOnly = True
         txtBarCode.ReadOnly = True
         txtItemCode.ReadOnly = True
@@ -1728,70 +1180,94 @@ Public Class frmSalesInvoice
     End Sub
 
 
-    Private Sub btnPrint_Click1(sender As Object, e As EventArgs) Handles btnPrint.Click
+    Private Sub btnPost_Click1(sender As Object, e As EventArgs) Handles btnPost.Click
         If User.authorize("PRINT PACKING LIST") = False Then
-            MsgBox("Access Denied", vbOKOnly + vbExclamation, "Access denied")
-            Exit Sub
+            ' MsgBox("Access Denied", vbOKOnly + vbExclamation, "Access denied")
+            '   Exit Sub
         End If
-        If txtIssueNo.Text = "" Then
+        If txtInvoiceNo.Text = "" Then
             MsgBox("Please select document")
             Exit Sub
         End If
-        Dim status As String = (New PackingList).getStatus(txtIssueNo.Text)
-        report = False
-        If status = "PENDING" Or status = "APPROVED" Or status = "PRINTED" Or status = "COMPLETED" Or status = "ARCHIVED" Then
-            'contunue to print
-        ElseIf status = "PENDING" Then
-            MsgBox("Could not print a pending packing list", vbOKOnly + vbExclamation, "Error: Invalid operation")
-            Exit Sub
-        ElseIf status = "CANCELED" Then
-            MsgBox("Could not print a canceled packing list", vbOKOnly + vbExclamation, "Error: Invalid operation")
-            Exit Sub
+        Dim status As String = (New SalesInvoice).getStatus(txtInvoiceNo.Text)
+        If status = "NEW" Then
+            'contunue to print        
         Else
-            MsgBox("Select a document to print", vbOKOnly + vbExclamation, "Error: No selection")
+            MsgBox("Could not post invoice", vbOKOnly + vbExclamation, "Error: No selection")
             Exit Sub
         End If
-        If check(txtIssueNo.Text, token) = False Then
+        If check(txtInvoiceNo.Text, token) = False Then
             MsgBox("Could not print document, the document has been modified by some one else. Please reload the document to continue", vbOKOnly + vbExclamation, "Invalid Operation")
             Cursor = Cursors.Default
             Exit Sub
         End If
         If 1 = 1 Then ' User.authorize("PRINT PACKING LIST") = True Then
-            If txtIssueNo.Text = "" Then
-                MsgBox("Select a packing list to print", vbOKOnly + vbExclamation, "Error: No selection")
+            If txtInvoiceNo.Text = "" Then
+                MsgBox("Select an invoice to post", vbOKOnly + vbExclamation, "Error: No selection")
                 Exit Sub
             End If
             Dim res As Integer = 0
-            If status = "APPROVED" Then
-                res = MsgBox("Print packing list: " + txtIssueNo.Text + " ? Issued items will be deducted from stock", vbYesNo + vbQuestion, "Print?")
-            ElseIf status = "PENDING" Then
-                res = MsgBox("Print pending packing list: " + txtIssueNo.Text + " ? ", vbYesNo + vbQuestion, "Print?")
-            Else
-                res = MsgBox("Re-Print packing list: " + txtIssueNo.Text + " ? ", vbYesNo + vbQuestion, "Print?")
-            End If
+
+            res = MsgBox("Post invoice : " + txtInvoiceNo.Text + " ? Issued items will be deducted from stock", vbYesNo + vbQuestion, "Post?")
+
             If res = DialogResult.Yes Then
                 'approve order
 
                 If dtgrdItemList.RowCount = 0 Then
-                    MsgBox("Could not approve an empty packing list", vbOKOnly + vbExclamation, "Error: No selection")
+                    MsgBox("Could not post an empty invoice", vbOKOnly + vbExclamation, "Error: No selection")
                     Exit Sub
                 End If
-                Dim list As PackingList = New PackingList
+                Dim list As SalesInvoice = New SalesInvoice
                 Dim success As Boolean = True
-                If status = "APPROVED" Or status = "PRINTED" Then
+                If status = "NEW" Then
                     'if status is approved , deduct from stock
-                    If status = "APPROVED" Then
+                    If status = "NEW" Then
                         'deduct from stock
 
-                        Dim query As String = "UPDATE `packing_list` SET`status`='PRINTED' WHERE `issue_no`='" + txtIssueNo.Text + "';"
+                        recordSale("")
+
+                        Dim query As String = "UPDATE `sales_invoices` SET`status`='PENDING' WHERE `invoice_no`='" + txtInvoiceNo.Text + "';"
+                        query = query + "INSERT INTO `sale_details`(`sale_id`, `item_code`, `selling_price`, `discounted_price`, `qty`, `amount`, `vat`,`tax_return`) VALUES (@sale_id,@item_code,@selling_price,@discounted_price,@qty,@amount,@vat,@tax_return);"
+
+
+                        Dim barCode As String = ""
+                        Dim itemCode As String = ""
+                        Dim description As String = ""
+                        Dim price As String = ""
+                        ' Dim vat As String = dtgrdItemList.Item(5, i).Value
+                        ' Dim discount As String = dtgrdItemList.Item(6, i).Value
+                        Dim qty As String = ""
+                        Dim amount As String = ""
+                        ' Dim discountedPrice As Double = Val(LCurrency.getValue(price)) * (1 - Val(discount) / 100)
+                        '  Dim actualVat As Double = Val(qty) * discountedPrice * Val(vat) / 100
+                        '  Dim taxReturn As Double = Val(qty) * (discountedPrice - Item.getCostPrice(itemCode)) * Val(vat) / 100
+                        ' totalTaxReturns = totalTaxReturns + taxReturn
+
 
                         For i As Integer = 0 To dtgrdItemList.RowCount - 1
-                            Dim itemCode As String = dtgrdItemList.Item(0, i).Value
-                            Dim qtyIsssued As String = dtgrdItemList.Item(5, i).Value
+
+
+                            barCode = dtgrdItemList.Item(1, i).Value
+                            itemCode = dtgrdItemList.Item(2, i).Value
+                            description = dtgrdItemList.Item(3, i).Value
+                            price = dtgrdItemList.Item(6, i).Value
+                            ' Dim vat As String = dtgrdItemList.Item(5, i).Value
+                            ' Dim discount As String = dtgrdItemList.Item(6, i).Value
+                            qty = dtgrdItemList.Item(4, i).Value
+                            amount = dtgrdItemList.Item(7, i).Value
+                            ' Dim discountedPrice As Double = Val(LCurrency.getValue(price)) * (1 - Val(discount) / 100)
+                            '  Dim actualVat As Double = Val(qty) * discountedPrice * Val(vat) / 100
+                            '  Dim taxReturn As Double = Val(qty) * (discountedPrice - Item.getCostPrice(itemCode)) * Val(vat) / 100
+                            ' totalTaxReturns = totalTaxReturns + taxReturn
+
+
+
+
+
                             'enter stock card
-                            query = query + " INSERT INTO `stock_cards`(`date`,`item_code`,`qty_out`,`balance`,`reference`) VALUES ('" + Day.DAY + "','" + itemCode + "','" + qtyIsssued.ToString + "'," + (New Inventory).getInventory(itemCode).ToString + "-" + qtyIsssued.ToString + ",'Issued PCKLIST Issue#: " + txtIssueNo.Text + "');"
+                            query = query + " INSERT INTO `stock_cards`(`date`,`item_code`,`qty_out`,`balance`,`reference`) VALUES ('" + Day.DAY + "','" + itemCode + "','" + qty.ToString + "'," + (New Inventory).getInventory(itemCode).ToString + "-" + qty.ToString + ",'Issued Invoice #: " + txtInvoiceNo.Text + "');"
                             'update inventory
-                            query = query + "UPDATE `inventorys` SET `qty`=`qty`-" + qtyIsssued.ToString + " WHERE `item_code`='" + itemCode + "';"
+                            query = query + "UPDATE `inventorys` SET `qty`=`qty`-" + qty.ToString + " WHERE `item_code`='" + itemCode + "';"
 
                         Next
 
@@ -1802,6 +1278,15 @@ Public Class frmSalesInvoice
                             command.Connection = conn
                             command.CommandText = query
                             'command.Prepare()
+                            command.Parameters.AddWithValue("@sale_id", saleId)
+                            command.Parameters.AddWithValue("@item_code", itemcode)
+                            command.Parameters.AddWithValue("@selling_price", LCurrency.getValue(price))
+                            command.Parameters.AddWithValue("@discounted_price", price)
+                            command.Parameters.AddWithValue("@qty", Val(qty))
+                            command.Parameters.AddWithValue("@amount", LCurrency.getValue(amount))
+                            command.Parameters.AddWithValue("@vat", 0)
+                            command.Parameters.AddWithValue("@tax_return", 0)
+
                             command.ExecuteNonQuery()
                             conn.Close()
                             success = True
@@ -1816,24 +1301,24 @@ Public Class frmSalesInvoice
                         MsgBox("Print Success", vbOKOnly + vbInformation, "Success")
                     End If
                 End If
-                txtStatus.Text = (New PackingList).getStatus(txtIssueNo.Text)
+                txtStatus.Text = (New PackingList).getStatus(txtInvoiceNo.Text)
                 If success = True Then
                     'now do the actual printing in pdf
 
-                    Dim issueNo As String = txtIssueNo.Text
-                    If issueNo = "" Then
-                        MsgBox("Select a packing list to print.", vbOKOnly + vbCritical, "Error:No selection")
+                    Dim invoiceNo As String = txtInvoiceNo.Text
+                    If invoiceNo = "" Then
+                        MsgBox("Select aninvoice to post.", vbOKOnly + vbCritical, "Error:No selection")
                         Exit Sub
                     End If
                     If dtgrdItemList.RowCount = 0 Then
-                        MsgBox("Can not print an empty packing list. Please select the bill to print", vbOKOnly + vbCritical, "Error: No selection")
+                        MsgBox("Can not post an empty invoice.", vbOKOnly + vbCritical, "Error: No selection")
                         Exit Sub
                     End If
 
                     Dim document As Document = New Document
 
-                    document.Info.Title = "Packing List"
-                    document.Info.Subject = "Packing List"
+                    document.Info.Title = "Sales Invoice"
+                    document.Info.Subject = "Sales Invoice"
                     document.Info.Author = "Orbit"
 
                     defineStyles(document)
@@ -1843,7 +1328,7 @@ Public Class frmSalesInvoice
                     myRenderer.Document = document
                     myRenderer.RenderDocument()
 
-                    Dim filename As String = LSystem.getRoot & "\Packing List " & issueNo & ".pdf"
+                    Dim filename As String = LSystem.getRoot & "\Sales Invoice " & invoiceNo & ".pdf"
 
                     myRenderer.PdfDocument.Save(filename)
 
@@ -1852,107 +1337,77 @@ Public Class frmSalesInvoice
                 End If
 
             End If
-            txtStatus.Text = (New PackingList).getStatus(txtIssueNo.Text)
+            txtStatus.Text = (New PackingList).getStatus(txtInvoiceNo.Text)
         Else
             MsgBox("Access denied!", vbOKOnly + vbExclamation)
         End If
-        refreshPackingLists()
+        refreshInvoiceLists()
     End Sub
 
-    Private Sub btnPrint_Click(sender As Object, e As EventArgs) ' Handles btnPrint.Click
-        Dim status As String = (New PackingList).getStatus(txtIssueNo.Text)
-        report = False
-        If status = "PENDING" Or status = "APPROVED" Or status = "PRINTED" Or status = "COMPLETED" Or status = "ARCHIVED" Then
-            'contunue to print
-        ElseIf status = "PENDING" Then
-            MsgBox("Could not print a pending packing list", vbOKOnly + vbExclamation, "Error: Invalid operation")
-            Exit Sub
-        ElseIf status = "CANCELED" Then
-            MsgBox("Could not print a canceled packing list", vbOKOnly + vbExclamation, "Error: Invalid operation")
-            Exit Sub
-        Else
-            MsgBox("Select a document to print", vbOKOnly + vbExclamation, "Error: No selection")
+
+
+
+
+
+
+    Private Sub btnPrint_Click1(sender As Object, e As EventArgs) Handles btnPrint.Click
+        If User.authorize("PRINT PACKING LIST") = False Then
+            ' MsgBox("Access Denied", vbOKOnly + vbExclamation, "Access denied")
+            '   Exit Sub
+        End If
+        If txtInvoiceNo.Text = "" Then
+            MsgBox("Please select document")
             Exit Sub
         End If
-
+        Dim status As String = (New SalesInvoice).getStatus(txtInvoiceNo.Text)
+        If status = "PENDING" Or status = "PARTIAL" Or status = "PAID" Or status = "ARCHIVED" Or status = "CANCELED" Then
+            'contunue to print        
+        Else
+            MsgBox("Could not print invoice", vbOKOnly + vbExclamation, "Error: No selection")
+            Exit Sub
+        End If
+        If check(txtInvoiceNo.Text, token) = False Then
+            MsgBox("Could not print document, the document has been modified by some one else. Please reload the document to continue", vbOKOnly + vbExclamation, "Invalid Operation")
+            Cursor = Cursors.Default
+            Exit Sub
+        End If
         If 1 = 1 Then ' User.authorize("PRINT PACKING LIST") = True Then
-            If txtIssueNo.Text = "" Then
-                MsgBox("Select a packing list to approve", vbOKOnly + vbExclamation, "Error: No selection")
+            If txtInvoiceNo.Text = "" Then
+                MsgBox("Select an invoice to print", vbOKOnly + vbExclamation, "Error: No selection")
                 Exit Sub
             End If
             Dim res As Integer = 0
-            If status = "APPROVED" Then
-                res = MsgBox("Print packing list: " + txtIssueNo.Text + " ? Issued items will be deducted from stock", vbYesNo + vbQuestion, "Print?")
-            ElseIf status = "PENDING" Then
-                res = MsgBox("Print pending packing list: " + txtIssueNo.Text + " ? ", vbYesNo + vbQuestion, "Print?")
-            Else
-                res = MsgBox("Re-Print packing list: " + txtIssueNo.Text + " ? ", vbYesNo + vbQuestion, "Print?")
-            End If
+
+            res = MsgBox("Print invoice : " + txtInvoiceNo.Text + " ? ", vbYesNo + vbQuestion, "Print?")
+
             If res = DialogResult.Yes Then
                 'approve order
 
                 If dtgrdItemList.RowCount = 0 Then
-                    MsgBox("Could not approve an empty packing list", vbOKOnly + vbExclamation, "Error: No selection")
+                    MsgBox("Could not approve an empty invoice", vbOKOnly + vbExclamation, "Error: No selection")
                     Exit Sub
                 End If
-                Dim list As PackingList = New PackingList
+                Dim list As SalesInvoice = New SalesInvoice
                 Dim success As Boolean = True
-                If status = "APPROVED" Or status = "PRINTED" Then
-                    If list.printPackingList(txtIssueNo.Text) = True Then
-                        'if status is approved , deduct from stock
-                        If status = "APPROVED" Then
-                            'deduct from stock
 
-                            Dim query As String = ""
-
-                            For i As Integer = 0 To dtgrdItemList.RowCount - 1
-
-                                Dim itemCode As String = dtgrdItemList.Item(0, i).Value
-                                Dim qtyIsssued As String = dtgrdItemList.Item(5, i).Value
-                                'sql for recording sales
-                                Dim conn As New MySqlConnection(Database.conString)
-                                Try
-                                    conn.Open()
-                                    Dim command As New MySqlCommand()
-                                    command.Connection = conn
-                                    command.CommandText = "UPDATE `inventorys` SET `qty`=`qty`-'" + qtyIsssued + "' WHERE `item_code`='" + itemCode + "'"
-                                    command.Prepare()
-                                    command.ExecuteNonQuery()
-                                    conn.Close()
-                                    Dim inventory As New Inventory
-                                    Dim stockCard As New StockCard
-                                    stockCard.qtyOut(Day.DAY, itemCode, qtyIsssued, inventory.getInventory(itemCode), "Issued to packing List, Issue No: " + txtIssueNo.Text)
-                                Catch ex As Exception
-                                    MsgBox(ex.ToString)
-                                End Try
-                            Next
-                        End If
-                        success = True
-                        If status = "APPROVED" Then
-                            MsgBox("Print Success", vbOKOnly + vbInformation, "Success")
-                        End If
-                    Else
-                        success = False
-                        MsgBox("Print failed", vbOKOnly + vbExclamation, "Failure")
-                    End If
-                End If
+                txtStatus.Text = (New SalesInvoice).getStatus(txtInvoiceNo.Text)
                 If success = True Then
                     'now do the actual printing in pdf
 
-                    Dim issueNo As String = txtIssueNo.Text
-                    If issueNo = "" Then
-                        MsgBox("Select a packing list to print.", vbOKOnly + vbCritical, "Error:No selection")
+                    Dim invoiceNo As String = txtInvoiceNo.Text
+                    If invoiceNo = "" Then
+                        MsgBox("Select an invoice to print.", vbOKOnly + vbCritical, "Error:No selection")
                         Exit Sub
                     End If
                     If dtgrdItemList.RowCount = 0 Then
-                        MsgBox("Can not print an empty packing list. Please select the bill to print", vbOKOnly + vbCritical, "Error: No selection")
+                        MsgBox("Can not print an empty invoice. Please select an invoice print", vbOKOnly + vbCritical, "Error: No selection")
                         Exit Sub
                     End If
 
                     Dim document As Document = New Document
 
-                    document.Info.Title = "Packing List"
-                    document.Info.Subject = "Packing List"
+                    document.Info.Title = "Sales Invoice"
+                    document.Info.Subject = "Sales Invoice"
                     document.Info.Author = "Orbit"
 
                     defineStyles(document)
@@ -1962,7 +1417,7 @@ Public Class frmSalesInvoice
                     myRenderer.Document = document
                     myRenderer.RenderDocument()
 
-                    Dim filename As String = LSystem.getRoot & "\Packing List " & issueNo & ".pdf"
+                    Dim filename As String = LSystem.getRoot & "\Sales Invoice " & invoiceNo & ".pdf"
 
                     myRenderer.PdfDocument.Save(filename)
 
@@ -1971,327 +1426,63 @@ Public Class frmSalesInvoice
                 End If
 
             End If
-            txtStatus.Text = (New PackingList).getStatus(txtIssueNo.Text)
+            txtStatus.Text = (New SalesInvoice).getStatus(txtInvoiceNo.Text)
         Else
             MsgBox("Access denied!", vbOKOnly + vbExclamation)
         End If
-        refreshPackingLists()
+        refreshInvoiceLists()
     End Sub
+
+
 
     Private Sub btnArchive_Click(sender As Object, e As EventArgs) Handles btnArchive.Click
         If User.authorize("ARCHIVE DOCUMENTS") = False Then
             MsgBox("Access Denied", vbOKOnly + vbExclamation, "Access denied")
             Exit Sub
         End If
-        Dim debt As Double = Val((New PackingList).getDebt(txtIssueNo.Text))
-        If debt > 0 Then
-            MsgBox("Could not archive, debt not cleared", vbOKOnly + vbCritical, "Error: Debt not cleared")
-            Exit Sub
-        End If
-        Dim status As String = (New PackingList).getStatus(txtIssueNo.Text)
-        If status = "COMPLETED" Then
+
+        Dim status As String = (New SalesInvoice).getStatus(txtInvoiceNo.Text)
+        If status = "PAID" Then
             'continue
         Else
-            If txtIssueNo.Text = "" Then
-                MsgBox("Select a packing list to archive", vbOKOnly + vbExclamation, "Error: No selection")
+            If txtInvoiceNo.Text = "" Then
+                MsgBox("Select an invoice to archive", vbOKOnly + vbExclamation, "Error: No selection")
                 Exit Sub
             End If
-            MsgBox("Can not archive, only completed packing list can be archived", vbOKOnly + vbExclamation, "Error: No selection")
+            MsgBox("Can not archive, only fully paid incoices can be archived", vbOKOnly + vbExclamation, "Error: No selection")
             Exit Sub
         End If
 
-        If check(txtIssueNo.Text, token) = False Then
+        If check(txtInvoiceNo.Text, token) = False Then
             MsgBox("Could not modify document, the document has been modified by some one else. Please reload the document to continue", vbOKOnly + vbExclamation, "Invalid Operation")
             Cursor = Cursors.Default
             Exit Sub
         End If
 
         If 1 = 1 Then ' User.authorize("APPROVE LPO") = True Then
-            If txtIssueNo.Text = "" Then
+            If txtInvoiceNo.Text = "" Then
                 MsgBox("Select a document to archive", vbOKOnly + vbExclamation, "Error: No selection")
                 Exit Sub
             End If
-            Dim res As Integer = MsgBox("Archive packing list: " + txtIssueNo.Text + " ? Packing list will be sent to archives for future references", vbYesNo + vbQuestion, "Archive packing list?")
+            Dim res As Integer = MsgBox("Archive invoice: " + txtInvoiceNo.Text + " ? Invoice will be sent to archives for future references", vbYesNo + vbQuestion, "Archive packing list?")
             If res = DialogResult.Yes Then
 
-                Dim list As PackingList = New PackingList
-                If list.archivePackingList(txtIssueNo.Text) = True Then
+                Dim list As SalesInvoice = New SalesInvoice
+                If list.archiveInvoice(txtInvoiceNo.Text) = True Then
                     MsgBox("Archive Success", vbOKOnly + vbInformation, "Success")
                 Else
                     MsgBox("Archive failed", vbOKOnly + vbExclamation, "Failure")
                 End If
             End If
-            txtStatus.Text = (New PackingList).getStatus(txtIssueNo.Text)
+            txtStatus.Text = (New SalesInvoice).getStatus(txtInvoiceNo.Text)
         Else
             MsgBox("Access denied!", vbOKOnly + vbExclamation)
         End If
-        refreshPackingLists()
+        refreshInvoiceLists()
     End Sub
 
-    Private Sub btnComplete_Click1(sender As Object, e As EventArgs) Handles btnComplete.Click
-        If User.authorize("COMPLETE PACKING LIST") = False Then
-            MsgBox("Access Denied", vbOKOnly + vbExclamation, "Access denied")
-            Exit Sub
-        End If
-        If txtIssueNo.Text = "" Then
-            MsgBox("Please select document")
-            Exit Sub
-        End If
-        If txtIssueNo.Text = "" Then
-            MsgBox("Select a packing list to complete", vbOKOnly + vbExclamation, "Error: No selection")
-            Exit Sub
-        End If
-        Dim status As String = (New PackingList).getStatus(txtIssueNo.Text)
-        If status <> "PRINTED" Then
-            MsgBox("Operation failed, Only printed packing list can be completed and posted to sales", vbOKOnly + vbExclamation, "Error: Invalid operation")
-            Exit Sub
-        End If
-
-        If check(txtIssueNo.Text, token) = False Then
-            MsgBox("Could not modify document, the document has been modified by some one else. Please reload the document to continue", vbOKOnly + vbExclamation, "Invalid Operation")
-            Cursor = Cursors.Default
-            Exit Sub
-        End If
-
-        txtTotalAmountIssued.Text = LCurrency.displayValue(Math.Round((Val(LCurrency.getValue(txtTotalAmountIssued.Text))), 2, MidpointRounding.AwayFromZero).ToString)
-        txtTotalReturns.Text = LCurrency.displayValue(Math.Round((Val(LCurrency.getValue(txtTotalReturns.Text))), 2, MidpointRounding.AwayFromZero).ToString)
-        txtTotalDamages.Text = LCurrency.displayValue(Math.Round((Val(LCurrency.getValue(txtTotalDamages.Text))), 2, MidpointRounding.AwayFromZero).ToString)
-        txtTotalDiscounts.Text = LCurrency.displayValue(Math.Round((Val(LCurrency.getValue(txtTotalDiscounts.Text))), 2, MidpointRounding.AwayFromZero).ToString)
-        txtTotalExpenditures.Text = LCurrency.displayValue(Math.Round((Val(LCurrency.getValue(txtTotalExpenditures.Text))), 2, MidpointRounding.AwayFromZero).ToString)
-        txtTotalBankCash.Text = LCurrency.displayValue(Math.Round((Val(LCurrency.getValue(txtTotalBankCash.Text))), 2, MidpointRounding.AwayFromZero).ToString)
-        txtDebt.Text = LCurrency.displayValue(Math.Round((Val(LCurrency.getValue(txtDebt.Text))), 2, MidpointRounding.AwayFromZero).ToString)
-        txtTotalSales.Text = LCurrency.displayValue(Math.Round((Val(LCurrency.getValue(txtTotalSales.Text))), 2, MidpointRounding.AwayFromZero).ToString)
-        txtCostOfGoodsSold.Text = LCurrency.displayValue(Math.Round((Val(LCurrency.getValue(txtCostOfGoodsSold.Text))), 2, MidpointRounding.AwayFromZero).ToString)
-
-        Dim amountIssued As Double = Val(LCurrency.getValue(txtTotalAmountIssued.Text))
-        Dim sales As Double = Val(LCurrency.getValue(txtTotalSales.Text))
-        Dim returns As Double = Val(LCurrency.getValue(txtTotalReturns.Text))
-        Dim damages As Double = Val(LCurrency.getValue(txtTotalDamages.Text))
-        Dim discounts As Double = Val(LCurrency.getValue(txtTotalDiscounts.Text))
-        Dim expenditures As Double = Val(LCurrency.getValue(txtTotalExpenditures.Text))
-        Dim bankCash As Double = Val(LCurrency.getValue(txtTotalBankCash.Text))
-        Dim debt As Double = Val(LCurrency.getValue(txtDebt.Text))
-        Dim costOfGoods As Double = Val(LCurrency.getValue(txtCostOfGoodsSold.Text))
 
 
-        'validate entries
-        If discounts < 0 Or expenditures < 0 Or bankCash < 0 Or debt < 0 Then
-            MsgBox("Operation failed, negative amounts are not allowed", vbOKOnly + vbExclamation, "Error: Invalid operation")
-            Exit Sub
-        End If
-
-        If ((amountIssued - (returns + damages + discounts + expenditures + bankCash + debt) <> 0)) Then
-            MsgBox("Operation failed, Amounts do not tally, please cross check the list", vbOKOnly + vbExclamation, "Error: Invalid entries")
-            Exit Sub
-        End If
-
-        If ((amountIssued - (sales + returns + damages) <> 0)) Then
-            MsgBox("Can not update, unsold items must be returned or registered as damaged", vbOKOnly + vbExclamation, "Error: Invalid entries")
-            Exit Sub
-        End If
-
-
-        Dim res As Integer = MsgBox("Complete transaction? Returned items will be returned to stock and sales will be registered to sales", vbYesNoCancel + vbQuestion, "Complete transaction")
-        If Not res = DialogResult.Yes Then
-            Exit Sub
-        End If
-
-        'now, post to sales, returns and complete document
-        recordSale(txtIssueNo.Text)
-
-        'record sales details with the specified sale id
-        recordSaleDetails(saleId)
-
-        Dim query As String = ""
-
-        Dim list As PackingList = New PackingList
-        list.GL_ISSUE_NO = txtIssueNo.Text
-        list.GL_ISSUE_DATE = txtIssueDate.Text
-        list.GL_STATUS = txtStatus.Text
-        list.GL_SALES_PERSON = cmbSalesPersons.Text
-
-        list.GL_CUSTOMER_NAME = txtCustomerName.Text
-        list.GL_CUSTOMER_ADDRESS = txtCustomerAddress.Text
-
-        list.GL_AMOUNT_ISSUED = Val(LCurrency.getValue(txtTotalAmountIssued.Text))
-        list.GL_TOTAL_RETURNS = Val(LCurrency.getValue(txtTotalReturns.Text))
-        list.GL_TOTAL_DAMAGES = Val(LCurrency.getValue(txtTotalDamages.Text))
-        list.GL_TOTAL_DISCOUNTS = Val(LCurrency.getValue(txtTotalDiscounts.Text))
-        list.GL_TOTAL_EXPENDITURES = Val(LCurrency.getValue(txtTotalExpenditures.Text))
-        list.GL_TOTAL_BANK_CASH = Val(LCurrency.getValue(txtTotalBankCash.Text))
-        list.GL_DEBT = Val(LCurrency.getValue(txtDebt.Text))
-        list.GL_COST_OF_GOODS_SOLD = Val(LCurrency.getValue(txtCostOfGoodsSold.Text))
-
-
-        For i As Integer = 0 To dtgrdItemList.RowCount - 1
-            Dim itemCode As String = dtgrdItemList.Item(0, i).Value
-            Dim qtyReturned As String = dtgrdItemList.Item(7, i).Value
-            Dim qtyDamaged As String = dtgrdItemList.Item(8, i).Value
-            Dim price As String = LCurrency.getValue(dtgrdItemList.Item(2, i).Value)
-            'sql for recording sales
-
-            Try
-                'update inventory, after returning
-                query = query + "UPDATE `inventorys` SET `qty`=`qty`+'" + qtyReturned + "' WHERE `item_code`='" + itemCode + "';"
-                'update stock card, after returning items
-                If Val(qtyReturned) <> 0 Then
-                    query = query + "INSERT INTO `stock_cards`(`date`,`item_code`,`qty_in`,`balance`,`reference`) VALUES ('" + Day.DAY + "','" + itemCode + "','" + qtyReturned.ToString + "'," + (New Inventory).getInventory(itemCode).ToString + "+" + qtyReturned.ToString + ",'Returned PCKLIST Issue#: " + txtIssueNo.Text + "');"
-                End If
-                'register damages
-                If Val(qtyDamaged) <> 0 Then
-                    query = query + "INSERT INTO `damages`(`date`,`item_code`,`qty`,`price`,`reference`) VALUES ('" + Day.DAY + "','" + itemCode + "'," + qtyDamaged.ToString + "," + price.ToString + ",'Damaged in packing List, Issue No: " + txtIssueNo.Text + "');"
-                End If
-            Catch ex As Exception
-                MsgBox(ex.ToString)
-            End Try
-        Next
-        'edit packing list
-        query = query + "UPDATE `packing_list` SET `sales_person_id`='" + getSalesPersonId(list.GL_SALES_PERSON) + "',`amount_issued`='" + list.GL_AMOUNT_ISSUED.ToString + "',`total_returns`='" + list.GL_TOTAL_RETURNS.ToString + "',`total_damages`='" + list.GL_TOTAL_DAMAGES.ToString + "',`total_discounts`='" + list.GL_TOTAL_DISCOUNTS.ToString + "',`total_expenditures`='" + list.GL_TOTAL_EXPENDITURES.ToString + "',`total_bank_cash`='" + list.GL_TOTAL_BANK_CASH.ToString + "',`debt`='" + list.GL_DEBT.ToString + "',`cost_of_goods`='" + list.GL_COST_OF_GOODS_SOLD.ToString + "' WHERE `issue_no`='" + txtIssueNo.Text + "';"
-        'complete parking list
-        query = query + "UPDATE `packing_list` SET`status`='COMPLETED' WHERE `issue_no`='" + txtIssueNo.Text + "';"
-
-        Cursor = Cursors.AppStarting
-        Try
-            Dim conn As New MySqlConnection(Database.conString)
-            conn.Open()
-            Dim command As New MySqlCommand()
-            command.Connection = conn
-            command.CommandText = query
-            ' command.Prepare()
-            command.ExecuteNonQuery()
-            conn.Close()
-            list.getPackingList(txtIssueNo.Text)
-            MsgBox("Completed Successifully", vbOKOnly + vbInformation, "Success")
-        Catch ex As Exception
-            MsgBox(ex.ToString)
-            MsgBox("Process failed", vbOKOnly + vbExclamation, "Failure")
-        End Try
-        Cursor = Cursors.Default
-        txtStatus.Text = (New PackingList).getStatus(txtIssueNo.Text)
-        refreshPackingLists()
-
-    End Sub
-    Private Sub btnComplete_Click(sender As Object, e As EventArgs) 'Handles btnComplete.Click
-        If txtIssueNo.Text = "" Then
-            MsgBox("Select a packing list to complete", vbOKOnly + vbExclamation, "Error: No selection")
-            Exit Sub
-        End If
-        Dim status As String = (New PackingList).getStatus(txtIssueNo.Text)
-        If status <> "PRINTED" Then
-            MsgBox("Operation failed, Only printed packing list can be completed and posted to sales", vbOKOnly + vbExclamation, "Error: Invalid operation")
-            Exit Sub
-        End If
-
-        txtTotalAmountIssued.Text = LCurrency.displayValue(Math.Round((Val(LCurrency.getValue(txtTotalAmountIssued.Text))), 2, MidpointRounding.AwayFromZero).ToString)
-        txtTotalReturns.Text = LCurrency.displayValue(Math.Round((Val(LCurrency.getValue(txtTotalReturns.Text))), 2, MidpointRounding.AwayFromZero).ToString)
-        txtTotalDamages.Text = LCurrency.displayValue(Math.Round((Val(LCurrency.getValue(txtTotalDamages.Text))), 2, MidpointRounding.AwayFromZero).ToString)
-        txtTotalDiscounts.Text = LCurrency.displayValue(Math.Round((Val(LCurrency.getValue(txtTotalDiscounts.Text))), 2, MidpointRounding.AwayFromZero).ToString)
-        txtTotalExpenditures.Text = LCurrency.displayValue(Math.Round((Val(LCurrency.getValue(txtTotalExpenditures.Text))), 2, MidpointRounding.AwayFromZero).ToString)
-        txtTotalBankCash.Text = LCurrency.displayValue(Math.Round((Val(LCurrency.getValue(txtTotalBankCash.Text))), 2, MidpointRounding.AwayFromZero).ToString)
-        txtDebt.Text = LCurrency.displayValue(Math.Round((Val(LCurrency.getValue(txtDebt.Text))), 2, MidpointRounding.AwayFromZero).ToString)
-        txtTotalSales.Text = LCurrency.displayValue(Math.Round((Val(LCurrency.getValue(txtTotalSales.Text))), 2, MidpointRounding.AwayFromZero).ToString)
-        txtCostOfGoodsSold.Text = LCurrency.displayValue(Math.Round((Val(LCurrency.getValue(txtCostOfGoodsSold.Text))), 2, MidpointRounding.AwayFromZero).ToString)
-
-        Dim amountIssued As Double = Val(LCurrency.getValue(txtTotalAmountIssued.Text))
-        Dim sales As Double = Val(LCurrency.getValue(txtTotalSales.Text))
-        Dim returns As Double = Val(LCurrency.getValue(txtTotalReturns.Text))
-        Dim damages As Double = Val(LCurrency.getValue(txtTotalDamages.Text))
-        Dim discounts As Double = Val(LCurrency.getValue(txtTotalDiscounts.Text))
-        Dim expenditures As Double = Val(LCurrency.getValue(txtTotalExpenditures.Text))
-        Dim bankCash As Double = Val(LCurrency.getValue(txtTotalBankCash.Text))
-        Dim debt As Double = Val(LCurrency.getValue(txtDebt.Text))
-        Dim costOfGoods As Double = Val(LCurrency.getValue(txtCostOfGoodsSold.Text))
-
-
-        'validate entries
-        If discounts < 0 Or expenditures < 0 Or bankCash < 0 Or debt < 0 Then
-            MsgBox("Operation failed, negative amounts are not allowed", vbOKOnly + vbExclamation, "Error: Invalid operation")
-            Exit Sub
-        End If
-
-        If ((amountIssued - (returns + damages + discounts + expenditures + bankCash + debt) <> 0)) Then
-            MsgBox("Operation failed, Amounts do not tally", vbOKOnly + vbExclamation, "Error: Invalid entries")
-            Exit Sub
-        End If
-
-        If ((amountIssued - (sales + returns + damages) <> 0)) Then
-            MsgBox("Can not update, unsold items must be returned or registered as damaged", vbOKOnly + vbExclamation, "Error: Invalid entries")
-            Exit Sub
-        End If
-
-
-        Dim res As Integer = MsgBox("Complete transaction? Returned items will be returned to stock and sales will be registered to sales", vbYesNoCancel + vbQuestion, "Complete transaction")
-        If Not res = DialogResult.Yes Then
-            Exit Sub
-        End If
-
-        'now, post to sales, returns and complete document
-        recordSale(txtIssueNo.Text)
-
-        'record sales details with the specified sale id
-        recordSaleDetails(saleId)
-
-        For i As Integer = 0 To dtgrdItemList.RowCount - 1
-
-            Dim itemCode As String = dtgrdItemList.Item(0, i).Value
-            Dim qtyReturned As String = dtgrdItemList.Item(7, i).Value
-            Dim qtyDamaged As String = dtgrdItemList.Item(8, i).Value
-            Dim price As String = LCurrency.getValue(dtgrdItemList.Item(2, i).Value)
-            'sql for recording sales
-            Dim conn As New MySqlConnection(Database.conString)
-            Try
-                conn.Open()
-                Dim command As New MySqlCommand()
-                command.Connection = conn
-                command.CommandText = "UPDATE `inventorys` SET `qty`=`qty`+'" + qtyReturned + "' WHERE `item_code`='" + itemCode + "'"
-                command.Prepare()
-                command.ExecuteNonQuery()
-                conn.Close()
-                Dim inventory As New Inventory
-                Dim stockCard As New StockCard
-                Dim damaged As New Damage
-                If Val(qtyReturned) <> 0 Then
-                    stockCard.qtyIn(Day.DAY, itemCode, qtyReturned, inventory.getInventory(itemCode), "Returned from packing List, Issue No: " + txtIssueNo.Text)
-                End If
-                If Val(qtyDamaged) <> 0 Then
-                    Try
-                        damaged.registerDamage(Day.DAY, itemCode, qtyDamaged, price, "Damaged in packing List, Issue No: " + txtIssueNo.Text)
-                    Catch ex As Exception
-
-                    End Try
-                End If
-
-            Catch ex As Exception
-                MsgBox(ex.ToString)
-            End Try
-        Next
-
-        Dim list As PackingList = New PackingList
-        list.GL_ISSUE_NO = txtIssueNo.Text
-        list.GL_ISSUE_DATE = txtIssueDate.Text
-        list.GL_STATUS = txtStatus.Text
-        list.GL_SALES_PERSON = cmbSalesPersons.Text
-
-        list.GL_CUSTOMER_NAME = txtCustomerName.Text
-        list.GL_CUSTOMER_ADDRESS = txtCustomerAddress.Text
-
-        list.GL_AMOUNT_ISSUED = Val(LCurrency.getValue(txtTotalAmountIssued.Text))
-        list.GL_TOTAL_RETURNS = Val(LCurrency.getValue(txtTotalReturns.Text))
-        list.GL_TOTAL_DAMAGES = Val(LCurrency.getValue(txtTotalDamages.Text))
-        list.GL_TOTAL_DISCOUNTS = Val(LCurrency.getValue(txtTotalDiscounts.Text))
-        list.GL_TOTAL_EXPENDITURES = Val(LCurrency.getValue(txtTotalExpenditures.Text))
-        list.GL_TOTAL_BANK_CASH = Val(LCurrency.getValue(txtTotalBankCash.Text))
-        list.GL_DEBT = Val(LCurrency.getValue(txtDebt.Text))
-        list.GL_COST_OF_GOODS_SOLD = Val(LCurrency.getValue(txtCostOfGoodsSold.Text))
-
-        If list.completePackingList(txtIssueNo.Text) = True Then
-            list.editPackingList(txtIssueNo.Text)
-            list.getPackingList(txtIssueNo.Text)
-            MsgBox("Process Success", vbOKOnly + vbInformation, "Success")
-        Else
-            MsgBox("Process failed", vbOKOnly + vbExclamation, "Failure")
-        End If
-    End Sub
 
     Private Function getSalesPersonId(name) As String
         Dim id As String = ""
@@ -2324,9 +1515,9 @@ Public Class frmSalesInvoice
         Dim dayDate As String = txtIssueDate.Text
         Dim dateTime As DateTime = Date.Now.ToString("yyyy/MM/dd HH:mm:ss")
         'Dim total As Double = LCurrency.getValue(txtTotal.Text)
-        Dim discount As Double = txtTotalDiscounts.Text
+        Dim discount As Double = 0 ' txtTotalDiscounts.Text
         'Dim vat As Double = LCurrency.getValue(txtVAT.Text)
-        Dim amount As Double = Val(LCurrency.getValue(txtTotalAmountIssued.Text)) - Val(LCurrency.getValue(txtTotalReturns.Text)) - Val(LCurrency.getValue(txtTotalDamages.Text))
+        Dim amount As Double = 0 ' Val(LCurrency.getValue(txtTotalAmountIssued.Text)) - Val(LCurrency.getValue(txtTotalReturns.Text)) - Val(LCurrency.getValue(txtTotalDamages.Text))
 
 
         Dim conn As New MySqlConnection(Database.conString)
@@ -2432,34 +1623,6 @@ Public Class frmSalesInvoice
         Return recorded
     End Function
 
-    Private Function increaseInventory(ref As String)
-        For i As Integer = 0 To dtgrdItemList.RowCount - 1
-            If dtgrdItemList.Item(9, i).Value = False Then
-                Dim itemCode As String = dtgrdItemList.Item(1, i).Value
-                Dim qty As String = dtgrdItemList.Item(7, i).Value
-                'sql for updating inventory
-                Dim conn As New MySqlConnection(Database.conString)
-                Try
-                    conn.Open()
-                    Dim command As New MySqlCommand()
-                    command.Connection = conn
-                    command.CommandText = "UPDATE `inventorys` SET `qty`=`qty`-'" + qty + "' WHERE `item_code`='" + itemCode + "'"
-                    command.Prepare()
-                    command.ExecuteNonQuery()
-                    conn.Close()
-                    Dim inventory As New Inventory
-                    Dim stockCard As New StockCard
-                    stockCard.qtyOut(Day.DAY, itemCode, qty, inventory.getInventory(itemCode), "Product Sale, " + ref)
-                Catch ex As Exception
-                    MsgBox(ex.ToString)
-                    Return vbNull
-                    Exit Function
-                End Try
-            End If
-        Next
-        Return vbNull
-    End Function
-
     Private Sub refreshInvoiceLists()
         dtgrdInvoiceLists.Rows.Clear()
         Try
@@ -2507,225 +1670,32 @@ Public Class frmSalesInvoice
         End Try
     End Sub
 
-    Private Sub dtgrdPackingLists_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles dtgrdPackingLists.CellClick
-        Dim r As Integer = dtgrdPackingLists.CurrentRow.Index
-        Dim issueNo As String = dtgrdPackingLists.Item(0, r).Value.ToString
-        txtIssueNo.Text = issueNo
-        txtIssueNo.ReadOnly = False
+    Private Sub dtgrdPackingLists_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles dtgrdInvoiceLists.CellClick
+        Dim r As Integer = dtgrdInvoiceLists.CurrentRow.Index
+        Dim invoiceNo As String = dtgrdInvoiceLists.Item(1, r).Value.ToString
+        txtInvoiceNo.Text = invoiceNo
+        txtInvoiceNo.ReadOnly = False
         search()
     End Sub
 
-    Private Sub btnClearDebt_Click(sender As Object, e As EventArgs) Handles btnClearDebt.Click
-        If User.authorize("RECEIVE DEBT") = False Then
-            MsgBox("Access Denied", vbOKOnly + vbExclamation, "Access denied")
-            Exit Sub
-        End If
-        If txtId.Text = "" Then
-            MsgBox("Please select packing list", vbOKOnly + vbExclamation, "Error: No selection")
-            Exit Sub
-        End If
 
-        If check(txtIssueNo.Text, token) = False Then
-            MsgBox("Could not modify document, the document has been modified by some one else. Please reload the document to continue", vbOKOnly + vbExclamation, "Invalid Operation")
-            Cursor = Cursors.Default
-            Exit Sub
-        End If
 
-        PackingList.GLOBAL_ISSUE_NO = txtIssueNo.Text
-        PackingList.GLOBAL_SM_OFFICER = cmbSalesPersons.Text
-        PackingList.GLOBAL_DEBT = LCurrency.getValue(txtDebt.Text)
-
-        frmClearDebt.ShowDialog()
-        txtIssueNo.ReadOnly = False
-        search()
-        txtIssueNo.ReadOnly = True
-    End Sub
-
-    Private Sub txtDebt_TextChanged(sender As Object, e As EventArgs) Handles txtDebt.TextChanged
-        If Val(LCurrency.getValue(txtDebt.Text)) > 0 Then
-            btnClearDebt.Enabled = True
-        Else
-            btnClearDebt.Enabled = False
-        End If
-        If Val(LCurrency.getValue(txtDebt.Text)) < 0 Then
-            txtDebt.Text = ""
-        End If
-    End Sub
 
     Private Sub txtStatus_TextChanged(sender As Object, e As EventArgs) Handles txtStatus.TextChanged
-        If txtStatus.Text = "" Or txtStatus.Text = "PENDING" Then
-            cmbSalesPersons.Enabled = True
+        If txtStatus.Text = "" Or txtStatus.Text = "NEW" Then
+            cmbCustomerName.Enabled = True
         Else
-            cmbSalesPersons.Enabled = False
+            cmbCustomerName.Enabled = False
         End If
     End Sub
 
-    Private Sub txtQtyIssued_TextChanged(sender As Object, e As EventArgs) Handles txtIssued.TextChanged
-        If Not IsNumeric(txtIssued.Text) Or txtIssued.Text.Contains("-") Or Val(txtIssued.Text) < 0 Then
-            txtIssued.Text = ""
+    Private Sub txtQty_TextChanged(sender As Object, e As EventArgs) Handles txtQty.TextChanged
+        If Not IsNumeric(txtQty.Text) Or txtQty.Text.Contains("-") Or Val(txtQty.Text) < 0 Then
+            txtQty.Text = ""
         End If
     End Sub
 
-    Private Sub txtQtySold_TextChanged(sender As Object, e As EventArgs) Handles txtQtySold.TextChanged
-        If Not IsNumeric(txtQtySold.Text) Or txtQtySold.Text.Contains("-") Or Val(txtQtySold.Text) < 0 Then
-            txtQtySold.Text = ""
-        End If
-    End Sub
 
-    Private Sub txtQtyReturned_TextChanged(sender As Object, e As EventArgs) Handles txtQtyReturned.TextChanged
-        If Not IsNumeric(txtQtyReturned.Text) Or txtQtyReturned.Text.Contains("-") Or Val(txtQtyReturned.Text) < 0 Then
-            txtQtyReturned.Text = ""
-        End If
-    End Sub
-
-    Private Sub txtQtyDamaged_TextChanged(sender As Object, e As EventArgs) Handles txtQtyDamaged.TextChanged
-        If Not IsNumeric(txtQtyDamaged.Text) Or txtQtyDamaged.Text.Contains("-") Or Val(txtQtyDamaged.Text) < 0 Then
-            txtQtyDamaged.Text = ""
-        End If
-    End Sub
-
-    Private Sub btnDeficit_Click(sender As Object, e As EventArgs) Handles btnDeficit.Click
-        If txtId.Text = "" Then
-            Exit Sub
-        End If
-        txtDebt.Text = ""
-        Dim res As Integer = MsgBox("Calculate deficit? Make sure you have verified the amounts before entering deficit", vbYesNoCancel + vbQuestion, "Calculate deficit?")
-        If Not res = DialogResult.Yes Then
-            Exit Sub
-        End If
-
-        Dim amountIssued As Double = Val(LCurrency.getValue(txtTotalAmountIssued.Text))
-        Dim sales As Double = Val(LCurrency.getValue(txtTotalSales.Text))
-        Dim returns As Double = Val(LCurrency.getValue(txtTotalReturns.Text))
-        Dim damages As Double = Val(LCurrency.getValue(txtTotalDamages.Text))
-        Dim discounts As Double = Val(LCurrency.getValue(txtTotalDiscounts.Text))
-        Dim expenditures As Double = Val(LCurrency.getValue(txtTotalExpenditures.Text))
-        Dim bankCash As Double = Val(LCurrency.getValue(txtTotalBankCash.Text))
-
-        Dim debt As Double = sales - (discounts + expenditures + bankCash)
-
-        If debt < 0 Then
-            MsgBox("Invalid deficit amount, deficit less than zero")
-        End If
-        txtDebt.Text = LCurrency.displayValue(debt.ToString)
-    End Sub
-
-    Private Sub txtTotalDiscounts_TextChanged(sender As Object, e As EventArgs) Handles txtTotalDiscounts.TextChanged
-        If Not IsNumeric(LCurrency.getValue(txtTotalDiscounts.Text)) Or txtTotalDiscounts.Text.Contains("-") Or Val(LCurrency.getValue(txtTotalDiscounts.Text)) < 0 Then
-            txtTotalDiscounts.Text = ""
-        End If
-    End Sub
-
-    Private Sub txtTotalExpenditures_TextChanged(sender As Object, e As EventArgs) Handles txtTotalExpenditures.TextChanged
-        If Not IsNumeric(LCurrency.getValue(txtTotalExpenditures.Text)) Or txtTotalExpenditures.Text.Contains("-") Or Val(LCurrency.getValue(txtTotalExpenditures.Text)) < 0 Then
-            txtTotalExpenditures.Text = ""
-        End If
-    End Sub
-
-    Private Sub txtTotalBankCash_TextChanged(sender As Object, e As EventArgs) Handles txtTotalBankCash.TextChanged
-        If Not IsNumeric(LCurrency.getValue(txtTotalBankCash.Text)) Or txtTotalBankCash.Text.Contains("-") Or Val(LCurrency.getValue(txtTotalBankCash.Text)) < 0 Then
-            txtTotalBankCash.Text = ""
-        End If
-    End Sub
-
-    Private Sub dtgrdPackingLists_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles dtgrdPackingLists.CellContentClick
-
-    End Sub
-
-    Dim report As String = False
-    Private Sub Button1_Click_1(sender As Object, e As EventArgs) Handles btnPrintReport.Click
-        Dim status As String = (New PackingList).getStatus(txtIssueNo.Text)
-        report = True
-
-        If 1 = 1 Then ' User.authorize("PRINT PACKING LIST") = True Then
-            If txtIssueNo.Text = "" Then
-                MsgBox("Select a packing list to print", vbOKOnly + vbExclamation, "Error: No selection")
-                Exit Sub
-            End If
-
-
-
-            If dtgrdItemList.RowCount = 0 Then
-                MsgBox("Could not print an empty packing list", vbOKOnly + vbExclamation, "Error: No selection")
-                Exit Sub
-            End If
-            Dim list As PackingList = New PackingList
-
-
-            'now do the actual printing in pdf
-
-            Dim issueNo As String = txtIssueNo.Text
-            If issueNo = "" Then
-                MsgBox("Select a packing list to print.", vbOKOnly + vbCritical, "Error:No selection")
-                Exit Sub
-            End If
-            If dtgrdItemList.RowCount = 0 Then
-                MsgBox("Can not print an empty packing list. Please select the packing list to print", vbOKOnly + vbCritical, "Error: No selection")
-                Exit Sub
-            End If
-
-            If check(txtIssueNo.Text, token) = False Then
-                MsgBox("Could not print document, the document has been modified by some one else. Please reload the document to continue", vbOKOnly + vbExclamation, "Invalid Operation")
-                Cursor = Cursors.Default
-                Exit Sub
-            End If
-
-            Dim document As Document = New Document
-
-            document.Info.Title = "Packing List"
-            document.Info.Subject = "Packing List"
-            document.Info.Author = "Orbit"
-
-            defineStyles(document)
-            createDocument(document)
-
-            Dim myRenderer As PdfDocumentRenderer = New PdfDocumentRenderer(True)
-            myRenderer.Document = document
-            myRenderer.RenderDocument()
-
-            Dim filename As String = LSystem.getRoot & "\Packing List " & issueNo & ".pdf"
-
-            myRenderer.PdfDocument.Save(filename)
-
-            Process.Start(filename)
-
-
-            txtStatus.Text = (New PackingList).getStatus(txtIssueNo.Text)
-        Else
-            MsgBox("Access denied!", vbOKOnly + vbExclamation)
-        End If
-        refreshPackingLists()
-    End Sub
-
-    Private Sub txtReturns_TextChanged(sender As Object, e As EventArgs) Handles txtReturns.TextChanged
-        If Val(txtReturns.Text) < 0 Then
-            txtReturns.Text = ""
-        End If
-        If Not IsNumeric(txtReturns.Text) Then
-            txtReturns.Text = ""
-        End If
-        If (txtReturns.Text).Contains("-") Then
-            txtReturns.Text = ""
-        End If
-        txtIssued.Text = (Val(txtReturns.Text) + Val(txtPacked.Text)).ToString
-    End Sub
-
-    Private Sub txtPacked_TextChanged(sender As Object, e As EventArgs) Handles txtPacked.TextChanged
-        If Val(txtPacked.Text) < 0 Then
-            txtPacked.Text = ""
-        End If
-        If Not IsNumeric(txtPacked.Text) Then
-            txtPacked.Text = ""
-        End If
-        If (txtPacked.Text).Contains("-") Then
-            txtPacked.Text = ""
-        End If
-        txtIssued.Text = (Val(txtReturns.Text) + Val(txtPacked.Text)).ToString
-    End Sub
-
-    Private Sub cmbDescription_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbDescription.SelectedIndexChanged
-
-    End Sub
     Dim oldPrice As Double = 0
     Private Sub btnChange_Click(sender As Object, e As EventArgs) Handles btnChange.Click
         If txtPrice.ReadOnly = True And txtPrice.Text <> "" And Val(LCurrency.getValue(txtPrice.Text)) > 0 Then
@@ -2758,12 +1728,11 @@ Public Class frmSalesInvoice
             Dim noOfdocuments As Integer = 0
             Try
                 Cursor = Cursors.WaitCursor
-                For i As Integer = 0 To dtgrdPackingLists.RowCount - 1
-                    Dim no As String = dtgrdPackingLists.Item(0, i).Value.ToString
-                    Dim list As PackingList = New PackingList
-                    Dim debt As Double = Val(list.getDebt(no))
+                For i As Integer = 0 To dtgrdInvoiceLists.RowCount - 1
+                    Dim no As String = dtgrdInvoiceLists.Item(0, i).Value.ToString
+                    Dim list As SalesInvoice = New SalesInvoice
                     Dim status As String = list.getStatus(no)
-                    If debt = 0 And status = "COMPLETED" Then
+                    If status = "PAID" Then
                         noOfdocuments = noOfdocuments + 1
                     End If
                 Next
@@ -2786,21 +1755,20 @@ Public Class frmSalesInvoice
 
             Try
                 Cursor = Cursors.WaitCursor
-                For i As Integer = 0 To dtgrdPackingLists.RowCount - 1
-                    Dim no As String = dtgrdPackingLists.Item(0, i).Value.ToString
-                    Dim list As PackingList = New PackingList
-                    Dim debt As Double = Val(list.getDebt(no))
+                For i As Integer = 0 To dtgrdInvoiceLists.RowCount - 1
+                    Dim no As String = dtgrdInvoiceLists.Item(0, i).Value.ToString
+                    Dim list As SalesInvoice = New SalesInvoice
                     Dim status As String = list.getStatus(no)
-                    If debt = 0 And status = "COMPLETED" Then
+                    If status = "COMPLETED" Then
                         'archive
-                        list.archivePackingList(no)
+                        list.archiveInvoice(no)
                     End If
                 Next
                 MsgBox(noOfdocuments.ToString + " document(s) archived successifuly")
             Catch ex As Exception
                 '  MsgBox(ex.ToString)
             End Try
-            refreshPackingLists()
+            refreshInvoiceLists()
             Cursor = Cursors.Default
         End If
     End Sub
@@ -2810,7 +1778,7 @@ Public Class frmSalesInvoice
         Try
             Dim conn As New MySqlConnection(Database.conString)
             Dim command As New MySqlCommand()
-            Dim codeQuery As String = "UPDATE `packing_list` SET `touch`='" + token + "' WHERE `issue_no`='" + issueNo + "'"
+            Dim codeQuery As String = "UPDATE `sales_invoices` SET `touch`='" + token + "' WHERE `invoice_no`='" + issueNo + "'"
             conn.Open()
             command.CommandText = codeQuery
             command.Connection = conn
@@ -2825,7 +1793,7 @@ Public Class frmSalesInvoice
     Private Function check(issueNo As String, token As String) As Boolean
         Dim conn As New MySqlConnection(Database.conString)
         Dim command As New MySqlCommand()
-        Dim query As String = "SELECT `issue_no`, `touch` FROM `packing_list` WHERE `issue_no`='" + txtIssueNo.Text + "'"
+        Dim query As String = "SELECT `invoice_no`, `touch` FROM `sales_invoices` WHERE `invoice_no`='" + txtInvoiceNo.Text + "'"
         conn.Open()
         command.CommandText = query
         command.Connection = conn
@@ -2839,13 +1807,10 @@ Public Class frmSalesInvoice
         Return False
     End Function
 
-    Private Sub txtCustomerName_TextChanged(sender As Object, e As EventArgs) Handles txtCustomerName.TextChanged
-        If txtCustomerName.Text = "" Then
-            txtCustomerAddress.Text = ""
+    Private Sub txtCustomerName_TextChanged(sender As Object, e As EventArgs) Handles cmbCustomerName.TextChanged
+        If cmbCustomerName.Text = "" Then
+            cmbCustomerName.Text = ""
         End If
     End Sub
 
-    Private Sub Label31_Click(sender As Object, e As EventArgs) Handles Label31.Click
-
-    End Sub
 End Class

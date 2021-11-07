@@ -368,7 +368,7 @@ Public Class SalesInvoice
         Return exist
     End Function
 
-    Public Function editPackingList(issueNo As String) As Boolean
+    Public Function editInvoice(issueNo As String) As Boolean
         Dim success As Boolean = False
         Try
             Dim conn As New MySqlConnection(Database.conString)

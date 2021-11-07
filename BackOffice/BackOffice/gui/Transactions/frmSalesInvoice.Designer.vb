@@ -36,7 +36,7 @@ Partial Class frmSalesInvoice
         Me.btnCancel = New System.Windows.Forms.ToolStripButton()
         Me.btnApprove = New System.Windows.Forms.ToolStripButton()
         Me.btnPrint = New System.Windows.Forms.ToolStripButton()
-        Me.btnComplete = New System.Windows.Forms.ToolStripButton()
+        Me.btnPost = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripSeparator6 = New System.Windows.Forms.ToolStripSeparator()
         Me.btnArchive = New System.Windows.Forms.ToolStripButton()
         Me.btnArchiveAll = New System.Windows.Forms.ToolStripButton()
@@ -132,7 +132,7 @@ Partial Class frmSalesInvoice
         'ToolStrip1
         '
         Me.ToolStrip1.ImageScalingSize = New System.Drawing.Size(20, 20)
-        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.btnNew, Me.btnEdit, Me.btnClear, Me.btnSave, Me.ToolStripSeparator1, Me.ToolStripSeparator2, Me.ToolStripSeparator3, Me.ToolStripSeparator4, Me.btnCancel, Me.btnApprove, Me.btnPrint, Me.btnComplete, Me.ToolStripSeparator6, Me.btnArchive, Me.btnArchiveAll, Me.ToolStripSeparator5})
+        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.btnNew, Me.btnEdit, Me.btnClear, Me.btnSave, Me.ToolStripSeparator1, Me.ToolStripSeparator2, Me.ToolStripSeparator3, Me.ToolStripSeparator4, Me.btnCancel, Me.btnApprove, Me.btnPrint, Me.btnPost, Me.ToolStripSeparator6, Me.btnArchive, Me.btnArchiveAll, Me.ToolStripSeparator5})
         Me.ToolStrip1.Location = New System.Drawing.Point(0, 0)
         Me.ToolStrip1.Name = "ToolStrip1"
         Me.ToolStrip1.Size = New System.Drawing.Size(1404, 27)
@@ -222,14 +222,14 @@ Partial Class frmSalesInvoice
         Me.btnPrint.Text = "Print"
         Me.btnPrint.ToolTipText = "Removes items from stock and print the packing list to pdf"
         '
-        'btnComplete
+        'btnPost
         '
-        Me.btnComplete.Image = Global.BackOffice.My.Resources.Resources.foward_arrow
-        Me.btnComplete.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.btnComplete.Name = "btnComplete"
-        Me.btnComplete.Size = New System.Drawing.Size(214, 24)
-        Me.btnComplete.Text = "Complete and post to sales"
-        Me.btnComplete.ToolTipText = "Complete sales made from the packing list"
+        Me.btnPost.Image = Global.BackOffice.My.Resources.Resources.foward_arrow
+        Me.btnPost.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.btnPost.Name = "btnPost"
+        Me.btnPost.Size = New System.Drawing.Size(111, 24)
+        Me.btnPost.Text = "Post Invoice"
+        Me.btnPost.ToolTipText = "Post Invoice"
         '
         'ToolStripSeparator6
         '
@@ -884,7 +884,7 @@ Partial Class frmSalesInvoice
     Friend WithEvents btnCancel As ToolStripButton
     Friend WithEvents btnApprove As ToolStripButton
     Friend WithEvents btnPrint As ToolStripButton
-    Friend WithEvents btnComplete As ToolStripButton
+    Friend WithEvents btnPost As ToolStripButton
     Friend WithEvents ToolStripSeparator6 As ToolStripSeparator
     Friend WithEvents btnArchive As ToolStripButton
     Friend WithEvents btnArchiveAll As ToolStripButton

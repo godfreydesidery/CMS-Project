@@ -2637,7 +2637,7 @@ Public Class frmPackingList
         Return recorded
     End Function
 
-    Private Function increaseInventory(ref As String)
+    Private Function decreaseInventory(ref As String)
         For i As Integer = 0 To dtgrdItemList.RowCount - 1
             If dtgrdItemList.Item(9, i).Value = False Then
                 Dim itemCode As String = dtgrdItemList.Item(1, i).Value
