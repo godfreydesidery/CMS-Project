@@ -195,123 +195,100 @@ Public Class frmSalesInvoice
         'Before you can add a row, you must define the columns
         Dim column As Column
 
-            column = table.AddColumn("1.5cm")
-            column.Format.Alignment = ParagraphAlignment.Left
+        column = table.AddColumn("2.0cm")
+        column.Format.Alignment = ParagraphAlignment.Left
 
+        column = table.AddColumn("6.0cm")
+        column.Format.Alignment = ParagraphAlignment.Left
 
-            column = table.AddColumn("6cm")
-            column.Format.Alignment = ParagraphAlignment.Left
+        column = table.AddColumn("1.0cm")
+        column.Format.Alignment = ParagraphAlignment.Right
 
-            column = table.AddColumn("2.0cm")
-            column.Format.Alignment = ParagraphAlignment.Right
+        column = table.AddColumn("2.5cm")
+        column.Format.Alignment = ParagraphAlignment.Right
 
-            column = table.AddColumn("1.0cm")
-            column.Format.Alignment = ParagraphAlignment.Right
+        column = table.AddColumn("2.5cm")
+        column.Format.Alignment = ParagraphAlignment.Right
 
-            column = table.AddColumn("2cm")
-            column.Format.Alignment = ParagraphAlignment.Right
+        'Create the header of the table
+        Dim row As Row
 
-            'Create the header of the table
-            Dim row As Row
-
-            row = table.AddRow()
-            row.Format.Font.Bold = True
-            row.HeadingFormat = True
-            row.Format.Font.Size = 9
-            row.Format.Alignment = ParagraphAlignment.Center
-            row.Format.Font.Bold = True
-            row.Borders.Color = Colors.Black
-            row.Cells(0).AddParagraph("Item code")
-            row.Cells(0).Format.Alignment = ParagraphAlignment.Left
-            row.Cells(1).AddParagraph("Description")
-            row.Cells(1).Format.Alignment = ParagraphAlignment.Left
-            row.Cells(2).AddParagraph("Qty")
-            row.Cells(2).Format.Alignment = ParagraphAlignment.Left
-            row.Cells(3).AddParagraph("@Price")
-            row.Cells(3).Format.Alignment = ParagraphAlignment.Left
-            row.Cells(4).AddParagraph("Amount")
-            row.Cells(4).Format.Alignment = ParagraphAlignment.Left
+        row = table.AddRow()
+        row.Format.Font.Bold = True
+        row.HeadingFormat = True
+        row.Format.Font.Size = 9
+        row.Format.Alignment = ParagraphAlignment.Center
+        row.Format.Font.Bold = True
+        row.Borders.Color = Colors.Black
+        row.Cells(0).AddParagraph("Item code")
+        row.Cells(0).Format.Alignment = ParagraphAlignment.Left
+        row.Cells(1).AddParagraph("Description")
+        row.Cells(1).Format.Alignment = ParagraphAlignment.Left
+        row.Cells(2).AddParagraph("Qty")
+        row.Cells(2).Format.Alignment = ParagraphAlignment.Left
+        row.Cells(3).AddParagraph("@Price")
+        row.Cells(3).Format.Alignment = ParagraphAlignment.Left
+        row.Cells(4).AddParagraph("Amount")
+        row.Cells(4).Format.Alignment = ParagraphAlignment.Left
 
 
         table.SetEdge(0, 0, 5, 1, Edge.Box, BorderStyle.Single, 0.75, Color.Empty)
 
         Dim totalAmount As Double = 0
-            Dim totalVat As Double = 0
-            Dim totalDiscount As Double = 0
+        Dim totalVat As Double = 0
+        Dim totalDiscount As Double = 0
 
 
 
-            For i As Integer = 0 To dtgrdItemList.RowCount - 1
-                Dim code As String = dtgrdItemList.Item(2, i).Value.ToString
-                Dim description As String = dtgrdItemList.Item(3, i).Value.ToString
-                Dim price As String = dtgrdItemList.Item(6, i).Value.ToString
-                Dim qty As String = dtgrdItemList.Item(4, i).Value.ToString
-                Dim amount As String = dtgrdItemList.Item(7, i).Value.ToString
+        For i As Integer = 0 To dtgrdItemList.RowCount - 1
+            Dim code As String = dtgrdItemList.Item(2, i).Value.ToString
+            Dim description As String = dtgrdItemList.Item(3, i).Value.ToString
+            Dim price As String = dtgrdItemList.Item(6, i).Value.ToString
+            Dim qty As String = dtgrdItemList.Item(4, i).Value.ToString
+            Dim amount As String = dtgrdItemList.Item(7, i).Value.ToString
 
-                skip = skip + 1
+            skip = skip + 1
 
-                row = table.AddRow()
-                row.Format.Font.Bold = False
-                row.HeadingFormat = False
-                row.Format.Font.Size = 9
-                row.Height = "6mm"
-                row.Format.Alignment = ParagraphAlignment.Center
-                row.Borders.Color = Colors.Black
-                row.Cells(0).AddParagraph(code)
-                row.Cells(0).Format.Alignment = ParagraphAlignment.Left
-                row.Cells(1).AddParagraph(description)
-                row.Cells(1).Format.Alignment = ParagraphAlignment.Left
-                row.Cells(2).AddParagraph(qty)
-                row.Cells(2).Format.Alignment = ParagraphAlignment.Right
-                row.Cells(3).AddParagraph(price)
-                row.Cells(3).Format.Alignment = ParagraphAlignment.Left
-                row.Cells(4).AddParagraph(amount)
-                row.Cells(4).Format.Alignment = ParagraphAlignment.Left
+            row = table.AddRow()
+            row.Format.Font.Bold = False
+            row.HeadingFormat = False
+            row.Format.Font.Size = 9
+            row.Height = "6mm"
+            row.Format.Alignment = ParagraphAlignment.Center
+            row.Borders.Color = Colors.Black
+            row.Cells(0).AddParagraph(code)
+            row.Cells(0).Format.Alignment = ParagraphAlignment.Left
+            row.Cells(1).AddParagraph(description)
+            row.Cells(1).Format.Alignment = ParagraphAlignment.Left
+            row.Cells(2).AddParagraph(qty)
+            row.Cells(2).Format.Alignment = ParagraphAlignment.Left
+            row.Cells(3).AddParagraph(price)
+            row.Cells(3).Format.Alignment = ParagraphAlignment.Right
+            row.Cells(4).AddParagraph(amount)
+            row.Cells(4).Format.Alignment = ParagraphAlignment.Right
 
             table.SetEdge(0, 0, 5, 1, Edge.Box, BorderStyle.Single, 0.75, Color.Empty)
         Next
+        row = table.AddRow()
+        row.Format.Font.Bold = False
+        row.HeadingFormat = False
+        row.Format.Font.Size = 9
+        row.Height = "6mm"
+        row.Format.Alignment = ParagraphAlignment.Center
+        row.Borders.Color = Colors.White
+        row.Cells(0).AddParagraph()
+        row.Cells(0).Format.Alignment = ParagraphAlignment.Left
+        row.Cells(1).AddParagraph()
+        row.Cells(1).Format.Alignment = ParagraphAlignment.Left
+        row.Cells(2).AddParagraph()
+        row.Cells(2).Format.Alignment = ParagraphAlignment.Left
+        row.Cells(3).AddParagraph("Total")
+        row.Cells(3).Format.Alignment = ParagraphAlignment.Left
+        row.Cells(4).AddParagraph(txtTotal.Text)
+        row.Cells(4).Format.Alignment = ParagraphAlignment.Right
         table.SetEdge(0, 0, 5, 1, Edge.Box, BorderStyle.Single, 0.75, Color.Empty)
 
-
-
         paragraph = section.AddParagraph()
-
-        If Not status = "PENDING" Then
-            If (skip Mod 20) < 13 And skip >= 18 Then
-                section.AddPageBreak()
-            End If
-        End If
-
-
-
-        'Create the item table
-        Dim table3 As Table = section.AddTable()
-        table3.Style = "Table"
-        ' table.Borders.Color = TableBorder
-        table3.Borders.Width = 0.25
-        table3.Borders.Left.Width = 0.5
-        table3.Borders.Right.Width = 0.5
-        table3.Rows.LeftIndent = 0
-
-        'Before you can add a row, you must define the columns
-        Dim column3 As Column
-
-        column3 = table3.AddColumn("4cm")
-        column3.Format.Alignment = ParagraphAlignment.Left
-
-
-        column3 = table3.AddColumn("4cm")
-        column3.Format.Alignment = ParagraphAlignment.Left
-
-        If status = "PENDING" Then
-
-            paragraph = section.AddParagraph()
-            paragraph.AddFormattedText("Amount:" + LCurrency.displayValue(txtAmount.Text))
-            paragraph.Format.Font.Size = 8
-
-
-        End If
-        'Create the header of the table
 
 
         paragraph = section.AddParagraph()
@@ -378,11 +355,11 @@ Public Class frmSalesInvoice
                 Dim status As String = list.GL_STATUS
 
                 If status = "PENDING" Or status = "PARTIAL" Or status = "PAID" Or status = "ARCHIVED" Or status = "CANCELED" Then
-                    btnApprove.Enabled = False
+                    btnPost.Enabled = False
                 ElseIf status = "NEW" Then
-                    btnApprove.Enabled = True
+                    btnPost.Enabled = True
                 Else
-                    btnApprove.Enabled = False
+                    btnPost.Enabled = False
                 End If
 
                 If status = "NEW" Then
@@ -445,7 +422,7 @@ Public Class frmSalesInvoice
 
         txtIssueDate.Text = Day.DAY
         btnSave.Enabled = False
-        btnApprove.Enabled = False
+        btnPost.Enabled = False
         'clear()
         txtInvoiceNo.Text = (New SalesInvoice).generateInvoiceNo
         If txtInvoiceNo.Text = "" Then
@@ -502,6 +479,7 @@ Public Class frmSalesInvoice
     End Function
 
     Private Function refreshList()
+        Dim total As Double = 0
         Cursor = Cursors.WaitCursor
         dtgrdItemList.Rows.Clear()
         Try
@@ -570,11 +548,13 @@ Public Class frmSalesInvoice
                 dtgrdRow.Cells.Add(dtgrdCell)
 
                 dtgrdItemList.Rows.Add(dtgrdRow)
+
+                total = total + (Val(qty) * Val(price))
             End While
 
             conn.Close()
 
-
+            txtTotal.Text = LCurrency.displayValue(total.ToString)
         Catch ex As Exception
             MsgBox(ex.ToString)
         End Try
@@ -639,8 +619,6 @@ Public Class frmSalesInvoice
             txtItemCode.ReadOnly = True
             cmbDescription.Enabled = False
 
-            txtQty.ReadOnly = True
-
             'unlock
 
 
@@ -680,7 +658,7 @@ Public Class frmSalesInvoice
         row = dtgrdItemList.CurrentRow.Index
 
 
-        Dim sn As String = dtgrdItemList.Item(9, row).Value
+        Dim sn As String = dtgrdItemList.Item(0, row).Value
 
         If check(txtInvoiceNo.Text, token) = False Then
             MsgBox("Could not modify document, the document has been modified by some one else. Please reload the document to continue", vbOKOnly + vbExclamation, "Invalid Operation")
@@ -710,7 +688,7 @@ Public Class frmSalesInvoice
         Dim conn As New MySqlConnection(Database.conString)
         Try
             Dim suppcommand As New MySqlCommand()
-            Dim supplierQuery As String = "SELECT `customer_id`, `customer_code`, `customer_name`, `address`, `post_code`, `physical_address`, `contact_name`, `bank_acc_name`, `bank_acc_address`, `bank_post_code`, `bank_name`, `bank_acc_no`, `telephone`, `mob`, `email`, `fax`, `tin`, `vrn`, `invoice_limit`, `credit_limit`, `status` FROM `corporate_customers` `status`='ACTIVE'"
+            Dim supplierQuery As String = "SELECT `customer_id`, `customer_code`, `customer_name`, `address`, `post_code`, `physical_address`, `contact_name`, `bank_acc_name`, `bank_acc_address`, `bank_post_code`, `bank_name`, `bank_acc_no`, `telephone`, `mob`, `email`, `fax`, `tin`, `vrn`, `invoice_limit`, `credit_limit`, `status` FROM `corporate_customers` WHERE `status`='ACTIVE'"
             conn.Open()
             suppcommand.CommandText = supplierQuery
             suppcommand.Connection = conn
@@ -724,19 +702,41 @@ Public Class frmSalesInvoice
             End If
             conn.Close()
         Catch ex As Devart.Data.MySql.MySqlException
-            ErrorMessage.dbConnectionError()
+            MsgBox(ex.Message)
             Exit Sub
         End Try
     End Sub
 
-    Private Sub frmPackingList_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+    Dim longCustomerList As New List(Of String)
+    Dim shortCustomerList As New List(Of String)
+
+    Private Sub cmbCustomer_KeyUp(sender As Object, e As EventArgs) Handles cmbCustomerName.KeyUp
+
+        Dim currentText As String = cmbCustomerName.Text
+        shortCustomerList.Clear()
+        cmbCustomerName.Items.Clear()
+        cmbCustomerName.Items.Add(currentText)
+
+        cmbCustomerName.DroppedDown = True
+        For Each text As String In longCustomerList
+            Dim formattedText As String = text.ToUpper()
+            If formattedText.Contains(cmbCustomerName.Text.ToUpper()) Then
+                shortCustomerList.Add(text)
+            End If
+        Next
+        cmbCustomerName.Items.AddRange(shortCustomerList.ToArray())
+        cmbCustomerName.SelectionStart = cmbCustomerName.Text.Length
+        Cursor.Current = Cursors.Default
+    End Sub
+
+    Private Sub frmSalesInvoice_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Cursor = Cursors.AppStarting
         resetAll()
-        loadCustomers()
-        refreshInvoiceLists()
-
+        Dim customer As New CorporateCustomer
+        longCustomerList = customer.getCustomers("")
         Dim item As New Item
         longList = item.getItems()
+        refreshInvoiceLists()
         Cursor = Cursors.Default
     End Sub
 
@@ -825,7 +825,7 @@ Public Class frmSalesInvoice
         txtBarCode.Text = ""
         txtItemCode.Text = ""
         cmbDescription.Text = ""
-
+        txtQty.Text = ""
         txtPrice.Text = ""
 
     End Sub
@@ -871,6 +871,20 @@ Public Class frmSalesInvoice
         Return present
     End Function
     Private Sub btnAdd_Click(sender As Object, e As EventArgs) Handles btnAdd.Click
+        Dim invoiceLimit As Double = Val(LCurrency.getValue(txtInvoiceLimit.Text))
+        Dim creditLimit As Double = Val(LCurrency.getValue(txtCreditLimit.Text))
+        Dim creditBalance As Double = Val(LCurrency.getValue(txtCreditBalance.Text))
+        Dim currentTotal As Double = Val(LCurrency.getValue(txtTotal.Text))
+        Dim amount As Double = LCurrency.getValue(txtAmount.Text)
+        If amount + currentTotal > invoiceLimit Then
+            MsgBox("Could not add item, this transaction exceeds the allocated invoice limit", vbOKOnly + vbExclamation, "Error: Invalid operation")
+            Exit Sub
+        End If
+        If amount + currentTotal > creditBalance Then
+            MsgBox("Could not add item, this transaction exceeds the available credit balance", vbOKOnly + vbExclamation, "Error: Invalid operation")
+            Exit Sub
+        End If
+
         If User.authorize("CREATE & CANCEL PACKING LIST") = False Then
             ' MsgBox("Access Denied", vbOKOnly + vbExclamation, "Access denied")
             '  Exit Sub
@@ -985,7 +999,7 @@ Public Class frmSalesInvoice
         Else
             list.editInvoiceDetails(txtInvoiceNo.Text, itemCode)
         End If
-        btnApprove.Enabled = True
+        btnPost.Enabled = True
         If _new = True Then
             refreshInvoiceLists()
         End If
@@ -1051,6 +1065,7 @@ Public Class frmSalesInvoice
         cmbDescription.Text = ""
         txtPrice.Text = ""
         txtQty.Text = ""
+        txtAmount.Text = ""
         cmbDescription.Enabled = True
         txtBarCode.ReadOnly = False
         txtItemCode.ReadOnly = False
@@ -1181,6 +1196,17 @@ Public Class frmSalesInvoice
 
 
     Private Sub btnPost_Click1(sender As Object, e As EventArgs) Handles btnPost.Click
+        refreshCustomer()
+        Dim invoiceLimit As Double = Val(LCurrency.getValue(txtInvoiceLimit.Text))
+        Dim creditLimit As Double = Val(LCurrency.getValue(txtCreditLimit.Text))
+        Dim creditBalance As Double = Val(LCurrency.getValue(txtCreditBalance.Text))
+        Dim currentTotal As Double = Val(LCurrency.getValue(txtTotal.Text))
+
+        If currentTotal > creditBalance Then
+            MsgBox("Could not post, this transaction exceeds the available credit balance", vbOKOnly + vbExclamation, "Error: Invalid operation")
+            Exit Sub
+        End If
+
         If User.authorize("PRINT PACKING LIST") = False Then
             ' MsgBox("Access Denied", vbOKOnly + vbExclamation, "Access denied")
             '   Exit Sub
@@ -1220,86 +1246,64 @@ Public Class frmSalesInvoice
                 Dim list As SalesInvoice = New SalesInvoice
                 Dim success As Boolean = True
                 If status = "NEW" Then
-                    'if status is approved , deduct from stock
-                    If status = "NEW" Then
-                        'deduct from stock
 
-                        recordSale("")
+                    recordSale("")
 
-                        Dim query As String = "UPDATE `sales_invoices` SET`status`='PENDING' WHERE `invoice_no`='" + txtInvoiceNo.Text + "';"
-                        query = query + "INSERT INTO `sale_details`(`sale_id`, `item_code`, `selling_price`, `discounted_price`, `qty`, `amount`, `vat`,`tax_return`) VALUES (@sale_id,@item_code,@selling_price,@discounted_price,@qty,@amount,@vat,@tax_return);"
+                    Dim query As String = "UPDATE `sales_invoices` SET`status`='PENDING' WHERE `invoice_no`='" + txtInvoiceNo.Text + "';"
+
+                    Dim barCode As String = ""
+                    Dim itemCode As String = ""
+                    Dim description As String = ""
+                    Dim price As String = ""
+                    ' Dim vat As String = dtgrdItemList.Item(5, i).Value
+                    ' Dim discount As String = dtgrdItemList.Item(6, i).Value
+                    Dim qty As String = ""
+                    Dim amount As String = ""
+                    ' Dim discountedPrice As Double = Val(LCurrency.getValue(price)) * (1 - Val(discount) / 100)
+                    '  Dim actualVat As Double = Val(qty) * discountedPrice * Val(vat) / 100
+                    '  Dim taxReturn As Double = Val(qty) * (discountedPrice - Item.getCostPrice(itemCode)) * Val(vat) / 100
+                    ' totalTaxReturns = totalTaxReturns + taxReturn
 
 
-                        Dim barCode As String = ""
-                        Dim itemCode As String = ""
-                        Dim description As String = ""
-                        Dim price As String = ""
+                    For i As Integer = 0 To dtgrdItemList.RowCount - 1
+
+
+                        barCode = dtgrdItemList.Item(1, i).Value
+                        itemCode = dtgrdItemList.Item(2, i).Value
+                        description = dtgrdItemList.Item(3, i).Value
+                        price = dtgrdItemList.Item(6, i).Value
                         ' Dim vat As String = dtgrdItemList.Item(5, i).Value
                         ' Dim discount As String = dtgrdItemList.Item(6, i).Value
-                        Dim qty As String = ""
-                        Dim amount As String = ""
+                        qty = dtgrdItemList.Item(4, i).Value
+                        amount = dtgrdItemList.Item(7, i).Value
                         ' Dim discountedPrice As Double = Val(LCurrency.getValue(price)) * (1 - Val(discount) / 100)
                         '  Dim actualVat As Double = Val(qty) * discountedPrice * Val(vat) / 100
                         '  Dim taxReturn As Double = Val(qty) * (discountedPrice - Item.getCostPrice(itemCode)) * Val(vat) / 100
                         ' totalTaxReturns = totalTaxReturns + taxReturn
 
-
-                        For i As Integer = 0 To dtgrdItemList.RowCount - 1
-
-
-                            barCode = dtgrdItemList.Item(1, i).Value
-                            itemCode = dtgrdItemList.Item(2, i).Value
-                            description = dtgrdItemList.Item(3, i).Value
-                            price = dtgrdItemList.Item(6, i).Value
-                            ' Dim vat As String = dtgrdItemList.Item(5, i).Value
-                            ' Dim discount As String = dtgrdItemList.Item(6, i).Value
-                            qty = dtgrdItemList.Item(4, i).Value
-                            amount = dtgrdItemList.Item(7, i).Value
-                            ' Dim discountedPrice As Double = Val(LCurrency.getValue(price)) * (1 - Val(discount) / 100)
-                            '  Dim actualVat As Double = Val(qty) * discountedPrice * Val(vat) / 100
-                            '  Dim taxReturn As Double = Val(qty) * (discountedPrice - Item.getCostPrice(itemCode)) * Val(vat) / 100
-                            ' totalTaxReturns = totalTaxReturns + taxReturn
-
-
-
-
-
-                            'enter stock card
-                            query = query + " INSERT INTO `stock_cards`(`date`,`item_code`,`qty_out`,`balance`,`reference`) VALUES ('" + Day.DAY + "','" + itemCode + "','" + qty.ToString + "'," + (New Inventory).getInventory(itemCode).ToString + "-" + qty.ToString + ",'Issued Invoice #: " + txtInvoiceNo.Text + "');"
-                            'update inventory
-                            query = query + "UPDATE `inventorys` SET `qty`=`qty`-" + qty.ToString + " WHERE `item_code`='" + itemCode + "';"
-
-                        Next
-
-                        Try
-                            Dim conn As New MySqlConnection(Database.conString)
-                            conn.Open()
-                            Dim command As New MySqlCommand()
-                            command.Connection = conn
-                            command.CommandText = query
-                            'command.Prepare()
-                            command.Parameters.AddWithValue("@sale_id", saleId)
-                            command.Parameters.AddWithValue("@item_code", itemcode)
-                            command.Parameters.AddWithValue("@selling_price", LCurrency.getValue(price))
-                            command.Parameters.AddWithValue("@discounted_price", price)
-                            command.Parameters.AddWithValue("@qty", Val(qty))
-                            command.Parameters.AddWithValue("@amount", LCurrency.getValue(amount))
-                            command.Parameters.AddWithValue("@vat", 0)
-                            command.Parameters.AddWithValue("@tax_return", 0)
-
-                            command.ExecuteNonQuery()
-                            conn.Close()
-                            success = True
-                        Catch ex As Exception
-                            success = False
-                            MsgBox(ex.StackTrace)
-                        End Try
-                    Else
+                        query = query + "INSERT INTO `sale_details`(`sale_id`, `item_code`, `selling_price`, `discounted_price`, `qty`, `amount`, `vat`,`tax_return`) VALUES ('" + saleId + "','" + itemCode + "','" + LCurrency.getValue(price) + "','" + LCurrency.getValue(price) + "','" + qty + "','" + LCurrency.getValue(amount) + "','0','0');"
+                        'enter stock card
+                        query = query + " INSERT INTO `stock_cards`(`date`,`item_code`,`qty_out`,`balance`,`reference`) VALUES ('" + Day.DAY + "','" + itemCode + "','" + qty.ToString + "'," + (New Inventory).getInventory(itemCode).ToString + "-" + qty.ToString + ",'Issued Invoice #: " + txtInvoiceNo.Text + "');"
+                        'update inventory
+                        query = query + "UPDATE `inventorys` SET `qty`=`qty`-" + qty.ToString + " WHERE `item_code`='" + itemCode + "';"
+                    Next
+                    query = query + "UPDATE `corporate_customers` SET `credit_balance` = `credit_balance` - '" + currentTotal.ToString + "' WHERE `customer_name` = '" + cmbCustomerName.Text + "';"
+                    Try
+                        Dim conn As New MySqlConnection(Database.conString)
+                        Dim command As New MySqlCommand()
+                        Dim codeQuery As String = query
+                        conn.Open()
+                        command.CommandText = codeQuery
+                        command.Connection = conn
+                        command.CommandType = CommandType.Text
+                        command.ExecuteNonQuery()
+                        conn.Close()
                         success = True
-                    End If
-                    If status = "APPROVED" And success = True Then
-                        MsgBox("Print Success", vbOKOnly + vbInformation, "Success")
-                    End If
+                    Catch ex As Exception
+                        success = False
+                        MsgBox(ex.Message)
+                    End Try
+
                 End If
                 txtStatus.Text = (New PackingList).getStatus(txtInvoiceNo.Text)
                 If success = True Then
@@ -1343,10 +1347,6 @@ Public Class frmSalesInvoice
         End If
         refreshInvoiceLists()
     End Sub
-
-
-
-
 
 
 
@@ -1511,7 +1511,7 @@ Public Class frmSalesInvoice
 
     Private Function recordSale(receiptNo As String)
         Dim recorded As Boolean = False
-        Dim tillNO As String = "PCKLIST" 'Till.TILLNO
+        Dim tillNO As String = "INVOICE" 'Till.TILLNO
         Dim dayDate As String = txtIssueDate.Text
         Dim dateTime As DateTime = Date.Now.ToString("yyyy/MM/dd HH:mm:ss")
         'Dim total As Double = LCurrency.getValue(txtTotal.Text)
@@ -1547,23 +1547,6 @@ Public Class frmSalesInvoice
             command.ExecuteNonQuery()
             recorded = True
             conn.Close()
-        Catch ex As Exception
-            MsgBox(ex.ToString)
-            Return vbNull
-            Exit Function
-        End Try
-        Try
-            conn.Open()
-            Dim command As New MySqlCommand()
-            command.Connection = conn
-            command.CommandText = "INSERT INTO `receipt`( `bill_no`, `till_no`, `receipt_no`, `date`) VALUES (@id,@till_no,@receipt_no,@date)"
-            command.Prepare()
-            command.Parameters.AddWithValue("@id", saleId)
-            command.Parameters.AddWithValue("@till_no", tillNO)
-            command.Parameters.AddWithValue("@receipt_no", receiptNo)
-            command.Parameters.AddWithValue("@date", dayDate)
-            command.ExecuteNonQuery()
-            recorded = True
         Catch ex As Exception
             MsgBox(ex.ToString)
             Return vbNull
@@ -1650,6 +1633,10 @@ Public Class frmSalesInvoice
                 Dim dtgrdCell As DataGridViewCell
 
                 dtgrdCell = New DataGridViewTextBoxCell()
+                dtgrdCell.Value = ""
+                dtgrdRow.Cells.Add(dtgrdCell)
+
+                dtgrdCell = New DataGridViewTextBoxCell()
                 dtgrdCell.Value = invoiceNo
                 dtgrdRow.Cells.Add(dtgrdCell)
 
@@ -1693,6 +1680,7 @@ Public Class frmSalesInvoice
         If Not IsNumeric(txtQty.Text) Or txtQty.Text.Contains("-") Or Val(txtQty.Text) < 0 Then
             txtQty.Text = ""
         End If
+        txtAmount.Text = LCurrency.displayValue(Val(txtQty.Text) * Val(LCurrency.getValue(txtPrice.Text)))
     End Sub
 
 
@@ -1713,6 +1701,7 @@ Public Class frmSalesInvoice
             oldPrice = 0
             txtPrice.ReadOnly = True
         End If
+        txtAmount.Text = LCurrency.displayValue(Val(txtQty.Text) * Val(LCurrency.getValue(txtPrice.Text)))
     End Sub
     'maintains the visible position of a row after refresh
     Dim currentRow As Integer = -1
@@ -1813,4 +1802,36 @@ Public Class frmSalesInvoice
         End If
     End Sub
 
+    Private Sub cmbCustomerName_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbCustomerName.TextChanged
+        refreshCustomer()
+    End Sub
+    Private Sub refreshCustomer()
+        Try
+            Dim conn As New MySqlConnection(Database.conString)
+            Dim command As New MySqlCommand()
+            Dim codeQuery As String = "SELECT `customer_id`, `customer_code`, `customer_name`, `address`, `post_code`, `physical_address`, `contact_name`, `bank_acc_name`, `bank_acc_address`, `bank_post_code`, `bank_name`, `bank_acc_no`, `telephone`, `mob`, `email`, `fax`, `tin`, `vrn`, `invoice_limit`, `credit_limit`, `status`, `credit_balance` FROM `corporate_customers` WHERE  `customer_name`='" + cmbCustomerName.Text + "'"
+            conn.Open()
+            command.CommandText = codeQuery
+            command.Connection = conn
+            command.CommandType = CommandType.Text
+            Dim reader As MySqlDataReader = command.ExecuteReader()
+            While reader.Read
+                txtCustomerNo.Text = reader.GetString("customer_code")
+                txtInvoiceLimit.Text = LCurrency.displayValue(reader.GetString("invoice_limit"))
+                txtCreditLimit.Text = LCurrency.displayValue(reader.GetString("credit_limit"))
+                txtCreditBalance.Text = LCurrency.displayValue(reader.GetString("credit_balance"))
+                Exit While
+            End While
+            conn.Close()
+        Catch ex As Exception
+            cmbCustomerName.Text = ""
+            MsgBox(ex.Message)
+        End Try
+        If cmbCustomerName.Text = "" Then
+            txtCustomerNo.Text = ""
+            txtInvoiceLimit.Text = ""
+            txtCreditLimit.Text = ""
+            txtCreditBalance.Text = ""
+        End If
+    End Sub
 End Class

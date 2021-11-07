@@ -26,14 +26,14 @@ Public Class SalesInvoice
         Try
             Dim conn As New MySqlConnection(Database.conString)
             Dim command As New MySqlCommand()
-            Dim codeQuery As String = "SELECT `id` FROM `sales_invoices` ORDER BY `id` DESC LIMIT 1"
+            Dim codeQuery As String = "SELECT `invoice_id` FROM `sales_invoices` ORDER BY `invoice_id` DESC LIMIT 1"
             conn.Open()
             command.CommandText = codeQuery
             command.Connection = conn
             command.CommandType = CommandType.Text
             Dim reader As MySqlDataReader = command.ExecuteReader()
             While reader.Read
-                no = (Val(reader.GetString("id")) + 1).ToString
+                no = (Val(reader.GetString("invoice_id")) + 1).ToString
                 Exit While
             End While
             If no = "" Then
@@ -137,7 +137,7 @@ Public Class SalesInvoice
         Try
             Dim conn As New MySqlConnection(Database.conString)
             Dim command As New MySqlCommand()
-            Dim codeQuery As String = "SELECT `sales_invoices`.`id` AS `id`, `sales_invoices`.`invoice_no` AS `invoice_no`, `sales_invoices`.`customer_no` AS `customer_no`, `sales_invoices`.`invoice_date` AS `invoice_date`, `sales_invoices`.`status` AS `status`, `sales_invoices`.`invoice_amount` AS `invoice_amount` FROM `sales_invoices` WHERE `sales_invoices`.`invoice_no`='" + invoiceNo + "'"
+            Dim codeQuery As String = "SELECT `sales_invoices`.`invoice_id` AS `id`, `sales_invoices`.`invoice_no` AS `invoice_no`, `sales_invoices`.`customer_no` AS `customer_no`, `sales_invoices`.`invoice_date` AS `invoice_date`, `sales_invoices`.`status` AS `status` FROM `sales_invoices` WHERE `sales_invoices`.`invoice_no`='" + invoiceNo + "'"
             conn.Open()
             command.CommandText = codeQuery
             command.Connection = conn
