@@ -171,6 +171,7 @@
     <Compile Include="general\PackingList\PackingList.vb" />
     <Compile Include="general\Production\ItemConversion.vb" />
     <Compile Include="general\Production\Production.vb" />
+    <Compile Include="general\SalesInvoice.vb" />
     <Compile Include="general\SalesPerson\SalesPerson.vb" />
     <Compile Include="general\StockCard.vb" />
     <Compile Include="general\Transactions\Refund.vb" />

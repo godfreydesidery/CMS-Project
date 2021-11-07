@@ -23,7 +23,7 @@ Partial Class frmSalesInvoice
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmSalesInvoice))
-        Me.Button2 = New System.Windows.Forms.Button()
+        Me.btnBack = New System.Windows.Forms.Button()
         Me.ToolStrip1 = New System.Windows.Forms.ToolStrip()
         Me.btnNew = New System.Windows.Forms.ToolStripButton()
         Me.btnEdit = New System.Windows.Forms.ToolStripButton()
@@ -42,8 +42,8 @@ Partial Class frmSalesInvoice
         Me.btnArchiveAll = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripSeparator5 = New System.Windows.Forms.ToolStripSeparator()
         Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.Panel2 = New System.Windows.Forms.Panel()
         Me.Panel4 = New System.Windows.Forms.Panel()
+        Me.Panel2 = New System.Windows.Forms.Panel()
         Me.Label19 = New System.Windows.Forms.Label()
         Me.txtComment = New System.Windows.Forms.TextBox()
         Me.Label9 = New System.Windows.Forms.Label()
@@ -67,18 +67,12 @@ Partial Class frmSalesInvoice
         Me.txtCustomerNo = New System.Windows.Forms.TextBox()
         Me.txtId = New System.Windows.Forms.TextBox()
         Me.Panel5 = New System.Windows.Forms.Panel()
-        Me.Panel6 = New System.Windows.Forms.Panel()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
-        Me.TabPage2 = New System.Windows.Forms.TabPage()
         Me.Panel3 = New System.Windows.Forms.Panel()
         Me.txtAmount = New System.Windows.Forms.TextBox()
         Me.Label20 = New System.Windows.Forms.Label()
         Me.txtDetailId = New System.Windows.Forms.TextBox()
-        Me.txtCostPriceVatIncl = New System.Windows.Forms.TextBox()
-        Me.Label14 = New System.Windows.Forms.Label()
-        Me.Label28 = New System.Windows.Forms.Label()
-        Me.txtDiscount = New System.Windows.Forms.TextBox()
         Me.btnChange = New System.Windows.Forms.Button()
         Me.Label23 = New System.Windows.Forms.Label()
         Me.txtQty = New System.Windows.Forms.TextBox()
@@ -90,17 +84,19 @@ Partial Class frmSalesInvoice
         Me.txtBarCode = New System.Windows.Forms.TextBox()
         Me.Label13 = New System.Windows.Forms.Label()
         Me.Label16 = New System.Windows.Forms.Label()
-        Me.txtCode = New System.Windows.Forms.TextBox()
-        Me.txtSellingPriceVatIncl = New System.Windows.Forms.TextBox()
+        Me.txtItemCode = New System.Windows.Forms.TextBox()
+        Me.txtPrice = New System.Windows.Forms.TextBox()
         Me.Label18 = New System.Windows.Forms.Label()
+        Me.TabPage2 = New System.Windows.Forms.TabPage()
         Me.dtgrdInvoiceLists = New System.Windows.Forms.DataGridView()
         Me.Column5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column15 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column16 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Panel6 = New System.Windows.Forms.Panel()
         Me.Panel7 = New System.Windows.Forms.Panel()
-        Me.dtgrdProductList = New System.Windows.Forms.DataGridView()
+        Me.dtgrdItemList = New System.Windows.Forms.DataGridView()
         Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -113,25 +109,25 @@ Partial Class frmSalesInvoice
         Me.Panel1.SuspendLayout()
         Me.Panel2.SuspendLayout()
         Me.Panel5.SuspendLayout()
-        Me.Panel6.SuspendLayout()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
-        Me.TabPage2.SuspendLayout()
         Me.Panel3.SuspendLayout()
+        Me.TabPage2.SuspendLayout()
         CType(Me.dtgrdInvoiceLists, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.dtgrdProductList, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.Panel6.SuspendLayout()
+        CType(Me.dtgrdItemList, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
-        'Button2
+        'btnBack
         '
-        Me.Button2.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Button2.BackgroundImage = Global.BackOffice.My.Resources.Resources.red_back_arrow
-        Me.Button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.Button2.Location = New System.Drawing.Point(901, 2)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(100, 35)
-        Me.Button2.TabIndex = 114
-        Me.Button2.UseVisualStyleBackColor = True
+        Me.btnBack.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnBack.BackgroundImage = Global.BackOffice.My.Resources.Resources.red_back_arrow
+        Me.btnBack.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.btnBack.Location = New System.Drawing.Point(901, 2)
+        Me.btnBack.Name = "btnBack"
+        Me.btnBack.Size = New System.Drawing.Size(100, 35)
+        Me.btnBack.TabIndex = 114
+        Me.btnBack.UseVisualStyleBackColor = True
         '
         'ToolStrip1
         '
@@ -273,6 +269,14 @@ Partial Class frmSalesInvoice
         Me.Panel1.Size = New System.Drawing.Size(400, 733)
         Me.Panel1.TabIndex = 116
         '
+        'Panel4
+        '
+        Me.Panel4.Dock = System.Windows.Forms.DockStyle.Top
+        Me.Panel4.Location = New System.Drawing.Point(0, 342)
+        Me.Panel4.Name = "Panel4"
+        Me.Panel4.Size = New System.Drawing.Size(400, 136)
+        Me.Panel4.TabIndex = 2
+        '
         'Panel2
         '
         Me.Panel2.Controls.Add(Me.Label19)
@@ -302,14 +306,6 @@ Partial Class frmSalesInvoice
         Me.Panel2.Name = "Panel2"
         Me.Panel2.Size = New System.Drawing.Size(400, 342)
         Me.Panel2.TabIndex = 0
-        '
-        'Panel4
-        '
-        Me.Panel4.Dock = System.Windows.Forms.DockStyle.Top
-        Me.Panel4.Location = New System.Drawing.Point(0, 342)
-        Me.Panel4.Name = "Panel4"
-        Me.Panel4.Size = New System.Drawing.Size(400, 136)
-        Me.Panel4.TabIndex = 2
         '
         'Label19
         '
@@ -499,15 +495,6 @@ Partial Class frmSalesInvoice
         Me.Panel5.Size = New System.Drawing.Size(1004, 315)
         Me.Panel5.TabIndex = 117
         '
-        'Panel6
-        '
-        Me.Panel6.Controls.Add(Me.Button2)
-        Me.Panel6.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.Panel6.Location = New System.Drawing.Point(400, 720)
-        Me.Panel6.Name = "Panel6"
-        Me.Panel6.Size = New System.Drawing.Size(1004, 40)
-        Me.Panel6.TabIndex = 118
-        '
         'TabControl1
         '
         Me.TabControl1.Controls.Add(Me.TabPage1)
@@ -529,17 +516,6 @@ Partial Class frmSalesInvoice
         Me.TabPage1.TabIndex = 0
         Me.TabPage1.Text = "Item Entry"
         '
-        'TabPage2
-        '
-        Me.TabPage2.BackColor = System.Drawing.SystemColors.Control
-        Me.TabPage2.Controls.Add(Me.dtgrdInvoiceLists)
-        Me.TabPage2.Location = New System.Drawing.Point(4, 25)
-        Me.TabPage2.Name = "TabPage2"
-        Me.TabPage2.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage2.Size = New System.Drawing.Size(703, 274)
-        Me.TabPage2.TabIndex = 1
-        Me.TabPage2.Text = "Invoice List"
-        '
         'Panel3
         '
         Me.Panel3.BackColor = System.Drawing.SystemColors.Control
@@ -547,10 +523,6 @@ Partial Class frmSalesInvoice
         Me.Panel3.Controls.Add(Me.txtAmount)
         Me.Panel3.Controls.Add(Me.Label20)
         Me.Panel3.Controls.Add(Me.txtDetailId)
-        Me.Panel3.Controls.Add(Me.txtCostPriceVatIncl)
-        Me.Panel3.Controls.Add(Me.Label14)
-        Me.Panel3.Controls.Add(Me.Label28)
-        Me.Panel3.Controls.Add(Me.txtDiscount)
         Me.Panel3.Controls.Add(Me.btnChange)
         Me.Panel3.Controls.Add(Me.Label23)
         Me.Panel3.Controls.Add(Me.txtQty)
@@ -562,8 +534,8 @@ Partial Class frmSalesInvoice
         Me.Panel3.Controls.Add(Me.txtBarCode)
         Me.Panel3.Controls.Add(Me.Label13)
         Me.Panel3.Controls.Add(Me.Label16)
-        Me.Panel3.Controls.Add(Me.txtCode)
-        Me.Panel3.Controls.Add(Me.txtSellingPriceVatIncl)
+        Me.Panel3.Controls.Add(Me.txtItemCode)
+        Me.Panel3.Controls.Add(Me.txtPrice)
         Me.Panel3.Controls.Add(Me.Label18)
         Me.Panel3.Location = New System.Drawing.Point(6, 6)
         Me.Panel3.Name = "Panel3"
@@ -572,7 +544,7 @@ Partial Class frmSalesInvoice
         '
         'txtAmount
         '
-        Me.txtAmount.Location = New System.Drawing.Point(165, 220)
+        Me.txtAmount.Location = New System.Drawing.Point(165, 161)
         Me.txtAmount.MaxLength = 50
         Me.txtAmount.Name = "txtAmount"
         Me.txtAmount.ReadOnly = True
@@ -583,7 +555,7 @@ Partial Class frmSalesInvoice
         'Label20
         '
         Me.Label20.AutoSize = True
-        Me.Label20.Location = New System.Drawing.Point(103, 223)
+        Me.Label20.Location = New System.Drawing.Point(103, 164)
         Me.Label20.Name = "Label20"
         Me.Label20.Size = New System.Drawing.Size(56, 17)
         Me.Label20.TabIndex = 126
@@ -596,43 +568,6 @@ Partial Class frmSalesInvoice
         Me.txtDetailId.ReadOnly = True
         Me.txtDetailId.Size = New System.Drawing.Size(27, 22)
         Me.txtDetailId.TabIndex = 125
-        '
-        'txtCostPriceVatIncl
-        '
-        Me.txtCostPriceVatIncl.Location = New System.Drawing.Point(165, 161)
-        Me.txtCostPriceVatIncl.MaxLength = 50
-        Me.txtCostPriceVatIncl.Name = "txtCostPriceVatIncl"
-        Me.txtCostPriceVatIncl.ReadOnly = True
-        Me.txtCostPriceVatIncl.Size = New System.Drawing.Size(134, 22)
-        Me.txtCostPriceVatIncl.TabIndex = 110
-        Me.txtCostPriceVatIncl.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
-        '
-        'Label14
-        '
-        Me.Label14.AutoSize = True
-        Me.Label14.Location = New System.Drawing.Point(29, 161)
-        Me.Label14.Name = "Label14"
-        Me.Label14.Size = New System.Drawing.Size(132, 17)
-        Me.Label14.TabIndex = 109
-        Me.Label14.Text = "Cost Price (Vat Incl)"
-        '
-        'Label28
-        '
-        Me.Label28.AutoSize = True
-        Me.Label28.Location = New System.Drawing.Point(70, 192)
-        Me.Label28.Name = "Label28"
-        Me.Label28.Size = New System.Drawing.Size(89, 17)
-        Me.Label28.TabIndex = 105
-        Me.Label28.Text = "Discount (%)"
-        '
-        'txtDiscount
-        '
-        Me.txtDiscount.Location = New System.Drawing.Point(165, 189)
-        Me.txtDiscount.MaxLength = 50
-        Me.txtDiscount.Name = "txtDiscount"
-        Me.txtDiscount.ReadOnly = True
-        Me.txtDiscount.Size = New System.Drawing.Size(134, 22)
-        Me.txtDiscount.TabIndex = 106
         '
         'btnChange
         '
@@ -733,33 +668,44 @@ Partial Class frmSalesInvoice
         Me.Label16.TabIndex = 49
         Me.Label16.Text = "Barcode"
         '
-        'txtCode
+        'txtItemCode
         '
-        Me.txtCode.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtCode.Location = New System.Drawing.Point(106, 38)
-        Me.txtCode.MaxLength = 50
-        Me.txtCode.Name = "txtCode"
-        Me.txtCode.Size = New System.Drawing.Size(134, 27)
-        Me.txtCode.TabIndex = 39
+        Me.txtItemCode.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtItemCode.Location = New System.Drawing.Point(106, 38)
+        Me.txtItemCode.MaxLength = 50
+        Me.txtItemCode.Name = "txtItemCode"
+        Me.txtItemCode.Size = New System.Drawing.Size(134, 27)
+        Me.txtItemCode.TabIndex = 39
         '
-        'txtSellingPriceVatIncl
+        'txtPrice
         '
-        Me.txtSellingPriceVatIncl.Location = New System.Drawing.Point(165, 133)
-        Me.txtSellingPriceVatIncl.MaxLength = 50
-        Me.txtSellingPriceVatIncl.Name = "txtSellingPriceVatIncl"
-        Me.txtSellingPriceVatIncl.ReadOnly = True
-        Me.txtSellingPriceVatIncl.Size = New System.Drawing.Size(134, 22)
-        Me.txtSellingPriceVatIncl.TabIndex = 47
-        Me.txtSellingPriceVatIncl.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        Me.txtPrice.Location = New System.Drawing.Point(165, 133)
+        Me.txtPrice.MaxLength = 50
+        Me.txtPrice.Name = "txtPrice"
+        Me.txtPrice.ReadOnly = True
+        Me.txtPrice.Size = New System.Drawing.Size(134, 22)
+        Me.txtPrice.TabIndex = 47
+        Me.txtPrice.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
         'Label18
         '
         Me.Label18.AutoSize = True
-        Me.Label18.Location = New System.Drawing.Point(15, 133)
+        Me.Label18.Location = New System.Drawing.Point(119, 133)
         Me.Label18.Name = "Label18"
-        Me.Label18.Size = New System.Drawing.Size(146, 17)
+        Me.Label18.Size = New System.Drawing.Size(40, 17)
         Me.Label18.TabIndex = 45
-        Me.Label18.Text = "Selling Price (Vat Incl)"
+        Me.Label18.Text = "Price"
+        '
+        'TabPage2
+        '
+        Me.TabPage2.BackColor = System.Drawing.SystemColors.Control
+        Me.TabPage2.Controls.Add(Me.dtgrdInvoiceLists)
+        Me.TabPage2.Location = New System.Drawing.Point(4, 25)
+        Me.TabPage2.Name = "TabPage2"
+        Me.TabPage2.Padding = New System.Windows.Forms.Padding(3)
+        Me.TabPage2.Size = New System.Drawing.Size(703, 274)
+        Me.TabPage2.TabIndex = 1
+        Me.TabPage2.Text = "Invoice List"
         '
         'dtgrdInvoiceLists
         '
@@ -808,6 +754,15 @@ Partial Class frmSalesInvoice
         Me.Column16.Name = "Column16"
         Me.Column16.ReadOnly = True
         '
+        'Panel6
+        '
+        Me.Panel6.Controls.Add(Me.btnBack)
+        Me.Panel6.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.Panel6.Location = New System.Drawing.Point(400, 720)
+        Me.Panel6.Name = "Panel6"
+        Me.Panel6.Size = New System.Drawing.Size(1004, 40)
+        Me.Panel6.TabIndex = 118
+        '
         'Panel7
         '
         Me.Panel7.Dock = System.Windows.Forms.DockStyle.Right
@@ -816,22 +771,22 @@ Partial Class frmSalesInvoice
         Me.Panel7.Size = New System.Drawing.Size(30, 378)
         Me.Panel7.TabIndex = 119
         '
-        'dtgrdProductList
+        'dtgrdItemList
         '
-        Me.dtgrdProductList.AllowUserToAddRows = False
-        Me.dtgrdProductList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
-        Me.dtgrdProductList.BackgroundColor = System.Drawing.SystemColors.ButtonFace
-        Me.dtgrdProductList.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.dtgrdProductList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dtgrdProductList.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn1, Me.DataGridViewTextBoxColumn2, Me.DataGridViewTextBoxColumn3, Me.DataGridViewTextBoxColumn4, Me.DataGridViewTextBoxColumn5, Me.Column17, Me.Column2, Me.Column4})
-        Me.dtgrdProductList.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.dtgrdProductList.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically
-        Me.dtgrdProductList.Location = New System.Drawing.Point(400, 342)
-        Me.dtgrdProductList.Name = "dtgrdProductList"
-        Me.dtgrdProductList.ReadOnly = True
-        Me.dtgrdProductList.RowTemplate.Height = 24
-        Me.dtgrdProductList.Size = New System.Drawing.Size(974, 378)
-        Me.dtgrdProductList.TabIndex = 120
+        Me.dtgrdItemList.AllowUserToAddRows = False
+        Me.dtgrdItemList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
+        Me.dtgrdItemList.BackgroundColor = System.Drawing.SystemColors.ButtonFace
+        Me.dtgrdItemList.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.dtgrdItemList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dtgrdItemList.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn1, Me.DataGridViewTextBoxColumn2, Me.DataGridViewTextBoxColumn3, Me.DataGridViewTextBoxColumn4, Me.DataGridViewTextBoxColumn5, Me.Column17, Me.Column2, Me.Column4})
+        Me.dtgrdItemList.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.dtgrdItemList.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically
+        Me.dtgrdItemList.Location = New System.Drawing.Point(400, 342)
+        Me.dtgrdItemList.Name = "dtgrdItemList"
+        Me.dtgrdItemList.ReadOnly = True
+        Me.dtgrdItemList.RowTemplate.Height = 24
+        Me.dtgrdItemList.Size = New System.Drawing.Size(974, 378)
+        Me.dtgrdItemList.TabIndex = 120
         '
         'DataGridViewTextBoxColumn1
         '
@@ -888,7 +843,7 @@ Partial Class frmSalesInvoice
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1404, 760)
-        Me.Controls.Add(Me.dtgrdProductList)
+        Me.Controls.Add(Me.dtgrdItemList)
         Me.Controls.Add(Me.Panel7)
         Me.Controls.Add(Me.Panel6)
         Me.Controls.Add(Me.Panel5)
@@ -904,19 +859,19 @@ Partial Class frmSalesInvoice
         Me.Panel2.ResumeLayout(False)
         Me.Panel2.PerformLayout()
         Me.Panel5.ResumeLayout(False)
-        Me.Panel6.ResumeLayout(False)
         Me.TabControl1.ResumeLayout(False)
         Me.TabPage1.ResumeLayout(False)
-        Me.TabPage2.ResumeLayout(False)
         Me.Panel3.ResumeLayout(False)
         Me.Panel3.PerformLayout()
+        Me.TabPage2.ResumeLayout(False)
         CType(Me.dtgrdInvoiceLists, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.dtgrdProductList, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.Panel6.ResumeLayout(False)
+        CType(Me.dtgrdItemList, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
-    Friend WithEvents Button2 As Button
+    Friend WithEvents btnBack As Button
     Friend WithEvents ToolStrip1 As ToolStrip
     Friend WithEvents btnNew As ToolStripButton
     Friend WithEvents btnEdit As ToolStripButton
@@ -968,10 +923,6 @@ Partial Class frmSalesInvoice
     Friend WithEvents txtAmount As TextBox
     Friend WithEvents Label20 As Label
     Friend WithEvents txtDetailId As TextBox
-    Friend WithEvents txtCostPriceVatIncl As TextBox
-    Friend WithEvents Label14 As Label
-    Friend WithEvents Label28 As Label
-    Friend WithEvents txtDiscount As TextBox
     Friend WithEvents btnChange As Button
     Friend WithEvents Label23 As Label
     Friend WithEvents txtQty As TextBox
@@ -983,8 +934,8 @@ Partial Class frmSalesInvoice
     Friend WithEvents txtBarCode As TextBox
     Friend WithEvents Label13 As Label
     Friend WithEvents Label16 As Label
-    Friend WithEvents txtCode As TextBox
-    Friend WithEvents txtSellingPriceVatIncl As TextBox
+    Friend WithEvents txtItemCode As TextBox
+    Friend WithEvents txtPrice As TextBox
     Friend WithEvents Label18 As Label
     Friend WithEvents dtgrdInvoiceLists As DataGridView
     Friend WithEvents Column5 As DataGridViewTextBoxColumn
@@ -993,7 +944,7 @@ Partial Class frmSalesInvoice
     Friend WithEvents Column15 As DataGridViewTextBoxColumn
     Friend WithEvents Column16 As DataGridViewTextBoxColumn
     Friend WithEvents Panel7 As Panel
-    Friend WithEvents dtgrdProductList As DataGridView
+    Friend WithEvents dtgrdItemList As DataGridView
     Friend WithEvents DataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn2 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn3 As DataGridViewTextBoxColumn
