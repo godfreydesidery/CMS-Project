@@ -32,23 +32,25 @@ Partial Class frmSalesReceipts
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.Panel5 = New System.Windows.Forms.Panel()
         Me.Label7 = New System.Windows.Forms.Label()
-        Me.ComboBox1 = New System.Windows.Forms.ComboBox()
-        Me.TextBox5 = New System.Windows.Forms.TextBox()
+        Me.cmbPaymentMode = New System.Windows.Forms.ComboBox()
+        Me.txtAmount = New System.Windows.Forms.TextBox()
         Me.Label6 = New System.Windows.Forms.Label()
-        Me.cmbDescription = New System.Windows.Forms.ComboBox()
-        Me.Button1 = New System.Windows.Forms.Button()
-        Me.TextBox4 = New System.Windows.Forms.TextBox()
+        Me.cmbCustomer = New System.Windows.Forms.ComboBox()
+        Me.btnSearch = New System.Windows.Forms.Button()
+        Me.txtComments = New System.Windows.Forms.TextBox()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
-        Me.TextBox2 = New System.Windows.Forms.TextBox()
+        Me.txtReceiptDate = New System.Windows.Forms.TextBox()
         Me.Label2 = New System.Windows.Forms.Label()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.txtReceiptNo = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.Panel3 = New System.Windows.Forms.Panel()
-        Me.Button2 = New System.Windows.Forms.Button()
+        Me.btnBack = New System.Windows.Forms.Button()
         Me.Panel4 = New System.Windows.Forms.Panel()
-        Me.dtgrdParticulars = New System.Windows.Forms.DataGridView()
+        Me.dtgrdReceiptsList = New System.Windows.Forms.DataGridView()
+        Me.txtAllocated = New System.Windows.Forms.TextBox()
+        Me.Label5 = New System.Windows.Forms.Label()
         Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -58,7 +60,7 @@ Partial Class frmSalesReceipts
         Me.Panel1.SuspendLayout()
         Me.Panel5.SuspendLayout()
         Me.Panel3.SuspendLayout()
-        CType(Me.dtgrdParticulars, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.dtgrdReceiptsList, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'ToolStrip1
@@ -138,93 +140,96 @@ Partial Class frmSalesReceipts
         '
         'Panel5
         '
+        Me.Panel5.Controls.Add(Me.txtAllocated)
+        Me.Panel5.Controls.Add(Me.Label5)
         Me.Panel5.Controls.Add(Me.Label7)
-        Me.Panel5.Controls.Add(Me.ComboBox1)
-        Me.Panel5.Controls.Add(Me.TextBox5)
+        Me.Panel5.Controls.Add(Me.cmbPaymentMode)
+        Me.Panel5.Controls.Add(Me.txtAmount)
         Me.Panel5.Controls.Add(Me.Label6)
-        Me.Panel5.Controls.Add(Me.cmbDescription)
-        Me.Panel5.Controls.Add(Me.Button1)
-        Me.Panel5.Controls.Add(Me.TextBox4)
+        Me.Panel5.Controls.Add(Me.cmbCustomer)
+        Me.Panel5.Controls.Add(Me.btnSearch)
+        Me.Panel5.Controls.Add(Me.txtComments)
         Me.Panel5.Controls.Add(Me.Label4)
         Me.Panel5.Controls.Add(Me.Label3)
-        Me.Panel5.Controls.Add(Me.TextBox2)
+        Me.Panel5.Controls.Add(Me.txtReceiptDate)
         Me.Panel5.Controls.Add(Me.Label2)
-        Me.Panel5.Controls.Add(Me.TextBox1)
+        Me.Panel5.Controls.Add(Me.txtReceiptNo)
         Me.Panel5.Controls.Add(Me.Label1)
         Me.Panel5.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel5.Location = New System.Drawing.Point(0, 0)
         Me.Panel5.Name = "Panel5"
-        Me.Panel5.Size = New System.Drawing.Size(400, 275)
+        Me.Panel5.Size = New System.Drawing.Size(400, 318)
         Me.Panel5.TabIndex = 0
         '
         'Label7
         '
         Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(24, 127)
+        Me.Label7.Location = New System.Drawing.Point(24, 121)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(71, 17)
         Me.Label7.TabIndex = 131
         Me.Label7.Text = "Pay Mode"
         '
-        'ComboBox1
+        'cmbPaymentMode
         '
-        Me.ComboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.ComboBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ComboBox1.FormattingEnabled = True
-        Me.ComboBox1.Items.AddRange(New Object() {"Cash", "Cheque", "Other"})
-        Me.ComboBox1.Location = New System.Drawing.Point(103, 121)
-        Me.ComboBox1.Name = "ComboBox1"
-        Me.ComboBox1.Size = New System.Drawing.Size(180, 28)
-        Me.ComboBox1.TabIndex = 130
+        Me.cmbPaymentMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cmbPaymentMode.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbPaymentMode.FormattingEnabled = True
+        Me.cmbPaymentMode.Items.AddRange(New Object() {"Cash", "Cheque", "Other"})
+        Me.cmbPaymentMode.Location = New System.Drawing.Point(103, 121)
+        Me.cmbPaymentMode.Name = "cmbPaymentMode"
+        Me.cmbPaymentMode.Size = New System.Drawing.Size(180, 28)
+        Me.cmbPaymentMode.TabIndex = 130
         '
-        'TextBox5
+        'txtAmount
         '
-        Me.TextBox5.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox5.Location = New System.Drawing.Point(103, 157)
-        Me.TextBox5.Name = "TextBox5"
-        Me.TextBox5.Size = New System.Drawing.Size(180, 27)
-        Me.TextBox5.TabIndex = 129
+        Me.txtAmount.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtAmount.Location = New System.Drawing.Point(103, 157)
+        Me.txtAmount.Name = "txtAmount"
+        Me.txtAmount.Size = New System.Drawing.Size(180, 27)
+        Me.txtAmount.TabIndex = 129
+        Me.txtAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
         'Label6
         '
         Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(41, 163)
+        Me.Label6.Location = New System.Drawing.Point(39, 157)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(56, 17)
         Me.Label6.TabIndex = 128
         Me.Label6.Text = "Amount"
         '
-        'cmbDescription
+        'cmbCustomer
         '
-        Me.cmbDescription.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.cmbDescription.FormattingEnabled = True
-        Me.cmbDescription.Location = New System.Drawing.Point(103, 87)
-        Me.cmbDescription.Name = "cmbDescription"
-        Me.cmbDescription.Size = New System.Drawing.Size(289, 28)
-        Me.cmbDescription.TabIndex = 125
+        Me.cmbCustomer.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbCustomer.FormattingEnabled = True
+        Me.cmbCustomer.Location = New System.Drawing.Point(103, 87)
+        Me.cmbCustomer.Name = "cmbCustomer"
+        Me.cmbCustomer.Size = New System.Drawing.Size(289, 28)
+        Me.cmbCustomer.TabIndex = 125
         '
-        'Button1
+        'btnSearch
         '
-        Me.Button1.Location = New System.Drawing.Point(294, 13)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(100, 35)
-        Me.Button1.TabIndex = 124
-        Me.Button1.Text = "Search"
-        Me.Button1.UseVisualStyleBackColor = True
+        Me.btnSearch.Location = New System.Drawing.Point(294, 13)
+        Me.btnSearch.Name = "btnSearch"
+        Me.btnSearch.Size = New System.Drawing.Size(100, 35)
+        Me.btnSearch.TabIndex = 124
+        Me.btnSearch.Text = "Search"
+        Me.btnSearch.UseVisualStyleBackColor = True
         '
-        'TextBox4
+        'txtComments
         '
-        Me.TextBox4.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox4.Location = New System.Drawing.Point(103, 200)
-        Me.TextBox4.Multiline = True
-        Me.TextBox4.Name = "TextBox4"
-        Me.TextBox4.Size = New System.Drawing.Size(289, 65)
-        Me.TextBox4.TabIndex = 123
+        Me.txtComments.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtComments.Location = New System.Drawing.Point(103, 223)
+        Me.txtComments.Multiline = True
+        Me.txtComments.Name = "txtComments"
+        Me.txtComments.Size = New System.Drawing.Size(289, 65)
+        Me.txtComments.TabIndex = 123
         '
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(24, 200)
+        Me.Label4.Location = New System.Drawing.Point(24, 223)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(74, 17)
         Me.Label4.TabIndex = 122
@@ -239,13 +244,14 @@ Partial Class frmSalesReceipts
         Me.Label3.TabIndex = 121
         Me.Label3.Text = "Customer"
         '
-        'TextBox2
+        'txtReceiptDate
         '
-        Me.TextBox2.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox2.Location = New System.Drawing.Point(103, 54)
-        Me.TextBox2.Name = "TextBox2"
-        Me.TextBox2.Size = New System.Drawing.Size(289, 27)
-        Me.TextBox2.TabIndex = 120
+        Me.txtReceiptDate.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtReceiptDate.Location = New System.Drawing.Point(103, 54)
+        Me.txtReceiptDate.Name = "txtReceiptDate"
+        Me.txtReceiptDate.ReadOnly = True
+        Me.txtReceiptDate.Size = New System.Drawing.Size(289, 27)
+        Me.txtReceiptDate.TabIndex = 120
         '
         'Label2
         '
@@ -256,13 +262,13 @@ Partial Class frmSalesReceipts
         Me.Label2.TabIndex = 119
         Me.Label2.Text = "Receipt Date"
         '
-        'TextBox1
+        'txtReceiptNo
         '
-        Me.TextBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox1.Location = New System.Drawing.Point(103, 13)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(180, 27)
-        Me.TextBox1.TabIndex = 118
+        Me.txtReceiptNo.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtReceiptNo.Location = New System.Drawing.Point(103, 13)
+        Me.txtReceiptNo.Name = "txtReceiptNo"
+        Me.txtReceiptNo.Size = New System.Drawing.Size(180, 27)
+        Me.txtReceiptNo.TabIndex = 118
         '
         'Label1
         '
@@ -283,23 +289,23 @@ Partial Class frmSalesReceipts
         '
         'Panel3
         '
-        Me.Panel3.Controls.Add(Me.Button2)
+        Me.Panel3.Controls.Add(Me.btnBack)
         Me.Panel3.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.Panel3.Location = New System.Drawing.Point(400, 668)
         Me.Panel3.Name = "Panel3"
         Me.Panel3.Size = New System.Drawing.Size(816, 40)
         Me.Panel3.TabIndex = 113
         '
-        'Button2
+        'btnBack
         '
-        Me.Button2.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Button2.BackgroundImage = Global.BackOffice.My.Resources.Resources.red_back_arrow
-        Me.Button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.Button2.Location = New System.Drawing.Point(713, 2)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(100, 35)
-        Me.Button2.TabIndex = 115
-        Me.Button2.UseVisualStyleBackColor = True
+        Me.btnBack.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnBack.BackgroundImage = Global.BackOffice.My.Resources.Resources.red_back_arrow
+        Me.btnBack.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.btnBack.Location = New System.Drawing.Point(713, 2)
+        Me.btnBack.Name = "btnBack"
+        Me.btnBack.Size = New System.Drawing.Size(100, 35)
+        Me.btnBack.TabIndex = 115
+        Me.btnBack.UseVisualStyleBackColor = True
         '
         'Panel4
         '
@@ -309,21 +315,40 @@ Partial Class frmSalesReceipts
         Me.Panel4.Size = New System.Drawing.Size(40, 601)
         Me.Panel4.TabIndex = 114
         '
-        'dtgrdParticulars
+        'dtgrdReceiptsList
         '
-        Me.dtgrdParticulars.AllowUserToAddRows = False
-        Me.dtgrdParticulars.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
-        Me.dtgrdParticulars.BackgroundColor = System.Drawing.SystemColors.ButtonFace
-        Me.dtgrdParticulars.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.dtgrdParticulars.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dtgrdParticulars.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column1, Me.Column2, Me.Column3, Me.Column5, Me.Column4})
-        Me.dtgrdParticulars.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.dtgrdParticulars.Location = New System.Drawing.Point(400, 67)
-        Me.dtgrdParticulars.Name = "dtgrdParticulars"
-        Me.dtgrdParticulars.ReadOnly = True
-        Me.dtgrdParticulars.RowTemplate.Height = 24
-        Me.dtgrdParticulars.Size = New System.Drawing.Size(776, 601)
-        Me.dtgrdParticulars.TabIndex = 115
+        Me.dtgrdReceiptsList.AllowUserToAddRows = False
+        Me.dtgrdReceiptsList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
+        Me.dtgrdReceiptsList.BackgroundColor = System.Drawing.SystemColors.ButtonFace
+        Me.dtgrdReceiptsList.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.dtgrdReceiptsList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dtgrdReceiptsList.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column1, Me.Column2, Me.Column3, Me.Column5, Me.Column4})
+        Me.dtgrdReceiptsList.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.dtgrdReceiptsList.Location = New System.Drawing.Point(400, 67)
+        Me.dtgrdReceiptsList.Name = "dtgrdReceiptsList"
+        Me.dtgrdReceiptsList.ReadOnly = True
+        Me.dtgrdReceiptsList.RowTemplate.Height = 24
+        Me.dtgrdReceiptsList.Size = New System.Drawing.Size(776, 601)
+        Me.dtgrdReceiptsList.TabIndex = 115
+        '
+        'txtAllocated
+        '
+        Me.txtAllocated.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.2!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtAllocated.Location = New System.Drawing.Point(103, 190)
+        Me.txtAllocated.Name = "txtAllocated"
+        Me.txtAllocated.ReadOnly = True
+        Me.txtAllocated.Size = New System.Drawing.Size(180, 27)
+        Me.txtAllocated.TabIndex = 133
+        Me.txtAllocated.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Location = New System.Drawing.Point(32, 190)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(66, 17)
+        Me.Label5.TabIndex = 132
+        Me.Label5.Text = "Allocated"
         '
         'Column1
         '
@@ -352,7 +377,7 @@ Partial Class frmSalesReceipts
         '
         'Column4
         '
-        Me.Column4.HeaderText = "Amount"
+        Me.Column4.HeaderText = "Summary"
         Me.Column4.Name = "Column4"
         Me.Column4.ReadOnly = True
         '
@@ -361,7 +386,7 @@ Partial Class frmSalesReceipts
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1216, 708)
-        Me.Controls.Add(Me.dtgrdParticulars)
+        Me.Controls.Add(Me.dtgrdReceiptsList)
         Me.Controls.Add(Me.Panel4)
         Me.Controls.Add(Me.Panel3)
         Me.Controls.Add(Me.Panel2)
@@ -377,7 +402,7 @@ Partial Class frmSalesReceipts
         Me.Panel5.ResumeLayout(False)
         Me.Panel5.PerformLayout()
         Me.Panel3.ResumeLayout(False)
-        CType(Me.dtgrdParticulars, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.dtgrdReceiptsList, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -396,20 +421,22 @@ Partial Class frmSalesReceipts
     Friend WithEvents Panel4 As Panel
     Friend WithEvents Panel5 As Panel
     Friend WithEvents Label7 As Label
-    Friend WithEvents ComboBox1 As ComboBox
-    Friend WithEvents TextBox5 As TextBox
+    Friend WithEvents cmbPaymentMode As ComboBox
+    Friend WithEvents txtAmount As TextBox
     Friend WithEvents Label6 As Label
-    Friend WithEvents cmbDescription As ComboBox
-    Friend WithEvents Button1 As Button
-    Friend WithEvents TextBox4 As TextBox
+    Friend WithEvents cmbCustomer As ComboBox
+    Friend WithEvents btnSearch As Button
+    Friend WithEvents txtComments As TextBox
     Friend WithEvents Label4 As Label
     Friend WithEvents Label3 As Label
-    Friend WithEvents TextBox2 As TextBox
+    Friend WithEvents txtReceiptDate As TextBox
     Friend WithEvents Label2 As Label
-    Friend WithEvents TextBox1 As TextBox
+    Friend WithEvents txtReceiptNo As TextBox
     Friend WithEvents Label1 As Label
-    Friend WithEvents dtgrdParticulars As DataGridView
-    Friend WithEvents Button2 As Button
+    Friend WithEvents dtgrdReceiptsList As DataGridView
+    Friend WithEvents btnBack As Button
+    Friend WithEvents txtAllocated As TextBox
+    Friend WithEvents Label5 As Label
     Friend WithEvents Column1 As DataGridViewTextBoxColumn
     Friend WithEvents Column2 As DataGridViewTextBoxColumn
     Friend WithEvents Column3 As DataGridViewTextBoxColumn

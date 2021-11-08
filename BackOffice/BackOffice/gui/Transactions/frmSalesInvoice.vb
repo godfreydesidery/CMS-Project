@@ -187,7 +187,7 @@ Public Class frmSalesInvoice
         table.Borders.Right.Width = 0.5
         table.Rows.LeftIndent = 0
 
-        Dim status As String = (New PackingList).getStatus(txtInvoiceNo.Text)
+        Dim status As String = (New SalesInvoice).getStatus(txtInvoiceNo.Text)
 
         Dim skip As Integer = 0
 
@@ -462,7 +462,7 @@ Public Class frmSalesInvoice
     End Sub
 
 
-    Private Function savePackingListDetail(invoiceNo As String, itemCode As String, price As Double, qty As Double) As Boolean
+    Private Function saveInvoiceDetail(invoiceNo As String, itemCode As String, price As Double, qty As Double) As Boolean
         Dim success As Boolean = False
         Try
             Dim list As New SalesInvoice
@@ -1281,6 +1281,9 @@ Public Class frmSalesInvoice
                         '  Dim taxReturn As Double = Val(qty) * (discountedPrice - Item.getCostPrice(itemCode)) * Val(vat) / 100
                         ' totalTaxReturns = totalTaxReturns + taxReturn
 
+                        If Val(LCurrency.getValue(amount)) > 0 Then
+                            query = query + "UPDATE `sales_invoices` SET `amount` = `amount` + " + (LCurrency.getValue(amount)).ToString + " WHERE `invoice_no`='" + txtInvoiceNo.Text + "';"
+                        End If
                         query = query + "INSERT INTO `sale_details`(`sale_id`, `item_code`, `selling_price`, `discounted_price`, `qty`, `amount`, `vat`,`tax_return`) VALUES ('" + saleId + "','" + itemCode + "','" + LCurrency.getValue(price) + "','" + LCurrency.getValue(price) + "','" + qty + "','" + LCurrency.getValue(amount) + "','0','0');"
                         'enter stock card
                         query = query + " INSERT INTO `stock_cards`(`date`,`item_code`,`qty_out`,`balance`,`reference`) VALUES ('" + Day.DAY + "','" + itemCode + "','" + qty.ToString + "'," + (New Inventory).getInventory(itemCode).ToString + "-" + qty.ToString + ",'Issued Invoice #: " + txtInvoiceNo.Text + "');"
@@ -1305,7 +1308,7 @@ Public Class frmSalesInvoice
                     End Try
 
                 End If
-                txtStatus.Text = (New PackingList).getStatus(txtInvoiceNo.Text)
+                txtStatus.Text = (New SalesInvoice).getStatus(txtInvoiceNo.Text)
                 If success = True Then
                     'now do the actual printing in pdf
 
@@ -1341,7 +1344,7 @@ Public Class frmSalesInvoice
                 End If
 
             End If
-            txtStatus.Text = (New PackingList).getStatus(txtInvoiceNo.Text)
+            txtStatus.Text = (New SalesInvoice).getStatus(txtInvoiceNo.Text)
         Else
             MsgBox("Access denied!", vbOKOnly + vbExclamation)
         End If
@@ -1464,7 +1467,7 @@ Public Class frmSalesInvoice
                 MsgBox("Select a document to archive", vbOKOnly + vbExclamation, "Error: No selection")
                 Exit Sub
             End If
-            Dim res As Integer = MsgBox("Archive invoice: " + txtInvoiceNo.Text + " ? Invoice will be sent to archives for future references", vbYesNo + vbQuestion, "Archive packing list?")
+            Dim res As Integer = MsgBox("Archive invoice: " + txtInvoiceNo.Text + " ? Invoice will be sent to archives for future references", vbYesNo + vbQuestion, "Archive invoice?")
             If res = DialogResult.Yes Then
 
                 Dim list As SalesInvoice = New SalesInvoice
@@ -1480,9 +1483,6 @@ Public Class frmSalesInvoice
         End If
         refreshInvoiceLists()
     End Sub
-
-
-
 
     Private Function getSalesPersonId(name) As String
         Dim id As String = ""
@@ -1657,7 +1657,7 @@ Public Class frmSalesInvoice
         End Try
     End Sub
 
-    Private Sub dtgrdPackingLists_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles dtgrdInvoiceLists.CellClick
+    Private Sub dtgrdInvoiceList_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles dtgrdInvoiceLists.CellClick
         Dim r As Integer = dtgrdInvoiceLists.CurrentRow.Index
         Dim invoiceNo As String = dtgrdInvoiceLists.Item(1, r).Value.ToString
         txtInvoiceNo.Text = invoiceNo
@@ -1712,7 +1712,7 @@ Public Class frmSalesInvoice
             Exit Sub
         End If
         resetAll()
-        Dim res As Integer = MsgBox("Are you sure you want to archive all cleared packing list documents? All the cleared documents will be sent to archives for future reference.", vbQuestion + vbYesNo, "Archive all cleared packing lists")
+        Dim res As Integer = MsgBox("Are you sure you want to archive all cleared invoice documents? All the cleared documents will be sent to archives for future reference.", vbQuestion + vbYesNo, "Archive all cleared invoices")
         If res = DialogResult.Yes Then
             Dim noOfdocuments As Integer = 0
             Try

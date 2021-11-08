@@ -177,6 +177,7 @@
     <Compile Include="general\Transactions\Quotation.vb" />
     <Compile Include="general\Transactions\Refund.vb" />
     <Compile Include="general\Transactions\SaleInvoice.vb" />
+    <Compile Include="general\Transactions\SalesReceipt.vb" />
     <Compile Include="GlobalSuppressions.vb" />
     <Compile Include="gui\AdminFunctions\frmAccessControl.Designer.vb">
       <DependentUpon>frmAccessControl.vb</DependentUpon>
