@@ -1533,4 +1533,12 @@ Public Class frmQuotations
         End If
         refreshQuotationLists()
     End Sub
+
+    Private Sub cmbCustomerName_SelectedIndexChanged_1(sender As Object, e As EventArgs) Handles cmbCustomerName.SelectedIndexChanged
+
+    End Sub
+
+    Private Sub dtgrdItemList_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles dtgrdItemList.CellContentClick
+
+    End Sub
 End Class
