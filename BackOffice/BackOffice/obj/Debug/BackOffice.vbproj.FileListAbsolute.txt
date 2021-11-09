@@ -132,3 +132,4 @@ D:\CMS Project\BackOffice\BackOffice\obj\Debug\BackOffice.frmSummarizedCustomerC
 D:\CMS Project\BackOffice\BackOffice\obj\Debug\BackOffice.frmProductConversionReport.resources
 D:\CMS Project\BackOffice\BackOffice\obj\Debug\BackOffice.frmSalesInvoice.resources
 D:\CMS Project\BackOffice\BackOffice\obj\Debug\BackOffice.frmSalesReceipts.resources
+D:\CMS Project\BackOffice\BackOffice\obj\Debug\BackOffice.frmExpenses.resources

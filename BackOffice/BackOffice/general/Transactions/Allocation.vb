@@ -44,7 +44,7 @@ Public Class Allocation
             Dim conn As New MySqlConnection(Database.conString)
             Dim command As New MySqlCommand()
             'create bar code
-            Dim codeQuery As String = "SELECT `allocation_id`, `allocation_no`, `date_time`, `allocation_date`, `invoice_no`, `receipt_no`, `amount` FROM `allocations` WHERE `allocation_no`='" + allocationNo + "'"
+            Dim codeQuery As String = "SELECT `allocation_id`, `allocation_no`, `date_time`, `allocation_date`, `invoice_no`, `receipt_no`, `amount`, `user_id` FROM `allocations` WHERE `allocation_no`='" + allocationNo + "'"
             conn.Open()
             command.CommandText = codeQuery
             command.Connection = conn
@@ -69,7 +69,7 @@ Public Class Allocation
 
         Return found
     End Function
-    Public Function addAllocation(allocationNo As String, allocationDate As String, invoiceNo As String, receiptNo As String, amount As Double) As Boolean
+    Public Function addAllocation(allocationNo As String, allocationDate As String, invoiceNo As String, receiptNo As String, amount As Double, status As String) As Boolean
         Dim added As Boolean = False
 
         Try
@@ -77,8 +77,8 @@ Public Class Allocation
             Dim command As New MySqlCommand()
             'Dim reader As MySqlDataReader
             'create bar code
-            Dim query As String = "INSERT INTO `allocations`( `allocation_no`, `allocation_date`, `invoice_no`, `receipt_no`, `amount`) VALUES ('" + allocationNo + "','" + allocationDate + "','" + invoiceNo + "','" + receiptNo + "','" + amount.ToString + "');"
-            query = query + "UPDATE `sales_invoices` SET `paid` = `paid` + " + amount.ToString + " WHERE `invoice_no` = '" + invoiceNo + "';"
+            Dim query As String = "INSERT INTO `allocations`( `allocation_no`, `allocation_date`, `invoice_no`, `receipt_no`, `amount`, `user_id`) VALUES ('" + allocationNo + "','" + allocationDate + "','" + invoiceNo + "','" + receiptNo + "','" + amount.ToString + "','" + User.CURRENT_USER_ID + "');"
+            query = query + "UPDATE `sales_invoices` SET `paid` = `paid` + " + amount.ToString + ", `status` = '" + status + "' WHERE `invoice_no` = '" + invoiceNo + "';"
             query = query + "UPDATE `sales_receipts` SET `allocated` = `allocated` + " + amount.ToString + " WHERE `receipt_no` = '" + receiptNo + "';"
 
             conn.Open()
@@ -88,15 +88,14 @@ Public Class Allocation
             command.ExecuteNonQuery()
             conn.Close()
             added = True
-            MsgBox("Success")
+            MsgBox("Allocation successiful", vbOKOnly + vbInformation, "Success")
         Catch ex As MySqlException
             added = False
             MsgBox(ex.Message)
         Catch ex As Exception
             added = False
-            MsgBox(ex.Message + ex.GetType.ToString)
+            MsgBox(ex.Message)
         End Try
-
         Return added
     End Function
 

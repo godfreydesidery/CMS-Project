@@ -135,7 +135,7 @@ Public Class frmSalesInvoice
         Dim titleRow As Tables.Row
         Dim documentTitle As New Paragraph
 
-        documentTitle.AddText("Sales Invoice")
+        documentTitle.AddText("Sales Invoice  (" + txtInvoiceNo.Text + ")")
         documentTitle.Format.Alignment = ParagraphAlignment.Left
         documentTitle.Format.Font.Size = 10
         documentTitle.Format.Font.Color = Colors.Black
@@ -156,17 +156,19 @@ Public Class frmSalesInvoice
         paragraph = section.AddParagraph()
 
         paragraph = section.AddParagraph()
-        paragraph.AddFormattedText("Invoice No: " + txtInvoiceNo.Text)
-        paragraph.Format.Font.Size = 8
-        paragraph = section.AddParagraph()
         paragraph.AddFormattedText("Invoice Date: " + txtIssueDate.Text)
         paragraph.Format.Font.Size = 8
         paragraph = section.AddParagraph()
         paragraph.AddFormattedText("Status: " + (New SalesInvoice).getStatus(txtInvoiceNo.Text))
         paragraph.Format.Font.Size = 8
         paragraph = section.AddParagraph()
-        paragraph.AddFormattedText("Customer:       " + cmbCustomerName.Text)
+        paragraph = section.AddParagraph()
+        paragraph.AddFormattedText(cmbCustomerName.Text)
         paragraph.Format.Font.Size = 8
+        paragraph = section.AddParagraph()
+        paragraph.AddFormattedText(txtContact.Text)
+        paragraph.Format.Font.Size = 7
+        paragraph.Format.Font.Italic = True
 
 
 
@@ -487,7 +489,7 @@ Public Class frmSalesInvoice
             Dim conn As New MySqlConnection(Database.conString)
             Dim command As New MySqlCommand()
             'create bar code
-            Dim codeQuery As String = "SELECT  `id`, `item_code`, `barcode`, `description`, `qty`, `price`, `invoice_no` FROM `sales_invoice_details` WHERE `invoice_no`='" + txtInvoiceNo.Text + "' "
+            Dim codeQuery As String = "SELECT  `id`, `item_code`, `barcode`, `description`, `qty`, `price`, `cprice`, `vat`, `invoice_no` FROM `sales_invoice_details` WHERE `invoice_no`='" + txtInvoiceNo.Text + "' "
             conn.Open()
             command.CommandText = codeQuery
             command.Connection = conn
@@ -499,6 +501,8 @@ Public Class frmSalesInvoice
             Dim description As String = ""
             Dim price As Double = vbNull
             Dim qty As Double = vbNull
+            Dim costPrice As Double = vbNull
+            Dim vat As Double = vbNull
 
 
             While reader.Read
@@ -507,6 +511,8 @@ Public Class frmSalesInvoice
                 id = reader.GetString("id")
                 description = reader.GetString("description")
                 price = Val(reader.GetString("price"))
+                costPrice = Val(reader.GetString("cprice"))
+                vat = Val(reader.GetString("vat"))
 
                 qty = Val(reader.GetString("qty"))
 
@@ -534,7 +540,7 @@ Public Class frmSalesInvoice
                 dtgrdRow.Cells.Add(dtgrdCell)
 
                 dtgrdCell = New DataGridViewTextBoxCell()
-                dtgrdCell.Value = ""
+                dtgrdCell.Value = LCurrency.displayValue(costPrice.ToString)
                 dtgrdRow.Cells.Add(dtgrdCell)
 
 
@@ -545,6 +551,10 @@ Public Class frmSalesInvoice
 
                 dtgrdCell = New DataGridViewTextBoxCell()
                 dtgrdCell.Value = LCurrency.displayValue((Val(qty) * Val(price)).ToString)
+                dtgrdRow.Cells.Add(dtgrdCell)
+
+                dtgrdCell = New DataGridViewTextBoxCell()
+                dtgrdCell.Value = vat
                 dtgrdRow.Cells.Add(dtgrdCell)
 
                 dtgrdItemList.Rows.Add(dtgrdRow)
@@ -604,6 +614,8 @@ Public Class frmSalesInvoice
         Dim price As String = dtgrdItemList.Item(6, row).Value
         Dim qty As String = dtgrdItemList.Item(4, row).Value
         Dim sn As String = dtgrdItemList.Item(1, row).Value
+        Dim costPrice As String = dtgrdItemList.Item(5, row).Value
+        Dim vat As String = dtgrdItemList.Item(8, row).Value
 
         Dim dtgrdRow As New DataGridViewRow
 
@@ -611,6 +623,8 @@ Public Class frmSalesInvoice
         cmbDescription.Text = description
         txtPrice.Text = price
         txtQty.Text = qty
+        txtCostPrice.Text = costPrice
+        txtVat.Text = vat
 
 
         If status = "NEW" Then
@@ -807,6 +821,8 @@ Public Class frmSalesInvoice
                 txtItemCode.Text = reader.GetString("item_code")
                 cmbDescription.Text = reader.GetString("item_long_description")
                 txtPrice.Text = LCurrency.displayValue(reader.GetString("retail_price"))
+                txtCostPrice.Text = LCurrency.displayValue(reader.GetString("unit_cost_price"))
+                txtVat.Text = reader.GetString("vat")
                 found = True
                 valid = True
                 lockFields()
@@ -933,8 +949,10 @@ Public Class frmSalesInvoice
         Dim itemCode As String = txtItemCode.Text
         Dim description As String = cmbDescription.Text
         Dim qty As String = txtQty.Text
+        Dim vat As String = txtVat.Text
 
         Dim price As String = LCurrency.getValue(txtPrice.Text)
+        Dim costPrice As String = LCurrency.getValue(txtCostPrice.Text)
 
         If itemCode = "" Then
             MsgBox("Item required", vbOKOnly + vbCritical, "Error: Missing information")
@@ -981,7 +999,8 @@ Public Class frmSalesInvoice
         list.GL_DESCRIPTION = description
         list.GL_PRICE = price
         list.GL_QTY = qty
-
+        list.GL_COST_PRICE = costPrice
+        list.GL_VAT = vat
 
         If check(txtInvoiceNo.Text, token) = False Then
             MsgBox("Could not modify document, the document has been modified by some one else. Please reload the document to continue", vbOKOnly + vbExclamation, "Invalid Operation")
@@ -1255,6 +1274,7 @@ Public Class frmSalesInvoice
                     Dim itemCode As String = ""
                     Dim description As String = ""
                     Dim price As String = ""
+                    Dim costPrice As String = ""
                     ' Dim vat As String = dtgrdItemList.Item(5, i).Value
                     ' Dim discount As String = dtgrdItemList.Item(6, i).Value
                     Dim qty As String = ""
@@ -1272,7 +1292,8 @@ Public Class frmSalesInvoice
                         itemCode = dtgrdItemList.Item(2, i).Value
                         description = dtgrdItemList.Item(3, i).Value
                         price = dtgrdItemList.Item(6, i).Value
-                        ' Dim vat As String = dtgrdItemList.Item(5, i).Value
+                        costPrice = dtgrdItemList.Item(5, i).Value
+                        Dim vat As String = dtgrdItemList.Item(8, i).Value
                         ' Dim discount As String = dtgrdItemList.Item(6, i).Value
                         qty = dtgrdItemList.Item(4, i).Value
                         amount = dtgrdItemList.Item(7, i).Value
@@ -1284,7 +1305,7 @@ Public Class frmSalesInvoice
                         If Val(LCurrency.getValue(amount)) > 0 Then
                             query = query + "UPDATE `sales_invoices` SET `amount` = `amount` + " + (LCurrency.getValue(amount)).ToString + " WHERE `invoice_no`='" + txtInvoiceNo.Text + "';"
                         End If
-                        query = query + "INSERT INTO `sale_details`(`sale_id`, `item_code`, `selling_price`, `discounted_price`, `qty`, `amount`, `vat`,`tax_return`) VALUES ('" + saleId + "','" + itemCode + "','" + LCurrency.getValue(price) + "','" + LCurrency.getValue(price) + "','" + qty + "','" + LCurrency.getValue(amount) + "','0','0');"
+                        query = query + "INSERT INTO `sale_details`(`sale_id`, `item_code`, `selling_price`, `discounted_price`, `qty`, `amount`, `vat`,`tax_return`) VALUES ('" + saleId + "','" + itemCode + "','" + LCurrency.getValue(price) + "','" + LCurrency.getValue(price) + "','" + qty + "','" + LCurrency.getValue(amount) + "',0.01*" + vat + "*" + LCurrency.getValue(amount) + ",0.01*" + vat + "*" + qty + "*(" + LCurrency.getValue(price) + "-" + LCurrency.getValue(costPrice) + "));"
                         'enter stock card
                         query = query + " INSERT INTO `stock_cards`(`date`,`item_code`,`qty_out`,`balance`,`reference`) VALUES ('" + Day.DAY + "','" + itemCode + "','" + qty.ToString + "'," + (New Inventory).getInventory(itemCode).ToString + "-" + qty.ToString + ",'Issued Invoice #: " + txtInvoiceNo.Text + "');"
                         'update inventory
@@ -1820,7 +1841,7 @@ Public Class frmSalesInvoice
                 txtInvoiceLimit.Text = LCurrency.displayValue(reader.GetString("invoice_limit"))
                 txtCreditLimit.Text = LCurrency.displayValue(reader.GetString("credit_limit"))
                 txtCreditBalance.Text = LCurrency.displayValue(reader.GetString("credit_balance"))
-                txtContact.Text = reader.GetString("post_code") + reader.GetString("address") + "\n" + reader.GetString("physical_address") + "\n" + reader.GetString("telephone") + "\n" + reader.GetString("email")
+                txtContact.Text = reader.GetString("physical_address") + Environment.NewLine + reader.GetString("post_code") + " " + reader.GetString("address") + Environment.NewLine + reader.GetString("telephone") + Environment.NewLine + reader.GetString("email")
                 Exit While
             End While
             conn.Close()

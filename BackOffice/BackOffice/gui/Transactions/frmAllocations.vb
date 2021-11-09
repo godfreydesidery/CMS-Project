@@ -69,6 +69,7 @@ Public Class frmAllocations
         End If
         dtgrdInvoices.Rows.Clear()
         dtgrdReceipts.Rows.Clear()
+        btnAllocate.Enabled = True
     End Sub
 
     Private Function refreshList()
@@ -381,9 +382,11 @@ Public Class frmAllocations
 
 
     Private Sub frmAllocations_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        txtAllocationNo.Text = ""
+        txtAllocationDate.Text = ""
         clearFields()
         txtAllocationNo.ReadOnly = True
-
+        btnAllocate.Enabled = False
 
         Dim customer As New CorporateCustomer
         longCustomerList = customer.getCustomers("")
@@ -408,6 +411,11 @@ Public Class frmAllocations
     End Sub
 
     Private Sub cmbCustomerName_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbCustomerName.SelectedIndexChanged
+        If txtAllocationNo.Text = "" Then
+            cmbCustomerName.SelectedText = ""
+            MsgBox("Please select new to create a new allocation", vbOKOnly + vbExclamation, "Error: Invalid operation")
+            Exit Sub
+        End If
         txtCustomerNo.Text = (New CorporateCustomer).getCustomerCode("", cmbCustomerName.Text)
         dtgrdInvoices.Rows.Clear()
         dtgrdReceipts.Rows.Clear()
@@ -429,6 +437,8 @@ Public Class frmAllocations
     Private Sub dtgrdReceipts_CellContentClick(sender As Object, e As DataGridViewCellMouseEventArgs) Handles dtgrdReceipts.RowHeaderMouseClick
         If txtInvoiceNo.Text = "" Then
             MsgBox("Please select invoice", vbOKOnly + vbExclamation, "Error: No selection")
+            dtgrdInvoices.ClearSelection()
+            dtgrdReceipts.ClearSelection()
             Exit Sub
         End If
         Dim r As Integer = dtgrdReceipts.CurrentRow.Index
@@ -452,16 +462,33 @@ Public Class frmAllocations
         Dim invoiceDue As Double = Val(LCurrency.getValue(txtInvoiceDue.Text))
         Dim receiptDue As Double = Val(LCurrency.getValue(txtReceiptDue.Text))
         Dim allocationAmount As Double = Val(txtAllocationAmount.Text)
+        Dim status As String = ""
+        If allocationAmount >= invoiceDue Then
+            status = "PAID"
+        ElseIf allocationAmount < invoiceDue Then
+            status = "PARTIAL"
+        Else
+            status = "PENDING"
+        End If
         If allocationAmount > receiptDue Then
             MsgBox("Could not allocate, allocation amount exceeds receipt by " + (allocationAmount - receiptDue).ToString, vbOKOnly + vbExclamation, "Error: Invalid Entry")
             Exit Sub
         End If
-        '    Dim res As Integer = MsgBox("Allocate " + allocationAmount + " to invoice " + txtInvoiceNo.Text + "?", vbYesNo + vbQuestion, "Allocate")
-        '    If res = DialogResult.Yes Then
-        Dim allocation As New Allocation
-        allocation.addAllocation(txtAllocationNo.Text, txtAllocationDate.Text, txtInvoiceNo.Text, txtReceiptNo.Text, allocationAmount)
-        refreshList()
-        '   End If
-    End Sub
+        Dim res As Integer = MsgBox("Allocate " + allocationAmount.ToString + " to invoice " + txtInvoiceNo.Text + "?", vbYesNo + vbQuestion, "Allocate")
+        If res = DialogResult.Yes Then
+            Dim allocation As New Allocation
+            allocation.addAllocation(txtAllocationNo.Text, txtAllocationDate.Text, txtInvoiceNo.Text, txtReceiptNo.Text, allocationAmount, status)
 
+            txtInvoiceNo.Text = ""
+            txtInvoiceDue.Text = ""
+            txtInvoiceTotal.Text = ""
+            txtReceiptNo.Text = ""
+            txtReceiptTotal.Text = ""
+            txtReceiptDue.Text = ""
+            txtAllocationAmount.Text = ""
+
+            refreshList()
+            btnAllocate.Enabled = False
+        End If
+    End Sub
 End Class

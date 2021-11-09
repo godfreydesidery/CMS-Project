@@ -805,4 +805,8 @@ Public Class frmMain
     Private Sub SalesReceiptToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SalesReceiptToolStripMenuItem.Click
         frmSalesReceipts.ShowDialog()
     End Sub
+
+    Private Sub ExpensesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ExpensesToolStripMenuItem.Click
+        frmExpenses.ShowDialog()
+    End Sub
 End Class

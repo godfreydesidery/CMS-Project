@@ -212,7 +212,7 @@ Public Class SalesInvoice
         Try
             Dim conn As New MySqlConnection(Database.conString)
             Dim command As New MySqlCommand()
-            Dim codeQuery As String = "INSERT INTO `sales_invoice_details`( `invoice_no`, `item_code`, `description`, `price`, `qty`) VALUES (@invoice_no,@item_code,@description,@price,@qty)"
+            Dim codeQuery As String = "INSERT INTO `sales_invoice_details`( `invoice_no`, `item_code`, `description`, `price`, `qty`, `cprice`, `vat`) VALUES (@invoice_no,@item_code,@description,@price,@qty,@cprice,@vat)"
             conn.Open()
             command.CommandText = codeQuery
             command.Connection = conn
@@ -223,6 +223,8 @@ Public Class SalesInvoice
             command.Parameters.Add("@description", GL_DESCRIPTION)
             command.Parameters.Add("@price", GL_PRICE)
             command.Parameters.Add("@qty", GL_QTY)
+            command.Parameters.Add("@cprice", GL_COST_PRICE)
+            command.Parameters.Add("@vat", GL_VAT)
             command.ExecuteNonQuery()
             conn.Close()
             success = True
@@ -237,7 +239,7 @@ Public Class SalesInvoice
         Try
             Dim conn As New MySqlConnection(Database.conString)
             Dim command As New MySqlCommand()
-            Dim codeQuery As String = "UPDATE `sales_invoice_details` SET `price`='" + GL_PRICE.ToString + "', `qty`='" + GL_QTY.ToString + "' WHERE `invoice_no`='" + invoiceNo + "' AND `item_code`='" + itemCode + "'"
+            Dim codeQuery As String = "UPDATE `sales_invoice_details` SET `price`='" + GL_PRICE.ToString + "', `qty`='" + GL_QTY.ToString + "', `cprice`='" + GL_COST_PRICE + "', `vat`='" + GL_VAT + "' WHERE `invoice_no`='" + invoiceNo + "' AND `item_code`='" + itemCode + "'"
             conn.Open()
             command.CommandText = codeQuery
             command.Connection = conn
@@ -252,44 +254,6 @@ Public Class SalesInvoice
         Return success
     End Function
 
-    Public Function printPackingList(issueNo As String) As Boolean
-        Dim success As Boolean = True
-        Try
-            Dim conn As New MySqlConnection(Database.conString)
-            Dim command As New MySqlCommand()
-            Dim codeQuery As String = "UPDATE `packing_list` SET`status`='PRINTED' WHERE `issue_no`='" + issueNo + "'"
-            conn.Open()
-            command.CommandText = codeQuery
-            command.Connection = conn
-            command.CommandType = CommandType.Text
-            command.ExecuteNonQuery()
-            conn.Close()
-            success = True
-        Catch ex As Exception
-            success = False
-            MsgBox(ex.Message)
-        End Try
-        Return success
-    End Function
-    Public Function completePackingList(issueNo As String) As Boolean
-        Dim success As Boolean = True
-        Try
-            Dim conn As New MySqlConnection(Database.conString)
-            Dim command As New MySqlCommand()
-            Dim codeQuery As String = "UPDATE `packing_list` SET`status`='COMPLETED' WHERE `issue_no`='" + issueNo + "'"
-            conn.Open()
-            command.CommandText = codeQuery
-            command.Connection = conn
-            command.CommandType = CommandType.Text
-            command.ExecuteNonQuery()
-            conn.Close()
-            success = True
-        Catch ex As Exception
-            success = False
-            MsgBox(ex.Message)
-        End Try
-        Return success
-    End Function
     Public Function cancelInvoice(invoiceNo As String) As Boolean
         Dim success As Boolean = True
         Try

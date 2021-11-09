@@ -23,9 +23,9 @@ Partial Class frmSalesInvoice
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmSalesInvoice))
-        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.btnBack = New System.Windows.Forms.Button()
         Me.ToolStrip1 = New System.Windows.Forms.ToolStrip()
         Me.btnNew = New System.Windows.Forms.ToolStripButton()
@@ -48,6 +48,8 @@ Partial Class frmSalesInvoice
         Me.Label10 = New System.Windows.Forms.Label()
         Me.txtTotal = New System.Windows.Forms.TextBox()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.Label11 = New System.Windows.Forms.Label()
+        Me.txtContact = New System.Windows.Forms.TextBox()
         Me.txtCustomerNo = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label9 = New System.Windows.Forms.Label()
@@ -101,6 +103,10 @@ Partial Class frmSalesInvoice
         Me.Panel6 = New System.Windows.Forms.Panel()
         Me.Panel7 = New System.Windows.Forms.Panel()
         Me.dtgrdItemList = New System.Windows.Forms.DataGridView()
+        Me.txtCostPrice = New System.Windows.Forms.TextBox()
+        Me.Label14 = New System.Windows.Forms.Label()
+        Me.txtVat = New System.Windows.Forms.TextBox()
+        Me.Label15 = New System.Windows.Forms.Label()
         Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -109,8 +115,7 @@ Partial Class frmSalesInvoice
         Me.Column17 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Label11 = New System.Windows.Forms.Label()
-        Me.txtContact = New System.Windows.Forms.TextBox()
+        Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ToolStrip1.SuspendLayout()
         Me.Panel1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
@@ -323,6 +328,25 @@ Partial Class frmSalesInvoice
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Customer Inf"
         '
+        'Label11
+        '
+        Me.Label11.AutoSize = True
+        Me.Label11.Location = New System.Drawing.Point(64, 194)
+        Me.Label11.Name = "Label11"
+        Me.Label11.Size = New System.Drawing.Size(56, 17)
+        Me.Label11.TabIndex = 154
+        Me.Label11.Text = "Contact"
+        '
+        'txtContact
+        '
+        Me.txtContact.Location = New System.Drawing.Point(128, 191)
+        Me.txtContact.Multiline = True
+        Me.txtContact.Name = "txtContact"
+        Me.txtContact.ReadOnly = True
+        Me.txtContact.ScrollBars = System.Windows.Forms.ScrollBars.Both
+        Me.txtContact.Size = New System.Drawing.Size(263, 92)
+        Me.txtContact.TabIndex = 153
+        '
         'txtCustomerNo
         '
         Me.txtCustomerNo.Location = New System.Drawing.Point(128, 21)
@@ -476,6 +500,7 @@ Partial Class frmSalesInvoice
         '
         Me.txtStatus.Location = New System.Drawing.Point(128, 68)
         Me.txtStatus.Name = "txtStatus"
+        Me.txtStatus.ReadOnly = True
         Me.txtStatus.Size = New System.Drawing.Size(157, 22)
         Me.txtStatus.TabIndex = 145
         '
@@ -492,6 +517,7 @@ Partial Class frmSalesInvoice
         '
         Me.txtIssueDate.Location = New System.Drawing.Point(128, 40)
         Me.txtIssueDate.Name = "txtIssueDate"
+        Me.txtIssueDate.ReadOnly = True
         Me.txtIssueDate.Size = New System.Drawing.Size(157, 22)
         Me.txtIssueDate.TabIndex = 143
         '
@@ -562,6 +588,10 @@ Partial Class frmSalesInvoice
         '
         Me.Panel3.BackColor = System.Drawing.SystemColors.Control
         Me.Panel3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+        Me.Panel3.Controls.Add(Me.txtVat)
+        Me.Panel3.Controls.Add(Me.Label15)
+        Me.Panel3.Controls.Add(Me.txtCostPrice)
+        Me.Panel3.Controls.Add(Me.Label14)
         Me.Panel3.Controls.Add(Me.txtAmount)
         Me.Panel3.Controls.Add(Me.Label20)
         Me.Panel3.Controls.Add(Me.txtDetailId)
@@ -814,7 +844,7 @@ Partial Class frmSalesInvoice
         Me.dtgrdItemList.BackgroundColor = System.Drawing.SystemColors.ButtonFace
         Me.dtgrdItemList.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.dtgrdItemList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dtgrdItemList.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn1, Me.DataGridViewTextBoxColumn2, Me.DataGridViewTextBoxColumn3, Me.DataGridViewTextBoxColumn4, Me.DataGridViewTextBoxColumn5, Me.Column17, Me.Column2, Me.Column4})
+        Me.dtgrdItemList.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn1, Me.DataGridViewTextBoxColumn2, Me.DataGridViewTextBoxColumn3, Me.DataGridViewTextBoxColumn4, Me.DataGridViewTextBoxColumn5, Me.Column17, Me.Column2, Me.Column4, Me.Column1})
         Me.dtgrdItemList.Dock = System.Windows.Forms.DockStyle.Fill
         Me.dtgrdItemList.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically
         Me.dtgrdItemList.Location = New System.Drawing.Point(400, 342)
@@ -823,6 +853,48 @@ Partial Class frmSalesInvoice
         Me.dtgrdItemList.RowTemplate.Height = 24
         Me.dtgrdItemList.Size = New System.Drawing.Size(974, 378)
         Me.dtgrdItemList.TabIndex = 120
+        '
+        'txtCostPrice
+        '
+        Me.txtCostPrice.Location = New System.Drawing.Point(442, 115)
+        Me.txtCostPrice.MaxLength = 50
+        Me.txtCostPrice.Name = "txtCostPrice"
+        Me.txtCostPrice.ReadOnly = True
+        Me.txtCostPrice.Size = New System.Drawing.Size(134, 22)
+        Me.txtCostPrice.TabIndex = 129
+        Me.txtCostPrice.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        Me.txtCostPrice.Visible = False
+        '
+        'Label14
+        '
+        Me.Label14.AutoSize = True
+        Me.Label14.Location = New System.Drawing.Point(364, 118)
+        Me.Label14.Name = "Label14"
+        Me.Label14.Size = New System.Drawing.Size(72, 17)
+        Me.Label14.TabIndex = 128
+        Me.Label14.Text = "Cost Price"
+        Me.Label14.Visible = False
+        '
+        'txtVat
+        '
+        Me.txtVat.Location = New System.Drawing.Point(442, 155)
+        Me.txtVat.MaxLength = 50
+        Me.txtVat.Name = "txtVat"
+        Me.txtVat.ReadOnly = True
+        Me.txtVat.Size = New System.Drawing.Size(134, 22)
+        Me.txtVat.TabIndex = 131
+        Me.txtVat.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        Me.txtVat.Visible = False
+        '
+        'Label15
+        '
+        Me.Label15.AutoSize = True
+        Me.Label15.Location = New System.Drawing.Point(401, 155)
+        Me.Label15.Name = "Label15"
+        Me.Label15.Size = New System.Drawing.Size(35, 17)
+        Me.Label15.TabIndex = 130
+        Me.Label15.Text = "VAT"
+        Me.Label15.Visible = False
         '
         'DataGridViewTextBoxColumn1
         '
@@ -857,8 +929,8 @@ Partial Class frmSalesInvoice
         '
         'Column17
         '
-        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.Column17.DefaultCellStyle = DataGridViewCellStyle7
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.Column17.DefaultCellStyle = DataGridViewCellStyle1
         Me.Column17.HeaderText = "Cost Price (Vat Incl)"
         Me.Column17.Name = "Column17"
         Me.Column17.ReadOnly = True
@@ -866,38 +938,26 @@ Partial Class frmSalesInvoice
         '
         'Column2
         '
-        DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.Column2.DefaultCellStyle = DataGridViewCellStyle8
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.Column2.DefaultCellStyle = DataGridViewCellStyle2
         Me.Column2.HeaderText = "Price"
         Me.Column2.Name = "Column2"
         Me.Column2.ReadOnly = True
         '
         'Column4
         '
-        DataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.Column4.DefaultCellStyle = DataGridViewCellStyle9
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.Column4.DefaultCellStyle = DataGridViewCellStyle3
         Me.Column4.HeaderText = "Amount"
         Me.Column4.Name = "Column4"
         Me.Column4.ReadOnly = True
         '
-        'Label11
+        'Column1
         '
-        Me.Label11.AutoSize = True
-        Me.Label11.Location = New System.Drawing.Point(64, 194)
-        Me.Label11.Name = "Label11"
-        Me.Label11.Size = New System.Drawing.Size(56, 17)
-        Me.Label11.TabIndex = 154
-        Me.Label11.Text = "Contact"
-        '
-        'txtContact
-        '
-        Me.txtContact.Location = New System.Drawing.Point(128, 191)
-        Me.txtContact.Multiline = True
-        Me.txtContact.Name = "txtContact"
-        Me.txtContact.ReadOnly = True
-        Me.txtContact.ScrollBars = System.Windows.Forms.ScrollBars.Both
-        Me.txtContact.Size = New System.Drawing.Size(263, 92)
-        Me.txtContact.TabIndex = 153
+        Me.Column1.HeaderText = "VAT"
+        Me.Column1.Name = "Column1"
+        Me.Column1.ReadOnly = True
+        Me.Column1.Visible = False
         '
         'frmSalesInvoice
         '
@@ -1007,6 +1067,16 @@ Partial Class frmSalesInvoice
     Friend WithEvents Column6 As DataGridViewTextBoxColumn
     Friend WithEvents Column7 As DataGridViewTextBoxColumn
     Friend WithEvents Column15 As DataGridViewTextBoxColumn
+    Friend WithEvents GroupBox1 As GroupBox
+    Friend WithEvents GroupBox2 As GroupBox
+    Friend WithEvents Label10 As Label
+    Friend WithEvents txtTotal As TextBox
+    Friend WithEvents Label11 As Label
+    Friend WithEvents txtContact As TextBox
+    Friend WithEvents txtVat As TextBox
+    Friend WithEvents Label15 As Label
+    Friend WithEvents txtCostPrice As TextBox
+    Friend WithEvents Label14 As Label
     Friend WithEvents DataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn2 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn3 As DataGridViewTextBoxColumn
@@ -1015,10 +1085,5 @@ Partial Class frmSalesInvoice
     Friend WithEvents Column17 As DataGridViewTextBoxColumn
     Friend WithEvents Column2 As DataGridViewTextBoxColumn
     Friend WithEvents Column4 As DataGridViewTextBoxColumn
-    Friend WithEvents GroupBox1 As GroupBox
-    Friend WithEvents GroupBox2 As GroupBox
-    Friend WithEvents Label10 As Label
-    Friend WithEvents txtTotal As TextBox
-    Friend WithEvents Label11 As Label
-    Friend WithEvents txtContact As TextBox
+    Friend WithEvents Column1 As DataGridViewTextBoxColumn
 End Class

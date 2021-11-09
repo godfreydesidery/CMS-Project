@@ -714,6 +714,12 @@
     <Compile Include="gui\Transactions\frmCustomerCreditNote.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="gui\Transactions\frmExpenses.Designer.vb">
+      <DependentUpon>frmExpenses.vb</DependentUpon>
+    </Compile>
+    <Compile Include="gui\Transactions\frmExpenses.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="gui\Transactions\frmGoodsReceivedNote.Designer.vb">
       <DependentUpon>frmGoodsReceivedNote.vb</DependentUpon>
     </Compile>
@@ -1069,6 +1075,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="gui\Transactions\frmCustomerCreditNote.resx">
       <DependentUpon>frmCustomerCreditNote.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="gui\Transactions\frmExpenses.resx">
+      <DependentUpon>frmExpenses.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="gui\Transactions\frmGoodsReceivedNote.resx">
       <DependentUpon>frmGoodsReceivedNote.vb</DependentUpon>
