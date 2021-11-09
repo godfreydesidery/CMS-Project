@@ -3,8 +3,7 @@
 Public Class SalesInvoice
     Inherits Item
 
-
-    Public Shared GLOBAL_INVOICE_NO As String = ""
+    Public Shared GLOBAL_INVOICE_NO As String = "" '
     Public Shared GLOBAL_CUSTOMER As String = ""
 
 
@@ -132,6 +131,7 @@ Public Class SalesInvoice
         End Try
         Return name
     End Function
+
     Public Function getInvoice(invoiceNo As String) As Boolean
         Dim success As Boolean = False
         Try

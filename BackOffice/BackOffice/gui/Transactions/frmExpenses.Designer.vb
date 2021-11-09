@@ -22,7 +22,7 @@ Partial Class frmExpenses
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.ToolStrip1 = New System.Windows.Forms.ToolStrip()
         Me.btnNew = New System.Windows.Forms.ToolStripButton()
         Me.btnEdit = New System.Windows.Forms.ToolStripButton()
@@ -30,34 +30,34 @@ Partial Class frmExpenses
         Me.btnDelete = New System.Windows.Forms.ToolStripButton()
         Me.btnSave = New System.Windows.Forms.ToolStripButton()
         Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.Panel2 = New System.Windows.Forms.Panel()
-        Me.Panel3 = New System.Windows.Forms.Panel()
-        Me.Panel4 = New System.Windows.Forms.Panel()
-        Me.txtMaterialCode = New System.Windows.Forms.TextBox()
-        Me.Label1 = New System.Windows.Forms.Label()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
-        Me.Label2 = New System.Windows.Forms.Label()
-        Me.TextBox2 = New System.Windows.Forms.TextBox()
-        Me.Label3 = New System.Windows.Forms.Label()
-        Me.TextBox3 = New System.Windows.Forms.TextBox()
+        Me.txtDescription = New System.Windows.Forms.TextBox()
         Me.Label4 = New System.Windows.Forms.Label()
-        Me.dtgrdList = New System.Windows.Forms.DataGridView()
-        Me.Button1 = New System.Windows.Forms.Button()
+        Me.txtAmount = New System.Windows.Forms.TextBox()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.txtExpenseDate = New System.Windows.Forms.TextBox()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.txtExpenseNo = New System.Windows.Forms.TextBox()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.btnFilter = New System.Windows.Forms.Button()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.dateStart = New System.Windows.Forms.DateTimePicker()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.dateEnd = New System.Windows.Forms.DateTimePicker()
+        Me.Panel3 = New System.Windows.Forms.Panel()
+        Me.btnBack = New System.Windows.Forms.Button()
+        Me.Panel4 = New System.Windows.Forms.Panel()
+        Me.dtgrdExpensesList = New System.Windows.Forms.DataGridView()
         Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Label5 = New System.Windows.Forms.Label()
-        Me.dateStart = New System.Windows.Forms.DateTimePicker()
-        Me.Label6 = New System.Windows.Forms.Label()
-        Me.dateEnd = New System.Windows.Forms.DateTimePicker()
-        Me.btnFilter = New System.Windows.Forms.Button()
         Me.ToolStrip1.SuspendLayout()
         Me.Panel1.SuspendLayout()
         Me.Panel2.SuspendLayout()
         Me.Panel3.SuspendLayout()
-        CType(Me.dtgrdList, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.dtgrdExpensesList, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'ToolStrip1
@@ -89,6 +89,7 @@ Partial Class frmExpenses
         Me.btnEdit.Size = New System.Drawing.Size(59, 24)
         Me.btnEdit.Text = "Edit"
         Me.btnEdit.ToolTipText = "Unlock fields for editing"
+        Me.btnEdit.Visible = False
         '
         'btnClear
         '
@@ -98,6 +99,7 @@ Partial Class frmExpenses
         Me.btnClear.Size = New System.Drawing.Size(67, 24)
         Me.btnClear.Text = "Clear"
         Me.btnClear.ToolTipText = "Clear all the fields"
+        Me.btnClear.Visible = False
         '
         'btnDelete
         '
@@ -107,6 +109,7 @@ Partial Class frmExpenses
         Me.btnDelete.Size = New System.Drawing.Size(77, 24)
         Me.btnDelete.Text = "Delete"
         Me.btnDelete.ToolTipText = "Deletes an existing record"
+        Me.btnDelete.Visible = False
         '
         'btnSave
         '
@@ -119,19 +122,91 @@ Partial Class frmExpenses
         '
         'Panel1
         '
-        Me.Panel1.Controls.Add(Me.TextBox3)
+        Me.Panel1.Controls.Add(Me.txtDescription)
         Me.Panel1.Controls.Add(Me.Label4)
-        Me.Panel1.Controls.Add(Me.TextBox2)
+        Me.Panel1.Controls.Add(Me.txtAmount)
         Me.Panel1.Controls.Add(Me.Label3)
-        Me.Panel1.Controls.Add(Me.TextBox1)
+        Me.Panel1.Controls.Add(Me.txtExpenseDate)
         Me.Panel1.Controls.Add(Me.Label2)
-        Me.Panel1.Controls.Add(Me.txtMaterialCode)
+        Me.Panel1.Controls.Add(Me.txtExpenseNo)
         Me.Panel1.Controls.Add(Me.Label1)
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Left
         Me.Panel1.Location = New System.Drawing.Point(0, 27)
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(350, 645)
         Me.Panel1.TabIndex = 77
+        '
+        'txtDescription
+        '
+        Me.txtDescription.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtDescription.Location = New System.Drawing.Point(95, 97)
+        Me.txtDescription.Multiline = True
+        Me.txtDescription.Name = "txtDescription"
+        Me.txtDescription.Size = New System.Drawing.Size(249, 111)
+        Me.txtDescription.TabIndex = 16
+        '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.Location = New System.Drawing.Point(12, 97)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(79, 17)
+        Me.Label4.TabIndex = 15
+        Me.Label4.Text = "Description"
+        '
+        'txtAmount
+        '
+        Me.txtAmount.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtAmount.Location = New System.Drawing.Point(95, 69)
+        Me.txtAmount.Name = "txtAmount"
+        Me.txtAmount.Size = New System.Drawing.Size(156, 24)
+        Me.txtAmount.TabIndex = 14
+        Me.txtAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Location = New System.Drawing.Point(33, 69)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(56, 17)
+        Me.Label3.TabIndex = 13
+        Me.Label3.Text = "Amount"
+        '
+        'txtExpenseDate
+        '
+        Me.txtExpenseDate.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtExpenseDate.Location = New System.Drawing.Point(95, 41)
+        Me.txtExpenseDate.Name = "txtExpenseDate"
+        Me.txtExpenseDate.ReadOnly = True
+        Me.txtExpenseDate.Size = New System.Drawing.Size(156, 24)
+        Me.txtExpenseDate.TabIndex = 12
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Location = New System.Drawing.Point(51, 41)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(38, 17)
+        Me.Label2.TabIndex = 11
+        Me.Label2.Text = "Date"
+        '
+        'txtExpenseNo
+        '
+        Me.txtExpenseNo.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtExpenseNo.Location = New System.Drawing.Point(95, 13)
+        Me.txtExpenseNo.Name = "txtExpenseNo"
+        Me.txtExpenseNo.ReadOnly = True
+        Me.txtExpenseNo.Size = New System.Drawing.Size(156, 24)
+        Me.txtExpenseNo.TabIndex = 10
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Location = New System.Drawing.Point(5, 13)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(84, 17)
+        Me.Label1.TabIndex = 9
+        Me.Label1.Text = "Expense No"
         '
         'Panel2
         '
@@ -143,121 +218,97 @@ Partial Class frmExpenses
         Me.Panel2.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel2.Location = New System.Drawing.Point(350, 27)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(864, 65)
+        Me.Panel2.Size = New System.Drawing.Size(864, 93)
         Me.Panel2.TabIndex = 78
+        '
+        'btnFilter
+        '
+        Me.btnFilter.Location = New System.Drawing.Point(146, 48)
+        Me.btnFilter.Name = "btnFilter"
+        Me.btnFilter.Size = New System.Drawing.Size(100, 35)
+        Me.btnFilter.TabIndex = 53
+        Me.btnFilter.Text = "Filter"
+        Me.btnFilter.UseVisualStyleBackColor = True
+        '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Location = New System.Drawing.Point(-3, 0)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(40, 17)
+        Me.Label5.TabIndex = 49
+        Me.Label5.Text = "From"
+        '
+        'dateStart
+        '
+        Me.dateStart.CustomFormat = "yyyy-MM-dd"
+        Me.dateStart.Format = System.Windows.Forms.DateTimePickerFormat.Custom
+        Me.dateStart.Location = New System.Drawing.Point(0, 20)
+        Me.dateStart.Name = "dateStart"
+        Me.dateStart.Size = New System.Drawing.Size(120, 22)
+        Me.dateStart.TabIndex = 51
+        '
+        'Label6
+        '
+        Me.Label6.AutoSize = True
+        Me.Label6.Location = New System.Drawing.Point(123, 0)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(25, 17)
+        Me.Label6.TabIndex = 50
+        Me.Label6.Text = "To"
+        '
+        'dateEnd
+        '
+        Me.dateEnd.CustomFormat = "yyyy-MM-dd"
+        Me.dateEnd.Format = System.Windows.Forms.DateTimePickerFormat.Custom
+        Me.dateEnd.Location = New System.Drawing.Point(126, 20)
+        Me.dateEnd.Name = "dateEnd"
+        Me.dateEnd.Size = New System.Drawing.Size(120, 22)
+        Me.dateEnd.TabIndex = 52
         '
         'Panel3
         '
-        Me.Panel3.Controls.Add(Me.Button1)
+        Me.Panel3.Controls.Add(Me.btnBack)
         Me.Panel3.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.Panel3.Location = New System.Drawing.Point(350, 619)
+        Me.Panel3.Location = New System.Drawing.Point(350, 625)
         Me.Panel3.Name = "Panel3"
-        Me.Panel3.Size = New System.Drawing.Size(864, 53)
+        Me.Panel3.Size = New System.Drawing.Size(864, 47)
         Me.Panel3.TabIndex = 79
+        '
+        'btnBack
+        '
+        Me.btnBack.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnBack.BackgroundImage = Global.BackOffice.My.Resources.Resources.red_back_arrow
+        Me.btnBack.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.btnBack.Location = New System.Drawing.Point(761, 4)
+        Me.btnBack.Name = "btnBack"
+        Me.btnBack.Size = New System.Drawing.Size(100, 40)
+        Me.btnBack.TabIndex = 71
+        Me.btnBack.UseVisualStyleBackColor = True
         '
         'Panel4
         '
         Me.Panel4.Dock = System.Windows.Forms.DockStyle.Right
-        Me.Panel4.Location = New System.Drawing.Point(1174, 92)
+        Me.Panel4.Location = New System.Drawing.Point(1174, 120)
         Me.Panel4.Name = "Panel4"
-        Me.Panel4.Size = New System.Drawing.Size(40, 527)
+        Me.Panel4.Size = New System.Drawing.Size(40, 505)
         Me.Panel4.TabIndex = 80
         '
-        'txtMaterialCode
+        'dtgrdExpensesList
         '
-        Me.txtMaterialCode.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtMaterialCode.Location = New System.Drawing.Point(95, 13)
-        Me.txtMaterialCode.Name = "txtMaterialCode"
-        Me.txtMaterialCode.Size = New System.Drawing.Size(156, 24)
-        Me.txtMaterialCode.TabIndex = 10
-        '
-        'Label1
-        '
-        Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(5, 13)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(84, 17)
-        Me.Label1.TabIndex = 9
-        Me.Label1.Text = "Expense No"
-        '
-        'TextBox1
-        '
-        Me.TextBox1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox1.Location = New System.Drawing.Point(95, 41)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(156, 24)
-        Me.TextBox1.TabIndex = 12
-        '
-        'Label2
-        '
-        Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(51, 41)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(38, 17)
-        Me.Label2.TabIndex = 11
-        Me.Label2.Text = "Date"
-        '
-        'TextBox2
-        '
-        Me.TextBox2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox2.Location = New System.Drawing.Point(95, 69)
-        Me.TextBox2.Name = "TextBox2"
-        Me.TextBox2.Size = New System.Drawing.Size(156, 24)
-        Me.TextBox2.TabIndex = 14
-        '
-        'Label3
-        '
-        Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(33, 69)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(56, 17)
-        Me.Label3.TabIndex = 13
-        Me.Label3.Text = "Amount"
-        '
-        'TextBox3
-        '
-        Me.TextBox3.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox3.Location = New System.Drawing.Point(95, 97)
-        Me.TextBox3.Multiline = True
-        Me.TextBox3.Name = "TextBox3"
-        Me.TextBox3.Size = New System.Drawing.Size(252, 111)
-        Me.TextBox3.TabIndex = 16
-        '
-        'Label4
-        '
-        Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(12, 97)
-        Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(79, 17)
-        Me.Label4.TabIndex = 15
-        Me.Label4.Text = "Description"
-        '
-        'dtgrdList
-        '
-        Me.dtgrdList.AllowUserToAddRows = False
-        Me.dtgrdList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
-        Me.dtgrdList.BackgroundColor = System.Drawing.SystemColors.ButtonFace
-        Me.dtgrdList.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-        Me.dtgrdList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dtgrdList.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column1, Me.Column2, Me.Column3, Me.Column4, Me.Column5})
-        Me.dtgrdList.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.dtgrdList.Location = New System.Drawing.Point(350, 92)
-        Me.dtgrdList.Name = "dtgrdList"
-        Me.dtgrdList.ReadOnly = True
-        Me.dtgrdList.RowTemplate.Height = 24
-        Me.dtgrdList.Size = New System.Drawing.Size(824, 527)
-        Me.dtgrdList.TabIndex = 81
-        '
-        'Button1
-        '
-        Me.Button1.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Button1.BackgroundImage = Global.BackOffice.My.Resources.Resources.red_back_arrow
-        Me.Button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.Button1.Location = New System.Drawing.Point(761, 10)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(100, 40)
-        Me.Button1.TabIndex = 71
-        Me.Button1.UseVisualStyleBackColor = True
+        Me.dtgrdExpensesList.AllowUserToAddRows = False
+        Me.dtgrdExpensesList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
+        Me.dtgrdExpensesList.BackgroundColor = System.Drawing.SystemColors.ButtonFace
+        Me.dtgrdExpensesList.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.dtgrdExpensesList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dtgrdExpensesList.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column1, Me.Column2, Me.Column3, Me.Column4, Me.Column5})
+        Me.dtgrdExpensesList.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.dtgrdExpensesList.Location = New System.Drawing.Point(350, 120)
+        Me.dtgrdExpensesList.Name = "dtgrdExpensesList"
+        Me.dtgrdExpensesList.ReadOnly = True
+        Me.dtgrdExpensesList.RowTemplate.Height = 24
+        Me.dtgrdExpensesList.Size = New System.Drawing.Size(824, 505)
+        Me.dtgrdExpensesList.TabIndex = 81
         '
         'Column1
         '
@@ -269,7 +320,7 @@ Partial Class frmExpenses
         'Column2
         '
         Me.Column2.FillWeight = 119.797!
-        Me.Column2.HeaderText = "Expense No"
+        Me.Column2.HeaderText = "Expense #"
         Me.Column2.Name = "Column2"
         Me.Column2.ReadOnly = True
         '
@@ -281,8 +332,8 @@ Partial Class frmExpenses
         '
         'Column4
         '
-        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.Column4.DefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.Column4.DefaultCellStyle = DataGridViewCellStyle1
         Me.Column4.HeaderText = "Amount"
         Me.Column4.Name = "Column4"
         Me.Column4.ReadOnly = True
@@ -293,57 +344,12 @@ Partial Class frmExpenses
         Me.Column5.Name = "Column5"
         Me.Column5.ReadOnly = True
         '
-        'Label5
-        '
-        Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(6, 15)
-        Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(40, 17)
-        Me.Label5.TabIndex = 49
-        Me.Label5.Text = "From"
-        '
-        'dateStart
-        '
-        Me.dateStart.CustomFormat = "yyyy-MM-dd"
-        Me.dateStart.Format = System.Windows.Forms.DateTimePickerFormat.Custom
-        Me.dateStart.Location = New System.Drawing.Point(9, 35)
-        Me.dateStart.Name = "dateStart"
-        Me.dateStart.Size = New System.Drawing.Size(120, 22)
-        Me.dateStart.TabIndex = 51
-        '
-        'Label6
-        '
-        Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(132, 15)
-        Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(25, 17)
-        Me.Label6.TabIndex = 50
-        Me.Label6.Text = "To"
-        '
-        'dateEnd
-        '
-        Me.dateEnd.CustomFormat = "yyyy-MM-dd"
-        Me.dateEnd.Format = System.Windows.Forms.DateTimePickerFormat.Custom
-        Me.dateEnd.Location = New System.Drawing.Point(135, 35)
-        Me.dateEnd.Name = "dateEnd"
-        Me.dateEnd.Size = New System.Drawing.Size(120, 22)
-        Me.dateEnd.TabIndex = 52
-        '
-        'btnFilter
-        '
-        Me.btnFilter.Location = New System.Drawing.Point(261, 18)
-        Me.btnFilter.Name = "btnFilter"
-        Me.btnFilter.Size = New System.Drawing.Size(100, 40)
-        Me.btnFilter.TabIndex = 53
-        Me.btnFilter.Text = "Filter"
-        Me.btnFilter.UseVisualStyleBackColor = True
-        '
         'frmExpenses
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1214, 672)
-        Me.Controls.Add(Me.dtgrdList)
+        Me.Controls.Add(Me.dtgrdExpensesList)
         Me.Controls.Add(Me.Panel4)
         Me.Controls.Add(Me.Panel3)
         Me.Controls.Add(Me.Panel2)
@@ -360,7 +366,7 @@ Partial Class frmExpenses
         Me.Panel2.ResumeLayout(False)
         Me.Panel2.PerformLayout()
         Me.Panel3.ResumeLayout(False)
-        CType(Me.dtgrdList, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.dtgrdExpensesList, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -376,24 +382,24 @@ Partial Class frmExpenses
     Friend WithEvents Panel2 As Panel
     Friend WithEvents Panel3 As Panel
     Friend WithEvents Panel4 As Panel
-    Friend WithEvents TextBox2 As TextBox
+    Friend WithEvents txtAmount As TextBox
     Friend WithEvents Label3 As Label
-    Friend WithEvents TextBox1 As TextBox
+    Friend WithEvents txtExpenseDate As TextBox
     Friend WithEvents Label2 As Label
-    Friend WithEvents txtMaterialCode As TextBox
+    Friend WithEvents txtExpenseNo As TextBox
     Friend WithEvents Label1 As Label
-    Friend WithEvents TextBox3 As TextBox
+    Friend WithEvents txtDescription As TextBox
     Friend WithEvents Label4 As Label
-    Friend WithEvents dtgrdList As DataGridView
-    Friend WithEvents Button1 As Button
-    Friend WithEvents Column1 As DataGridViewTextBoxColumn
-    Friend WithEvents Column2 As DataGridViewTextBoxColumn
-    Friend WithEvents Column3 As DataGridViewTextBoxColumn
-    Friend WithEvents Column4 As DataGridViewTextBoxColumn
-    Friend WithEvents Column5 As DataGridViewTextBoxColumn
+    Friend WithEvents dtgrdExpensesList As DataGridView
+    Friend WithEvents btnBack As Button
     Friend WithEvents btnFilter As Button
     Friend WithEvents Label5 As Label
     Friend WithEvents dateStart As DateTimePicker
     Friend WithEvents Label6 As Label
     Friend WithEvents dateEnd As DateTimePicker
+    Friend WithEvents Column1 As DataGridViewTextBoxColumn
+    Friend WithEvents Column2 As DataGridViewTextBoxColumn
+    Friend WithEvents Column3 As DataGridViewTextBoxColumn
+    Friend WithEvents Column4 As DataGridViewTextBoxColumn
+    Friend WithEvents Column5 As DataGridViewTextBoxColumn
 End Class

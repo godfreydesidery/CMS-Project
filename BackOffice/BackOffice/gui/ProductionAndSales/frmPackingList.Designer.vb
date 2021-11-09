@@ -23,8 +23,8 @@ Partial Class frmPackingList
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle10 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmPackingList))
         Me.Label1 = New System.Windows.Forms.Label()
         Me.txtIssueNo = New System.Windows.Forms.TextBox()
@@ -137,10 +137,10 @@ Partial Class frmPackingList
         Me.TabPage1 = New System.Windows.Forms.TabPage()
         Me.TabPage2 = New System.Windows.Forms.TabPage()
         Me.Panel4 = New System.Windows.Forms.Panel()
+        Me.Panel8 = New System.Windows.Forms.Panel()
+        Me.Panel7 = New System.Windows.Forms.Panel()
         Me.Panel5 = New System.Windows.Forms.Panel()
         Me.Panel6 = New System.Windows.Forms.Panel()
-        Me.Panel7 = New System.Windows.Forms.Panel()
-        Me.Panel8 = New System.Windows.Forms.Panel()
         CType(Me.dtgrdPackingLists, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dtgrdItemList, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel2.SuspendLayout()
@@ -150,10 +150,10 @@ Partial Class frmPackingList
         Me.TabPage1.SuspendLayout()
         Me.TabPage2.SuspendLayout()
         Me.Panel4.SuspendLayout()
+        Me.Panel8.SuspendLayout()
+        Me.Panel7.SuspendLayout()
         Me.Panel5.SuspendLayout()
         Me.Panel6.SuspendLayout()
-        Me.Panel7.SuspendLayout()
-        Me.Panel8.SuspendLayout()
         Me.SuspendLayout()
         '
         'Label1
@@ -237,9 +237,9 @@ Partial Class frmPackingList
         '
         'DataGridViewTextBoxColumn1
         '
-        DataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.White
-        DataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.Black
-        Me.DataGridViewTextBoxColumn1.DefaultCellStyle = DataGridViewCellStyle9
+        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.White
+        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black
+        Me.DataGridViewTextBoxColumn1.DefaultCellStyle = DataGridViewCellStyle1
         Me.DataGridViewTextBoxColumn1.FillWeight = 42.63959!
         Me.DataGridViewTextBoxColumn1.HeaderText = "Issue No"
         Me.DataGridViewTextBoxColumn1.Name = "DataGridViewTextBoxColumn1"
@@ -508,8 +508,8 @@ Partial Class frmPackingList
         '
         'Column10
         '
-        DataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.Column10.DefaultCellStyle = DataGridViewCellStyle10
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.Column10.DefaultCellStyle = DataGridViewCellStyle2
         Me.Column10.FillWeight = 89.8288!
         Me.Column10.HeaderText = "Price"
         Me.Column10.Name = "Column10"
@@ -1176,46 +1176,6 @@ Partial Class frmPackingList
         Me.Panel4.Size = New System.Drawing.Size(420, 898)
         Me.Panel4.TabIndex = 103
         '
-        'Panel5
-        '
-        Me.Panel5.Controls.Add(Me.TabControl1)
-        Me.Panel5.Dock = System.Windows.Forms.DockStyle.Top
-        Me.Panel5.Location = New System.Drawing.Point(420, 27)
-        Me.Panel5.Name = "Panel5"
-        Me.Panel5.Size = New System.Drawing.Size(1326, 329)
-        Me.Panel5.TabIndex = 104
-        '
-        'Panel6
-        '
-        Me.Panel6.Controls.Add(Me.btnBack)
-        Me.Panel6.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.Panel6.Location = New System.Drawing.Point(420, 869)
-        Me.Panel6.Name = "Panel6"
-        Me.Panel6.Size = New System.Drawing.Size(1326, 56)
-        Me.Panel6.TabIndex = 105
-        '
-        'Panel7
-        '
-        Me.Panel7.Controls.Add(Me.txtCustomerAddress)
-        Me.Panel7.Controls.Add(Me.txtIssueNo)
-        Me.Panel7.Controls.Add(Me.Label31)
-        Me.Panel7.Controls.Add(Me.btnSearch)
-        Me.Panel7.Controls.Add(Me.Label30)
-        Me.Panel7.Controls.Add(Me.txtStatus)
-        Me.Panel7.Controls.Add(Me.txtCustomerName)
-        Me.Panel7.Controls.Add(Me.Label4)
-        Me.Panel7.Controls.Add(Me.Label3)
-        Me.Panel7.Controls.Add(Me.txtIssueDate)
-        Me.Panel7.Controls.Add(Me.cmbSalesPersons)
-        Me.Panel7.Controls.Add(Me.Label1)
-        Me.Panel7.Controls.Add(Me.Label2)
-        Me.Panel7.Controls.Add(Me.txtId)
-        Me.Panel7.Dock = System.Windows.Forms.DockStyle.Top
-        Me.Panel7.Location = New System.Drawing.Point(0, 0)
-        Me.Panel7.Name = "Panel7"
-        Me.Panel7.Size = New System.Drawing.Size(420, 196)
-        Me.Panel7.TabIndex = 0
-        '
         'Panel8
         '
         Me.Panel8.Controls.Add(Me.txtCostOfGoodsSold)
@@ -1247,6 +1207,46 @@ Partial Class frmPackingList
         Me.Panel8.Size = New System.Drawing.Size(420, 696)
         Me.Panel8.TabIndex = 1
         '
+        'Panel7
+        '
+        Me.Panel7.Controls.Add(Me.txtCustomerAddress)
+        Me.Panel7.Controls.Add(Me.txtIssueNo)
+        Me.Panel7.Controls.Add(Me.Label31)
+        Me.Panel7.Controls.Add(Me.btnSearch)
+        Me.Panel7.Controls.Add(Me.Label30)
+        Me.Panel7.Controls.Add(Me.txtStatus)
+        Me.Panel7.Controls.Add(Me.txtCustomerName)
+        Me.Panel7.Controls.Add(Me.Label4)
+        Me.Panel7.Controls.Add(Me.Label3)
+        Me.Panel7.Controls.Add(Me.txtIssueDate)
+        Me.Panel7.Controls.Add(Me.cmbSalesPersons)
+        Me.Panel7.Controls.Add(Me.Label1)
+        Me.Panel7.Controls.Add(Me.Label2)
+        Me.Panel7.Controls.Add(Me.txtId)
+        Me.Panel7.Dock = System.Windows.Forms.DockStyle.Top
+        Me.Panel7.Location = New System.Drawing.Point(0, 0)
+        Me.Panel7.Name = "Panel7"
+        Me.Panel7.Size = New System.Drawing.Size(420, 196)
+        Me.Panel7.TabIndex = 0
+        '
+        'Panel5
+        '
+        Me.Panel5.Controls.Add(Me.TabControl1)
+        Me.Panel5.Dock = System.Windows.Forms.DockStyle.Top
+        Me.Panel5.Location = New System.Drawing.Point(420, 27)
+        Me.Panel5.Name = "Panel5"
+        Me.Panel5.Size = New System.Drawing.Size(1326, 329)
+        Me.Panel5.TabIndex = 104
+        '
+        'Panel6
+        '
+        Me.Panel6.Controls.Add(Me.btnBack)
+        Me.Panel6.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.Panel6.Location = New System.Drawing.Point(420, 869)
+        Me.Panel6.Name = "Panel6"
+        Me.Panel6.Size = New System.Drawing.Size(1326, 56)
+        Me.Panel6.TabIndex = 105
+        '
         'frmPackingList
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
@@ -1274,12 +1274,12 @@ Partial Class frmPackingList
         Me.TabPage1.ResumeLayout(False)
         Me.TabPage2.ResumeLayout(False)
         Me.Panel4.ResumeLayout(False)
-        Me.Panel5.ResumeLayout(False)
-        Me.Panel6.ResumeLayout(False)
-        Me.Panel7.ResumeLayout(False)
-        Me.Panel7.PerformLayout()
         Me.Panel8.ResumeLayout(False)
         Me.Panel8.PerformLayout()
+        Me.Panel7.ResumeLayout(False)
+        Me.Panel7.PerformLayout()
+        Me.Panel5.ResumeLayout(False)
+        Me.Panel6.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 

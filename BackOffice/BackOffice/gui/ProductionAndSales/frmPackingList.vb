@@ -1260,19 +1260,7 @@ Public Class frmPackingList
 
         End If
 
-        'If (e.Button = MouseButtons.Right) Then
 
-        'If dtgrdItemList.SelectedRows.Count = 1 Then
-        'If (row >= 0 And dtgrdItemList.NewRowIndex) Then
-        'glsn = sn
-        '     cntxtMenu.Show(dtgrdItemList, dtgrdItemList.PointToClient(Cursor.Position))
-        '  MsgBox("Deleting record " + glsn)
-        'm.MenuItems.Add(New MenuItem(String.Format("Remove this item {0}", currentMouseOverRow.ToString())))
-        'End If
-        'End If
-
-
-        ' End If
     End Sub
 
     Dim oldRow As Integer = -1
@@ -3051,6 +3039,10 @@ Public Class frmPackingList
     End Sub
 
     Private Sub Label31_Click(sender As Object, e As EventArgs) Handles Label31.Click
+
+    End Sub
+
+    Private Sub dtgrdItemList_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles dtgrdItemList.CellContentClick
 
     End Sub
 End Class
