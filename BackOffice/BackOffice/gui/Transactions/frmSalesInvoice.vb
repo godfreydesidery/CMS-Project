@@ -165,20 +165,55 @@ Public Class frmSalesInvoice
         paragraph = section.AddParagraph()
         paragraph.AddFormattedText(cmbCustomerName.Text)
         paragraph.Format.Font.Size = 8
+
         paragraph = section.AddParagraph()
-        paragraph.AddFormattedText(txtContact.Text)
-        paragraph.Format.Font.Size = 7
-        paragraph.Format.Font.Italic = True
 
+        Dim tableAddress As Table = section.AddTable()
+        tableAddress.Style = "Table"
+        ' table.Borders.Color = TableBorder
+        tableAddress.Borders.Width = 0.25
+        tableAddress.Borders.Left.Width = 0.5
+        tableAddress.Borders.Right.Width = 0.5
+        tableAddress.Rows.LeftIndent = 0
 
+        'Before you can add a row, you must define the columns
+        Dim columnAddress As Column
 
-        'Add the print date field
+        columnAddress = tableAddress.AddColumn("7.0cm")
+        columnAddress.Format.Alignment = ParagraphAlignment.Left
+
+        columnAddress = tableAddress.AddColumn("7.0cm")
+        columnAddress.Format.Alignment = ParagraphAlignment.Left
+
+        Dim rowAddress As Row
+
+        rowAddress = tableAddress.AddRow()
+        rowAddress.Format.Font.Bold = True
+        rowAddress.HeadingFormat = True
+        rowAddress.Format.Font.Size = 9
+        rowAddress.Format.Alignment = ParagraphAlignment.Center
+        rowAddress.Format.Font.Bold = True
+        rowAddress.Borders.Color = Colors.White
+        rowAddress.Cells(0).AddParagraph("Bill To:")
+        rowAddress.Cells(0).Format.Alignment = ParagraphAlignment.Left
+        rowAddress.Cells(1).AddParagraph("Ship To:")
+        rowAddress.Cells(1).Format.Alignment = ParagraphAlignment.Left
+
+        rowAddress = tableAddress.AddRow()
+        rowAddress.Format.Font.Bold = False
+        rowAddress.HeadingFormat = False
+        rowAddress.Format.Font.Size = 8
+        rowAddress.Height = "6mm"
+        rowAddress.Format.Alignment = ParagraphAlignment.Center
+        rowAddress.Borders.Color = Colors.White
+        rowAddress.Cells(0).AddParagraph(cmbCustomerName.Text + Environment.NewLine + "TIN: " + txtCustomerTin.Text + Environment.NewLine + txtContact.Text)
+        rowAddress.Cells(0).Format.Alignment = ParagraphAlignment.Left
+        rowAddress.Cells(1).AddParagraph(cmbCustomerName.Text + Environment.NewLine + "TIN: " + txtCustomerTin.Text + Environment.NewLine + txtContact.Text)
+        rowAddress.Cells(1).Format.Alignment = ParagraphAlignment.Left
+
+        tableAddress.SetEdge(0, 0, 2, 1, Edge.Box, BorderStyle.Single, 0.75, Color.Empty)
+
         paragraph = section.AddParagraph()
-        paragraph.Format.SpaceBefore = "1cm"
-        paragraph.Style = "Reference"
-        paragraph.AddTab()
-        paragraph.AddText("Created: ")
-        paragraph.AddDateField("dd.MM.yyyy")
 
         'Create the item table
         Dim table As Table = section.AddTable()
@@ -233,14 +268,11 @@ Public Class frmSalesInvoice
         row.Cells(4).AddParagraph("Amount")
         row.Cells(4).Format.Alignment = ParagraphAlignment.Left
 
-
         table.SetEdge(0, 0, 5, 1, Edge.Box, BorderStyle.Single, 0.75, Color.Empty)
 
         Dim totalAmount As Double = 0
         Dim totalVat As Double = 0
         Dim totalDiscount As Double = 0
-
-
 
         For i As Integer = 0 To dtgrdItemList.RowCount - 1
             Dim code As String = dtgrdItemList.Item(2, i).Value.ToString
@@ -1838,6 +1870,7 @@ Public Class frmSalesInvoice
             Dim reader As MySqlDataReader = command.ExecuteReader()
             While reader.Read
                 txtCustomerNo.Text = reader.GetString("customer_code")
+                txtCustomerTin.Text = reader.GetString("tin")
                 txtInvoiceLimit.Text = LCurrency.displayValue(reader.GetString("invoice_limit"))
                 txtCreditLimit.Text = LCurrency.displayValue(reader.GetString("credit_limit"))
                 txtCreditBalance.Text = LCurrency.displayValue(reader.GetString("credit_balance"))

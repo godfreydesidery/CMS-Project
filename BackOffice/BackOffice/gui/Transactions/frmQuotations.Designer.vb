@@ -22,9 +22,9 @@ Partial Class frmQuotations
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle13 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle14 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle15 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.ToolStrip1 = New System.Windows.Forms.ToolStrip()
         Me.btnNew = New System.Windows.Forms.ToolStripButton()
         Me.btnEdit = New System.Windows.Forms.ToolStripButton()
@@ -94,6 +94,8 @@ Partial Class frmQuotations
         Me.Column17 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.txtCustomerTin = New System.Windows.Forms.TextBox()
+        Me.Label3 = New System.Windows.Forms.Label()
         Me.ToolStrip1.SuspendLayout()
         Me.Panel1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
@@ -113,7 +115,7 @@ Partial Class frmQuotations
         '
         Me.ToolStrip1.BackColor = System.Drawing.SystemColors.ButtonFace
         Me.ToolStrip1.ImageScalingSize = New System.Drawing.Size(20, 20)
-        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.btnNew, Me.btnEdit, Me.btnClear, Me.btnDelete, Me.btnPrint, Me.btnSave, Me.ToolStripSeparator1})
+        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.btnNew, Me.btnEdit, Me.btnClear, Me.btnPrint, Me.btnDelete, Me.btnSave, Me.ToolStripSeparator1})
         Me.ToolStrip1.Location = New System.Drawing.Point(0, 0)
         Me.ToolStrip1.Name = "ToolStrip1"
         Me.ToolStrip1.Size = New System.Drawing.Size(1538, 27)
@@ -164,8 +166,8 @@ Partial Class frmQuotations
         Me.btnPrint.Image = Global.BackOffice.My.Resources.Resources.printer
         Me.btnPrint.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.btnPrint.Name = "btnPrint"
-        Me.btnPrint.Size = New System.Drawing.Size(63, 24)
-        Me.btnPrint.Text = "Print"
+        Me.btnPrint.Size = New System.Drawing.Size(175, 24)
+        Me.btnPrint.Text = "Print Profoma Invoice"
         Me.btnPrint.ToolTipText = "Removes items from stock and print the packing list to pdf"
         '
         'btnSave
@@ -200,7 +202,7 @@ Partial Class frmQuotations
         Me.GroupBox2.Controls.Add(Me.Label10)
         Me.GroupBox2.Controls.Add(Me.txtTotal)
         Me.GroupBox2.Dock = System.Windows.Forms.DockStyle.Top
-        Me.GroupBox2.Location = New System.Drawing.Point(0, 366)
+        Me.GroupBox2.Location = New System.Drawing.Point(0, 421)
         Me.GroupBox2.Name = "GroupBox2"
         Me.GroupBox2.Size = New System.Drawing.Size(396, 55)
         Me.GroupBox2.TabIndex = 5
@@ -227,6 +229,8 @@ Partial Class frmQuotations
         '
         'GroupBox1
         '
+        Me.GroupBox1.Controls.Add(Me.txtCustomerTin)
+        Me.GroupBox1.Controls.Add(Me.Label3)
         Me.GroupBox1.Controls.Add(Me.Label11)
         Me.GroupBox1.Controls.Add(Me.txtContact)
         Me.GroupBox1.Controls.Add(Me.txtCustomerNo)
@@ -236,7 +240,7 @@ Partial Class frmQuotations
         Me.GroupBox1.Dock = System.Windows.Forms.DockStyle.Top
         Me.GroupBox1.Location = New System.Drawing.Point(0, 180)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(396, 186)
+        Me.GroupBox1.Size = New System.Drawing.Size(396, 241)
         Me.GroupBox1.TabIndex = 4
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Customer Inf"
@@ -244,7 +248,7 @@ Partial Class frmQuotations
         'Label11
         '
         Me.Label11.AutoSize = True
-        Me.Label11.Location = New System.Drawing.Point(65, 82)
+        Me.Label11.Location = New System.Drawing.Point(66, 112)
         Me.Label11.Name = "Label11"
         Me.Label11.Size = New System.Drawing.Size(56, 17)
         Me.Label11.TabIndex = 154
@@ -252,7 +256,7 @@ Partial Class frmQuotations
         '
         'txtContact
         '
-        Me.txtContact.Location = New System.Drawing.Point(129, 79)
+        Me.txtContact.Location = New System.Drawing.Point(128, 107)
         Me.txtContact.Multiline = True
         Me.txtContact.Name = "txtContact"
         Me.txtContact.ReadOnly = True
@@ -737,8 +741,8 @@ Partial Class frmQuotations
         '
         'Column17
         '
-        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.Column17.DefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.Column17.DefaultCellStyle = DataGridViewCellStyle13
         Me.Column17.HeaderText = "Cost Price (Vat Incl)"
         Me.Column17.Name = "Column17"
         Me.Column17.ReadOnly = True
@@ -746,19 +750,36 @@ Partial Class frmQuotations
         '
         'Column2
         '
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.Column2.DefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.Column2.DefaultCellStyle = DataGridViewCellStyle14
         Me.Column2.HeaderText = "Price"
         Me.Column2.Name = "Column2"
         Me.Column2.ReadOnly = True
         '
         'Column4
         '
-        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.Column4.DefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.Column4.DefaultCellStyle = DataGridViewCellStyle15
         Me.Column4.HeaderText = "Amount"
         Me.Column4.Name = "Column4"
         Me.Column4.ReadOnly = True
+        '
+        'txtCustomerTin
+        '
+        Me.txtCustomerTin.Location = New System.Drawing.Point(128, 79)
+        Me.txtCustomerTin.Name = "txtCustomerTin"
+        Me.txtCustomerTin.ReadOnly = True
+        Me.txtCustomerTin.Size = New System.Drawing.Size(228, 22)
+        Me.txtCustomerTin.TabIndex = 155
+        '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Location = New System.Drawing.Point(92, 82)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(30, 17)
+        Me.Label3.TabIndex = 156
+        Me.Label3.Text = "TIN"
         '
         'frmQuotations
         '
@@ -776,7 +797,7 @@ Partial Class frmQuotations
         Me.ShowIcon = False
         Me.ShowInTaskbar = False
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
-        Me.Text = "Quotations"
+        Me.Text = "Quotations(Profoma Invoice)"
         Me.ToolStrip1.ResumeLayout(False)
         Me.ToolStrip1.PerformLayout()
         Me.Panel1.ResumeLayout(False)
@@ -869,4 +890,6 @@ Partial Class frmQuotations
     Friend WithEvents Column7 As DataGridViewTextBoxColumn
     Friend WithEvents Column15 As DataGridViewTextBoxColumn
     Friend WithEvents btnPrint As ToolStripButton
+    Friend WithEvents txtCustomerTin As TextBox
+    Friend WithEvents Label3 As Label
 End Class

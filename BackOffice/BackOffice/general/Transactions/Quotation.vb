@@ -37,9 +37,9 @@ Public Class Quotation
                 Exit While
             End While
             If no = "" Then
-                no = "QT-1"
+                no = "PI-1"
             Else
-                no = "QT-" + no
+                no = "PI-" + no
             End If
             conn.Close()
         Catch ex As Exception
