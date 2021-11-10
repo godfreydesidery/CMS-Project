@@ -484,4 +484,54 @@ Public Class frmExpenses
     Private Sub btnFilter_Click(sender As Object, e As EventArgs) Handles btnFilter.Click
         refreshList(dateStart.Text, dateEnd.Text)
     End Sub
+
+    Private Sub dtgrdList_RowHeaderMouseClick(sender As Object, e As DataGridViewCellMouseEventArgs) Handles dtgrdExpensesList.RowHeaderMouseClick
+        clear()
+        Dim row As Integer = -1
+        Dim col As Integer = -1
+        Try
+            row = dtgrdExpensesList.CurrentRow.Index
+            col = dtgrdExpensesList.CurrentCell.ColumnIndex
+        Catch ex As Exception
+            row = -1
+        End Try
+
+        row = dtgrdExpensesList.CurrentRow.Index
+        search(dtgrdExpensesList.Item(1, row).Value.ToString)
+    End Sub
+    Private Function search(expenceNo As String) As Boolean
+        Dim found = False
+
+        Try
+            Dim conn As New MySqlConnection(Database.conString)
+            Dim command As New MySqlCommand()
+            Dim query As String = "SELECT `expense_id`, `expense_no`, `date_time`, `date`, `amount`, `description`, `user_id`, `category`, `status` FROM `expenses` WHERE `expense_no`='" + expenceNo + "'"
+
+            conn.Open()
+            command.CommandText = query
+            command.Connection = conn
+            command.CommandType = CommandType.Text
+            Dim reader As MySqlDataReader = command.ExecuteReader()
+            While reader.Read
+                txtExpenseNo.Text = reader.GetString("expense_no")
+                txtExpenseDate.Text = reader.GetString("date")
+                txtAmount.Text = reader.GetString("amount")
+                txtDescription.Text = reader.GetString("description")
+
+                found = True
+                Exit While
+            End While
+            If found = True Then
+                lock()
+                btnEdit.Enabled = True
+                btnSave.Enabled = False
+                '   btnDelete.Enabled = True
+            Else
+                MsgBox("No matching record", vbOKOnly + vbCritical, "Error: Not found")
+            End If
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+        Return vbNull
+    End Function
 End Class

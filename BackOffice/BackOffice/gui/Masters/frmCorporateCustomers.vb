@@ -120,7 +120,7 @@ Public Class frmCorporateCustomers
         If chkActive.Checked = False Then
             status = "INACTIVE"
         End If
-        If customer.addCustomer(txtNo.Text, cmbName.Text, txtPostAddress.Text, txtPostCode.Text, txtPhysicalAddress.Text, txtContactName.Text, txtBankAccountName.Text, txtBankAddress.Text, txtBankPostCode.Text, txtBankName.Text, txtBankAccountNo.Text, txtTelephone.Text, txtMobile.Text, txtEmail.Text, txtFax.Text, txtTin.Text, txtVrn.Text, Val(LCurrency.getValue(txtInvoiceLimit.Text)), Val(LCurrency.getValue(txtCreditLimit.Text)), status, Val(LCurrency.getValue(txtCreditBalance.Text))) = True Then
+        If customer.addCustomer(txtNo.Text, cmbName.Text, txtPostAddress.Text, txtPostCode.Text, txtPhysicalAddress.Text, txtContactName.Text, txtBankAccountName.Text, txtBankAddress.Text, txtBankPostCode.Text, txtBankName.Text, txtBankAccountNo.Text, txtTelephone.Text, txtMobile.Text, txtEmail.Text, txtFax.Text, txtTin.Text, txtVrn.Text, Val(LCurrency.getValue(txtInvoiceLimit.Text)), Val(LCurrency.getValue(txtCreditLimit.Text)), status, Val(LCurrency.getValue(txtCreditBalance.Text)), Val(txtCreditDays.Text)) = True Then
             saved = True
         End If
         Return saved
@@ -143,7 +143,7 @@ Public Class frmCorporateCustomers
 
         End If
 
-        If customer.editCustomer(txtNo.Text, cmbName.Text, txtPostAddress.Text, txtPostCode.Text, txtPhysicalAddress.Text, txtContactName.Text, txtBankAccountName.Text, txtBankAddress.Text, txtBankPostCode.Text, txtBankName.Text, txtBankAccountNo.Text, txtTelephone.Text, txtMobile.Text, txtEmail.Text, txtFax.Text, txtTin.Text, txtVrn.Text, Val(LCurrency.getValue(txtInvoiceLimit.Text)), Val(LCurrency.getValue(txtCreditLimit.Text)), status.ToString, Val(LCurrency.getValue(txtCreditBalance.Text))) = True Then
+        If customer.editCustomer(txtNo.Text, cmbName.Text, txtPostAddress.Text, txtPostCode.Text, txtPhysicalAddress.Text, txtContactName.Text, txtBankAccountName.Text, txtBankAddress.Text, txtBankPostCode.Text, txtBankName.Text, txtBankAccountNo.Text, txtTelephone.Text, txtMobile.Text, txtEmail.Text, txtFax.Text, txtTin.Text, txtVrn.Text, Val(LCurrency.getValue(txtInvoiceLimit.Text)), Val(LCurrency.getValue(txtCreditLimit.Text)), status.ToString, Val(LCurrency.getValue(txtCreditBalance.Text)), Val(txtCreditDays.Text)) = True Then
             saved = True
         End If
         Return saved
@@ -180,15 +180,16 @@ Public Class frmCorporateCustomers
 
 
     Private Sub btnAddNew_Click(sender As Object, e As EventArgs) Handles btnNew.Click
+        txtNo.ReadOnly = True
         RECORD_MODE = "NEW"
         dtgrdCustomerList.Enabled = False
         clearFields() 'clear the fields
-        txtNo.ReadOnly = False
         btnDelete.Enabled = False
         btnSearch.Enabled = False
         btnSave.Enabled = True
         REC_PRESENT = False
         unlock()
+        txtNo.Text = generateCustomerNo()
     End Sub
     Private Function search(customerCode As String, customerName As String)
         If customerCode = "" Then
@@ -510,7 +511,28 @@ Public Class frmCorporateCustomers
         End If
     End Sub
 
-    Private Sub dtgrdCustomerList_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles dtgrdCustomerList.CellContentClick
-
-    End Sub
+    Public Function generateCustomerNo() As String
+        Dim no As String = ""
+        Try
+            Dim conn As New MySqlConnection(Database.conString)
+            Dim command As New MySqlCommand()
+            Dim codeQuery As String = "SELECT `customer_id` FROM `corporate_customers` ORDER BY `customer_id` DESC LIMIT 1"
+            conn.Open()
+            command.CommandText = codeQuery
+            command.Connection = conn
+            command.CommandType = CommandType.Text
+            Dim reader As MySqlDataReader = command.ExecuteReader()
+            While reader.Read
+                no = (Val(reader.GetString("customer_id")) + 1).ToString
+                Exit While
+            End While
+            If no = "" Then
+                no = "1"
+            End If
+            conn.Close()
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+        Return "CST-" + no
+    End Function
 End Class

@@ -871,4 +871,8 @@ Public Class frmMaterials
     Private Sub btnDelete_Click_1(sender As Object, e As EventArgs) Handles btnDelete.Click
 
     End Sub
+
+    Private Sub dtgrdList_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles dtgrdList.CellContentClick
+
+    End Sub
 End Class

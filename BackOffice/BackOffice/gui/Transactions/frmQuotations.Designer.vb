@@ -22,9 +22,9 @@ Partial Class frmQuotations
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.ToolStrip1 = New System.Windows.Forms.ToolStrip()
         Me.btnNew = New System.Windows.Forms.ToolStripButton()
         Me.btnEdit = New System.Windows.Forms.ToolStripButton()
@@ -342,6 +342,7 @@ Partial Class frmQuotations
         '
         Me.txtStatus.Location = New System.Drawing.Point(128, 68)
         Me.txtStatus.Name = "txtStatus"
+        Me.txtStatus.ReadOnly = True
         Me.txtStatus.Size = New System.Drawing.Size(157, 22)
         Me.txtStatus.TabIndex = 145
         '
@@ -358,22 +359,24 @@ Partial Class frmQuotations
         '
         Me.txtIssueDate.Location = New System.Drawing.Point(128, 40)
         Me.txtIssueDate.Name = "txtIssueDate"
+        Me.txtIssueDate.ReadOnly = True
         Me.txtIssueDate.Size = New System.Drawing.Size(157, 22)
         Me.txtIssueDate.TabIndex = 143
         '
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(48, 10)
+        Me.Label4.Location = New System.Drawing.Point(32, 10)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(74, 17)
+        Me.Label4.Size = New System.Drawing.Size(92, 17)
         Me.Label4.TabIndex = 142
-        Me.Label4.Text = "Invoice No"
+        Me.Label4.Text = "Quotation No"
         '
         'txtInvoiceNo
         '
         Me.txtInvoiceNo.Location = New System.Drawing.Point(128, 12)
         Me.txtInvoiceNo.Name = "txtInvoiceNo"
+        Me.txtInvoiceNo.ReadOnly = True
         Me.txtInvoiceNo.Size = New System.Drawing.Size(157, 22)
         Me.txtInvoiceNo.TabIndex = 141
         '
@@ -734,8 +737,8 @@ Partial Class frmQuotations
         '
         'Column17
         '
-        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.Column17.DefaultCellStyle = DataGridViewCellStyle4
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.Column17.DefaultCellStyle = DataGridViewCellStyle1
         Me.Column17.HeaderText = "Cost Price (Vat Incl)"
         Me.Column17.Name = "Column17"
         Me.Column17.ReadOnly = True
@@ -743,16 +746,16 @@ Partial Class frmQuotations
         '
         'Column2
         '
-        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.Column2.DefaultCellStyle = DataGridViewCellStyle5
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.Column2.DefaultCellStyle = DataGridViewCellStyle2
         Me.Column2.HeaderText = "Price"
         Me.Column2.Name = "Column2"
         Me.Column2.ReadOnly = True
         '
         'Column4
         '
-        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.Column4.DefaultCellStyle = DataGridViewCellStyle6
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.Column4.DefaultCellStyle = DataGridViewCellStyle3
         Me.Column4.HeaderText = "Amount"
         Me.Column4.Name = "Column4"
         Me.Column4.ReadOnly = True

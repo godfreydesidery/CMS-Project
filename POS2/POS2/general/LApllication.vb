@@ -89,9 +89,9 @@ Public Class LApllication
             End
         End Try
 
-        Dim settings As New System.Xml.XmlDocument()
+        Dim settings_ As New System.Xml.XmlDocument()
         Try
-            settings = getRemoteXMLFile("http://" + address + "/rms/settings/setting_info.xml")
+            settings_ = getRemoteXMLFile("http://" + address + "/rms/settings/setting_info.xml")
         Catch ex As System.Net.WebException
 
             Dim res As Integer = MsgBox("Settings configuretions not found. Configure System?", vbCritical + vbYesNo, "Missing Configurations")
@@ -117,10 +117,10 @@ Public Class LApllication
         'database infomation
 
         Try
-            databaseName = settings.SelectSingleNode("Settings/Database/Name").InnerText.ToString
-            databaseAddress = settings.SelectSingleNode("Settings/Database/Address").InnerText.ToString
-            databaseUserID = settings.SelectSingleNode("Settings/Database/UserID").InnerText.ToString
-            databasePassword = settings.SelectSingleNode("Settings/Database/Password").InnerText.ToString
+            databaseName = settings_.SelectSingleNode("Settings/Database/Name").InnerText.ToString
+            databaseAddress = settings_.SelectSingleNode("Settings/Database/Address").InnerText.ToString
+            databaseUserID = settings_.SelectSingleNode("Settings/Database/UserID").InnerText.ToString
+            databasePassword = settings_.SelectSingleNode("Settings/Database/Password").InnerText.ToString
 
         Catch ex As Exception
             MsgBox(ex.ToString)
@@ -170,6 +170,45 @@ Public Class LApllication
         Catch ex As Exception
             MsgBox(ex.Message)
         End Try
+
+        'load settings
+        Try
+            Dim compName As String = My.Computer.Name.ToString
+            Dim query As String = "SELECT `id`, `name`, `value` FROM `settings`"
+            Dim command As New MySqlCommand()
+            Dim conn As New MySqlConnection(Database.conString)
+            conn.Open()
+            command.CommandText = query
+            command.Connection = conn
+            command.CommandType = CommandType.Text
+            Dim reader As MySqlDataReader = command.ExecuteReader()
+
+            'initialize default settings
+            Settings.ALLOW_NEGATIVE_SALES = "NO"
+
+            If reader.HasRows Then
+                While reader.Read
+                    If reader.GetString("name") = "ALLOW_NEGATIVE_SALES" Then
+                        If reader.GetString("value") = "YES" Then
+                            Settings.ALLOW_NEGATIVE_SALES = "YES"
+                        Else
+                            Settings.ALLOW_NEGATIVE_SALES = "NO"
+                        End If
+                    End If
+                    'use this as a template
+                    If reader.GetString("name") = "ALLOW_NEGATIVE_SALES" Then
+                        If reader.GetString("value") = "YES" Then
+                            Settings.ALLOW_NEGATIVE_SALES = "YES"
+                        Else
+                            Settings.ALLOW_NEGATIVE_SALES = "NO"
+                        End If
+                    End If
+                End While
+            End If
+        Catch ex As Exception
+            'do nothing
+        End Try
+
         'load printer informations
         Try
             Dim compName As String = My.Computer.Name.ToString

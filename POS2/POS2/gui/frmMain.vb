@@ -69,7 +69,7 @@ Public Class frmMain
         dtgrdRow.Cells.Add(dtgrdCell)
 
         dtgrdCell = New DataGridViewTextBoxCell()
-        dtgrdCell.Value = price
+        dtgrdCell.Value = LCurrency.displayValue(price)
         dtgrdRow.Cells.Add(dtgrdCell)
 
         dtgrdCell = New DataGridViewTextBoxCell()
@@ -85,7 +85,7 @@ Public Class frmMain
         dtgrdRow.Cells.Add(dtgrdCell)
 
         dtgrdCell = New DataGridViewTextBoxCell()
-        dtgrdCell.Value = amount
+        dtgrdCell.Value = LCurrency.displayValue(amount)
         dtgrdRow.Cells.Add(dtgrdCell)
 
         dtgrdViewItemList.Rows.Add(dtgrdRow)
@@ -110,8 +110,10 @@ Public Class frmMain
             End If
             calculateValues()
         Else
-            MsgBox("Invalid quantity value. Quantity value should be between 1 and 1000", vbOKOnly + vbCritical, "Error: Invalid entry")
+            MsgBox("Invalid quantity value. Quantity value should be between 0 and 1000.", vbOKOnly + vbCritical, "Error: Invalid entry")
             dtgrdViewItemList.Item(7, e.RowIndex).Value = 1
+            updateQty(1, sn)
+            refreshList()
             calculateValues()
         End If
         Try
@@ -528,7 +530,7 @@ Public Class frmMain
                             dtgrdViewItemList.Item(2, row).ReadOnly = True
 
                             seq = seq + 1
-                            AddToCart(Format(Now, "mm/dd/yy hh:mm:ss") + (New Random).Next(0, 1000).ToString + Till.TILLNO + seq.ToString, Till.TILLNO, dtgrdViewItemList.Item(0, row).Value, dtgrdViewItemList.Item(1, row).Value, dtgrdViewItemList.Item(2, row).Value, dtgrdViewItemList.Item(4, row).Value, dtgrdViewItemList.Item(5, row).Value, dtgrdViewItemList.Item(6, row).Value, dtgrdViewItemList.Item(7, row).Value, dtgrdViewItemList.Item(8, row).Value, dtgrdViewItemList.Item(10, row).Value)
+                            AddToCart(Format(Now, "mm/dd/yy hh:mm:ss") + (New Random).Next(0, 1000).ToString + Till.TILLNO + seq.ToString, Till.TILLNO, dtgrdViewItemList.Item(0, row).Value, dtgrdViewItemList.Item(1, row).Value, dtgrdViewItemList.Item(2, row).Value, LCurrency.getValue(dtgrdViewItemList.Item(4, row).Value), LCurrency.getValue(dtgrdViewItemList.Item(5, row).Value), LCurrency.getValue(dtgrdViewItemList.Item(6, row).Value), dtgrdViewItemList.Item(7, row).Value, LCurrency.getValue(dtgrdViewItemList.Item(8, row).Value), dtgrdViewItemList.Item(10, row).Value)
 
                         End If
 
@@ -578,14 +580,14 @@ Public Class frmMain
 
 
 
-
                 'to check for insufficient stock balance, to disable negative sales, put a true condition, eg 1=1 or 2=2 etc, to enable, put a false condition, eg 1=2,1=3 etc
-                If (New Item).getStock(dtgrdViewItemList.Item(1, i).Value) < Val(dtgrdViewItemList.Item(7, i).Value) And dtgrdViewItemList.Item(9, i).Value = False And 1 = 2 Then
-                    MsgBox("Insufficient stock balance in item " + dtgrdViewItemList.Item(1, i).Value + " [Stock balance: " + (New Item).getStock(dtgrdViewItemList.Item(1, i).Value).ToString + "] Item will be removed")
-                    remove(Till.TILLNO, dtgrdViewItemList.Item(11, i).Value)
-                    dtgrdViewItemList.Rows.RemoveAt(i)
+                If Settings.ALLOW_NEGATIVE_SALES = "NO" Then
+                    If (New Item).getStock(dtgrdViewItemList.Item(1, i).Value) < Val(dtgrdViewItemList.Item(7, i).Value) And dtgrdViewItemList.Item(9, i).Value = False Then
+                        MsgBox("Insufficient stock balance in item " + dtgrdViewItemList.Item(1, i).Value + " [Stock balance: " + (New Item).getStock(dtgrdViewItemList.Item(1, i).Value).ToString + "] Item will be removed")
+                        remove(Till.TILLNO, dtgrdViewItemList.Item(11, i).Value)
+                        dtgrdViewItemList.Rows.RemoveAt(i)
+                    End If
                 End If
-
 
 
             Next
@@ -636,7 +638,8 @@ Public Class frmMain
 
                 If dtgrdViewItemList.Item(9, i).Value = False Then
                     _total = _total + Val(LCurrency.getValue(dtgrdViewItemList.Item(8, i).Value.ToString))
-                    _vat = _vat + ((Val(LCurrency.getValue(dtgrdViewItemList.Item(5, i).Value.ToString)))) * Val(LCurrency.getValue(dtgrdViewItemList.Item(8, i).Value.ToString) / (100 + Val(LCurrency.getValue(dtgrdViewItemList.Item(5, i).Value.ToString))))
+                    ' _vat = _vat + ((Val(LCurrency.getValue(dtgrdViewItemList.Item(5, i).Value.ToString)))) * Val(LCurrency.getValue(dtgrdViewItemList.Item(8, i).Value.ToString) / (100 + Val(LCurrency.getValue(dtgrdViewItemList.Item(5, i).Value.ToString))))
+                    _vat = _vat + (Val(LCurrency.getValue(dtgrdViewItemList.Item(5, i).Value.ToString)) * Val(LCurrency.getValue(dtgrdViewItemList.Item(8, i).Value.ToString)) / 100)
 
 
                     Dim discountedPrice As Double = Val(LCurrency.getValue(price)) * (1 - Val(discount) / 100)
@@ -947,7 +950,7 @@ Public Class frmMain
                 Dim discount As String = dtgrdViewItemList.Item(6, i).Value
                 Dim qty As String = dtgrdViewItemList.Item(7, i).Value
                 Dim amount As String = dtgrdViewItemList.Item(8, i).Value
-                Dim discountedPrice As Double = Val(LCurrency.getValue(price)) * (1 - Val(discount) / 100)
+                Dim discountedPrice As Double = Val(LCurrency.getValue(price)) * (1 - (Val(discount) / 100))
                 Dim actualVat As Double = Val(qty) * discountedPrice * Val(vat) / 100
                 Dim taxReturn As Double = Val(qty) * (discountedPrice - Item.getCostPrice(itemCode)) * Val(vat) / 100
                 totalTaxReturns = totalTaxReturns + taxReturn
@@ -978,6 +981,22 @@ Public Class frmMain
                     Return vbNull
                     Exit Function
                 End Try
+
+
+
+                Dim conn3 As New MySqlConnection(Database.conString)
+                Try
+                    conn3.Open()
+                    Dim command3 As New MySqlCommand()
+                    command3.Connection = conn3
+                    command3.CommandText = "UPDATE `sale_details` SET `cost_price`='" + Item.getCostPrice(itemCode) + "' WHERE `sale_id`='" + saleId + "' AND `item_code`='" + itemCode + "'"
+                    command3.Prepare()
+                    command3.ExecuteNonQuery()
+                    conn3.Close()
+                Catch ex As Exception
+                    'do nothing, this has been put as an emergency plan due to database version mismatch
+                End Try
+
             End If
         Next
 
@@ -995,6 +1014,9 @@ Public Class frmMain
             Return vbNull
             Exit Function
         End Try
+
+
+
         Return recorded
     End Function
     Private Function updateInventory(ref As String)
@@ -1154,7 +1176,7 @@ Public Class frmMain
             conn.Open()
             Dim command As New MySqlCommand()
             command.Connection = conn
-            command.CommandText = "UPDATE `cart` SET `qty`=`qty`+ 1 WHERE `sn`='" + sn + "'"
+            command.CommandText = "UPDATE `cart` SET `qty`=`qty`+ 1, `amount`=`price`*`qty` WHERE `sn`='" + sn + "'"
             command.Prepare()
             command.ExecuteNonQuery()
             conn.Close()
@@ -1189,7 +1211,7 @@ Public Class frmMain
             conn.Open()
             Dim command As New MySqlCommand()
             command.Connection = conn
-            command.CommandText = "UPDATE `cart` SET `qty`='" + qty.ToString + "' WHERE `sn`='" + sn + "'"
+            command.CommandText = "UPDATE `cart` SET `qty`=" + qty.ToString + ", `amount`=`price`*" + qty.ToString + " WHERE `sn`='" + sn + "'"
             command.Prepare()
             command.ExecuteNonQuery()
             conn.Close()
@@ -1197,7 +1219,7 @@ Public Class frmMain
                 updated = True
             End If
         Catch ex As Exception
-            ' MsgBox(ex.Message)
+            '  MsgBox(ex.Message)  'uncomment this once all customers datebases are updated to the current version, double values in cart attributes instead of varchar
             Return updated
             Exit Function
         End Try
@@ -1433,21 +1455,6 @@ Public Class frmMain
         frmFiscalPrinter.ShowDialog()
     End Sub
 
-    Private Sub PrinterToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles PrinterToolStripMenuItem.Click
-        frmPrinters.ShowDialog()
-    End Sub
-
-    Private Sub StatusStrip_ItemClicked(sender As Object, e As ToolStripItemClickedEventArgs) Handles StatusStrip.ItemClicked
-
-    End Sub
-
-    Private Sub ToolStrip_ItemClicked(sender As Object, e As ToolStripItemClickedEventArgs) Handles ToolStrip.ItemClicked
-
-    End Sub
-
-    Private Sub MenuStrip_ItemClicked(sender As Object, e As ToolStripItemClickedEventArgs) Handles MenuStrip.ItemClicked
-
-    End Sub
 
     Protected Overridable Function place(key As String)
         Try
@@ -1839,47 +1846,6 @@ Public Class frmMain
         startOSK()
     End Sub
 
-    'Private Sub dtgrdViewItemList_CellDoubleClick(sender As Object, e As DataGridViewCellCancelEventArgs)
-    '    If dtgrdViewItemList.CurrentCell.ColumnIndex = 2 Then
-
-    '        Dim list As New List(Of String)
-    '        Dim mySource As New AutoCompleteStringCollection
-    '        If Me.Text = "Search Item by Description" Then
-    '            'If txtSearch.Text.Length > 1 Then
-    '            Try
-    '                Dim query As String = "SELECT `items`.`item_code`,`items`.`item_long_description`, `inventorys`.`item_code`FROM `items`,`inventorys` WHERE `items`.`item_code`=`inventorys`.`item_code`" ' AND `items`.`item_long_description` LIKE '%" + txtSearch.Text + "%' LIMIT 1,10000"
-    '                Dim command As New MySqlCommand()
-    '                Dim conn As New MySqlConnection(Database.conString)
-    '                Try
-    '                    conn.Open()
-    '                    command.CommandText = query
-    '                    command.Connection = conn
-    '                    command.CommandType = CommandType.Text
-    '                    Dim itemreader As MySqlDataReader = command.ExecuteReader()
-    '                    If itemreader.HasRows = True Then
-    '                        While itemreader.Read
-    '                            list.Add(itemreader("item_long_description").ToString)
-    '                        End While
-    '                    Else
-    '                        Exit Sub
-    '                    End If
-    '                    Dim text As TextBox = TryCast(dtgrdViewItemList.CurrentCell.Value, TextBox)
-
-    '                    mySource.AddRange(list.ToArray)
-    '                    dtgrdViewItemList.CurrentCell.Value.AutoCompleteCustomSource = mySource
-    '                    dtgrdViewItemList.CurrentCell.Value.AutoCompleteMode = AutoCompleteMode.Append
-    '                    dtgrdViewItemList.CurrentCell.Value.AutoCompleteSource = AutoCompleteSource.CustomSource
-    '                Catch ex As Devart.Data.MySql.MySqlException
-    '                    LError.databaseConnection()
-    '                    Exit Sub
-    '                End Try
-    '            Catch ex As Exception
-    '                MsgBox(ex.Message.ToString)
-    '            End Try
-    '        End If
-
-    '    End If
-    'End Sub
 
     Private Sub AddToCart(sn As String, tillNo As String, barcode As String, itemCode As String, description As String, price As String, vat As String, discount As String, qty As String, amount As String, shortDescr As String)
 
@@ -2002,11 +1968,11 @@ Public Class frmMain
                     Dim barcode As String = reader.GetString("bar_code")
                     Dim itemcode As String = reader.GetString("item_code")
                     Dim description As String = reader.GetString("description")
-                    Dim price As String = reader.GetString("price")
+                    Dim price As String = LCurrency.displayValue(reader.GetString("price"))
                     Dim vat As String = reader.GetString("vat")
                     Dim discount As String = reader.GetString("discount")
                     Dim qty As String = reader.GetString("qty")
-                    Dim amount As String = reader.GetString("amount")
+                    Dim amount As String = LCurrency.displayValue(Val(reader.GetString("price")) * Val(reader.GetString("qty")))
                     Dim sn As String = reader.GetString("sn")
                     Dim void As String = reader.GetString("void")
                     Dim shortDescr As String = reader.GetString("short_description")

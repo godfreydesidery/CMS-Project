@@ -134,4 +134,6 @@ Public Class Item
         End Try
         Return Val(stock)
     End Function
+
+
 End Class

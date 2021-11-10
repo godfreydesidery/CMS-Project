@@ -244,6 +244,8 @@ Public Class frmQuotations
             Dim qty As String = dtgrdItemList.Item(4, i).Value.ToString
             Dim amount As String = dtgrdItemList.Item(7, i).Value.ToString
 
+            totalAmount = totalAmount + Val(LCurrency.getValue(amount))
+
             skip = skip + 1
 
             row = table.AddRow()
@@ -281,7 +283,7 @@ Public Class frmQuotations
         row.Cells(2).Format.Alignment = ParagraphAlignment.Left
         row.Cells(3).AddParagraph("Total")
         row.Cells(3).Format.Alignment = ParagraphAlignment.Left
-        row.Cells(4).AddParagraph(txtTotal.Text)
+        row.Cells(4).AddParagraph(LCurrency.displayValue(totalAmount.ToString))
         row.Cells(4).Format.Alignment = ParagraphAlignment.Right
         table.SetEdge(0, 0, 5, 1, Edge.Box, BorderStyle.Single, 0.75, Color.Empty)
 

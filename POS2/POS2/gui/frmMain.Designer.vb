@@ -27,6 +27,8 @@ Partial Class frmMain
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmMain))
         Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.MenuStrip = New System.Windows.Forms.MenuStrip()
         Me.FileMenu = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator()
@@ -1487,6 +1489,8 @@ Partial Class frmMain
         '
         'colPrice
         '
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.colPrice.DefaultCellStyle = DataGridViewCellStyle1
         Me.colPrice.FillWeight = 17.71424!
         Me.colPrice.HeaderText = "Price@"
         Me.colPrice.Name = "colPrice"
@@ -1514,6 +1518,8 @@ Partial Class frmMain
         '
         'colAmount
         '
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.colAmount.DefaultCellStyle = DataGridViewCellStyle2
         Me.colAmount.FillWeight = 18.71424!
         Me.colAmount.HeaderText = "Amount"
         Me.colAmount.Name = "colAmount"

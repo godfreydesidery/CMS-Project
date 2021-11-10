@@ -27,7 +27,7 @@
     <PublisherName>Orbit Retail</PublisherName>
     <SuiteName>Retail</SuiteName>
     <DisallowUrlActivation>true</DisallowUrlActivation>
-    <ApplicationRevision>68</ApplicationRevision>
+    <ApplicationRevision>74</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>true</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -173,6 +173,7 @@
     <Compile Include="general\RawPrinterHelper.vb" />
     <Compile Include="general\Receipt.vb" />
     <Compile Include="general\SaleSequence.vb" />
+    <Compile Include="general\Settings.vb" />
     <Compile Include="general\StockCard.vb" />
     <Compile Include="general\Till.vb" />
     <Compile Include="general\User.vb" />
