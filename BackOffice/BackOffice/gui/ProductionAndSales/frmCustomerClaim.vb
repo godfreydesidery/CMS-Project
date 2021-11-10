@@ -36,6 +36,9 @@ Public Class frmCustomerClaim
         txtReturnedBy.Text = ""
         txtReceivedBy.Text = ""
 
+        unlockClaimFields()
+        unlockReplacementFields()
+
 
         btnSave.Enabled = False
         btnApprove.Enabled = False
@@ -242,6 +245,7 @@ Public Class frmCustomerClaim
         txtClaimRemarks.ReadOnly = False
         cmbClaimType.Enabled = True
         cmbClaimType.SelectedItem = Nothing
+        txtClaimQty.ReadOnly = False
     End Sub
     Private Sub lockclaimFields()
         txtClaimBarCode.ReadOnly = True
@@ -250,6 +254,7 @@ Public Class frmCustomerClaim
         txtClaimReason.ReadOnly = True
         txtClaimRemarks.ReadOnly = True
         cmbClaimType.Enabled = False
+        txtClaimQty.ReadOnly = False
     End Sub
     Private Sub unlockReplacementFields()
         txtReplacementBarcode.ReadOnly = False
@@ -1892,5 +1897,9 @@ Public Class frmCustomerClaim
             MsgBox("Access Denied", vbOKOnly + vbExclamation, "Access denied")
             Exit Sub
         End If
+    End Sub
+
+    Private Sub txtReplacementBarcode_TextChanged(sender As Object, e As EventArgs) Handles txtReplacementBarcode.TextChanged
+
     End Sub
 End Class
