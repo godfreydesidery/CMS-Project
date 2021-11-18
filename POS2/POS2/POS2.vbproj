@@ -27,7 +27,7 @@
     <PublisherName>Orbit Retail</PublisherName>
     <SuiteName>Retail</SuiteName>
     <DisallowUrlActivation>true</DisallowUrlActivation>
-    <ApplicationRevision>74</ApplicationRevision>
+    <ApplicationRevision>76</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>true</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -147,9 +147,6 @@
     <Compile Include="Form1.Designer.vb">
       <DependentUpon>Form1.vb</DependentUpon>
       <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="general\AutocompleteTextBox2.vb">
-      <SubType>Component</SubType>
     </Compile>
     <Compile Include="general\Bill.vb" />
     <Compile Include="general\Collection.vb" />

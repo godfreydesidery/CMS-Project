@@ -174,7 +174,7 @@ Public Class LApllication
         'load settings
         Try
             Dim compName As String = My.Computer.Name.ToString
-            Dim query As String = "SELECT `id`, `name`, `value` FROM `settings`"
+            Dim query As String = "SELECT `name`, `value` FROM `settings`"
             Dim command As New MySqlCommand()
             Dim conn As New MySqlConnection(Database.conString)
             conn.Open()

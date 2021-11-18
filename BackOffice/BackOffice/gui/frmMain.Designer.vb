@@ -78,11 +78,11 @@ Partial Class frmMain
         Me.ToolStripMenuItem10 = New System.Windows.Forms.ToolStripMenuItem()
         Me.AllocationsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ReceiptsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.QuotationsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ReturnToVendorToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.SalesLedgeToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.SalesJournalToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.VendorsInvoiceBookToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.QuotationsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.SalesInvoiceToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.SalesReceiptToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ExpensesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -135,6 +135,7 @@ Partial Class frmMain
         Me.pctLogo = New System.Windows.Forms.PictureBox()
         Me.PictureBox2 = New System.Windows.Forms.PictureBox()
         Me.ToolStripButton1 = New System.Windows.Forms.ToolStripButton()
+        Me.SettingsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip.SuspendLayout()
         Me.StatusStrip.SuspendLayout()
         Me.tstrpMain.SuspendLayout()
@@ -503,43 +504,74 @@ Partial Class frmMain
         '
         Me.ToolStripMenuItem7.ForeColor = System.Drawing.SystemColors.InfoText
         Me.ToolStripMenuItem7.Name = "ToolStripMenuItem7"
-        Me.ToolStripMenuItem7.Size = New System.Drawing.Size(315, 28)
+        Me.ToolStripMenuItem7.Size = New System.Drawing.Size(332, 28)
         Me.ToolStripMenuItem7.Text = "Goods Received Note(GRN)"
         '
         'ToolStripMenuItem8
         '
         Me.ToolStripMenuItem8.ForeColor = System.Drawing.SystemColors.InfoText
         Me.ToolStripMenuItem8.Name = "ToolStripMenuItem8"
-        Me.ToolStripMenuItem8.Size = New System.Drawing.Size(315, 28)
+        Me.ToolStripMenuItem8.Size = New System.Drawing.Size(332, 28)
         Me.ToolStripMenuItem8.Text = "Return by Customers"
         '
         'ToolStripMenuItem9
         '
         Me.ToolStripMenuItem9.ForeColor = System.Drawing.SystemColors.InfoText
         Me.ToolStripMenuItem9.Name = "ToolStripMenuItem9"
-        Me.ToolStripMenuItem9.Size = New System.Drawing.Size(315, 28)
+        Me.ToolStripMenuItem9.Size = New System.Drawing.Size(332, 28)
         Me.ToolStripMenuItem9.Text = "Customer Credit Notes"
         '
         'ToolStripMenuItem10
         '
         Me.ToolStripMenuItem10.ForeColor = System.Drawing.SystemColors.InfoText
         Me.ToolStripMenuItem10.Name = "ToolStripMenuItem10"
-        Me.ToolStripMenuItem10.Size = New System.Drawing.Size(315, 28)
+        Me.ToolStripMenuItem10.Size = New System.Drawing.Size(332, 28)
         Me.ToolStripMenuItem10.Text = "Supplier Credit Notes"
         '
         'AllocationsToolStripMenuItem
         '
         Me.AllocationsToolStripMenuItem.ForeColor = System.Drawing.SystemColors.InfoText
         Me.AllocationsToolStripMenuItem.Name = "AllocationsToolStripMenuItem"
-        Me.AllocationsToolStripMenuItem.Size = New System.Drawing.Size(315, 28)
+        Me.AllocationsToolStripMenuItem.Size = New System.Drawing.Size(332, 28)
         Me.AllocationsToolStripMenuItem.Text = "Allocations"
         '
         'ReceiptsToolStripMenuItem
         '
         Me.ReceiptsToolStripMenuItem.ForeColor = System.Drawing.SystemColors.InfoText
         Me.ReceiptsToolStripMenuItem.Name = "ReceiptsToolStripMenuItem"
-        Me.ReceiptsToolStripMenuItem.Size = New System.Drawing.Size(315, 28)
+        Me.ReceiptsToolStripMenuItem.Size = New System.Drawing.Size(332, 28)
         Me.ReceiptsToolStripMenuItem.Text = "Receipts"
+        '
+        'ReturnToVendorToolStripMenuItem
+        '
+        Me.ReturnToVendorToolStripMenuItem.ForeColor = System.Drawing.SystemColors.InfoText
+        Me.ReturnToVendorToolStripMenuItem.Name = "ReturnToVendorToolStripMenuItem"
+        Me.ReturnToVendorToolStripMenuItem.Size = New System.Drawing.Size(332, 28)
+        Me.ReturnToVendorToolStripMenuItem.Text = "Return to Vendor"
+        '
+        'SalesLedgeToolStripMenuItem
+        '
+        Me.SalesLedgeToolStripMenuItem.Enabled = False
+        Me.SalesLedgeToolStripMenuItem.ForeColor = System.Drawing.SystemColors.InfoText
+        Me.SalesLedgeToolStripMenuItem.Name = "SalesLedgeToolStripMenuItem"
+        Me.SalesLedgeToolStripMenuItem.Size = New System.Drawing.Size(332, 28)
+        Me.SalesLedgeToolStripMenuItem.Text = "Sales Ledge"
+        '
+        'SalesJournalToolStripMenuItem
+        '
+        Me.SalesJournalToolStripMenuItem.Enabled = False
+        Me.SalesJournalToolStripMenuItem.ForeColor = System.Drawing.SystemColors.InfoText
+        Me.SalesJournalToolStripMenuItem.Name = "SalesJournalToolStripMenuItem"
+        Me.SalesJournalToolStripMenuItem.Size = New System.Drawing.Size(332, 28)
+        Me.SalesJournalToolStripMenuItem.Text = "Sales Journal"
+        '
+        'VendorsInvoiceBookToolStripMenuItem
+        '
+        Me.VendorsInvoiceBookToolStripMenuItem.ForeColor = System.Drawing.SystemColors.InfoText
+        Me.VendorsInvoiceBookToolStripMenuItem.Name = "VendorsInvoiceBookToolStripMenuItem"
+        Me.VendorsInvoiceBookToolStripMenuItem.Size = New System.Drawing.Size(332, 28)
+        Me.VendorsInvoiceBookToolStripMenuItem.Text = "Vendors Invoice Book"
+        Me.VendorsInvoiceBookToolStripMenuItem.Visible = False
         '
         'QuotationsToolStripMenuItem
         '
@@ -548,54 +580,23 @@ Partial Class frmMain
         Me.QuotationsToolStripMenuItem.Size = New System.Drawing.Size(332, 28)
         Me.QuotationsToolStripMenuItem.Text = "Profoma Invoice(Quotations)"
         '
-        'ReturnToVendorToolStripMenuItem
-        '
-        Me.ReturnToVendorToolStripMenuItem.ForeColor = System.Drawing.SystemColors.InfoText
-        Me.ReturnToVendorToolStripMenuItem.Name = "ReturnToVendorToolStripMenuItem"
-        Me.ReturnToVendorToolStripMenuItem.Size = New System.Drawing.Size(315, 28)
-        Me.ReturnToVendorToolStripMenuItem.Text = "Return to Vendor"
-        '
-        'SalesLedgeToolStripMenuItem
-        '
-        Me.SalesLedgeToolStripMenuItem.Enabled = False
-        Me.SalesLedgeToolStripMenuItem.ForeColor = System.Drawing.SystemColors.InfoText
-        Me.SalesLedgeToolStripMenuItem.Name = "SalesLedgeToolStripMenuItem"
-        Me.SalesLedgeToolStripMenuItem.Size = New System.Drawing.Size(315, 28)
-        Me.SalesLedgeToolStripMenuItem.Text = "Sales Ledge"
-        '
-        'SalesJournalToolStripMenuItem
-        '
-        Me.SalesJournalToolStripMenuItem.Enabled = False
-        Me.SalesJournalToolStripMenuItem.ForeColor = System.Drawing.SystemColors.InfoText
-        Me.SalesJournalToolStripMenuItem.Name = "SalesJournalToolStripMenuItem"
-        Me.SalesJournalToolStripMenuItem.Size = New System.Drawing.Size(315, 28)
-        Me.SalesJournalToolStripMenuItem.Text = "Sales Journal"
-        '
-        'VendorsInvoiceBookToolStripMenuItem
-        '
-        Me.VendorsInvoiceBookToolStripMenuItem.ForeColor = System.Drawing.SystemColors.InfoText
-        Me.VendorsInvoiceBookToolStripMenuItem.Name = "VendorsInvoiceBookToolStripMenuItem"
-        Me.VendorsInvoiceBookToolStripMenuItem.Size = New System.Drawing.Size(315, 28)
-        Me.VendorsInvoiceBookToolStripMenuItem.Text = "Vendors Invoice Book"
-        Me.VendorsInvoiceBookToolStripMenuItem.Visible = False
-        '
         'SalesInvoiceToolStripMenuItem
         '
         Me.SalesInvoiceToolStripMenuItem.ForeColor = System.Drawing.SystemColors.InfoText
         Me.SalesInvoiceToolStripMenuItem.Name = "SalesInvoiceToolStripMenuItem"
-        Me.SalesInvoiceToolStripMenuItem.Size = New System.Drawing.Size(315, 28)
+        Me.SalesInvoiceToolStripMenuItem.Size = New System.Drawing.Size(332, 28)
         Me.SalesInvoiceToolStripMenuItem.Text = "Sales Invoice"
         '
         'SalesReceiptToolStripMenuItem
         '
         Me.SalesReceiptToolStripMenuItem.Name = "SalesReceiptToolStripMenuItem"
-        Me.SalesReceiptToolStripMenuItem.Size = New System.Drawing.Size(315, 28)
+        Me.SalesReceiptToolStripMenuItem.Size = New System.Drawing.Size(332, 28)
         Me.SalesReceiptToolStripMenuItem.Text = "Sales Receipt"
         '
         'ExpensesToolStripMenuItem
         '
         Me.ExpensesToolStripMenuItem.Name = "ExpensesToolStripMenuItem"
-        Me.ExpensesToolStripMenuItem.Size = New System.Drawing.Size(315, 28)
+        Me.ExpensesToolStripMenuItem.Size = New System.Drawing.Size(332, 28)
         Me.ExpensesToolStripMenuItem.Text = "Expenses"
         '
         'ToolStripDropDownButton6
@@ -852,7 +853,7 @@ Partial Class frmMain
         '
         'ToolStripDropDownButton7
         '
-        Me.ToolStripDropDownButton7.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripMenuItem17, Me.ToolStripMenuItem18, Me.ToolStripMenuItem19, Me.ToolStripMenuItem20, Me.ToolStripMenuItem21, Me.ToolStripMenuItem22})
+        Me.ToolStripDropDownButton7.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripMenuItem17, Me.ToolStripMenuItem18, Me.ToolStripMenuItem19, Me.ToolStripMenuItem20, Me.ToolStripMenuItem21, Me.ToolStripMenuItem22, Me.SettingsToolStripMenuItem})
         Me.ToolStripDropDownButton7.Font = New System.Drawing.Font("Candara", 12.0!)
         Me.ToolStripDropDownButton7.ForeColor = System.Drawing.Color.MidnightBlue
         Me.ToolStripDropDownButton7.Image = CType(resources.GetObject("ToolStripDropDownButton7.Image"), System.Drawing.Image)
@@ -994,6 +995,12 @@ Partial Class frmMain
         Me.ToolStripButton1.Name = "ToolStripButton1"
         Me.ToolStripButton1.Size = New System.Drawing.Size(103, 28)
         Me.ToolStripButton1.Text = "&Masters"
+        '
+        'SettingsToolStripMenuItem
+        '
+        Me.SettingsToolStripMenuItem.Name = "SettingsToolStripMenuItem"
+        Me.SettingsToolStripMenuItem.Size = New System.Drawing.Size(258, 28)
+        Me.SettingsToolStripMenuItem.Text = "Settings"
         '
         'frmMain
         '
@@ -1141,4 +1148,5 @@ Partial Class frmMain
     Friend WithEvents ProductConversionReportToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents SalesReceiptToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ExpensesToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents SettingsToolStripMenuItem As ToolStripMenuItem
 End Class

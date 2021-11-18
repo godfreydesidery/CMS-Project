@@ -133,3 +133,4 @@ D:\CMS Project\BackOffice\BackOffice\obj\Debug\BackOffice.frmProductConversionRe
 D:\CMS Project\BackOffice\BackOffice\obj\Debug\BackOffice.frmSalesInvoice.resources
 D:\CMS Project\BackOffice\BackOffice\obj\Debug\BackOffice.frmSalesReceipts.resources
 D:\CMS Project\BackOffice\BackOffice\obj\Debug\BackOffice.frmExpenses.resources
+D:\CMS Project\BackOffice\BackOffice\obj\Debug\BackOffice.frmSettings.resources

@@ -45,7 +45,7 @@ Public Class frmMain
         End Try
         Return isOpen
     End Function
-    Private Function add(barCode As String, itemCode As String, descr As String, pck As String, price As String, vat As String, disc As String, qty As String, amount As String, shortDescr As String)
+    Private Function add(barCode As String, itemCode As String, descr As String, pck As String, price As Double, vat As Double, disc As Double, qty As Double, amount As Double, shortDescr As String)
 
         Dim dtgrdRow As New DataGridViewRow
         Dim dtgrdCell As DataGridViewCell
@@ -69,19 +69,19 @@ Public Class frmMain
         dtgrdRow.Cells.Add(dtgrdCell)
 
         dtgrdCell = New DataGridViewTextBoxCell()
-        dtgrdCell.Value = LCurrency.displayValue(price)
+        dtgrdCell.Value = LCurrency.displayValue(price.ToString)
         dtgrdRow.Cells.Add(dtgrdCell)
 
         dtgrdCell = New DataGridViewTextBoxCell()
-        dtgrdCell.Value = vat
+        dtgrdCell.Value = LCurrency.displayValue(vat.ToString)
         dtgrdRow.Cells.Add(dtgrdCell)
 
         dtgrdCell = New DataGridViewTextBoxCell()
-        dtgrdCell.Value = disc
+        dtgrdCell.Value = LCurrency.displayValue(disc.ToString)
         dtgrdRow.Cells.Add(dtgrdCell)
 
         dtgrdCell = New DataGridViewTextBoxCell()
-        dtgrdCell.Value = qty
+        dtgrdCell.Value = qty.ToString
         dtgrdRow.Cells.Add(dtgrdCell)
 
         dtgrdCell = New DataGridViewTextBoxCell()
@@ -317,7 +317,7 @@ Public Class frmMain
                             dtgrdViewItemList.Item(4, row).Value = LCurrency.displayValue(price.ToString)
                             dtgrdViewItemList.Item(5, row).Value = LCurrency.displayValue(vat.ToString)
                             dtgrdViewItemList.Item(6, row).Value = LCurrency.displayValue(discount.ToString)
-                            dtgrdViewItemList.Item(7, row).Value = qty
+                            dtgrdViewItemList.Item(7, row).Value = qty.ToString
                             dtgrdViewItemList.Item(8, row).Value = LCurrency.displayValue(amount.ToString)
                             dtgrdViewItemList.Item(10, row).Value = description
 
@@ -418,7 +418,7 @@ Public Class frmMain
                             dtgrdViewItemList.Item(4, row).Value = LCurrency.displayValue(price.ToString)
                             dtgrdViewItemList.Item(5, row).Value = LCurrency.displayValue(vat.ToString)
                             dtgrdViewItemList.Item(6, row).Value = LCurrency.displayValue(discount.ToString)
-                            dtgrdViewItemList.Item(7, row).Value = qty
+                            dtgrdViewItemList.Item(7, row).Value = qty.ToString
                             dtgrdViewItemList.Item(8, row).Value = LCurrency.displayValue(amount.ToString)
                             dtgrdViewItemList.Item(10, row).Value = description
                             dtgrdViewItemList.Item(0, row).ReadOnly = True
@@ -521,7 +521,7 @@ Public Class frmMain
                             dtgrdViewItemList.Item(4, row).Value = LCurrency.displayValue(price.ToString)
                             dtgrdViewItemList.Item(5, row).Value = LCurrency.displayValue(vat.ToString)
                             dtgrdViewItemList.Item(6, row).Value = LCurrency.displayValue(discount.ToString)
-                            dtgrdViewItemList.Item(7, row).Value = qty
+                            dtgrdViewItemList.Item(7, row).Value = qty.ToString
                             dtgrdViewItemList.Item(8, row).Value = LCurrency.displayValue(amount.ToString)
                             dtgrdViewItemList.Item(10, row).Value = description
 
@@ -771,13 +771,13 @@ Public Class frmMain
         refreshList()
         calculateValues()
     End Sub
-    Private Sub updateDiscount(tillNo As String, sn As String, disc As String)
+    Private Sub updateDiscount(tillNo As String, sn As String, disc As Double)
         Dim conn As New MySqlConnection(Database.conString)
         Try
             conn.Open()
             Dim command As New MySqlCommand()
             command.Connection = conn
-            command.CommandText = "UPDATE `cart` SET `discount`='" + disc + "' WHERE `sn`='" + sn + "'"
+            command.CommandText = "UPDATE `cart` SET `discount`='" + disc.ToString + "' WHERE `sn`='" + sn + "'"
             command.Prepare()
             command.ExecuteNonQuery()
             conn.Close()
@@ -1563,7 +1563,13 @@ Public Class frmMain
     Dim _formerValue As String = String.Empty
 
 
+    ' Private Sub dtgrdViewItemList_CellClick2(sender As Object, e As DataGridView) Handles dtgrdViewItemList.KeyUp
+
+    '  End Sub
+
     Private Sub dtgrdViewItemList_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles dtgrdViewItemList.CellClick
+
+
         Try
             Dim control As New TextBox
             If dtgrdViewItemList.CurrentCell.ColumnIndex = 2 Then
@@ -1595,12 +1601,17 @@ Public Class frmMain
         End Try
     End Sub
 
+
     Private Sub dtgrdViewItemList_CellClick1(sender As Object, e As DataGridViewCellEventArgs) Handles dtgrdViewItemList.CellEnter
+
+
+
         Try
-            Dim control As New TextBox
+            Dim control As New ComboBox
+            control.AllowDrop = True
             If dtgrdViewItemList.CurrentCell.ColumnIndex = 2 Then
 
-                control = DirectCast(dtgrdViewItemList.EditingControl, TextBox)
+                control = DirectCast(dtgrdViewItemList.EditingControl, ComboBox)
                 Dim list As New List(Of String)
                 Dim mySource As New AutoCompleteStringCollection
                 Dim item As New Item
@@ -1611,7 +1622,7 @@ Public Class frmMain
                 control.AutoCompleteSource = AutoCompleteSource.CustomSource
 
             Else
-                control = DirectCast(dtgrdViewItemList.EditingControl, TextBox)
+                ' control = DirectCast(dtgrdViewItemList.EditingControl, TextBox)
                 Dim list As New List(Of String)
                 Dim mySource As New AutoCompleteStringCollection
                 Dim item As New Item
@@ -1847,7 +1858,7 @@ Public Class frmMain
     End Sub
 
 
-    Private Sub AddToCart(sn As String, tillNo As String, barcode As String, itemCode As String, description As String, price As String, vat As String, discount As String, qty As String, amount As String, shortDescr As String)
+    Private Sub AddToCart(sn As String, tillNo As String, barcode As String, itemCode As String, description As String, price As Double, vat As Double, discount As Double, qty As Double, amount As Double, shortDescr As String)
 
         Dim conn As New MySqlConnection(Database.conString)
         Try
@@ -1860,11 +1871,11 @@ Public Class frmMain
             command.Parameters.AddWithValue("@bar_code", barcode)
             command.Parameters.AddWithValue("@item_code", itemCode)
             command.Parameters.AddWithValue("@description", description)
-            command.Parameters.AddWithValue("@price", price)
-            command.Parameters.AddWithValue("@vat", vat)
-            command.Parameters.AddWithValue("@discount", discount)
-            command.Parameters.AddWithValue("@qty", qty)
-            command.Parameters.AddWithValue("@amount", amount)
+            command.Parameters.AddWithValue("@price", price.ToString)
+            command.Parameters.AddWithValue("@vat", vat.ToString)
+            command.Parameters.AddWithValue("@discount", discount.ToString)
+            command.Parameters.AddWithValue("@qty", qty.ToString)
+            command.Parameters.AddWithValue("@amount", amount.ToString)
             command.Parameters.AddWithValue("@sn", sn)
             command.Parameters.AddWithValue("@short_description", shortDescr)
 
@@ -1946,7 +1957,12 @@ Public Class frmMain
         End Try
     End Sub
     Private Sub loadCart(tillNo As String)
-        dtgrdViewItemList.Rows.Clear()
+        Try
+            dtgrdViewItemList.Rows.Clear()
+        Catch ex As Exception
+
+        End Try
+
         Dim query As String = "SELECT `bar_code`, `item_code`, `description`, `price`, `vat`, `discount`, `qty`, `amount`, `sn`, `void`, `short_description` FROM `cart` WHERE `till_no`='" + tillNo + "'"
         Dim command As New MySqlCommand()
         Dim conn As New MySqlConnection(Database.conString)

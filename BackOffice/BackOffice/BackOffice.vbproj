@@ -28,7 +28,7 @@
     <ProductName>Orbit Retail Back Office</ProductName>
     <PublisherName>Orbit Retail</PublisherName>
     <SuiteName>Retail</SuiteName>
-    <ApplicationRevision>216</ApplicationRevision>
+    <ApplicationRevision>218</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -173,6 +173,7 @@
     <Compile Include="general\Production\Production.vb" />
     <Compile Include="general\SalesInvoice.vb" />
     <Compile Include="general\SalesPerson\SalesPerson.vb" />
+    <Compile Include="general\Setting.vb" />
     <Compile Include="general\StockCard.vb" />
     <Compile Include="general\Transactions\Allocation.vb" />
     <Compile Include="general\Transactions\Quotation.vb" />
@@ -184,6 +185,12 @@
       <DependentUpon>frmAccessControl.vb</DependentUpon>
     </Compile>
     <Compile Include="gui\AdminFunctions\frmAccessControl.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="gui\AdminFunctions\frmSetting.Designer.vb">
+      <DependentUpon>frmSetting.vb</DependentUpon>
+    </Compile>
+    <Compile Include="gui\AdminFunctions\frmSetting.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="gui\BackOfficeReports\frmMaterialStockCard.Designer.vb">
@@ -820,6 +827,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="gui\AdminFunctions\frmPersonaEnrolment.resx">
       <DependentUpon>frmPersonaEnrolment.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="gui\AdminFunctions\frmSetting.resx">
+      <DependentUpon>frmSetting.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="gui\AdminFunctions\frmTillAdministration.resx">
       <DependentUpon>frmTillAdministration.vb</DependentUpon>
