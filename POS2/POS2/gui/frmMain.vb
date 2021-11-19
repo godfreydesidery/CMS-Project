@@ -1247,7 +1247,7 @@ Public Class frmMain
 
         End If
         Dim item As New Item
-        longList = item.getItemDescriptions()
+        longItemList = item.getItemDescriptions()
     End Sub
     Private Function loadUser(role As String)
 
@@ -1563,11 +1563,9 @@ Public Class frmMain
     Dim _formerValue As String = String.Empty
 
 
-    ' Private Sub dtgrdViewItemList_CellClick2(sender As Object, e As DataGridView) Handles dtgrdViewItemList.KeyUp
 
-    '  End Sub
 
-    Private Sub dtgrdViewItemList_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles dtgrdViewItemList.CellClick
+    Private Sub dtgrdViewItemList_CellClick(sender As Object, e As DataGridViewCellEventArgs) ' Handles dtgrdViewItemList.CellClick
 
 
         Try
@@ -1602,16 +1600,16 @@ Public Class frmMain
     End Sub
 
 
-    Private Sub dtgrdViewItemList_CellClick1(sender As Object, e As DataGridViewCellEventArgs) Handles dtgrdViewItemList.CellEnter
+    Private Sub dtgrdViewItemList_CellClick1(sender As Object, e As DataGridViewCellEventArgs) ' Handles dtgrdViewItemList.CellEnter
 
 
 
         Try
-            Dim control As New ComboBox
+            Dim control As New TextBox
             control.AllowDrop = True
             If dtgrdViewItemList.CurrentCell.ColumnIndex = 2 Then
 
-                control = DirectCast(dtgrdViewItemList.EditingControl, ComboBox)
+                control = DirectCast(dtgrdViewItemList.EditingControl, TextBox)
                 Dim list As New List(Of String)
                 Dim mySource As New AutoCompleteStringCollection
                 Dim item As New Item
@@ -2120,5 +2118,74 @@ Public Class frmMain
             order = New frmOrder()
             order.ShowDialog(Me)
         End If
+    End Sub
+
+    Dim longItemList As List(Of String)
+    Dim shortItemList As List(Of String) = New List(Of String)
+    Dim control As TextBox
+
+    Dim c As Integer = -1
+    Dim r As Integer = -1
+
+    Private Sub dtgrdViewItemList_CellValueChanged(sender As Object, e As DataGridViewCellEventArgs) Handles dtgrdViewItemList.CellEnter, dtgrdViewItemList.CellClick
+
+        Dim rowHeight As Integer = dtgrdViewItemList.RowTemplate.Height
+        Dim x As Integer = 340
+        Dim y As Integer = 90 + (dtgrdViewItemList.RowCount - 1) * rowHeight
+        If y > dtgrdViewItemList.Size().Height + 90 Then
+            y = dtgrdViewItemList.Size.Height + 25
+        End If
+
+        cmbItems.SetBounds(x, y, 300, rowHeight)
+        If dtgrdViewItemList.CurrentCell.ColumnIndex = 2 Then
+            r = dtgrdViewItemList.CurrentCell.RowIndex
+            c = 2
+            shortItemList.Clear()
+            If dtgrdViewItemList.Item(c, r).Value = "" And r = dtgrdViewItemList.RowCount - 1 Then
+                cmbItems.Visible = True
+                cmbItems.Focus()
+            Else
+                cmbItems.Visible = False
+                cmbItems.Items.Clear()
+                c = -1
+                r = -1
+            End If
+        Else
+            cmbItems.Visible = False
+            cmbItems.Items.Clear()
+            c = -1
+            r = -1
+        End If
+    End Sub
+
+    Private Sub cmbDescription_KeyUp(sender As Object, e As EventArgs) Handles cmbItems.KeyUp
+        If Not c = 2 Then
+            Exit Sub
+        End If
+        Dim currentText As String = cmbItems.Text
+        shortItemList.Clear()
+        cmbItems.Items.Clear()
+        cmbItems.Items.Add(currentText)
+        cmbItems.DroppedDown = True
+        For Each text As String In longItemList
+            Dim formattedText As String = text.ToUpper()
+            If formattedText.Contains(cmbItems.Text.ToUpper()) Then
+                shortItemList.Add(text)
+            End If
+        Next
+        cmbItems.Items.AddRange(shortItemList.ToArray())
+        cmbItems.SelectionStart = cmbItems.Text.Length
+        Cursor.Current = Cursors.Default
+    End Sub
+
+    Private Sub cmbItems_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbItems.SelectedValueChanged
+        Try
+            Dim value As String = cmbItems.Text
+            dtgrdViewItemList.Item(c, r).Value = value
+            cmbItems.Visible = False
+            searchByDescription(value, 1)
+        Catch ex As Exception
+
+        End Try
     End Sub
 End Class

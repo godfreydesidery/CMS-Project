@@ -146,6 +146,7 @@ Partial Class frmMain
         Me.btn3 = New System.Windows.Forms.Button()
         Me.btn2 = New System.Windows.Forms.Button()
         Me.btn1 = New System.Windows.Forms.Button()
+        Me.cmbItems = New System.Windows.Forms.ComboBox()
         Me.colBarCode = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.colItemCode = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.colDescription = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -1457,6 +1458,15 @@ Partial Class frmMain
         Me.btn1.Text = "1"
         Me.btn1.UseVisualStyleBackColor = True
         '
+        'cmbItems
+        '
+        Me.cmbItems.FormattingEnabled = True
+        Me.cmbItems.Location = New System.Drawing.Point(338, 146)
+        Me.cmbItems.Name = "cmbItems"
+        Me.cmbItems.Size = New System.Drawing.Size(446, 24)
+        Me.cmbItems.TabIndex = 32
+        Me.cmbItems.Visible = False
+        '
         'colBarCode
         '
         Me.colBarCode.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
@@ -1464,20 +1474,24 @@ Partial Class frmMain
         Me.colBarCode.HeaderText = "Bar Code"
         Me.colBarCode.MinimumWidth = 6
         Me.colBarCode.Name = "colBarCode"
+        Me.colBarCode.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
         Me.colBarCode.Width = 150
         '
         'colItemCode
         '
+        Me.colItemCode.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
         Me.colItemCode.FillWeight = 23.66228!
         Me.colItemCode.HeaderText = "Item Code"
         Me.colItemCode.Name = "colItemCode"
+        Me.colItemCode.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.colItemCode.Width = 148
         '
         'colDescription
         '
         Me.colDescription.FillWeight = 87.76437!
         Me.colDescription.HeaderText = "Description"
         Me.colDescription.Name = "colDescription"
-        Me.colDescription.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.colDescription.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
         '
         'colPck
         '
@@ -1499,14 +1513,14 @@ Partial Class frmMain
         'colVAT
         '
         Me.colVAT.FillWeight = 16.71424!
-        Me.colVAT.HeaderText = "VAT %"
+        Me.colVAT.HeaderText = "VAT%"
         Me.colVAT.Name = "colVAT"
         Me.colVAT.ReadOnly = True
         '
         'colDiscount
         '
         Me.colDiscount.FillWeight = 16.71424!
-        Me.colDiscount.HeaderText = "Discount %"
+        Me.colDiscount.HeaderText = "Discount%"
         Me.colDiscount.Name = "colDiscount"
         Me.colDiscount.ReadOnly = True
         '
@@ -1548,6 +1562,7 @@ Partial Class frmMain
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1764, 692)
+        Me.Controls.Add(Me.cmbItems)
         Me.Controls.Add(Me.Panel3)
         Me.Controls.Add(Me.lblSystDate)
         Me.Controls.Add(Me.Panel2)
@@ -1697,6 +1712,7 @@ Partial Class frmMain
     Friend WithEvents Button5 As Button
     Friend WithEvents Button6 As Button
     Friend WithEvents ToolStripButton1 As ToolStripButton
+    Friend WithEvents cmbItems As ComboBox
     Friend WithEvents colBarCode As DataGridViewTextBoxColumn
     Friend WithEvents colItemCode As DataGridViewTextBoxColumn
     Friend WithEvents colDescription As DataGridViewTextBoxColumn
