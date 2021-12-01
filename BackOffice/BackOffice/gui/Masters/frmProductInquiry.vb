@@ -343,4 +343,8 @@ Public Class frmProductInquiry
         cmbDescription.SelectionStart = cmbDescription.Text.Length
         Cursor.Current = Cursors.Default
     End Sub
+
+    Private Sub cmbDescription_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbDescription.SelectedIndexChanged
+
+    End Sub
 End Class

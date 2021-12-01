@@ -142,7 +142,7 @@ Public Class LApplication
 
             Dim connectionString As String = ""
             connectionString = "server=" + databaseAddress + ";user id=" + databaseUserID + ";password=" + databasePassword + ";Database=" + databaseName + ";pooling=false"
-            Database.conStringString = connectionString
+            Database.conString = connectionString
             Dim con As New MySqlConnection(Database.conString)
             Dim isLoaded As Boolean = False
             Try
