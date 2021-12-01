@@ -813,4 +813,12 @@ Public Class frmMain
     Private Sub SettingsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SettingsToolStripMenuItem.Click
         frmSettings.ShowDialog()
     End Sub
+
+    Private Sub SummarizedProductionReportToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SummarizedProductionReportToolStripMenuItem.Click
+        If User.authorize("VIEW PRODUCTION & SALES REPORTS") = False Then
+            MsgBox("Access Denied", vbOKOnly + vbExclamation, "Access denied")
+            Exit Sub
+        End If
+        frmProductionSummaryReport.ShowDialog()
+    End Sub
 End Class

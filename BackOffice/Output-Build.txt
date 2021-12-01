@@ -1,0 +1,12 @@
+﻿1>------ Build started: Project: BackOffice, Configuration: Debug Any CPU ------
+1>C:\Program Files (x86)\MSBuild\14.0\bin\Microsoft.Common.CurrentVersion.targets(2399,5): warning MSB3284: Cannot get the file path for type library "2df8d04c-5bfa-101b-bde5-00aa0044de52" version 2.8. Library not registered. (Exception from HRESULT: 0x8002801D (TYPE_E_LIBNOTREGISTERED))
+1>D:\CMS Project\BackOffice\BackOffice\Utility.vb(8,12): warning BC42303: XML comment cannot appear within a method or a property. XML comment will be ignored.
+1>  BackOffice -> D:\CMS Project\BackOffice\BackOffice\bin\Debug\BackOffice.exe
+Building BackOffice...
+2>------ Publish started: Project: BackOffice, Configuration: Debug Any CPU ------
+Connecting to 'C:\Users\GODFREY\Desktop\Orbit Install Pack\Orbit Retail\BACK OFFICE\'...
+Publishing files...
+Publish success.
+C:\Users\GODFREY\Desktop\Orbit Install Pack\Orbit Retail\BACK OFFICE\
+========== Build: 1 succeeded, 0 failed, 0 up-to-date, 0 skipped ==========
+========== Publish: 1 succeeded, 0 failed, 0 skipped ==========

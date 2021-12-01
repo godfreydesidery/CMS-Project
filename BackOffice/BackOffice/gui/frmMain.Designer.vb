@@ -128,6 +128,7 @@ Partial Class frmMain
         Me.ToolStripMenuItem20 = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripMenuItem21 = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripMenuItem22 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.SettingsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.dtCustomDate = New System.Windows.Forms.DateTimePicker()
         Me.btnUpdate = New System.Windows.Forms.Button()
         Me.lblCustomDate = New System.Windows.Forms.Label()
@@ -135,7 +136,7 @@ Partial Class frmMain
         Me.pctLogo = New System.Windows.Forms.PictureBox()
         Me.PictureBox2 = New System.Windows.Forms.PictureBox()
         Me.ToolStripButton1 = New System.Windows.Forms.ToolStripButton()
-        Me.SettingsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.SummarizedProductionReportToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip.SuspendLayout()
         Me.StatusStrip.SuspendLayout()
         Me.tstrpMain.SuspendLayout()
@@ -682,7 +683,7 @@ Partial Class frmMain
         '
         'tlstripReports
         '
-        Me.tlstripReports.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.DetailedDailySalesReportToolStripMenuItem, Me.SummarizedDailySalesReportToolStripMenuItem, Me.ConsolidatedDailySalesReportToolStripMenuItem, Me.ToolStripSeparator9, Me.DebtReportToolStripMenuItem, Me.DebtPaymentHistoryReportToolStripMenuItem, Me.DamagesReportToolStripMenuItem, Me.ToolStripSeparator7, Me.DailyProductionReportToolStripMenuItem, Me.ToolStripMenuItem25, Me.ToolStripSeparator8, Me.MaterialVsProductionReportToolStripMenuItem, Me.MaterialUsageReportToolStripMenuItem, Me.MaterialStockStatusReportToolStripMenuItem, Me.MaterialStockCardReportToolStripMenuItem, Me.ToolStripSeparator10, Me.SummarizedCustomerClaimsReportToolStripMenuItem, Me.ProductConversionReportToolStripMenuItem})
+        Me.tlstripReports.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.DetailedDailySalesReportToolStripMenuItem, Me.SummarizedDailySalesReportToolStripMenuItem, Me.ConsolidatedDailySalesReportToolStripMenuItem, Me.ToolStripSeparator9, Me.DebtReportToolStripMenuItem, Me.DebtPaymentHistoryReportToolStripMenuItem, Me.DamagesReportToolStripMenuItem, Me.ToolStripSeparator7, Me.DailyProductionReportToolStripMenuItem, Me.SummarizedProductionReportToolStripMenuItem, Me.ToolStripMenuItem25, Me.ToolStripSeparator8, Me.MaterialVsProductionReportToolStripMenuItem, Me.MaterialUsageReportToolStripMenuItem, Me.MaterialStockStatusReportToolStripMenuItem, Me.MaterialStockCardReportToolStripMenuItem, Me.ToolStripSeparator10, Me.SummarizedCustomerClaimsReportToolStripMenuItem, Me.ProductConversionReportToolStripMenuItem})
         Me.tlstripReports.Font = New System.Drawing.Font("Candara", 12.0!)
         Me.tlstripReports.ForeColor = System.Drawing.Color.Maroon
         Me.tlstripReports.Name = "tlstripReports"
@@ -912,6 +913,12 @@ Partial Class frmMain
         Me.ToolStripMenuItem22.Size = New System.Drawing.Size(258, 28)
         Me.ToolStripMenuItem22.Text = "Access Control"
         '
+        'SettingsToolStripMenuItem
+        '
+        Me.SettingsToolStripMenuItem.Name = "SettingsToolStripMenuItem"
+        Me.SettingsToolStripMenuItem.Size = New System.Drawing.Size(258, 28)
+        Me.SettingsToolStripMenuItem.Text = "Settings"
+        '
         'dtCustomDate
         '
         Me.dtCustomDate.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
@@ -996,11 +1003,11 @@ Partial Class frmMain
         Me.ToolStripButton1.Size = New System.Drawing.Size(103, 28)
         Me.ToolStripButton1.Text = "&Masters"
         '
-        'SettingsToolStripMenuItem
+        'SummarizedProductionReportToolStripMenuItem
         '
-        Me.SettingsToolStripMenuItem.Name = "SettingsToolStripMenuItem"
-        Me.SettingsToolStripMenuItem.Size = New System.Drawing.Size(258, 28)
-        Me.SettingsToolStripMenuItem.Text = "Settings"
+        Me.SummarizedProductionReportToolStripMenuItem.Name = "SummarizedProductionReportToolStripMenuItem"
+        Me.SummarizedProductionReportToolStripMenuItem.Size = New System.Drawing.Size(536, 28)
+        Me.SummarizedProductionReportToolStripMenuItem.Text = "Summarized Production Report"
         '
         'frmMain
         '
@@ -1149,4 +1156,5 @@ Partial Class frmMain
     Friend WithEvents SalesReceiptToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ExpensesToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents SettingsToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents SummarizedProductionReportToolStripMenuItem As ToolStripMenuItem
 End Class

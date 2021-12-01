@@ -28,7 +28,7 @@
     <ProductName>Orbit Retail Back Office</ProductName>
     <PublisherName>Orbit Retail</PublisherName>
     <SuiteName>Retail</SuiteName>
-    <ApplicationRevision>219</ApplicationRevision>
+    <ApplicationRevision>220</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -365,6 +365,12 @@
       <DependentUpon>frmProductionReport.vb</DependentUpon>
     </Compile>
     <Compile Include="gui\ProductionAndSales\frmProductionReport.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="gui\ProductionAndSales\frmProductionSummaryReport.Designer.vb">
+      <DependentUpon>frmProductionSummaryReport.vb</DependentUpon>
+    </Compile>
+    <Compile Include="gui\ProductionAndSales\frmProductionSummaryReport.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="gui\ProductionAndSales\frmSalesPerson.Designer.vb">
@@ -1061,6 +1067,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="gui\ProductionAndSales\frmProductionReport.resx">
       <DependentUpon>frmProductionReport.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="gui\ProductionAndSales\frmProductionSummaryReport.resx">
+      <DependentUpon>frmProductionSummaryReport.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="gui\ProductionAndSales\frmSalesPerson.resx">
       <DependentUpon>frmSalesPerson.vb</DependentUpon>
