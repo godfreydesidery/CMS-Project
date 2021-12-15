@@ -1399,7 +1399,7 @@ Public Class frmItemConversion
             Dim qty As String = dtgrdItemsToConvert.Item(2, i).Value
             query = query + "UPDATE `inventorys` SET `qty`=`qty`-'" + qty + "' WHERE `item_code`='" + itemCode + "';"
             If Val(qty) <> 0 Then
-                query = query + "INSERT INTO `stock_cards`(`date`,`item_code`,`qty_out`,`balance`,`reference`) VALUES ('" + Day.DAY + "','" + itemCode + "','" + qty.ToString + "'," + ((New Inventory).getInventory(itemCode)) + "-" + qty.ToString + ",'Used CONVERSION#: " + txtConversionNo.Text + "');"
+                query = query + "INSERT INTO `stock_cards`(`date`,`item_code`,`qty_out`,`balance`,`reference`) VALUES ('" + Day.DAY + "','" + itemCode + "','" + qty.ToString + "',(SELECT `qty` FROM `inventorys` WHERE `item_code`='" + itemCode + "'),'Used CONVERSION#: " + txtConversionNo.Text + "');"
             End If
         Next
         For i As Integer = 0 To dtgrdEndItems.RowCount - 1
@@ -1407,7 +1407,7 @@ Public Class frmItemConversion
             Dim qty As String = dtgrdEndItems.Item(2, i).Value
             query = query + "UPDATE `inventorys` SET `qty`=`qty`+'" + qty + "' WHERE `item_code`='" + itemCode + "';"
             If Val(qty) <> 0 Then
-                query = query + "INSERT INTO `stock_cards`(`date`,`item_code`,`qty_in`,`balance`,`reference`) VALUES ('" + Day.DAY + "','" + itemCode + "','" + qty.ToString + "'," + ((New Inventory).getInventory(itemCode)) + "+" + qty.ToString + ",'Produced CONVERSION#: " + txtConversionNo.Text + "');"
+                query = query + "INSERT INTO `stock_cards`(`date`,`item_code`,`qty_in`,`balance`,`reference`) VALUES ('" + Day.DAY + "','" + itemCode + "','" + qty.ToString + "',(SELECT `qty` FROM `inventorys` WHERE `item_code`='" + itemCode + "'),'Produced CONVERSION#: " + txtConversionNo.Text + "');"
             End If
         Next
         query = query + "UPDATE `item_conversion` SET`status`='COMPLETED' WHERE `conversion_no`='" + txtConversionNo.Text + "';"

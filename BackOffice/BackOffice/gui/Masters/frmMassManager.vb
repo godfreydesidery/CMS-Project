@@ -951,31 +951,36 @@ Public Class frmMassManager
                         For i As Integer = 2 To count
                             showProgress(i, count)
                             'upload items
-                            Dim itemcode As String = objXLWs.Range("A" & i).Value
-                            Dim qty As String = objXLWs.Range("T" & i).Value
+                            Try
 
-                            Dim query As String = "" ' a query to update inventory and stock cards
-                            query = "UPDATE `inventorys` SET `qty`='" + qty + "' WHERE `item_code`='" + itemcode + "';"
-                            If Val(qty) <> 0 Then
-                                query = query + "INSERT INTO `stock_cards`(`date`,`item_code`,`qty_in`,`balance`,`reference`) VALUES (@date,@item_code,@qty,@balance,@reference)"
-                            End If
+                                Dim itemcode As String = objXLWs.Range("A" & i).Value
+                                Dim qty As String = objXLWs.Range("T" & i).Value
 
-                            Dim conn As New MySqlConnection(Database.conString)
-                            conn.Open()
-                            Dim command As New MySqlCommand()
+                                Dim query As String = "" ' a query to update inventory and stock cards
+                                query = "UPDATE `inventorys` SET `qty`='" + qty + "' WHERE `item_code`='" + itemcode + "';"
+                                If Val(qty) <> 0 Then
+                                    query = query + "INSERT INTO `stock_cards`(`date`,`item_code`,`qty_in`,`balance`,`reference`) VALUES (@date,@item_code,@qty,@balance,@reference)"
+                                End If
 
-                            command.Connection = conn
+                                Dim conn As New MySqlConnection(Database.conString)
+                                conn.Open()
+                                Dim command As New MySqlCommand()
 
-                            command.Parameters.AddWithValue("@date", Day.DAY)
-                            command.Parameters.AddWithValue("@item_code", itemcode)
-                            command.Parameters.AddWithValue("@qty", qty)
-                            command.Parameters.AddWithValue("@balance", qty)
-                            command.Parameters.AddWithValue("@reference", "Stock adjustment, Mass update")
+                                command.Connection = conn
 
-                            command.CommandText = query
-                            command.Prepare()
-                            command.ExecuteNonQuery()
-                            conn.Close()
+                                command.Parameters.AddWithValue("@date", Day.DAY)
+                                command.Parameters.AddWithValue("@item_code", itemcode)
+                                command.Parameters.AddWithValue("@qty", qty)
+                                command.Parameters.AddWithValue("@balance", qty)
+                                command.Parameters.AddWithValue("@reference", "Stock adjustment, Mass update")
+
+                                command.CommandText = query
+                                command.Prepare()
+                                command.ExecuteNonQuery()
+                                conn.Close()
+                            Catch ex As Exception
+
+                            End Try
 
                         Next
                         lblOperation.Text = ""
@@ -1028,34 +1033,36 @@ Public Class frmMassManager
                             showProgress(i, count)
                             'upload items
 
-                            Dim itemcode As String = objXLWs.Range("A" & i).Value
-                            Dim scancode As String = objXLWs.Range("B" & i).Value
-                            Dim descr As String = objXLWs.Range("C" & i).Value
-                            Dim short_descr As String = objXLWs.Range("D" & i).Value
-                            Dim pck As String = objXLWs.Range("E" & i).Value
-                            Dim dept_name As String = objXLWs.Range("G" & i).Value
-                            Dim _class_name As String = objXLWs.Range("I" & i).Value
-                            Dim sub_class_name As String = objXLWs.Range("K" & i).Value
-                            Dim supplier As String = objXLWs.Range("L" & i).Value
-                            Dim cprice_vat_excl As String = objXLWs.Range("N" & i).Value
-                            Dim vat As String = objXLWs.Range("O" & i).Value
-                            Dim cprice_vat_incl As String = objXLWs.Range("P" & i).Value
-                            Dim margin As String = objXLWs.Range("Q" & i).Value
-                            Dim discount As String = objXLWs.Range("R" & i).Value
-                            Dim sprice As String = objXLWs.Range("S" & i).Value
-                            Dim stock As String = objXLWs.Range("T" & i).Value
-                            Dim min_stock As String = objXLWs.Range("U" & i).Value
-                            Dim max_stock As String = objXLWs.Range("V" & i).Value
-                            Dim reorder_level As String = objXLWs.Range("W" & i).Value
-                            Dim uom As String = objXLWs.Range("X" & i).Value
+                            Try
+
+                                Dim itemcode As String = objXLWs.Range("A" & i).Value
+                                Dim scancode As String = objXLWs.Range("B" & i).Value
+                                Dim descr As String = objXLWs.Range("C" & i).Value
+                                Dim short_descr As String = objXLWs.Range("D" & i).Value
+                                Dim pck As String = objXLWs.Range("E" & i).Value
+                                Dim dept_name As String = objXLWs.Range("G" & i).Value
+                                Dim _class_name As String = objXLWs.Range("I" & i).Value
+                                Dim sub_class_name As String = objXLWs.Range("K" & i).Value
+                                Dim supplier As String = objXLWs.Range("L" & i).Value
+                                Dim cprice_vat_excl As String = objXLWs.Range("N" & i).Value
+                                Dim vat As String = objXLWs.Range("O" & i).Value
+                                Dim cprice_vat_incl As String = objXLWs.Range("P" & i).Value
+                                Dim margin As String = objXLWs.Range("Q" & i).Value
+                                Dim discount As String = objXLWs.Range("R" & i).Value
+                                Dim sprice As String = objXLWs.Range("S" & i).Value
+                                Dim stock As String = objXLWs.Range("T" & i).Value
+                                Dim min_stock As String = objXLWs.Range("U" & i).Value
+                                Dim max_stock As String = objXLWs.Range("V" & i).Value
+                                Dim reorder_level As String = objXLWs.Range("W" & i).Value
+                                Dim uom As String = objXLWs.Range("X" & i).Value
 
 
 
-                            Dim conn As New MySqlConnection(Database.conString)
-                            conn.Open()
-                            Dim command As New MySqlCommand()
-                            command.Connection = conn
-                            command.CommandText = "UPDATE `items`
+                                Dim conn As New MySqlConnection(Database.conString)
+                                conn.Open()
+                                Dim command As New MySqlCommand()
+                                command.Connection = conn
+                                command.CommandText = "UPDATE `items`
                                                         SET
                                                             `item_long_description`='" + removeInvalidCharacters(descr) + "',
                                                             `item_description`='" + removeInvalidCharacters(short_descr) + "',
@@ -1073,9 +1080,13 @@ Public Class frmMassManager
                                                         WHERE 
                                                             `item_code`='" + removeInvalidCharacters(itemcode) + "'"
 
-                            command.Prepare()
-                            command.ExecuteNonQuery()
-                            conn.Close()
+                                command.Prepare()
+                                command.ExecuteNonQuery()
+                                conn.Close()
+
+                            Catch ex As Exception
+
+                            End Try
 
                             '  Dim stockCard As New StockCard
                             '  StockCard.qtyIn(Day.DAY, itemcode, Val(stock), Val(stock), "Stock adjustment, Mass update")
@@ -1251,30 +1262,34 @@ Err_Handler:
                     lblOperation.Text = "Downloading... please wait"
                     If reader.GetString("item_code") <> "" Then
                         r = r + 1
-                        shXL.Cells(r, 1).Value = reader.GetString("item_code")
-                        shXL.Cells(r, 2).Value = reader.GetString("item_scan_code")
-                        shXL.Cells(r, 3).Value = reader.GetString("item_long_description")
-                        shXL.Cells(r, 4).Value = reader.GetString("item_description")
-                        shXL.Cells(r, 5).Value = reader.GetString("pck")
-                        shXL.Cells(r, 6).Value = ""
-                        shXL.Cells(r, 7).Value = department.getDepartmentName(reader.GetString("department_id"))
-                        shXL.Cells(r, 8).Value = ""
-                        shXL.Cells(r, 9).Value = class_.getClassName(reader.GetString("class_id"))
-                        shXL.Cells(r, 10).Value = ""
-                        shXL.Cells(r, 11).Value = subclass.getSubClassName(reader.GetString("sub_class_id"))
-                        shXL.Cells(r, 12).Value = supplier.getSupplierCode(reader.GetString("supplier_id"), "")
-                        shXL.Cells(r, 13).Value = supplier.getSupplierName(reader.GetString("supplier_id"), "")
-                        shXL.Cells(r, 14).Value = ""
-                        shXL.Cells(r, 15).Value = reader.GetString("vat")
-                        shXL.Cells(r, 16).Value = reader.GetString("unit_cost_price")
-                        shXL.Cells(r, 17).Value = reader.GetString("margin")
-                        shXL.Cells(r, 18).Value = reader.GetString("discount")
-                        shXL.Cells(r, 19).Value = reader.GetString("retail_price")
-                        shXL.Cells(r, 20).Value = (New Inventory).getInventory(reader.GetString("item_code"))
-                        shXL.Cells(r, 21).Value = (New Inventory).getMinInventory(reader.GetString("item_code"))
-                        shXL.Cells(r, 22).Value = (New Inventory).getMaxInventory(reader.GetString("item_code"))
-                        shXL.Cells(r, 23).Value = (New Inventory).getReorderLevel(reader.GetString("item_code"))
-                        shXL.Cells(r, 24).Value = reader.GetString("standard_uom")
+                        Try
+                            shXL.Cells(r, 1).Value = reader.GetString("item_code")
+                            shXL.Cells(r, 2).Value = reader.GetString("item_scan_code")
+                            shXL.Cells(r, 3).Value = reader.GetString("item_long_description")
+                            shXL.Cells(r, 4).Value = reader.GetString("item_description")
+                            shXL.Cells(r, 5).Value = reader.GetString("pck")
+                            shXL.Cells(r, 6).Value = ""
+                            shXL.Cells(r, 7).Value = department.getDepartmentName(reader.GetString("department_id"))
+                            shXL.Cells(r, 8).Value = ""
+                            shXL.Cells(r, 9).Value = class_.getClassName(reader.GetString("class_id"))
+                            shXL.Cells(r, 10).Value = ""
+                            shXL.Cells(r, 11).Value = subclass.getSubClassName(reader.GetString("sub_class_id"))
+                            shXL.Cells(r, 12).Value = supplier.getSupplierCode(reader.GetString("supplier_id"), "")
+                            shXL.Cells(r, 13).Value = supplier.getSupplierName(reader.GetString("supplier_id"), "")
+                            shXL.Cells(r, 14).Value = ""
+                            shXL.Cells(r, 15).Value = reader.GetString("vat")
+                            shXL.Cells(r, 16).Value = reader.GetString("unit_cost_price")
+                            shXL.Cells(r, 17).Value = reader.GetString("margin")
+                            shXL.Cells(r, 18).Value = reader.GetString("discount")
+                            shXL.Cells(r, 19).Value = reader.GetString("retail_price")
+                            shXL.Cells(r, 20).Value = (New Inventory).getInventory(reader.GetString("item_code"))
+                            shXL.Cells(r, 21).Value = (New Inventory).getMinInventory(reader.GetString("item_code"))
+                            shXL.Cells(r, 22).Value = (New Inventory).getMaxInventory(reader.GetString("item_code"))
+                            shXL.Cells(r, 23).Value = (New Inventory).getReorderLevel(reader.GetString("item_code"))
+                            shXL.Cells(r, 24).Value = reader.GetString("standard_uom")
+                        Catch ex As Exception
+
+                        End Try
                     End If
                 End While
                 lblOperation.Text = ""

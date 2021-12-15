@@ -22,8 +22,8 @@ Partial Class frmItemConversion
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmItemConversion))
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.txtId = New System.Windows.Forms.TextBox()
@@ -96,9 +96,9 @@ Partial Class frmItemConversion
         Me.btnApprove = New System.Windows.Forms.ToolStripButton()
         Me.btnPrint = New System.Windows.Forms.ToolStripButton()
         Me.btnComplete = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripSeparator5 = New System.Windows.Forms.ToolStripSeparator()
         Me.btnArchive = New System.Windows.Forms.ToolStripButton()
         Me.btnArchiveAll = New System.Windows.Forms.ToolStripButton()
-        Me.ToolStripSeparator5 = New System.Windows.Forms.ToolStripSeparator()
         Me.Panel1.SuspendLayout()
         Me.Panel2.SuspendLayout()
         Me.Panel3.SuspendLayout()
@@ -551,8 +551,8 @@ Partial Class frmItemConversion
         '
         'Column4
         '
-        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.Column4.DefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.Column4.DefaultCellStyle = DataGridViewCellStyle1
         Me.Column4.HeaderText = "Price"
         Me.Column4.Name = "Column4"
         Me.Column4.ReadOnly = True
@@ -592,8 +592,8 @@ Partial Class frmItemConversion
         '
         'DataGridViewTextBoxColumn4
         '
-        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.DataGridViewTextBoxColumn4.DefaultCellStyle = DataGridViewCellStyle4
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.DataGridViewTextBoxColumn4.DefaultCellStyle = DataGridViewCellStyle2
         Me.DataGridViewTextBoxColumn4.HeaderText = "Price"
         Me.DataGridViewTextBoxColumn4.Name = "DataGridViewTextBoxColumn4"
         Me.DataGridViewTextBoxColumn4.ReadOnly = True
@@ -749,8 +749,8 @@ Partial Class frmItemConversion
         Me.btnPrint.Image = Global.BackOffice.My.Resources.Resources.printer
         Me.btnPrint.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.btnPrint.Name = "btnPrint"
-        Me.btnPrint.Size = New System.Drawing.Size(180, 24)
-        Me.btnPrint.Text = "Print Production Sheet"
+        Me.btnPrint.Size = New System.Drawing.Size(181, 24)
+        Me.btnPrint.Text = "Print Conversion Sheet"
         Me.btnPrint.ToolTipText = "Print an already approved conversion document"
         '
         'btnComplete
@@ -760,6 +760,11 @@ Partial Class frmItemConversion
         Me.btnComplete.Name = "btnComplete"
         Me.btnComplete.Size = New System.Drawing.Size(98, 24)
         Me.btnComplete.Text = "Complete"
+        '
+        'ToolStripSeparator5
+        '
+        Me.ToolStripSeparator5.Name = "ToolStripSeparator5"
+        Me.ToolStripSeparator5.Size = New System.Drawing.Size(6, 27)
         '
         'btnArchive
         '
@@ -778,11 +783,6 @@ Partial Class frmItemConversion
         Me.btnArchiveAll.Size = New System.Drawing.Size(102, 24)
         Me.btnArchiveAll.Text = "Archive all"
         Me.btnArchiveAll.ToolTipText = "Sends all completed and cleared packing list to archives for future references"
-        '
-        'ToolStripSeparator5
-        '
-        Me.ToolStripSeparator5.Name = "ToolStripSeparator5"
-        Me.ToolStripSeparator5.Size = New System.Drawing.Size(6, 27)
         '
         'frmItemConversion
         '

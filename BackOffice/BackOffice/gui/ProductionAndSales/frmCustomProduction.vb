@@ -1505,7 +1505,7 @@ Public Class frmCustomProduction
                     'update inventory, add to inventory
                     query = query + "UPDATE `inventorys` SET `qty`=`qty`+" + (dtgrdItemList.Item(2, i).Value).ToString + " WHERE `item_code`='" + dtgrdItemList.Item(0, i).Value + "';"
                     'update stock cards, insert new stock card
-                    query = query + "INSERT INTO `stock_cards`(`date`,`item_code`,`qty_in`,`balance`,`reference`) VALUES ('" + Day.DAY + "','" + itemcode + "','" + qty.ToString + "'," + ((New Inventory).getInventory(itemcode)) + "+" + qty.ToString + ",'Produced CPRODXN#: " + txtProductionNo.Text + "');"
+                    query = query + "INSERT INTO `stock_cards`(`date`,`item_code`,`qty_in`,`balance`,`reference`) VALUES ('" + Day.DAY + "','" + itemcode + "','" + qty.ToString + "',(SELECT `qty` FROM `inventorys` WHERE `item_code`='" + itemcode + "'),'Produced CPRODXN#: " + txtProductionNo.Text + "');"
                     'register production
                     query = query + "INSERT INTO `item_production`(`date`,`item_code`, `price`, `qty`,`balance`,`reference`) VALUES ('" + Day.DAY + "','" + itemcode + "','" + (New Item).getItemCostPrice(itemcode).ToString + "','" + qty.ToString + "'," + ((New Inventory).getInventory(itemcode)) + "+" + qty.ToString + ",'CPRODXN#: " + txtProductionNo.Text + "');"
                 End If
